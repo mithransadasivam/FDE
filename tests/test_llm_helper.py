@@ -115,3 +115,30 @@ def test_logs_error_and_reraises(caplog):
     assert len(errors) == 1
     assert "test/model" in errors[0].getMessage()
     assert "secret prompt" not in caplog.text
+
+
+class BoomError(Exception):
+    pass
+
+
+def test_client_exception_is_logged_as_error_and_reraised(caplog):
+    client = FakeClient()
+
+    def boom(**kwargs):
+        raise BoomError("api down")
+
+    client.chat.completions.create = boom
+    with caplog.at_level(logging.ERROR, logger="app.llm_helper"):
+        with pytest.raises(BoomError):
+            ask_llm("hi", model="test/model", client=client)
+    assert any(r.levelno == logging.ERROR for r in caplog.records)
+
+
+def test_model_returning_none_gives_empty_string_not_crash():
+    result = ask_llm("hi", model="m", client=FakeClient(reply=None))
+    assert result == ""
+
+
+def test_prompt_of_only_spaces_raises_value_error():
+    with pytest.raises(ValueError):
+        ask_llm("     ", model="m", client=FakeClient())
