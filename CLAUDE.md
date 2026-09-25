@@ -25,6 +25,8 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - Never read, print or commit `.env` or any API key. Read keys with `os.getenv`.
 - Every new function needs a pytest test, and `pytest -q` must pass before you say a task is done.
 - Mock LLM calls in tests; never call a real API from a test.
+- Work through multi-step prompts one step at a time and stop after each step for my go-ahead.
+- Never edit a test to make it pass; change the code, and say so when tests pass without any code change.
 
 ## Architecture
 
