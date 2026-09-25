@@ -69,7 +69,7 @@ Tests added to `tests/test_llm_helper.py` before touching the code:
 2. `test_model_returning_none_gives_empty_string_not_crash`: `None` content returns `""`.
 3. `test_prompt_of_only_spaces_raises_value_error`: spaces-only prompt raises `ValueError`.
 
-Result: all three passed on the first run (18 passed), so no test failed first and
+Result: all three passed on the first run (18 passed at that point; 19 after the Task 3 test), so no test failed first and
 `app/llm_helper.py` needed no change. The Task 1 logging code already re-raised
 after logging, and the original code already handled `None` content and blank prompts.
 Tests were not modified to pass.
@@ -94,3 +94,28 @@ def count_levels(lines):
             counts[level] += 1
     return counts
 ```
+
+## Task 4: PR description and CLAUDE.md rules
+Part A: asked Claude to write a PR description (Summary, Changes, How it was
+tested, Risks) from the commits since Day 1, then checked every claim against
+`git log` and `git diff`.
+
+Corrections I made to the draft:
+- The README described the `=+ 1` and `IndexError` bugs in the log parser, but
+  the diff only shows the finished file (the buggy version was never committed).
+  Removed from the PR text.
+- The README said "18 passed"; the actual `pytest -q` result is 19.
+
+Part B: rules added to `CLAUDE.md` from those corrections:
+1. In PR descriptions and READMEs, describe only what `git diff` shows, and
+   never copy claims from older docs without checking them against the code.
+2. Quote test counts and results only from a `pytest -q` run made in the same
+   turn, never from memory or a README.
+
+Check after `/clear`: my first two attempts didn't test the rules. The first
+opened outside the repo and cloned an old copy from GitHub, and the second
+reused earlier answers because the session wasn't cleared. On the third
+attempt, opened in the repo folder after `/clear`, Claude ran `pytest -q` in
+the same turn (19 passed) and described only the diff. A CLAUDE.md is read
+only when Claude starts inside the repo, and rules must be pushed before a
+fresh clone sees them.
