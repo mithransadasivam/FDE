@@ -1,3 +1,4 @@
+import logging
 from types import SimpleNamespace
 
 import pytest
@@ -7,15 +8,19 @@ from app.llm_helper import ask_llm
 
 
 class FakeClient:
-    def __init__(self, reply="  hello  \n"):
+    def __init__(self, reply="  hello  \n", total_tokens=None):
         self.calls = []
         self.chat = SimpleNamespace(completions=SimpleNamespace(create=self._create))
         self._reply = reply
+        self._total_tokens = total_tokens
 
     def _create(self, **kwargs):
         self.calls.append(kwargs)
         message = SimpleNamespace(content=self._reply)
-        return SimpleNamespace(choices=[SimpleNamespace(message=message)])
+        response = SimpleNamespace(choices=[SimpleNamespace(message=message)])
+        if self._total_tokens is not None:
+            response.usage = SimpleNamespace(total_tokens=self._total_tokens)
+        return response
 
 
 @pytest.fixture(autouse=True)
@@ -80,3 +85,33 @@ def test_api_key_not_required_when_client_given():
 
 def test_none_content_returns_empty_string():
     assert ask_llm("hi", model="m", client=FakeClient(reply=None)) == ""
+
+
+def test_logs_model_latency_and_tokens(caplog):
+    caplog.set_level(logging.INFO, logger="app.llm_helper")
+    client = FakeClient(reply="secret reply", total_tokens=42)
+    ask_llm("secret prompt", model="test/model", client=client)
+    records = [r for r in caplog.records if r.levelno == logging.INFO]
+    assert len(records) == 1
+    message = records[0].getMessage()
+    assert "model=test/model" in message
+    assert "latency_ms=" in message
+    assert "total_tokens=42" in message
+    assert "secret prompt" not in caplog.text
+    assert "secret reply" not in caplog.text
+
+
+def test_logs_error_and_reraises(caplog):
+    caplog.set_level(logging.INFO, logger="app.llm_helper")
+    client = FakeClient()
+
+    def boom(**kwargs):
+        raise RuntimeError("boom")
+
+    client.chat.completions.create = boom
+    with pytest.raises(RuntimeError, match="boom"):
+        ask_llm("secret prompt", model="test/model", client=client)
+    errors = [r for r in caplog.records if r.levelno == logging.ERROR]
+    assert len(errors) == 1
+    assert "test/model" in errors[0].getMessage()
+    assert "secret prompt" not in caplog.text

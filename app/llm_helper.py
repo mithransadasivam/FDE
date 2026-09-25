@@ -1,7 +1,11 @@
+import logging
 import os
+import time
 
 from dotenv import load_dotenv
 from openai import OpenAI
+
+logger = logging.getLogger(__name__)
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
@@ -27,9 +31,22 @@ def ask_llm(prompt, model=None, temperature=0.2, client=None):
             )
         client = OpenAI(api_key=api_key, base_url=OPENROUTER_BASE_URL)
 
-    response = client.chat.completions.create(
-        model=model,
-        temperature=temperature,
-        messages=[{"role": "user", "content": prompt}],
+    start = time.perf_counter()
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            temperature=temperature,
+            messages=[{"role": "user", "content": prompt}],
+        )
+    except Exception:
+        logger.error("LLM call failed model=%s", model)
+        raise
+    latency_ms = round((time.perf_counter() - start) * 1000)
+    total_tokens = getattr(getattr(response, "usage", None), "total_tokens", None)
+    logger.info(
+        "LLM call model=%s latency_ms=%d total_tokens=%s",
+        model,
+        latency_ms,
+        total_tokens,
     )
     return (response.choices[0].message.content or "").strip()
