@@ -63,6 +63,17 @@ def ask_llm(prompt, model=None, temperature=0.2, client=None):
     return (response.choices[0].message.content or "").strip()
 ```
 
+## Task 2: test the error cases
+Tests added to `tests/test_llm_helper.py` before touching the code:
+1. `test_client_exception_is_logged_as_error_and_reraised`: client raises, `ask_llm` logs at ERROR and re-raises.
+2. `test_model_returning_none_gives_empty_string_not_crash`: `None` content returns `""`.
+3. `test_prompt_of_only_spaces_raises_value_error`: spaces-only prompt raises `ValueError`.
+
+Result: all three passed on the first run (18 passed), so no test failed first and
+`app/llm_helper.py` needed no change. The Task 1 logging code already re-raised
+after logging, and the original code already handled `None` content and blank prompts.
+Tests were not modified to pass.
+
 ## Task 3: fix a colleague's script
 Files: `tools/log_parser.py`, `data/sample.log` (includes a blank line),
 `tests/test_log_parser.py` (expects `{"INFO": 1, "WARNING": 1, "ERROR": 2}`).
