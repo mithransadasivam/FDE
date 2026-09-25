@@ -1,0 +1,5 @@
+2026-09-22T01:40:12 ERROR DB connection timeout
+2026-09-22T01:40:15 INFO Retrying job ORD-ETL
+
+2026-09-22T02:10:03 ERROR DB connection timeout
+2026-09-22T02:10:04 WARNING Paging on-call DBA

@@ -128,9 +128,8 @@ def test_client_exception_is_logged_as_error_and_reraised(caplog):
         raise BoomError("api down")
 
     client.chat.completions.create = boom
-    with caplog.at_level(logging.ERROR, logger="app.llm_helper"):
-        with pytest.raises(BoomError):
-            ask_llm("hi", model="test/model", client=client)
+    with caplog.at_level(logging.ERROR, logger="app.llm_helper"), pytest.raises(BoomError):
+        ask_llm("hi", model="test/model", client=client)
     assert any(r.levelno == logging.ERROR for r in caplog.records)
 
 
