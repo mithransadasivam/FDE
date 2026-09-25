@@ -27,6 +27,8 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - Mock LLM calls in tests; never call a real API from a test.
 - Work through multi-step prompts one step at a time and stop after each step for my go-ahead.
 - Never edit a test to make it pass; change the code, and say so when tests pass without any code change.
+- In PR descriptions and READMEs, describe only what `git diff` shows, and never copy claims from older docs without checking them against the code.
+- Quote test counts and results only from a `pytest -q` run made in the same turn, never from memory or a README.
 
 ## Architecture
 
