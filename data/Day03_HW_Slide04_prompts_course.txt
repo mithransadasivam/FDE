@@ -1,0 +1,10 @@
+Summarise in one sentence: the nightly ETL job failed twice with a database timeout and was paged to the on-call DBA.
+Classify this ticket as access, network, hardware, bug or request: "The password reset page in the self-service portal shows a 404".
+From this log line, extract the date, the system and the error code as JSON: "2026-09-22T02:10:03 ORD-ETL ERROR E1203 DB connection timeout".
+A batch job must not run after 06:00 because a report reads its tables at 06:30. It is 05:50 and the job takes 25 minutes. Should I start it? Explain in two sentences.
+Rewrite politely for a customer: "We told you already, the export fails because your file is wrong. Fix it."
+Turn these notes into three action items with owners: "Asha to update the runbook, Dev to rotate the API key, Asha and Lee to review alerts on Friday".
+Write a one-line commit message for: added retry with exponential backoff to the payment client and a test for it.
+Explain this error to a junior developer in two sentences: "KeyError: 'amount' in app/reports.py line 42".
+Is this alert noise or real? "Disk usage on build-agent-3 at 81% (threshold 80%), rising 0.1% per day". Answer and give one reason.
+Draft three test cases for: "A user can reset their password using a link that expires after 30 minutes".
