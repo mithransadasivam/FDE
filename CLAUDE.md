@@ -47,3 +47,10 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - `.env` is gitignored and holds the real `OPENROUTER_API_KEY` and `LLM_MODEL`. `.env.example` is the committed template.
 - The default model is a free OpenRouter model (`nvidia/nemotron-3.5-lightning:free`). Free models are often rate-limited upstream (HTTP 429), so a live call can fail for reasons unrelated to the code; try another `:free` model.
 - `tests/`, `data/` and `notebooks/` were created with `.gitkeep` files so Git tracks them while empty.
+
+## Model routing (see `HW #3/MODEL_CHOICE.md`)
+
+- Default to the `hosted` backend (claude-haiku-4.5) for classification, extraction, summaries, commit messages and drafts.
+- Escalate to the `strong` backend (claude-sonnet-4.5) only for reasoning about rules or trade-offs, or text a customer will read, and say why in the commit message.
+- `local` is the fallback when the hosted provider is unreachable, and for data that must not leave the machine. Its answers scored lowest in the benchmark.
+- Models and prices live in `.env` (`BACKENDS=...`); never hard-code a model ID or price.

@@ -1,10 +1,10 @@
 prompt_no,backend,model,seconds,input_tokens,output_tokens,cost,score,answer
-1,hosted,anthropic/claude-haiku-4.5,1.33,38,32,0.000198,,"# Summary
+1,hosted,anthropic/claude-haiku-4.5,1.33,38,32,0.000198,4,"# Summary
 
 The nightly ETL job failed twice due to database timeouts, triggering an alert to the on-call database administrator."
-1,strong,anthropic/claude-sonnet-4.5,1.82,38,28,0.000534,,"The nightly ETL job failed twice due to database timeouts, triggering pages to the on-call DBA."
-1,local,llama3.2:3b,30.41,54,33,0.0,,"The nightly ETL (Extract, Transform, Load) job failed twice, resulting in a database timeout, and was subsequently notified to an on-call DBA."
-2,hosted,anthropic/claude-haiku-4.5,2.04,38,111,0.000593,,"# Classification: Bug
+1,strong,anthropic/claude-sonnet-4.5,1.82,38,28,0.000534,5,"The nightly ETL job failed twice due to database timeouts, triggering pages to the on-call DBA."
+1,local,llama3.2:3b,30.41,54,33,0.0,3,"The nightly ETL (Extract, Transform, Load) job failed twice, resulting in a database timeout, and was subsequently notified to an on-call DBA."
+2,hosted,anthropic/claude-haiku-4.5,2.04,38,111,0.000593,4,"# Classification: Bug
 
 **Reasoning:**
 This ticket describes a malfunction where a specific page (password reset page) is returning a 404 error instead of functioning as intended. This indicates a software defect rather than:
@@ -15,7 +15,7 @@ This ticket describes a malfunction where a specific page (password reset page) 
 - **Request** - Not a feature request or configuration change
 
 The 404 error is a technical problem with the application itself."
-2,strong,anthropic/claude-sonnet-4.5,5.85,38,103,0.001659,,"**Classification: bug**
+2,strong,anthropic/claude-sonnet-4.5,5.85,38,103,0.001659,4,"**Classification: bug**
 
 This ticket describes a functional issue with an existing system (the self-service portal's password reset page returning a 404 error). This is a software defect that prevents the intended functionality from working properly, making it a bug rather than:
 
@@ -23,22 +23,22 @@ This ticket describes a functional issue with an existing system (the self-servi
 - **network** (connectivity issues)
 - **hardware** (physical equipment problems)
 - **request** (asking for new features or changes)"
-2,local,llama3.2:3b,2.79,55,11,0.0,,"This ticket can be classified as a ""bug""."
-3,hosted,anthropic/claude-haiku-4.5,1.29,54,55,0.000329,,"```json
+2,local,llama3.2:3b,2.79,55,11,0.0,5,"This ticket can be classified as a ""bug""."
+3,hosted,anthropic/claude-haiku-4.5,1.29,54,55,0.000329,5,"```json
 {
   ""date"": ""2026-09-22T02:10:03"",
   ""system"": ""ORD-ETL"",
   ""error_code"": ""E1203""
 }
 ```"
-3,strong,anthropic/claude-sonnet-4.5,1.9,54,55,0.000987,,"```json
+3,strong,anthropic/claude-sonnet-4.5,1.9,54,55,0.000987,5,"```json
 {
   ""date"": ""2026-09-22T02:10:03"",
   ""system"": ""ORD-ETL"",
   ""error_code"": ""E1203""
 }
 ```"
-3,local,llama3.2:3b,4.6,68,145,0.0,,"Here is the information extracted from the log line as JSON:
+3,local,llama3.2:3b,4.6,68,145,0.0,3,"Here is the information extracted from the log line as JSON:
 
 ```
 {
@@ -58,10 +58,10 @@ Note that I've added the error message to the JSON, although it's not present in
   ""error_code"": ""E1203""
 }
 ```"
-4,hosted,anthropic/claude-haiku-4.5,1.54,58,56,0.000338,,"No, you should not start it. The job would finish at 06:15, which is before the 06:30 report but only leaves a 15-minute buffer—too risky if there are any delays or if the report starts early."
-4,strong,anthropic/claude-sonnet-4.5,4.53,58,62,0.001104,,"No, you should not start it. Starting the job at 05:50 would mean it finishes at 06:15, which is 15 minutes after your 06:00 deadline and could interfere with the report that reads the tables at 06:30."
-4,local,llama3.2:3b,3.91,72,50,0.0,,"Since the job takes only 25 minutes to run, it will finish before 06:30, and it should be permitted to run. Starting the job at 05:50 would not pose any problems for the report to read its tables."
-5,hosted,anthropic/claude-haiku-4.5,2.59,34,149,0.000779,,"# Suggested Rewrite
+4,hosted,anthropic/claude-haiku-4.5,1.54,58,56,0.000338,3,"No, you should not start it. The job would finish at 06:15, which is before the 06:30 report but only leaves a 15-minute buffer—too risky if there are any delays or if the report starts early."
+4,strong,anthropic/claude-sonnet-4.5,4.53,58,62,0.001104,5,"No, you should not start it. Starting the job at 05:50 would mean it finishes at 06:15, which is 15 minutes after your 06:00 deadline and could interfere with the report that reads the tables at 06:30."
+4,local,llama3.2:3b,3.91,72,50,0.0,1,"Since the job takes only 25 minutes to run, it will finish before 06:30, and it should be permitted to run. Starting the job at 05:50 would not pose any problems for the report to read its tables."
+5,hosted,anthropic/claude-haiku-4.5,2.59,34,149,0.000779,4,"# Suggested Rewrite
 
 Thank you for reaching out. We've reviewed your export issue and found that the file format appears to have some compatibility concerns. Could you please double-check the file specifications and try re-uploading? 
 
@@ -75,12 +75,12 @@ If you'd like, we're happy to walk you through the requirements or take a look a
 - Offers collaborative help rather than placing blame
 - Gives the customer agency to solve it
 - Remains professional and solution-focused"
-5,strong,anthropic/claude-sonnet-4.5,3.36,34,91,0.001467,,"Thank you for reaching out again. As mentioned previously, the export issue is occurring due to a formatting problem with your file. 
+5,strong,anthropic/claude-sonnet-4.5,3.36,34,91,0.001467,3,"Thank you for reaching out again. As mentioned previously, the export issue is occurring due to a formatting problem with your file. 
 
 To resolve this, please review and correct the file format, and then try the export again. If you need guidance on the proper file format or would like assistance troubleshooting specific errors, I'd be happy to help walk you through it.
 
 Please let me know if you have any questions!"
-5,local,llama3.2:3b,8.32,50,218,0.0,,"Here's a rewritten version of the message that's polite and constructive:
+5,local,llama3.2:3b,8.32,50,218,0.0,3,"Here's a rewritten version of the message that's polite and constructive:
 
 ""Hello [Customer's Name],
 
@@ -101,7 +101,7 @@ This revised message:
 - Offers specific guidance on how to fix the problem
 - Emphasizes the company's support and willingness to help
 - Uses polite language and a friendly tone"
-6,hosted,anthropic/claude-haiku-4.5,1.23,45,59,0.00034,,"# Action Items
+6,hosted,anthropic/claude-haiku-4.5,1.23,45,59,0.00034,4,"# Action Items
 
 1. **Update the runbook**
    - Owner: Asha
@@ -111,38 +111,38 @@ This revised message:
 
 3. **Review alerts on Friday**
    - Owners: Asha and Lee"
-6,strong,anthropic/claude-sonnet-4.5,2.08,45,53,0.00093,,"# Action Items
+6,strong,anthropic/claude-sonnet-4.5,2.08,45,53,0.00093,5,"# Action Items
 
 1. **Update the runbook** - Owner: Asha
 2. **Rotate the API key** - Owner: Dev
 3. **Review alerts on Friday** - Owners: Asha and Lee"
-6,local,llama3.2:3b,1.8,61,47,0.0,,"Here are the three action items with owners:
+6,local,llama3.2:3b,1.8,61,47,0.0,4,"Here are the three action items with owners:
 
 **Action Items**
 
 1. **Asha**: Update the Runbook
 2. **Dev**: Rotate the API Key
 3. **Asha & Lee**: Review Alerts on Friday"
-7,hosted,anthropic/claude-haiku-4.5,1.03,33,21,0.000138,,"```
+7,hosted,anthropic/claude-haiku-4.5,1.03,33,21,0.000138,4,"```
 feat: add exponential backoff retry logic to payment client with tests
 ```"
-7,strong,anthropic/claude-sonnet-4.5,1.83,33,18,0.000369,,`feat: add exponential backoff retry to payment client with tests`
-7,local,llama3.2:3b,1.36,49,33,0.0,,"""Implemented retry mechanism with exponential backoff for payment client and added a test to ensure its functionality.""
+7,strong,anthropic/claude-sonnet-4.5,1.83,33,18,0.000369,5,`feat: add exponential backoff retry to payment client with tests`
+7,local,llama3.2:3b,1.36,49,33,0.0,2,"""Implemented retry mechanism with exponential backoff for payment client and added a test to ensure its functionality.""
 
 Let me know if you want me to make any changes."
-8,hosted,anthropic/claude-haiku-4.5,1.94,37,79,0.000432,,"# KeyError: 'amount' Explanation
+8,hosted,anthropic/claude-haiku-4.5,1.94,37,79,0.000432,4,"# KeyError: 'amount' Explanation
 
 Your code is trying to access a dictionary key called `'amount'` that doesn't exist. This usually means either the dictionary wasn't populated with that key, or you're looking in the wrong dictionary—check that the data you're working with actually contains an `'amount'` field before trying to use it."
-8,strong,anthropic/claude-sonnet-4.5,3.59,37,86,0.001401,,"A `KeyError` means your code is trying to access a dictionary key called 'amount' that doesn't exist in the dictionary. Check line 42 in `app/reports.py` to see where you're accessing the dictionary, and make sure the key 'amount' is actually present, or use `.get('amount')` instead of `['amount']` to avoid the error."
-8,local,llama3.2:3b,4.43,53,70,0.0,,"This error means that when your program is trying to access a certain value within the data for a specific report, it can't find it. Specifically, on line 42 of your 'reports.py' file, the code is trying to access a key named 'amount', but it's not present in the data, which is causing the KeyError."
-9,hosted,anthropic/claude-haiku-4.5,1.99,49,70,0.000399,,"# Real Alert
+8,strong,anthropic/claude-sonnet-4.5,3.59,37,86,0.001401,5,"A `KeyError` means your code is trying to access a dictionary key called 'amount' that doesn't exist in the dictionary. Check line 42 in `app/reports.py` to see where you're accessing the dictionary, and make sure the key 'amount' is actually present, or use `.get('amount')` instead of `['amount']` to avoid the error."
+8,local,llama3.2:3b,4.43,53,70,0.0,3,"This error means that when your program is trying to access a certain value within the data for a specific report, it can't find it. Specifically, on line 42 of your 'reports.py' file, the code is trying to access a key named 'amount', but it's not present in the data, which is causing the KeyError."
+9,hosted,anthropic/claude-haiku-4.5,1.99,49,70,0.000399,4,"# Real Alert
 
 **Reason:** The disk is already above the threshold (81% > 80%) and actively filling up. Even at 0.1% per day, it will reach critical capacity in ~190 days, requiring proactive intervention to prevent eventual failures like build failures, log loss, or system crashes."
-9,strong,anthropic/claude-sonnet-4.5,3.55,49,67,0.001152,,"**Real alert.**
+9,strong,anthropic/claude-sonnet-4.5,3.55,49,67,0.001152,5,"**Real alert.**
 
 At 0.1% per day, the disk will reach 100% in approximately 190 days (~6 months), which is enough time to plan and execute cleanup or expansion—this is a legitimate capacity planning signal, not an immediate crisis but worth addressing to avoid future incidents."
-9,local,llama3.2:3b,4.55,64,74,0.0,,"This alert is likely real. One reason is that the metric mentions a specific threshold (80%) and the current usage level (81%), suggesting that the alert was set to trigger when the disk usage exceeds this threshold. Additionally, the alert mentions a percentage change (0.1%) per day, which could indicate a trend that is causing the threshold to be exceeded."
-10,hosted,anthropic/claude-haiku-4.5,3.9,31,418,0.002121,,"# Test Cases: Password Reset Link Expiration
+9,local,llama3.2:3b,4.55,64,74,0.0,2,"This alert is likely real. One reason is that the metric mentions a specific threshold (80%) and the current usage level (81%), suggesting that the alert was set to trigger when the disk usage exceeds this threshold. Additionally, the alert mentions a percentage change (0.1%) per day, which could indicate a trend that is causing the threshold to be exceeded."
+10,hosted,anthropic/claude-haiku-4.5,3.9,31,418,0.002121,5,"# Test Cases: Password Reset Link Expiration
 
 ## Test Case 1: Valid Password Reset Within 30 Minutes
 **Objective:** Verify user can successfully reset password using a valid link
@@ -180,7 +180,7 @@ At 0.1% per day, the disk will reach 100% in approximately 190 days (~6 months),
   3. User clicks Link A (original link)
   4. User then clicks Link B and completes reset with new password
 - **Expected Result:** Link A is invalid/rejected; Link B works correctly; user can log in with new password"
-10,strong,anthropic/claude-sonnet-4.5,9.84,31,600,0.009093,,"# Test Cases for Password Reset Link Expiration
+10,strong,anthropic/claude-sonnet-4.5,9.84,31,600,0.009093,3,"# Test Cases for Password Reset Link Expiration
 
 ## Test Case 1: Valid Password Reset Within Time Limit
 **Objective:** Verify that a user can successfully reset their password using the reset link before it expires.
@@ -243,7 +243,7 @@ At 0.1% per day, the disk will reach 100% in approximately 190 days (~6 months),
 3. Check email inbox and note the exact time of the password reset email
 4. Click the password reset link at exactly 29 minutes and 30 seconds after receiving it
 5. Enter a new valid password in"
-10,local,llama3.2:3b,17.53,48,550,0.0,,"Here are three test cases for the scenario ""A user can reset their password using a link that expires after 30 minutes"":
+10,local,llama3.2:3b,17.53,48,550,0.0,2,"Here are three test cases for the scenario ""A user can reset their password using a link that expires after 30 minutes"":
 
 **Test Case 1: Fresh Link Generation**
 

@@ -27,3 +27,10 @@ Homework 3: choosing and proving a model. Code stays at the repo root (`app/`, `
 - `HW #3/cost_report.txt` is the output on the real `data/usage.csv`: 9 calls (3 per backend, a 3-message chat each, made through `app.chatbot.ask`).
 - Hand check: first row, haiku, 31 in x $1/1M + 202 out x $5/1M = $0.001041, equal to the logged cost.
 - Fix found on the way: `ask()` sent no reply cap, so OpenRouter rejected calls with HTTP 402 when the account balance was low. It now sends `max_tokens` (`CHAT_MAX_TOKENS`, default 1000).
+
+## Task 4: recommendation
+
+- `HW #3/MODEL_CHOICE.md`: the five-section memo (recommendation, evidence, cost, risks, review), with every figure computed from `data/benchmark.csv`.
+- `CLAUDE.md`: a "Model routing" section with the default and escalation rule.
+- The 1-5 scores in `data/benchmark.csv` were assigned by Claude, not by a human reviewer. Review and change any you disagree with, then rerun the averages.
+- The prompts are the ten course prompts, not prompts from my own work.
