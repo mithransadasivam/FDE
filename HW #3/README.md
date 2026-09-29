@@ -34,3 +34,7 @@ Homework 3: choosing and proving a model. Code stays at the repo root (`app/`, `
 - `CLAUDE.md`: a "Model routing" section with the default and escalation rule.
 - The 1-5 scores in `data/benchmark.csv` were assigned by Claude, not by a human reviewer. Review and change any you disagree with, then rerun the averages.
 - The prompts are the ten course prompts, not prompts from my own work.
+
+## Submission
+
+`Day03_Homework_SadasivamMithran.docx` is the single Word file for the portal: memo with benchmark table, cost report output, git log, and reflection.
