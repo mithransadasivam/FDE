@@ -18,14 +18,17 @@ QUESTION = "Our VPN certificate expired. What do I check first?"
 
 def build_messages(system: str, question: str) -> list:
     """TODO 1: return the messages list: the system message first, then the user's question."""
-    raise NotImplementedError("TODO 1")
+    return [
+        {"role": "system", "content": system},
+        {"role": "user", "content": question},
+    ]
 
 
 def call_cost(
     prompt_tokens: int, completion_tokens: int, in_price: float, out_price: float
 ) -> float:
     """TODO 2: the cost of one call in dollars. Prices are per million tokens."""
-    raise NotImplementedError("TODO 2")
+    return (prompt_tokens / 1e6) * in_price + (completion_tokens / 1e6) * out_price
 
 
 def main() -> None:
