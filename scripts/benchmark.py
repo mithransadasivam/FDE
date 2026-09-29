@@ -6,12 +6,15 @@ and prints a per-backend summary.
 """
 
 import csv
+import os
 import time
 
 from app.chatbot import build_backends
 
 PROMPTS = "data/prompts.txt"
 OUT = "data/benchmark.csv"
+# Cap replies: keeps cost low and avoids credit checks against a huge default limit
+MAX_TOKENS = int(os.getenv("BENCH_MAX_TOKENS", "600"))
 FIELDS = [
     "prompt_no",
     "backend",
@@ -35,7 +38,9 @@ def run_one(backend, prompt, clock=time.perf_counter):
     start = clock()
     try:
         r = backend.client.chat.completions.create(
-            model=backend.model, messages=[{"role": "user", "content": prompt}]
+            model=backend.model,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=MAX_TOKENS,
         )
     except Exception as e:  # noqa: BLE001 - keep going: one failed call must not lose the run
         return {

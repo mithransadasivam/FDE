@@ -16,4 +16,6 @@ Homework 3: choosing and proving a model. Code stays at the repo root (`app/`, `
 - `scripts/benchmark.py` (run `python -m scripts.benchmark` from the repo root): sends each line of `data/prompts.txt` to every backend in the registry and writes `data/benchmark.csv` with prompt number, backend, model ID, seconds, input tokens, output tokens, cost, an empty `score` column and the answer. A failed call is recorded as `ERROR: ...` and the run continues. It prints per-backend calls, average seconds and total cost.
 - `tests/test_benchmark.py` checks rows, cost, timing, error handling, the summary and the CSV header with fake clients; no API calls.
 - `data/prompts.txt` currently holds the ten course prompts from `data/Day03_HW_Slide04_prompts_course.txt`.
-- Status: the 30-call run and the 1-5 scoring are not done yet.
+- Replies are capped with `max_tokens` (default 600, override with `BENCH_MAX_TOKENS`). Without a cap OpenRouter rejected the calls with HTTP 402 because the default limit (64,000 tokens) exceeded the account's credits.
+- The local model ID must match `ollama list`: on this machine it is `llama3.2:3b`, not `llama3.2`.
+- Status: 30 calls ran with no errors. The 1-5 scoring is not done yet.
