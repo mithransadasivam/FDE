@@ -25,6 +25,8 @@ load_dotenv()
 
 SYSTEM = "You are a helpful IT support assistant. Be concise."
 USAGE_LOG = "data/usage.csv"
+# Cap replies: OpenRouter refuses requests whose default limit exceeds the account balance
+MAX_TOKENS = int(os.getenv("CHAT_MAX_TOKENS", "1000"))
 
 
 class Backend(NamedTuple):
@@ -138,7 +140,9 @@ def ask(backends, name, history, attempts=3, sleep=time.sleep, log=log_usage):
         for attempt in range(attempts):
             start = time.perf_counter()
             try:
-                r = client.chat.completions.create(model=model, messages=history)
+                r = client.chat.completions.create(
+                    model=model, messages=history, max_tokens=MAX_TOKENS
+                )
             except AuthenticationError:
                 return f"Authentication failed for '{n}': check your API key in .env."
             except retryable:
