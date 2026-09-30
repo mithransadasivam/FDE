@@ -6,14 +6,14 @@ Output: exactly one lower-case word from: access, network, hardware, bug, reques
 Model: hosted backend, temperature 0.
 
 ## Template
-Identical to prompts/classify_v3.txt (the version that was scored):
+Identical to prompts/classify_v4.txt (the version that was scored):
 
 Classify this support ticket into exactly one of these labels:
 access, network, hardware, bug, request, unknown
 
 Definitions:
 - access: the user cannot sign in or is locked out of an account (passwords, MFA, expired login).
-- network: connectivity problems, including Wi-Fi, VPN and reaching internal sites.
+- network: connectivity problems, including Wi-Fi, VPN and reaching internal sites, and network infrastructure such as load balancers, firewalls and TLS certificates on network services.
 - hardware: a physical device is faulty or broken.
 - bug: software or a service behaves incorrectly.
 - request: the user asks for something new, such as an account, permissions, equipment or software installed. Nothing is broken.
@@ -25,13 +25,15 @@ Reply with one word only: the label, in lower case. No punctuation, no explanati
 
 Ticket: {text}
 
-## Current version: v3   Score: 100% (20/20) class set; 100% (10/10) on data/classify_tests.csv (2026-09-30)
+## Current version: v4   Score: 100% (30/30) on data/Day04_Slide16_labelled_course_extra.csv, 100% (10/10) on data/classify_tests.csv (2026-09-30)
 ## History
-Class set (data/Day04_Slide05_labelled_course.csv): v1 bare 0% | v2 +format and allowed values 85% | v3 +definitions and tie-break 100%
-Own set (data/classify_tests.csv, 10 cases: 6 ordinary, 2 edge, 2 nasty): v1 0/10 | v3 10/10
+Class set (20 cases): v1 bare 0% | v2 +format and allowed values 85% | v3 +definitions and tie-break 100%
+Own set (10 cases): v1 0/10 | v3 10/10 | v4 10/10 (ceiling, nothing to gain)
+Extra class set (30 cases): v3 29/30 | v4 +infrastructure named under network 30/30 (kept)
 (source: data/prompt_runs.csv, claude-haiku-4.5, temperature 0)
-v1 fails all 10 on the own set for a format reason, not a judgement one: the reply starts with "#" (a markdown heading) instead of a label.
+v1 fails every case for a format reason: the reply starts with "#" (a markdown heading) instead of a label.
+The v3 miss: "TLS certificate on the staging load balancer expires tomorrow" was labelled hardware, expected network.
 ## Known failures
-None yet. Both edge cases (new-joiner access = request, expired-password VPN = access) and both nasty cases (unknown) pass at v3,
-so the set may still be too easy; harder tickets from real work would be the next addition.
+None on the three sets. Caution: the v4 rule names load balancers and TLS certificates, the exact case it fixed, so 30/30 is
+partly fitted to that ticket; it needs a fresh test case from real work to confirm it generalises.
 The ticket is not yet wrapped in tags; the injection defence belongs to Task 4 if this prompt is chosen.
