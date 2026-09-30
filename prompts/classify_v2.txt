@@ -1,0 +1,7 @@
+Classify this support ticket into exactly one of these labels:
+access, network, hardware, bug, request, unknown
+
+Reply with one word only: the label, in lower case. No punctuation, no explanation, nothing else.
+If none of the labels fit, reply unknown.
+
+Ticket: {text}

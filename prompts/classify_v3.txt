@@ -1,13 +1,3 @@
-# prompts/classify_ticket.md
-
-Purpose: label one IT support ticket with exactly one category so it reaches the right queue.
-Input: the ticket text, substituted for {text}.
-Output: exactly one lower-case word from: access, network, hardware, bug, request, unknown. Nothing else.
-Model: hosted backend, temperature 0.
-
-## Template
-Identical to prompts/classify_v3.txt (the version that was scored):
-
 Classify this support ticket into exactly one of these labels:
 access, network, hardware, bug, request, unknown
 
@@ -24,11 +14,3 @@ Tie-break: if the ticket asks for something new, choose request, even if it ment
 Reply with one word only: the label, in lower case. No punctuation, no explanation, nothing else.
 
 Ticket: {text}
-
-## Current version: v3   Score: 100% (20/20) on data/Day04_Slide05_labelled_course.csv (2026-09-30)
-## History
-v1 bare 0% | v2 +format and allowed values 85% | v3 +definitions and tie-break 100%
-(source: data/prompt_runs.csv, claude-haiku-4.5)
-## Known failures
-None on the 20-case class set, which is probably too easy; Task 2 adds harder edge and nasty cases.
-The ticket is not yet wrapped in tags; the injection defence belongs to Task 4 if this prompt is chosen.
