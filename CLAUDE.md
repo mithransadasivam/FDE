@@ -29,6 +29,7 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - Never edit a test to make it pass; change the code, and say so when tests pass without any code change.
 - In PR descriptions and READMEs, describe only what `git diff` shows, and never copy claims from older docs without checking them against the code.
 - Quote test counts and results only from a `pytest -q` run made in the same turn, never from memory or a README.
+- Any prompt that reads text from outside the team (tickets, emails, CVs, web pages, transcripts) must wrap it in tags and say it is data, never instructions; constrain the output so a hijacked answer fails validation in code; and have an injection test that fails if the injected instruction is obeyed. Wording lowers the odds, validation holds. Pattern: `app/handover.py`, `tests/test_handover.py`.
 
 ## Architecture
 
@@ -37,6 +38,9 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
   - `OPENROUTER_API_KEY` is read only when no `client` is passed, so tests inject a fake client and never need a key.
   - It logs model, latency and total tokens at INFO, and the model at ERROR before re-raising on failure. It must never log the prompt, the reply or the key; tests assert this.
 - `tools/log_parser.py`: `count_levels(lines)` counts INFO/WARNING/ERROR by the second whitespace-separated token and skips blank or short lines. It is tested by `tests/test_log_parser.py`.
+
+- `app/handover.py`: `summarise(thread, client, defended=True)` runs `prompts/handover_note_v5.txt` and passes the reply through `validate_note` (exactly three `- ` bullets, each under 300 characters, and no resolution claim unless a customer line confirms a fix). `defended=False` uses v4 with no validation, to show what the defences stop.
+- `scripts/eval_prompt.py`: scores `prompts/<name>_<version>.txt` against a test CSV, exact match (`text,label`) or checklist (`text,expected_points`), and appends to `data/prompt_runs.csv`.
 
 ## Testing notes
 

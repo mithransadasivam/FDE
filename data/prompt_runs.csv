@@ -12,3 +12,4 @@ timestamp,prompt,version,model,accuracy
 2026-09-30T01:35:28.571965+00:00,classify,v3,anthropic/claude-haiku-4.5,0.9667
 2026-09-30T01:37:29.498095+00:00,classify,v4,anthropic/claude-haiku-4.5,1.0
 2026-09-30T01:37:45.921422+00:00,classify,v4,anthropic/claude-haiku-4.5,1.0
+2026-09-30T01:43:37.583393+00:00,handover_note,v5,anthropic/claude-haiku-4.5,1.0
