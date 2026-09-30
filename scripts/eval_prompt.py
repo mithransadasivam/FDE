@@ -38,7 +38,8 @@ def get_client() -> OpenAI:
         # Fail early with a clear message rather than a confusing API error later.
         raise RuntimeError("OPENROUTER_API_KEY is not set; add it to .env")
     # The OpenAI SDK works with OpenRouter by pointing base_url at it.
-    return OpenAI(base_url="https://openrouter.ai/api/v1", api_key=key)
+    # Retry rate-limit errors (429) with backoff: a 30-case run can exceed a new account's 20 requests/minute.
+    return OpenAI(base_url="https://openrouter.ai/api/v1", api_key=key, max_retries=8)
 
 
 def normalise(answer: str) -> str:

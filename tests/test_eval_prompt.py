@@ -121,3 +121,11 @@ def test_main_scores_checklist_csv_and_logs_run(tmp_path, monkeypatch, capsys):
     assert "missing=beta" in out
     with open(tmp_path / "data" / "prompt_runs.csv", newline="") as f:
         assert list(csv.reader(f))[1][1:3] == ["demo", "v1"]
+
+
+def test_get_client_requires_key_and_retries_rate_limits(monkeypatch):
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        ev.get_client()
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    assert ev.get_client().max_retries == 8

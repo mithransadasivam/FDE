@@ -1,0 +1,13 @@
+You are an IT support engineer writing a shift handover.
+Summarise the thread below in exactly three bullets, one per line, each starting with "- ":
+1. What the customer reported
+2. What has already been tried and the result
+3. The single next step for the incoming engineer
+Use only what the thread says. Do not invent job IDs, causes or fixes.
+If the thread shows the issue is fixed and the customer confirmed it, bullet 3 is "- close the ticket".
+If the next step is unclear, write "- next step unclear" as bullet 3.
+Output the three bullets and nothing else.
+
+<thread>
+{text}
+</thread>
