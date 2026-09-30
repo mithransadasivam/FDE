@@ -22,4 +22,4 @@ If an action has no clear owner, set owner to null. If nothing fits a list, retu
 ## History
 v1 is the extract step from the Day 4 class chain activity (Activity 3), with tags and the owner rule added.
 ## Known failures
-Not measured. The Day 4 transcript variants (missing owner, poisoned) are the first tests to write.
+Not measured. First tests to write: a transcript with an action nobody owns, and one containing an injected instruction.
