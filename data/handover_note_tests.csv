@@ -30,7 +30,7 @@ Agent: replaced the toner, still blank; the drum may be faulty.",vpn;printer;rei
 "Customer: the report export failed yesterday.
 Agent: cleared the stuck job and re-ran it, export completed.
 Customer: confirmed, the file arrived and looks correct.
-Agent: no further action needed.",export;re-ran|reran|rerun;close|closed|resolved
+Agent: no further action needed.",export;re-ran|re-run|reran|rerun;close|closed|resolved
 Customer: it is broken again.,unclear
 "Customer: I cannot open the sales report.
 Agent: will look into it.",report;unclear|nothing has been tried|no steps|not been tried|no troubleshooting
