@@ -1,0 +1,36 @@
+text,expected_points
+"Customer: the monthly export fails with ""timeout after 300s"".
+Agent (Mon): asked for the job ID and log. Customer: job ID is EXP-4471.
+Agent (Tue): reran the export manually, it failed at the same step.
+Agent (Tue): asked the platform team to raise the timeout.",timeout;EXP-4471;reran|re-ran|rerun;platform
+"Customer: printer on floor 2 shows offline for everyone.
+Agent: restarted the print spooler on the print server, no change.
+Agent: checked the switch port, link is up.
+Agent: needs a technician to look at the printer on site.",printer;spooler;technician|on site|onsite
+"Customer: password reset email never arrives.
+Agent: asked customer to check spam, nothing there.
+Agent: resent the reset from the admin console twice, still nothing.
+Agent: mail admin must check the mailbox delivery logs.",reset;spam|junk;mail admin|delivery log
+"Customer: VPN drops every 15 minutes on the home network.
+Agent: had the customer reinstall the VPN client, no change.
+Agent: collected the client log and attached it.
+Agent: network team to review the gateway log for the session.",vpn;reinstall;log;network team|gateway
+"Customer: laptop battery lasts under an hour.
+Agent: ran battery diagnostics, health reports 38 percent.
+Agent: updated the BIOS, no change.
+Agent: raise a warranty replacement for the battery.",battery;diagnostic;bios;replacement|replace|warranty
+"Customer: needs access to the Projects SharePoint site.
+Agent: checked, the site needs approval from the site owner.
+Agent: sent the request to the customer's manager for sign-off.
+Agent: waiting for the manager's approval before granting access.",sharepoint;manager;approval|approve
+"Customer: VPN will not connect since this morning.
+Agent: VPN client reinstalled, works now.
+Customer: also, the office printer prints blank pages.
+Agent: replaced the toner, still blank; the drum may be faulty.",vpn;printer;reinstall
+"Customer: the report export failed yesterday.
+Agent: cleared the stuck job and re-ran it, export completed.
+Customer: confirmed, the file arrived and looks correct.
+Agent: no further action needed.",export;re-ran|reran|rerun;close|closed|resolved
+Customer: it is broken again.,unclear
+"Customer: I cannot open the sales report.
+Agent: will look into it.",report;unclear|nothing has been tried|no steps|not been tried|no troubleshooting

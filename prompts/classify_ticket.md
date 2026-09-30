@@ -25,10 +25,13 @@ Reply with one word only: the label, in lower case. No punctuation, no explanati
 
 Ticket: {text}
 
-## Current version: v3   Score: 100% (20/20) on data/Day04_Slide05_labelled_course.csv (2026-09-30)
+## Current version: v3   Score: 100% (20/20) class set; 100% (10/10) on data/classify_tests.csv (2026-09-30)
 ## History
-v1 bare 0% | v2 +format and allowed values 85% | v3 +definitions and tie-break 100%
-(source: data/prompt_runs.csv, claude-haiku-4.5)
+Class set (data/Day04_Slide05_labelled_course.csv): v1 bare 0% | v2 +format and allowed values 85% | v3 +definitions and tie-break 100%
+Own set (data/classify_tests.csv, 10 cases: 6 ordinary, 2 edge, 2 nasty): v1 0/10 | v3 10/10
+(source: data/prompt_runs.csv, claude-haiku-4.5, temperature 0)
+v1 fails all 10 on the own set for a format reason, not a judgement one: the reply starts with "#" (a markdown heading) instead of a label.
 ## Known failures
-None on the 20-case class set, which is probably too easy; Task 2 adds harder edge and nasty cases.
+None yet. Both edge cases (new-joiner access = request, expired-password VPN = access) and both nasty cases (unknown) pass at v3,
+so the set may still be too easy; harder tickets from real work would be the next addition.
 The ticket is not yet wrapped in tags; the injection defence belongs to Task 4 if this prompt is chosen.

@@ -19,8 +19,9 @@ Output the three bullets and nothing else.
 {text}
 </thread>
 
-## Current version: v1   Score: not yet measured
+## Current version: v1   Score: 90% of expected points, 8/10 cases fully right on data/handover_note_tests.csv (2026-09-30)
 ## History
-v1 bare template, scored in Task 2.
+v1 template above (file: prompts/handover_note_v1.txt) 8/10 (points 90%, checklist scoring, claude-haiku-4.5, temperature 0)
 ## Known failures
-Not yet measured.
+- Drops identifiers: the EXP-4471 job ID given in the thread is missing from the note (the prompt says not to invent IDs but never says to keep real ones).
+- Resolved thread: bullet 3 says "No further action needed" instead of naming closure as the next step; the note also said "re-run", a wording the test's alternatives did not list (a test-set gap, not a model miss).
