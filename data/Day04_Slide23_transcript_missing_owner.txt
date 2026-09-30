@@ -1,5 +1,0 @@
-Ravi: the migration is blocked on the firewall rule, NET-2231.
-Priya: I'll chase the network team tomorrow.
-Ravi: we agreed to move the client demo to Thursday.
-Someone still needs to prepare the demo data by Wednesday.
-Priya: we still need a decision on the old reports.

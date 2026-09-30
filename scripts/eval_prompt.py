@@ -134,7 +134,7 @@ def main():
     ap = argparse.ArgumentParser(description="Score a prompt against a labelled set")
     ap.add_argument("name", help="prompt name, e.g. classify")
     ap.add_argument("version", help="prompt version, e.g. v1")
-    ap.add_argument("--data", default="data/labelled.csv", help="test CSV: text,label or text,expected_points")
+    ap.add_argument("--data", default="data/Day04_Slide05_labelled_course.csv", help="test CSV: text,label or text,expected_points")
     ap.add_argument("--mode", choices=["auto", "exact", "checklist"], default="auto",
                     help="scoring kind; auto reads it from the CSV header")
     args = ap.parse_args()
