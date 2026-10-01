@@ -1,0 +1,8 @@
+INCIDENT REPORT INC-2026-0917
+System: Payments API
+Severity: P1
+Started: 2026-09-14 14:05 IST
+Resolved: 2026-09-14 15:20 IST
+Impact: All card payments failed for 75 minutes; about 4,000 customers affected.
+Root cause: A configuration change in the 14:05 deployment pointed the service at the wrong database.
+Actions taken: Rolled back the deployment at 15:10; added a config check to the release pipeline.

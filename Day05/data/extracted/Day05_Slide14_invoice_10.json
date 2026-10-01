@@ -1,0 +1,22 @@
+{
+  "invoice_number": "HT-3310",
+  "vendor_name": "Harbour Telecom",
+  "invoice_date": "2026-09-20",
+  "due_date": "2026-10-05",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Fibre line, monthly",
+      "quantity": 1.0,
+      "unit_price": 4500.0
+    },
+    {
+      "description": "Static IP address",
+      "quantity": 1.0,
+      "unit_price": 500.0
+    }
+  ],
+  "subtotal": 5000.0,
+  "tax": 900.0,
+  "total": 5900.0
+}

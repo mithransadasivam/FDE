@@ -1,0 +1,22 @@
+{
+  "invoice_number": "INV-2026-0412",
+  "vendor_name": "Northwind IT Services Pvt Ltd",
+  "invoice_date": "2026-09-01",
+  "due_date": "2026-10-01",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Laptop repair",
+      "quantity": 2.0,
+      "unit_price": 3500.0
+    },
+    {
+      "description": "SSD 512GB",
+      "quantity": 1.0,
+      "unit_price": 4200.0
+    }
+  ],
+  "subtotal": 11200.0,
+  "tax": 2016.0,
+  "total": 13216.0
+}

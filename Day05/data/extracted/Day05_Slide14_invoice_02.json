@@ -1,0 +1,22 @@
+{
+  "invoice_number": "CL-88213",
+  "vendor_name": "Cloudline Hosting Ltd",
+  "invoice_date": "2026-09-03",
+  "due_date": "2026-09-17",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "VPS plan, September",
+      "quantity": 3.0,
+      "unit_price": 40.0
+    },
+    {
+      "description": "Backup storage 500GB",
+      "quantity": 1.0,
+      "unit_price": 25.0
+    }
+  ],
+  "subtotal": 145.0,
+  "tax": 0.0,
+  "total": 145.0
+}

@@ -1,0 +1,22 @@
+{
+  "invoice_number": "BD/2026/1177",
+  "vendor_name": "Brightdesk Office Supplies",
+  "invoice_date": "2026-09-05",
+  "due_date": "2026-10-05",
+  "currency": "GBP",
+  "line_items": [
+    {
+      "description": "A4 paper, box of 5 reams",
+      "quantity": 10.0,
+      "unit_price": 18.5
+    },
+    {
+      "description": "Whiteboard markers, pack",
+      "quantity": 5.0,
+      "unit_price": 6.2
+    }
+  ],
+  "subtotal": 216.0,
+  "tax": 43.2,
+  "total": 259.2
+}

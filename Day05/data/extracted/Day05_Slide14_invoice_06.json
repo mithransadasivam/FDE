@@ -1,0 +1,22 @@
+{
+  "invoice_number": "RH-26-0931",
+  "vendor_name": "Rheinwerk Hardware GmbH",
+  "invoice_date": "2026-09-12",
+  "due_date": "2026-10-12",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Server rack 42U",
+      "quantity": 1.0,
+      "unit_price": 1234.5
+    },
+    {
+      "description": "Installation (hours)",
+      "quantity": 3.0,
+      "unit_price": 95.0
+    }
+  ],
+  "subtotal": 1519.5,
+  "tax": 288.71,
+  "total": 1808.21
+}

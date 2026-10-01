@@ -1,0 +1,13 @@
+TAX INVOICE
+Northwind IT Services Pvt Ltd
+Invoice No: INV-2026-0412
+Invoice date: 2026-09-01        Due date: 2026-10-01
+Currency: INR
+
+Description                 Qty    Unit price     Amount
+Laptop repair                 2      3,500.00   7,000.00
+SSD 512GB                     1      4,200.00   4,200.00
+
+Subtotal                                       11,200.00
+GST 18%                                         2,016.00
+Total                                          13,216.00

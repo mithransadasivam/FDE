@@ -1,0 +1,22 @@
+{
+  "invoice_number": "AP-1009",
+  "vendor_name": "Apex Software Licensing",
+  "invoice_date": "2026-09-10",
+  "due_date": "2026-10-10",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Annual licence, 5 seats",
+      "quantity": 5.0,
+      "unit_price": 240.0
+    },
+    {
+      "description": "Premium support add-on",
+      "quantity": 1.0,
+      "unit_price": 300.0
+    }
+  ],
+  "subtotal": 1500.0,
+  "tax": 0.0,
+  "total": 1500.0
+}

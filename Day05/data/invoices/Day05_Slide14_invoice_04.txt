@@ -1,0 +1,13 @@
+METRO NETWORK SOLUTIONS
+Invoice number MNS-5521
+Invoice date 2026-09-08
+Currency SGD
+
+Switch configuration     4 hours at 120.00      480.00
+Patch cables             20 at 3.50              70.00
+
+Subtotal 550.00
+GST 9% 49.50
+Total 599.50
+
+Thank you for your business.

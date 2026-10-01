@@ -1,0 +1,27 @@
+{
+  "invoice_number": "SS-4420",
+  "vendor_name": "SENTINEL SECURITY LTD",
+  "invoice_date": "2026-09-15",
+  "due_date": "2026-10-15",
+  "currency": "GBP",
+  "line_items": [
+    {
+      "description": "Penetration test, external perimeter",
+      "quantity": 3.0,
+      "unit_price": 950.0
+    },
+    {
+      "description": "Report writing",
+      "quantity": 1.0,
+      "unit_price": 400.0
+    },
+    {
+      "description": "Retest after remediation",
+      "quantity": 1.0,
+      "unit_price": 350.0
+    }
+  ],
+  "subtotal": 3600.0,
+  "tax": 720.0,
+  "total": 4320.0
+}

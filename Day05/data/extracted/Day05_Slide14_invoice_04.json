@@ -1,0 +1,22 @@
+{
+  "invoice_number": "MNS-5521",
+  "vendor_name": "METRO NETWORK SOLUTIONS",
+  "invoice_date": "2026-09-08",
+  "due_date": null,
+  "currency": "SGD",
+  "line_items": [
+    {
+      "description": "Switch configuration",
+      "quantity": 4.0,
+      "unit_price": 120.0
+    },
+    {
+      "description": "Patch cables",
+      "quantity": 20.0,
+      "unit_price": 3.5
+    }
+  ],
+  "subtotal": 550.0,
+  "tax": 49.5,
+  "total": 599.5
+}

@@ -1,0 +1,9 @@
+Anand Consulting
+Invoice No. AC-0098            Date: 18-09-2026
+Payment due within 30 days (by 18-10-2026)
+Currency: INR
+
+For professional services rendered in September 2026
+(IT governance advisory, fixed fee):                  85,000.00
+GST @ 18%:                                             15,300.00
+Total payable:                                       1,00,300.00

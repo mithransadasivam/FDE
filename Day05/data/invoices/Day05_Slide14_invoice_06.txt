@@ -1,0 +1,12 @@
+Rheinwerk Hardware GmbH
+Rechnung / Invoice RH-26-0931
+Datum / Date: 12.09.2026        Fällig / Due: 12.10.2026
+Währung / Currency: EUR
+
+Pos  Beschreibung / Description   Menge/Qty   Einzelpreis/Unit   Betrag/Amount
+1    Server rack 42U                  1           1.234,50           1.234,50
+2    Installation (hours)             3              95,00             285,00
+
+Zwischensumme / Subtotal                                          1.519,50
+USt. 19% / VAT 19%                                                  288,71
+Gesamtbetrag / Total                                              1.808,21

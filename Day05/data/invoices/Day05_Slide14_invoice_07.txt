@@ -1,0 +1,10 @@
+QuickPrint Services
+Invoice QP-7781
+Date: 2026-09-14    Due: 2026-09-28
+Currency: INR
+
+Business cards, 500 @ 2.00        1,000.00
+
+Subtotal     1,000.00
+GST 18%        180.00
+Total        1,200.00

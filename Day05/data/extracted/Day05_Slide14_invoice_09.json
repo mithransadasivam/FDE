@@ -1,0 +1,17 @@
+{
+  "invoice_number": "AC-0098",
+  "vendor_name": "Anand Consulting",
+  "invoice_date": "2026-09-18",
+  "due_date": "2026-10-18",
+  "currency": "INR",
+  "line_items": [
+    {
+      "description": "Professional services rendered in September 2026 (IT governance advisory, fixed fee)",
+      "quantity": 1.0,
+      "unit_price": 85000.0
+    }
+  ],
+  "subtotal": 85000.0,
+  "tax": 15300.0,
+  "total": 100300.0
+}
