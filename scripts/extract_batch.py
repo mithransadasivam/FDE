@@ -1,8 +1,9 @@
-"""Day 5, Activities 2 and 3: extract every invoice in a folder and report the results.
+"""Day 5, Activities 2 and 3: extract every document in a folder and report the results.
 
 Ready to run. Claude Code runs it for you:
     python -m scripts.extract_batch            one attempt per document (Activity 2)
     python -m scripts.extract_batch --retry    with the single retry (Activity 3)
+    python -m scripts.extract_batch --retry --type incident --folder data/incidents
 Valid results are saved as JSON in data/extracted/.
 """
 
@@ -11,12 +12,21 @@ import json
 from pathlib import Path
 
 from app.extractor import extract, extract_with_retry, get_client
+from app.schemas import SCHEMAS, IncidentReport
+
+
+def describe(obj) -> str:
+    """The detail column: severity and system for incidents, the total for invoices."""
+    if isinstance(obj, IncidentReport):
+        return f"{obj.severity} {obj.system}"
+    return f"total {obj.total:,.2f} {obj.currency}"
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--folder", default="data/invoices")
     ap.add_argument("--retry", action="store_true", help="use extract_with_retry")
+    ap.add_argument("--type", choices=list(SCHEMAS), default="invoice")
     args = ap.parse_args()
 
     run = extract_with_retry if args.retry else extract
@@ -28,14 +38,15 @@ def main():
     files = sorted(Path(args.folder).glob("*.txt"))
     print(f"{'document':34} {'result':8} {'tries':5}  detail")
     for path in files:
-        obj, error, attempts = run(path.read_text(encoding="utf-8"), client)
+        obj, error, attempts = run(
+            path.read_text(encoding="utf-8"), client, schema=SCHEMAS[args.type]
+        )
         if obj is not None:
             valid += 1
             (out / f"{path.stem}.json").write_text(
                 json.dumps(obj.model_dump(mode="json"), indent=2)
             )
-            detail = f"total {obj.total:,.2f} {obj.currency}"
-            print(f"{path.name:34} {'VALID':8} {attempts:5}  {detail}")
+            print(f"{path.name:34} {'VALID':8} {attempts:5}  {describe(obj)}")
         else:
             first_line = error.splitlines()[0][:70]
             print(f"{path.name:34} {'INVALID':8} {attempts:5}  {first_line}")
