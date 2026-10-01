@@ -1,0 +1,13 @@
+{
+  "incident_id": "INC-2026-0925",
+  "system": "Wi-Fi",
+  "severity": "P2",
+  "started_at": "2026-09-25T09:15:00",
+  "resolved_at": "2026-09-25T11:40:00",
+  "impact": "About 60 staff could not connect; they worked from the 2nd floor meanwhile.",
+  "root_cause": "A power cut reset two access points to factory settings.",
+  "actions": [
+    "Restored the configuration from backup",
+    "Ordered a UPS for the floor switch"
+  ]
+}

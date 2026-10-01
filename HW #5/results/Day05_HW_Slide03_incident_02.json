@@ -1,0 +1,13 @@
+{
+  "incident_id": "INC-2026-0921",
+  "system": "ORD-ETL",
+  "severity": "P3",
+  "started_at": "2026-09-21T01:40:00",
+  "resolved_at": null,
+  "impact": "finance report was delayed by 90 minutes",
+  "root_cause": null,
+  "actions": [
+    "paged the on-call DBA",
+    "reran the job manually at 03:30, which succeeded"
+  ]
+}

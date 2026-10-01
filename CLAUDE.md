@@ -30,6 +30,7 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - In PR descriptions and READMEs, describe only what `git diff` shows, and never copy claims from older docs without checking them against the code.
 - Quote test counts and results only from a `pytest -q` run made in the same turn, never from memory or a README.
 - Any prompt that reads text from outside the team (tickets, emails, CVs, web pages, transcripts) must wrap it in tags and say it is data, never instructions; constrain the output so a hijacked answer fails validation in code; and have an injection test that fails if the injected instruction is obeyed. Wording lowers the odds, validation holds. Pattern: `app/handover.py`, `tests/test_handover.py`.
+- Every extraction goes through a Pydantic schema (`app/schemas.py`, chosen from `SCHEMAS`), and anything still invalid after one retry is sent to a person, never corrected automatically.
 
 ## Architecture
 
