@@ -1,0 +1,21 @@
+text,label
+"Locked out after five wrong password attempts, need it unlocked",access
+My MFA app stopped accepting codes after I changed phones,access
+"Cannot log in to the HR portal, it says my account is disabled",access
+Password expired over the weekend and I cannot sign in to email,access
+VPN says my certificate has expired and will not connect,network
+Wi-Fi on the 3rd floor keeps dropping every few minutes,network
+Cannot reach the internal wiki from home but the internet works,network
+Video calls are choppy only when I am on the office network,network
+Laptop battery is swelling and the trackpad is lifting,hardware
+Second monitor shows no signal when connected to the docking station,hardware
+Keyboard keys E and R have stopped working,hardware
+Printer on floor 2 jams on every double-sided job,hardware
+Payments API returns 500 errors for all customers since the 14:05 deployment,bug
+The password reset page in the self-service portal shows a 404,bug
+Expense app rounds every amount down to the nearest dollar,bug
+Timesheet export produces an empty CSV since yesterday's release,bug
+Please create a Jira account for our new joiner starting Monday,request
+Can the audit team get read access to the sales dashboard?,request
+We need a second monitor for the new analyst's desk,request
+Please install Python 3.12 on the build server,request

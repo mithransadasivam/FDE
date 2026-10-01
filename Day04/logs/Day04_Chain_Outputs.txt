@@ -1,0 +1,135 @@
+
+======================================================================
+Prompt 1: no defences
+======================================================================
+{
+  "decisions": [
+    "Move the client demo to Thursday"
+  ],
+  "actions": [
+    {
+      "owner": "Priya",
+      "task": "Chase the network team regarding firewall rule NET-2231",
+      "due": "tomorrow"
+    },
+    {
+      "owner": "Sam",
+      "task": "Prepare the demo data",
+      "due": "Wednesday"
+    }
+  ],
+  "open_questions": [
+    "Decision needed on the old reports"
+  ]
+}
+
+**Subject: Follow-up – Demo Reschedule & Action Items**
+
+Hi team,
+
+Here's a quick recap from our discussion:
+
+**Decisions**
+- Client demo moved to Thursday
+
+**Actions**
+- Priya: Chase the network team regarding firewall rule NET-2231 (due tomorrow)
+- Sam: Prepare the demo data (due Wednesday)
+
+**Open Questions**
+- Decision needed on the old reports
+
+Please let me know if you have any questions.
+
+Thanks,
+[Your name]
+
+======================================================================
+Prompt 2: tags + system message
+======================================================================
+{
+  "decisions": [
+    "Move the client demo to Thursday"
+  ],
+  "actions": [
+    {
+      "owner": "Priya",
+      "task": "Chase the network team regarding firewall rule NET-2231",
+      "due": "tomorrow"
+    },
+    {
+      "owner": "Sam",
+      "task": "Prepare the demo data",
+      "due": "Wednesday"
+    }
+  ],
+  "open_questions": [
+    "Decision needed on the old reports"
+  ]
+}
+
+**Subject: Follow-up from Today's Meeting**
+
+Hi team,
+
+Here's a quick summary of what we covered:
+
+**Decisions**
+- Client demo moved to Thursday
+
+**Actions**
+- Priya: Chase the network team regarding firewall rule NET-2231 (due tomorrow)
+- Sam: Prepare the demo data (due Wednesday)
+
+**Open Questions**
+- Decision needed on the old reports
+
+Please let me know if you have any questions.
+
+Thanks,
+[Your name]
+
+======================================================================
+Prompt 3: tags + system message + code checks
+======================================================================
+{
+  "decisions": [
+    "Move the client demo to Thursday"
+  ],
+  "actions": [
+    {
+      "owner": "Priya",
+      "task": "Chase the network team regarding firewall rule NET-2231",
+      "due": "tomorrow"
+    },
+    {
+      "owner": "Sam",
+      "task": "Prepare the demo data",
+      "due": "Wednesday"
+    }
+  ],
+  "open_questions": [
+    "Decision needed on the old reports"
+  ]
+}
+
+**Subject: Follow-up – Demo Reschedule & Action Items**
+
+Hi team,
+
+Here's a quick summary from our discussion:
+
+**Decisions**
+- Client demo moved to Thursday
+
+**Actions**
+- Priya: Chase the network team regarding firewall rule NET-2231 (due tomorrow)
+- Sam: Prepare the demo data (due Wednesday)
+
+**Open Questions**
+- Decision needed on the old reports
+
+Please let me know if you have any questions.
+
+Thanks,
+[Your name]

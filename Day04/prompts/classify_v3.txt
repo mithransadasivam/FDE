@@ -1,0 +1,16 @@
+Classify this support ticket into exactly one of these labels:
+access, network, hardware, bug, request, unknown
+
+Definitions:
+- access: the user cannot sign in or is locked out of an account (passwords, MFA, expired login).
+- network: connectivity problems, including Wi-Fi, VPN and reaching internal sites.
+- hardware: a physical device is faulty or broken.
+- bug: software or a service behaves incorrectly.
+- request: the user asks for something new, such as an account, permissions, equipment or software installed. Nothing is broken.
+- unknown: none of the above fit.
+
+Tie-break: if the ticket asks for something new, choose request, even if it mentions an account, permission or device. If something that worked is now failing, choose the label for the thing that is failing: VPN problems are network even when a certificate is involved.
+
+Reply with one word only: the label, in lower case. No punctuation, no explanation, nothing else.
+
+Ticket: {text}

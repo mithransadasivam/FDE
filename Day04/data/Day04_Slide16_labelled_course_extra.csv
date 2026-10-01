@@ -1,0 +1,31 @@
+text,label
+I have been added to the wrong team in Slack and cannot see my channels,access
+SSO login loops back to the sign-in page on the finance app,access
+My account was locked after the password change policy ran last night,access
+"Cannot open the shared drive, it says I do not have permission",access
+Guest account for the visiting auditor has expired,access
+I forgot my Windows password and I am locked out of my laptop,access
+Office network is very slow between 9 and 10 every morning,network
+DNS lookups for internal servers time out from the Bangalore office,network
+Remote desktop disconnects every ten minutes over VPN,network
+The TLS certificate on the staging load balancer expires tomorrow,network
+Meeting room display cannot join the guest Wi-Fi,network
+Packets are being dropped between the app servers and the database subnet,network
+Laptop fan is extremely loud and the machine shuts down when hot,hardware
+Headset microphone crackles on every call,hardware
+Docking station USB ports stopped working after a power cut,hardware
+Phone screen cracked and the touchscreen no longer responds,hardware
+Badge reader at the side entrance does not light up,hardware
+Server in rack 4 shows an amber disk failure light,hardware
+Search in the knowledge base returns results for the wrong language,bug
+Invoices generated today show last month's date,bug
+Mobile app crashes when uploading a receipt photo,bug
+Report scheduler sends each report twice since the upgrade,bug
+Customer portal shows other customers' order numbers in the dropdown,bug
+Nightly ETL job marks itself successful even when it loads zero rows,bug
+Please set up a shared mailbox for the new support team,request
+Can we get a test database refreshed with last week's data?,request
+"New starter next week needs a laptop, email and VPN access",request
+Please add the marketing team to the analytics workspace,request
+We would like a Grafana dashboard for the payments service,request
+Please increase the storage quota for the data science project,request
