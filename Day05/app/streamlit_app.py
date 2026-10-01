@@ -8,7 +8,7 @@ import json
 
 import streamlit as st
 
-from app.extractor import extract_with_retry, get_client
+from app.extractor import extract_with_retry, get_client, not_in_document
 
 st.set_page_config(page_title="Smart Document Extractor")
 st.title("Smart Document Extractor")
@@ -26,6 +26,12 @@ if uploaded is not None:
     if st.button("Extract fields"):
         with st.spinner("Extracting and validating..."):
             invoice, error, attempts = extract_with_retry(text, get_client())
+        # A retry can change a figure just to pass validation. If an amount is not in the
+        # document, treat the result as unreliable and send it to a person.
+        if invoice is not None:
+            invented = not_in_document(invoice, text)
+            if invented:
+                invoice, error = None, "Amounts not found in the document: " + ", ".join(invented)
         # keep the result across reruns (every click reruns the whole script)
         st.session_state["result"] = (invoice, error, attempts, uploaded.name)
 

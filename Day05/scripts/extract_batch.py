@@ -10,7 +10,7 @@ import argparse
 import json
 from pathlib import Path
 
-from app.extractor import extract, extract_with_retry, get_client
+from app.extractor import extract, extract_with_retry, get_client, not_in_document
 
 
 def main():
@@ -35,7 +35,11 @@ def main():
     print(f"{'document':34} {'result':8} {'tries':5}  detail")
     for path in files:
         # Send the invoice text to the model. Returns (invoice or None, error or None, tries).
-        obj, error, attempts = run(path.read_text(encoding="utf-8"), client)
+        doc = path.read_text(encoding="utf-8")
+        obj, error, attempts = run(doc, client)
+        # An amount the document never shows means the model (or a retry) invented it.
+        if obj is not None and (invented := not_in_document(obj, doc)):
+            obj, error = None, "Amounts not found in the document: " + ", ".join(invented)
         if obj is not None:
             # The reply passed every rule in the Invoice schema.
             valid += 1

@@ -7,6 +7,7 @@ Check your work: ask Claude Code to run the tests in tests/test_retry.py.
 
 import json
 import os
+import re
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -124,3 +125,31 @@ def extract_with_retry(text: str, client, schema=Invoice, model=MODEL):
     # No third attempt: whatever this returns is final, valid or not.
     obj, error = validate(call_model(client, retry_messages, model), schema)
     return obj, error, 2
+
+
+def amounts_in(text: str) -> set[float]:
+    """Every number in the document, read in either 1,234.50 or 1.234,50 style."""
+    found = set()
+    for token in re.findall(r"\d[\d.,]*\d|\d", text):
+        # A last separator followed by 1-2 digits is the decimal point; all others are grouping.
+        m = re.search(r"[.,](\d{1,2})$", token)
+        digits = re.sub(r"[.,]", "", token)
+        found.add(float(digits[: -len(m.group(1))] + "." + m.group(1)) if m else float(digits))
+    return found
+
+
+def not_in_document(invoice, text: str) -> list[str]:
+    """Amounts the model returned that the document never shows (a sign of invented data).
+
+    Validation only checks that the numbers agree with each other. This checks them
+    against the document, so a retry that changes a figure to make the sum work is caught.
+    """
+    in_text = amounts_in(text)
+    amounts = {"subtotal": invoice.subtotal, "tax": invoice.tax, "total": invoice.total}
+    for i, item in enumerate(invoice.line_items, start=1):
+        amounts[f"line {i} unit_price"] = item.unit_price
+    return [
+        f"{name} {value:,.2f}"
+        for name, value in amounts.items()
+        if value != 0 and not any(abs(value - seen) < 0.005 for seen in in_text)
+    ]
