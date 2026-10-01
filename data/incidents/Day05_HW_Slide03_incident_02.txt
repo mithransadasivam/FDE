@@ -1,0 +1,5 @@
+Incident INC-2026-0921 - nightly ORD-ETL failures
+Severity P3. The ORD-ETL batch job failed twice with a database connection timeout,
+first at 01:40 on 21 Sep 2026 and again after a rerun at 02:10. Impact: the finance report
+was delayed by 90 minutes. Status: still open, root cause under investigation.
+Actions so far: paged the on-call DBA; reran the job manually at 03:30, which succeeded.

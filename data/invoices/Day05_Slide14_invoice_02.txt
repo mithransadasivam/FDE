@@ -1,0 +1,12 @@
+Cloudline Hosting Ltd
+INVOICE CL-88213
+Issued: 3 September 2026
+Payment due: 17 September 2026
+All amounts in USD
+
+- VPS plan, September (3 servers @ 40.00)          120.00
+- Backup storage 500GB (1 @ 25.00)                   25.00
+
+Subtotal: 145.00
+Tax: 0.00
+Amount due: 145.00

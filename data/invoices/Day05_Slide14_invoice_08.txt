@@ -1,0 +1,13 @@
+SENTINEL SECURITY LTD
+Invoice: SS-4420
+Invoice date: 15 September 2026
+Due date: 15 October 2026
+Currency: GBP
+
+Penetration test, external perimeter   3 days x 950.00    2,850.00
+Report writing                         1 x 400.00           400.00
+Retest after remediation               1 x 350.00           350.00
+
+Subtotal                                                   3,600.00
+VAT 20%                                                      720.00
+Total                                                      4,320.00

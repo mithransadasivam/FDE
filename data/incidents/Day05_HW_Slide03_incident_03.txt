@@ -1,0 +1,6 @@
+INC-2026-0925
+Wi-Fi outage, 3rd floor, Bangalore office. Priority: P2
+Began 25/09/2026 09:15, restored 25/09/2026 11:40.
+About 60 staff could not connect; they worked from the 2nd floor meanwhile.
+Cause: a power cut reset two access points to factory settings.
+We restored the configuration from backup and ordered a UPS for the floor switch.

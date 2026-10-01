@@ -1,0 +1,11 @@
+Brightdesk Office Supplies
+Invoice: BD/2026/1177
+Date: 05/09/2026 (dd/mm/yyyy)   Due: 05/10/2026
+Currency: GBP
+
+A4 paper, box of 5 reams     x10   @ 18.50    185.00
+Whiteboard markers, pack     x5    @ 6.20      31.00
+
+Net                                          216.00
+VAT 20%                                       43.20
+Gross total                                  259.20
