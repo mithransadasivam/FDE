@@ -1,0 +1,13 @@
+question,expected_answer,expected_behaviour
+How long can a VPN session stay connected?,12 hours,answer
+How many days before expiry should I renew my VPN certificate?,14 days,answer
+What is the minimum password length?,14 characters,answer
+How long does an account stay locked after five failed attempts?,15 minutes,answer
+How often are laptops replaced?,Every 4 years,answer
+What is the response target for a P1 incident?,15 minutes,answer
+Can I email Confidential data outside the company?,Not unless it is encrypted,answer
+How long are system logs kept?,1 year,answer
+What is on the cafeteria menu this week?,Not in the documents,decline
+How many parking spaces does each team get?,Not in the documents,decline
+When is the annual salary review?,Not in the documents,decline
+What is the maximum amount for an expense claim?,Not in the documents,decline

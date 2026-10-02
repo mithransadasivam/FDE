@@ -59,3 +59,9 @@ Uses a `.venv` built on Python 3.13 (3.11 was requested but isn't installed on t
 - Escalate to the `strong` backend (claude-sonnet-4.5) only for reasoning about rules or trade-offs, or text a customer will read, and say why in the commit message.
 - `local` is the fallback when the hosted provider is unreachable, and for data that must not leave the machine. Its answers scored lowest in the benchmark.
 - Models and prices live in `.env` (`BACKENDS=...`); never hard-code a model ID or price.
+
+## Chatbot (RAG, Day 6)
+
+- Chatbot answers must cite their sources. Questions the documents don't cover must be declined.
+- Run the test questions (`python -m scripts.run_tests --questions data/my_test_questions.csv --name my_docs`) before and after changing the threshold (`RAG_MIN_SCORE`), the chunk size or the number of chunks retrieved, and record both scores.
+- `app/embeddings.py`, `app/indexing.py` and `app/rag.py` hold the embedding, chunking and answering code; `scripts/build_index.py` builds an index and `scripts/run_tests.py` scores the questions. Findings are in `HW #6/FINDINGS_day06.md`.

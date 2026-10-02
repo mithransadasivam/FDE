@@ -1,0 +1,11 @@
+question,expected_answer,expected_behaviour
+What port does Ollama listen on by default?,127.0.0.1 port 11434,answer
+How long does Ollama keep a model in memory by default before unloading it?,5 minutes,answer
+Which environment variable sets a different directory for storing models?,OLLAMA_MODELS,answer
+What is the default value of the temperature parameter in a Modelfile?,0.8,answer
+What command frees a model from memory straight away?,ollama stop <model>,answer
+How can I make Ollama reachable from other computers on my network?,Set the OLLAMA_HOST environment variable to change the bind address,answer
+Where do I find Ollama's error history on Windows?,"%LOCALAPPDATA%\Ollama (server.log, older logs in server-#.log)",answer
+Can I run Ollama on a Raspberry Pi?,Not in the documents,decline
+Does Ollama run on FreeBSD?,Not in the documents,decline
+How much does an Ollama cloud subscription cost per month?,Not in the documents,decline

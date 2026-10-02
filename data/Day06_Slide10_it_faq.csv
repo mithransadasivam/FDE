@@ -1,0 +1,16 @@
+question,answer
+How do I reset my password?,Use the self-service portal and choose Forgot password. You will need your MFA app.
+My account is locked. What should I do?,"Accounts unlock automatically after 15 minutes. If it is urgent, call the service desk."
+How do I connect to the VPN from home?,"Open the VPN client, choose the Corporate profile and approve the MFA prompt."
+The VPN says my certificate has expired.,"Renew the certificate from the self-service portal, then reconnect."
+The office Wi-Fi keeps dropping.,"Forget the network, reconnect, and raise a ticket with your floor and desk number if it continues."
+How do I request access to a shared drive?,Raise an access request ticket. Your line manager must approve it.
+Can I install software on my laptop?,Only from the approved software catalogue in the company portal.
+How do I get a second monitor?,Raise an equipment request. Your manager must approve it.
+My laptop battery is swelling.,Stop using the laptop immediately and bring it to the IT desk.
+The printer keeps jamming.,"Check the paper tray, then raise a ticket with the printer number."
+How do I report a phishing email?,Use the Report Phishing button in your mail client. Do not click any links.
+Who do I call for an urgent outage out of hours?,Call the on-call number on the intranet IT page.
+How long are support tickets kept?,Tickets are kept for three years.
+Can I use public AI tools with customer data?,No. Customer data must never be pasted into public AI tools.
+How do I set up MFA on a new phone?,"Raise a ticket to reset your MFA registration, then enrol the new phone."

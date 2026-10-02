@@ -1,0 +1,35 @@
+question,expected_answer,expected_behaviour,got,behaviour_ok,bot_answer,sources
+What port does Ollama listen on by default?,127.0.0.1 port 11434,answer,answer,True,"Ollama listens on port 11434 by default [1][3]. Specifically, it binds to 127.0.0.1 port 11434, and the API is served on `http://localhost:11434` [1][3].","ollama_windows.md, page 1; ollama_quickstart.md, page 1; ollama_faq.md, page 1; ollama_faq.md, page 1"
+How long does Ollama keep a model in memory by default before unloading it?,5 minutes,answer,answer,True,"By default, Ollama keeps a model in memory for 5 minutes before being unloaded. [1]","ollama_faq.md, page 1; ollama_faq.md, page 1; ollama_faq.md, page 1; ollama_faq.md, page 1"
+Which environment variable sets a different directory for storing models?,OLLAMA_MODELS,answer,answer,True,The environment variable that sets a different directory for storing models is `OLLAMA_MODELS` [1].,"ollama_faq.md, page 1; ollama_api.md, page 1; ollama_modelfile.md, page 1; ollama_api.md, page 1"
+What is the default value of the temperature parameter in a Modelfile?,0.8,answer,answer,True,The default value of the temperature parameter in a Modelfile is 0.8 [4].,"ollama_api.md, page 1; ollama_api.md, page 1; ollama_api.md, page 1; ollama_modelfile.md, page 1"
+What command frees a model from memory straight away?,ollama stop <model>,answer,answer,True,"To free a model from memory straight away, use the `ollama stop` command [1]:
+
+```shell
+ollama stop llama3.2
+```
+
+Alternatively, if you're using the API, you can use the `keep_alive` parameter set to `0` with the `/api/generate` endpoint [2]:
+
+```shell
+curl http://localhost:11434/api/generate -d '{""model"": ""llama3.2"", ""keep_alive"": 0}'
+```","ollama_faq.md, page 1; ollama_faq.md, page 1; ollama_api.md, page 1; ollama_faq.md, page 1"
+How can I make Ollama reachable from other computers on my network?,Set the OLLAMA_HOST environment variable to change the bind address,answer,answer,True,"I don't know: the documents don't cover that.
+
+The sources discuss how to expose Ollama using proxy servers like Nginx or tunneling apps like ngrok, but they do not contain information about making Ollama reachable from other computers on your local network directly.","ollama_quickstart.md, page 1; ollama_faq.md, page 1; ollama_faq.md, page 1; ollama_faq.md, page 1"
+Where do I find Ollama's error history on Windows?,"%LOCALAPPDATA%\Ollama (server.log, older logs in server-#.log)",answer,answer,True,"On Windows, you can find Ollama's error history in the logs stored at `explorer %LOCALAPPDATA%\Ollama`. Specifically:
+
+- *app.log* contains the most recent logs from the GUI application [2]
+- *server.log* contains the most recent server logs [2]
+- *upgrade.log* contains log output for upgrades [2]
+
+You can access this location by pressing `<Ctrl>+R` and typing in `%LOCALAPPDATA%\Ollama` [2].","ollama_troubleshooting.md, page 1; ollama_windows.md, page 1; ollama_windows.md, page 1; ollama_macos.md, page 1"
+Can I run Ollama on a Raspberry Pi?,Not in the documents,decline,answer,False,"I don't know: the documents don't cover that.
+
+The sources mention Ollama for Windows and macOS, and reference Rosetta emulation under macOS, but they do not contain information about running Ollama on a Raspberry Pi.","ollama_windows.md, page 1; ollama_cloud.md, page 1; ollama_troubleshooting.md, page 1; ollama_index.md, page 1"
+Does Ollama run on FreeBSD?,Not in the documents,decline,answer,False,"I don't know: the documents don't cover that.
+
+The sources provided only discuss Ollama on Windows and macOS, but do not contain any information about FreeBSD support.","ollama_windows.md, page 1; ollama_faq.md, page 1; ollama_troubleshooting.md, page 1; ollama_windows.md, page 1"
+How much does an Ollama cloud subscription cost per month?,Not in the documents,decline,answer,False,"I don't know: the documents don't cover that.
+
+The sources mention that you can check and compare plans at https://ollama.com/pricing, but they do not provide specific pricing information.","ollama_quickstart.md, page 1; ollama_cloud.md, page 1; ollama_cloud.md, page 1; ollama_quickstart.md, page 1"

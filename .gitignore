@@ -15,3 +15,6 @@ __pycache__/
 .coverage
 build/
 dist/
+
+# Vector database (rebuild with scripts.build_index)
+data/chroma/
