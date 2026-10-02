@@ -93,3 +93,46 @@ def test_model_markdown_links_and_images_are_not_rendered(monkeypatch):
 def test_chat_input_has_a_length_limit():
     at = AppTest.from_file(UI, default_timeout=30).run()
     assert at.chat_input[0].proto.max_chars == 500
+
+
+# ---- look and feel (recommendations 1-5 and 7) ----
+def test_empty_chat_shows_welcome_and_three_examples():
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    assert not at.exception
+    assert any("I answer IT questions" in m.value for m in at.markdown)
+    examples = [b for b in at.button if b.key and b.key.startswith("example_")]
+    assert len(examples) == 3
+
+
+def test_clicking_an_example_asks_that_question_and_hides_the_examples(monkeypatch):
+    asked = []
+
+    def fake(q):
+        asked.append(q)
+        return fake_result(False)
+
+    monkeypatch.setattr(answer_module, "answer", fake)
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    at.button(key="example_1").click().run()
+    assert not at.exception
+    assert asked == ["How long do you keep daily server backups?"]
+    assert not [b for b in at.button if b.key and b.key.startswith("example_")]
+
+
+def test_clear_chat_button_empties_the_conversation(monkeypatch):
+    monkeypatch.setattr(answer_module, "answer", lambda q: fake_result(False))
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    clear = [b for b in at.sidebar.button if "Clear chat" in b.label][0]
+    assert clear.disabled  # nothing to clear yet
+    at.chat_input[0].set_value("hello").run()
+    clear = [b for b in at.sidebar.button if "Clear chat" in b.label][0]
+    assert not clear.disabled
+    clear.click().run()
+    assert not at.exception
+    assert any("I answer IT questions" in m.value for m in at.markdown)  # back to the welcome screen
+
+
+def test_sidebar_uses_friendly_name_and_tables_have_real_headers():
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    side = " ".join(m.value for m in at.sidebar.markdown)
+    assert "Northwind IT docs" in side

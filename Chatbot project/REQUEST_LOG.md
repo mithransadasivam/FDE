@@ -39,3 +39,7 @@ Every request sent to Claude Code, with one line on what happened.
 16. "Go" for the README. Before writing it I noticed no test had ever read a real PDF (all 17 documents are markdown), so I added tests that build small PDFs: page numbers kept, a text-less "scanned" PDF gives no chunks, a corrupt PDF is reported not fatal. Then wrote README.md (what it does, set-up, run, rebuild, tests, results, settings, known limits). 96 tests pass offline.
 17. Provided four screenshots (chat with a cited answer and a DECLINED badge, knowledge base, test results for run 1 and run 2) and wrote the reflection in my own words; Claude fixed spelling and grammar only. Result: saved in `screenshots/` and `REFLECTION.md`.
 18. "Go": stop the app, final commit and tag `v1.0-day6`. Result: see git log. Push to the FDE repo waits for approval.
+
+## After hand-in: look-and-feel polish
+19. Asked for recommendations to make the app look better; chose items 1-5 and 7. Result: friendlier knowledge base name ("Northwind IT docs"), proper table headers, three clickable example questions, a welcome message, a Clear chat button, and a green OK / red MISS colour on the Test results table with red "missed" markers on the cards. 100 tests pass offline (4 new). Checked on screen: Run 2 shows the miss clearly.
+20. Said "no need" to committing, then changed my mind: "push them". Result: committed as v1.1-day6 and pushed to the FDE repo.

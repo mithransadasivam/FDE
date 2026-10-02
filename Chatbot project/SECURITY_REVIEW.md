@@ -3,7 +3,7 @@
 **Scope:** the whole project (`app/`, `scripts/`, `tests/`, config files, `data/`).
 **Reviewer:** a read-only `security-reviewer` subagent written for this project (`.claude/agents/security-reviewer.md`). No Day 2 reviewer existed on this machine, so a new one was written with a 12-point checklist: secrets, prompt injection, grounding guards, web/UI injection, network exposure, resource limits, file handling, error leaks, dependencies, test isolation, data, and known lessons from earlier days.
 **Method note:** the new agent file is only loaded when Claude Code starts, so the review ran as a general-purpose agent told to follow that file exactly.
-**Result:** 0 High, 5 Medium, 10 Low, 2 Info. Fixes were chosen by the project owner; every fix has a test (96 tests, all offline).
+**Result:** 0 High, 5 Medium, 10 Low, 2 Info. Fixes were chosen by the project owner; every fix has a test (100 tests, all offline).
 
 Also verified directly: `.env` is not tracked and was never in Git history (`git ls-files` and `git log --all -- .env` both empty).
 

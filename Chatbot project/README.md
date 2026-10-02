@@ -59,7 +59,7 @@ To add documents, put `.pdf`, `.txt` or `.md` files in `data/docs/` and rebuild 
 .venv\Scripts\python.exe -m pytest tests
 ```
 
-96 tests, all offline: they use a fake model, a fake retriever and a fake embedder, and `tests/conftest.py` blocks every real network call and hides the API key. Nothing in the test run needs Ollama, OpenRouter or `.env`.
+100 tests, all offline: they use a fake model, a fake retriever and a fake embedder, and `tests/conftest.py` blocks every real network call and hides the API key. Nothing in the test run needs Ollama, OpenRouter or `.env`.
 
 ## Test results (10 questions: 7 answerable, 3 not)
 
