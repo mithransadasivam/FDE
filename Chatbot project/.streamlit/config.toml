@@ -1,0 +1,12 @@
+[server]
+# Only this computer can open the app. The app has no login, and the buttons on it
+# spend model credit and rebuild the index, so it must not listen on the network.
+address = "127.0.0.1"
+headless = true
+
+[client]
+# Never show Python error details (stack traces, file paths) to the person using the app.
+showErrorDetails = "none"
+
+[browser]
+gatherUsageStats = false
