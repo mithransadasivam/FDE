@@ -1,0 +1,6 @@
+pypdf==6.19.0
+chromadb==1.5.9
+requests==2.34.2
+python-dotenv==1.2.4
+streamlit==1.64.0
+pandas==3.0.6
