@@ -4,7 +4,8 @@ import time
 
 from app.config import DECLINE_SENTENCE, MAX_QUESTION_CHARS, MIN_SCORE, TOP_K
 from app.llm import call_model
-from app.retriever import search
+from app.retrieval import retrieve_detailed
+from app.safe_text import escape_angle_brackets as _escape_angle_brackets
 
 SYSTEM_PROMPT = f"""You are the Northwind IT help desk assistant.
 Answer the user's question using ONLY the numbered sources provided.
@@ -22,11 +23,6 @@ MSG_TOO_LONG = f"That question is too long. Please keep it under {MAX_QUESTION_C
 
 def _normalise(text: str) -> str:
     return " ".join(text.lower().split())
-
-
-def _escape_angle_brackets(text: str) -> str:
-    """Make it impossible for document or question text to form a tag of its own."""
-    return text.replace("<", "&lt;").replace(">", "&gt;")
 
 
 def _safe_filename(name: str) -> str:
@@ -68,7 +64,7 @@ def _strip_invalid_citations(reply: str, number_of_sources: int) -> str:
     return re.sub(r"[ \t]+([.,;:])", r"\1", re.sub(r"[ \t]{2,}", " ", cleaned)).strip()
 
 
-def _result(answer, sources, declined, best, used, started, reason=""):
+def _result(answer, sources, declined, best, used, started, reason="", searched_for=""):
     return {
         "answer": answer,
         "sources": sources,
@@ -77,15 +73,22 @@ def _result(answer, sources, declined, best, used, started, reason=""):
         "chunks_used": used,
         "seconds": round(time.perf_counter() - started, 2),
         "reason": reason,
+        "searched_for": searched_for,
     }
 
 
-def answer(question: str, retriever=search, model=call_model, min_score: float = MIN_SCORE, k: int = TOP_K) -> dict:
+def answer(question: str, retriever=None, model=call_model, min_score: float = MIN_SCORE, k: int = TOP_K,
+           previous_question: str = "") -> dict:
     """Answer a question from the documents only.
 
-    Returns {answer, sources, declined, best_score, chunks_used, seconds, reason}.
+    Returns {answer, sources, declined, best_score, chunks_used, seconds, reason, searched_for}.
     `sources` is a list of {number, source, page, text, score} for the chunks the
-    answer cites; it is empty when declined.
+    answer cites; it is empty when declined. `searched_for` is the text that was searched
+    (it differs from the question when the retrieval mode rewrites it).
+
+    By default the chunks come from the retrieval mode set in the config, and
+    `previous_question` (the user's last question in the chat) helps resolve follow-ups.
+    Pass `retriever(question, k)` to use something else, such as a fake in tests.
     """
     started = time.perf_counter()
     check_min_score(min_score)
@@ -95,25 +98,29 @@ def answer(question: str, retriever=search, model=call_model, min_score: float =
     if len(question) > MAX_QUESTION_CHARS:
         return _result(MSG_TOO_LONG, [], False, 0.0, 0, started, "question too long")
 
-    chunks = retriever(question, k)
+    if retriever is None:
+        found = retrieve_detailed(question, k, previous_question=previous_question)
+        chunks, searched_for = found["chunks"], found["searched_for"]
+    else:
+        chunks, searched_for = retriever(question, k), question
     best = max((c["score"] for c in chunks), default=0.0)
 
     # Guard 1 (code): nothing relevant enough, so decline without calling the model.
     relevant = [c for c in chunks if c["score"] >= min_score]
     if not relevant:
-        return _result(DECLINE_SENTENCE, [], True, best, 0, started, "guard 1: best score below minimum")
+        return _result(DECLINE_SENTENCE, [], True, best, 0, started, "guard 1: best score below minimum", searched_for)
 
     reply = model(build_messages(question, relevant))
 
     # Guard 2 (prompt): the model said the sources don't contain the answer.
     if _normalise(DECLINE_SENTENCE) in _normalise(reply):
-        return _result(DECLINE_SENTENCE, [], True, best, len(relevant), started, "guard 2: model declined")
+        return _result(DECLINE_SENTENCE, [], True, best, len(relevant), started, "guard 2: model declined", searched_for)
 
     reply = _strip_invalid_citations(reply, len(relevant))
     cited = sorted({int(n) for n in re.findall(r"\[(\d{1,3})\]", reply)})
     if not cited:
         # An answer with no valid citation cannot be trusted as grounded.
-        return _result(DECLINE_SENTENCE, [], True, best, len(relevant), started, "guard 2: answer had no citation")
+        return _result(DECLINE_SENTENCE, [], True, best, len(relevant), started, "guard 2: answer had no citation", searched_for)
 
     sources = [{"number": n, **{key: relevant[n - 1][key] for key in ("source", "page", "text", "score")}} for n in cited]
-    return _result(reply, sources, False, best, len(relevant), started)
+    return _result(reply, sources, False, best, len(relevant), started, "", searched_for)

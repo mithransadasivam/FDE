@@ -1,0 +1,32 @@
+{
+  "mode": "rerank",
+  "k": 4,
+  "questions": 20,
+  "hits": 20,
+  "hit_rate": 1.0,
+  "mrr": 0.9417,
+  "by_kind": {
+    "plain": {
+      "hits": 6,
+      "total": 6
+    },
+    "reworded": {
+      "hits": 4,
+      "total": 4
+    },
+    "exact code": {
+      "hits": 4,
+      "total": 4
+    },
+    "follow-up": {
+      "hits": 3,
+      "total": 3
+    },
+    "messy": {
+      "hits": 3,
+      "total": 3
+    }
+  },
+  "rerank_fallbacks": 1,
+  "avg_seconds": 2.272
+}

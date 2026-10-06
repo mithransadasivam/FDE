@@ -1,4 +1,9 @@
-"""Make untrusted text safe to show as Markdown."""
+"""Make untrusted text safe: for Markdown display, and for use inside prompts."""
+
+
+def escape_angle_brackets(text: str) -> str:
+    """Make it impossible for untrusted text to form a tag of its own inside a prompt."""
+    return str(text).replace("<", "&lt;").replace(">", "&gt;")
 
 
 def md_safe(text: str) -> str:

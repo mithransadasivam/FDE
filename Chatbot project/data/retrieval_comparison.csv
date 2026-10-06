@@ -1,0 +1,5 @@
+mode,k,questions,hits,hit_rate,mrr,plain,reworded,exact code,follow-up,messy,retrieval_ms,retrieval_model_calls,calls_per_answer,rerank_fallbacks,behaviour_correct,behaviour_total,answer_seconds
+vector,4,20,19,0.95,0.785,6/6,4/4,4/4,2/3,3/3,123,0,1,0,10,10,1.97
+hybrid,4,20,18,0.9,0.87,6/6,3/4,4/4,3/3,2/3,111,0,1,0,10,10,2.11
+rerank,4,20,20,1.0,0.9417,6/6,4/4,4/4,3/3,3/3,2272,1,2,1,10,10,4.01
+full,4,20,19,0.95,0.9071,6/6,4/4,4/4,2/3,3/3,3411,2,3,1,10,10,5.63

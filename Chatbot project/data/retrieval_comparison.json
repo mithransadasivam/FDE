@@ -1,0 +1,150 @@
+[
+  {
+    "mode": "vector",
+    "k": 4,
+    "questions": 20,
+    "hits": 19,
+    "hit_rate": 0.95,
+    "mrr": 0.785,
+    "by_kind": {
+      "plain": {
+        "hits": 6,
+        "total": 6
+      },
+      "reworded": {
+        "hits": 4,
+        "total": 4
+      },
+      "exact code": {
+        "hits": 4,
+        "total": 4
+      },
+      "follow-up": {
+        "hits": 2,
+        "total": 3
+      },
+      "messy": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "retrieval_ms": 123,
+    "retrieval_model_calls": 0,
+    "calls_per_answer": 1,
+    "rerank_fallbacks": 0,
+    "behaviour_correct": 10,
+    "behaviour_total": 10,
+    "answer_seconds": 1.97
+  },
+  {
+    "mode": "hybrid",
+    "k": 4,
+    "questions": 20,
+    "hits": 18,
+    "hit_rate": 0.9,
+    "mrr": 0.87,
+    "by_kind": {
+      "plain": {
+        "hits": 6,
+        "total": 6
+      },
+      "reworded": {
+        "hits": 3,
+        "total": 4
+      },
+      "exact code": {
+        "hits": 4,
+        "total": 4
+      },
+      "follow-up": {
+        "hits": 3,
+        "total": 3
+      },
+      "messy": {
+        "hits": 2,
+        "total": 3
+      }
+    },
+    "retrieval_ms": 111,
+    "retrieval_model_calls": 0,
+    "calls_per_answer": 1,
+    "rerank_fallbacks": 0,
+    "behaviour_correct": 10,
+    "behaviour_total": 10,
+    "answer_seconds": 2.11
+  },
+  {
+    "mode": "rerank",
+    "k": 4,
+    "questions": 20,
+    "hits": 20,
+    "hit_rate": 1.0,
+    "mrr": 0.9417,
+    "by_kind": {
+      "plain": {
+        "hits": 6,
+        "total": 6
+      },
+      "reworded": {
+        "hits": 4,
+        "total": 4
+      },
+      "exact code": {
+        "hits": 4,
+        "total": 4
+      },
+      "follow-up": {
+        "hits": 3,
+        "total": 3
+      },
+      "messy": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "retrieval_ms": 2272,
+    "retrieval_model_calls": 1,
+    "calls_per_answer": 2,
+    "rerank_fallbacks": 1,
+    "behaviour_correct": 10,
+    "behaviour_total": 10,
+    "answer_seconds": 4.01
+  },
+  {
+    "mode": "full",
+    "k": 4,
+    "questions": 20,
+    "hits": 19,
+    "hit_rate": 0.95,
+    "mrr": 0.9071,
+    "by_kind": {
+      "plain": {
+        "hits": 6,
+        "total": 6
+      },
+      "reworded": {
+        "hits": 4,
+        "total": 4
+      },
+      "exact code": {
+        "hits": 4,
+        "total": 4
+      },
+      "follow-up": {
+        "hits": 2,
+        "total": 3
+      },
+      "messy": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "retrieval_ms": 3411,
+    "retrieval_model_calls": 2,
+    "calls_per_answer": 3,
+    "rerank_fallbacks": 1,
+    "behaviour_correct": 10,
+    "behaviour_total": 10,
+    "answer_seconds": 5.63
+  }
+]

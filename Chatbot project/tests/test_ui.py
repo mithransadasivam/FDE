@@ -20,12 +20,12 @@ def fake_result(declined):
 def test_app_loads_with_three_tabs():
     at = AppTest.from_file(UI, default_timeout=30).run()
     assert not at.exception
-    assert [t.label for t in at.tabs] == ["Chat", "Knowledge base", "Test results"]
+    assert [t.label for t in at.tabs] == ["Chat", "Knowledge base", "Test results", "Retrieval"]
 
 
 @pytest.mark.parametrize("declined", [False, True])
 def test_chat_shows_answer_or_declined_badge(monkeypatch, declined):
-    monkeypatch.setattr(answer_module, "answer", lambda q: fake_result(declined))
+    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: fake_result(declined))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("How long are backups kept?").run()
     assert not at.exception
@@ -35,7 +35,7 @@ def test_chat_shows_answer_or_declined_badge(monkeypatch, declined):
 
 
 def test_missing_index_shows_friendly_message(monkeypatch):
-    def boom(q):
+    def boom(q, **kw):
         raise ValueError("no index")
 
     monkeypatch.setattr(answer_module, "answer", boom)
@@ -65,7 +65,7 @@ def test_test_results_tab_shows_summary_and_failure(monkeypatch):
 
 
 def test_unexpected_error_shows_friendly_message_not_a_traceback(monkeypatch):
-    def boom(q):
+    def boom(q, **kw):
         raise KeyError("some chroma problem at D:/secret/path")
 
     monkeypatch.setattr(answer_module, "answer", boom)
@@ -80,7 +80,7 @@ def test_model_markdown_links_and_images_are_not_rendered(monkeypatch):
     evil = {"answer": "See ![x](https://evil.example/p.png?q=1) and [Reset](https://evil.example) [1].",
             "sources": [{"number": 1, "source": "a.md", "page": 1, "text": "t", "score": 0.8}],
             "declined": False, "best_score": 0.8, "chunks_used": 1, "seconds": 0.1, "reason": ""}
-    monkeypatch.setattr(answer_module, "answer", lambda q: evil)
+    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: evil)
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("q").run()
     assert not at.exception
@@ -107,7 +107,7 @@ def test_empty_chat_shows_welcome_and_three_examples():
 def test_clicking_an_example_asks_that_question_and_hides_the_examples(monkeypatch):
     asked = []
 
-    def fake(q):
+    def fake(q, **kw):
         asked.append(q)
         return fake_result(False)
 
@@ -120,7 +120,7 @@ def test_clicking_an_example_asks_that_question_and_hides_the_examples(monkeypat
 
 
 def test_clear_chat_button_empties_the_conversation(monkeypatch):
-    monkeypatch.setattr(answer_module, "answer", lambda q: fake_result(False))
+    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: fake_result(False))
     at = AppTest.from_file(UI, default_timeout=30).run()
     clear = [b for b in at.sidebar.button if "Clear chat" in b.label][0]
     assert clear.disabled  # nothing to clear yet
@@ -136,3 +136,37 @@ def test_sidebar_uses_friendly_name_and_tables_have_real_headers():
     at = AppTest.from_file(UI, default_timeout=30).run()
     side = " ".join(m.value for m in at.sidebar.markdown)
     assert "Northwind IT docs" in side
+
+
+# ---- follow-ups use the real chat history (Phase 13) ----
+def test_the_previous_question_comes_from_the_chat_history_and_searched_for_is_shown(monkeypatch):
+    seen = []
+
+    def fake(q, previous_question="", **kw):
+        seen.append((q, previous_question))
+        return {**fake_result(False), "searched_for": f"rewritten: {q}"}
+
+    monkeypatch.setattr(answer_module, "answer", fake)
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    at.chat_input[0].set_value("How do I install the VPN client on Windows?").run()
+    at.chat_input[0].set_value("And on a Mac?").run()
+    assert not at.exception
+    assert seen == [("How do I install the VPN client on Windows?", ""),
+                    ("And on a Mac?", "How do I install the VPN client on Windows?")]
+    captions = [c.value for c in at.caption]
+    assert any(c.startswith("Searched for: rewritten: And on a Mac?") for c in captions)
+
+
+def test_clearing_the_chat_forgets_the_previous_question(monkeypatch):
+    seen = []
+
+    def fake(q, previous_question="", **kw):
+        seen.append(previous_question)
+        return fake_result(False)
+
+    monkeypatch.setattr(answer_module, "answer", fake)
+    at = AppTest.from_file(UI, default_timeout=30).run()
+    at.chat_input[0].set_value("first question").run()
+    [b for b in at.sidebar.button if "Clear chat" in b.label][0].click().run()
+    at.chat_input[0].set_value("And on a Mac?").run()
+    assert seen == ["", ""]

@@ -1,0 +1,21 @@
+question,previous_question,kind,expected_source,evidence,expected_answer
+How do I set up MFA on a new phone?,,plain,mfa_setup_guide.md,"ticket titled ""Reset MFA""","Raise a ""Reset MFA"" ticket first, then install Northwind Authenticator and scan the QR code"
+How long do you keep daily server backups?,,plain,backup_and_recovery_runbook.md,kept for 30 days,30 days
+How long are contracts kept after they end?,,plain,Day06_Slide15_policy_data_handling.pdf,Contracts are kept for 7 years,7 years after they end
+How often is privileged access reviewed?,,plain,Day06_Slide15_policy_password_and_accounts.pdf,reviewed every quarter,Every quarter
+What should I do if my laptop battery is swelling?,,plain,Day06_Slide15_policy_equipment_and_use.pdf,stop using the laptop immediately,"Stop using it at once, do not charge it, and bring it to the IT desk"
+How many working days before I travel must I tell security about a restricted country?,,plain,Day06_Slide15_policy_vpn_remote_access.pdf,at least 5 working days before you travel,At least 5 working days
+My VPN keeps cutting out at home. What can I try?,,reworded,vpn_troubleshooting.md,"from ""Auto"" to ""TCP""","Update NorthLink to 5.2 or later, use a cable or move closer to the router, and switch the protocol from Auto to TCP"
+What laptop does a new starter get?,,reworded,new_starter_checklist.md,14-inch standard laptop,A standard 14-inch laptop
+I forgot my password and cannot sign in. What do I do?,,reworded,password_policy.md,self-service page at reset.northwind.example,Use the self-service page at reset.northwind.example and approve the MFA prompt
+How big a file can I email to a colleague?,,reworded,email_and_calendar_faq.md,"For larger files, share a NorthDrive link",25 MB; use a NorthDrive link for larger files
+What does error VPN-806 mean?,,exact code,Day07_Slide05_kb_error_codes.pdf,cannot find a VPN certificate,The VPN client cannot find a certificate on the laptop; raise a ticket to get a new one issued (about 1 business day)
+What is VPN-815?,,exact code,Day07_Slide05_kb_error_codes.pdf,came from a country on the restricted list,The connection was blocked because it came from a restricted country; contact the security team
+A visitor got WIFI-117 on the guest network. What does that mean?,,exact code,Day07_Slide05_kb_error_codes.pdf,Guest Wi-Fi access lasts 8 hours,Guest access expired; they must register again at the reception kiosk
+ACC-409 appears when I try to sign in,,exact code,Day07_Slide05_kb_error_codes.pdf,must be changed before you can sign in,The password has expired; change it from the self-service portal
+And on a Mac?,How do I install the VPN client on Windows?,follow-up,vpn_setup_guide.md,Approve the system extension,"Install NorthLink from Self Service, approve the system extension, restart the Mac once"
+And how much notice do I get before it is replaced?,What laptop does a new starter get?,follow-up,laptop_standards.md,contacted by IT about 2 months,About 2 months
+What if it still fails after that?,My VPN keeps disconnecting. What can I try?,follow-up,vpn_troubleshooting.md,attach the NorthLink log file,Open a ticket on the service desk portal and attach the NorthLink log file
+"hi there, sorry to bother you, i lost my phone on the train this morning - who do i call??",,messy,mfa_setup_guide.md,extension 4357 straight away,Call the service desk on extension 4357 straight away so MFA is locked
+"morning! so i'm leaving the company on friday, when do my logins get switched off?",,messy,Day06_Slide15_policy_password_and_accounts.pdf,disabled by 18:00 on their last working day,By 18:00 on their last working day
+"hey, quick one, can i paste my customer list into chatgpt to tidy it up? cheers",,messy,Day06_Slide15_policy_data_handling.pdf,never be pasted into public AI tools,No: customer data must never be pasted into public AI tools

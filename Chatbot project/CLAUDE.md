@@ -42,3 +42,4 @@ Python 3.11+ in `.venv`; pypdf for PDFs; Ollama `nomic-embed-text` for embedding
 12. **Untrusted text is never shown raw**: model output, document text and result files go through `app/safe_text.md_safe`; any HTML we build ourselves escapes its values.
 13. **Questions are capped** at `MAX_QUESTION_CHARS` (500) before any embedding or model call.
 14. **Rebuilds are safe**: embed first, then swap the index in; a failed rebuild must keep the old index.
+15. **Retrieval changes are measured**: before and after any change to retrieval (mode, chunking, embeddings, k, documents), run `python -m scripts.compare_modes` and keep the numbers. Keep the simplest mode that meets the target in `RAG_DECISION.md`.

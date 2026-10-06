@@ -149,3 +149,29 @@ def test_huge_citation_number_does_not_crash():
     model = FakeModel("Fact [1] and [" + "9" * 5000 + "].")
     result = answer("q", fake_retriever([chunk("t", 0.9)]), model)
     assert not result["declined"] and [s["number"] for s in result["sources"]] == [1]
+
+
+# ---- follow-ups and "searched for" (Phase 13) ----
+def test_default_retrieval_gets_the_previous_question_and_reports_what_was_searched(monkeypatch):
+    import app.answer as answer_module
+
+    seen = {}
+
+    def fake_detailed(question, k, previous_question=""):
+        seen.update(question=question, previous_question=previous_question)
+        return {"chunks": [chunk("fact", 0.9)], "searched_for": "install VPN client on Mac"}
+
+    monkeypatch.setattr(answer_module, "retrieve_detailed", fake_detailed)
+    result = answer("And on a Mac?", model=FakeModel("Fact [1]."), previous_question="How do I install the VPN client on Windows?")
+    assert seen == {"question": "And on a Mac?", "previous_question": "How do I install the VPN client on Windows?"}
+    assert result["searched_for"] == "install VPN client on Mac" and not result["declined"]
+
+
+def test_a_custom_retriever_is_searched_for_the_question_as_typed():
+    result = answer("How long?", fake_retriever([chunk("t", 0.9)]), FakeModel("Fact [1]."))
+    assert result["searched_for"] == "How long?"
+
+
+def test_declined_answers_also_say_what_was_searched_for():
+    result = answer("salary?", fake_retriever([chunk("x", 0.1)]), FakeModel("unused"))
+    assert result["declined"] and result["searched_for"] == "salary?"

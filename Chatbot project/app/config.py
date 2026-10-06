@@ -1,4 +1,5 @@
 """Project settings in one place."""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -10,7 +11,7 @@ CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 
 # Embeddings (local Ollama) and vector database
-OLLAMA_URL = "http://localhost:11434"
+OLLAMA_URL = "http://127.0.0.1:11434"  # not "localhost": on Windows that adds about 2 seconds to every call
 EMBED_MODEL = "nomic-embed-text"
 EMBED_TIMEOUT = 60  # seconds
 CHROMA_DIR = ROOT / "data" / "chroma"
@@ -32,3 +33,22 @@ DECLINE_SENTENCE = (
     "I don't know: the documents don't cover that. "
     "Please contact the service desk on extension 4357 or servicedesk@northwind.example."
 )
+
+# Retrieval mode used by the chatbot: vector, hybrid, rerank or full (see app/retrieval.py).
+# The saved choice is made in Phase 14. For an experiment you can override it for one run
+# without editing this file, e.g. `set RETRIEVAL_MODE=full` before starting the app.
+RETRIEVAL_MODES = ("vector", "hybrid", "rerank", "full")
+RETRIEVAL_MODE = os.getenv("RETRIEVAL_MODE", "vector")
+if RETRIEVAL_MODE not in RETRIEVAL_MODES:
+    raise ValueError(f"RETRIEVAL_MODE must be one of {', '.join(RETRIEVAL_MODES)} (got '{RETRIEVAL_MODE}')")
+# Hybrid search: how many candidates each search (meaning-based and keyword) contributes before fusing.
+HYBRID_CANDIDATES = 10
+# Reranking: how many candidates the model judges in its one call. More can rescue a lower-ranked
+# right chunk, but costs more time and tokens.
+RERANK_CANDIDATES = 10
+# The retrieval target, set before any measurements existed (Phase 14).
+TARGET_HIT_RATE = 0.90
+TARGET_SECONDS = 3.0  # a whole answer, as the user feels it: retrieval plus the model writing the reply
+
+# Query rewriting: a rewritten query longer than this is not trusted; the original question is used.
+REWRITE_MAX_CHARS = 200

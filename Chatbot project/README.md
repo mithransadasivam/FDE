@@ -59,7 +59,7 @@ To add documents, put `.pdf`, `.txt` or `.md` files in `data/docs/` and rebuild 
 .venv\Scripts\python.exe -m pytest tests
 ```
 
-100 tests, all offline: they use a fake model, a fake retriever and a fake embedder, and `tests/conftest.py` blocks every real network call and hides the API key. Nothing in the test run needs Ollama, OpenRouter or `.env`.
+205 tests, all offline: they use a fake model, a fake retriever and a fake embedder, and `tests/conftest.py` blocks every real network call and hides the API key. Nothing in the test run needs Ollama, OpenRouter or `.env`.
 
 ## Test results (10 questions: 7 answerable, 3 not)
 
@@ -110,3 +110,24 @@ data/       docs/ (the knowledge base), test_questions.csv, results/, chroma/ (n
 ```
 
 Also in the root: `REQUIREMENTS.md` (what it must do), `CLAUDE.md` (project rules for Claude Code), `REQUEST_LOG.md` (every request sent, phase by phase) and `SECURITY_REVIEW.md`.
+
+## Part 2: measuring and choosing the retrieval mode
+
+Four retrieval modes: `vector` (default), `hybrid` (vector + keyword search), `rerank` (hybrid, then the model re-orders 10 candidates) and `full` (rewrite the follow-up question, hybrid, rerank). Change with the `RETRIEVAL_MODE` environment variable (or the saved default in `app/config.py`).
+
+| Mode | Hit rate @4 | MRR | Whole answer | Meets target (90%, 3 s) |
+|---|---|---|---|---|
+| vector | 95% | 0.79 | 1.97 s | yes |
+| hybrid | 90% | 0.87 | 2.11 s | yes |
+| rerank | 100% | 0.94 | 4.01 s | no |
+| full | 95% | 0.91 | 5.63 s | no |
+
+Chosen: **vector**, the simplest mode that meets the target. Reasoning in `RAG_DECISION.md`; notes in `PART2_NOTES.md`.
+
+```
+.venv\Scripts\python.exe -m scripts.check_evidence
+.venv\Scripts\python.exe -m scripts.eval_retrieval --mode hybrid
+.venv\Scripts\python.exe -m scripts.compare_modes
+```
+
+The **Retrieval** tab shows the comparison and what two modes found for one question. Test set: `data/retrieval_test_set.csv` (20 questions). Known limit: my documents and the class PDFs disagree on 5 facts.

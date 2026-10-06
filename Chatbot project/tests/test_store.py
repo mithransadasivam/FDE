@@ -75,3 +75,10 @@ def test_rebuild_with_no_chunks_gives_an_empty_index(tmp_path):
     build_index(CHUNKS, fake_embed, tmp_path)
     assert build_index([], fake_embed, tmp_path) == 0
     assert count_chunks(tmp_path) == 0
+
+
+def test_ollama_address_is_an_ip_not_localhost():
+    # On Windows "localhost" tries IPv6 first and adds about 2 seconds to EVERY embedding call.
+    from app.config import OLLAMA_URL
+
+    assert "localhost" not in OLLAMA_URL

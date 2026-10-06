@@ -14,10 +14,14 @@ import streamlit as st
 
 from app import kb
 from app.answer import answer
-from app.config import CHUNK_OVERLAP, CHUNK_SIZE, DOCS_DIR, MAX_QUESTION_CHARS, MIN_SCORE, TOP_K
+from app.comparison import load_comparison, load_mode_results, meets_target
+from app.config import (CHUNK_OVERLAP, CHUNK_SIZE, DOCS_DIR, MAX_QUESTION_CHARS, MIN_SCORE, RERANK_CANDIDATES,
+                        RETRIEVAL_MODE, ROOT, TARGET_HIT_RATE, TARGET_SECONDS, TOP_K)
 from app.embeddings import EmbeddingError
 from app.evaluate import load_runs
 from app.llm import LLMError
+from app.retrieval import MODEL_CALLS, MODES
+from app.retrieval_eval import KINDS, check_evidence, load_retrieval_set
 from app.retriever import search
 from app.safe_text import md_safe
 
@@ -28,6 +32,7 @@ MSG_EMPTY = "Please type a question first."
 MSG_REBUILD_FAILED = "The index could not be rebuilt. Please check that Ollama is running, then try again."
 MSG_KB_UNREADABLE = "The knowledge base could not be read. Please check the documents folder."
 MSG_RESULTS_UNREADABLE = "The saved test results could not be read."
+MSG_COMPARISON_UNREADABLE = "The saved retrieval comparison could not be read."
 EMPTY_INFO = {"rows": [], "documents": 0, "readable": 0, "chunks": 0, "indexed_chunks": None, "state": "missing"}
 
 KB_NAME = "Northwind IT docs"
@@ -47,6 +52,8 @@ st.markdown(
     .badge-declined {background:#fde8e4;color:#b3261e;font-weight:700;font-size:0.75rem;padding:2px 8px;border-radius:6px;}
     .badge-ready {background:#e0f3ee;color:#0b6b57;font-weight:700;font-size:0.75rem;padding:2px 8px;border-radius:6px;}
     .badge-warn {background:#fff1d6;color:#8a5a00;font-weight:700;font-size:0.75rem;padding:2px 8px;border-radius:6px;}
+    .chip {background:#2a2d3a;color:#c9cbd6;font-size:0.75rem;padding:2px 8px;border-radius:6px;margin-right:4px;display:inline-block;}
+    .chip-on {background:#0b6b57;color:#ffffff;font-weight:700;}
     .source-tag {background:#e0f3ee;color:#0b6b57;font-size:0.8rem;padding:2px 8px;border-radius:6px;margin-right:6px;display:inline-block;}
     </style>""",
     unsafe_allow_html=True,
@@ -78,15 +85,20 @@ def show_message(msg: dict) -> None:
             tags = "".join(f'<span class="source-tag">[{s["number"]}] {esc(s["source"])} · page {s["page"]}</span>' for s in msg["sources"])
             st.markdown(tags, unsafe_allow_html=True)
         st.caption(f'{msg["seconds"]} s · {msg["chunks_used"]} chunks')
+        if msg.get("searched_for"):
+            st.caption(f"Searched for: {md_safe(msg['searched_for'])}")
 
 
 def handle_question(question: str) -> None:
     if not question.strip():
         st.warning(MSG_EMPTY)
         return
+    # the previous question comes from the real conversation, so "And on a Mac?" can be understood
+    earlier = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
+    previous_question = earlier[-1] if earlier else ""
     st.session_state.messages.append({"role": "user", "content": question})
     try:
-        result = answer(question)
+        result = answer(question, previous_question=previous_question)
     except ValueError:
         st.error(MSG_NO_INDEX)
         return
@@ -103,6 +115,7 @@ def handle_question(question: str) -> None:
         "sources": result["sources"],
         "seconds": result["seconds"],
         "chunks_used": result["chunks_used"],
+        "searched_for": result.get("searched_for", ""),
     })
     st.session_state.last = result
 
@@ -118,7 +131,7 @@ def clear_chat() -> None:
     st.session_state.pending = None
 
 
-tab_chat, tab_kb, tab_tests = st.tabs(["Chat", "Knowledge base", "Test results"])
+tab_chat, tab_kb, tab_tests, tab_retrieval = st.tabs(["Chat", "Knowledge base", "Test results", "Retrieval"])
 
 with tab_chat:
     history = st.container()  # drawn after the question is handled, but shown above the input box
@@ -234,6 +247,86 @@ with tab_tests:
                 f"- **Why:** {md_safe(r['reason'] or 'the model answered from the sources it was given')}"
             )
 
+try:
+    comparison = load_comparison()
+except Exception:
+    comparison = []
+    st.error(MSG_COMPARISON_UNREADABLE)
+
+
+def short_sources(text: str, expected: str) -> list[str]:
+    """The top sources of one saved row, each marked when it is the expected document."""
+    return [(("✓ " if part.startswith(expected + " p.") else "· ") + md_safe(part)) for part in text.split("; ") if part]
+
+
+with tab_retrieval:
+    if not comparison:
+        st.info("No retrieval comparison yet. Run: .venv/Scripts/python.exe -m scripts.compare_modes")
+    else:
+        by_mode = {r["mode"]: r for r in comparison}
+        chosen, baseline = by_mode.get(RETRIEVAL_MODE), by_mode.get("vector")
+        first = comparison[0]
+        st.caption(f"{first['questions']} questions · {len(comparison)} modes · saved to data/retrieval_comparison.csv")
+        if chosen:
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric(f"Hit rate @{chosen['k']} ({chosen['mode']})", f"{chosen['hit_rate']:.0%}")
+            c2.metric(f"MRR ({chosen['mode']})", f"{chosen['mrr']:.2f}")
+            if baseline:
+                c3.metric("Hit rate gained over vector", f"{(chosen['hit_rate'] - baseline['hit_rate']) * 100:+.0f} pts")
+            shown_time = chosen["answer_seconds"]
+            c4.metric("Time per answer" if shown_time is not None else "Retrieval time",
+                      f"{shown_time:.1f} s" if shown_time is not None else f"{chosen['retrieval_ms']} ms")
+
+        def cell(row, kind):
+            part = row["by_kind"].get(kind)
+            return f"{part['hits']}/{part['total']}" if part else "–"
+
+        table = pd.DataFrame([{
+            "Mode": ("✓ " if r["mode"] == RETRIEVAL_MODE else "") + r["mode"],
+            f"Hit @{r['k']}": f"{r['hit_rate']:.0%}",
+            "MRR": f"{r['mrr']:.2f}",
+            **{kind: cell(r, kind) for kind in KINDS},
+            "Retrieval ms": r["retrieval_ms"],
+            "Model calls": f"{r['calls_per_answer'] - 1} + 1",
+            "Answer s": "–" if r["answer_seconds"] is None else f"{r['answer_seconds']:.1f}",
+            "Answer or decline": "–" if r["behaviour_total"] is None else f"{r['behaviour_correct']}/{r['behaviour_total']}",
+            "Meets target": "yes" if meets_target(r, TARGET_HIT_RATE, TARGET_SECONDS) else "no",
+        } for r in comparison])
+
+        def highlight_chosen(row):
+            on = row["Mode"].startswith("✓")
+            return ["background-color:#d9f2e6;color:#0b6b57;font-weight:700" if on else "" for _ in row]
+
+        st.dataframe(table.style.apply(highlight_chosen, axis=1), width="stretch", hide_index=True)
+        st.caption(f"Target (set before measuring): hit rate at least {TARGET_HIT_RATE:.0%} and a whole answer within {TARGET_SECONDS:g} s. "
+                   "Model calls: retrieval + the call that writes the answer.")
+
+        st.subheader("🔎 What was found: two modes side by side")
+        try:
+            questions = load_retrieval_set()
+        except Exception:
+            questions = []
+        modes_available = [m for m in MODES if m in by_mode]
+        if questions and len(modes_available) >= 2:
+            labels = [f"[{q['kind']}] {q['question'][:80]}" for q in questions]
+            pick = questions[labels.index(st.selectbox("Question", labels, index=min(14, len(labels) - 1)))]
+            left_col, right_col = st.columns(2)
+            default_right = RETRIEVAL_MODE if RETRIEVAL_MODE in modes_available and RETRIEVAL_MODE != "vector" else modes_available[-1]
+            for column, default, label in ((left_col, "vector", "Mode A"), (right_col, default_right, "Mode B")):
+                mode = column.selectbox(label, modes_available, index=modes_available.index(default), key=f"side_{label}")
+                saved = {r["question"]: r for r in load_mode_results(mode)}.get(pick["question"])
+                with column:
+                    if not saved:
+                        st.caption("No saved result for this question and mode.")
+                        continue
+                    outcome = f"right chunk at rank {saved['rank']}" if saved["rank"] else "right chunk not found"
+                    st.markdown(f"**What was found · {md_safe(mode)}** — {outcome}" + (" (hit)" if saved["hit"] == "True" else " (miss)"))
+                    if saved.get("searched_for"):
+                        st.caption(f"Searched for: {md_safe(saved['searched_for'])}")
+                    for line in short_sources(saved["top_sources"], pick["expected_source"]):
+                        st.markdown(line)
+            st.caption(f"✓ marks the expected document: {md_safe(pick['expected_source'])}. Evidence: “{md_safe(pick['evidence'])}”")
+
 with st.sidebar:
     st.header("🛠 IT Help Desk Assistant")
     st.caption("Answers from your team's documents")
@@ -244,6 +337,29 @@ with st.sidebar:
     st.subheader("SETTINGS")
     st.table(pd.DataFrame({"Setting": ["Chunk size", "Overlap", "Chunks retrieved", "Minimum score"],
                            "Value": [str(CHUNK_SIZE), str(CHUNK_OVERLAP), str(TOP_K), f"{MIN_SCORE:.2f}"]}).set_index("Setting"))
+    st.subheader("RETRIEVAL MODE")
+    st.markdown("".join(f'<span class="chip{" chip-on" if m == RETRIEVAL_MODE else ""}">{m}</span>' for m in MODES), unsafe_allow_html=True)
+    st.table(pd.DataFrame({
+        "Setting": ["Candidates reranked", "Chunks in the prompt", "Model calls per question"],
+        "Value": [str(RERANK_CANDIDATES) if RETRIEVAL_MODE in ("rerank", "full") else "–", str(TOP_K), f"{MODEL_CALLS[RETRIEVAL_MODE]} + 1"],
+    }).set_index("Setting"))
+    st.subheader("RETRIEVAL TEST SET")
+    try:
+        test_rows = load_retrieval_set()
+        found = len(test_rows) - len(check_evidence(test_rows, DOCS_DIR))
+        kinds = " · ".join(str(sum(r["kind"] == k for r in test_rows)) for k in KINDS)
+        st.table(pd.DataFrame({
+            "Item": ["File", "Questions", "Evidence phrases found", "Kinds (plain · reworded · code · follow-up · messy)"],
+            "Value": ["retrieval_test_set.csv", str(len(test_rows)), f"{found} / {len(test_rows)}", kinds],
+        }).set_index("Item"))
+    except Exception:
+        st.caption("The retrieval test set could not be read.")
+    st.subheader("DECISION")
+    st.table(pd.DataFrame({
+        "Item": ["Target", "Chosen mode", "Recorded in"],
+        "Value": [f"≥ {TARGET_HIT_RATE:.0%} · under {TARGET_SECONDS:g} s", RETRIEVAL_MODE,
+                  "RAG_DECISION.md" if (ROOT / "RAG_DECISION.md").is_file() else "not written yet"],
+    }).set_index("Item"))
     st.subheader("LATEST TEST RUN")
     if runs:
         latest = runs[-1]["summary"]

@@ -1,0 +1,32 @@
+{
+  "mode": "hybrid",
+  "k": 4,
+  "questions": 20,
+  "hits": 18,
+  "hit_rate": 0.9,
+  "mrr": 0.87,
+  "by_kind": {
+    "plain": {
+      "hits": 6,
+      "total": 6
+    },
+    "reworded": {
+      "hits": 3,
+      "total": 4
+    },
+    "exact code": {
+      "hits": 4,
+      "total": 4
+    },
+    "follow-up": {
+      "hits": 3,
+      "total": 3
+    },
+    "messy": {
+      "hits": 2,
+      "total": 3
+    }
+  },
+  "rerank_fallbacks": 0,
+  "avg_seconds": 0.111
+}
