@@ -1,0 +1,6 @@
+question,previous_question,kind,expected_source,evidence,expected_answer
+How long is the warranty on the X200 router?,,plain,router_x200_user_guide.pdf,warranty period of 2 years,2 years
+How long am I covered if the X200 breaks?,,reworded,router_x200_user_guide.pdf,warranty period of 2 years,2 years
+What does error E-42 on the X200 mean?,,exact code,router_x200_faq.md,E-42 means,The WAN cable is disconnected
+And on the X100?,What does error E-42 on the X200 mean?,follow-up,router_x100_faq.md,E-42 on the X100,The firmware update failed
+"hey, router light is blinking orange since the storm, what do i do??",,messy,network_setup_runbook.pdf,blinking orange,Restart the router and check the WAN cable
