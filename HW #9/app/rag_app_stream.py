@@ -23,6 +23,8 @@ st.caption("Answers come only from the IT policy documents, with the source of e
 def show_sources(sources):
     if sources:
         st.caption("Sources: " + "; ".join(sources))
+    else:
+        st.caption("No sources: the bot declined.")
 
 
 if "messages" not in st.session_state:
