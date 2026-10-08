@@ -20,7 +20,7 @@ def find_sources(question: str, mode: str = RAG_MODE, min_score: float = MIN_SCO
 
 
 def stream_answer(question: str, kept: list, client=None, model: str = MODEL):
-    """TODO (Activity 2): yield the answer text piece by piece.
+    """Yield the answer text piece by piece.
 
     Rules (tests/test_streaming.py checks each one):
     - if kept is empty: yield DECLINE once and stop, WITHOUT calling the model
@@ -30,4 +30,19 @@ def stream_answer(question: str, kept: list, client=None, model: str = MODEL):
     - the reply is a stream of chunks: for each chunk, the new text is chunk.choices[0].delta.content
     - skip chunks with no choices, and pieces that are None or ""; yield every other piece
     """
-    raise NotImplementedError("TODO")
+    if not kept:  # nothing relevant was found: decline in code, without calling the model
+        yield DECLINE
+        return
+    client = client or llm_client()
+    stream = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": build_prompt(question, kept)}],
+        temperature=0,
+        stream=True,
+    )
+    for chunk in stream:
+        if not chunk.choices:  # some chunks carry no choices (for example the final usage chunk)
+            continue
+        piece = chunk.choices[0].delta.content
+        if piece:  # skips None and ""
+            yield piece

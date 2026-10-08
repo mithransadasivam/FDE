@@ -3,6 +3,7 @@
 The client has the one method Day 7 uses, client.chat.completions.create(...), and keeps the
 Day 6 safety rules: a timeout and max_tokens on every call, and the key is never printed.
 """
+import json
 import os
 from types import SimpleNamespace
 
@@ -20,11 +21,13 @@ MAX_TOKENS = 300
 class _Completions:
     """Mimics client.chat.completions: one create() call that talks to OpenRouter."""
 
-    def create(self, model, messages, temperature=0, max_tokens=MAX_TOKENS):
+    def create(self, model, messages, temperature=0, max_tokens=MAX_TOKENS, stream=False):
         # The key comes from .env; it is read here and never printed or logged.
         key = os.getenv("OPENROUTER_API_KEY")
         if not key:
             raise LLMError("OPENROUTER_API_KEY is not set. Check .env.")
+        if stream:
+            return self._stream(key, model, messages, temperature, max_tokens)
         try:
             # timeout and max_tokens keep one slow or runaway call from hanging or costing too much.
             resp = requests.post(
@@ -40,6 +43,35 @@ class _Completions:
             raise LLMError(f"The model could not be reached ({type(err).__name__}).") from err
         # Wrap the text so callers can read reply.choices[0].message.content, as with the OpenAI client.
         return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=content))])
+
+
+def _stream(self, key, model, messages, temperature, max_tokens):
+    """Yield chunks shaped like the openai library's (chunk.choices[0].delta.content), one per piece."""
+    try:
+        resp = requests.post(
+            OPENROUTER_URL,
+            headers={"Authorization": f"Bearer {key}"},
+            json={"model": model, "messages": messages, "temperature": temperature,
+                  "max_tokens": max_tokens, "stream": True},
+            timeout=LLM_TIMEOUT,
+            stream=True,
+        )
+        resp.raise_for_status()
+        for line in resp.iter_lines(decode_unicode=True):
+            # Server-sent events: lines look like "data: {json}", and the last is "data: [DONE]".
+            if not line or not line.startswith("data: "):
+                continue
+            data = line[len("data: "):]
+            if data == "[DONE]":
+                break
+            for choice in json.loads(data).get("choices", []):
+                text = (choice.get("delta") or {}).get("content")
+                yield SimpleNamespace(choices=[SimpleNamespace(delta=SimpleNamespace(content=text))])
+    except (requests.RequestException, ValueError) as err:
+        raise LLMError(f"The model could not be reached ({type(err).__name__}).") from err
+
+
+_Completions._stream = _stream
 
 
 def llm_client():
