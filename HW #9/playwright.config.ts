@@ -5,6 +5,8 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests-ts',
   timeout: 60_000,
+  // A cold app (or the real chatbot) can take longer than the default 5 s to show something.
+  expect: { timeout: 20_000 },
   use: {
     baseURL: 'http://localhost:8597',
     trace: 'retain-on-failure',
