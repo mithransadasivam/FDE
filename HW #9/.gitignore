@@ -1,0 +1,19 @@
+# secrets
+.env
+.env.*
+*.env
+.streamlit/secrets.toml
+
+# local tool settings
+.claude/settings.local.json
+
+# environment and caches
+.venv/
+__pycache__/
+.pytest_cache/
+
+# vector database (rebuilt by scripts/build_index.py)
+data/chroma/
+node_modules/
+test-results/
+playwright-report/

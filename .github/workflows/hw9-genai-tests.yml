@@ -1,0 +1,70 @@
+# Day 9: run the tests in GitHub Actions.
+#
+# fast     on every push and pull request: unit tests, then the browser tests with the fake
+#          chatbot (CHAT_FAKE=1). No models, no API key, about 3 minutes. A red build blocks a merge.
+# quality  every night and on demand (Actions tab > GenAI tests > Run workflow): the real models.
+#          Installs Ollama, builds the index, runs the quality gate and the judged browser test.
+#          Needs the repository secret OPENROUTER_API_KEY (Settings > Secrets and variables > Actions).
+
+name: HW9 GenAI tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+defaults:
+  run:
+    working-directory: "HW #9"
+
+jobs:
+  fast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the Python libraries
+        run: pip install -r requirements.txt pytest pytest-playwright
+      - name: Install the browser for Playwright
+        run: python -m playwright install --with-deps chromium
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Browser tests with the fake chatbot
+        env:
+          CHAT_FAKE: "1"
+        run: python -m pytest tests/e2e/e2e_streaming.py tests/e2e/e2e_edge_cases.py
+
+  quality:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      LLM_MODEL: anthropic/claude-haiku-4.5
+      JUDGE_MODEL: anthropic/claude-haiku-4.5
+      EMBED_MODEL: nomic-embed-text
+      RAG_MODE: full
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the Python libraries
+        run: pip install -r requirements.txt pytest pytest-playwright
+      - name: Install the browser for Playwright
+        run: python -m playwright install --with-deps chromium
+      - name: Install Ollama and the embedding model
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          (ollama serve > /dev/null 2>&1 &)
+          sleep 5
+          ollama pull nomic-embed-text
+      - name: Build the index
+        run: python -m scripts.build_index
+      - name: Quality gate (fails the build if a threshold is missed)
+        run: python -m scripts.quality_gate
+      - name: Judged browser test
+        run: python -m pytest tests/e2e/e2e_judged.py

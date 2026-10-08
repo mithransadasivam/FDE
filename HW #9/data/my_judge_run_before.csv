@@ -1,0 +1,373 @@
+id,question,expected_answer,expected_behaviour,bot_answer,declined,sources,context,human_correct,human_grounded,seconds,citation_problems,behaviour_problems,judge_correct,judge_grounded,judge_reason
+1,How do I set up MFA on a new phone?,"Raise a ""Reset MFA"" ticket first; once resolved install Northwind Authenticator and scan the QR code (mfa_setup_guide.md)",answer,"# MFA Setup on a New Phone
+
+To set up MFA on a new phone, follow these steps [1]:
+
+1. **Raise a ticket** titled ""Reset MFA"" so the service desk can clear your old MFA registration [1]
+2. **Install the app** - Once the ticket is resolved, install Northwind Authenticator from the App Store or Google Play [1]
+3. **Scan the QR code** - Sign in to any work app. When asked, scan the QR code shown on screen with the app [1]
+4. **Enter the code** - Enter the six-digit code to finish [1]
+
+**Important:** Store your 8 backup codes in the company password manager when you first register [2].",no,"mfa_setup_guide.md, page 1; mfa_setup_guide.md, page 1; new_starter_checklist.md, page 1; Day06_Slide15_policy_vpn_remote_access.pdf, page 1","[1] (mfa_setup_guide.md, page 1)
+# Multi-Factor Authentication (MFA) Setup
+
+Every Northwind account must use MFA. We use the Northwind Authenticator app.
+
+## Setting up MFA on a new phone
+1. Raise a ticket titled ""Reset MFA"" so the service desk can clear your old MFA registration.
+2. Once the ticket is resolved, install Northwind Authenticator from the App Store or Google Play.
+3. Sign in to any work app. When asked, scan the QR code shown on screen with the app.
+4. Enter the six-digit code to finish.
+
+## Lost or stolen phone
+C
+
+[2] (mfa_setup_guide.md, page 1)
+code shown on screen with the app.
+4. Enter the six-digit code to finish.
+
+## Lost or stolen phone
+Call the service desk on extension 4357 straight away, at any hour. They will lock your MFA registration so nobody else can use it.
+
+## Backup codes
+When you first register, the app shows 8 single-use backup codes. Store them in the company password manager, not on paper.
+
+## Notes
+- Codes refresh every 30 seconds.
+- SMS codes are not allowed as an MFA method.
+
+[3] (new_starter_checklist.md, page 1)
+# New Starter IT Checklist
+
+## Before day one (manager's tasks)
+- Submit the ""New starter"" request in the service desk portal at least 5 working days before the start date.
+- Choose the laptop type: Standard or Developer.
+
+## Day one
+1. Collect the laptop from the IT desk on floor 2.
+2. Sign in with the temporary password on your welcome card and set a new one.
+3. Register for MFA with Northwind Authenticator.
+4. Install the NorthLink VPN from the Company Portal.
+5. Join the mandatory security a
+
+[4] (Day06_Slide15_policy_vpn_remote_access.pdf, page 1)
+r VPN access. If you change your phone, raise a
+ticket to reset your MFA registration before you travel.
+4. Session limits
+A VPN session stays connected for a maximum of 12 hours. After 12 hours the session is
+disconnected automatically and you must sign in again with MFA. Sessions that are idle for 60
+minutes are also disconnected.",yes,yes,19.25,,,True,True,"The answer accurately matches the expected answer and all facts are properly cited to source [1] (mfa_setup_guide.md), with the backup codes detail additionally supported by source [2]."
+2,How long do you keep daily server backups?,30 days (backup_and_recovery_runbook.md),answer,Daily server backups are kept for 30 days [1][2].,no,"backup_and_recovery_runbook.md, page 1; data_retention_policy.md, page 1; file_sharing_and_storage.md, page 1; Day06_Slide15_policy_data_handling.pdf, page 2","[1] (backup_and_recovery_runbook.md, page 1)
+# Backup and Recovery Runbook
+
+## Server backups
+- Daily backups run at 02:00 and are kept for 30 days.
+- Monthly backups are kept for 12 months and stored off-site.
+- Backups are encrypted with AES-256.
+
+## Restoring a file or server
+1. Open a ticket in the service desk portal.
+2. Give the server name, the file path, and the date you want to restore from.
+3. Standard restore requests are completed within 4 working hours.
+
+## Laptops
+Laptop files in the Documents folder are synced to cloud stora
+
+[2] (data_retention_policy.md, page 1)
+# Data Retention Policy
+
+| Data type | How long we keep it |
+|---|---|
+| Support tickets | 3 years |
+| System and security logs | 1 year |
+| Email | 7 years |
+| Chat messages | 90 days |
+| Backups | 30 days (daily) / 12 months (monthly) |
+
+## Rules
+- Data past its retention date is deleted automatically each month.
+- Legal hold: if the legal team places a hold, deletion is paused for the affected data.
+- Do not keep copies of company data on personal devices or personal cloud storage.
+
+[3] (file_sharing_and_storage.md, page 1)
+with the link"").
+
+## Deleted files
+Deleted files stay in the recycle bin for 93 days. After that they cannot be recovered except from backups, which only hold files for 30 days.
+
+## USB drives
+USB storage is blocked on company laptops. Use NorthDrive instead.
+
+[4] (Day06_Slide15_policy_data_handling.pdf, page 2)
+4. AI tools
+Customer data, Confidential and Restricted information must never be pasted into public AI tools.
+Only the AI tools on the approved list in the company portal may be used with Internal information.
+5. Retention
+Support tickets are kept for 3 years. System and security logs are kept for 1 year. Contracts are
+kept for 7 years after they end. Information is deleted when its retention period ends.
+6. Disposal
+Paper containing Confidential or Restricted information goes in the locked shre",yes,yes,11.32,,,True,True,The answer correctly states that daily server backups are kept for 30 days and cites two sources that both support this fact.
+3,My VPN keeps cutting out at home. What can I try?,Update NorthLink to 5.2+; use a cable or move closer to the router; switch protocol from Auto to TCP (vpn_troubleshooting.md),answer,"If your VPN connection keeps dropping at home, try these steps:
+
+1. **Check your NorthLink version** – Make sure you're running version 5.2 or later, as older versions drop connections on weak Wi-Fi [1].
+
+2. **Improve your connection** – If you're on Wi-Fi, move closer to your router or connect with a network cable instead [1].
+
+3. **Change the protocol** – Switch the protocol in NorthLink settings from ""Auto"" to ""TCP"". This fixes most random disconnects [1].
+
+4. **Remember the 12-hour limit** – The VPN disconnects automatically after 12 hours, so you'll need to reconnect and sign in again [2].
+
+If these steps don't work, open a ticket on the service desk portal and attach the NorthLink log file (Help > Export logs) [3].",no,"vpn_troubleshooting.md, page 1; vpn_setup_guide.md, page 1; vpn_troubleshooting.md, page 1; remote_work_it_policy.md, page 1","[1] (vpn_troubleshooting.md, page 1)
+# VPN Troubleshooting
+
+## The VPN keeps disconnecting
+- Check that you run NorthLink version 5.2 or later. Older versions drop the connection on weak Wi-Fi.
+- If you are on Wi-Fi, move closer to the router or connect with a network cable.
+- Switch the protocol in NorthLink settings from ""Auto"" to ""TCP"". This fixes most random disconnects.
+
+## Error 809 or ""cannot reach server""
+- This usually means a firewall or hotel/airport network is blocking the VPN. Try your phone's hotspot.
+- Confirm the se
+
+[2] (vpn_setup_guide.md, page 1)
+Service and install ""NorthLink VPN"".
+2. Approve the system extension in System Settings > Privacy & Security, then restart the Mac once.
+3. Start NorthLink, use the same server address, and sign in as above.
+
+## Rules
+- The VPN disconnects automatically after 12 hours. Reconnect and sign in again.
+- Split tunnelling is switched on: only traffic for internal systems goes through the VPN.
+- The VPN is not available on personal phones. Use the web portal instead.
+
+[3] (vpn_troubleshooting.md, page 1)
+a firewall or hotel/airport network is blocking the VPN. Try your phone's hotspot.
+- Confirm the server address is vpn.northwind.example.
+
+## Sign-in fails
+- Check that your password has not expired (passwords expire every 90 days).
+- If the MFA prompt never arrives, see the MFA guide.
+
+## Still stuck
+Open a ticket on the service desk portal and attach the NorthLink log file (Help > Export logs).
+
+[4] (remote_work_it_policy.md, page 1)
+# Remote Work IT Policy
+
+- Work only on company laptops. Personal computers must not be used to access internal systems.
+- Always connect to the NorthLink VPN before opening internal tools.
+- Public Wi-Fi is allowed only with the VPN switched on.
+- Lock your screen when you step away. The laptop locks automatically after 10 minutes.
+- Do not let family members use your work laptop.
+- Home printers must not be used for confidential documents.
+- Staff working abroad for more than 14 days must tell",yes,yes,10.23,,,True,True,"The answer covers all three expected solutions with proper citations to source [1], and the additional information about the 12-hour disconnect limit is accurately cited to source [2]."
+4,What laptop does a new starter get?,Standard 14-inch laptop (new_starter_checklist.md / laptop_standards.md),answer,"# New Starter Laptop Equipment Provision
+
+**Standard equipment provided:**
+- 14-inch standard laptop, a headset, and a docking station if you work on site [1]
+
+**Developer laptops:**
+- 16-inch with 32 GB of memory and require director approval [1]
+
+**Collection:**
+- Collect your laptop from the IT desk on floor 2 on day one [2]
+
+**Laptop replacement:**
+- Laptops are replaced every 4 years, or earlier if they fail and cannot be repaired economically [3]
+
+**Additional equipment:**
+- A second monitor, docking station, or headset can be requested through an equipment request ticket with manager approval, delivered within 5 working days [4]",no,"new_starter_checklist.md, page 1; new_starter_checklist.md, page 1; Day06_Slide15_policy_equipment_and_use.pdf, page 1; Day06_Slide15_policy_equipment_and_use.pdf, page 1","[1] (new_starter_checklist.md, page 1)
+uthenticator.
+4. Install the NorthLink VPN from the Company Portal.
+5. Join the mandatory security awareness course within your first 7 days.
+
+## Standard equipment
+- 14-inch standard laptop, a headset, and a docking station if you work on site.
+- Developer laptops are 16-inch with 32 GB of memory and need director approval.
+
+[2] (new_starter_checklist.md, page 1)
+# New Starter IT Checklist
+
+## Before day one (manager's tasks)
+- Submit the ""New starter"" request in the service desk portal at least 5 working days before the start date.
+- Choose the laptop type: Standard or Developer.
+
+## Day one
+1. Collect the laptop from the IT desk on floor 2.
+2. Sign in with the temporary password on your welcome card and set a new one.
+3. Register for MFA with Northwind Authenticator.
+4. Install the NorthLink VPN from the Company Portal.
+5. Join the mandatory security a
+
+[3] (Day06_Slide15_policy_equipment_and_use.pdf, page 1)
+Equipment and Acceptable Use Policy
+Version 3.2 · Owner: IT Department · Review: annually
+1. Purpose
+This policy covers company-issued equipment and the acceptable use of company systems.
+2. Laptops
+Each employee receives one company laptop. Laptops are replaced every 4 years, or earlier if they
+fail and cannot be repaired economically. Laptops must be locked when unattended and must not
+be left in vehicles.
+3. Additional equipment
+A second monitor, docking station or headset can be requested th
+
+[4] (Day06_Slide15_policy_equipment_and_use.pdf, page 1)
+n vehicles.
+3. Additional equipment
+A second monitor, docking station or headset can be requested through an equipment request
+ticket. Requests require approval from your manager. Standard items are delivered within 5 working
+days.
+4. Damage and loss
+Damaged, lost or stolen equipment must be reported to the service desk within 24 hours. Lost or
+stolen devices are wiped remotely.",yes,yes,9.62,,,True,True,The answer correctly identifies the standard 14-inch laptop for new starters and all facts are properly cited to supporting sources.
+5,I forgot my password and cannot sign in. What do I do?,Use the self-service page reset.northwind.example and approve MFA; if MFA fails contact the service desk (password_policy.md),answer,"If you've forgotten your password and cannot sign in, follow these steps:
+
+1. Go to the self-service page at **reset.northwind.example** [2]
+2. Enter your work email and approve the MFA prompt [2]
+3. Choose a new password that meets these requirements [2]:
+ - At least 14 characters [2]
+ - Must not reuse any of your last 10 passwords [2]
+
+**If you cannot pass the MFA step**, contact the service desk. They will verify your identity with your manager before resetting your password [1]",no,"password_policy.md, page 1; password_policy.md, page 1; Day07_Slide05_kb_error_codes.pdf, page 2; vpn_troubleshooting.md, page 1","[1] (password_policy.md, page 1)
+oose a new password that meets the rules above.
+
+If you cannot pass the MFA step, contact the service desk. They will verify your identity with your manager before resetting.
+
+## Password manager
+Staff must store work passwords in the company password manager (VaultWorks). Do not keep passwords in spreadsheets or sticky notes.
+
+[2] (password_policy.md, page 1)
+# Password Policy
+
+## Requirements
+- At least 14 characters.
+- Must not reuse any of your last 10 passwords.
+- Passwords expire every 90 days. You get an email warning 14 days before.
+- Five wrong attempts in a row lock the account for 30 minutes.
+
+## Resetting a forgotten password
+1. Go to the self-service page at reset.northwind.example.
+2. Enter your work email and approve the MFA prompt.
+3. Choose a new password that meets the rules above.
+
+If you cannot pass the MFA step, contact the servic
+
+[3] (Day07_Slide05_kb_error_codes.pdf, page 2)
+t the guest must register again at the reception kiosk to
+get a new code.
+ACC-401 Account locked
+The account was locked after too many failed sign-in attempts. It unlocks automatically after 15
+minutes, or the service desk can unlock it sooner after checking your identity.
+ACC-409 Password expired
+The password reached its maximum age and must be changed before you can sign in. Change it
+from the self-service portal; the new password must follow the password policy.
+PRN-310 Print job stuck in the
+
+[4] (vpn_troubleshooting.md, page 1)
+a firewall or hotel/airport network is blocking the VPN. Try your phone's hotspot.
+- Confirm the server address is vpn.northwind.example.
+
+## Sign-in fails
+- Check that your password has not expired (passwords expire every 90 days).
+- If the MFA prompt never arrives, see the MFA guide.
+
+## Still stuck
+Open a ticket on the service desk portal and attach the NorthLink log file (Help > Export logs).",yes,yes,8.98,,,True,True,The answer accurately matches the expected answer with proper citations to password_policy.md for all facts presented.
+6,How big a file can I email to a colleague?,25 MB attachment limit; use a NorthDrive link for larger files (email_and_calendar_faq.md),answer,"The maximum email attachment size is 25 MB [1]. For larger files, you should share a NorthDrive link instead [1].",no,"email_and_calendar_faq.md, page 1; Day07_Slide05_kb_error_codes.pdf, page 1; backup_and_recovery_runbook.md, page 1; file_sharing_and_storage.md, page 1","[1] (email_and_calendar_faq.md, page 1)
+# Email and Calendar FAQ
+
+**How big can an email attachment be?** 25 MB. For larger files, share a NorthDrive link.
+
+**How big is my mailbox?** 50 GB. You get a warning at 45 GB.
+
+**How do I set an out-of-office reply?** In Outlook, choose Automatic Replies, set the dates and write your message. You can set a different message for people outside Northwind.
+
+**How do I add a shared mailbox?** Ask the mailbox owner to raise a ticket granting you access. It appears in Outlook within one hour.
+
+**Ca
+
+[2] (Day07_Slide05_kb_error_codes.pdf, page 1)
+ce desk to renew it
+remotely.
+VPN-812 Session time limit reached
+The VPN session reached its maximum length and was disconnected. Sign in again with MFA to
+start a new session. This is expected behaviour, not a fault.
+VPN-815 Connection from a restricted country
+The VPN connection was blocked because it came from a country on the restricted list. Contact the
+security team; access can only be opened after they approve your travel.
+VPN-820 Device health check failed
+The endpoint agent on this devi
+
+[3] (backup_and_recovery_runbook.md, page 1)
+# Backup and Recovery Runbook
+
+## Server backups
+- Daily backups run at 02:00 and are kept for 30 days.
+- Monthly backups are kept for 12 months and stored off-site.
+- Backups are encrypted with AES-256.
+
+## Restoring a file or server
+1. Open a ticket in the service desk portal.
+2. Give the server name, the file path, and the date you want to restore from.
+3. Standard restore requests are completed within 4 working hours.
+
+## Laptops
+Laptop files in the Documents folder are synced to cloud stora
+
+[4] (file_sharing_and_storage.md, page 1)
+# File Sharing and Storage
+
+## NorthDrive
+- Every user has 1 TB of personal storage in NorthDrive.
+- Team folders are created by request and owned by the team lead.
+
+## Sharing files
+- Share with a link set to ""People in Northwind"" by default.
+- Sharing with external people needs the ""Share externally"" option, and links expire after 30 days.
+- Never share confidential files by public link (""Anyone with the link"").
+
+## Deleted files
+Deleted files stay in the recycle bin for 93 days. After that th",yes,yes,9.51,,,True,True,"The answer correctly states the 25 MB limit and NorthDrive recommendation, both properly cited to source [1] which contains this exact information."
+7,I lost my phone on the train - who do I call?,Call the service desk on extension 4357 straight away so MFA is locked (mfa_setup_guide.md),answer,"If you've lost your phone, here's what to do:
+
+**Immediate action:**
+Call the service desk on extension 4357 straight away, at any hour. They will lock your MFA registration so nobody else can use it. [1]
+
+**If it's a security incident:**
+You can also report lost devices to security@northwind.example. [2]",no,"mfa_setup_guide.md, page 1; phishing_and_security_reporting.md, page 1; Day06_Slide15_policy_it_support_slas.pdf, page 2","[1] (mfa_setup_guide.md, page 1)
+code shown on screen with the app.
+4. Enter the six-digit code to finish.
+
+## Lost or stolen phone
+Call the service desk on extension 4357 straight away, at any hour. They will lock your MFA registration so nobody else can use it.
+
+## Backup codes
+When you first register, the app shows 8 single-use backup codes. Store them in the company password manager, not on paper.
+
+## Notes
+- Codes refresh every 30 seconds.
+- SMS codes are not allowed as an MFA method.
+
+[2] (phishing_and_security_reporting.md, page 1)
+# Phishing and Security Incident Reporting
+
+## Suspicious email
+1. Do not click links or open attachments.
+2. Use the ""Report phishing"" button in Outlook. This sends it to the security team and removes it from your inbox.
+3. If you already clicked a link or entered your password, change your password and call the service desk on extension 4357 immediately.
+
+## Other security incidents
+Report lost devices, unknown people in secure areas, or strange account activity to security@northwind.example.
+
+[3] (Day06_Slide15_policy_it_support_slas.pdf, page 2)
+4. Response and resolution targets
+P1: response within 15 minutes, resolution target 4 hours. P2: response within 1 hour, resolution
+target 1 business day. P3: response within 4 hours, resolution target 3 business days. P4: response
+within 1 business day, resolution target 10 business days.
+5. Major incidents
+Every P1 incident receives a major incident review within 5 business days of resolution. The review
+records the timeline, root cause and follow-up actions.
+6. How to raise a ticket
+Raise ti",yes,yes,9.21,,,True,True,"The answer correctly cites the expected action from source [1] and adds supplementary information from source [2], all properly grounded in the documents."
+8,What is the salary band for a senior engineer?,Not in the documents - should decline,decline,I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example.,yes,,,yes,yes,5.36,,,True,True,"The chatbot appropriately declined to answer, matching the expected response that this information is not in the documents."
+9,Which printer should I use on floor 3?,Not in the documents (only floor 1 and floor 2 printers are covered) - should decline,decline,I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example.,yes,,,yes,yes,10.43,,,True,True,"The chatbot appropriately declined to answer, matching the expected response that floor 3 printers are not covered in the documents."
+10,Does Northwind support Linux laptops?,Not in the documents - should decline,decline,I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example.,yes,,,yes,yes,10.19,,,True,True,"The chatbot appropriately declined to answer when no sources were available, matching the expected response."
