@@ -1,0 +1,7 @@
+file,error_code,application,severity
+Day10_Slide09_screenshot_01_vpn.png,VPN-809,SecureLink VPN,P3
+Day10_Slide09_screenshot_02_mail.png,ACC-409,Company Mail,P3
+Day10_Slide09_screenshot_03_printer.png,PRN-310,Print Queue|FLOOR3-PRINTER-A|printer,P3
+Day10_Slide09_screenshot_04_wifi.png,WIFI-102,Wi-Fi|CORP-SECURE,P3
+Day10_Slide09_screenshot_05_firewall.png,NET-2231,browser|firewall,P3
+Day10_Slide09_screenshot_06_finance.png,,Finance Portal,P1

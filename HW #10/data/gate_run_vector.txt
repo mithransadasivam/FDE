@@ -1,0 +1,14 @@
+Mode: vector
+1/2 Retrieval test set ...
+2/2 Asking the chatbot and checking the answers ...
+  asked 1/10  asked 2/10  asked 3/10  asked 4/10  asked 5/10  asked 6/10  asked 7/10  asked 8/10  asked 9/10  asked 10/10
+
+  FAIL  hit_rate                    0.9   needs >= 0.95
+  ok    citation_pass_rate          1.0   needs >= 1.0
+  ok    behaviour_rate              1.0   needs >= 0.9
+  ok    judge_correct_rate          0.9   needs >= 0.9
+  ok    judge_grounded_rate         1.0   needs >= 0.9
+  ok    avg_seconds                3.83   needs <= 15
+
+QUALITY GATE: FAIL   (report: data/quality_report.json)
+exit code: 1

@@ -1,0 +1,111 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____ test_an_error_code_question_cites_the_error_code_reference[chromium] _____
+
+page = <Page url='http://127.0.0.1:8599/'>, app_url = 'http://127.0.0.1:8599'
+
+    def test_an_error_code_question_cites_the_error_code_reference(page: Page, app_url: str):
+        """A user who asks about an error code must see the error-code reference as a source."""
+        ask(page, app_url, "What does error VPN-809 mean?")
+>       expect(page.get_by_text("Day07_Slide05_kb_error_codes.pdf").first).to_be_visible(timeout=TIMEOUT)
+E       AssertionError: Locator expected to be visible
+E       Actual value: None
+E       Error: element(s) not found 
+E       Call log:
+E         - Expect "to_be_visible" get_by_text("Day07_Slide05_kb_error_codes.pdf").first with timeout 90000ms
+E         - waiting for get_by_text("Day07_Slide05_kb_error_codes.pdf").first
+E       
+E       Aria snapshot:
+E       - heading "\U0001f6e0 IT Help Desk Assistant" [level=2]
+E       - paragraph: Answers from your team's documents
+E       - heading "KNOWLEDGE BASE" [level=3]
+E       - paragraph:
+E         - strong: Northwind IT docs
+E         - text: READY
+E       - paragraph: 22 documents · 54 chunks
+E       - heading "SETTINGS" [level=3]
+E       - table:
+E         - rowgroup:
+E           - row "Setting Value":
+E             - columnheader "Setting":
+E               - paragraph: Setting
+E             - columnheader "Value":
+E               - paragraph: Value
+E         - rowgroup:
+E           - row "Chunk size 500":
+E             - rowheader "Chunk size":
+E               - paragraph: Chunk size
+E             - cell "500":
+E               - paragraph: "500"
+E           - row "Overlap 100":
+E             - rowheader "Overlap":
+E               - paragraph: Overlap
+E             - cell "100":
+E               - paragraph: "100"
+E           - row "Chunks retrieved 4":
+E             - rowheader "Chunks retrieved":
+E               - paragraph: Chunks retrieved
+E             - cell "4":
+E               - paragraph: "4"
+E           - row "Minimum score 0.55":
+E             - rowheader "Minimum score":
+E               - paragraph: Minimum score
+E             - cell "0.55":
+E               - paragraph: "0.55"
+E       - heading "LATEST TEST RUN" [level=3]
+E       - paragraph: No test run yet
+E       - heading "LAST QUESTION" [level=3]
+E       - table:
+E         - rowgroup:
+E           - row "Measure Value":
+E             - columnheader "Measure":
+E               - paragraph: Measure
+E             - columnheader "Value":
+E               - paragraph: Value
+E         - rowgroup:
+E           - row "Time taken 3.62 s":
+E             - rowheader "Time taken":
+E               - paragraph: Time taken
+E             - cell "3.62 s":
+E               - paragraph: 3.62 s
+E           - row "Chunks used 4":
+E             - rowheader "Chunks used":
+E               - paragraph: Chunks used
+E             - cell "4":
+E               - paragraph: "4"
+E           - row "Best match score 0.73":
+E             - rowheader "Best match score":
+E               - paragraph: Best match score
+E             - cell "0.73":
+E               - paragraph: "0.73"
+E       - button "\U0001f5d1 Clear chat":
+E         - paragraph: \U0001f5d1 Clear chat
+E       - banner:
+E         - button "Deploy"
+E         - button "Main menu"
+E       - heading "\U0001f6e0 IT Help Desk Assistant" [level=1]:
+E         - text: \U0001f6e0 IT Help Desk Assistant
+E         - link "Link to heading":
+E           - /url: "#it-help-desk-assistant"
+E       - paragraph: Answers only from your team's documents · every fact cited
+E       - tablist:
+E         - tab "Chat" [selected]:
+E           - paragraph: Chat
+E         - tab "Knowledge base":
+E           - paragraph: Knowledge base
+E         - tab "Test results":
+E           - paragraph: Test results
+E       - tabpanel "Chat":
+E         - text: face
+E         - paragraph: What does error VPN-809 mean?
+E         - text: smart_toy
+E         - paragraph: According to the sources, Error 809 or "cannot reach server" usually means a firewall or hotel/airport network is blocking the VPN [2]. The recommended solution is to try your phone's hotspot [2].
+E         - paragraph: "[2] vpn_troubleshooting.md · page 1"
+E         - paragraph: 3.62 s · 4 chunks
+E         - textbox "Ask a question about your IT documents…"
+E         - button "Send message" [disabled]
+
+tests\e2e\e2e_my_checks.py:10: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/e2e/e2e_my_checks.py::test_an_error_code_question_cites_the_error_code_reference[chromium]
+1 failed in 100.07s (0:01:40)

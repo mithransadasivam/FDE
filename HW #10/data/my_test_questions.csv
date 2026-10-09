@@ -1,0 +1,11 @@
+question,expected_answer,expected_behaviour
+How do I set up MFA on a new phone?,"Raise a ""Reset MFA"" ticket first; once resolved install Northwind Authenticator and scan the QR code (mfa_setup_guide.md)",answer
+How long do you keep daily server backups?,30 days (backup_and_recovery_runbook.md),answer
+My VPN keeps cutting out at home. What can I try?,Update NorthLink to 5.2+; use a cable or move closer to the router; switch protocol from Auto to TCP (vpn_troubleshooting.md),answer
+What laptop does a new starter get?,Standard 14-inch laptop (new_starter_checklist.md / laptop_standards.md),answer
+I forgot my password and cannot sign in. What do I do?,Use the self-service page reset.northwind.example and approve MFA; if MFA fails contact the service desk (password_policy.md),answer
+How big a file can I email to a colleague?,25 MB attachment limit; use a NorthDrive link for larger files (email_and_calendar_faq.md),answer
+I lost my phone on the train - who do I call?,Call the service desk on extension 4357 straight away so MFA is locked (mfa_setup_guide.md),answer
+What is the salary band for a senior engineer?,Not in the documents - should decline,decline
+Which printer should I use on floor 3?,Not in the documents (only floor 1 and floor 2 printers are covered) - should decline,decline
+Does Northwind support Linux laptops?,Not in the documents - should decline,decline

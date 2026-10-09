@@ -1,0 +1,4 @@
+file,got_asset_tag,got_device_type,got_serial_number,got_purchase_date,got_model,got_department,ok_asset_tag,ok_device_type,ok_serial_number,ok_purchase_date
+Day10_HW_Slide03_asset_label_01.png,IT-004512,laptop,7KX4-2209-0M1,2023-03-14,Orbis L14 Gen 3,Finance,True,True,False,True
+Day10_HW_Slide03_asset_label_02.png,IT-006078,docking station,DK2-55810-A,2024-11-02,Kestrel Dock 2,Service Desk,True,True,True,True
+Day10_HW_Slide03_asset_label_03.png,IT-005231,monitor,M24-90337-K,2022-06-27,Orbis M24 monitor 24 inch,HR,True,True,True,True
