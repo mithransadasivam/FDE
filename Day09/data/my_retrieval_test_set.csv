@@ -1,0 +1,21 @@
+question,previous_question,kind,expected_source,evidence,expected_answer
+How do I set up MFA on a new phone?,,plain,mfa_setup_guide.md,install Northwind Authenticator from the App Store,"Raise a Reset MFA ticket, install Northwind Authenticator, scan the QR code"
+How long do you keep daily server backups?,,plain,backup_and_recovery_runbook.md,kept for 30 days,30 days
+My VPN keeps cutting out at home. What can I try?,,plain,vpn_troubleshooting.md,Switch the protocol in NorthLink settings,"Update NorthLink, use a cable, switch protocol from Auto to TCP"
+What laptop does a new starter get?,,plain,new_starter_checklist.md,"14-inch standard laptop, a headset","14-inch standard laptop, headset and docking station"
+I forgot my password and cannot sign in. What do I do?,,plain,password_policy.md,self-service page at reset.northwind.example,Use the self-service page and approve MFA
+How big a file can I email to a colleague?,,plain,email_and_calendar_faq.md,25 MB. For larger files,25 MB; use a NorthDrive link for larger files
+How early should I refresh the security certificate on my work laptop for remote access?,,reworded,Day06_Slide15_policy_vpn_remote_access.pdf,at least 14 days before it expires,At least 14 days before it expires
+"If I accidentally delete a document, how long can I get it back?",,reworded,file_sharing_and_storage.md,stay in the recycle bin for 93 days,93 days
+Am I allowed to paste customer information into a public chatbot?,,reworded,Day06_Slide15_policy_data_handling.pdf,must never be pasted into public AI tools,"No, never"
+What should I do if my laptop's battery looks puffed up?,,reworded,Day06_Slide15_policy_equipment_and_use.pdf,stop using the laptop immediately,"Stop using it, do not charge it, bring it to the IT desk"
+What does error VPN-809 mean?,,exact code,Day07_Slide05_kb_error_codes.pdf,VPN certificate on this laptop has expired,The VPN certificate has expired
+How do I fix NET-2240?,,exact code,Day07_Slide05_kb_error_codes.pdf,run ipconfig /flushdns from a command prompt,"Restart the laptop, then run ipconfig /flushdns"
+"I keep getting WIFI-117, what now?",,exact code,Day07_Slide05_kb_error_codes.pdf,Guest Wi-Fi access lasts 8 hours,Guest access expired; register again at the reception kiosk
+What is VPN-820?,,exact code,Day07_Slide05_kb_error_codes.pdf,endpoint agent on this device is missing or not reporting as healthy,Device health check failed; update the endpoint agent
+How do I fix that if I'm not in the office?,What does error VPN-809 mean?,follow-up,Day07_Slide05_kb_error_codes.pdf,call the service desk to renew it remotely,Call the service desk to renew the certificate remotely
+And for P3?,What is the first response time for a P1 ticket?,follow-up,Day06_Slide15_policy_it_support_slas.pdf,P3: response within 4 hours,4 hours
+What if I lose the phone instead?,How do I set up MFA on a new phone?,follow-up,mfa_setup_guide.md,Call the service desk on extension 4357 straight away,Call the service desk on extension 4357 straight away
+"hey, quick one, i've had my laptop forever and it's slow lol. is there like a schedule for swapping them out, and does IT warn me first??",,messy,laptop_standards.md,about 2 months before your replacement,Every 4 years; IT contacts you about 2 months before
+"hello, i'm stuck at an airport hotel and the vpn just wont connect, says cannot reach server or something, any ideas thanks",,messy,vpn_troubleshooting.md,firewall or hotel/airport network is blocking the VPN,Try your phone's hotspot
+"Morning! got a weird email asking me to confirm my password, i did click the link already, panicking a bit, what do i do?",,messy,phishing_and_security_reporting.md,If you already clicked a link or entered your password,Change your password and call the service desk on extension 4357

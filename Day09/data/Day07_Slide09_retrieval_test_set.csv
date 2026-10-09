@@ -1,0 +1,21 @@
+question,previous_question,kind,expected_source,evidence,expected_answer
+How long can a VPN session stay connected?,,plain,Day06_Slide15_policy_vpn_remote_access.pdf,maximum of 12 hours,12 hours
+What is the minimum password length?,,plain,Day06_Slide15_policy_password_and_accounts.pdf,at least 14 characters long,At least 14 characters
+How long are system logs kept?,,plain,Day06_Slide15_policy_data_handling.pdf,security logs are kept for 1 year,1 year
+What is the response target for a P2 incident?,,plain,Day06_Slide15_policy_it_support_slas.pdf,P2: response within 1 hour,Within 1 hour
+How often is privileged access reviewed?,,plain,Day06_Slide15_policy_password_and_accounts.pdf,reviewed every quarter,Every quarter
+How quickly must lost equipment be reported?,,plain,Day06_Slide15_policy_equipment_and_use.pdf,reported to the service desk within 24 hours,Within 24 hours
+How many times can I type my password wrong before I'm shut out?,,reworded,Day06_Slide15_policy_password_and_accounts.pdf,locked after 5 failed sign-in attempts,5 attempts
+Can I plug in a memory stick to copy files?,,reworded,Day06_Slide15_policy_equipment_and_use.pdf,USB storage devices are blocked by default,"No, USB storage is blocked unless the security team approves an exception"
+Is it okay to paste customer data into a public chatbot?,,reworded,Day06_Slide15_policy_data_handling.pdf,must never be pasted into public AI tools,No
+When does someone who quits lose their logins?,,reworded,Day06_Slide15_policy_password_and_accounts.pdf,disabled by 18:00 on their last working day,By 18:00 on their last working day
+What does error VPN-809 mean?,,exact code,Day07_Slide05_kb_error_codes.pdf,VPN-809 Certificate expired,The VPN certificate has expired; renew it from the self-service portal on the office network or call the service desk
+How do I fix VPN-820?,,exact code,Day07_Slide05_kb_error_codes.pdf,Update the endpoint agent from the software catalogue,Update the endpoint agent from the software catalogue and restart
+I'm getting NET-2240. What should I do?,,exact code,Day07_Slide05_kb_error_codes.pdf,ipconfig /flushdns,"Restart; if it continues, run ipconfig /flushdns"
+What is WIFI-102?,,exact code,Day07_Slide05_kb_error_codes.pdf,does not have the company Wi-Fi profile,The laptop lacks the company Wi-Fi profile; reinstall it from the software catalogue
+The printer shows PRN-310,,exact code,Day07_Slide05_kb_error_codes.pdf,Cancel the job from the print queue window,"Cancel the stuck job and send it again; raise a P3 ticket if the queue won't clear"
+And what about P3?,What is the response target for a P1 incident?,follow-up,Day06_Slide15_policy_it_support_slas.pdf,P3: response within 4 hours,Within 4 hours
+When should I renew it?,How long is a VPN certificate valid?,follow-up,Day06_Slide15_policy_vpn_remote_access.pdf,at least 14 days before it expires,At least 14 days before it expires
+How long does delivery take?,How do I request a second monitor?,follow-up,Day06_Slide15_policy_equipment_and_use.pdf,delivered within 5 working days,Within 5 working days
+"hi team, hope ur well! quick one, my boss wants to know how long we hang on to old support tickets before they get deleted?? thx",,messy,Day06_Slide15_policy_data_handling.pdf,Support tickets are kept for 3 years,3 years
+"laptop battery looks all puffy and the case is bending a bit, ok to keep using it till friday? was going to post it back to IT",,messy,Day06_Slide15_policy_equipment_and_use.pdf,If a laptop battery is swelling,"No: stop using it, don't charge it, bring it to the IT desk; don't post it"
