@@ -12,8 +12,6 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-  schedule:
-    - cron: "0 2 * * *"
 
 # This folder's files live in Day09/, so every run step starts there.
 defaults:
@@ -40,7 +38,7 @@ jobs:
         run: python -m pytest tests/e2e/e2e_streaming.py tests/e2e/e2e_edge_cases.py
 
   quality:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

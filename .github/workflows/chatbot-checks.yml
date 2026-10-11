@@ -1,9 +1,9 @@
 name: Chatbot project checks
 
 # Two jobs with different jobs to do:
-#   fast     every push and every pull request: unit tests and the browser tests with the FAKE chatbot.
+#   fast     every push and pull request (and on demand): unit tests and the browser tests with the FAKE chatbot.
 #            No models, no Ollama, no API key, no cost. Takes a few minutes.
-#   quality  every night and on demand: builds the index with Ollama, runs the 9-dimension gate against the REAL chatbot
+#   quality  on demand only (the "Run workflow" button; no nightly schedule, to save cost): builds the index with Ollama, runs the 9-dimension gate against the REAL chatbot
 #            and the judged browser tests. Uses the API key from the repository's secrets. Takes about 40 minutes and a
 #            few tens of cents. It only WARNS: a red quality job does not block merging (a model can have a bad night).
 on:
@@ -11,8 +11,6 @@ on:
     paths: ["Chatbot project/**", ".github/workflows/chatbot-checks.yml"]
   pull_request:
     paths: ["Chatbot project/**", ".github/workflows/chatbot-checks.yml"]
-  schedule:
-    - cron: "30 5 * * *"   # every night at 05:30 UTC, before the working day
   workflow_dispatch:       # the "Run workflow" button; runs both jobs
 
 permissions:
@@ -29,7 +27,6 @@ concurrency:
 
 jobs:
   fast:
-    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -66,7 +63,7 @@ jobs:
           retention-days: 7
 
   quality:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
