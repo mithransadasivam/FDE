@@ -26,7 +26,7 @@ TOP_K = 4
 # Answers
 # Guard 1: below this similarity no chunk counts as relevant (0.51 for an unrelated
 # question, 0.61 for the lowest real answer in the first test). Tuned in Phase 7.
-MIN_SCORE = 0.0  # DEMO BREAK: Guard 1 never declines
+MIN_SCORE = 0.55
 # Low temperature: answers should stay close to the sources and be repeatable.
 TEMPERATURE = 0.1
 MAX_TOKENS = 400
