@@ -20,3 +20,4 @@ logs/
 test-results/
 playwright-report/
 node_modules/
+data/thumbs_down.csv

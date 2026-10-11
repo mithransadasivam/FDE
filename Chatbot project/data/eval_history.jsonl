@@ -3,3 +3,8 @@
 {"time": "2026-10-10T20:20:34+00:00", "label": "Final: smart mode, all fixes", "mode": "smart", "passing": 8, "total": 8, "ready": true, "failing": []}
 {"time": "2026-10-10T23:59:19+00:00", "label": "Smart mode (follow-ups rewritten)", "mode": "smart", "passing": 9, "total": 9, "ready": true, "failing": []}
 {"time": "2026-10-11T00:13:16+00:00", "label": "After Day 10 (scans in the index)", "mode": "smart", "passing": 9, "total": 9, "ready": true, "failing": []}
+{"time": "2026-10-11T01:59:26+00:00", "label": "After CTX-03 fix (earlier question in the answer prompt)", "mode": "smart", "passing": 9, "total": 9, "ready": true, "failing": []}
+{"time": "2026-10-11T02:16:01+00:00", "label": "After CTX-03 fix (earlier question + policy-style second search)", "mode": "smart", "passing": 9, "total": 9, "ready": true, "failing": []}
+{"time": "2026-10-11T02:53:59+00:00", "label": "After languages (translated search, safety on the translation)", "mode": "smart", "passing": 8, "total": 9, "ready": false, "failing": ["security"]}
+{"time": "2026-10-11T03:10:10+00:00", "label": "After languages (translated search, safety on the translation, instruction-leak rule)", "mode": "smart", "passing": 8, "total": 9, "ready": false, "failing": ["ragas"]}
+{"time": "2026-10-11T03:41:11+00:00", "label": "Final: languages + follow-up fix (standalone question in the prompt)", "mode": "smart", "passing": 9, "total": 9, "ready": true, "failing": []}

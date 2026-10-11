@@ -30,6 +30,7 @@ MIN_SCORE = 0.55
 # Low temperature: answers should stay close to the sources and be repeatable.
 TEMPERATURE = 0.1
 MAX_TOKENS = 400
+FOLLOW_UP_EXTRA_CHUNKS = 2  # a follow-up gets up to this many extra chunks from its second (policy-style) query, on top of TOP_K
 JUDGE_TEMPERATURE = 0.0  # a judge should give the same verdict every time
 JUDGE_MAX_TOKENS = 400
 # Images (Day 10 exercise): what a user may attach, and how small an image is made before it goes to the vision model.

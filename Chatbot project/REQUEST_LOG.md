@@ -157,3 +157,12 @@ Every request sent to Claude Code, with one line on what happened.
 
 ## Wrap-up
 60. Set each upload box to show its real size limit (audio 5 MB, documents 10 MB, chat pictures 5 MB) instead of Streamlit's default 200 MB. Ran the Day 9 CI demo on GitHub (broken branch red, fix green, quality run by hand green, key masked), took the hand-in screenshots, updated the README counts (25 documents, 65 chunks) and wrote `Project_Report.pdf`, a plain-English report with the screenshots.
+
+## Improvement 1: fix CTX-03
+61. Found two causes: the answer model never saw the earlier question, and the search missed the policy sentence about who a rule applies to. Fixed both (earlier question in the answer prompt as data; the rewrite returns two queries, first results kept plus up to 2 extras). Two wrong turns, both reported in EVAL_REPORT.md. 710 unit tests pass; full evaluation 75 of 75; gate 9 of 9.
+
+## Improvement 2: feedback buttons
+62. Added thumbs up/down under every answer. A thumbs down asks for a reason from a fixed list and a tick box (off by default) to also save the question. Saved to `logs/feedback.jsonl` as numbers, file names and the reason only; the Evaluation tab got a review section (counts, reasons, files most often cited in a thumbs down, CSV download) and `scripts/feedback_report.py` prints it. 15 unit tests and 4 browser journeys; tests never write to the real log. 725 unit tests pass.
+
+## Improvement 3: answer in the user's language
+63. Measured that search fails in other languages (right chunk in the top 4 for 4 to 5 of 8 questions against 8 of 8 in English), then built a plain-code language guess, a translated English search query, an answer in the question's language, translated decline and refusal sentences for Spanish, French and German, and a safety check on the English translation. The full run caught a Security regression (a French attack): fixed an eval checker that compared text with the English sentence, and added a narrow code rule for asking for the chatbot's instructions. Corrected fix 1 too: the answer model gets the standalone question, not the raw earlier question, after RAGAS faithfulness dropped (0.90 to 0.85) because of RAG-15. 33 of 33 language checks, 75 of 75 evaluation, gate 9 of 9, 799 unit tests.

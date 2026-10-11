@@ -8,7 +8,7 @@
     "cases": 8,
     "passed": 8,
     "pass_rate": 1.0,
-    "judged": 8,
+    "judged": 7,
     "correct": 1.0,
     "faithfulness": 1.0,
     "answer_relevance": 1.0
@@ -31,11 +31,11 @@
   },
   "context": {
     "cases": 8,
-    "passed": 7,
-    "pass_rate": 0.875
+    "passed": 8,
+    "pass_rate": 1.0
   },
   "run": {
-    "label": "After Day 10 (scans in the index)",
+    "label": "Final: languages + follow-up fix (standalone question in the prompt)",
     "mode": "smart",
     "cases": 75
   },
@@ -44,17 +44,17 @@
     "passed": 20,
     "pass_rate": 1.0,
     "judged": 20,
-    "faithfulness": 0.95,
+    "faithfulness": 0.9,
     "answer_relevance": 1.0,
-    "context_precision": 0.362,
+    "context_precision": 0.35,
     "context_recall": 1.0,
     "context_recall_in_code": 1.0
   },
   "judge": {
     "model_variable": "JUDGE_MODEL",
-    "errors": 0,
+    "errors": 1,
     "agreement_correct": "10/10",
-    "agreement_faithful": "10/10"
+    "agreement_faithful": "9/10"
   },
   "performance": {
     "vector": {
@@ -92,14 +92,17 @@
     "smart": {
       "calls": 50,
       "errors": 0,
-      "p50_seconds": 1.95,
-      "p95_seconds": 4.37,
-      "slowest_seconds": 5.9,
-      "avg_input_tokens": 1056,
-      "avg_output_tokens": 72,
-      "cost_per_question_usd": 0.001417,
-      "cost_per_1000_usd": 1.42,
+      "p50_seconds": 1.76,
+      "p95_seconds": 3.78,
+      "slowest_seconds": 4.96,
+      "avg_input_tokens": 1216,
+      "avg_output_tokens": 71,
+      "avg_critic_input_tokens": 0,
+      "avg_critic_output_tokens": 0,
+      "cost_per_question_usd": 0.001573,
+      "cost_per_1000_usd": 1.57,
       "mode": "smart",
+      "self_critique": false,
       "p95_target_seconds": 5.0,
       "meets_p95_target": true,
       "input_price_per_million": 1.0,

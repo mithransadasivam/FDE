@@ -136,7 +136,7 @@ Kept after Day 7: vector. After the Day 8 follow-up tests: **smart** (it only re
 | 04 Security | 10 / 10, indirect untested | 15 / 15 and the poisoned document resisted |
 | 05 Robustness | 6 / 9 | 9 / 9 |
 | 06 Performance | not measured | p95 4.37 s, $0.0014 per question |
-| 07 Context | 6 / 8 | 7 / 8 |
+| 07 Context | 6 / 8 | 8 / 8 (after a later fix) |
 | 08 RAGAS | faithfulness 1.00, recall 1.00, precision 0.39 | faithfulness 0.95, recall 1.00, precision 0.36 |
 | **Gate** | **3 of 8 pass** | **8 of 8: READY** |
 
@@ -182,7 +182,7 @@ A whole-project review was done in Part 1 and the findings are in [SECURITY_REVI
 
 ## Known limits
 
-- **One follow-up still fails (CTX-03):** "Is that the same for contractors?" after a question about the 12-hour VPN limit. The two facts needed are in two different chunks and no single search finds both.
+- **Follow-ups are only tested on 8 conversations.** CTX-03 ("Is that the same for contractors?") was fixed in a later round (the answer model now sees the earlier question, and the search adds a policy-style second query), and the full suite is now 75 of 75, but that is a small set and one more follow-up of a new kind could fail.
 - **My documents and the class PDFs disagree on 5 facts** (password expiry 90 vs 180 days, lockout 30 vs 15 minutes, service desk hours, lost-equipment deadline, guest Wi-Fi midnight vs 8 hours). The chatbot can quote either one, and the judge sometimes marks an answer wrong because of it.
 - **The follow-up detector is a heuristic** written after seeing which questions failed. Small test sets (20 retrieval questions, 8 conversations) mean one question moves a score by 5 to 12 points.
 - **The judge and the self-critique reviewer are the same model**, so a self-critique score is not independent of the judge's.
@@ -208,3 +208,11 @@ specs/      the browser test plan
 ```
 
 Also in the root: `REQUIREMENTS.md` (what it must do), `CLAUDE.md` (project rules for Claude Code), `REQUEST_LOG.md` (every request sent, phase by phase), `SECURITY_REVIEW.md`, `RAG_DECISION.md`, `PART2_NOTES.md`, `EVAL_REPORT.md` and `REFLECTION.md`.
+
+### Feedback (`app/feedback.py`)
+
+Every answer has 👍 and 👎. A 👎 asks "What was wrong?" with a fixed list (wrong answer, missed something, wrong source, should have answered, should have declined, other) and an **unticked** box to also save the question. What is saved in `logs/feedback.jsonl` is the rating, the reason, whether the bot answered, declined or refused, the search score and the file names it cited, never the answer. The Evaluation tab shows the totals, the reasons and which files get the most 👎, and `python -m scripts.feedback_report` saves the 👎 as `data/thumbs_down.csv`, a list of candidates for new test cases.
+
+### Other languages (`app/language.py`)
+
+A question in Spanish, French or German gets an answer in that language. A plain-code guess spots the language (no model call); the question is turned into an English search query (one model call) because the documents are English and the search model finds them far better from English; the answer is written in the question's language; and the fixed decline and refusal sentences are shown translated. The safety check also runs on the English translation. Measured on the real models: 33 of 33 (7 answered, 3 declined and 1 refused per language, in the right language). Limits: only Spanish, French and German have translated fixed sentences (Portuguese and Italian are detected but those sentences stay in English), the interface and the input-check messages stay in English, and the translations of the fixed sentences should be checked by a native speaker.

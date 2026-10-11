@@ -33,6 +33,11 @@ UNSAFE_PATTERNS = [
      r"\b(personal|private|home|my own|usb|stick|dropbox|gmail|google drive|chatgpt|public ai|external)\b"),
     ("pirated software",
      r"\b(crack(ed|s)?|pirat(e|ed)|keygen|key generator|unlicensed|license bypass|licence bypass|warez)\b"),
+    # Asking the chatbot for its own instructions, or to drop them. Narrow on purpose: "what are the printer instructions?" and "tell me the
+    # rules for sharing files" must still be answered, so only "system prompt"-style words and "ignore your/previous instructions" count.
+    ("reveal or drop the chatbot's instructions",
+     r"\b(system|initial|hidden|secret|original|developer) (prompt|instructions)\b|"
+     r"\b(ignore|forget|disregard)\b.{0,20}\b(your|previous|prior|above|earlier|all)\b.{0,20}\b(instructions?|rules|guidelines)\b"),
 ]
 _COMPILED = [(name, re.compile(pattern, re.IGNORECASE)) for name, pattern in UNSAFE_PATTERNS]
 

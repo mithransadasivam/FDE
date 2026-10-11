@@ -22,6 +22,7 @@ from app.llm import call_vision
 from app.scanned import estimate, pages_to_read
 from app.uploads import UploadError, add_upload, inspect_upload, read_unread_pages
 from app.embeddings import embed_documents
+from app.feedback import REASONS, FeedbackError, read_feedback, record_feedback, summarize as summarize_feedback, to_csv as feedback_csv
 from app.illustrate import IllustrationError, illustrate
 from app.fake_chat import fake_draw
 from app.config import AUDIO_MAX_BYTES, IMAGE_MAX_BYTES, ILLUSTRATIONS_ENABLED, IMAGE_COST_USD, AUDIO_MAX_SECONDS, AUDIO_TYPES, MAX_UPLOAD_BYTES, MAX_VISION_PAGES, TRANSCRIPTS_DIR
@@ -106,6 +107,49 @@ MB = 1024 * 1024  # the upload boxes show their real limits, in megabytes
 
 def pages(n: int) -> str:
     return f"{n} page{'s' if n != 1 else ''}"
+
+
+def save_rating(index: int, rating: str, reason: str = "", include_question: bool = False) -> None:
+    """Save the rating for the answer at `index` (numbers and file names only; the question only if the person opted in) and remember it."""
+    message = st.session_state.messages[index]
+    asked = st.session_state.messages[index - 1]["content"] if index > 0 else ""
+    outcome = "refused" if message.get("refused") else "declined" if message.get("declined") else "answered"
+    try:
+        record_feedback(rating, outcome, message.get("best_score"), message.get("chunks_used", 0), [s["source"] for s in message.get("sources", [])],
+                        reason, asked, include_question)
+    except FeedbackError:
+        return
+    message["feedback"] = rating
+    st.session_state.feedback_open = None
+
+
+def rate_up(index: int) -> None:
+    save_rating(index, "up")
+
+
+def open_down(index: int) -> None:
+    st.session_state.feedback_open = index
+
+
+def send_down(index: int) -> None:
+    reason = st.session_state.get(f"fb_reason_{index}", "")
+    save_rating(index, "down", reason if reason in REASONS else "", bool(st.session_state.get(f"fb_question_{index}", False)))
+
+
+def show_feedback_area(msg: dict, index: int) -> None:
+    """Thumbs up / down under an answer. A thumbs down asks for a reason from a fixed list, and for permission before the question is saved."""
+    with st.container(key=f"feedback_{index}"):
+        if msg.get("feedback"):
+            st.caption("Thanks for the feedback." if msg["feedback"] == "up" else "Thanks. This will be looked at when the answers are reviewed.")
+            return
+        if st.session_state.get("feedback_open") == index:
+            st.selectbox("What was wrong?", list(REASONS), index=None, placeholder="Pick a reason (optional)", key=f"fb_reason_{index}")
+            st.checkbox("Also save my question, to help fix it (leave unticked to keep it private)", key=f"fb_question_{index}")
+            st.button("Send", key=f"fb_send_{index}", on_click=send_down, args=(index,))
+            return
+        up, down, _ = st.columns([1, 1, 8])
+        up.button("👍", key=f"fb_up_{index}", on_click=rate_up, args=(index,), help="This answer helped")
+        down.button("👎", key=f"fb_down_{index}", on_click=open_down, args=(index,), help="Something was wrong with this answer")
 
 
 def request_illustration(index: int) -> None:
@@ -216,6 +260,7 @@ def show_message(msg: dict, index: int = 0) -> None:
                     st.caption(f"Searched for: {md_safe(msg['searched_for'])}")
             show_ticket_area(msg, index)
             show_illustration_area(msg, index)
+            show_feedback_area(msg, index)
 
 
 def write_down_recording() -> None:
@@ -253,6 +298,28 @@ def show_voice_area() -> None:
         st.text_area("What I heard (fix it if it is wrong)", key="voice_text", max_chars=MAX_QUESTION_CHARS)
         st.caption(st.session_state.get("voice_info", ""))
         st.button("Ask this question", on_click=ask_what_was_heard, type="primary", key="voice_ask")
+
+
+def show_feedback_review() -> None:
+    """What people said about the answers: counts, the reasons, which files get the most thumbs down, and a download of the thumbs down."""
+    st.subheader("What people said about the answers")
+    with st.container(key="feedback_review"):
+        rows = read_feedback()
+        if not rows:
+            st.caption("No ratings yet. Thumbs up and down appear under each answer in the Chat tab.")
+            return
+        summary = summarize_feedback(rows)
+        one, two, three = st.columns(3)
+        one.metric("Ratings", summary["total"])
+        two.metric("👍", summary["up"])
+        three.metric("👎", summary["down"], f"{summary['down_rate']:.0%} of ratings", delta_color="off")
+        if summary["down"]:
+            st.caption("Reasons: " + md_safe(", ".join(f"{reason} ({n})" for reason, n in summary["by_reason"].items())))
+            st.caption("Thumbs down by behaviour: " + md_safe(", ".join(f"{kind} ({n})" for kind, n in summary["by_outcome"].items())))
+            if summary["files"]:
+                st.caption("Files most often cited in a thumbs down: " + md_safe(", ".join(f"{name} ({n})" for name, n in summary["files"])))
+            st.caption(f"{summary['with_question']} of the {summary['down']} thumbs down came with the question (only when the person agreed).")
+            st.download_button("⬇ Download the thumbs down (CSV)", feedback_csv(rows), file_name="thumbs_down.csv", mime="text/csv", key="download_feedback")
 
 
 def stream_answer(question: str, image: tuple[str, bytes] | None = None) -> None:
@@ -324,6 +391,7 @@ def stream_answer(question: str, image: tuple[str, bytes] | None = None) -> None
         "sources": result["sources"],
         "seconds": result["seconds"],
         "chunks_used": result["chunks_used"],
+        "best_score": result.get("best_score"),
         "searched_for": result.get("searched_for", ""),
         "shortened_to": result.get("shortened_to", ""),
         "image_reading": result.get("image"),
@@ -671,6 +739,7 @@ with tab_evaluation:
         with st.expander("Why each limit is where it is"):
             for name in names:
                 st.markdown(f"**{esc(verdict['dimensions'][name]['label'])}**: {md_safe(verdict['dimensions'][name]['why'])}")
+        show_feedback_review()
 
 with st.sidebar:
     st.header("🛠 IT Help Desk Assistant")

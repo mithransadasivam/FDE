@@ -15,6 +15,7 @@ class NetworkBlocked(AssertionError):
 def no_network_and_no_keys(monkeypatch, request):
     # Nothing a test does may write to the real call log.
     monkeypatch.setattr("app.calllog.ENABLED", False)
+    monkeypatch.setattr("app.feedback.ENABLED", False)
     if request.node.get_closest_marker("slow"):
         return  # a judged browser test (marked `slow`) deliberately uses the real models, and only runs when asked
 

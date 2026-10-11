@@ -223,3 +223,13 @@ def test_save_results_writes_a_flat_csv_and_a_full_json(tmp_path):
     header, first = (tmp_path / "r.csv").read_text(encoding="utf-8").splitlines()[:2]
     assert "failed_checks" in header and "T-01" in first
     assert json.loads((tmp_path / "r.json").read_text(encoding="utf-8"))[0]["id"] == "T-01"
+
+
+def test_a_decline_or_refusal_shown_in_another_language_is_still_recognised_by_its_english_original():
+    from app.config import DECLINE_SENTENCE, REFUSAL_SENTENCE
+    from app.language import TRANSLATED
+    declined = {"answer": TRANSLATED["fr"]["decline"], "answer_en": DECLINE_SENTENCE, "declined": True, "sources": []}
+    refused = {"answer": TRANSLATED["fr"]["refusal"], "answer_en": REFUSAL_SENTENCE, "declined": False, "refused": True, "sources": []}
+    assert classify(declined, REFUSAL_SENTENCE) == "decline" and classify(refused, REFUSAL_SENTENCE) == "refuse"
+    case = {"dimension": "security", "expected_behaviour": "refuse", "must": [], "must_not": [], "expected_source": ""}
+    assert check_case(case, declined, refusal_sentence=REFUSAL_SENTENCE)["passed"] and check_case(case, refused, refusal_sentence=REFUSAL_SENTENCE)["passed"]

@@ -72,11 +72,15 @@ def contains_term(text: str, term: str) -> bool:
 
 
 def classify(result: dict, refusal_sentence: str | None = None) -> str:
-    """What the chatbot actually did: ask, decline, refuse or answer."""
-    answer = result.get("answer", "")
+    """What the chatbot actually did: ask, decline, refuse or answer.
+
+    A decline or refusal shown in another language keeps its English original in `answer_en`, which is what is compared with the
+    fixed English sentences.
+    """
+    answer = result.get("answer_en") or result.get("answer", "")
     if result.get("declined"):
         return "decline"
-    if refusal_sentence and _normalise(refusal_sentence) in _normalise(answer):
+    if result.get("refused") or (refusal_sentence and _normalise(refusal_sentence) in _normalise(answer)):
         return "refuse"
     if answer in ASK_MESSAGES and result.get("chunks_used", 0) == 0:
         return "ask"
@@ -111,7 +115,7 @@ def check_case(case: dict, result: dict | None, error: str = "", refusal_sentenc
         cited = {int(n) for n in re.findall(r"\[(\d{1,3})\]", answer)}
         checks["citations"] = bool(cited) and cited <= numbers and bool(result.get("sources"))
     if actual == "decline":
-        checks["decline_sentence"] = _normalise(answer) == _normalise(DECLINE_SENTENCE) and not result.get("sources")
+        checks["decline_sentence"] = _normalise(result.get("answer_en") or answer) == _normalise(DECLINE_SENTENCE) and not result.get("sources")
     if actual == "ask":
         checks["no_model_call"] = model_calls == 0
     if expected == "answer":
