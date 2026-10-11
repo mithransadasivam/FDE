@@ -2,11 +2,11 @@
 
 A chatbot that answers IT questions **only from a folder of documents**, shows which file and page each fact came from, says "I don't know" when the documents don't cover the question, and refuses requests that would get round a security control.
 
-It is a retrieval-augmented generation (RAG) project built phase by phase with Claude Code, starting from an empty folder. The knowledge base has **23 documents**: 17 fictional Northwind documents (VPN, MFA, passwords, backups, printers, laptops and more) plus the six class PDFs (five IT policies and an error-code reference).
+It is a retrieval-augmented generation (RAG) project built phase by phase with Claude Code, starting from an empty folder. The knowledge base has **25 documents**: 17 fictional Northwind documents (VPN, MFA, passwords, backups, printers, laptops and more), the six class PDFs (five IT policies and an error-code reference) and two scanned, picture-only PDFs that the vision model reads.
 
 ## How it works
 
-1. **Load and chunk:** every `.pdf`, `.txt` and `.md` file is read page by page (PDF page numbers are kept) and cut into 500-character chunks that overlap by 100 characters. 62 chunks in all.
+1. **Load and chunk:** every `.pdf`, `.txt` and `.md` file is read page by page (PDF page numbers are kept) and cut into 500-character chunks that overlap by 100 characters. 65 chunks in all.
 2. **Embed and store:** each chunk is turned into a vector by the local Ollama model `nomic-embed-text` and saved, with its file, page and chunk number, in a ChromaDB collection on disk (`data/chroma/`).
 3. **Check the input** (code, no model): empty or meaningless input asks for a question; a long paste is shortened to its end and the answer says so; a clear request to get round a security control is refused.
 4. **Retrieve** with the chosen mode, **`smart`**: the 4 most similar chunks by meaning, but a question that looks like a follow-up ("And on a Mac?") is first rewritten using the previous question. Five modes exist (`vector`, `hybrid`, `rerank`, `full`, `smart`); see "Choosing the retrieval mode".

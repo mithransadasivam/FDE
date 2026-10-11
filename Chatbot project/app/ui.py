@@ -24,7 +24,7 @@ from app.uploads import UploadError, add_upload, inspect_upload, read_unread_pag
 from app.embeddings import embed_documents
 from app.illustrate import IllustrationError, illustrate
 from app.fake_chat import fake_draw
-from app.config import ILLUSTRATIONS_ENABLED, IMAGE_COST_USD, AUDIO_MAX_SECONDS, AUDIO_TYPES, MAX_UPLOAD_BYTES, MAX_VISION_PAGES, TRANSCRIPTS_DIR
+from app.config import AUDIO_MAX_BYTES, IMAGE_MAX_BYTES, ILLUSTRATIONS_ENABLED, IMAGE_COST_USD, AUDIO_MAX_SECONDS, AUDIO_TYPES, MAX_UPLOAD_BYTES, MAX_VISION_PAGES, TRANSCRIPTS_DIR
 from app.images import resize_for_model, thumbnail
 from app.screenshot import answer_image_stream
 from app.ticket import SEVERITIES, TicketError, make_ticket_logged, to_csv, to_json, validate_ticket
@@ -99,6 +99,9 @@ def edit_ticket(index: int, field: str) -> None:
     else:
         st.session_state[f"ticket_{field}_{index}"] = ticket[field]
         st.session_state.ticket_notice = MSG_TICKET_EDIT_INVALID
+
+
+MB = 1024 * 1024  # the upload boxes show their real limits, in megabytes
 
 
 def pages(n: int) -> str:
@@ -241,7 +244,7 @@ def show_voice_area() -> None:
     st.caption(f"Record a question, or upload a voice note (up to {AUDIO_MAX_SECONDS} seconds). It is turned into text first, and you can fix the text before it is asked. "
                "The recording is not saved anywhere. Do not record anything you would not type into the chat.")
     st.audio_input("Record a question", key="voice_record")
-    st.file_uploader("…or upload a voice note", type=list(AUDIO_TYPES), key="voice_upload")
+    st.file_uploader("…or upload a voice note", type=list(AUDIO_TYPES), key="voice_upload", max_upload_size=AUDIO_MAX_BYTES // MB)
     has_clip = bool(st.session_state.get("voice_record") or st.session_state.get("voice_upload"))
     st.button("Write it down", on_click=write_down_recording, disabled=not has_clip, key="voice_transcribe")
     if st.session_state.get("voice_notice"):
@@ -368,7 +371,7 @@ with tab_chat:
         show_voice_area()
     history = st.container()  # drawn after the question is handled, but shown above the input box
     typed = st.chat_input("Ask a question about your IT documents…", max_chars=MAX_INPUT_CHARS, accept_file=True,
-                          file_type=sorted(set(IMAGE_TYPES.values()) | {"jpeg"}))
+                          file_type=sorted(set(IMAGE_TYPES.values()) | {"jpeg"}), max_upload_size=IMAGE_MAX_BYTES // MB)
     clicked = st.session_state.pop("pending", None)  # an example question that was clicked
     asked_for_ticket = st.session_state.pop("ticket_request", None)
     if asked_for_ticket is not None and asked_for_ticket < len(st.session_state.messages):
@@ -428,7 +431,7 @@ with tab_kb:
     with st.expander("➕ Add a document (PDF, TXT or MD)"):
         st.caption(f"Up to {MAX_UPLOAD_BYTES // (1024 * 1024)} MB. Pages that are only a picture are read by the vision model, once, and the text is saved. "
                    "Only upload documents that are fine to send to the model provider.")
-        upload = st.file_uploader("Choose a document", type=["pdf", "txt", "md"], key=f"kb_upload_{st.session_state.get('upload_round', 0)}")
+        upload = st.file_uploader("Choose a document", type=["pdf", "txt", "md"], key=f"kb_upload_{st.session_state.get('upload_round', 0)}", max_upload_size=MAX_UPLOAD_BYTES // MB)
         if upload is not None:
             data = upload.getvalue()
             try:

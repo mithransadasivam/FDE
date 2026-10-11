@@ -154,3 +154,6 @@ Every request sent to Claude Code, with one line on what happened.
 
 ## Phase 40: Tests, gate and write-up
 59. Added 8 browser journeys on the fake models (screenshot answer and decline, ticket card and download, voice note to editable text then asked, silent note, scanned upload then rebuild, picture button on and off), a 9th gate dimension "Multimodal" (limits chosen after the numbers were known, said so in the report), the scan and voice scripts, and CLAUDE.md rules 19 to 22. Fixed a real bug the browser test found: after adding a document the success message and the table vanished because of a page refresh, so notices are now kept across it. Re-ran everything: 693 unit tests, 48 browser tests, 75-case evaluation 74/75, gate 9/9. Wrote the Day 10 reflection.
+
+## Wrap-up
+60. Set each upload box to show its real size limit (audio 5 MB, documents 10 MB, chat pictures 5 MB) instead of Streamlit's default 200 MB. Ran the Day 9 CI demo on GitHub (broken branch red, fix green, quality run by hand green, key masked), took the hand-in screenshots, updated the README counts (25 documents, 65 chunks) and wrote `Project_Report.pdf`, a plain-English report with the screenshots.
