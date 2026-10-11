@@ -1,0 +1,80 @@
+{
+  "questions": 5,
+  "passed": 5,
+  "seconds": 45.0,
+  "answer_model_cost_usd": 0.0079,
+  "judge_cost_usd": 0.02235,
+  "total_cost_usd": 0.03025,
+  "cases": [
+    {
+      "id": "QUA-01",
+      "passed": true,
+      "scores": {
+        "correct": true,
+        "faithfulness": true,
+        "answer_relevance": true,
+        "context_precision": 0.5,
+        "context_recall": true,
+        "reason": "The answer correctly covers all key steps from the expected answer and all claims are supported by the context chunks."
+      },
+      "answer_on_page": "To set up MFA on a new phone, follow these steps [1]:\n\nRaise a ticket titled \"Reset MFA\" so the service desk can clear your old MFA registration [1]\nOnce the ticket is resolved, install Northwind Authenticator from the App Store or Google Play [1]\nSign in to any work app. When asked, scan the QR code shown on screen with the app [1]\nEnter the six-digit code to finish [1]\n\nWhen you first register, the app will show 8 single-use backup codes—store these in the company password manager, not on paper [2].",
+      "script_judge_said": "correct=True faithful=True"
+    },
+    {
+      "id": "QUA-03",
+      "passed": true,
+      "scores": {
+        "correct": true,
+        "faithfulness": true,
+        "answer_relevance": true,
+        "context_precision": 0.75,
+        "context_recall": true,
+        "reason": "The answer includes all three key troubleshooting steps from the expected answer, is fully supported by the context, and adds helpful supplementary information about session limits and escalation."
+      },
+      "answer_on_page": "Here are the steps to try:\n\nCheck your NorthLink version – Make sure you're running version 5.2 or later, as older versions drop connections on weak Wi-Fi [2].\n\nImprove your Wi-Fi signal – Move closer to your router or connect with a network cable instead [2].\n\nChange the protocol – In NorthLink settings, switch from \"Auto\" to \"TCP\". This fixes most random disconnects [2].\n\nNote the 12-hour limit – VPN sessions disconnect automatically after 12 hours, and idle sessions disconnect after 60 minutes [4]. You'll need to reconnect and sign in again.\n\nIf these steps don't work, open a ticket on the service desk portal and attach the NorthLink log file (Help > Export logs) [1].",
+      "script_judge_said": "correct=True faithful=True"
+    },
+    {
+      "id": "QUA-04",
+      "passed": true,
+      "scores": {
+        "correct": true,
+        "faithfulness": true,
+        "answer_relevance": true,
+        "context_precision": 0.5,
+        "context_recall": true,
+        "reason": "The answer correctly includes all key facts from the expected answer and all claims are supported by the context chunks."
+      },
+      "answer_on_page": "Here's how to reset your forgotten password:\n\nGo to the self-service page at reset.northwind.example [1]\nEnter your work email and approve the MFA prompt [1]\nChoose a new password that meets the policy requirements (at least 14 characters, not reusing any of your last 10 passwords) [1]\n\nIf you cannot pass the MFA step, contact the service desk. They will verify your identity with your manager before resetting your password [3]",
+      "script_judge_said": "correct=True faithful=True"
+    },
+    {
+      "id": "QUA-06",
+      "passed": true,
+      "scores": {
+        "correct": true,
+        "faithfulness": true,
+        "answer_relevance": true,
+        "context_precision": 0.25,
+        "context_recall": true,
+        "reason": "The answer correctly states all key facts from the expected answer and all claims are supported by chunk 1."
+      },
+      "answer_on_page": "If your laptop battery is swelling, you should:\n\nStop using the laptop immediately [1]\nDo not charge it [1]\nBring it to the IT desk [1]\n\nDo not post or courier a device with a swollen battery [1].",
+      "script_judge_said": "correct=True faithful=True"
+    },
+    {
+      "id": "QUA-07",
+      "passed": true,
+      "scores": {
+        "correct": true,
+        "faithfulness": true,
+        "answer_relevance": true,
+        "context_precision": 0.5,
+        "context_recall": true,
+        "reason": "The answer correctly states both targets (15 minutes response, 4 hours resolution) and all information is found in the context."
+      },
+      "answer_on_page": "For a P1 ticket:\n\nResponse target: 15 minutes [1]\nResolution target: 4 hours [1]\n\nP1 means a critical service is down for many users [2].",
+      "script_judge_said": "correct=True faithful=True"
+    }
+  ]
+}

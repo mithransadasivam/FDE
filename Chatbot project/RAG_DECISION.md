@@ -39,3 +39,17 @@ Vector search needs no extra model calls, takes about 0.1 seconds to search, and
 - After any change to the documents, chunk size, embedding model, number of chunks, or minimum score.
 - Before adding any new retrieval step. I run `python -m scripts.compare_modes` before and after and compare the numbers.
 - If people start asking a lot of follow-up questions, because rerank and hybrid handled those better than vector.
+
+## Update after the Day 8 exercise: I now keep "smart" (2026-10-10)
+
+My Day 7 choice was vector. When I tested follow-up conversations properly in the Day 8 exercise, vector failed two of them: it cannot find "What if it still fails after that?" because that sentence has no VPN in it. The full mode fixes that, but it is slow.
+
+So I added a fifth mode, **smart**: it searches like vector, but if a question looks like a follow-up it first rewrites it with the previous question (one extra model call, only then).
+
+| Mode | Hit rate | Whole answer | p95 | Cost per question | Answer or decline | Meets my target |
+|---|---|---|---|---|---|---|
+| vector | 95% | 1.97 s | 2.99 s | $0.0014 | 10/10 | yes |
+| **smart** | **100%** | **1.90 s** | **4.37 s** | **$0.0014** | **10/10** | **yes** |
+| rerank | 100% | 4.01 s | 5.39 s | $0.0030 | 10/10 | no |
+
+Smart is the simplest mode that fixes follow-ups and still meets both targets, so it replaces vector. It is no slower or dearer for a normal question. A follow-up costs about one extra second. One follow-up still fails (the "contractors" question): it needs two facts from two different parts of the policy and no single search finds both. I measured before and after with `scripts/compare_modes.py`, as my CLAUDE.md rule says.

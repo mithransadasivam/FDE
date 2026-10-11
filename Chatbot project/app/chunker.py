@@ -36,12 +36,15 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) 
 def chunk_document(doc, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[dict]:
     """Chunk every page of a loaded document.
 
-    Returns dicts with: source, page, chunk (1-based number within the file), text.
+    Returns dicts with: source, page, chunk (1-based number within the file), text, and read_by ("vision" for a scanned page that was
+    transcribed by the vision model, otherwise "text").
     """
     chunks = []
     number = 0
-    for page, text in doc["pages"]:
+    kinds = doc.get("page_kinds", [])
+    for position, (page, text) in enumerate(doc["pages"]):
+        read_by = "vision" if position < len(kinds) and kinds[position] == "vision" else "text"
         for piece in chunk_text(text, size, overlap):
             number += 1
-            chunks.append({"source": doc["source"], "page": page, "chunk": number, "text": piece})
+            chunks.append({"source": doc["source"], "page": page, "chunk": number, "text": piece, "read_by": read_by})
     return chunks

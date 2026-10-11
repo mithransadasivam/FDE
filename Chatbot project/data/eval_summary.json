@@ -1,0 +1,179 @@
+{
+  "functional": {
+    "cases": 7,
+    "passed": 7,
+    "pass_rate": 1.0
+  },
+  "quality": {
+    "cases": 8,
+    "passed": 8,
+    "pass_rate": 1.0,
+    "judged": 8,
+    "correct": 1.0,
+    "faithfulness": 1.0,
+    "answer_relevance": 1.0
+  },
+  "safety": {
+    "cases": 8,
+    "passed": 8,
+    "pass_rate": 1.0
+  },
+  "security": {
+    "cases": 15,
+    "passed": 15,
+    "pass_rate": 1.0,
+    "indirect_injection": "pass"
+  },
+  "robustness": {
+    "cases": 9,
+    "passed": 9,
+    "pass_rate": 1.0
+  },
+  "context": {
+    "cases": 8,
+    "passed": 7,
+    "pass_rate": 0.875
+  },
+  "run": {
+    "label": "After Day 10 (scans in the index)",
+    "mode": "smart",
+    "cases": 75
+  },
+  "ragas": {
+    "cases": 20,
+    "passed": 20,
+    "pass_rate": 1.0,
+    "judged": 20,
+    "faithfulness": 0.95,
+    "answer_relevance": 1.0,
+    "context_precision": 0.362,
+    "context_recall": 1.0,
+    "context_recall_in_code": 1.0
+  },
+  "judge": {
+    "model_variable": "JUDGE_MODEL",
+    "errors": 0,
+    "agreement_correct": "10/10",
+    "agreement_faithful": "10/10"
+  },
+  "performance": {
+    "vector": {
+      "calls": 50,
+      "errors": 0,
+      "p50_seconds": 1.76,
+      "p95_seconds": 2.99,
+      "slowest_seconds": 9.96,
+      "avg_input_tokens": 1009,
+      "avg_output_tokens": 75,
+      "cost_per_question_usd": 0.001382,
+      "cost_per_1000_usd": 1.38,
+      "mode": "vector",
+      "p95_target_seconds": 5.0,
+      "meets_p95_target": true,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 5.0
+    },
+    "rerank": {
+      "calls": 50,
+      "errors": 0,
+      "p50_seconds": 3.44,
+      "p95_seconds": 5.39,
+      "slowest_seconds": 7.19,
+      "avg_input_tokens": 2320,
+      "avg_output_tokens": 128,
+      "cost_per_question_usd": 0.002958,
+      "cost_per_1000_usd": 2.96,
+      "mode": "rerank",
+      "p95_target_seconds": 5.0,
+      "meets_p95_target": false,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 5.0
+    },
+    "smart": {
+      "calls": 50,
+      "errors": 0,
+      "p50_seconds": 1.95,
+      "p95_seconds": 4.37,
+      "slowest_seconds": 5.9,
+      "avg_input_tokens": 1056,
+      "avg_output_tokens": 72,
+      "cost_per_question_usd": 0.001417,
+      "cost_per_1000_usd": 1.42,
+      "mode": "smart",
+      "p95_target_seconds": 5.0,
+      "meets_p95_target": true,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 5.0
+    },
+    "smart+critique": {
+      "calls": 50,
+      "errors": 0,
+      "p50_seconds": 4.81,
+      "p95_seconds": 9.58,
+      "slowest_seconds": 15.77,
+      "avg_input_tokens": 1133,
+      "avg_output_tokens": 78,
+      "avg_critic_input_tokens": 1056,
+      "avg_critic_output_tokens": 91,
+      "cost_per_question_usd": 0.006059,
+      "cost_per_1000_usd": 6.06,
+      "mode": "smart",
+      "self_critique": true,
+      "p95_target_seconds": 5.0,
+      "meets_p95_target": false,
+      "input_price_per_million": 1.0,
+      "output_price_per_million": 5.0
+    }
+  },
+  "multimodal": {
+    "prices_per_million_tokens": {
+      "input": 1.0,
+      "output": 5.0
+    },
+    "screenshot_question": {
+      "n": 13,
+      "image_sent": "longest side 1024 px",
+      "avg_vision_tokens_in": 959,
+      "avg_answer_tokens_in": 807,
+      "avg_bytes_sent": 143903,
+      "avg_cost_usd": 0.00232,
+      "cost_per_1000_usd": 2.32
+    },
+    "ticket": {
+      "n": 15,
+      "avg_vision_tokens_in": 1212,
+      "avg_cost_usd": 0.00169,
+      "cost_per_1000_usd": 1.69
+    },
+    "scanned_page_read": {
+      "vision_tokens_in": 1690,
+      "vision_tokens_out": 81,
+      "cost_usd": 0.0021,
+      "note": "paid once per page: the text is saved and re-indexing costs nothing"
+    },
+    "voice_question": {
+      "n": 4,
+      "avg_audio_seconds": 5.8,
+      "avg_speech_cost_usd": 0.00055,
+      "price_per_minute_usd": 0.006
+    },
+    "picture_out": {
+      "cost_usd": 0.04,
+      "note": "off by default; one picture per button press"
+    },
+    "screenshot_pass_rate": 1.0,
+    "ticket_field_accuracy": 0.96,
+    "ticket_code_accuracy": 1.0,
+    "voice_answered": 1.0,
+    "scan_answered": 1.0,
+    "injection_resisted": 1.0,
+    "largest_image_tokens": 1212,
+    "counts": {
+      "screenshots": 13,
+      "tickets": 15,
+      "voice": 5,
+      "scans": 5,
+      "injection_images": 2
+    }
+  }
+}

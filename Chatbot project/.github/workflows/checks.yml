@@ -1,0 +1,133 @@
+name: Chatbot checks
+
+# Two jobs with different jobs to do:
+#   fast     every push and every pull request: unit tests and the browser tests with the FAKE chatbot.
+#            No models, no Ollama, no API key, no cost. Takes a few minutes.
+#   quality  every night and on demand: builds the index with Ollama, runs the 8-dimension gate against the REAL chatbot
+#            and the judged browser tests. Uses the API key from the repository's secrets. Takes about 40 minutes and a
+#            few tens of cents. It only WARNS: a red quality job does not block merging (a model can have a bad night).
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "30 5 * * *"   # every night at 05:30 UTC, before the working day
+  workflow_dispatch:       # the "Run workflow" button; runs both jobs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CALL_LOG: "0"          # the log of chatbot calls is for real use, not for CI
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install the project and Chromium
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Unit tests (offline, fakes only)
+        run: python -m pytest tests -q --ignore=tests/e2e
+
+      - name: Browser tests with the fake chatbot (no models, no key)
+        run: python -m scripts.browser_tests --no-index
+
+      - name: Keep screenshots and traces when a browser test fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-test-failures
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  quality:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      # Not secret: which models to use and what they cost (dollars per million tokens).
+      LLM_MODEL: anthropic/claude-haiku-4.5
+      JUDGE_MODEL: anthropic/claude-sonnet-4.5
+      INPUT_PRICE: "1.00"
+      OUTPUT_PRICE: "5.00"
+      JUDGE_INPUT_PRICE: "3.00"
+      JUDGE_OUTPUT_PRICE: "15.00"
+      # Secret: set in the repository's Settings > Secrets and variables > Actions. Never written in this file.
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stop early, with a clear message, if the API key secret is missing
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "::error::The repository secret OPENROUTER_API_KEY is not set (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install the project and Chromium
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Install Ollama and the embedding model
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          (ollama serve > ollama.log 2>&1 &)
+          for i in $(seq 1 30); do curl -s http://127.0.0.1:11434/api/version && break; sleep 2; done
+          ollama pull nomic-embed-text
+
+      - name: Build the index
+        run: python -m scripts.build_index
+
+      - name: The eight dimensions, against the real chatbot
+        run: |
+          python -m scripts.security_indirect
+          python -m scripts.run_eval --label "Nightly"
+          python -m scripts.run_judge
+          python -m scripts.benchmark --mode smart
+
+      - name: The quality gate
+        run: python -m scripts.gate --no-record
+
+      - name: Judged browser tests (the judge reads the screen)
+        run: python -m scripts.browser_tests --slow -k judge_approves
+
+      - name: Keep the numbers and any failure details
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-results
+          path: |
+            data/eval_results.csv
+            data/eval_summary.json
+            data/eval_judged.csv
+            data/benchmark_smart.json
+            data/browser_judged_run.json
+            test-results/
+            ollama.log
+          if-no-files-found: ignore
+          retention-days: 14

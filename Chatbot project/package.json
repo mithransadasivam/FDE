@@ -1,0 +1,19 @@
+{
+  "name": "ithelpdeskbot",
+  "version": "1.0.0",
+  "description": "A chatbot that answers IT questions **only from a folder of documents**, shows which file and page each fact came from, says \"I don't know\" when the documents don't cover the question, and refuses requests that would get round a security control.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0"
+  }
+}

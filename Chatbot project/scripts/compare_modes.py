@@ -10,7 +10,7 @@ Saves data/retrieval_comparison.csv and .json and one data/retrieval_results/<mo
 import argparse
 
 from app.answer import answer
-from app.comparison import COMPARISON_CSV, build_row, meets_target, save_comparison
+from app.comparison import COMPARISON_CSV, build_row, load_comparison, meets_target, merge_rows, save_comparison
 from app.config import TARGET_HIT_RATE, TARGET_SECONDS, TOP_K
 from app.embeddings import EmbeddingError
 from app.evaluate import load_questions, run_tests
@@ -58,7 +58,8 @@ def main() -> int:
         print(f"hit rate {row['hit_rate']:.0%}  MRR {row['mrr']:.2f}  retrieval {row['retrieval_ms']} ms  "
               f"behaviour {row['behaviour_correct']}/{row['behaviour_total']}  answer {row['answer_seconds']} s", flush=True)
 
-    save_comparison(rows)
+    # a run of only some modes (--modes smart) adds or replaces those rows and keeps the others
+    save_comparison(merge_rows(load_comparison(), rows, MODES))
     print(f"\n{'mode':<8}{'hit@' + str(args.k):>7}{'MRR':>6}{'retr ms':>9}{'calls':>7}{'behav':>7}{'answer s':>10}  "
           f"meets target (>= {TARGET_HIT_RATE:.0%}, <= {TARGET_SECONDS:g} s)")
     for r in rows:

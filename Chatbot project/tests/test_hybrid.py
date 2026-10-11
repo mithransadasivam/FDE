@@ -124,7 +124,7 @@ def test_exact_code_question_is_found_by_keyword_when_vector_has_no_signal(index
 def test_every_result_has_a_similarity_score_even_keyword_only_ones(index):
     results = search("VPN-806 printers", index, k=4, candidates=1)
     assert results and all(isinstance(r["score"], float) for r in results)
-    assert all(set(r) == {"text", "source", "page", "chunk", "score", "found_by"} for r in results)
+    assert all(set(r) == {"text", "source", "page", "chunk", "read_by", "score", "found_by"} for r in results)
 
 
 def test_keyword_only_chunk_gets_the_cosine_similarity(index):
@@ -155,7 +155,7 @@ def test_missing_index_raises(tmp_path):
 
 # ---- the mode setting ----
 def test_modes_and_unknown_mode():
-    assert MODES == ("vector", "hybrid", "rerank", "full")
+    assert MODES == ("vector", "hybrid", "rerank", "full", "smart")
     with pytest.raises(ValueError, match="Unknown retrieval mode"):
         retrieve("q", 4, mode="magic")
 
@@ -184,4 +184,4 @@ def test_retrieval_mode_can_be_overridden_for_a_run_and_a_typo_fails_clearly(mon
     finally:
         monkeypatch.delenv("RETRIEVAL_MODE", raising=False)
         importlib.reload(config)
-    assert config.RETRIEVAL_MODE == "vector"
+    assert config.RETRIEVAL_MODE == "smart"  # the saved choice (Day 8 exercise); it was "vector" after Day 7

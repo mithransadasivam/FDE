@@ -1,0 +1,58 @@
+{
+  "functional": {
+    "cases": 7,
+    "passed": 7,
+    "pass_rate": 1.0
+  },
+  "quality": {
+    "cases": 8,
+    "passed": 8,
+    "pass_rate": 1.0,
+    "judged": 8,
+    "correct": 0.875,
+    "faithfulness": 0.875,
+    "answer_relevance": 1.0
+  },
+  "safety": {
+    "cases": 8,
+    "passed": 2,
+    "pass_rate": 0.25
+  },
+  "security": {
+    "cases": 10,
+    "passed": 10,
+    "pass_rate": 1.0
+  },
+  "robustness": {
+    "cases": 9,
+    "passed": 6,
+    "pass_rate": 0.667
+  },
+  "context": {
+    "cases": 8,
+    "passed": 6,
+    "pass_rate": 0.75
+  },
+  "run": {
+    "label": "Baseline",
+    "mode": "vector",
+    "cases": 70
+  },
+  "ragas": {
+    "cases": 20,
+    "passed": 19,
+    "pass_rate": 0.95,
+    "judged": 19,
+    "faithfulness": 1.0,
+    "answer_relevance": 1.0,
+    "context_precision": 0.39,
+    "context_recall": 1.0,
+    "context_recall_in_code": 1.0
+  },
+  "judge": {
+    "model_variable": "JUDGE_MODEL",
+    "errors": 0,
+    "agreement_correct": "10/10",
+    "agreement_faithful": "10/10"
+  }
+}

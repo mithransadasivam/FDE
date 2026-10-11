@@ -99,7 +99,7 @@ def hybrid_search(question: str, k: int = TOP_K, candidates: int = HYBRID_CANDID
     vector_ids = found["ids"][0]
     chunks = {}
     for cid, text, meta, dist in zip(vector_ids, found["documents"][0], found["metadatas"][0], found["distances"][0]):
-        chunks[cid] = {"text": text, "source": meta["source"], "page": meta["page"], "chunk": meta["chunk"],
+        chunks[cid] = {"text": text, "source": meta["source"], "page": meta["page"], "chunk": meta["chunk"], "read_by": meta.get("read_by", "text"),
                        "score": round(1.0 - dist, 4)}
 
     everything = collection.get(include=["documents", "metadatas"])
@@ -112,7 +112,7 @@ def hybrid_search(question: str, k: int = TOP_K, candidates: int = HYBRID_CANDID
     if missing:
         stored = collection.get(ids=missing, include=["documents", "metadatas", "embeddings"])
         for cid, text, meta, vec in zip(stored["ids"], stored["documents"], stored["metadatas"], stored["embeddings"]):
-            chunks[cid] = {"text": text, "source": meta["source"], "page": meta["page"], "chunk": meta["chunk"],
+            chunks[cid] = {"text": text, "source": meta["source"], "page": meta["page"], "chunk": meta["chunk"], "read_by": meta.get("read_by", "text"),
                            "score": round(_cosine(query_vector, vec), 4)}
 
     results = []

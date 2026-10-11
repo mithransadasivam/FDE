@@ -1,0 +1,8 @@
+{
+  "file": "printing_policy_scanned.pdf",
+  "model": "anthropic/claude-haiku-4.5",
+  "pages": {
+    "1": "NORTHWIND LTD · FICTIONAL DOCUMENT\n\nPrinting Policy\n\n1. Every employee may print up to 150 colour pages per month. Black and white printing is not limited.\n\n2. The colour allowance is reset on the first working day of each month. Unused pages do not carry over.\n\nPrinting Policy · page 1 of 2",
+    "2": "NORTHWIND LTD · FICTIONAL DOCUMENT\n\nPrinting Policy (continued)\n\n3. Posters and other large-format jobs are produced by the print room on floor 4. Send the file to the print room by e-mail.\n\n4. A print job that is not collected is deleted from the secure queue after 24 hours.\n\nPrinting Policy · page 2 of 2"
+  }
+}

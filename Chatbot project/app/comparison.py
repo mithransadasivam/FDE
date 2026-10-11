@@ -51,6 +51,13 @@ def meets_target(row: dict, target_hit_rate: float, target_seconds: float) -> bo
     return bool(row["answer_seconds"] is not None and row["hit_rate"] >= target_hit_rate and row["answer_seconds"] <= target_seconds)
 
 
+def merge_rows(existing: list[dict], new: list[dict], order) -> list[dict]:
+    """Add or replace rows by mode, keeping the saved ones for modes that were not re-run, in the order of `order`."""
+    by_mode = {r["mode"]: r for r in existing}
+    by_mode.update({r["mode"]: r for r in new})
+    return [by_mode[m] for m in order if m in by_mode] + [r for m, r in by_mode.items() if m not in order]
+
+
 def save_comparison(rows: list[dict], json_path: Path = COMPARISON_JSON, csv_path: Path = COMPARISON_CSV) -> None:
     """Save one row per mode as JSON (everything) and CSV (flat, for a spreadsheet)."""
     json_path, csv_path = Path(json_path), Path(csv_path)

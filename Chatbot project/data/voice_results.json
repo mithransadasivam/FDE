@@ -1,0 +1,97 @@
+{
+  "questions": 5,
+  "answered": 5,
+  "results": [
+    {
+      "id": "VOC-01",
+      "file": "voice_session.wav",
+      "said": "How long can a VPN session stay connected?",
+      "heard": "How long can a VPN session stay connected",
+      "wrong_words": [],
+      "answer": "A VPN session stays connected for a maximum of 12 hours [1]. After 12 hours, the session is disconnected automatically and you must sign in again with MFA [1]. Additionally, sessions that are idle for 60 minutes are also disconnected [1].",
+      "cited": [
+        "Day06_Slide15_policy_vpn_remote_access.pdf"
+      ],
+      "ok": true,
+      "note": "",
+      "seconds_of_audio": 3.5,
+      "stt_cost_usd": 0.0003,
+      "typed_cited": [
+        "Day06_Slide15_policy_vpn_remote_access.pdf"
+      ],
+      "seconds": 5.5
+    },
+    {
+      "id": "VOC-02",
+      "file": "voice_code_spelled.wav",
+      "said": "I keep getting error V P N, dash, eight zero nine, when I connect from home. What does it mean?",
+      "heard": "I keep getting error VPN-809 when I connect from home. What does it mean?",
+      "wrong_words": [],
+      "answer": "Error VPN-809 means your VPN certificate has expired, so the VPN cannot connect [3].\n\nTo fix it, you have two options:\n\n1. **Renew from home**: Use the self-service portal to renew the certificate. However, you'll need to be connected to the office network to do this [3].\n\n2. **Call the service desk**: They can renew it remotely for you. Contact them on extension 4357 or servicedesk@northwind.example [3].",
+      "cited": [
+        "Day07_Slide05_kb_error_codes.pdf"
+      ],
+      "ok": true,
+      "note": "",
+      "seconds_of_audio": 8.2,
+      "stt_cost_usd": 0.0008,
+      "typed_cited": [
+        "vpn_troubleshooting.md"
+      ],
+      "seconds": 5.6
+    },
+    {
+      "id": "VOC-03",
+      "file": "voice_noisy_wifi.wav",
+      "said": "A visitor has a Wi Fi error, W I F I, dash, one one seven. What do I tell them?",
+      "heard": "A visitor has a WIFI error. WIFI-117. What do I tell them?",
+      "wrong_words": [
+        "fi",
+        "wi"
+      ],
+      "answer": "The visitor's guest Wi-Fi access has expired. Guest Wi-Fi access lasts 8 hours, and after that they need to register again at the reception kiosk to get a new code [1].",
+      "cited": [
+        "Day07_Slide05_kb_error_codes.pdf"
+      ],
+      "ok": true,
+      "note": "",
+      "seconds_of_audio": 8.5,
+      "stt_cost_usd": 0.0008,
+      "typed_cited": [
+        "Day07_Slide05_kb_error_codes.pdf"
+      ],
+      "seconds": 6.0
+    },
+    {
+      "id": "VOC-04",
+      "file": "voice_mfa.wav",
+      "said": "How do I set up MFA on a new phone?",
+      "heard": "How do I set up MFA on a new phone?",
+      "wrong_words": [],
+      "answer": "To set up MFA on a new phone, follow these steps [1]:\n\n1. Raise a ticket titled \"Reset MFA\" so the service desk can clear your old MFA registration [1]\n2. Once the ticket is resolved, install Northwind Authenticator from the App Store or Google Play [1]\n3. Sign in to any work app. When asked, scan the QR code shown on screen with the app [1]\n4. Enter the six-digit code to finish [1]\n\nWhen you first register, the app will show 8 single-use backup codes—store these in the company password manager, not on paper [2].",
+      "cited": [
+        "mfa_setup_guide.md"
+      ],
+      "ok": true,
+      "note": "",
+      "seconds_of_audio": 3.1,
+      "stt_cost_usd": 0.0003,
+      "typed_cited": [
+        "mfa_setup_guide.md"
+      ],
+      "seconds": 6.4
+    },
+    {
+      "id": "VOC-05",
+      "file": "voice_silent.wav",
+      "said": "",
+      "heard": "",
+      "wrong_words": [],
+      "answer": "",
+      "cited": [],
+      "ok": true,
+      "note": "asked to try again: I could not hear a question in that recording. Please try again, a little closer to the microphone.",
+      "seconds": 0.0
+    }
+  ]
+}

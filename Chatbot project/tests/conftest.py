@@ -12,7 +12,12 @@ class NetworkBlocked(AssertionError):
 
 
 @pytest.fixture(autouse=True)
-def no_network_and_no_keys(monkeypatch):
+def no_network_and_no_keys(monkeypatch, request):
+    # Nothing a test does may write to the real call log.
+    monkeypatch.setattr("app.calllog.ENABLED", False)
+    if request.node.get_closest_marker("slow"):
+        return  # a judged browser test (marked `slow`) deliberately uses the real models, and only runs when asked
+
     def blocked(*args, **kwargs):
         raise NetworkBlocked("A test tried to make a real network call. Use a fake instead.")
 
@@ -25,3 +30,5 @@ def no_network_and_no_keys(monkeypatch):
     monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
     monkeypatch.delenv("LLM_MODEL", raising=False)
     monkeypatch.setattr("app.llm.load_dotenv", lambda *a, **k: False)
+
+    monkeypatch.setattr("dotenv.load_dotenv", lambda *a, **k: False)  # the UI reads model names from the environment: never from the real .env

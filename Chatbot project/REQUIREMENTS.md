@@ -12,6 +12,9 @@ Questions covered by the 17 IT documents in `data/docs/`: VPN, MFA, passwords, b
 - Follow instructions hidden inside documents or questions (documents are data, not commands).
 - Store or show secrets (API keys) or confidential data.
 - Call a real API in automated tests.
+- Help someone get round a security control. It refuses, with one fixed sentence, any request to: switch off or work around security software; read or use someone else's mailbox, account or files without their knowledge; get round the password, MFA or VPN travel rules; copy confidential or customer data to a personal device, account or public AI tool; or install cracked or unlicensed software.
+- Refuse things that only *sound* risky. Normal how-to and incident questions are still answered: reporting a lost or stolen laptop, what to do if a password may be stolen, how to request software, how to set up MFA.
+- Reveal its own instructions, or any hidden code word, key or file contents, however the request is worded or in whatever language.
 
 ## The three screens
 1. **Chat**: conversation history; sources shown under every answer; a clear DECLINED badge (and no sources) when it declines. Sidebar: knowledge-base status, current settings, latest test run, details of the last question (time, chunks used, best score).

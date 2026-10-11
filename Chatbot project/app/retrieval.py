@@ -7,17 +7,20 @@ Modes:
   hybrid  keyword + meaning-based search, fused
   rerank  hybrid candidates, then the model judges them (1 model call)
   full    rewrite the question into a standalone search query, then hybrid, then rerank (2 model calls)
+  smart   vector search, but a question that looks like a follow-up is first rewritten using the previous question
+          (1 model call only for follow-ups, none for a standalone question). Added in the Day 8 exercise.
 
-Only "full" uses the previous question; the other modes search for the question as typed.
+Only "full" and "smart" use the previous question; the other modes search for the question as typed.
 """
 from app.config import RERANK_CANDIDATES, RETRIEVAL_MODE, RETRIEVAL_MODES, TOP_K
+from app.followup import looks_like_follow_up
 from app.hybrid import hybrid_search
 from app.rerank import rerank
 from app.retriever import search
 from app.rewrite import rewrite_query
 
 MODES = RETRIEVAL_MODES
-MODEL_CALLS = {"vector": 0, "hybrid": 0, "rerank": 1, "full": 2}  # model calls one retrieval makes (when it finds any chunks)
+MODEL_CALLS = {"vector": 0, "hybrid": 0, "rerank": 1, "full": 2, "smart": 1}  # most model calls one retrieval makes ("smart": only for a follow-up)
 
 
 def retrieve_detailed(question: str, k: int = TOP_K, mode: str | None = None, previous_question: str = "") -> dict:
@@ -29,6 +32,9 @@ def retrieve_detailed(question: str, k: int = TOP_K, mode: str | None = None, pr
         return {"chunks": hybrid_search(question, k), "searched_for": question}
     if mode == "rerank":
         return {"chunks": rerank(question, hybrid_search(question, RERANK_CANDIDATES), k), "searched_for": question}
+    if mode == "smart":
+        query = rewrite_query(question, previous_question) if previous_question and looks_like_follow_up(question) else question
+        return {"chunks": search(query, k), "searched_for": query}
     if mode == "full":
         query = rewrite_query(question, previous_question)
         return {"chunks": rerank(query, hybrid_search(query, RERANK_CANDIDATES), k), "searched_for": query}

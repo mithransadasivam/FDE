@@ -29,6 +29,7 @@ def search(question: str, k: int = TOP_K, embed_fn=embed_query, path=CHROMA_DIR,
             "source": meta["source"],
             "page": meta["page"],
             "chunk": meta["chunk"],
+            "read_by": meta.get("read_by", "text"),
             "score": round(1.0 - dist, 4),
         })
     return results

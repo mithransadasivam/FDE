@@ -1,0 +1,37 @@
+{
+  "prices_per_million_tokens": {
+    "input": 1.0,
+    "output": 5.0
+  },
+  "screenshot_question": {
+    "n": 13,
+    "image_sent": "longest side 1024 px",
+    "avg_vision_tokens_in": 959,
+    "avg_answer_tokens_in": 807,
+    "avg_bytes_sent": 143903,
+    "avg_cost_usd": 0.00232,
+    "cost_per_1000_usd": 2.32
+  },
+  "ticket": {
+    "n": 15,
+    "avg_vision_tokens_in": 1212,
+    "avg_cost_usd": 0.00169,
+    "cost_per_1000_usd": 1.69
+  },
+  "scanned_page_read": {
+    "vision_tokens_in": 1690,
+    "vision_tokens_out": 81,
+    "cost_usd": 0.0021,
+    "note": "paid once per page: the text is saved and re-indexing costs nothing"
+  },
+  "voice_question": {
+    "n": 4,
+    "avg_audio_seconds": 5.8,
+    "avg_speech_cost_usd": 0.00055,
+    "price_per_minute_usd": 0.006
+  },
+  "picture_out": {
+    "cost_usd": 0.04,
+    "note": "off by default; one picture per button press"
+  }
+}

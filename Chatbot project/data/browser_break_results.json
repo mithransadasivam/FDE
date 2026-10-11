@@ -1,0 +1,290 @@
+[
+  {
+    "id": "B1",
+    "description": "remove the sources row from every answer",
+    "selected": "answerable or follow_up or two_questions or clicking_an_example",
+    "failed": [
+      "test_an_answerable_question_gets_a_cited_answer_with_a_sources_row",
+      "test_a_follow_up_on_the_same_page_gives_four_messages_two_sources_rows_and_a_searched_for_line",
+      "test_two_questions_in_a_row_both_stay_on_the_page_and_the_first_does_not_change",
+      "test_clicking_an_example_asks_it_and_hides_the_examples"
+    ],
+    "passed": 0,
+    "must_fail": "answerable_question",
+    "right_test_failed": true,
+    "seconds": 54
+  },
+  {
+    "id": "B2",
+    "description": "rename the DECLINED badge",
+    "selected": "uncovered",
+    "failed": [
+      "test_an_uncovered_question_is_declined_with_the_fixed_sentence_and_no_sources"
+    ],
+    "passed": 0,
+    "must_fail": "uncovered_question",
+    "right_test_failed": true,
+    "seconds": 14
+  },
+  {
+    "id": "B3",
+    "description": "rename the REFUSED badge",
+    "selected": "unsafe",
+    "failed": [
+      "test_an_unsafe_request_is_refused_with_the_fixed_sentence_and_no_steps"
+    ],
+    "passed": 0,
+    "must_fail": "unsafe_request",
+    "right_test_failed": true,
+    "seconds": 14
+  },
+  {
+    "id": "B4",
+    "description": "drop the whitespace check, so spaces are sent as a question",
+    "selected": "only_spaces",
+    "failed": [
+      "test_a_message_of_only_spaces_adds_nothing_and_shows_a_friendly_warning"
+    ],
+    "passed": 0,
+    "must_fail": "only_spaces",
+    "right_test_failed": true,
+    "seconds": 22
+  },
+  {
+    "id": "B5",
+    "description": "drop the Searched-for line",
+    "selected": "follow_up",
+    "failed": [
+      "test_a_follow_up_on_the_same_page_gives_four_messages_two_sources_rows_and_a_searched_for_line"
+    ],
+    "passed": 0,
+    "must_fail": "follow_up",
+    "right_test_failed": true,
+    "seconds": 21
+  },
+  {
+    "id": "B6",
+    "description": "drop the Long-message line",
+    "selected": "long_paste",
+    "failed": [
+      "test_a_very_long_paste_is_answered_and_the_page_says_it_used_only_the_last_part"
+    ],
+    "passed": 0,
+    "must_fail": "long_paste",
+    "right_test_failed": true,
+    "seconds": 23
+  },
+  {
+    "id": "B7",
+    "description": "hide the chat box",
+    "selected": "only_spaces",
+    "failed": [
+      "test_a_message_of_only_spaces_adds_nothing_and_shows_a_friendly_warning"
+    ],
+    "passed": 0,
+    "must_fail": "only_spaces",
+    "right_test_failed": true,
+    "seconds": 43
+  },
+  {
+    "id": "B8",
+    "description": "lose the welcome message and example buttons",
+    "selected": "whitespace or clicking_an_example or clear_chat",
+    "failed": [
+      "test_clicking_an_example_asks_it_and_hides_the_examples",
+      "test_clear_chat_empties_the_conversation_and_brings_back_the_welcome"
+    ],
+    "passed": 0,
+    "must_fail": "example",
+    "right_test_failed": true,
+    "seconds": 58
+  },
+  {
+    "id": "B9",
+    "description": "make Clear chat do nothing",
+    "selected": "clear_chat",
+    "failed": [
+      "test_clear_chat_empties_the_conversation_and_brings_back_the_welcome"
+    ],
+    "passed": 0,
+    "must_fail": "clear_chat",
+    "right_test_failed": true,
+    "seconds": 26
+  },
+  {
+    "id": "B10",
+    "description": "show a Python traceback when the model cannot be reached",
+    "selected": "model_off",
+    "failed": [
+      "test_with_the_answer_model_off_the_user_sees_a_friendly_error_not_a_traceback"
+    ],
+    "passed": 0,
+    "must_fail": "answer_model_off",
+    "right_test_failed": true,
+    "seconds": 43
+  },
+  {
+    "id": "B11",
+    "description": "rename the Knowledge base heading",
+    "selected": "smoke",
+    "failed": [
+      "test_each_tab_opens_with_its_heading_and_no_error_box"
+    ],
+    "passed": 6,
+    "must_fail": "each_tab_opens",
+    "right_test_failed": true,
+    "seconds": 32
+  },
+  {
+    "id": "B12",
+    "description": "leave a document out of the knowledge base table",
+    "selected": "knowledge_base_lists",
+    "failed": [
+      "test_the_knowledge_base_lists_every_document_and_offers_rebuild_and_search"
+    ],
+    "passed": 0,
+    "must_fail": "every_document",
+    "right_test_failed": true,
+    "seconds": 17
+  },
+  {
+    "id": "B13",
+    "description": "rename a card on the Test results tab",
+    "selected": "test_results",
+    "failed": [
+      "test_the_test_results_tab_shows_the_summary_cards_and_a_row_per_question"
+    ],
+    "passed": 0,
+    "must_fail": "test_results_tab",
+    "right_test_failed": true,
+    "seconds": 21
+  },
+  {
+    "id": "B14",
+    "description": "leave a mode out of the Retrieval table",
+    "selected": "retrieval_tab",
+    "failed": [
+      "test_the_retrieval_tab_compares_every_mode_and_has_the_side_by_side_view"
+    ],
+    "passed": 0,
+    "must_fail": "retrieval_tab",
+    "right_test_failed": true,
+    "seconds": 16
+  },
+  {
+    "id": "B15",
+    "description": "stop marking scores below the minimum in the search",
+    "selected": "retrieval_only",
+    "failed": [
+      "test_the_retrieval_only_search_shows_scored_chunks_and_marks_those_below_the_minimum"
+    ],
+    "passed": 0,
+    "must_fail": "retrieval_only_search",
+    "right_test_failed": true,
+    "seconds": 47
+  },
+  {
+    "id": "B16",
+    "description": "rename the Evaluation cards",
+    "selected": "evaluation",
+    "failed": [
+      "test_the_evaluation_tab_shows_eight_cards_and_a_verdict",
+      "test_each_card_has_a_number"
+    ],
+    "passed": 1,
+    "must_fail": "evaluation_tab",
+    "right_test_failed": true,
+    "seconds": 31
+  },
+  {
+    "id": "B21",
+    "description": "show the answer as plain text, so the email is not a link",
+    "selected": "service_desk_email",
+    "failed": [
+      "test_a_decline_shows_the_service_desk_email_as_a_link",
+      "test_a_decline_shows_the_service_desk_email_as_a_link"
+    ],
+    "passed": 0,
+    "must_fail": "service_desk_email",
+    "right_test_failed": true,
+    "seconds": 41
+  },
+  {
+    "id": "B22",
+    "description": "start every chat with a leftover message",
+    "selected": "reloading",
+    "failed": [
+      "test_reloading_the_page_starts_a_fresh_chat",
+      "test_reloading_the_page_starts_a_fresh_chat"
+    ],
+    "passed": 0,
+    "must_fail": "reloading_the_page",
+    "right_test_failed": true,
+    "seconds": 81
+  },
+  {
+    "id": "B23",
+    "description": "show a wrong but plausible answer on the page",
+    "selected": "judge_approves",
+    "failed": [
+      "test_the_judge_approves_the_answer_shown_on_the_page",
+      "test_the_judge_approves_the_answer_shown_on_the_page",
+      "test_the_judge_approves_the_answer_shown_on_the_page",
+      "test_the_judge_approves_the_answer_shown_on_the_page",
+      "test_the_judge_approves_the_answer_shown_on_the_page"
+    ],
+    "passed": 0,
+    "must_fail": "judge_approves",
+    "right_test_failed": true,
+    "seconds": 54
+  },
+  {
+    "id": "B17",
+    "description": "stop highlighting the chosen mode in the sidebar",
+    "selected": "sidebar",
+    "failed": [
+      "test_the_sidebar_shows_the_knowledge_base_status_and_the_chosen_mode",
+      "test_the_sidebar_shows_status_settings_mode_and_gate"
+    ],
+    "passed": 0,
+    "must_fail": "sidebar",
+    "right_test_failed": true,
+    "seconds": 28
+  },
+  {
+    "id": "B18",
+    "description": "stop showing the words while they arrive (the answer only appears at the end)",
+    "selected": "first_words",
+    "failed": [
+      "test_the_first_words_appear_before_the_sources_row_and_the_timing_line"
+    ],
+    "passed": 0,
+    "must_fail": "first_words_appear",
+    "right_test_failed": true,
+    "seconds": 21
+  },
+  {
+    "id": "B19",
+    "description": "hide the fake chatbot banner",
+    "selected": "banner",
+    "failed": [
+      "test_the_fake_chatbot_banner_is_shown_on_the_fake_app"
+    ],
+    "passed": 1,
+    "must_fail": "fake_chatbot_banner_is_shown",
+    "right_test_failed": true,
+    "seconds": 29
+  },
+  {
+    "id": "B20",
+    "description": "leave the live text on the page after the answer is finished",
+    "selected": "finished_message",
+    "failed": [
+      "test_the_finished_message_replaces_the_live_text_and_has_sources_timing_and_the_sidebar_times"
+    ],
+    "passed": 0,
+    "must_fail": "finished_message",
+    "right_test_failed": true,
+    "seconds": 21
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "questions": 5,
+  "answered": 5,
+  "results": [
+    {
+      "id": "SCN-01",
+      "question": "How many colour pages can I print each month?",
+      "answer": "You can print up to 150 colour pages per month [1]. This allowance resets on the first working day of each month, and unused pages do not carry over [1].\n\nNote: Colour jobs over 50 pages need manager approval [2].",
+      "cited": [
+        "printer_guide.md",
+        "printing_policy_scanned.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SCN-02",
+      "question": "Where are large posters printed?",
+      "answer": "Large posters are produced by the print room on floor 4. You send the file to the print room by e-mail. [1]",
+      "cited": [
+        "printing_policy_scanned.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SCN-03",
+      "question": "How long is an uncollected print job kept?",
+      "answer": "An uncollected print job is deleted from the secure queue after 24 hours. [1]",
+      "cited": [
+        "printing_policy_scanned.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SCN-04",
+      "question": "By what time must visitor badges be handed back?",
+      "answer": "Visitor badges must be handed back at reception before 18:00. [1]",
+      "cited": [
+        "visitor_notice_scanned.pdf"
+      ],
+      "ok": true
+    },
+    {
+      "id": "SCN-05",
+      "question": "Can a visitor's laptop join the CORP-SECURE network?",
+      "answer": "No. According to the Visitor Access Notice, visitor devices must not be connected to the CORP-SECURE network. They must use the guest network instead. [4]",
+      "cited": [
+        "visitor_notice_scanned.pdf"
+      ],
+      "ok": true
+    }
+  ]
+}

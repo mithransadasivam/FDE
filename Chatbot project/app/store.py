@@ -36,7 +36,7 @@ def build_index(chunks: list[dict], embed_fn, path: Path = CHROMA_DIR, name: str
                 ids=[f"{c['source']}::{c['chunk']}" for c in chunks],
                 documents=[c["text"] for c in chunks],
                 embeddings=vectors,
-                metadatas=[{"source": c["source"], "page": c["page"], "chunk": c["chunk"]} for c in chunks],
+                metadatas=[{"source": c["source"], "page": c["page"], "chunk": c["chunk"], "read_by": c.get("read_by", "text")} for c in chunks],
             )
         count = collection.count()
         _delete_if_exists(client, name)

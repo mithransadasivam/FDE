@@ -115,4 +115,4 @@ def test_rerank_mode_reranks_hybrid_candidates(monkeypatch):
 
 
 def test_model_calls_per_mode():
-    assert retrieval.MODEL_CALLS == {"vector": 0, "hybrid": 0, "rerank": 1, "full": 2}
+    assert retrieval.MODEL_CALLS == {"vector": 0, "hybrid": 0, "rerank": 1, "full": 2, "smart": 1}

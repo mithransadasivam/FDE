@@ -69,3 +69,16 @@ def test_evaluation_records_what_was_searched_for():
     results = rows_for(retrieve)
     assert [r["searched_for"] for r in results] == ["rewritten q1", "rewritten q2"] and results[0]["hit"]
     assert rows_for(lambda r: [RIGHT])[0]["searched_for"] == "q1"  # plain list: the question as typed
+
+
+def test_merging_adds_or_replaces_rows_and_keeps_the_others_in_order():
+    from app.comparison import merge_rows
+    old = [{"mode": "vector", "hit_rate": 0.95}, {"mode": "hybrid", "hit_rate": 0.9}, {"mode": "full", "hit_rate": 0.95}]
+    merged = merge_rows(old, [{"mode": "hybrid", "hit_rate": 1.0}, {"mode": "smart", "hit_rate": 0.97}], ("vector", "hybrid", "rerank", "full", "smart"))
+    assert [r["mode"] for r in merged] == ["vector", "hybrid", "full", "smart"]
+    assert merged[1]["hit_rate"] == 1.0 and merged[0]["hit_rate"] == 0.95
+
+
+def test_merging_with_nothing_saved_yet_just_returns_the_new_rows():
+    from app.comparison import merge_rows
+    assert merge_rows([], [{"mode": "smart"}], ("vector", "smart")) == [{"mode": "smart"}]

@@ -1,0 +1,54 @@
+{
+  "A (two steps, answer from text)": [
+    {
+      "id": "IMG-02",
+      "correct": true,
+      "faithful": true,
+      "seconds": 5.77,
+      "answer_in": 1118,
+      "vision_in": 1017
+    },
+    {
+      "id": "IMG-04",
+      "correct": true,
+      "faithful": true,
+      "seconds": 4.38,
+      "answer_in": 1118,
+      "vision_in": 1017
+    },
+    {
+      "id": "IMG-07",
+      "correct": true,
+      "faithful": true,
+      "seconds": 4.55,
+      "answer_in": 800,
+      "vision_in": 1017
+    }
+  ],
+  "B (the answer model also sees the picture)": [
+    {
+      "id": "IMG-02",
+      "correct": true,
+      "faithful": true,
+      "seconds": 6.56,
+      "answer_in": 1898,
+      "vision_in": 1017
+    },
+    {
+      "id": "IMG-04",
+      "correct": true,
+      "faithful": true,
+      "seconds": 5.92,
+      "answer_in": 1898,
+      "vision_in": 1017
+    },
+    {
+      "id": "IMG-07",
+      "correct": true,
+      "faithful": true,
+      "seconds": 6.33,
+      "answer_in": 1580,
+      "vision_in": 1017
+    }
+  ]
+}

@@ -20,7 +20,7 @@ def test_build_stores_chunks_with_metadata(tmp_path):
     assert build_index(CHUNKS, fake_embed, tmp_path) == 3
     got = get_collection(tmp_path).get(include=["metadatas", "documents"])
     assert sorted(m["source"] for m in got["metadatas"]) == ["a.md", "a.md", "b.md"]
-    assert {"source", "page", "chunk"} == set(got["metadatas"][0])
+    assert {"source", "page", "chunk", "read_by"} == set(got["metadatas"][0])
 
 
 def test_count_survives_restart_without_embedding(tmp_path):

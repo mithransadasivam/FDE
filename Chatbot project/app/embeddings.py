@@ -1,7 +1,7 @@
 """Embeddings from the local Ollama model. Same model for documents and questions."""
 import requests
 
-from app.config import EMBED_MODEL, EMBED_TIMEOUT, OLLAMA_URL
+from app.config import EMBED_KEEP_ALIVE, EMBED_MODEL, EMBED_TIMEOUT, OLLAMA_URL
 
 # nomic-embed-text is trained with these task prefixes; using them helps matching.
 DOC_PREFIX = "search_document: "
@@ -16,7 +16,7 @@ def _embed(texts: list[str]) -> list[list[float]]:
     try:
         resp = requests.post(
             f"{OLLAMA_URL}/api/embed",
-            json={"model": EMBED_MODEL, "input": texts},
+            json={"model": EMBED_MODEL, "input": texts, "keep_alive": EMBED_KEEP_ALIVE},
             timeout=EMBED_TIMEOUT,
         )
         resp.raise_for_status()

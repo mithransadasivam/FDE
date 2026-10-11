@@ -11,7 +11,7 @@ from app.store import build_index, count_chunks
 def overview(docs_dir: Path = DOCS_DIR, chroma: Path = CHROMA_DIR) -> dict:
     """Describe the documents and the saved index.
 
-    Returns {rows, documents, readable, chunks, indexed_chunks, state}. `state` is
+    Returns {rows, documents, readable, unread_pages, chunks, indexed_chunks, state}. `state` is
     "ready" (index matches the documents), "missing" (never built) or
     "out of date" (index and documents disagree, so a rebuild is needed).
     """
@@ -29,17 +29,24 @@ def overview(docs_dir: Path = DOCS_DIR, chroma: Path = CHROMA_DIR) -> dict:
     else:
         state = "out of date"
 
-    rows = []
+    rows, unread = [], 0
     for doc, n in sizes:
-        if n == 0:
+        kinds = doc.get("page_kinds", [])
+        waiting = kinds.count("picture")  # picture-only pages nobody has read yet
+        unread += waiting
+        if waiting:
+            status = f"{waiting} scanned page{'s' if waiting != 1 else ''} not read yet"
+        elif n == 0:
             status = doc["warning"] or "0 chunks: no readable text"
         else:
             status = "Indexed" if state == "ready" else "Not indexed"
-        rows.append({"Document": doc["source"], "Type": doc["type"], "Pages": len(doc["pages"]), "Chunks": n, "Status": status})
+        rows.append({"Document": doc["source"], "Type": doc["type"], "Pages": len(doc["pages"]), "Read as text": kinds.count("text"),
+                     "Read by vision": kinds.count("vision"), "Chunks": n, "Status": status})
     return {
         "rows": rows,
         "documents": len(docs),
         "readable": sum(1 for _, n in sizes if n),
+        "unread_pages": unread,
         "chunks": total,
         "indexed_chunks": indexed,
         "state": state,

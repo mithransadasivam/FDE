@@ -29,7 +29,7 @@ def index(tmp_path):
 def test_best_match_first_with_source_page_score(index):
     results = search("my vpn fails", k=3, embed_fn=fake_embed_text, path=index)
     assert results[0]["source"] == "vpn.md" and results[0]["page"] == 1
-    assert set(results[0]) == {"text", "source", "page", "chunk", "score"}
+    assert set(results[0]) == {"text", "source", "page", "chunk", "read_by", "score"}
     scores = [r["score"] for r in results]
     assert scores == sorted(scores, reverse=True)
 

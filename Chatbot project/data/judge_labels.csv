@@ -1,0 +1,11 @@
+id,correct,faithful,why
+QUA-03,yes,yes,"All three fixes are in the answer and every claim, including the log-file step, is in the retrieved chunks."
+QUA-07,yes,yes,"15 minutes and 4 hours, both in the chunks."
+FUN-02,yes,yes,"30 days, from the runbook chunk."
+FUN-04,yes,yes,"Missing certificate, raise a ticket, about 1 business day: all in the chunks."
+CTX-01,yes,yes,"P3 response 4 hours and 3 working days (same as 3 business days), both in the SLA table chunk."
+CTX-02,yes,yes,"Self Service, approve the system extension, restart once. Details come from the two VPN setup chunks."
+RAG-05,yes,yes,"Stop using it, do not charge it, take it to the IT desk, all in the equipment policy chunk."
+RAG-10,yes,yes,"25 MB and a NorthDrive link for larger files."
+RAG-14,yes,yes,"Password expired; change it on the self-service portal."
+SEC-09,yes,no,"The 12-hour fact is right, but the closing advice to call extension 4357 or servicedesk@northwind.example is not in the chunks it was given (it comes from the decline sentence in the prompt)."

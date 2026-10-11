@@ -1,0 +1,359 @@
+{
+  "max_side": 1600,
+  "rows": 15,
+  "made": 15,
+  "right": {
+    "error_code": 15,
+    "application": 14,
+    "summary": 15,
+    "severity": 13,
+    "next_step": 15
+  },
+  "results": [
+    {
+      "id": "IMG-01",
+      "ticket": {
+        "error_code": "VPN-806",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN client cannot connect due to missing certificate on the laptop.",
+        "severity": "P3",
+        "next_step": "This usually happens after a laptop is rebuilt. Raise a ticket to have a new certificate issued; it takes about 1 business day.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.95,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 95,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-02",
+      "ticket": {
+        "error_code": "VPN-809",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN connection failed because the user's certificate has expired.",
+        "severity": "P3",
+        "next_step": "Renew the certificate from the self-service portal while connected to the office network, or call the service desk to renew it remotely.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.81,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 91,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-03",
+      "ticket": {
+        "error_code": "VPN-815",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN connection blocked because the connection came from a location that is not allowed.",
+        "severity": "P3",
+        "next_step": "Contact the security team; access can only be opened after they approve your travel.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.12,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 104,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-04",
+      "ticket": {
+        "error_code": "WIFI-117",
+        "application": "Guest Wi-Fi Portal",
+        "summary": "Guest Wi-Fi access credential has expired and requires re-registration to regain connectivity.",
+        "severity": "P4",
+        "next_step": "After that the guest must register again at the reception kiosk to get a new code.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.58,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 104,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-05",
+      "ticket": {
+        "error_code": "ACC-409",
+        "application": "Northwind Sign In",
+        "summary": "User's password was rejected because it is no longer valid.",
+        "severity": "P3",
+        "next_step": "Change it from the self-service portal; the new password must follow the password policy.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.51,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 86,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-06",
+      "ticket": {
+        "error_code": "ACC-401",
+        "application": "signin.northwind.example",
+        "summary": "User account is locked due to too many failed sign-in attempts.",
+        "severity": "P3",
+        "next_step": "It unlocks automatically after 15 minutes, or the service desk can unlock it sooner after checking your identity.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.27,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 87,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-07",
+      "ticket": {
+        "error_code": "NET-2231",
+        "application": "Web Browser",
+        "summary": "User cannot access intranet.northwind.example because the site is blocked by company network policy.",
+        "severity": "P4",
+        "next_step": "If you need it for work, raise an access ticket with the full address and the business reason. Do not try to bypass the block.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.23,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 100,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-08",
+      "ticket": {
+        "error_code": "PRN-310",
+        "application": "Northwind print service",
+        "summary": "A print job is stuck in the queue and blocking other documents from printing.",
+        "severity": "P4",
+        "next_step": "Cancel the job from the print queue window, then send it again. If the queue will not clear, raise a P3 ticket.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.4,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 93,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-14",
+      "ticket": {
+        "error_code": "VPN-801",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN sign-in request was not approved in time, preventing connection.",
+        "severity": "P3",
+        "next_step": "Open the company authenticator app, approve the request, and connect again. If no request appears, check that your phone has a data connection.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": false,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.8,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 97,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-15",
+      "ticket": {
+        "error_code": "VPN-812",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN session disconnected because it reached its maximum length.",
+        "severity": "P3",
+        "next_step": "Sign in again with MFA to start a new session. This is expected behaviour, not a fault.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": false,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 4.1,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 89,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-16",
+      "ticket": {
+        "error_code": "VPN-820",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN connection refused because the device failed the health check.",
+        "severity": "P3",
+        "next_step": "Update the endpoint agent from the software catalogue and restart the device.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.82,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 105,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-17",
+      "ticket": {
+        "error_code": "NET-2240",
+        "application": "intranet.northwind.example",
+        "summary": "User cannot access the intranet page due to a DNS lookup failure.",
+        "severity": "P3",
+        "next_step": "Restart the laptop. If it continues, run ipconfig /flushdns from a command prompt and try again.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": false,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.13,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 94,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-18",
+      "ticket": {
+        "error_code": "WIFI-102",
+        "application": "Wi-Fi Network connections",
+        "summary": "Device cannot connect to CORP-SECURE network; the network does not accept this device.",
+        "severity": "P3",
+        "next_step": "Connect by cable or to the guest network, then reinstall the Wi-Fi profile from the software catalogue.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.2",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 5.66,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 101,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-12",
+      "ticket": {
+        "error_code": "VPN-806",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN client cannot connect because it could not find a certificate on this laptop.",
+        "severity": "P3",
+        "next_step": "This usually happens after a laptop is rebuilt. Raise a ticket to have a new certificate issued; it takes about 1 business day.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.77,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 98,
+      "max_side": 1600
+    },
+    {
+      "id": "IMG-13",
+      "ticket": {
+        "error_code": "VPN-809",
+        "application": "NorthLink VPN client 5.2",
+        "summary": "VPN connection failed because the user's certificate has expired.",
+        "severity": "P3",
+        "next_step": "Renew the certificate from the self-service portal while connected to the office network, or call the service desk to renew it remotely.",
+        "next_step_source": "Day07_Slide05_kb_error_codes.pdf p.1",
+        "calls": 1
+      },
+      "scores": {
+        "error_code": true,
+        "application": true,
+        "severity": true,
+        "summary": true,
+        "next_step": true
+      },
+      "seconds": 3.24,
+      "vision_input_tokens": 1995,
+      "vision_output_tokens": 96,
+      "max_side": 1600
+    }
+  ]
+}

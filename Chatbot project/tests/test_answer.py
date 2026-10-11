@@ -29,7 +29,7 @@ def test_guard1_declines_without_calling_model():
 
 def test_guard1_declines_when_nothing_retrieved():
     model = FakeModel("unused")
-    assert answer("q", fake_retriever([]), model)["declined"] and model.calls == []
+    assert answer("a question", fake_retriever([]), model)["declined"] and model.calls == []
 
 
 def test_cited_answer_returns_sources():
@@ -49,23 +49,23 @@ def test_guard2_model_decline_is_reported_as_declined():
 
 def test_guard2_decline_with_extra_whitespace_still_counts():
     model = FakeModel("  " + DECLINE_SENTENCE.replace(" ", "  ") + "\n")
-    assert answer("q", fake_retriever([chunk("x", 0.9)]), model)["declined"]
+    assert answer("a question", fake_retriever([chunk("x", 0.9)]), model)["declined"]
 
 
 def test_answer_without_citation_is_declined():
     model = FakeModel("Probably restart it.")
-    result = answer("q", fake_retriever([chunk("x", 0.9)]), model)
+    result = answer("a question", fake_retriever([chunk("x", 0.9)]), model)
     assert result["declined"] and result["sources"] == []
 
 
 def test_invalid_citation_number_is_ignored():
     model = FakeModel("Fact [7].")
-    assert answer("q", fake_retriever([chunk("x", 0.9)]), model)["declined"]
+    assert answer("a question", fake_retriever([chunk("x", 0.9)]), model)["declined"]
 
 
 def test_only_chunks_above_minimum_reach_the_model():
     model = FakeModel("Fact [1].")
-    answer("q", fake_retriever([chunk("good", 0.9), chunk("weak", 0.2)]), model, min_score=0.55)
+    answer("a question", fake_retriever([chunk("good", 0.9), chunk("weak", 0.2)]), model, min_score=0.55)
     prompt = model.calls[0][1]["content"]
     assert "good" in prompt and "weak" not in prompt
 
@@ -91,8 +91,8 @@ def test_document_cannot_close_its_source_block():
 # ---- security hardening (Phase 8 review) ----
 import pytest
 
-from app.answer import MSG_TOO_LONG, check_min_score
-from app.config import MAX_QUESTION_CHARS
+from app.answer import MSG_SHORTENED, MSG_TOO_LONG, check_min_score
+from app.config import MAX_INPUT_CHARS, MAX_QUESTION_CHARS
 
 
 @pytest.mark.parametrize("attack", [
@@ -119,15 +119,30 @@ def test_question_is_delimited_and_escaped():
     assert "&lt;/question&gt;" in prompt
 
 
-def test_too_long_question_is_refused_before_any_call():
+def test_a_long_message_is_shortened_to_its_end_and_the_answer_says_so():
+    searched = []
+    long_message = "Here is my log. " * 100 + "How long can a VPN session stay connected?"
+    result = answer(long_message, lambda q, k: searched.append(q) or [chunk("t", 0.9)], FakeModel("12 hours [1]."))
+    assert searched == ["How long can a VPN session stay connected?"]
+    assert result["shortened_to"] == searched[0] and not result["declined"]
+    assert result["answer"].startswith(MSG_SHORTENED) and result["answer"].endswith("12 hours [1].")
+
+
+def test_a_declined_long_message_keeps_the_exact_decline_sentence():
+    result = answer("Some log text here. " * 100 + "What is the salary band?", lambda q, k: [chunk("t", 0.1)], FakeModel("unused"))
+    assert result["declined"] and result["answer"] == DECLINE_SENTENCE and result["shortened_to"]
+
+
+def test_an_absurdly_long_message_is_refused_before_any_call():
     calls = []
-    result = answer("x" * (MAX_QUESTION_CHARS + 1), lambda q, k: calls.append(q) or [chunk("t", 0.9)], FakeModel("unused"))
+    result = answer("vpn " * MAX_INPUT_CHARS, lambda q, k: calls.append(q) or [chunk("t", 0.9)], FakeModel("unused"))
     assert result["answer"] == MSG_TOO_LONG and not result["declined"] and calls == []
 
 
-def test_question_at_the_limit_is_accepted():
+def test_a_message_at_the_limit_is_not_shortened():
     model = FakeModel("Fact [1].")
-    assert not answer("x" * MAX_QUESTION_CHARS, fake_retriever([chunk("t", 0.9)]), model)["declined"]
+    result = answer(("vpn " * 125).strip(), fake_retriever([chunk("t", 0.9)]), model)
+    assert not result["declined"] and result["shortened_to"] == "" and not result["answer"].startswith(MSG_SHORTENED)
 
 
 @pytest.mark.parametrize("bad", [float("nan"), -1.0, 1.5, float("inf"), float("-inf")])
@@ -135,19 +150,19 @@ def test_invalid_min_score_is_rejected(bad):
     with pytest.raises(ValueError):
         check_min_score(bad)
     with pytest.raises(ValueError):
-        answer("q", fake_retriever([chunk("t", 0.9)]), FakeModel("x"), min_score=bad)
+        answer("a question", fake_retriever([chunk("t", 0.9)]), FakeModel("x"), min_score=bad)
 
 
 def test_out_of_range_citations_are_removed_from_the_shown_answer():
     model = FakeModel("Update to 5.2 [1] and also restart [7].")
-    result = answer("q", fake_retriever([chunk("t", 0.9)]), model)
+    result = answer("a question", fake_retriever([chunk("t", 0.9)]), model)
     assert "[7]" not in result["answer"] and "[1]" in result["answer"]
     assert result["answer"].endswith("restart.")
 
 
 def test_huge_citation_number_does_not_crash():
     model = FakeModel("Fact [1] and [" + "9" * 5000 + "].")
-    result = answer("q", fake_retriever([chunk("t", 0.9)]), model)
+    result = answer("a question", fake_retriever([chunk("t", 0.9)]), model)
     assert not result["declined"] and [s["number"] for s in result["sources"]] == [1]
 
 
@@ -157,7 +172,7 @@ def test_default_retrieval_gets_the_previous_question_and_reports_what_was_searc
 
     seen = {}
 
-    def fake_detailed(question, k, previous_question=""):
+    def fake_detailed(question, k, mode=None, previous_question=""):
         seen.update(question=question, previous_question=previous_question)
         return {"chunks": [chunk("fact", 0.9)], "searched_for": "install VPN client on Mac"}
 
@@ -175,3 +190,16 @@ def test_a_custom_retriever_is_searched_for_the_question_as_typed():
 def test_declined_answers_also_say_what_was_searched_for():
     result = answer("salary?", fake_retriever([chunk("x", 0.1)]), FakeModel("unused"))
     assert result["declined"] and result["searched_for"] == "salary?"
+
+
+def test_the_mode_override_reaches_the_retrieval_step(monkeypatch):
+    import app.answer as answer_module
+    seen = {}
+
+    def fake_detailed(question, k, mode=None, previous_question=""):
+        seen["mode"] = mode
+        return {"chunks": [chunk("fact", 0.9)], "searched_for": question}
+
+    monkeypatch.setattr(answer_module, "retrieve_detailed", fake_detailed)
+    answer("How long?", model=FakeModel("Fact [1]."), mode="rerank")
+    assert seen["mode"] == "rerank"

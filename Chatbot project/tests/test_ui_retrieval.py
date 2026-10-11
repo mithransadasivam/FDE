@@ -17,7 +17,7 @@ def row(mode, hit_rate, mrr, answer_seconds, calls=0, behaviour=(10, 10)):
             "answer_seconds": answer_seconds}
 
 
-FAKE = [row("vector", 0.95, 0.79, 2.0), row("hybrid", 0.90, 0.87, 2.1), row("rerank", 1.0, 0.94, 4.5, calls=1), row("full", 0.95, 0.91, 6.0, calls=2)]
+FAKE = [row("vector", 0.95, 0.79, 2.0), row("hybrid", 0.90, 0.87, 2.1), row("rerank", 1.0, 0.94, 4.5, calls=1), row("full", 0.95, 0.91, 6.0, calls=2), row("smart", 1.0, 0.85, 1.9, calls=1)]
 
 
 def saved_result(mode, question):
@@ -32,17 +32,17 @@ def test_empty_state_before_any_comparison(monkeypatch):
     assert any("No retrieval comparison yet" in i.value for i in at.info)
 
 
-def test_tab_shows_cards_all_four_modes_and_the_chosen_one_highlighted(monkeypatch):
+def test_tab_shows_cards_all_five_modes_and_the_chosen_one_highlighted(monkeypatch):
     monkeypatch.setattr(comparison_module, "load_comparison", lambda *a, **k: FAKE)
     monkeypatch.setattr(comparison_module, "load_mode_results", lambda mode, *a, **k: [])
     at = AppTest.from_file(UI, default_timeout=30).run()
     assert not at.exception
     labels = [m.label for m in at.metric]
-    assert any(label.startswith("Hit rate @4 (vector)") for label in labels)  # the saved setting is vector
+    assert any(label.startswith("Hit rate @4 (smart)") for label in labels)  # the saved setting is smart
     assert any("gained over vector" in label for label in labels)
     table = [d for d in at.dataframe if "Mode" in d.value.columns][0].value
-    assert list(table["Mode"]) == ["✓ vector", "hybrid", "rerank", "full"]
-    assert list(table["Meets target"]) == ["yes", "yes", "no", "no"]  # rerank and full take over 3 s per answer
+    assert list(table["Mode"]) == ["vector", "hybrid", "rerank", "full", "✓ smart"]
+    assert list(table["Meets target"]) == ["yes", "yes", "no", "no", "yes"]  # rerank and full take over 3 s per answer
 
 
 def test_side_by_side_marks_the_expected_document(monkeypatch):
@@ -64,7 +64,7 @@ def test_sidebar_shows_mode_test_set_and_decision():
     at = AppTest.from_file(UI, default_timeout=30).run()
     assert not at.exception
     side = " ".join(m.value for m in at.sidebar.markdown) + " ".join(c.value for c in at.sidebar.caption)
-    for chip in ("vector", "hybrid", "rerank", "full"):
+    for chip in ("vector", "hybrid", "rerank", "full", "smart"):
         assert f'>{chip}</span>' in side
     tables = [t.value for t in at.sidebar.table]
     flat = " ".join(str(v) for t in tables for v in t.to_numpy().ravel())

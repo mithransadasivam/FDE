@@ -28,13 +28,13 @@
         "total": 3
       }
     },
-    "retrieval_ms": 123,
+    "retrieval_ms": 132,
     "retrieval_model_calls": 0,
     "calls_per_answer": 1,
     "rerank_fallbacks": 0,
     "behaviour_correct": 10,
     "behaviour_total": 10,
-    "answer_seconds": 1.97
+    "answer_seconds": 1.73
   },
   {
     "mode": "hybrid",
@@ -65,13 +65,13 @@
         "total": 3
       }
     },
-    "retrieval_ms": 111,
+    "retrieval_ms": 123,
     "retrieval_model_calls": 0,
     "calls_per_answer": 1,
     "rerank_fallbacks": 0,
     "behaviour_correct": 10,
     "behaviour_total": 10,
-    "answer_seconds": 2.11
+    "answer_seconds": 1.74
   },
   {
     "mode": "rerank",
@@ -102,13 +102,13 @@
         "total": 3
       }
     },
-    "retrieval_ms": 2272,
+    "retrieval_ms": 1949,
     "retrieval_model_calls": 1,
     "calls_per_answer": 2,
     "rerank_fallbacks": 1,
     "behaviour_correct": 10,
     "behaviour_total": 10,
-    "answer_seconds": 4.01
+    "answer_seconds": 3.64
   },
   {
     "mode": "full",
@@ -139,12 +139,49 @@
         "total": 3
       }
     },
-    "retrieval_ms": 3411,
+    "retrieval_ms": 2989,
     "retrieval_model_calls": 2,
     "calls_per_answer": 3,
     "rerank_fallbacks": 1,
     "behaviour_correct": 10,
     "behaviour_total": 10,
-    "answer_seconds": 5.63
+    "answer_seconds": 4.87
+  },
+  {
+    "mode": "smart",
+    "k": 4,
+    "questions": 20,
+    "hits": 20,
+    "hit_rate": 1.0,
+    "mrr": 0.85,
+    "by_kind": {
+      "plain": {
+        "hits": 6,
+        "total": 6
+      },
+      "reworded": {
+        "hits": 4,
+        "total": 4
+      },
+      "exact code": {
+        "hits": 4,
+        "total": 4
+      },
+      "follow-up": {
+        "hits": 3,
+        "total": 3
+      },
+      "messy": {
+        "hits": 3,
+        "total": 3
+      }
+    },
+    "retrieval_ms": 279,
+    "retrieval_model_calls": 1,
+    "calls_per_answer": 2,
+    "rerank_fallbacks": 0,
+    "behaviour_correct": 10,
+    "behaviour_total": 10,
+    "answer_seconds": 1.86
   }
 ]

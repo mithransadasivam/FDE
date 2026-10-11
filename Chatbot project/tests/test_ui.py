@@ -4,9 +4,20 @@ from pathlib import Path
 import pytest
 from streamlit.testing.v1 import AppTest
 
+from app.config import MAX_INPUT_CHARS
+
 import app.answer as answer_module
 
 UI = str(Path(__file__).resolve().parent.parent / "app" / "ui.py")
+
+
+def as_stream(fake):
+    """Turn a fake `answer(question, **kw)` into a fake `answer_stream`: a few pieces, then the finished result."""
+    def stream(question, **kw):
+        result = fake(question, **kw)
+        yield "piece", result["answer"][:6]
+        yield "done", result
+    return stream
 
 
 def fake_result(declined):
@@ -20,12 +31,12 @@ def fake_result(declined):
 def test_app_loads_with_three_tabs():
     at = AppTest.from_file(UI, default_timeout=30).run()
     assert not at.exception
-    assert [t.label for t in at.tabs] == ["Chat", "Knowledge base", "Test results", "Retrieval"]
+    assert [t.label for t in at.tabs] == ["Chat", "Knowledge base", "Test results", "Retrieval", "Evaluation"]
 
 
 @pytest.mark.parametrize("declined", [False, True])
 def test_chat_shows_answer_or_declined_badge(monkeypatch, declined):
-    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: fake_result(declined))
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(lambda q, **kw: fake_result(declined)))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("How long are backups kept?").run()
     assert not at.exception
@@ -38,7 +49,7 @@ def test_missing_index_shows_friendly_message(monkeypatch):
     def boom(q, **kw):
         raise ValueError("no index")
 
-    monkeypatch.setattr(answer_module, "answer", boom)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(boom))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("hello").run()
     assert not at.exception
@@ -68,7 +79,7 @@ def test_unexpected_error_shows_friendly_message_not_a_traceback(monkeypatch):
     def boom(q, **kw):
         raise KeyError("some chroma problem at D:/secret/path")
 
-    monkeypatch.setattr(answer_module, "answer", boom)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(boom))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("hello").run()
     assert not at.exception
@@ -80,7 +91,7 @@ def test_model_markdown_links_and_images_are_not_rendered(monkeypatch):
     evil = {"answer": "See ![x](https://evil.example/p.png?q=1) and [Reset](https://evil.example) [1].",
             "sources": [{"number": 1, "source": "a.md", "page": 1, "text": "t", "score": 0.8}],
             "declined": False, "best_score": 0.8, "chunks_used": 1, "seconds": 0.1, "reason": ""}
-    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: evil)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(lambda q, **kw: evil))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("q").run()
     assert not at.exception
@@ -92,7 +103,7 @@ def test_model_markdown_links_and_images_are_not_rendered(monkeypatch):
 
 def test_chat_input_has_a_length_limit():
     at = AppTest.from_file(UI, default_timeout=30).run()
-    assert at.chat_input[0].proto.max_chars == 500
+    assert at.chat_input[0].proto.max_chars == MAX_INPUT_CHARS  # long pastes are shortened by the app, not blocked by the box
 
 
 # ---- look and feel (recommendations 1-5 and 7) ----
@@ -111,7 +122,7 @@ def test_clicking_an_example_asks_that_question_and_hides_the_examples(monkeypat
         asked.append(q)
         return fake_result(False)
 
-    monkeypatch.setattr(answer_module, "answer", fake)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(fake))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.button(key="example_1").click().run()
     assert not at.exception
@@ -120,7 +131,7 @@ def test_clicking_an_example_asks_that_question_and_hides_the_examples(monkeypat
 
 
 def test_clear_chat_button_empties_the_conversation(monkeypatch):
-    monkeypatch.setattr(answer_module, "answer", lambda q, **kw: fake_result(False))
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(lambda q, **kw: fake_result(False)))
     at = AppTest.from_file(UI, default_timeout=30).run()
     clear = [b for b in at.sidebar.button if "Clear chat" in b.label][0]
     assert clear.disabled  # nothing to clear yet
@@ -146,7 +157,7 @@ def test_the_previous_question_comes_from_the_chat_history_and_searched_for_is_s
         seen.append((q, previous_question))
         return {**fake_result(False), "searched_for": f"rewritten: {q}"}
 
-    monkeypatch.setattr(answer_module, "answer", fake)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(fake))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("How do I install the VPN client on Windows?").run()
     at.chat_input[0].set_value("And on a Mac?").run()
@@ -164,7 +175,7 @@ def test_clearing_the_chat_forgets_the_previous_question(monkeypatch):
         seen.append(previous_question)
         return fake_result(False)
 
-    monkeypatch.setattr(answer_module, "answer", fake)
+    monkeypatch.setattr(answer_module, "answer_stream", as_stream(fake))
     at = AppTest.from_file(UI, default_timeout=30).run()
     at.chat_input[0].set_value("first question").run()
     [b for b in at.sidebar.button if "Clear chat" in b.label][0].click().run()
