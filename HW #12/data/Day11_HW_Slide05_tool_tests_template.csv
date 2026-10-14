@@ -1,0 +1,6 @@
+request,expected_tools
+Hello! What can you help me with?,none
+Is the Finance Portal down?,service_status
+How many open Print Queue tickets are there?,find_tickets
+What is the response target for a P1 incident?,search_policies
+"Is the Finance Portal down, and how many open tickets are about it?",service_status|find_tickets
