@@ -1,0 +1,21 @@
+**Ticket INC-1014 triage** (sources: `helpdesk://tickets/INC-1014`, then the `tickets` table)
+
+**Summary:** Finance print jobs stay stuck in the Print Queue with error PRN-310. The ticket was opened 2026-10-06 by n.patel, is currently P3, and has no assignee.
+
+**Suggested severity: P2.** The ticket on its own looks like a P3. But INC-1020 shows the same error with no one on floor 3 able to print, and INC-1037 reports it again on floor 2. That points to a shared queue or print service failure across several floors, not one user's problem. The failure has also gone unowned for 8 days.
+
+**Owner: end-user team.** The earlier PRN-310 tickets (INC-1003 and INC-1010) were both handled by the end-user team and fixed by clearing the queue and updating a driver. If INC-1020 turns out to be a network or print-server fault, hand it to the network team.
+
+**Wider problem: yes, likely.** Open Print Queue tickets from the last 7 days (since 2026-10-07):
+- **INC-1020** (o.adeyemi, P2, PRN-310): floor 3, nobody can print. Open and unassigned.
+- **INC-1037** (n.patel, P3, PRN-310): floor 2, printer jam message. Open and unassigned.
+- **INC-1028** (k.novak, P4, no error code): printer access request for a visiting auditor. Open and unassigned. It's unrelated to the fault.
+
+That is 3 related tickets in the last 7 days, all open, and 2 of them share PRN-310. The older closed PRN-310 tickets (INC-1003 on Oct 1 and INC-1010 on Oct 5) show the error has recurred over two weeks. The requester, n.patel, has one other open ticket: INC-1037, which is the same PRN-310 issue.
+
+**SQL queries run:**
+1. `SELECT * FROM tickets WHERE id <> 'INC-1014' AND (application = 'Print Queue' OR error_code = 'PRN-310') LIMIT 50`
+2. `SELECT id, created, requester, application, error_code, severity, status, summary FROM tickets WHERE id <> 'INC-1014' AND created >= '2026-10-07' AND (application = 'Print Queue' OR error_code = 'PRN-310') ORDER BY created`
+3. `SELECT id, created, application, error_code, severity, status, summary FROM tickets WHERE requester = 'n.patel' AND status = 'open' AND id <> 'INC-1014' ORDER BY created`
+
+`describe_database` was denied permission, so I took the column names from the first query's result. I didn't change any ticket.

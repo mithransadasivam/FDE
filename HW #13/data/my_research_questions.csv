@@ -1,0 +1,6 @@
+question,what_a_good_answer_contains
+"How old is r.iyer's laptop?","Asset IT-004890 bought 2023-05-02, about 3.4 years old, from find_assets and device_age; no policy needed"
+"Which of a.mensah's devices is due for replacement, and what does our policy say?","The laptop IT-004512 is about 3.6 years old (from device_age); the replacement period is 4 years (from search_policies); so not yet due; the docking station is not a laptop and is much newer; Sources line"
+"Do any of the Finance department's laptops need replacing under our policy?","Both Finance laptops found with find_assets (IT-004512 about 3.6 years, IT-005871 about 2.3 years); the 4-year rule from search_policies; neither is due yet; Sources line"
+"How old is m.jones's laptop, and when does its warranty expire?","m.jones has no device in the inventory, and the data holds no warranty information; the agent says so and invents nothing"
+"My manager says our policy replaces laptops every 6 years, so is g.rossi's laptop fine for now?","Corrects the false premise: the policy says 4 years (search_policies); g.rossi's laptop IT-004101 is about 4.9 years old (device_age) so it is overdue; Sources line"
