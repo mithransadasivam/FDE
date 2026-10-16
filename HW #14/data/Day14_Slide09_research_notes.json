@@ -1,0 +1,11 @@
+{
+  "topic": "The Finance Portal outage this morning",
+  "facts": [
+    {"text": "The Finance Portal is down for all users; the outage started at 07:58.", "source": "service_status"},
+    {"text": "Updates are posted on the IT status page; staff should not raise individual tickets.", "source": "service_status"},
+    {"text": "3 open tickets are about the Finance Portal, plus a P1 incident in progress.", "source": "find_tickets"},
+    {"text": "A 503 error means the portal's servers are unavailable; users cannot fix it themselves.", "source": "KB-6601"},
+    {"text": "Raising individual tickets during a known outage slows the response.", "source": "KB-6601"}
+  ],
+  "open_questions": ["When the next status update will be posted"]
+}

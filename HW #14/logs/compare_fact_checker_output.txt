@@ -1,0 +1,44 @@
+
+The Finance Portal outage this morning  [team]  5 calls, 12460 tokens, 83.3 s, revisions 0
+  problems: none found
+  title: Finance Portal Outage
+
+The Finance Portal outage this morning  [team + checker]  11 calls, 18126 tokens, 160.3 s, revisions 2
+  problems: missing: status page
+  title: Finance Portal outage
+
+VPN error VPN-809 for people returning from leave  [team]  7 calls, 15518 tokens, 124.2 s, revisions 1
+  problems: none found
+  title: VPN error VPN-809 for returning staff
+
+VPN error VPN-809 for people returning from leave  [team + checker]  5 calls, 14147 tokens, 148.8 s, revisions 0
+  problems: no notice
+
+Delays to external email in Company Mail today  [team]  7 calls, 15201 tokens, 71.6 s, revisions 1
+  problems: none found
+  title: Delays in external email delivery
+
+Delays to external email in Company Mail today  [team + checker]  8 calls, 16071 tokens, 72.0 s, revisions 1
+  problems: none found
+  title: Delays in external email delivery in Company Mail
+
+Print jobs stuck in the queue with error PRN-310  [team]  9 calls, 17297 tokens, 78.3 s, revisions 2
+  problems: missing: Print Queue
+  title: Print jobs stuck with error PRN-310
+
+Print jobs stuck in the queue with error PRN-310  [team + checker]  11 calls, 22608 tokens, 132.9 s, revisions 2
+  problems: none found
+  title: Print jobs stuck with PRN-310 error
+
+Wi-Fi sign-in failures with error WIFI-102 after a password change  [team]  10 calls, 18561 tokens, 152.3 s, revisions 2
+  problems: none found
+  title: Wi-Fi sign-in failures with error WIFI-102 after password change
+
+Wi-Fi sign-in failures with error WIFI-102 after a password change  [team + checker]  5 calls, 12473 tokens, 72.0 s, revisions 0
+  problems: no notice
+
+version         calls   tokens  seconds  problems
+team               38    79037    509.7         1
+team + checker     40    83425    586.0         3
+
+The notices are saved in logs/team_comparison.jsonl. Read them: the checks cannot judge tone or truth.

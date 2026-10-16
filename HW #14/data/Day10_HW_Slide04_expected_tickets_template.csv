@@ -1,0 +1,3 @@
+file,error_code,application,severity
+disk_full_warning.png,,Storage settings|disk,P3
+teams_sign_in_error.png,AUTH-401,Chat app,P3

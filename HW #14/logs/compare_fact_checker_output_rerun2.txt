@@ -1,0 +1,13 @@
+
+VPN error VPN-809 for people returning from leave  [team]  5 calls, 14124 tokens, 45.6 s, revisions 0
+  problems: no notice
+
+VPN error VPN-809 for people returning from leave  [team + checker]  11 calls, 19327 tokens, 91.0 s, revisions 2
+  problems: none found
+  title: VPN Certificate Expiration Issue (Error VPN-809)
+
+version         calls   tokens  seconds  problems
+team                5    14124     45.6         1
+team + checker     11    19327     91.0         0
+
+The notices are saved in logs/team_comparison.jsonl. Read them: the checks cannot judge tone or truth.

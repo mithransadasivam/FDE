@@ -1,0 +1,13 @@
+asset_tag,device_type,model,serial_number,assigned_to,department,purchase_date
+IT-004512,laptop,Orbis L14 Gen 3,7KX4-22Q9-0M1,a.mensah,Finance,2023-03-14
+IT-006078,docking station,Kestrel Dock 2,DK2-55810-A,a.mensah,Finance,2024-11-02
+IT-005231,monitor,Orbis M24,M24-90337-K,r.iyer,HR,2022-06-27
+IT-004890,laptop,Orbis L14 Gen 3,7KX4-31B2-9P4,r.iyer,HR,2023-05-02
+IT-005502,laptop,Orbis L16,L16-44821-T,k.novak,Service Desk,2024-01-19
+IT-005503,monitor,Orbis M27,M27-11098-Q,k.novak,Service Desk,2024-01-19
+IT-003977,laptop,Orbis L14 Gen 2,5JH2-81C0-2R7,t.sato,Engineering,2021-09-08
+IT-006210,phone,Pixelon 8,PX8-77120-D,t.sato,Engineering,2025-02-11
+IT-005871,laptop,Orbis L16,L16-50213-M,n.patel,Finance,2024-06-30
+IT-006301,laptop,Orbis L14 Gen 4,9QX1-02D4-8F5,e.brown,Analytics,2025-04-07
+IT-006302,docking station,Kestrel Dock 2,DK2-61204-C,e.brown,Analytics,2025-04-07
+IT-004101,laptop,Orbis L14 Gen 2,5JH2-90A7-1K3,g.rossi,Sales,2021-11-23

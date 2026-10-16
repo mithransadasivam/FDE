@@ -1,0 +1,15 @@
+{
+  "mode": "full",
+  "summary": {
+    "hit_rate": 1.0,
+    "mrr": 0.77,
+    "answers": 10,
+    "citation_pass_rate": 1.0,
+    "behaviour_rate": 1.0,
+    "judge_correct_rate": 1.0,
+    "judge_grounded_rate": 1.0,
+    "judge_unreadable": 0,
+    "avg_seconds": 9.3
+  },
+  "problems": []
+}
