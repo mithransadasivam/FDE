@@ -1,0 +1,9 @@
+Message-ID: <req-005@example.com>
+From: operations@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Northern Meridian Trading Ltd
+Kind: request
+Attachments: REQ-005/tax_registration.txt; REQ-005/bank_letter.txt; REQ-005/insurance_certificate.txt
+
+New supplier please: Northern Meridian Trading Ltd for packaging materials, around £900 a month on 30-day terms. Documents attached.

@@ -1,0 +1,9 @@
+Message-ID: <req-013@example.com>
+From: marketing@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Corvane Print Services Ltd
+Kind: request
+Attachments: REQ-013/tax_registration.txt; REQ-013/bank_letter.txt; REQ-013/insurance_certificate.txt
+
+We would like to use Corvane Print Services for leaflets, about £800 a month on 30-day terms. Documents attached.

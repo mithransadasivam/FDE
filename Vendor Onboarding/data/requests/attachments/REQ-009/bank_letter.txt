@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Brookline Data Services Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99724055
+Sort code: 99-72-40
+Letter date: 2026-09-20

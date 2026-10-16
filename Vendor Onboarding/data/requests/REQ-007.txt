@@ -1,0 +1,9 @@
+Message-ID: <req-007@example.com>
+From: site-ops@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Fernhill Security Ltd
+Kind: request
+Attachments: REQ-007/tax_registration.txt; REQ-007/bank_letter.txt; REQ-007/insurance_certificate.txt
+
+We would like to use Fernhill Security for out-of-hours site patrols, £1,000 a month on 30-day terms. All three documents are attached.

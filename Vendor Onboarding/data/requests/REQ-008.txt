@@ -1,0 +1,9 @@
+Message-ID: <req-008@example.com>
+From: marketing@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Alder & Pike Design Ltd
+Kind: request
+Attachments: REQ-008/tax_registration.txt; REQ-008/bank_letter.txt; REQ-008/insurance_certificate.txt
+
+Please onboard Alder & Pike Design for brand work. About £24,500 a year, 30-day terms. Documents attached.

@@ -1,0 +1,6 @@
+DOCUMENT: Insurance Certificate
+Insured: Alder & Pike Design Ltd
+Policy number: PL-519346
+Cover: Public liability, GBP 5,000,000
+Valid from: 2025-06-01
+Expiry date: 2027-05-31

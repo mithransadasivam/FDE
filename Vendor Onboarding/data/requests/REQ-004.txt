@@ -1,0 +1,9 @@
+Message-ID: <req-004@example.com>
+From: operations@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Veltrax Marine Supply Ltd
+Kind: request
+Attachments: REQ-004/tax_registration.txt; REQ-004/bank_letter.txt; REQ-004/insurance_certificate.txt
+
+Could we onboard Veltrax Marine Supply for harbour equipment? About £1,200 a month, 30 days. All documents attached.

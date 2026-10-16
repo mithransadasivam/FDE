@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: R. Dunmore (personal account)
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99748120
+Sort code: 99-74-81
+Letter date: 2026-09-20

@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Stonegate Courier Group Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99846213
+Sort code: 99-84-62
+Letter date: 2026-09-20

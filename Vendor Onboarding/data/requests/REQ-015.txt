@@ -1,0 +1,9 @@
+Message-ID: <req-015@example.com>
+From: packing@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Lindqvist Packaging Ltd
+Kind: request
+Attachments: REQ-015/tax_registration.txt; REQ-015/bank_letter.txt; REQ-015/insurance_certificate.txt
+
+We want Lindqvist Packaging for cartons, about £1,100 a month, 30-day terms, documents attached.

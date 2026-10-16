@@ -1,0 +1,9 @@
+Message-ID: <req-003@example.com>
+From: facilities@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Harrowgate Facilities Management Limited
+Kind: request
+Attachments: REQ-003/tax_registration.txt; REQ-003/bank_letter.txt; REQ-003/insurance_certificate.txt
+
+We want to use Harrowgate Facilities Management for site cleaning, about £1,500 a month on 30-day terms. Documents attached.

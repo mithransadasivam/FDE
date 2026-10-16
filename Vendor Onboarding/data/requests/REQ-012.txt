@@ -1,0 +1,9 @@
+Message-ID: <req-012@example.com>
+From: workshop@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Quenby Tools Ltd
+Kind: request
+Attachments: REQ-012/insurance_certificate.txt
+
+Please start onboarding Quenby Tools for workshop supplies, about £500 a month on 30-day terms. I only have their insurance certificate so far.

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "procurement": {
+      "type": "stdio",
+      "command": "D:/FDE Course/Week 2/Day 1/Day03_Student_Files/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "vendor_desk.mcp_server"
+      ],
+      "env": {}
+    }
+  }
+}

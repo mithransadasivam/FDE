@@ -1,0 +1,9 @@
+Message-ID: <req-009@example.com>
+From: data-team@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Brookline Data Services Ltd
+Kind: request
+Attachments: REQ-009/tax_registration.txt; REQ-009/bank_letter.txt; REQ-009/insurance_certificate.txt
+
+We need Brookline Data Services for analytics hosting at roughly £2,100 a month. Standard 30-day terms; all documents attached.

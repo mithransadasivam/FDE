@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Kaltenborn Messtechnik GmbH
+Bank: Beispiel Landesbank
+Bank country: DE
+Account number: 99884201
+Sort code: n/a
+Letter date: 2026-09-20

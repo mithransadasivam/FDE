@@ -1,0 +1,9 @@
+Message-ID: <req-001@example.com>
+From: it-ops@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Tessaro Cloud Backup Ltd
+Kind: request
+Attachments: REQ-001/tax_registration.txt; REQ-001/bank_letter.txt
+
+Hi, we'd like to start using Tessaro for offsite backups, about £4,000 a month. Their tax registration and bank letter are attached; insurance to follow. They've asked for 30-day payment terms. Can we get them set up this week?

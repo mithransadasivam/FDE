@@ -1,0 +1,9 @@
+Message-ID: <req-010@example.com>
+From: logistics@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Stonegate Courier Group Ltd
+Kind: request
+Attachments: REQ-010/tax_registration.txt; REQ-010/bank_letter.txt; REQ-010/insurance_certificate.txt
+
+Stonegate Courier Group would be our new parcel carrier, around £1,000 a month. They have asked for 60-day payment terms. All documents are attached.

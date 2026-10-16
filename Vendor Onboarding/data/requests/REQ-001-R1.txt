@@ -1,0 +1,10 @@
+Message-ID: <req-001-r1@example.com>
+From: accounts@tessaro-backup.example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-13 10:47
+Subject: Re: New supplier: Tessaro Cloud Backup Ltd
+Kind: reply
+Case: VOB-001
+Attachments: REQ-001-R1/insurance_certificate.txt
+
+Hello, thank you for your message. Please find our public liability insurance certificate attached. Kind regards, Tessaro accounts team

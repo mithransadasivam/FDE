@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Northern Meridian Trading Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99615820
+Sort code: 99-61-58
+Letter date: 2026-09-20

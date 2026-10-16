@@ -1,0 +1,9 @@
+Message-ID: <req-002@example.com>
+From: facilities@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Pennine Stationery Supplies Ltd
+Kind: request
+Attachments: REQ-002/tax_registration.txt; REQ-002/bank_letter.txt; REQ-002/insurance_certificate.txt
+
+Please set up Pennine Stationery Supplies for office paper and pens, roughly £600 a month. All three documents are attached. Standard 30-day terms.

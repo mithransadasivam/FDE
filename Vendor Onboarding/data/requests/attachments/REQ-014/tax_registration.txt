@@ -1,0 +1,6 @@
+DOCUMENT: Tax Registration Certificate
+Legal name: Kaltenborn Messtechnik GmbH
+Tax ID: DE-TX-884201
+Registered address: Hafenstrasse 12, 20457 Hamburg, Germany
+Registered country: DE
+Issued: 2024-03-02

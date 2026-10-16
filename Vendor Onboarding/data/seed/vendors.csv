@@ -1,0 +1,21 @@
+vendor_id,name,registered_country,tax_id,payment_terms_days,status,bank_name,bank_country,account_number,sort_code
+VEN-1001,Harrowgate Facility Services Ltd,GB,GB-TX-310442,30,active,Fictional Bank of Leeds,GB,99310442,99-10-01
+VEN-1002,Corvane Print Solutions Ltd,GB,GB-TX-220871,30,active,Fictional Bank of Leeds,GB,99220871,99-10-02
+VEN-1003,Pennine Office Furniture Ltd,GB,GB-TX-118203,45,active,Example Savings Bank,GB,99118203,99-10-03
+VEN-1004,Ostrel Labs Ltd,GB,GB-TX-640512,30,active,Example Savings Bank,GB,99640512,99-10-04
+VEN-1005,Quillmark Translations Ltd,GB,GB-TX-705518,30,active,Fictional Bank of Leeds,GB,99705518,99-10-05
+VEN-1006,Velloria Catering Ltd,GB,GB-TX-390167,30,active,Example Savings Bank,GB,99390167,99-10-06
+VEN-1007,Bluefen Office Supplies Ltd,GB,GB-TX-452930,30,active,Fictional Bank of Leeds,GB,99452930,99-10-07
+VEN-1008,Kestrel Courier Services Ltd,GB,GB-TX-287741,30,active,Example Savings Bank,GB,99287741,99-10-08
+VEN-1009,Aldermoor Cleaning Co,GB,GB-TX-563094,45,active,Fictional Bank of Leeds,GB,99563094,99-10-09
+VEN-1010,Brightpath Software Ltd,GB,GB-TX-809326,60,active,Example Savings Bank,GB,99809326,99-10-10
+VEN-1011,Dunmere Security Systems Ltd,GB,GB-TX-174058,60,active,Fictional Bank of Leeds,GB,99174058,99-10-11
+VEN-1012,Fenwick & Hale Legal LLP,GB,GB-TX-926415,30,active,Example Savings Bank,GB,99926415,99-10-12
+VEN-1013,Greywell Energy Ltd,GB,GB-TX-331870,30,active,Fictional Bank of Leeds,GB,99331870,99-10-13
+VEN-1014,Ironbridge Fleet Leasing Ltd,GB,GB-TX-478203,60,active,Example Savings Bank,GB,99478203,99-10-14
+VEN-1015,Lindhorst Elektronik GmbH,DE,DE-TX-602917,30,active,Beispiel Landesbank,DE,99602917,n/a
+VEN-1016,Marisol Imports SL,ES,ES-TX-715304,30,active,Banco Ejemplo,ES,99715304,n/a
+VEN-1017,Nordvik Logistics AB,SE,SE-TX-249861,30,active,Exempelbanken,SE,99249861,n/a
+VEN-1018,Oakhaven Recycling Ltd,GB,GB-TX-583016,30,active,Fictional Bank of Leeds,GB,99583016,99-10-18
+VEN-1019,Pelham Print & Pack Ltd,GB,GB-TX-694720,30,active,Example Savings Bank,GB,99694720,99-10-19
+VEN-1020,Redfield Training Ltd,GB,GB-TX-847152,30,inactive,Fictional Bank of Leeds,GB,99847152,99-10-20

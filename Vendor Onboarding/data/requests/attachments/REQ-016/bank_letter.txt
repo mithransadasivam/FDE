@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Hollin Brothers Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99205846
+Sort code: 99-20-58
+Letter date: 2026-09-20

@@ -1,0 +1,9 @@
+Message-ID: <req-017@example.com>
+From: research@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Wexcombe Analytics Ltd
+Kind: request
+Attachments: REQ-017/tax_registration.txt; REQ-017/bank_letter.txt; REQ-017/insurance_certificate.txt
+
+Please onboard Wexcombe Analytics for survey work, about £1,300 a month on 30-day terms. Documents attached.

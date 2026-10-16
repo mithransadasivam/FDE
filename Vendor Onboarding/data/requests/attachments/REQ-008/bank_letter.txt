@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Alder & Pike Design Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99519346
+Sort code: 99-51-93
+Letter date: 2026-09-20

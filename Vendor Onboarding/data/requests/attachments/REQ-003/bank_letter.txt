@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Harrowgate Facilities Management Limited
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99555301
+Sort code: 99-55-53
+Letter date: 2026-09-20

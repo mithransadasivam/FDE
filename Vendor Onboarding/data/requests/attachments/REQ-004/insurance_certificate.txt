@@ -1,0 +1,6 @@
+DOCUMENT: Insurance Certificate
+Insured: Veltrax Marine Supply Ltd
+Policy number: PL-902144
+Cover: Public liability, GBP 5,000,000
+Valid from: 2025-06-01
+Expiry date: 2027-05-31

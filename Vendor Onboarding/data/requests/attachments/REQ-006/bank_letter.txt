@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Calder & Voss Ltd
+Bank: Banka Fittizja
+Bank country: MT
+Account number: 99433907
+Sort code: n/a
+Letter date: 2026-09-20

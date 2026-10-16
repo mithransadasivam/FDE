@@ -1,0 +1,10 @@
+pydantic>=2.7
+requests>=2.32
+python-dotenv>=1.0
+streamlit>=1.40
+pandas>=2.2
+langgraph>=1.0
+langgraph-checkpoint-sqlite>=3.0
+mcp>=2.3,<3
+jsonschema>=4.20
+pytest>=8

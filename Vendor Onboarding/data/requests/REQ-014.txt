@@ -1,0 +1,9 @@
+Message-ID: <req-014@example.com>
+From: lab@example.com
+To: procurement@marlowefinch.example.com
+Date: 2026-10-12 09:14
+Subject: New supplier: Kaltenborn Messtechnik GmbH
+Kind: request
+Attachments: REQ-014/tax_registration.txt; REQ-014/bank_letter.txt; REQ-014/insurance_certificate.txt
+
+Please set up Kaltenborn Messtechnik GmbH (Germany) for lab instruments, about £1,500 a month on 30-day terms. All documents attached.

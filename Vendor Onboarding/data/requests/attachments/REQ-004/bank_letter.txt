@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Veltrax Marine Supply Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99902144
+Sort code: 99-90-21
+Letter date: 2026-09-20

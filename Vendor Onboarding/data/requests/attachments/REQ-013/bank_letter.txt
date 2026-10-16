@@ -1,0 +1,7 @@
+DOCUMENT: Bank Details Letter
+Account holder: Corvane Print Services Ltd
+Bank: Example Savings Bank
+Bank country: GB
+Account number: 99557310
+Sort code: 99-55-73
+Letter date: 2026-09-20
