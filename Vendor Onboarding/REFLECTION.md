@@ -20,8 +20,8 @@ something worse than being fooled outright: it **correctly spotted the injection
 My trace review caught it (`decision_inconsistent`: the evidence supports "stop for a person"), but the recommendation was
 already wrong. I did not fix it by adding another sentence to the prompt. I made the answer's *shape* enforce the rule:
 the `Assessment` contract now refuses any decision that contradicts its own flags, and the refusal goes back to the model as a
-readable error. Models obey a type check more reliably than a paragraph. (I could not re-measure this live because the API
-key's $10 limit ran out during the third run, so it is tested with fake models and flagged as unmeasured in the report.)
+readable error. Models obey a type check more reliably than a paragraph. (The key's $10 limit ran out during the third run, so I
+re-measured on a different live model, DeepSeek V4 Flash: 19/19 with all three injection cases handled.)
 
 A smaller one: an offline evaluation briefly looked "wrong" on a clean request because my own demo had approved that vendor into
 the same database the evaluation read, so the request correctly became a duplicate. The evaluation scripts now build their own
@@ -29,9 +29,12 @@ fresh database.
 
 ## Was the team worth its cost?
 
-Partly. On my cases it was about 2.05 times the model calls of the single agent for the same decisions. What made it safe was
-not the number of agents but the code around them: a reviewer that re-derives results from the tool evidence, a decision
-computed from verified evidence rather than chosen by a model, an explicit state machine, and a gate with two different people.
-I would keep all of that, keep two separate agents (intake, because it alone reads untrusted text; the follow-up writer, because
-it has no tools), and let one agent do the three plain checking jobs. Full numbers and reasoning are in `EVAL_REPORT.md`
-(Part 3) and `docs/PART3_DECISION.md`.
+Yes, on the live numbers, but not for the reason I expected. I first guessed the team would cost about twice as much, because
+on the offline stand-in it made 2.05 times the model calls. Live (DeepSeek V4 Flash, all 19 cases) the team used **42% fewer
+tokens per case and cost about 40% less in total** ($0.029 against $0.047), at the price of **45% more model calls and 34% more
+time** (36 against 27 seconds). Both got 19/19. The trace review found 3 problems with the single agent and none with the team.
+What the team really buys is structure that fails safely: least-privilege tools, checked handoffs, a code reviewer, a decision
+derived from evidence, an explicit state machine and a gate. I would still merge the three plain checking agents (documents,
+compliance, finance) and keep intake and the follow-up writer separate. One live run also showed the failure mode of a team:
+the intake agent probed for a reply file that did not exist, hit the error limit and stopped the case. It failed safe, and a
+clearer instruction fixed it. Full numbers and reasoning are in `EVAL_REPORT.md` (Part 3) and `docs/PART3_DECISION.md`.

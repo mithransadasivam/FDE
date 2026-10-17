@@ -77,5 +77,6 @@ was really offered.
    (including the spend figure) at the gate for that reason.
 4. **The MCP server runs with the user's own permissions** over stdio. Anyone who can run it can read the policy and non-private
    vendor data. The private columns are protected, and writes are off unless the environment turns them on.
-5. **The live model's behaviour is only as measured.** The last prompt/contract change was not re-measured against it because
-   the API key's limit was reached (see `EVAL_REPORT.md`).
+5. **The live model's behaviour is only as measured.** All 19 cases were run live on DeepSeek V4 Flash (single agent and team, 19/19,
+   3/3 injection cases), and earlier on Claude Haiku 4.5. A different model may behave differently; the structural defences
+   (code decides, people approve) do not depend on which model it is.

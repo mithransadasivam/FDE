@@ -128,7 +128,7 @@ def main():
                  f"cases ({', '.join(parallel['cases'])}): sequential {parallel['sequential_seconds']} s, parallel "
                  f"{parallel['parallel_seconds']} s, a difference of {saved:+.1f} s. Decisions were identical.", ""]
     decision_file = config.ROOT / "docs" / "PART3_DECISION.md"
-    if decision_file.exists():
+    if decision_file.exists() and args.llm == "live":
         text += ["### Is the team worth its cost? My decision", "", decision_file.read_text(encoding="utf-8").strip(), ""]
     if not args.no_report and not only:
         kind = "offline baseline" if args.llm == "offline" else "live model"

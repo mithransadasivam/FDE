@@ -1,28 +1,26 @@
-**My decision: partly.** Keep the parts of the team that are code; use only some of the agents.
+**My decision: yes, the team is worth its cost here, but not because it is more accurate.**
 
-**What the numbers say.**
-- *Measured, offline baseline (same rules, rule-based stand-in for the model):* both designs get 19/19 decisions, 19/19 missing
-  items, 3/3 injection cases and no unsafe miss. The team needs **8.0 model calls per case against 3.9** for the single agent
-  (152 against 75), about **2.05 times as many**, for the same tool calls (128) and about the same tokens (60k against 63k:
-  each specialist prompt is small, but there are more of them).
-- *Measured, live model, single agent only (three runs):* 19/19, then 18/19 with one unsafe miss (the skip-the-checks email),
-  at about **5.7 model calls, 26,000 tokens, 18 seconds and $0.03 per case**. The trace review found 11 problems in run 1 and 1
-  in run 2.
-- *Not measured:* the team on the live model. The OpenRouter key reached its $10 limit (see the Part 1 section), so
-  `python -m scripts.compare --llm live` could not run. Reading the offline numbers across, I would expect the team to cost
-  roughly twice the model calls per case, with latency growing by a handful of sequential model turns (parallel checks
-  recover some of it); that is an expectation, not a measurement.
+**What the numbers say (live model `deepseek/deepseek-v4-flash`, all 19 cases, both designs):**
+- **Accuracy is tied.** Both get 19/19 decisions, 19/19 missing items, 3/3 injection cases handled, and no unsafe miss.
+- **The team costs less money, not more.** 14,362 tokens per case against 24,949 for the single agent, so $0.029 against
+  $0.047 for the whole run (about **40% cheaper**). Each specialist has a short prompt and few turns; the single agent's
+  conversation keeps growing as it makes 9-14 tool calls (it re-asks for things it already has).
+- **The team costs more calls and time.** 8.1 model calls per case against 5.6 (**1.45 times**) and 36 seconds against 27
+  (**34% slower**). Running documents and finance at the same time saved 8% (136.6 s against 125.1 s on four cases).
+- **The team is cleaner.** The trace review found 3 problems with the single agent and none with the team, because the
+  team's reviewer checks every result against its evidence and the decision is derived by code.
+- *(Earlier, on the offline stand-in, the team looked about twice as expensive in calls. Live, the extra calls are cheap
+  because they are small; that is why I stopped trusting the offline number for cost.)*
 
-**Why only partly.** In my cases the team was not *more accurate* than the single agent: it was *safer by construction*.
-The thing that made it safe is not that there are several agents. It is three pieces of ordinary code around them: a reviewer
-that re-derives every result from the tool evidence, a decision that is computed from that evidence under policy §7 instead of
-chosen by a model, and a state machine and gate that no model can talk past. The one live failure I saw (the single agent
-flagged the injection and still recommended approval) was fixed by putting a code check on the single agent's answer
-(`Assessment` refuses a decision that contradicts its own flags), not by adding agents.
+**Why yes.** Money is not the cost of the team here: time is, and a third more seconds on a task that already waits days for
+a human is cheap. What the team buys is *structure that fails safely*: least-privilege tools per specialist, checked handoffs,
+a reviewer that cannot be talked into agreeing, and a decision that is never a model's choice. The single agent matched it on
+accuracy only after I added the same kind of guard (the `Assessment` contract refuses a decision that contradicts its flags),
+and the live runs showed why that was needed.
 
-**So I would ship:** one planning agent with the code reviewer and the contract check, the explicit states, the approval gate
-and the audit trail, and keep two separate specialists only where separation pays for itself: **intake** (the only model that
-reads untrusted email text, so a compromised reading cannot call the check tools) and the **follow-up writer** (no tools at all).
-Documents, compliance and finance are three small tool-callers with no judgement in them; splitting them roughly doubles the
-model calls and adds three more places for a handoff to fail. The team earns its cost if the workflow grows (new check types
-owned by different people, parallel checks at higher volume); at 19 cases and six checks it does not.
+**What I would still change.** Documents, compliance and finance are three plain tool-callers; merging them into one agent
+would save model calls without losing the reviewer, states or gate. Intake (the only model that reads untrusted text) and the
+follow-up writer (no tools) are the two I would never merge. And one live miss is worth remembering: in the first live team run
+the intake agent probed for reply files that did not exist (`REQ-003-R1`), hit the tool-error limit and stopped the case with no
+decision. The system did the right thing (it stopped and asked a person), and a sharper instruction fixed it, but it shows the
+failure mode of an agent team: more agents, more places for a model to wander.

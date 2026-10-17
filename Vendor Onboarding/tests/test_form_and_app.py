@@ -82,6 +82,7 @@ def test_the_app_renders_and_escapes_text_from_emails(db, runs, reqs, tmp_path, 
     desk.submit("REQ-002")
     desk.submit("REQ-020")
     desk.close()
+    monkeypatch.setenv("APP_LLM_MODE", "offline")      # the app is live-only; this switch exists for tests without a key
     at = AppTest.from_file(str(config.ROOT / "app.py"), default_timeout=60)
     at.run()
     assert not at.exception, [e.value for e in at.exception]

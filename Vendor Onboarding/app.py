@@ -7,6 +7,7 @@ recorder), Evaluation (single agent vs team), Red-team lab (attack the system), 
 Everything that came from an email or a document is HTML-escaped before it is shown (vendor_desk/ui.py): it is data.
 """
 import json
+import os
 import shutil
 import time
 
@@ -118,18 +119,24 @@ with st.sidebar:
                 '<div class="tiny">Marlowe &amp; Finch · procurement</div></div>', unsafe_allow_html=True)
     person = st.text_input("🧑 You are (named approver)", value="alex@example.com",
                            help="Every decision is recorded under this name. The same person cannot turn two keys.")
-    mode = st.radio("Brain", ["Offline demo model", "Live model (OpenRouter)"], index=0,
-                    help="The offline model needs no key. The live model needs OPENROUTER_API_KEY and LLM_MODEL in .env.")
     tools = st.radio("Tools come from", ["Local code", "MCP server"], index=0)
     parallel = st.toggle("⚡ Documents + finance in parallel", value=False)
-    st.toggle("🎬 Cinematic mode (slow the live theater down)", value=True, key="cinematic")
-    llm_mode, tools_mode = ("live" if mode.startswith("Live") else "offline"), ("mcp" if tools.startswith("MCP") else "local")
+    st.toggle("🎬 Cinematic mode (slow the live theater down)", value=False, key="cinematic")
+    tools_mode = "mcp" if tools.startswith("MCP") else "local"
+    # the app always uses the live model; APP_LLM_MODE=offline exists only so the automated tests can run without a key
+    llm_mode = os.getenv("APP_LLM_MODE", "live")
     try:
         desk = get_desk(llm_mode, tools_mode, parallel)
     except LLMError as err:
-        st.error(str(err) + " Using the offline model instead.")
-        desk = get_desk("offline", tools_mode, parallel)
-        llm_mode = "offline"
+        st.error(str(err))
+        st.info("Put a `.env` with OPENROUTER_API_KEY and LLM_MODEL in the project folder (or set ENV_FILE to its path), then reload.")
+        st.stop()
+    except Exception as err:   # e.g. the MCP server could not start
+        st.error(f"{type(err).__name__}: {err}")
+        st.stop()
+    model_name = getattr(desk.llm, "model", "offline test model")
+    st.markdown(f'<div class="tiny" style="margin-top:6px">Brain</div><span class="pillx" style="background:rgba(56,232,255,.14);color:{ui.CYAN}">🧠 {ui.esc(model_name)}</span>',
+                unsafe_allow_html=True)
     st.markdown('<div class="tiny" style="margin-top:10px">Safety limits</div>'
                 f'<span class="chip">steps {config.STEP_LIMIT}</span><span class="chip">retries {config.HANDOFF_RETRIES}</span>'
                 f'<span class="chip">revisions {config.REVISION_LIMIT}</span><span class="chip">£{rules.SPEND_THRESHOLD_GBP:,} threshold</span>'

@@ -23,13 +23,14 @@ pip install -r requirements.txt
 
 python -m scripts.build_db        # builds data/procurement.db from data/seed/*.csv and prints the counts (run again to reset)
 python -m pytest -q               # all tests: no network, no real model, a temporary database
-python -m scripts.seed_demo       # (optional) runs every request offline and acts as a few approvers: a busy inbox
+python -m scripts.seed_demo       # (optional) runs every request through the live model and acts as a few approvers
 streamlit run app.py              # Mission Control: board, case file, flight recorder, arena, what-if lab, red-team lab, intake portal
 ```
 
-No API key is needed: the **offline demo model** (`vendor_desk/offline_llm.py`) is a rule-based stand-in that speaks the same
-chat/tool-call protocol as a real model. For the hosted model, copy `.env.example` to `.env`, set `OPENROUTER_API_KEY` and
-`LLM_MODEL`, and pick "Live model" in the app's sidebar (or pass `--llm live` to a script).
+**The app uses the live model.** Copy `.env.example` to `.env` and set `OPENROUTER_API_KEY` and `LLM_MODEL` (or point
+`ENV_FILE` at a `.env` kept elsewhere). If the key is missing or out of credit the app says so and stops; it never falls back
+to a fake. A rule-based offline stand-in (`vendor_desk/offline_llm.py`) still exists, but only for the automated tests and CI
+(`--llm offline` on the scripts); no test ever calls the real model.
 
 ### Start the MCP server
 
@@ -84,5 +85,6 @@ separate evaluation database so the demo never skews the numbers.
 ## Notes for the colleague running this
 
 - Approving in the app really creates a vendor row in `data/procurement.db`; **Reset demo data** (sidebar) rebuilds it.
-- The live-model numbers in `EVAL_REPORT.md` were limited by the API key's spending cap; the offline baseline numbers are
-  complete and reproducible.
+- `EVAL_REPORT.md` has live-model numbers (DeepSeek V4 Flash for both designs on all 19 cases, Claude Haiku 4.5 for three earlier
+  single-agent runs) and the offline baseline. A full live comparison costs about 8 cents and takes 25 minutes
+  (`python -m scripts.compare --llm live`).

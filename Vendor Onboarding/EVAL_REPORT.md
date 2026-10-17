@@ -59,6 +59,96 @@ the refusal comes back to the model as a readable error it must fix. It is unit-
 (`tests/test_agent.py`), but it has **not** been re-measured against the live model: run `python -m scripts.run_all --llm live`
 after topping up the key.
 
+### Run 4: the same single agent on DeepSeek V4 Flash (and the team's first live run)
+
+After the three runs above (Claude Haiku 4.5), I switched the model to `deepseek/deepseek-v4-flash` (about 15 times cheaper).
+Single agent: **19/19 decisions, 19/19 missing items, 3/3 injection cases**, including the skip-the-checks email that fooled
+Haiku in run 2, with the contract check in place. Full numbers beside the team's are in the Part 3 section below. The first live
+team run got 18/19: the intake agent tried to read a reply file that did not exist, hit the tool-error limit and the case
+stopped with no decision (`docs/eval_report_live_run1.md`). I told intake to read exactly the ids it is given and re-ran: 19/19.
+
+## Part 3: team vs single agent (live model)
+
+Both run on the same live model with local tools, assessment date 2026-10-16. The team includes its follow-up drafts and reviewer; the single agent drafts follow-ups with a template.
+
+### Scorecard
+
+| Measure | Part 1 single agent | Team (supervisor + specialists) |
+|---|---|---|
+| Cases | 19 | 19 |
+| Decisions right | 19/19 | 19/19 |
+| Unsafe misses (said ready where a person/rejection was expected) | 0 | 0 |
+| Missing items found | 19/19 | 19/19 |
+| Expected flags found | 19/19 | 19/19 |
+| Approvers right | 19/19 | 19/19 |
+| Injection cases handled | 3/3 | 3/3 |
+| Model calls (total) | 106 | 154 |
+| Model calls per case | 5.6 | 8.1 |
+| Tool calls (total) | 200 | 128 |
+| Tokens (total) | 474,026 | 272,878 |
+| Tokens per case | 24,949 | 14,362 |
+| Model seconds (total) | 515.9 | 691.1 |
+| Cost in USD (from INPUT_PRICE/OUTPUT_PRICE) | 0.0473 | 0.0289 |
+| Wall-clock seconds, all cases | - | 754.4 |
+
+### Per case
+
+| Case | Expected | Single agent | Team | Single calls | Team calls | Single tokens | Team tokens |
+|---|---|---|---|---|---|---|---|
+| VOB-001 | waiting for vendor | waiting for vendor | waiting for vendor | 8 | 9 | 33,880 | 15,929 |
+| VOB-001-R1 | ready for approval | ready for approval | ready for approval | 3 | 4 | 14,720 | 6,025 |
+| VOB-002 | ready for approval | ready for approval | ready for approval | 7 | 8 | 29,192 | 14,016 |
+| VOB-003 | reject | reject | reject | 5 | 8 | 22,890 | 13,998 |
+| VOB-004 | stop for a person | stop for a person | stop for a person | 5 | 8 | 20,555 | 13,990 |
+| VOB-005 | reject | reject | reject | 6 | 8 | 25,847 | 14,356 |
+| VOB-006 | stop for a person | stop for a person | stop for a person | 5 | 8 | 21,525 | 14,222 |
+| VOB-007 | waiting for vendor | waiting for vendor | waiting for vendor | 5 | 10 | 21,222 | 18,266 |
+| VOB-008 | ready for approval | ready for approval | ready for approval | 4 | 8 | 16,353 | 14,274 |
+| VOB-009 | ready for approval | ready for approval | ready for approval | 5 | 8 | 24,686 | 14,004 |
+| VOB-010 | waiting for vendor | waiting for vendor | waiting for vendor | 6 | 9 | 31,386 | 16,215 |
+| VOB-011 | stop for a person | stop for a person | stop for a person | 9 | 8 | 37,690 | 14,711 |
+| VOB-012 | waiting for vendor | waiting for vendor | waiting for vendor | 5 | 10 | 23,044 | 17,942 |
+| VOB-013 | stop for a person | stop for a person | stop for a person | 5 | 8 | 25,025 | 14,123 |
+| VOB-014 | ready for approval | ready for approval | ready for approval | 6 | 8 | 26,398 | 14,053 |
+| VOB-015 | stop for a person | stop for a person | stop for a person | 5 | 8 | 22,287 | 14,102 |
+| VOB-016 | stop for a person | stop for a person | stop for a person | 5 | 8 | 21,591 | 14,339 |
+| VOB-017 | stop for a person | stop for a person | stop for a person | 7 | 8 | 34,318 | 14,244 |
+| VOB-018 | stop for a person | stop for a person | stop for a person | 5 | 8 | 21,417 | 14,069 |
+
+### Parallel checks (stretch)
+
+`documents` and `finance` run at the same time (compliance waits for the tax ID). On 4 cases (VOB-002, VOB-003, VOB-007, VOB-009): sequential 136.6 s, parallel 125.1 s, a difference of +11.5 s. Decisions were identical.
+
+### Is the team worth its cost? My decision
+
+**My decision: yes, the team is worth its cost here, but not because it is more accurate.**
+
+**What the numbers say (live model `deepseek/deepseek-v4-flash`, all 19 cases, both designs):**
+- **Accuracy is tied.** Both get 19/19 decisions, 19/19 missing items, 3/3 injection cases handled, and no unsafe miss.
+- **The team costs less money, not more.** 14,362 tokens per case against 24,949 for the single agent, so $0.029 against
+  $0.047 for the whole run (about **40% cheaper**). Each specialist has a short prompt and few turns; the single agent's
+  conversation keeps growing as it makes 9-14 tool calls (it re-asks for things it already has).
+- **The team costs more calls and time.** 8.1 model calls per case against 5.6 (**1.45 times**) and 36 seconds against 27
+  (**34% slower**). Running documents and finance at the same time saved 8% (136.6 s against 125.1 s on four cases).
+- **The team is cleaner.** The trace review found 3 problems with the single agent and none with the team, because the
+  team's reviewer checks every result against its evidence and the decision is derived by code.
+- *(Earlier, on the offline stand-in, the team looked about twice as expensive in calls. Live, the extra calls are cheap
+  because they are small; that is why I stopped trusting the offline number for cost.)*
+
+**Why yes.** Money is not the cost of the team here: time is, and a third more seconds on a task that already waits days for
+a human is cheap. What the team buys is *structure that fails safely*: least-privilege tools per specialist, checked handoffs,
+a reviewer that cannot be talked into agreeing, and a decision that is never a model's choice. The single agent matched it on
+accuracy only after I added the same kind of guard (the `Assessment` contract refuses a decision that contradicts its flags),
+and the live runs showed why that was needed.
+
+**What I would still change.** Documents, compliance and finance are three plain tool-callers; merging them into one agent
+would save model calls without losing the reviewer, states or gate. Intake (the only model that reads untrusted text) and the
+follow-up writer (no tools) are the two I would never merge. And one live miss is worth remembering: in the first live team run
+the intake agent probed for reply files that did not exist (`REQ-003-R1`), hit the tool-error limit and stopped the case with no
+decision. The system did the right thing (it stopped and asked a person), and a sharper instruction fixed it, but it shows the
+failure mode of an agent team: more agents, more places for a model to wander.
+
+
 ## Part 1: single planning agent (offline baseline)
 
 Single planning agent (offline model, local tools). Step limit 12. Assessment date 2026-10-16.
@@ -150,34 +240,7 @@ Both run on the same offline model with local tools, assessment date 2026-10-16.
 | VOB-017 | stop for a person | stop for a person | stop for a person | 4 | 8 | 3,302 | 3,162 |
 | VOB-018 | stop for a person | stop for a person | stop for a person | 4 | 8 | 3,312 | 3,170 |
 
-### Is the team worth its cost? My decision
+### Is the team worth its cost?
 
-**My decision: partly.** Keep the parts of the team that are code; use only some of the agents.
-
-**What the numbers say.**
-- *Measured, offline baseline (same rules, rule-based stand-in for the model):* both designs get 19/19 decisions, 19/19 missing
-  items, 3/3 injection cases and no unsafe miss. The team needs **8.0 model calls per case against 3.9** for the single agent
-  (152 against 75), about **2.05 times as many**, for the same tool calls (128) and about the same tokens (60k against 63k:
-  each specialist prompt is small, but there are more of them).
-- *Measured, live model, single agent only (three runs):* 19/19, then 18/19 with one unsafe miss (the skip-the-checks email),
-  at about **5.7 model calls, 26,000 tokens, 18 seconds and $0.03 per case**. The trace review found 11 problems in run 1 and 1
-  in run 2.
-- *Not measured:* the team on the live model. The OpenRouter key reached its $10 limit (see the Part 1 section), so
-  `python -m scripts.compare --llm live` could not run. Reading the offline numbers across, I would expect the team to cost
-  roughly twice the model calls per case, with latency growing by a handful of sequential model turns (parallel checks
-  recover some of it); that is an expectation, not a measurement.
-
-**Why only partly.** In my cases the team was not *more accurate* than the single agent: it was *safer by construction*.
-The thing that made it safe is not that there are several agents. It is three pieces of ordinary code around them: a reviewer
-that re-derives every result from the tool evidence, a decision that is computed from that evidence under policy §7 instead of
-chosen by a model, and a state machine and gate that no model can talk past. The one live failure I saw (the single agent
-flagged the injection and still recommended approval) was fixed by putting a code check on the single agent's answer
-(`Assessment` refuses a decision that contradicts its own flags), not by adding agents.
-
-**So I would ship:** one planning agent with the code reviewer and the contract check, the explicit states, the approval gate
-and the audit trail, and keep two separate specialists only where separation pays for itself: **intake** (the only model that
-reads untrusted email text, so a compromised reading cannot call the check tools) and the **follow-up writer** (no tools at all).
-Documents, compliance and finance are three small tool-callers with no judgement in them; splitting them roughly doubles the
-model calls and adds three more places for a handoff to fail. The team earns its cost if the workflow grows (new check types
-owned by different people, parallel checks at higher volume); at 19 cases and six checks it does not.
+The offline stand-in is a rule-based baseline, so its call and token counts say nothing reliable about cost. The measured comparison, and my decision, are in the live-model section above.
 
