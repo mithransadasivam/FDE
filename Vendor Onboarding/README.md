@@ -24,7 +24,7 @@ pip install -r requirements.txt
 python -m scripts.build_db        # builds data/procurement.db from data/seed/*.csv and prints the counts (run again to reset)
 python -m pytest -q               # all tests: no network, no real model, a temporary database
 python -m scripts.seed_demo       # (optional) runs every request through the live model and acts as a few approvers
-streamlit run app.py              # Mission Control: board, case file, flight recorder, arena, what-if lab, red-team lab, intake portal
+streamlit run app.py              # The Docket: a detective's case-file app (see below)
 ```
 
 **The app uses the live model.** Copy `.env.example` to `.env` and set `OPENROUTER_API_KEY` and `LLM_MODEL` (or point
@@ -59,6 +59,22 @@ their tools from the server.
 
 `--llm live` needs the key; the account allows about 20 calls a minute, so live runs wait between calls. `ENV_FILE=/path/to/.env`
 loads a `.env` kept outside the project.
+
+## The app: The Docket
+
+The app is a detective's case file rather than a dashboard. Each screen is a physical object:
+
+| Page | What it is |
+|---|---|
+| **Inbox** | Manila folders on a walnut desk with a typed memo, a paper ticker tape and rubber stamps; filter by "need a person", "waiting on vendors", "closed" |
+| **Case** | A cork board: a polaroid of the applicant, an index card per check, newspaper clippings for the names it resembles, red string whose colour shows each check's result. Below it, the approval slip with signature lines (two signatures above £25,000), rubber-stamp buttons, case notes and a till receipt of what the case cost |
+| **Audit trail** | A typewriter paper roll that types itself out, every line carrying the fingerprint of the one before it |
+| **Evaluation** | A race: single agent against the team over 19 gates (one per test case), a split-flap scoreboard and the history of live runs |
+| **Rulebook** | A marble run: change the facts and a marble falls through the real policy rules into its bin |
+| **Interrogation** | An evidence bag: write an attack email and see the phrases circled in marker and what the desk does about it |
+| **Intake** | The web-form channel: the same case as an email |
+
+Running a case slides a manila folder along a line of seven desks (intake, documents, finance, compliance, reviewer, you, filed).
 
 ## What is where
 

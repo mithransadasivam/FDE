@@ -89,4 +89,4 @@ def test_the_app_renders_and_escapes_text_from_emails(db, runs, reqs, tmp_path, 
     html_blobs = " ".join(m.value for m in at.markdown)
     assert "VOB-002" in html_blobs and "VOB-020" in html_blobs
     assert "<script>" not in html_blobs and "&lt;script&gt;" in html_blobs
-    assert "MISSION CONTROL" in html_blobs
+    assert "THE DOCKET" in html_blobs
