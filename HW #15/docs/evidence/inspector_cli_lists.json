@@ -1,0 +1,24 @@
+{
+  "prompts": [
+    {
+      "name": "triage_ticket",
+      "description": "Triage one help desk ticket using the database",
+      "arguments": [
+        {
+          "name": "ticket_id",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
+{
+  "resourceTemplates": [
+    {
+      "name": "ticket",
+      "uriTemplate": "helpdesk://tickets/{ticket_id}",
+      "description": "One help desk ticket as a short document, with the requester's work details",
+      "mimeType": "text/markdown"
+    }
+  ]
+}

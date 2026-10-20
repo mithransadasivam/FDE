@@ -1,0 +1,32 @@
+{
+  "SecureLink VPN": {
+    "status": "operational",
+    "since": "",
+    "note": ""
+  },
+  "Company Mail": {
+    "status": "degraded",
+    "since": "08:10",
+    "note": "External email is delivered with delays of up to 30 minutes."
+  },
+  "Print Queue": {
+    "status": "operational",
+    "since": "",
+    "note": ""
+  },
+  "Wi-Fi": {
+    "status": "operational",
+    "since": "",
+    "note": ""
+  },
+  "Finance Portal": {
+    "status": "outage",
+    "since": "07:58",
+    "note": "Down for all users. Updates are posted on the IT status page; do not raise individual tickets."
+  },
+  "Backup Agent": {
+    "status": "operational",
+    "since": "",
+    "note": ""
+  }
+}
