@@ -1,0 +1,15 @@
+question_a,question_b,same_answer
+How long can a VPN session stay connected?,What is the maximum length of a VPN session?,yes
+How long can a VPN session stay connected?,how long does the vpn stay connected,yes
+What is the minimum password length?,How many characters must a password have?,yes
+How often are laptops replaced?,When will my laptop be replaced?,yes
+What is the response target for a P1 incident?,How fast do you respond to a P1?,yes
+How long are system logs kept?,For how long are logs retained?,yes
+What is the response target for a P1 incident?,What is the response target for a P2 incident?,no
+How long does an account stay locked after five failed attempts?,How many failed attempts lock an account?,no
+How often are laptops replaced?,How often are phones replaced?,no
+Can I email Confidential data outside the company?,Can I email Public data outside the company?,no
+How long can a VPN session stay connected?,How long can I stay connected to the office Wi-Fi?,no
+How many days before expiry should I renew my VPN certificate?,How many days is a VPN certificate valid?,no
+What is the idle timeout for a VPN session?,What is the maximum length of a VPN session?,no
+Can I read company email on my personal phone?,Can I use my own phone for company email?,yes

@@ -1,0 +1,606 @@
+{
+  "report": {
+    "label": "baseline",
+    "requests": 60,
+    "users": 4,
+    "errors": 4,
+    "p50_seconds": 6.863,
+    "p95_seconds": 23.22,
+    "throughput_per_second": 0.4,
+    "wall_seconds": 149.9,
+    "cost_usd": 0.011509,
+    "cost_per_1000": 0.2055,
+    "tokens_per_question": 694,
+    "cache_hit_rate": 0.0,
+    "routes": {
+      "large": 55,
+      "declined": 1
+    }
+  },
+  "results": [
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 24.356,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.00021,
+      "tokens": 731
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 23.22,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000205,
+      "tokens": 717
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "error",
+      "error": "500",
+      "seconds": 17.789
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "error",
+      "error": "500",
+      "seconds": 17.802
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "error",
+      "error": "RemoteProtocolError",
+      "seconds": 0.013
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 6.563,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000211,
+      "tokens": 713
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "error",
+      "error": "RemoteProtocolError",
+      "seconds": 0.003
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 7.792,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000142,
+      "tokens": 454
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 6.079,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000224,
+      "tokens": 727
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 5.448,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 764
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 9.408,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000211,
+      "tokens": 732
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 7.072,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000241,
+      "tokens": 752
+    },
+    {
+      "question": "Can I email Confidential data outside the company?",
+      "status": "ok",
+      "seconds": 8.106,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000199,
+      "tokens": 685
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 6.814,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000206,
+      "tokens": 762
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 6.154,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000194,
+      "tokens": 697
+    },
+    {
+      "question": "What is on the cafeteria menu this week?",
+      "status": "ok",
+      "seconds": 7.228,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000216,
+      "tokens": 741
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 9.281,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000207,
+      "tokens": 762
+    },
+    {
+      "question": "Should I use the self-service portal or the office network to renew an expired certificate?",
+      "status": "ok",
+      "seconds": 7.489,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000218,
+      "tokens": 724
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 8.384,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000193,
+      "tokens": 695
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 5.183,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000211,
+      "tokens": 713
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 5.984,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000213,
+      "tokens": 718
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 6.343,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000203,
+      "tokens": 715
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 6.698,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000142,
+      "tokens": 454
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 5.485,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000206,
+      "tokens": 762
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 6.746,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 764
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 5.395,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 764
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 8.229,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000207,
+      "tokens": 762
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 5.503,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000192,
+      "tokens": 693
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 6.468,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000217,
+      "tokens": 770
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 11.514,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000191,
+      "tokens": 690
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 10.644,
+      "model": "openai/gpt-4.1-mini",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000428,
+      "tokens": 781
+    },
+    {
+      "question": "What is on the cafeteria menu this week?",
+      "status": "ok",
+      "seconds": 4.249,
+      "model": null,
+      "route": "declined",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 22.161,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 764
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 24.037,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000223,
+      "tokens": 724
+    },
+    {
+      "question": "When is the annual salary review?",
+      "status": "ok",
+      "seconds": 6.354,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000221,
+      "tokens": 760
+    },
+    {
+      "question": "Why does my VPN disconnect after twelve hours and what should I do about it?",
+      "status": "ok",
+      "seconds": 5.605,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000201,
+      "tokens": 705
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 5.616,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000194,
+      "tokens": 696
+    },
+    {
+      "question": "How long are system logs kept?",
+      "status": "ok",
+      "seconds": 6.822,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000158,
+      "tokens": 569
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 5.608,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000156,
+      "tokens": 570
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 6.404,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.00022,
+      "tokens": 731
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 9.504,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 764
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 7.594,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000205,
+      "tokens": 717
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 5.91,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000214,
+      "tokens": 723
+    },
+    {
+      "question": "How long can a VPN session stay connected??",
+      "status": "ok",
+      "seconds": 5.876,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.00021,
+      "tokens": 708
+    },
+    {
+      "question": "Can I email Confidential data outside the company?",
+      "status": "ok",
+      "seconds": 6.309,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.0002,
+      "tokens": 686
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 10.675,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000211,
+      "tokens": 713
+    },
+    {
+      "question": "Why does my VPN disconnect after twelve hours and what should I do about it?",
+      "status": "ok",
+      "seconds": 7.966,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000201,
+      "tokens": 705
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 7.614,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000205,
+      "tokens": 717
+    },
+    {
+      "question": "Compare the rules for laptops and phones that are lost or stolen.",
+      "status": "ok",
+      "seconds": 11.828,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000252,
+      "tokens": 766
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 16.11,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000205,
+      "tokens": 720
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 11.958,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000207,
+      "tokens": 710
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 7.258,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000215,
+      "tokens": 730
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 5.792,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000142,
+      "tokens": 454
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 5.033,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000216,
+      "tokens": 728
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 6.863,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000224,
+      "tokens": 726
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 10.192,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000223,
+      "tokens": 733
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 5.593,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000208,
+      "tokens": 763
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 10.367,
+      "model": "openai/gpt-4.1-mini",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000291,
+      "tokens": 676
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 9.993,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000222,
+      "tokens": 776
+    },
+    {
+      "question": "How long are system logs kept?",
+      "status": "ok",
+      "seconds": 26.54,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000158,
+      "tokens": 569
+    }
+  ]
+}

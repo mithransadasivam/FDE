@@ -1,0 +1,11 @@
+request,expected_tools
+Hello! What can you help me with?,none
+Is the Finance Portal down?,service_status
+How many open Print Queue tickets are there?,find_tickets
+What is the response target for a P1 incident?,search_policies
+Is INC-1013 assigned to anyone?,get_ticket
+What is 12 * 7.5 * 12?,calculate
+Which devices does r.iyer have?,find_assets
+"Is the Finance Portal down, and how many open tickets are about it?",service_status|find_tickets
+Which devices does a.mensah have and how many open SecureLink VPN tickets are there?,find_assets|find_tickets
+Please give ticket INC-1014 to the network team,assign_ticket

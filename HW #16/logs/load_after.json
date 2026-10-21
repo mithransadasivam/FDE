@@ -1,0 +1,616 @@
+{
+  "report": {
+    "label": "after",
+    "requests": 60,
+    "users": 4,
+    "errors": 2,
+    "p50_seconds": 0.192,
+    "p95_seconds": 52.269,
+    "throughput_per_second": 0.49,
+    "wall_seconds": 121.4,
+    "cost_usd": 0.001187,
+    "cost_per_1000": 0.0205,
+    "tokens_per_question": 226,
+    "cache_hit_rate": 0.655,
+    "routes": {
+      "small": 13,
+      "cache": 38,
+      "large": 6,
+      "declined": 1
+    }
+  },
+  "results": [
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 40.959,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 722
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 43.943,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 720
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 36.571,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 704
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 37.436,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 697
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 0.184,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 10.369,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 717
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 12.963,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 763
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 6.283,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000142,
+      "tokens": 454
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 7.722,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 717
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 6.235,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 763
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 0.117,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 8.238,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 731
+    },
+    {
+      "question": "Can I email Confidential data outside the company?",
+      "status": "ok",
+      "seconds": 9.012,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 691
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.109,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "error",
+      "error": "500",
+      "seconds": 5.542
+    },
+    {
+      "question": "What is on the cafeteria menu this week?",
+      "status": "ok",
+      "seconds": 4.787,
+      "model": null,
+      "route": "declined",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.117,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "Should I use the self-service portal or the office network to renew an expired certificate?",
+      "status": "ok",
+      "seconds": 54.238,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000231,
+      "tokens": 762
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "error",
+      "error": "RemoteProtocolError",
+      "seconds": 0.006
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 0.217,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 0.116,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.117,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 0.125,
+      "model": "deepseek/deepseek-chat",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.909,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.201,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.125,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.125,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 52.303,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000194,
+      "tokens": 696
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 0.151,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 0.157,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "how long can a vpn session stay connected",
+      "status": "ok",
+      "seconds": 0.183,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is on the cafeteria menu this week?",
+      "status": "ok",
+      "seconds": 0.241,
+      "model": null,
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.493,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 0.134,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "When is the annual salary review?",
+      "status": "ok",
+      "seconds": 54.637,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 758
+    },
+    {
+      "question": "Why does my VPN disconnect after twelve hours and what should I do about it?",
+      "status": "ok",
+      "seconds": 52.269,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.00017,
+      "tokens": 587
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 6.214,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000194,
+      "tokens": 697
+    },
+    {
+      "question": "How long are system logs kept?",
+      "status": "ok",
+      "seconds": 6.165,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 571
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.112,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 0.159,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.354,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.268,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 0.262,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected??",
+      "status": "ok",
+      "seconds": 0.221,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "Can I email Confidential data outside the company?",
+      "status": "ok",
+      "seconds": 0.126,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 0.142,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "Why does my VPN disconnect after twelve hours and what should I do about it?",
+      "status": "ok",
+      "seconds": 0.124,
+      "model": "deepseek/deepseek-chat",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.142,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "Compare the rules for laptops and phones that are lost or stolen.",
+      "status": "ok",
+      "seconds": 7.313,
+      "model": "deepseek/deepseek-chat",
+      "route": "large",
+      "cached": false,
+      "cost_usd": 0.000256,
+      "tokens": 779
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.126,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How many days before expiry should I renew my VPN certificate?",
+      "status": "ok",
+      "seconds": 0.124,
+      "model": "deepseek/deepseek-chat",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.142,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What does error VPN-809 mean?",
+      "status": "ok",
+      "seconds": 0.124,
+      "model": "deepseek/deepseek-chat",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long does an account stay locked after five failed attempts?",
+      "status": "ok",
+      "seconds": 0.128,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long can a VPN session stay connected?",
+      "status": "ok",
+      "seconds": 0.192,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How do I reset my password?",
+      "status": "ok",
+      "seconds": 0.156,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the minimum password length?",
+      "status": "ok",
+      "seconds": 0.125,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "What is the response target for a P1 incident?",
+      "status": "ok",
+      "seconds": 0.133,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How often are laptops replaced?",
+      "status": "ok",
+      "seconds": 0.143,
+      "model": "ollama/llama3.2:3b",
+      "route": "cache",
+      "cached": true,
+      "cost_usd": 0.0,
+      "tokens": 0
+    },
+    {
+      "question": "How long are system logs kept?",
+      "status": "ok",
+      "seconds": 4.078,
+      "model": "ollama/llama3.2:3b",
+      "route": "small",
+      "cached": false,
+      "cost_usd": 0.0,
+      "tokens": 571
+    }
+  ]
+}

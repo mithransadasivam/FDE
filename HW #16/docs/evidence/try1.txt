@@ -1,0 +1,12 @@
+I can't name a specific person yet. The ticket is unassigned, and the call that would let me look up the staff table (`describe_database` on the helpdesk server) was denied. I haven't tried to get that data another way, such as reading the staff CSV in `data/`, because the denial looks deliberate.
+
+**What the ticket tells us (INC-1020):**
+- **Impact:** Every print job on floor 3 is stuck in the queue, so it affects a whole floor and not one person. That fits the P2 rating.
+- **Application and error code:** Print Queue, with error PRN-310. This is most likely a print server or spooler fault, not a problem on one user's machine.
+- **Status:** It's open and assigned to nobody. Olu Adeyemi (Analytics) reported it.
+
+**Who should take it:**
+- The ticket should go to whoever covers **print, server or infrastructure support**, not a desktop or helpdesk generalist. Restarting the queue or spooler, or fixing the printer's connection, needs server-side access.
+- A floor-wide P2 with no owner should be picked up now. I'd also ask the person who takes it to tell Olu and the rest of floor 3 once it's confirmed.
+
+**To pick a named person**, I'd need to query the `staff` table for someone in print or infrastructure support who is on shift. If you approve the helpdesk tool, I'll run that query and tell you which table the facts came from.

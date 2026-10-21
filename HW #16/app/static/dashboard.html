@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatbot dashboard</title>
+<style>
+  :root { --bg: #f6f7fb; --card: #ffffff; --ink: #1f2440; --muted: #5d6385; --accent: #3b4cc0; --line: #dfe2ef; --bad: #b3261e; --badbg: #fdecea; --good: #1e7d4f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.05rem; margin: 28px 0 10px; }
+  .lead { color: var(--muted); margin: 0 0 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .tile .label { color: var(--muted); font-size: 0.85rem; }
+  .tile .value { font-size: 1.6rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .alerts div { background: var(--badbg); color: var(--bad); border: 1px solid #f3c2bd; border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+  .none { color: var(--good); }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); font-size: 0.9rem; white-space: nowrap; }
+  th { color: var(--muted); font-weight: 600; }
+  .error { color: var(--bad); font-weight: 600; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Chatbot dashboard</h1>
+  <p class="lead">From logs/requests.jsonl, refreshed every 5 seconds. <a href="/">Chat</a> · <a href="/metrics">Raw numbers</a> · <span id="info"></span></p>
+  <div class="tiles" id="tiles"></div>
+  <h2>Alerts</h2>
+  <div class="alerts" id="alerts"></div>
+  <h2>Answers by model</h2>
+  <div class="scroll"><table id="models"></table></div>
+  <h2>Answers by route</h2>
+  <div class="scroll"><table id="routes"></table></div>
+  <h2>Latest requests</h2>
+  <div class="scroll"><table id="recent"></table></div>
+</main>
+<script>
+const fmt = (v, d = 2) => v === null || v === undefined ? "–" : (typeof v === "number" ? v.toFixed(d).replace(/\.0+$/, "") : v);
+const pct = v => v === null || v === undefined ? "–" : (v * 100).toFixed(1) + "%";
+
+async function refresh() {
+  let m;
+  try { m = await (await fetch("/metrics")).json(); } catch (e) { document.getElementById("info").textContent = "cannot reach /metrics"; return; }
+  const st = m.settings || {};
+  document.getElementById("info").textContent = "prompt " + m.prompt_version + " · models " + m.models.join(" → ") +
+    (st.routing !== undefined ? " · cache " + (st.cache ? "on" : "off") + " · routing " + (st.routing ? "on (small: " + st.small_model + ")" : "off") : "");
+  const tiles = [
+    ["Requests", m.requests, 0], ["Error rate", pct(m.error_rate)], ["p50 latency (s)", m.p50_seconds],
+    ["p95 latency (s)", m.p95_seconds], ["Fallbacks", m.fallbacks, 0], ["Declined", m.declined, 0],
+    ["Tokens", m.tokens, 0], ["Cost (USD)", m.cost_usd_logged ?? m.cost_usd, 4],
+  ];
+  if (m.cache_hit_rate !== undefined) tiles.push(["Cache hit rate", pct(m.cache_hit_rate)], ["Cost per 1,000 (USD)", m.cost_per_1000, 3]);
+  document.getElementById("tiles").innerHTML = tiles.map(([l, v, d]) =>
+    `<div class="tile"><div class="label">${l}</div><div class="value">${typeof v === "string" ? v : fmt(v, d ?? 2)}</div></div>`).join("");
+  const alerts = m.alerts || [];
+  document.getElementById("alerts").innerHTML = alerts.length
+    ? alerts.map(a => `<div><b>${a.name}</b>: ${a.metric} is ${fmt(a.value, 3)}, above ${a.above}. ${a.action || ""}</div>`).join("")
+    : `<p class="none">No alert firing.</p>`;
+  const rows = Object.entries(m.by_model || {});
+  document.getElementById("models").innerHTML = "<tr><th>Model</th><th>Answers</th></tr>" +
+    (rows.length ? rows.map(([k, v]) => `<tr><td>${k === "null" ? "(declined: no model call)" : k}</td><td>${v}</td></tr>`).join("") : "<tr><td colspan=2>No answers yet</td></tr>");
+  const routes = Object.entries(m.by_route || {});
+  document.getElementById("routes").innerHTML = "<tr><th>Route</th><th>Answers</th></tr>" +
+    (routes.length ? routes.map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join("") : "<tr><td colspan=2>No answers yet</td></tr>");
+  document.getElementById("recent").innerHTML = "<tr><th>Time</th><th>Request</th><th>Status</th><th>Seconds</th><th>Model</th><th>Route</th><th>Fallback</th><th>Tokens</th></tr>" +
+    (m.recent || []).map(r => `<tr><td>${(r.time || "").slice(11, 19)}</td><td>${r.request_id || ""}</td>` +
+      `<td class="${r.status === "ok" ? "" : "error"}">${r.status}${r.error ? ": " + r.error.slice(0, 60) : ""}</td>` +
+      `<td>${fmt(r.seconds)}</td><td>${r.model || "–"}</td><td>${r.cached ? "cache" : (r.route || "–")}</td><td>${r.fallback ? "yes" : ""}</td><td>${r.tokens ?? "–"}</td></tr>`).join("");
+}
+refresh();
+setInterval(refresh, 5000);
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+VPN error VPN-809 for people returning from leave  [team]  5 calls, 13911 tokens, 150.0 s, revisions 0
+  problems: no notice
+
+VPN error VPN-809 for people returning from leave  [team + checker]  11 calls, 18953 tokens, 83.0 s, revisions 2
+  problems: missing: self-service portal
+  title: VPN error VPN-809 for devices off over 30 days
+
+Wi-Fi sign-in failures with error WIFI-102 after a password change  [team]  9 calls, 17089 tokens, 60.6 s, revisions 2
+  problems: none found
+  title: Wi-Fi Sign-In Issue After Password Change
+
+Wi-Fi sign-in failures with error WIFI-102 after a password change  [team + checker]  13 calls, 22014 tokens, 82.3 s, revisions 2
+  problems: none found
+  title: Wi-Fi sign-in failures with error WIFI-102
+
+version         calls   tokens  seconds  problems
+team               14    31000    210.6         1
+team + checker     24    40967    165.3         1
+
+The notices are saved in logs/team_comparison.jsonl. Read them: the checks cannot judge tone or truth.
