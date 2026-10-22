@@ -1,0 +1,10 @@
+<resource uri="helpdesk://tickets/INC-1020">
+# INC-1020: No one on floor 3 can print: every job stays in the queue.
+
+- Status: open · Severity: P2 · Created: 2026-10-07 12:05
+- Application: Print Queue · Error code: PRN-310
+- Assigned to: nobody yet
+- Requester: Olu Adeyemi (o.adeyemi), Analytics, o.adeyemi@example.com
+</resource>
+
+Who should handle this, and why?

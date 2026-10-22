@@ -1,0 +1,92 @@
+######## The Finance Portal outage this morning
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\FDE Course\Week 4\HW 14\scripts\show_fact_checks.py", line 23, in <module>
+    if out.get("research"):
+       ^^^^^^^
+AttributeError: 'tuple' object has no attribute 'get'
+RESEARCH FACTS:
+  - [service_status] The Finance Portal is currently in outage status since 07:58.
+  - [find_tickets] There are 3 open tickets related to the Finance Portal outage.
+  - [KB-6601] A 503 response means the portal's application servers are unavailable, usually during an outage or maintenance.
+  - [KB-6601] Individual users cannot fix a 503 error; they should follow the status page.
+  - [KB-6601] Raising individual tickets during a known outage slows the response.
+  - [[1] Day06_Slide15_policy_it_support_slas.pdf, page 1] The IT Support and Service Level Policy explains how to get IT support and how quickly the service desk responds.
+  - [[2] Day06_Slide15_policy_it_support_slas.pdf, page 1] P1 means a critical service is down for many users.
+
+DRAFT 1: Finance Portal currently unavailable
+  The Finance Portal is currently unavailable (since 07:58) with a 503 error, which means the servers are down. This is a P1 incident affecting all users. IT is working on the issue.
+  actions: ['Do not raise individual tickets about this outage - it slows the response.', 'Check the service status page for updates.']
+  FACT-CHECK: 5 claims, unsupported: ['"This is a P1 incident affecting all users." - The notes confirm P1 means a critical service is down for many users, but do not explicitly state it affects all users.', '"IT is working on the issue." - The notes do not mention IT\'s current actions or status.']
+
+DRAFT 2: Finance Portal currently unavailable
+  The Finance Portal is currently unavailable since 07:58, showing a 503 error (servers unavailable). Several users have reported this issue. Do not raise individual tickets for this known outage as it slows response times.
+  actions: ['Check the service status page for updates', 'Do not raise individual tickets for this issue']
+  FACT-CHECK: 5 claims, unsupported: ['Several users have reported this issue: No fact in the notes mentions user reports.']
+
+DRAFT 3: Finance Portal is currently unavailable
+  The Finance Portal is currently unavailable due to an outage that started at 07:58. This affects all staff who use the portal. A 503 error means the portal's servers are unavailable, which happens during outages or maintenance.
+  actions: ['Do not raise individual tickets about this outage, as it slows the response.', 'Check the service status page for updates.']
+  FACT-CHECK: 5 claims, unsupported: []
+  REVIEW: {'verdict': 'revise', 'issues': ['The notice does not explicitly state that there is nothing staff can do to fix the 503 error.', 'The notice does not mention when the next update will come or where to find it.', 'The notice does not explicitly state that the issue is classified as P1, which is a critical service down for many users.', 'The notice does not explicitly state that there are 3 open tickets related to the Finance Portal outage.']}
+######## Print jobs stuck in the queue with error PRN-310
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\FDE Course\Week 4\HW 14\scripts\show_fact_checks.py", line 23, in <module>
+    if out.get("research"):
+       ^^^^^^^
+AttributeError: 'tuple' object has no attribute 'get'
+RESEARCH FACTS:
+  - [service_status] The Print Queue service is currently operational.
+  - [find_tickets] There are 4 open tickets related to the Print Queue, 3 of which mention error PRN-310.
+  - [KB-3301] PRN-310 means a job is waiting for a printer that is offline or out of paper.
+  - [KB-3301] When many users on one floor see PRN-310, the print server's spooler service usually needs restarting.
+  - [KB-3301] A single user's stuck job can be cancelled and resent.
+  - [[1] Day10_Slide21_policy_printing_scanned.pdf, page 2] Report printer faults through a P3 ticket in the IT portal, including the printer name shown on the label.
+
+DRAFT 1: Print Jobs Stuck with Error PRN-310
+  Some print jobs are stuck in the queue with error PRN-310, which means a job is waiting for a printer that is offline or out of paper. The Print Queue service is currently operational. If your job is stuck, cancel it and resend it to another printer. Report printer faults through a P3 ticket in the IT portal, including the printer name shown on the label. We will provide an update if the situation changes.
+  actions: ['Cancel and resend stuck print jobs to another printer.', 'Report printer faults through a P3 ticket in the IT portal, including the printer name.']
+  FACT-CHECK: 6 claims, unsupported: ['"We will provide an update if the situation changes." - This is a promise not mentioned in the notes.', '"Some print jobs are stuck in the queue with error PRN-310" - The notes mention 3 tickets related to PRN-310, but do not quantify how many print jobs are stuck.']
+
+DRAFT 2: Print jobs stuck with error PRN-310
+  Some staff are experiencing print jobs stuck in the queue with error PRN-310. PRN-310 means a job is waiting for a printer that is offline or out of paper. The Print Queue service is currently operational.
+  actions: ['Cancel and resend your print job if it is stuck.', 'Report printer faults through a P3 ticket in the IT portal, including the printer name shown on the label.']
+  FACT-CHECK: 5 claims, unsupported: ['"Some staff are experiencing print jobs stuck in the queue with error PRN-310" - The notes mention 3 tickets related to error PRN-310 but do not specify that \'some staff\' are experiencing it.', '"Cancel and resend your print job if it is stuck." - The notes mention that a single user\'s stuck job can be cancelled and resent, but do not specify that this applies to all staff or all stuck jobs.']
+
+DRAFT 3: Print jobs stuck with error PRN-310
+  Some print jobs are stuck in the queue with error PRN-310, which means a job is waiting for a printer that is offline or out of paper. The Print Queue service is currently operational.
+  actions: ['Report printer faults through a P3 ticket in the IT portal, including the printer name shown on the label.']
+  FACT-CHECK: 4 claims, unsupported: []
+  REVIEW: {'verdict': 'revise', 'issues': ["The notice does not specify who is affected (e.g., 'some staff' or 'users on one floor').", 'The notice does not mention when the next update will come or where to find it.', "The notice does not include the fact that a single user's stuck job can be cancelled and resent.", "The notice does not mention the potential solution of restarting the print server's spooler service when many users on one floor see PRN-310."]}
+######## Delays to external email in Company Mail today
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\FDE Course\Week 4\HW 14\scripts\show_fact_checks.py", line 23, in <module>
+    if out.get("research"):
+       ^^^^^^^
+AttributeError: 'tuple' object has no attribute 'get'
+RESEARCH FACTS:
+  - [service_status] Company Mail service is currently degraded, with external email delays of up to 30 minutes.
+  - [find_tickets] There are 4 open tickets related to Company Mail, including issues like external email delays and mailbox quotas.
+  - [[1] Day06_Slide15_policy_data_handling.pdf, page 1] Confidential information must not be emailed outside the company unless encrypted, and restricted information must never be emailed.
+  - [KB-2202] During service degradation, external messages can be queued for up to an hour, and no action is needed from users.
+
+DRAFT 1: Delays to external email in Company Mail today
+  Company Mail is currently experiencing delays of up to 30 minutes for external emails. No action is needed from users. Updates will be posted on the service status page.
+  actions: ['Do not email confidential information outside the company unless encrypted.', 'Never email restricted information outside the company.']
+  FACT-CHECK: 5 claims, unsupported: ['"Updates will be posted on the service status page." - No fact in the notes mentions updates being posted on the service status page.']
+
+DRAFT 2: Delays to External Email in Company Mail Today
+  Company Mail is currently experiencing delays of up to 30 minutes for external emails. No action is needed from users during this time. Updates will be provided as more information becomes available.
+  actions: ['Do not email confidential information outside the company unless encrypted.', 'Never email restricted information outside the company.']
+  FACT-CHECK: 5 claims, unsupported: ['Updates will be provided as more information becomes available. - This is a promise not supported by the notes.']
+
+DRAFT 3: Delays to external email in Company Mail
+  Company Mail is currently experiencing delays of up to 30 minutes for external emails. During service degradation, external messages can be queued for up to an hour. Confidential information must not be emailed outside the company unless encrypted, and restricted information must never be emailed.
+  actions: ['No action is needed from users.', 'Do not email confidential information outside the company unless encrypted.', 'Never email restricted information.']
+  FACT-CHECK: 5 claims, unsupported: []
+  REVIEW: {'verdict': 'revise', 'issues': ['The first sentence should combine what is happening and who is affected, per style guide rule 1.', 'The notice does not specify when the next update will come or where to find it, per style guide rule 3.', 'The body is 60 words, which is under the 180-word limit, but the structure could be more concise per style guide rules 1 and 2.', 'The notice includes policy reminders that are not directly related to the current issue, which may confuse the main message, per style guide rule 2.']}

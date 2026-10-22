@@ -1,0 +1,11 @@
+{
+  "name": "ai-engineer-course-browser-tests",
+  "private": true,
+  "description": "Day 9: Playwright Test (TypeScript) for the Test Agents. The Python tests stay in tests/.",
+  "scripts": {
+    "test:ts": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
+  }
+}

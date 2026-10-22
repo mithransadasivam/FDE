@@ -1,0 +1,25 @@
+username,full_name,department,job_title,manager,work_email,desk_extension,office,personal_mobile,home_address,date_of_birth
+a.mensah,Ama Mensah,Finance,Accounts Payable Lead,n.patel,a.mensah@example.com,4100,Floor 3,+44 7700 900211,"2 Larch Close, Easthaven",1968-01-01
+b.nguyen,Bao Nguyen,Sales,Account Manager,g.rossi,b.nguyen@example.com,4107,Floor 2,+44 7700 900348,"15 Mill Lane, Brookmere",1975-06-12
+c.moreau,Claire Moreau,Marketing,Content Designer,w.fischer,c.moreau@example.com,4114,Floor 2,+44 7700 900485,"28 Harbour Road, Northwick",1982-11-23
+d.kim,Daniel Kim,Engineering,Software Engineer,t.sato,d.kim@example.com,4121,Floor 4,+44 7700 900622,"41 Orchard Way, Fairby",1989-04-06
+e.brown,Emma Brown,Analytics,Data Analyst,o.adeyemi,e.brown@example.com,4128,Floor 4,+44 7700 900759,"54 Station Street, Easthaven",1996-09-17
+f.ahmed,Farah Ahmed,HR,HR Advisor,r.iyer,f.ahmed@example.com,4135,Floor 3,+44 7700 900896,"67 Kestrel Avenue, Brookmere",1971-02-28
+g.rossi,Giulia Rossi,Sales,Sales Manager,,g.rossi@example.com,4142,Floor 2,+44 7700 900033,"80 Willow Court, Northwick",1978-07-11
+h.yilmaz,Hakan Yilmaz,Engineering,Platform Engineer,t.sato,h.yilmaz@example.com,4149,Floor 4,+44 7700 900170,"6 Quarry Hill, Fairby",1985-12-22
+i.kowalski,Igor Kowalski,Operations,Facilities Coordinator,y.dubois,i.kowalski@example.com,4156,Floor 1,+44 7700 900307,"19 Larch Close, Easthaven",1992-05-05
+j.lund,Johanna Lund,Finance,Financial Analyst,n.patel,j.lund@example.com,4163,Floor 3,+44 7700 900444,"32 Mill Lane, Brookmere",1999-10-16
+k.novak,Katarina Novak,Service Desk,Service Desk Analyst,l.garcia,k.novak@example.com,4170,Floor 1,+44 7700 900581,"45 Harbour Road, Northwick",1974-03-27
+l.garcia,Luis Garcia,Service Desk,Service Desk Manager,,l.garcia@example.com,4177,Floor 1,+44 7700 900718,"58 Orchard Way, Fairby",1981-08-10
+m.haddad,Mona Haddad,Marketing,Campaign Manager,w.fischer,m.haddad@example.com,4184,Floor 2,+44 7700 900855,"71 Station Street, Easthaven",1988-01-21
+n.patel,Nikhil Patel,Finance,Finance Manager,,n.patel@example.com,4191,Floor 3,+44 7700 900992,"84 Kestrel Avenue, Brookmere",1995-06-04
+o.adeyemi,Olu Adeyemi,Analytics,Analytics Manager,,o.adeyemi@example.com,4198,Floor 4,+44 7700 900129,"10 Willow Court, Northwick",1970-11-15
+p.silva,Pedro Silva,Operations,Logistics Planner,y.dubois,p.silva@example.com,4205,Floor 1,+44 7700 900266,"23 Quarry Hill, Fairby",1977-04-26
+q.tan,Qing Tan,Legal,Contracts Specialist,v.costa,q.tan@example.com,4212,Floor 3,+44 7700 900403,"36 Larch Close, Easthaven",1984-09-09
+r.iyer,Radha Iyer,HR,HR Manager,,r.iyer@example.com,4219,Floor 3,+44 7700 900540,"49 Mill Lane, Brookmere",1991-02-20
+s.okafor,Samuel Okafor,Sales,Sales Executive,g.rossi,s.okafor@example.com,4226,Floor 2,+44 7700 900677,"62 Harbour Road, Northwick",1998-07-03
+t.sato,Takeshi Sato,Engineering,Engineering Manager,,t.sato@example.com,4233,Floor 4,+44 7700 900814,"75 Orchard Way, Fairby",1973-12-14
+v.costa,Vera Costa,Legal,Legal Counsel,,v.costa@example.com,4240,Floor 3,+44 7700 900951,"88 Station Street, Easthaven",1980-05-25
+w.fischer,Wilhelm Fischer,Marketing,Marketing Manager,,w.fischer@example.com,4247,Floor 2,+44 7700 900088,"14 Kestrel Avenue, Brookmere",1987-10-08
+y.dubois,Yvette Dubois,Operations,Operations Manager,,y.dubois@example.com,4254,Floor 1,+44 7700 900225,"27 Willow Court, Northwick",1994-03-19
+z.ali,Zara Ali,Engineering,Graduate Engineer,t.sato,z.ali@example.com,4261,Floor 4,+44 7700 900362,"40 Quarry Hill, Fairby",1969-08-02

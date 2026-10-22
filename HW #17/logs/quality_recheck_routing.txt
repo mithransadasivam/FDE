@@ -1,0 +1,24 @@
+Routing on; asking 12 questions ...
+   1. small    ollama/llama3.2:3b             How long can a VPN session stay connected?
+   2. large    openai/gpt-4.1-mini            How many days before expiry should I renew my VPN 
+   3. small    ollama/llama3.2:3b             What is the minimum password length?
+   4. small    ollama/llama3.2:3b             How long does an account stay locked after five fa
+   5. small    ollama/llama3.2:3b             How often are laptops replaced?
+   6. small    ollama/llama3.2:3b             What is the response target for a P1 incident?
+   7. small    ollama/llama3.2:3b             Can I email Confidential data outside the company?
+   8. small    ollama/llama3.2:3b             How long are system logs kept?
+   9. declined                                What is on the cafeteria menu this week?
+  10. large    deepseek/deepseek-chat         How many parking spaces does each team get?
+  11. small    ollama/llama3.2:3b             When is the annual salary review?
+  12. large    deepseek/deepseek-chat         What is the maximum amount for an expense claim?
+
+  ok    citation_pass_rate          1.0   needs >= 1.0
+  ok    behaviour_rate              1.0   needs >= 0.9
+  ok    judge_correct_rate         0.83   needs >= 0.8
+  ok    judge_grounded_rate        0.83   needs >= 0.8
+  FAIL  avg_seconds                61.4   needs <= 6
+  check: [small] How often are laptops replaced?   The answer includes additional information ('or earlier if they fail and cannot be repaired economically') beyond the expected answer of 'Every 4 years'.
+  check: [small] What is the response target for a P1 incident?   The answer states the response target is 4 hours, but source [1] clearly states P1 response target is 15 minutes; additionally, the answer confuses response and resolution targets.
+
+Cost of these 12 answers: $0.0006
+QUALITY GATE: FAIL

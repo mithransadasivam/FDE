@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Too many errors",
+    "metric": "error_rate",
+    "above": 0.05,
+    "min_requests": 10,
+    "action": "Open Phoenix, find a failed trace and read which step failed; check both providers. Runbook section 3.1."
+  },
+  {
+    "name": "Slow answers",
+    "metric": "p95_seconds",
+    "above": 20,
+    "min_requests": 10,
+    "action": "Open Phoenix, find the slowest span; is the fallback model in use? Runbook section 3.2."
+  },
+  {
+    "name": "Running on the fallback model",
+    "metric": "fallbacks",
+    "above": 2,
+    "min_requests": 5,
+    "action": "The primary model is failing or rate-limiting: check the primary provider's status page. Runbook section 3.3."
+  },
+  {
+    "name": "Spending more than planned",
+    "metric": "cost_usd",
+    "above": 1.0,
+    "action": "Look for a loop or a flood of requests in the dashboard's recent list. Runbook section 3.4."
+  }
+]

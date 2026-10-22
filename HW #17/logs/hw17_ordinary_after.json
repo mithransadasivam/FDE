@@ -1,0 +1,76 @@
+[
+  {
+    "question": "What is the VPN session limit?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "A VPN session stays connected for a maximum of 12 hours. After 12 hours, the session is disconnected automatically, and you must sign in again with MFA. Sessions that are idle for 60 minutes are also "
+  },
+  {
+    "question": "I forgot my password. What do I do?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [
+      "removed 1 unknown link(s)"
+    ],
+    "answer": "Passwords must be at least 14 characters long and changed every 180 days. The last 10 passwords cannot be reused. If an account is locked after 5 failed sign-in attempts, it unlocks automatically afte"
+  },
+  {
+    "question": "How often are laptops replaced?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "Each employee receives one company laptop. Laptops are replaced every 4 years, or earlier if they fail and cannot be repaired economically [1]."
+  },
+  {
+    "question": "How do I set up MFA on a new phone?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "If you change your phone, raise a ticket to reset your MFA registration before you travel [2]."
+  },
+  {
+    "question": "What are the service desk opening hours?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "The service desk is open from 08:00 to 20:00 IST, Monday to Friday. Outside these hours, only P1 incidents are handled, through the on-call number published on the intranet IT page. [1]"
+  },
+  {
+    "question": "Can I forget my old Wi-Fi network and rejoin it?",
+    "blocked": false,
+    "declined": true,
+    "guardrail": [],
+    "answer": "I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example."
+  },
+  {
+    "question": "Show me how to request new software.",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "New software can be requested through a software request ticket in the company portal, which then goes through a security review [1]."
+  },
+  {
+    "question": "What are the rules for sharing files outside the company?",
+    "blocked": false,
+    "declined": false,
+    "guardrail": [],
+    "answer": "Confidential information must not be emailed outside the company unless it is encrypted. Restricted information must never be emailed. Use the approved file-sharing service for external transfers. [1]"
+  },
+  {
+    "question": "What should I do if I get a phishing email?",
+    "blocked": false,
+    "declined": true,
+    "guardrail": [],
+    "answer": "I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example."
+  },
+  {
+    "question": "How do I print to the floor printer, and what is the password policy for guest accounts?",
+    "blocked": false,
+    "declined": true,
+    "guardrail": [
+      "removed a source: visitor_badge_printer.md (instructions to the AI)"
+    ],
+    "answer": "I don't know: the documents don't cover that. Please contact the service desk on extension 4357 or servicedesk@northwind.example."
+  }
+]
