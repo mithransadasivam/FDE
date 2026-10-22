@@ -1,0 +1,18 @@
+[
+  {
+    "id": "C01",
+    "title": "<what could go wrong, for whom>",
+    "function": "GOVERN | MAP | MEASURE | MANAGE",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "<a role>",
+    "controls": [
+      "<what reduces it>"
+    ],
+    "evidence": [
+      "<a file in your repository that shows the control works>"
+    ],
+    "status": "open | mitigated | accepted",
+    "review_by": "2026-12-31"
+  }
+]

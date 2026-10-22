@@ -1,0 +1,166 @@
+[
+  {
+    "id": "C01",
+    "title": "Staff are not told they are talking to an AI system: the chat page never says so (EU AI Act Article 50, in force since 2 August 2026)",
+    "function": "GOVERN",
+    "likelihood": 4,
+    "impact": 4,
+    "owner": "IT Service Desk lead",
+    "controls": [
+      "Add a visible AI notice to the chat page and to the /ask response",
+      "Classification and obligations written down in governance/capstone_classification.md"
+    ],
+    "evidence": [
+      "governance/capstone_classification.md",
+      "governance/capstone_inventory.md"
+    ],
+    "status": "open",
+    "review_by": "2026-11-15"
+  },
+  {
+    "id": "C02",
+    "title": "Nobody regularly reads the questions the chatbot declines or blocks, so wrong or missing answers go unnoticed",
+    "function": "GOVERN",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "IT Service Desk lead",
+    "controls": [
+      "Dashboard with alert rules for decline rate, errors and cost",
+      "Runbook says who looks at the alerts"
+    ],
+    "evidence": [
+      "tests/test_alerts.py",
+      "docs/RUNBOOK.md"
+    ],
+    "status": "open",
+    "review_by": "2026-11-30"
+  },
+  {
+    "id": "C03",
+    "title": "A question or a planted document contains instructions that change the chatbot's answers (prompt injection)",
+    "function": "MAP",
+    "likelihood": 3,
+    "impact": 4,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Input, document and answer guardrails (GUARDRAILS=1)",
+      "Red-team attacks run before each release: 1 of 5 worked before the guardrails, 0 of 5 after"
+    ],
+    "evidence": [
+      "logs/red_team_capstone_after.json",
+      "tests/test_hw17_defences.py"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C04",
+    "title": "An agent tool changes or reassigns a help desk ticket wrongly, or a role is given tools it should not have",
+    "function": "MAP",
+    "likelihood": 2,
+    "impact": 4,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Role permissions: each agent may only use the tools listed for it",
+      "update_ticket needs a person to approve each call"
+    ],
+    "evidence": [
+      "tests/test_permissions.py",
+      "tests/test_approval.py"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C05",
+    "title": "The chatbot gives a wrong or uncited answer and staff act on it",
+    "function": "MEASURE",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Quality gate with agreed thresholds, run before each release",
+      "Every answer must cite its source; checks reject answers without one"
+    ],
+    "evidence": [
+      "data/quality_report.json",
+      "tests/test_answer_checks.py"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C06",
+    "title": "Routing simple questions to the small model makes answers worse (it failed the quality gate: wrong P1 response time)",
+    "function": "MEASURE",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Routing is off by default (ROUTING=1 is needed to turn it on)",
+      "Routing only goes live if the quality gate passes with it on"
+    ],
+    "evidence": [
+      "logs/quality_recheck_routing.txt"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C07",
+    "title": "The model provider is down or slow and staff get no answers",
+    "function": "MANAGE",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "Platform on-call engineer",
+    "controls": [
+      "Retries, then a fallback model",
+      "Runbook for the person on call"
+    ],
+    "evidence": [
+      "tests/test_reliability.py",
+      "logs/load_after.json"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C08",
+    "title": "Personal data from a question or a document shows up in an answer or a log",
+    "function": "MANAGE",
+    "likelihood": 2,
+    "impact": 4,
+    "owner": "Data protection lead",
+    "controls": [
+      "Personal data is redacted from questions and answers (Presidio)",
+      "Only request metadata is logged, not the question text"
+    ],
+    "evidence": [
+      "tests/test_pii.py",
+      "logs/red_team_pii.json"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "C09",
+    "title": "Heavy use or an agent that keeps calling tools runs up the model bill",
+    "function": "MANAGE",
+    "likelihood": 2,
+    "impact": 2,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "The agent stops after 6 steps",
+      "Response cache, and cost reported per month"
+    ],
+    "evidence": [
+      "docs/COST_REPORT.md",
+      "tests/test_tool_loop.py",
+      "tests/test_costs.py"
+    ],
+    "status": "accepted",
+    "accepted_by": "IT Service Desk lead",
+    "reason": "The cost report puts the bill at about $62 a month for 10,000 questions a day, and the 6-step limit stops loops. Worst case is a few cents per question, which is small for an internal tool.",
+    "review_by": "2027-01-31"
+  }
+]

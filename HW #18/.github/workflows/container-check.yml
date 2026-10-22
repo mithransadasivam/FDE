@@ -1,0 +1,44 @@
+# Day 15: build the chatbot's container and test it from the outside, on every push.
+#
+# This checks what you will actually run: the image built from the Dockerfile, started the way
+# docker-compose.yml starts it. The fake chatbot (CHAT_FAKE=1) means no models, no key and no cost.
+# A red build means the image does not build, does not start, or does not answer correctly.
+# Day 17: the container runs with its guardrails on, and every direct attack must be stopped.
+
+name: Container check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the Python libraries (for the tests)
+        run: pip install -r requirements.txt && python -m spacy download en_core_web_sm
+      - name: Install the browser for Playwright
+        run: python -m playwright install --with-deps chromium
+      - name: Build the image
+        run: docker build -t helpdesk-chatbot .
+      - name: Start the container with the fake chatbot and the guardrails
+        run: docker run -d --name chatbot -p 8000:8000 -e CHAT_FAKE=1 -e GUARDRAILS=1 helpdesk-chatbot
+      - name: Wait until it is ready (up to 60 seconds)
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8000/ready; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - name: Test the running container
+        env:
+          BASE_URL: http://localhost:8000
+        run: python -m pytest -p no:cacheprovider tests/e2e/e2e_container.py tests/e2e/e2e_security.py
+      - name: Show the container's log if anything failed
+        if: failure()
+        run: docker logs chatbot

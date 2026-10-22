@@ -1,0 +1,19 @@
+[
+  {
+    "id": "CAP-01",
+    "name": "Northwind IT Help Desk Chatbot",
+    "owner": "IT Service Desk lead",
+    "purpose": "Answers Northwind staff questions about IT policies and services from seven policy documents, with cited sources, and (through approved tools) looks up and updates help desk tickets.",
+    "users": "All Northwind staff through the chat page and POST /ask; the service desk uses it to answer common questions faster",
+    "data": "Seven fictional IT policy PDFs indexed in Chroma; a fictional help desk database (tickets, assets); questions are not stored, only request metadata",
+    "model": "anthropic/claude-haiku-4.5 through OpenRouter (fallback openai/gpt-4.1-mini); nomic-embed-text through Ollama for embeddings",
+    "practices": [],
+    "annex_iii_area": null,
+    "safety_component": false,
+    "narrow_task": false,
+    "profiles_people": false,
+    "interacts_with_people": true,
+    "generates_content": true,
+    "notes": "practices: none. It only answers from company IT policy documents and declines otherwise, so nothing in Article 5 (no manipulation, no social scoring, no emotion recognition, no biometrics). annex_iii_area: null. It answers IT questions; it does not decide anything about hiring, pay, promotion, credit, education or benefits, so none of the eight Annex III areas fits. safety_component: false. It is not part of a regulated product. narrow_task: false, and not needed because no Annex III area applies. profiles_people: false. It answers the question asked and does not build a profile of the user; questions are not stored, only request metadata. interacts_with_people: true. Staff chat with it directly. generates_content: true. It writes answers in its own words, so Article 50 transparency applies."
+  }
+]

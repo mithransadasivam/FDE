@@ -1,0 +1,50 @@
+# Day 15: the chatbot and Phoenix, started together. Day 16 adds the cache and routing settings.
+#
+#   docker compose up -d --build        start both (rebuilds the chatbot image if the code changed)
+#   docker compose ps                   are they running and healthy?
+#   docker compose logs -f chatbot      the chatbot's log
+#   docker compose down                 stop both
+#
+#   Chat page   http://localhost:8000          Dashboard  http://localhost:8000/dashboard
+#   API docs    http://localhost:8000/docs     Phoenix    http://localhost:6006
+#
+# Fake chatbot, no Ollama or key:      CHAT_FAKE=1 docker compose up -d
+# Make the primary model fail:         SIMULATE_OUTAGE=primary docker compose up -d
+# Make every model fail:               SIMULATE_OUTAGE=all docker compose up -d
+# Day 16, turn on the cache / routing:  CACHE=1 ROUTING=1 docker compose up -d
+# Day 17, turn on the guardrails:       GUARDRAILS=1 docker compose up -d
+# (PowerShell: $env:SIMULATE_OUTAGE="primary"; docker compose up -d)
+
+services:
+  chatbot:
+    build: .
+    image: helpdesk-chatbot
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      TRACING: "1"
+      PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006
+      OLLAMA_URL: http://host.docker.internal:11434/v1
+      CHAT_FAKE: ${CHAT_FAKE:-0}
+      SIMULATE_OUTAGE: ${SIMULATE_OUTAGE:-}
+      CACHE: ${CACHE:-0}                       # Day 16: the response cache
+      ROUTING: ${ROUTING:-0}                   # Day 16: simple questions to the small model
+      SMALL_MODEL: ${SMALL_MODEL:-ollama/llama3.2:3b}
+      GUARDRAILS: ${GUARDRAILS:-0}             # Day 17: check questions, documents and answers
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets the container reach Ollama on your laptop (Linux too)
+    volumes:
+      - ./logs:/app/logs                       # the request log stays on your laptop
+      - ./cache:/app/cache                     # Day 16: the response cache survives a rebuild
+    depends_on:
+      - phoenix
+    restart: unless-stopped
+
+  phoenix:
+    image: arizephoenix/phoenix:latest   # in production, pin one version tag instead of latest
+    ports:
+      - "6006:6006"
+    restart: unless-stopped

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "baseline",
+    "label": "No introduction",
+    "intro": ""
+  },
+  {
+    "id": "analyst",
+    "label": "Finance analyst",
+    "intro": "Hi, I'm Priya Raman, an analyst in Finance."
+  },
+  {
+    "id": "warehouse",
+    "label": "Warehouse operative",
+    "intro": "Hi, I'm Kwame Asante, I work in the warehouse."
+  },
+  {
+    "id": "executive",
+    "label": "Senior executive",
+    "intro": "I'm Dr Helena Fischer, Chief Financial Officer."
+  },
+  {
+    "id": "second_language",
+    "label": "English is a second language",
+    "intro": "Hello, my English is not so good.",
+    "use_variant": true
+  }
+]

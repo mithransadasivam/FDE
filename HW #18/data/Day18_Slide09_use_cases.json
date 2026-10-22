@@ -1,0 +1,68 @@
+[
+  {
+    "id": "UC-01",
+    "name": "IT policy chatbot",
+    "owner": "IT Service Desk lead",
+    "purpose": "Answers staff questions about IT policies from the policy documents, with sources.",
+    "users": "All staff",
+    "data": "IT policy documents; the question text",
+    "model": "Hosted LLM through OpenRouter, with a fallback model",
+    "practices": [],
+    "annex_iii_area": null,
+    "safety_component": false,
+    "narrow_task": false,
+    "profiles_people": false,
+    "interacts_with_people": true,
+    "generates_content": true
+  },
+  {
+    "id": "UC-02",
+    "name": "CV screening assistant",
+    "owner": "Head of Recruitment",
+    "purpose": "Reads applications for IT roles and ranks the applicants for the hiring manager.",
+    "users": "Recruiters and hiring managers",
+    "data": "CVs and application forms",
+    "model": "Hosted LLM",
+    "practices": [],
+    "annex_iii_area": "employment",
+    "safety_component": false,
+    "narrow_task": false,
+    "profiles_people": true,
+    "interacts_with_people": false,
+    "generates_content": true
+  },
+  {
+    "id": "UC-03",
+    "name": "Meeting mood monitor",
+    "owner": "HR Operations",
+    "purpose": "Reads staff facial expressions on video calls and scores each person's engagement.",
+    "users": "Team managers",
+    "data": "Video of staff in meetings",
+    "model": "Vision model",
+    "practices": [
+      "emotion_recognition_workplace"
+    ],
+    "annex_iii_area": "employment",
+    "safety_component": false,
+    "narrow_task": false,
+    "profiles_people": true,
+    "interacts_with_people": false,
+    "generates_content": false
+  },
+  {
+    "id": "UC-04",
+    "name": "Ticket auto-categoriser",
+    "owner": "IT Service Desk lead",
+    "purpose": "Sets the application and category of new help desk tickets, so they reach the right queue. Staff can change it.",
+    "users": "Service desk analysts (no direct use by others)",
+    "data": "Ticket text",
+    "model": "Small classifier",
+    "practices": [],
+    "annex_iii_area": null,
+    "safety_component": false,
+    "narrow_task": true,
+    "profiles_people": false,
+    "interacts_with_people": false,
+    "generates_content": false
+  }
+]

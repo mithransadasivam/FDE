@@ -1,0 +1,69 @@
+[
+  {
+    "id": "R01",
+    "title": "Prompt injection through questions or documents changes the chatbot's answers",
+    "function": "MAP",
+    "likelihood": 3,
+    "impact": 4,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Input and document guardrails (Day 17, GUARDRAILS=1)",
+      "Red-team library run before every release"
+    ],
+    "evidence": [
+      "governance/evidence/red_team_after.json"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "R02",
+    "title": "Wrong or uncited answers mislead staff",
+    "function": "MEASURE",
+    "likelihood": 3,
+    "impact": 3,
+    "owner": "Chatbot product owner",
+    "controls": [
+      "Quality gate with agreed thresholds (Day 8), run in CI",
+      "Answers cite their sources"
+    ],
+    "evidence": [
+      "governance/evidence/quality_report.json"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "R03",
+    "title": "Personal data appears in an answer",
+    "function": "MANAGE",
+    "likelihood": 2,
+    "impact": 4,
+    "owner": "Data protection lead",
+    "controls": [
+      "No personal data in the index",
+      "Presidio redaction in the output guardrail (Day 17)"
+    ],
+    "evidence": [
+      "governance/evidence/red_team_after.json"
+    ],
+    "status": "mitigated",
+    "review_by": "2027-01-31"
+  },
+  {
+    "id": "R04",
+    "title": "Staff are not told they are talking to an AI system (EU AI Act Article 50)",
+    "function": "GOVERN",
+    "likelihood": 4,
+    "impact": 3,
+    "owner": "IT Service Desk lead",
+    "controls": [
+      "Add a notice to the chat page: 'You are chatting with an AI assistant'"
+    ],
+    "evidence": [
+      "governance/use_case_inventory.md"
+    ],
+    "status": "open",
+    "review_by": "2026-11-30"
+  }
+]

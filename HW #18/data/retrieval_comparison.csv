@@ -1,0 +1,5 @@
+mode,hit_rate,mrr,plain,reworded,exact code,follow-up,messy,avg_ms,model_calls_per_question
+vector,90%,0.81,6/6,4/4,4/4,1/3,3/3,2154,0
+hybrid,90%,0.70,5/6,4/4,4/4,2/3,3/3,2939,0
+rerank,95%,0.83,6/6,4/4,4/4,2/3,3/3,6817,1
+full,100%,0.77,6/6,4/4,4/4,3/3,3/3,11699,2

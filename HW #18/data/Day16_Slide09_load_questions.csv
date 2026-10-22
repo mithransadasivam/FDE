@@ -1,0 +1,21 @@
+question,weight,kind
+How long can a VPN session stay connected?,8,simple
+How do I reset my password?,6,simple
+What is the minimum password length?,6,simple
+How often are laptops replaced?,5,simple
+What is the response target for a P1 incident?,4,simple
+How long does an account stay locked after five failed attempts?,4,simple
+How long are system logs kept?,3,simple
+What does error VPN-809 mean?,5,simple
+how long can a vpn session stay connected,3,repeat with other spelling
+How long can a VPN session stay connected??,2,repeat with other spelling
+Can I email Confidential data outside the company?,3,simple
+How many days before expiry should I renew my VPN certificate?,3,simple
+Why does my VPN disconnect after twelve hours and what should I do about it?,2,hard
+What is the difference between a P1 and a P2 incident?,2,hard
+Should I use the self-service portal or the office network to renew an expired certificate?,2,hard
+Compare the rules for laptops and phones that are lost or stolen.,1,hard
+"If I work from home on a personal laptop, which policies apply to me?",1,hard
+What is on the cafeteria menu this week?,2,off-topic
+When is the annual salary review?,1,off-topic
+How many parking spaces does each team get?,1,off-topic

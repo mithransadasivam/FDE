@@ -1,0 +1,19 @@
+[
+  {
+    "id": "CAP-01",
+    "name": "<your capstone's name>",
+    "owner": "<who owns it: a role, not a person's name>",
+    "purpose": "<one sentence: what it does, for whom>",
+    "users": "<who uses it>",
+    "data": "<what data it reads and stores>",
+    "model": "<which models>",
+    "practices": [],
+    "annex_iii_area": null,
+    "safety_component": false,
+    "narrow_task": false,
+    "profiles_people": false,
+    "interacts_with_people": false,
+    "generates_content": false,
+    "notes": "Answer each question honestly. practices: tags from PROHIBITED in app/ai_act.py, if any apply. annex_iii_area: a key from ANNEX_III, or null."
+  }
+]
