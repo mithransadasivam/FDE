@@ -1,0 +1,177 @@
+{
+  "risks": [
+    {
+      "id": "R01",
+      "risk": "An instruction hidden in an alert makes the tower recommend a change on the wrong service",
+      "nist_function": "MANAGE",
+      "likelihood": 3,
+      "impact": 4,
+      "controls": [
+        "input check on alert text (Phase 6): flagged text is withheld from the model",
+        "Verifier: a recommended step must be in a runbook listed for the root-cause service (policy 4.1)",
+        "approval for every [CHANGE] step on one service (Phase 7)"
+      ],
+      "evidence": [
+        "SECURITY_FINDINGS.md: T02",
+        "SECURITY_FINDINGS.md: Accepted risk: T08",
+        "REDTEAM_REPORT.md: Stopped with defences on: 7 of 8"
+      ],
+      "owner": "Operations lead",
+      "review_by": "2026-11-30",
+      "status": "open (T08 paraphrases are not flagged; accepted)"
+    },
+    {
+      "id": "R02",
+      "risk": "A password, token or an engineer's personal mobile number reaches a model, a log, a trace or a screen",
+      "nist_function": "MANAGE",
+      "likelihood": 2,
+      "impact": 5,
+      "controls": [
+        "redaction with Presidio and secret patterns before every model call, log line, trace and screen",
+        "personal_mobile in a table the application connection cannot read (database authorizer)",
+        "log filter that scrubs every line; output check on every answer"
+      ],
+      "evidence": [
+        "SECURITY_FINDINGS.md: T03",
+        "SECURITY_FINDINGS.md: T04",
+        "REDTEAM_REPORT.md: T03"
+      ],
+      "owner": "Security lead",
+      "review_by": "2026-11-30",
+      "status": "mitigated"
+    },
+    {
+      "id": "R03",
+      "risk": "A free-text answer from /ask states a wrong fact and an operator acts on it",
+      "nist_function": "MEASURE",
+      "likelihood": 3,
+      "impact": 3,
+      "controls": [
+        "facts with one right answer (owner, tier, steps, dependants, status) are answered from data with no model",
+        "every free-text answer cites its sources",
+        "ten answers compared before and after every routing change"
+      ],
+      "evidence": [
+        "PERF_REPORT.md: What this check caught",
+        "PERF_REPORT.md: No answer got worse"
+      ],
+      "owner": "Platform lead",
+      "review_by": "2026-12-15",
+      "status": "open"
+    },
+    {
+      "id": "R04",
+      "risk": "The model recommends the wrong runbook step (for example a rollback when the cache is the cause)",
+      "nist_function": "MEASURE",
+      "likelihood": 2,
+      "impact": 4,
+      "controls": [
+        "Verifier checks the runbook, the step, its type and its prerequisites; one retry, then NEEDS_PERSON",
+        "the Investigator's [READ] findings and a similar past incident go into the Planner's context",
+        "a person approves the step, seeing the evidence"
+      ],
+      "evidence": [
+        "EVAL_REPORT.md: runbook step | 10/10",
+        "EVAL_REPORT.md: Verifier rejections"
+      ],
+      "owner": "Operations lead",
+      "review_by": "2026-12-15",
+      "status": "mitigated"
+    },
+    {
+      "id": "R05",
+      "risk": "The person approving is not who they say they are, so a change is approved by the wrong person",
+      "nist_function": "GOVERN",
+      "likelihood": 3,
+      "impact": 5,
+      "controls": [
+        "approver must be a named approver for that request; two different people when two are needed",
+        "every approval and every refusal is in the audit trail",
+        "TO DO: single sign-on and a signed approval before real use"
+      ],
+      "evidence": [
+        "SECURITY_FINDINGS.md: The API has no login"
+      ],
+      "owner": "Security lead",
+      "review_by": "2026-11-15",
+      "status": "open",
+      "show_first": "Show the duty manager this one first: the whole design says a person approves every change, so who counts as a person is the control everything else rests on, and in this build it is still a name picked from a list."
+    },
+    {
+      "id": "R06",
+      "risk": "Raw alert text, which may hold secrets or personal data, is kept in the database with no retention period",
+      "nist_function": "GOVERN",
+      "likelihood": 2,
+      "impact": 3,
+      "controls": [
+        "nothing leaves the database unhidden: models, logs, traces, screen and audit are all redacted",
+        "the database is rebuilt from source on demand",
+        "TO DO: set a retention period and purge old alerts"
+      ],
+      "evidence": [
+        "SECURITY_FINDINGS.md: Alert text is stored raw"
+      ],
+      "owner": "Data protection officer",
+      "review_by": "2026-12-15",
+      "status": "open"
+    },
+    {
+      "id": "R07",
+      "risk": "Cost or delay grows, or the model provider goes down, during an incident",
+      "nist_function": "MANAGE",
+      "likelihood": 3,
+      "impact": 3,
+      "controls": [
+        "routing: status and fact questions use no model; simple look-ups use the small model",
+        "answer cache keyed on prompt version, model and latest alert time",
+        "/ready turns false when the model connection stops; briefs fall back to NEEDS_PERSON, rules still group and score",
+        "cost per brief and per 1,000 questions in /metrics"
+      ],
+      "evidence": [
+        "PERF_REPORT.md: Cost per 1,000 questions",
+        "PERF_REPORT.md: baseline (routing off, cache off)"
+      ],
+      "owner": "Platform lead",
+      "review_by": "2026-12-15",
+      "status": "mitigated"
+    },
+    {
+      "id": "R08",
+      "risk": "The tower grows a feature that evaluates people (for example who approves slowest), which would make it high-risk under the EU AI Act",
+      "nist_function": "MAP",
+      "likelihood": 2,
+      "impact": 5,
+      "controls": [
+        "classification records why it is limited risk and what would change the answer",
+        "approval screens never show personal data and never rank people",
+        "classification is reviewed before any feature that reports on engineers"
+      ],
+      "evidence": [
+        "CLASSIFICATION.md: What would change the answer",
+        "CLASSIFICATION.md: does that matter"
+      ],
+      "owner": "Operations lead",
+      "review_by": "2026-11-30",
+      "status": "open"
+    },
+    {
+      "id": "R09",
+      "risk": "The policy or runbooks change and the rules in code no longer match, giving a wrong severity or the wrong number of approvals",
+      "nist_function": "GOVERN",
+      "likelihood": 2,
+      "impact": 4,
+      "controls": [
+        "grouping, severity, status and approvals are exact rules in code, cited by policy section",
+        "all 10 scenarios are scored against data/scenarios.csv on every test run",
+        "policy clauses are parsed from docs/OPERATIONS_POLICY.md, not copied"
+      ],
+      "evidence": [
+        "EVAL_REPORT.md: grouping | 10/10",
+        "EVAL_REPORT.md: approvals | 10/10"
+      ],
+      "owner": "Operations lead",
+      "review_by": "2026-12-15",
+      "status": "mitigated"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "name": "Operations Control Tower",
+  "version": "1.0.0",
+  "owner": "Operations lead (fictional company)",
+  "purpose": "Turn monitoring alerts into incidents for a night operations team: group alerts by rules in code, find the root cause, set the severity, recommend one runbook step with the evidence, draft a status update for P1 and P2, answer operators' questions with sources, and make sure no change runs until the right people have approved it.",
+  "intended_users": [
+    "Night operations engineers who watch the alerts",
+    "On-call engineers of the owning teams, who approve a change to their own service",
+    "The duty manager, who approves P1 incidents and tier-1 changes during the weekend change freeze"
+  ],
+  "out_of_scope": [
+    "Running any change on its own: every [CHANGE] step needs the approvals in policy section 5",
+    "Making or supporting decisions about people: scoring, ranking or monitoring engineers (that would make it high-risk under EU AI Act Annex III point 4)",
+    "Safety-critical control of physical or critical infrastructure",
+    "Anything outside the fictional company's own alerts, runbooks and policy",
+    "Handling real personal data or real secrets: the data in this repository is fictional"
+  ],
+  "models": [
+    {
+      "role": "Large model: incident briefs (planner), summaries, drafts and hard questions",
+      "model": "anthropic/claude-haiku-4.5",
+      "provider": "OpenRouter (Anthropic)"
+    },
+    {
+      "role": "Small model: investigator turns, status-update drafts, simple runbook and policy look-ups",
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "provider": "OpenRouter (Meta)"
+    },
+    {
+      "role": "Test double: deterministic fake used by every test and the offline demo, never in production",
+      "model": "FakeLLM",
+      "provider": "this repository (tower/llm.py)"
+    }
+  ],
+  "data": {
+    "sources": [
+      "data/services.csv: the service catalogue with tiers, owners and dependencies",
+      "data/alerts.csv: 22 fictional alerts from 22 to 24 October 2026",
+      "data/incidents_history.csv: 16 past incidents and what fixed them",
+      "data/oncall.csv: on-call engineers (work email only is ever used)",
+      "docs/OPERATIONS_POLICY.md and docs/runbooks/RB-01 to RB-08: the rules and the steps"
+    ],
+    "personal_data": "Alert text can contain secrets (password=, token=) and an engineer's personal mobile number. They are hidden by Presidio and secret patterns before any model call, log line, trace, audit entry or screen. personal_mobile is stored in a separate table that the application's database connection cannot read; no tool, index or prompt is given it. Contacting a team is page_oncall(team), by team name only.",
+    "retention": "Alert text is kept raw in the local SQLite file data/tower.db, which is rebuilt from the CSV files on demand; logs rotate at 2 MB with 2 backups. A real retention period is an open item (risk R06)."
+  },
+  "evaluation": {
+    "scenarios_right": "10/10 scenarios right on grouping, root cause, severity, status, approvals, similar incident and flags with the real models (EVAL_REPORT.md); the rules alone score the same with no model",
+    "runbook_steps_right": "10/10 runbook steps match with the real models, checked by code against the runbook before anyone sees them (EVAL_REPORT.md)",
+    "attacks_stopped": "7/8 attacks stopped with the defences on; T08 (a paraphrased instruction in an alert) is an accepted risk, with the harm blocked by the Verifier and the approval step (SECURITY_FINDINGS.md)",
+    "p95_seconds": "3.24 s p95 for /ask after routing and caching with the real models, against 3.46 s before (PERF_REPORT.md); the slow tail is the uncached large-model questions",
+    "cost_per_1000_questions": "$0.11 per 1,000 questions after routing and caching, against $1.00 before (PERF_REPORT.md)",
+    "report_files": [
+      "EVAL_REPORT.md",
+      "PERF_REPORT.md",
+      "SECURITY_FINDINGS.md",
+      "REDTEAM_REPORT.md"
+    ]
+  },
+  "limitations": [
+    "A paraphrased instruction in an alert is not flagged (T08, accepted); it is stopped later by the runbook check and the approval step",
+    "Free-text answers can contain a wrong fact; the output check removes secrets, links and leaks but cannot verify facts, so facts with one right answer are answered from data with no model",
+    "The READ tools are simulated readings for the starter scenarios; no real system is touched and nothing real is changed",
+    "Approver identity is chosen from a list in this build; production needs single sign-on and a signed request",
+    "Evaluated on 10 scenarios and 30 questions of fictional data; results on real alerts are unknown",
+    "Presidio is configured for phone numbers, cards, IBANs and NHS numbers; names and addresses are not hidden"
+  ],
+  "human_oversight": "A person approves every [CHANGE] step: the owning team's on-call, plus the duty manager for P1 and for tier-1 changes in the weekend change freeze, with a written reason, two different people when two are needed, one step on one service, executed once. Unknown services and failed recommendations stop as NEEDS_PERSON. Status updates are drafts that a person sends. An incident waiting more than 15 minutes pages the duty manager. Every decision is in the audit trail.",
+  "risk_category": {
+    "eu_ai_act": "Limited risk: transparency obligations, Article 50(1)",
+    "reason": "Not a prohibited practice (Article 5) and not high-risk (not Annex I; not Annex III, because it decides nothing about people and is not a safety component of critical infrastructure). The Ask the tower chat interacts directly with people, so Article 50(1) applies and the screen says they are talking to an AI. See governance/classification.md."
+  },
+  "contact": "operations-lead@example.com"
+}
