@@ -14,42 +14,42 @@
   "Which runbook covers certificates?"
  ],
  "errors": 0,
- "p50_ms": 1985.0,
- "p95_ms": 3459.1,
- "throughput_qps": 1.75,
- "wall_s": 34.3,
- "cost_per_1000_usd": 1.0008,
+ "p50_ms": 2009.0,
+ "p95_ms": 4125.6,
+ "throughput_qps": 1.6,
+ "wall_s": 37.5,
+ "cost_per_1000_usd": 1.1193,
  "cache_hit_rate": 0.0,
  "routes": {
   "large": 60
  },
  "route_p50_ms": {
-  "large": 1928.89
+  "large": 1970.7
  },
- "tokens_total": 40710,
- "cost_per_brief_usd": 0.002031,
+ "tokens_total": 45644,
+ "cost_per_brief_usd": 0.002274,
  "briefs": 8,
- "triage_s": 72.7,
- "ttft_ms_p50": 1283.8,
- "first_visible_ms_p50": 1530.8,
- "stream_total_ms_p50": 1761.2,
+ "triage_s": 63.9,
+ "ttft_ms_p50": 1283.2,
+ "first_visible_ms_p50": 1562.8,
+ "stream_total_ms_p50": 1724.6,
  "stream_n": 10,
  "answers": {
   "What is the difference between P2 and P3?": "The context does not define P3, so I cannot answer what the difference is between P2 and P3.\n\nI can tell you that P2 is defined as: a tier-1 service is degraded, or a tier-2 service is down [policy 2.",
-  "What should I do about flapping alerts?": "According to policy 2.5, flapping alerts are alerts that clear themselves within 15 minutes and need no action [policy 2.5]. You should not take action on them.",
-  "List the [CHANGE] steps in RB-02.": "According to the context, RB-02 has one [CHANGE] step:\n\n- Step 3: restart_service [RB-02 step 3]\n\nThis step requires approval before execution [policy 5].",
-  "What does runbook RB-04 say to do first?": "According to RB-04, the first step is [READ] check_disk_usage [RB-04 step 1] [2].",
-  "Which runbook covers certificates?": "I don't have access to the data/services.csv file that lists which runbooks cover which services [policy 4.3]. To find the runbook for certificates, you would need to check that services database dire",
-  "What is the status of the Ticketing API?": "The Ticketing API is currently affected by two incidents:\n\n1. **INC-3002 (P3)**: Root cause is cache-redis with high evictions (4,200/min) and 98% memory usage. The API is showing a 12% 5xx error rate",
-  "Is the VPN gateway healthy?": "Based on the context provided, the VPN gateway is **not currently healthy**.\n\nIncident INC-3004 is currently active (auto-resolved as P4) with a root cause of vpn-gw [2]. The incident shows a pattern ",
-  "Which incidents are open right now?": "I cannot answer that question. The context provided does not contain information about currently open incidents. To find this information, you would need to check your incident management system or da",
-  "What is the status of the Payment Portal?": "I don't have enough information to answer that. The context describes the Payment Portal service itself [1] and a past incident [2], but doesn't contain current status information about it.\n\nTo answer",
-  "When does the change freeze start and end?": "The change freeze runs from Friday 18:00 to Monday 06:00 [policy 5.3].\n\nDuring this period, any change to a tier-1 service requires the duty manager's approval with a written reason, regardless of sev",
+  "What should I do about flapping alerts?": "According to policy 2.5, flapping alerts (alerts that clear themselves within 15 minutes and need no action) require no action from you [policy 2.5].",
+  "List the [CHANGE] steps in RB-02.": "According to the context, RB-02 has one [CHANGE] step:\n\n**Step 3 [CHANGE] restart_service** - Restart the affected node only, one node at a time, never all nodes together. This step needs approval (po",
+  "What does runbook RB-04 say to do first?": "According to RB-04, the first step is [READ] check_disk_usage: Find the folders using the most space [RB-04 step 1]. This step may run without approval [RB-04 step 1].",
+  "Which runbook covers certificates?": "RB-06 covers certificates. It is used for mail-gw, vpn-gw, and intranet, and addresses certificate expiring issues [RB-06].",
+  "What is the status of the Ticketing API?": "The Ticketing API (ticketing-api) is currently experiencing issues as part of two incidents:\n\n**INC-3002 (P3):** Error rate is elevated at 12% 5xx errors (normal under 1%) [AL-104]. The root cause is ",
+  "Is the VPN gateway healthy?": "Based on the context, the VPN gateway (vpn-gw) is **not currently healthy**.\n\nIncident INC-3004 is currently active and auto-resolved, but it shows a pattern of latency issues [INC-3004]. The alerts i",
+  "Which incidents are open right now?": "I cannot answer this question using only the provided context chunks. The context contains policies and runbook procedures, but does not include current incident data or a list of open incidents.\n\nTo ",
+  "What is the status of the Payment Portal?": "Based on the current incident INC-3003, the Payment Portal (payportal) is experiencing critical issues:\n\n**What's affected:** Payportal has two critical alerts:\n- AL-106: HTTP 503 errors on the /check",
+  "When does the change freeze start and end?": "The change freeze runs from Friday 18:00 to Monday 06:00 [policy 5.3]. During this period, any change to a tier-1 service requires the duty manager's approval with a written reason, regardless of seve",
   "How many alerts fired for hr-selfservice today?": "Based on the context provided, I can see **3 alerts** associated with hr-selfservice:\n\n1. AL-120 - http_check major: Response time 7.2 s; memory 94% on node 1 [INC-3009]\n2. AL-121 - payslip_journey ma",
-  "Which services depend on db-core?": "Based on the context, the following services depend on db-core [1]:\n\n- **hr-selfservice** [1]\n- **payportal** [1]\n- **ticketing-api** [1]"
+  "Which services depend on db-core?": "Based on the context, the following services depend on db-core [services db-core]:\n\n1. **hr-selfservice** [services db-core]\n2. **payportal** [services payportal]\n3. **ticketing-api** [services ticket"
  },
  "models": {
   "large": "anthropic/claude-haiku-4.5",
-  "small": "meta-llama/llama-3.1-8b-instruct"
+  "small": "google/gemini-2.5-flash-lite"
  }
 }

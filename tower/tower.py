@@ -93,8 +93,12 @@ class Tower:
             if red.counts:
                 self.metrics.block("prompt_redacted")
             user = red.text
-        with self.tracer.span(f"llm.{purpose}", model=self.llm.model_name(role), role=role):
+        with self.tracer.span(f"llm.{purpose}", model=self.llm.model_name(role), role=role) as sp:
+            sp["_set"]("llm.model_name", self.llm.model_name(role))
             res = self.llm.complete(system, user, role=role, max_tokens=max_tokens, purpose=purpose)
+            sp["_set"]("llm.token_count.prompt", res.tokens_in)
+            sp["_set"]("llm.token_count.completion", res.tokens_out)
+            sp["_set"]("llm.token_count.total", res.tokens_in + res.tokens_out)
         cost = self.metrics.model_call(purpose, role, res.tokens_in, res.tokens_out)
         self.log.info("model call", extra={"event": "model_call", "model": res.model, "tokens": res.tokens_in + res.tokens_out,
                                            "ms": round(res.latency_ms), "detail": purpose})
@@ -294,7 +298,7 @@ class Tower:
             names = [self.cat.services[s].name for s in i.services if s in self.cat.services]
             fixed = i.status == "CHANGE_DONE"
             items.append({
-                "title": ("Resolved: " if fixed else "") + (" and ".join(names[:2]) + (f" and {len(names) - 2} more" if len(names) > 2 else "")),
+                "title": ("Resolved: " if fixed else "") + (", ".join(names[:-1]) + " and " + names[-1] if len(names) > 1 else names[0]),
                 "level": "resolved" if fixed else ("outage" if i.severity == "P1" else "degraded"),
                 "message": ("A fix has been applied and we are watching that everything is back to normal." if fixed else
                             "Some people may not be able to use these services right now. A fix is ready and is waiting for sign-off by the right people."
@@ -414,6 +418,7 @@ class Tower:
             return askmod.AskResult(f"The model is not reachable right now ({e}). Status and fact questions still work.",
                                     route=route, blocked=True, reasons=["model unavailable"])
         text, tools = self._tools_and_check(res.text)
+        text = self._check_citations(text, chunks)
         r = askmod.AskResult(text, [c["source"] for c in chunks][:5], route=route, model=res.model, tokens_in=res.tokens_in,
                              tokens_out=res.tokens_out, cost_usd=cost, tools=tools, ttft_ms=res.ttft_ms)
         if self.s.cache:
@@ -446,6 +451,34 @@ class Tower:
                 self.audit("tower", "answer_checked", "; ".join(ov.reasons))
             clean = ov.text
         return clean, used
+
+    _CITE = re.compile(r"\[((?:policy |RB-|INC-|services |oncall |alert )[^\[\]]{0,40})\]", re.I)
+
+    def _check_citations(self, text: str, chunks: list[dict]) -> str:
+        """A citation must name a chunk the model was actually shown. One that does not is marked, not trusted."""
+        shown = set()
+        for c in chunks:
+            s = c["source"].lower()
+            shown.add(s)
+            shown.add(s.split(" ")[0])  # 'INC-3003 current' can be cited as 'INC-3003'; 'RB-04 step 2' as 'RB-04'
+        bad = []
+
+        def number(m: re.Match) -> str:  # some models cite the context number: [3] means the third chunk it was shown
+            i = int(m.group(1))
+            return f"[{chunks[i - 1]['source'].replace(' current', '')}]" if 1 <= i <= len(chunks) else f"[unverified: {i}]"
+
+        text = re.sub(r"\[(\d{1,2})\]", number, text)
+
+        def fix(m: re.Match) -> str:
+            if m.group(1).lower() in shown:
+                return m.group(0)
+            bad.append(m.group(1))
+            return f"[unverified: {m.group(1)}]"
+
+        out = self._CITE.sub(fix, text)
+        if bad:
+            self.metrics.block("citation")
+        return out
 
     def ask_stream(self, question: str) -> Iterator[dict]:
         """Events: meta, chunk (only text that has passed the output check), replace (answer withdrawn), done."""
@@ -515,6 +548,7 @@ class Tower:
                 return
         cost = self.metrics.model_call("ask", role, res.tokens_in, res.tokens_out)
         final, tools = self._tools_and_check(res.text)
+        final = self._check_citations(final, chunks)  # the saved answer is corrected; text already streamed cannot be recalled
         if not withdrawn and len(buf) > shown:
             tail = re.sub(r"\bCALL\s+[a-z_]+\([^)]*\)", "", buf[shown:])
             if self.s.on("output_check"):

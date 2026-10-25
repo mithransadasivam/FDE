@@ -54,8 +54,9 @@ def main() -> None:
     before, after = ask_all(model, False, False), ask_all(model, True, True)
     rows, tb, ta, worse = [], 0, 0, 0
     for (q, facts), (ba, _), (aa, route) in zip(CHECKS, before, after):
-        b = sum(f.lower() in ba.lower() for f in facts)
-        a = sum(f.lower() in aa.lower() for f in facts)
+        norm = lambda s: s.lower().replace("_", " ")  # "check_disk_usage" and "check disk usage" are the same fact
+        b = sum(norm(f) in norm(ba) for f in facts)
+        a = sum(norm(f) in norm(aa) for f in facts)
         tb, ta, worse = tb + b, ta + a, worse + (a < b)
         rows.append({"q": q, "before": b, "after": a, "total": len(facts), "route": route})
     total = sum(r["total"] for r in rows)

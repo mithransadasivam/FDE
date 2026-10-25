@@ -8,37 +8,37 @@ The fake model sleeps a fixed time per call (0.45 s + tokens for the large model
 
 | Run | p50 | p95 | Throughput | Cost per 1,000 questions | Cache hit rate | Errors |
 |---|---|---|---|---|---|---|
-| baseline (routing off, cache off) | 1.13 s | 1.49 s | 3.37 q/s | $1.12 | 0% | 0 |
-| after (routing on, cache on) | 0.09 s | 1.20 s | 10.23 q/s | $0.11 | 50% | 0 |
+| baseline (routing off, cache off) | 1.30 s | 1.53 s | 3.03 q/s | $1.18 | 0% | 0 |
+| after (routing on, cache on) | 0.13 s | 1.32 s | 12.18 q/s | $0.11 | 54% | 0 |
 
-**Change:** p50 -92%, p95 -19%, cost per 1,000 -90%, throughput +204%.
+**Change:** p50 -90%, p95 -14%, cost per 1,000 -91%, throughput +302%.
 
-- **baseline** · where the questions went: large 60 · p50 by route: large 1.08 s · same first five questions: yes
+- **baseline** · where the questions went: large 60 · p50 by route: large 1.23 s · same first five questions: yes
 
-- **after** · where the questions went: cache 16, data 28, large 6, small 10 · p50 by route: cache 0.01 s, data 0.04 s, large 1.11 s, small 0.84 s · same first five questions: yes
+- **after** · where the questions went: cache 14, data 34, large 5, small 7 · p50 by route: cache 0.02 s, data 0.05 s, large 1.28 s, small 0.94 s · same first five questions: yes
 
-**Streaming (after):** the model's first token arrives at p50 0.10 s; the first text a person can read (after the sentence-level output check) at p50 0.28 s, against 0.73 s for the whole answer (10 model-routed questions).
+**Streaming (after):** the model's first token arrives at p50 0.10 s; the first text a person can read (after the sentence-level output check) at p50 0.30 s, against 0.74 s for the whole answer (9 model-routed questions).
 
-**Cost per incident brief:** $0.0011 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 16.6 s).
+**Cost per incident brief:** $0.0013 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 17.1 s).
 
 ## Real models through OpenRouter
 
-Large model `anthropic/claude-haiku-4.5`, small model `meta-llama/llama-3.1-8b-instruct`.
+Large model `anthropic/claude-haiku-4.5`, small model `google/gemini-2.5-flash-lite`.
 
 | Run | p50 | p95 | Throughput | Cost per 1,000 questions | Cache hit rate | Errors |
 |---|---|---|---|---|---|---|
-| baseline (routing off, cache off) | 1.99 s | 3.46 s | 1.75 q/s | $1.00 | 0% | 0 |
-| after (routing on, cache on) | 0.07 s | 3.24 s | 5.45 q/s | $0.11 | 46% | 0 |
+| baseline (routing off, cache off) | 2.01 s | 4.13 s | 1.6 q/s | $1.12 | 0% | 0 |
+| after (routing on, cache on) | 0.08 s | 2.64 s | 6.53 q/s | $0.14 | 46% | 0 |
 
-**Change:** p50 -97%, p95 -6%, cost per 1,000 -89%, throughput +211%.
+**Change:** p50 -96%, p95 -36%, cost per 1,000 -87%, throughput +308%.
 
-- **baseline** · where the questions went: large 60 · p50 by route: large 1.93 s · same first five questions: yes
+- **baseline** · where the questions went: large 60 · p50 by route: large 1.97 s · same first five questions: yes
 
-- **after** · where the questions went: cache 12, data 34, large 6, small 8 · p50 by route: cache 0.01 s, data 0.02 s, large 2.06 s, small 2.40 s · same first five questions: yes
+- **after** · where the questions went: cache 12, data 34, large 7, small 7 · p50 by route: cache 0.01 s, data 0.03 s, large 2.60 s, small 1.52 s · same first five questions: yes
 
-**Streaming (after):** the model's first token arrives at p50 0.90 s; the first text a person can read (after the sentence-level output check) at p50 1.41 s, against 1.69 s for the whole answer (9 model-routed questions).
+**Streaming (after):** the model's first token arrives at p50 0.59 s; the first text a person can read (after the sentence-level output check) at p50 0.80 s, against 0.85 s for the whole answer (9 model-routed questions).
 
-**Cost per incident brief:** $0.0020 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 72.7 s).
+**Cost per incident brief:** $0.0023 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 63.9 s).
 
 ## Did the answers get worse? Ten answers before and after
 
@@ -59,7 +59,7 @@ Each question has facts the answer must contain. Model: **real**. Before = routi
 
 **Total:** before 14/19 facts, after 19/19 facts. No answer got worse.
 
-**What this check caught.** The first time it ran with the real models it found one answer that got worse: *Which steps in RB-07 need approval?* scored 2/2 on the large model and 0/2 on the small one (`llama-3.1-8b-instruct` said "steps 2 and 3"; it is 3 and 4). The question is a filter over parsed runbook steps, so a model can only add mistakes. It now goes to the **data route** (exact, no model, free), and the check passes. That is the answer to "which questions are safe without a model": those whose answer is a row, a count or a filter in our own tables.
+**What this check caught.** The first time it ran with the real models it found one answer that got worse: *Which steps in RB-07 need approval?* scored 2/2 on the large model and 0/2 on the small one (`llama-3.1-8b-instruct` said "steps 2 and 3"; it is 3 and 4). The question is a filter over parsed runbook steps, so a model can only add mistakes. It now goes to the **data route** (exact, no model, free), and the check passes. That is the answer to "which questions are safe without a model": those whose answer is a row, a count or a filter in our own tables. A second run caught the small model itself: asked *How do I fail over the core database?* three times with identical context, `llama-3.1-8b-instruct` answered correctly twice and once said "You cannot fail over the core database". The small model is now `google/gemini-2.5-flash-lite`, which gave the same correct answer four times out of four.
 
 ## How to reproduce
 

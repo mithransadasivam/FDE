@@ -161,3 +161,24 @@ def test_metrics_record_where_questions_went(triaged):
     snap = triaged.metrics.snapshot()
     assert snap["questions"] == 12 and sum(snap["routes"].values()) == 12 and snap["cost_usd_total"] > 0
     assert snap["cost_per_1000_questions_usd"] > 0 and snap["cost_per_incident_brief_usd"] > 0
+
+
+# ---- retrieval and citations -------------------------------------------------------------------------------------------
+def test_stemming_joins_approve_approval_approves():
+    from tower.rag import tokens
+    assert tokens("approve")[0] == tokens("approval")[0] == tokens("approves")[0] == tokens("approved")[0]
+    assert tokens("RB-04")[0] == "rb-04"  # ids are left alone
+
+
+def test_a_saturday_question_finds_the_freeze_and_the_owner_rule(triaged):
+    srcs = [c["source"] for c in triaged.index.search("Who has to approve a change to the Payment Portal on a Saturday?", k=7)]
+    assert "policy 5.3" in srcs and "policy 5.1" in srcs and "services payportal" in srcs
+
+
+def test_a_citation_the_model_was_never_shown_is_marked_unverified(triaged):
+    chunks = [{"source": "policy 5.3", "text": "x"}, {"source": "INC-3003 current", "text": "y"}]
+    out = triaged._check_citations("Freeze [policy 5.3], P1 [policy 2], incident [INC-3003], tier [services db-core], step [1], odd [7].", chunks)
+    assert "[policy 5.3]" in out and "[INC-3003]" in out
+    assert "[1]" not in out and "step [policy 5.3]" in out  # a bare context number becomes the source it points to
+    assert "[unverified: policy 2]" in out and "[unverified: services db-core]" in out and "[unverified: 7]" in out
+    assert triaged.metrics.snapshot()["blocked"]["citation"] == 1

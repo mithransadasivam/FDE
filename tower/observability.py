@@ -79,6 +79,20 @@ def get_logger() -> logging.Logger:
     return logging.getLogger("tower")
 
 
+def _kind(name: str) -> str:
+    if name.startswith("llm."):
+        return "LLM"
+    if name.startswith("agent.") or name == "crew":
+        return "AGENT"
+    if name == "retrieve":
+        return "RETRIEVER"
+    if name.startswith("guard."):
+        return "GUARDRAIL"
+    if name.startswith("tool."):
+        return "TOOL"
+    return "CHAIN"
+
+
 class Tracer:
     """Spans go to an in-memory ring (shown in the Health tab) and, if configured, to Phoenix over OTLP."""
 
@@ -102,13 +116,21 @@ class Tracer:
 
     @contextlib.contextmanager
     def span(self, name: str, **attrs):
+        """Yields the span record. `rec["_set"](key, value)` adds an attribute (to the ring and to Phoenix) while the span is open."""
         rec = {"request_id": request_id_var.get(), "name": name, "depth": len(_span_stack.get()),
                "start": time.time(), "attrs": {k: guardrails.scrub(str(v)) for k, v in attrs.items()}, "ms": 0.0, "error": ""}
+        rec["attrs"]["openinference.span.kind"] = _kind(name)  # so Phoenix draws LLM calls, agents and retrieval as what they are
         token = _span_stack.set(_span_stack.get() + (name,))
         cm = self._otel.start_as_current_span(name) if self._otel else contextlib.nullcontext()
         t0 = time.perf_counter()
         try:
             with cm as osp:
+                def setter(k: str, v) -> None:
+                    rec["attrs"][k] = v if isinstance(v, (int, float)) else guardrails.scrub(str(v))
+                    if osp is not None:
+                        osp.set_attribute(k, rec["attrs"][k])
+
+                rec["_set"] = setter
                 if osp is not None:
                     osp.set_attribute("request_id", rec["request_id"])
                     for k, v in rec["attrs"].items():
@@ -123,6 +145,7 @@ class Tracer:
                 _span_stack.reset(token)
             except ValueError:  # a streaming generator resumed in another thread's context; nothing to restore
                 pass
+            rec.pop("_set", None)
             with self._lock:
                 self.ring.append(rec)
 

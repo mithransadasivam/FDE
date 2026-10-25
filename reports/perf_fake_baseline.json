@@ -14,39 +14,39 @@
   "Which runbook covers certificates?"
  ],
  "errors": 0,
- "p50_ms": 1133.4,
- "p95_ms": 1485.9,
- "throughput_qps": 3.37,
- "wall_s": 17.8,
- "cost_per_1000_usd": 1.1189,
+ "p50_ms": 1297.3,
+ "p95_ms": 1534.6,
+ "throughput_qps": 3.03,
+ "wall_s": 19.8,
+ "cost_per_1000_usd": 1.1776,
  "cache_hit_rate": 0.0,
  "routes": {
   "large": 60
  },
  "route_p50_ms": {
-  "large": 1078.89
+  "large": 1234.95
  },
- "tokens_total": 36755,
- "cost_per_brief_usd": 0.001141,
+ "tokens_total": 40190,
+ "cost_per_brief_usd": 0.001279,
  "briefs": 8,
- "triage_s": 16.6,
+ "triage_s": 17.1,
  "ttft_ms_p50": 180.2,
- "first_visible_ms_p50": 364.5,
- "stream_total_ms_p50": 812.0,
+ "first_visible_ms_p50": 358.4,
+ "stream_total_ms_p50": 825.3,
  "stream_n": 10,
  "answers": {
   "What is the difference between P2 and P3?": "I can't share that. My instructions and tool list are not part of what I can show. Ask about the policy, a runbook, a service or an incident instead.",
   "What should I do about flapping alerts?": "P4: alerts that cleared by themselves within 15 minutes and need no action (\"flapping\"), and informational alerts. [policy 2.5] Incident INC-3001 P3 waiting for approval, root cause fs-02, services fs",
-  "List the [CHANGE] steps in RB-02.": "RB-02 \u00b7 Web application slow or high memory. Used for: payportal, hr-selfservice, intranet. Steps: 1 [READ] check_memory_trend; 2 [READ] check_recent_deploys; 3 [CHANGE] restart_service [RB-02] RB-02 ",
-  "What does runbook RB-04 say to do first?": "RB-04 \u00b7 Disk space low. Step 3 [CHANGE] extend_volume: Extend the volume. Needs an approved capacity ticket first. This step needs approval (policy 5). [RB-04 step 3] RB-04 \u00b7 Disk space low. Used for:",
-  "Which runbook covers certificates?": "I can't share that. My instructions and tool list are not part of what I can show. Ask about the policy, a runbook, a service or an incident instead.",
+  "List the [CHANGE] steps in RB-02.": "RB-02 \u00b7 Web application slow or high memory. Step 3 [CHANGE] restart_service: Restart the affected node only, one node at a time, never all nodes together. This step needs approval (policy 5). [RB-02 ",
+  "What does runbook RB-04 say to do first?": "RB-04 \u00b7 Disk space low. Step 3 [CHANGE] extend_volume: Extend the volume. Needs an approved capacity ticket first. This step needs approval (policy 5). [RB-04 step 3] RB-04 \u00b7 Disk space low. Step 1 [R",
+  "Which runbook covers certificates?": "RB-06 \u00b7 Certificate expiring. Step 1 [READ] check_certificate: Check the certificate's expiry date and which names it covers. This step may run without approval. [RB-06 step 1] One approval covers one",
   "What is the status of the Ticketing API?": "ticketing-api (Ticketing API) is tier 2, owned by Service Desk Tools; depends on db-core, cache-redis; depended on by nothing; runbooks RB-07. [services ticketing-api] Past incident INC-2136 on ticket",
   "Is the VPN gateway healthy?": "vpn-gw (VPN Gateway) is tier 1, owned by Network; depends on nothing; depended on by nothing; runbooks RB-08, RB-06. [services vpn-gw] Incident INC-3004 P4 auto resolved, root cause vpn-gw, services v",
   "Which incidents are open right now?": "I can't share that. My instructions and tool list are not part of what I can show. Ask about the policy, a runbook, a service or an incident instead.",
   "What is the status of the Payment Portal?": "payportal (Payment Portal) is tier 1, owned by Finance Apps; depends on db-core, sso; depended on by nothing; runbooks RB-02. [services payportal] Past incident INC-2215 on payportal: slow responses, ",
-  "When does the change freeze start and end?": "I can't share that. My instructions and tool list are not part of what I can show. Ask about the policy, a runbook, a service or an incident instead.",
+  "When does the change freeze start and end?": "RB-07 \u00b7 API errors and cache problems. Step 1 [READ] check_error_rate: Check the 5xx rate and when it started, and any deploy since then. This step may run without approval. [RB-07 step 1] Change free",
   "How many alerts fired for hr-selfservice today?": "Incident INC-3009 P3 waiting for approval, root cause hr-selfservice, services hr-selfservice, 1 approval(s) needed; recommended RB-02 step 3 (restart_service) on hr-selfservice. Alerts: AL-120 hr-sel",
-  "Which services depend on db-core?": "db-core (Core Database) is tier 1, owned by Data Platform; depends on storage-san; depended on by hr-selfservice, payportal, ticketing-api; runbooks RB-01. [services db-core] Incident INC-3003 P1 wait"
+  "Which services depend on db-core?": "db-core (Core Database) is tier 1, owned by Data Platform; depends on storage-san; depended on by hr-selfservice, payportal, ticketing-api; runbooks RB-01. [services db-core] payportal (Payment Portal"
  },
  "models": {
   "large": "fake-large",

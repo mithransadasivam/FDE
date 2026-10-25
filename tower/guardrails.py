@@ -156,7 +156,8 @@ _INSTRUCTION_PATTERNS = [
     (r"(has been |was |is )?(approved|authori[sz]ed|cleared)\s+by\s+(the\s+)?(duty manager|manager|ciso|cto|admin)", "authority-claim"),
     (r"\bthe\s+(duty manager|manager|ciso|cto|admin)\s+(says|said|told|confirmed|approved)", "authority-claim"),
     (r"then\s+run\s+the\s+first\s+one", "run-first"),
-    (r"\b(do|run|proceed|execute|apply|make)\b.{0,30}without\s+(asking|approval|confirmation)", "skip-approval"),
+    # an imperative ("Run it without approval"), not a description ("a read step may run without approval", policy 4.3)
+    (r"(?:^|[.!?;:\n]\s*|\b(?:please|just|now|then|and)\s+)(?:do|run|proceed|execute|apply|make)\b.{0,30}without\s+(?:asking|approval|confirmation)", "skip-approval"),
 ]
 _INSTRUCTION_RES = [(re.compile(p, re.I | re.S), name) for p, name in _INSTRUCTION_PATTERNS]
 _CHANGE_REQUEST = re.compile(

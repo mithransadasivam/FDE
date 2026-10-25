@@ -100,7 +100,7 @@ class Crew:
         for turn in range(min(MAX_INVESTIGATOR_TURNS, len(tools) + 1)):
             t0 = time.perf_counter()
             try:
-                res, cost = t.call_llm("investigator", "small", prompts.SYSTEM_INVESTIGATOR,
+                res, cost = self._agent_call("Investigator", inc, "investigator", "small", prompts.SYSTEM_INVESTIGATOR,
                                        prompts.investigator_user({**facts, "read_findings": done}, tools, done), 200)
             except LLMError as e:
                 add(agent="Investigator", what=f"model unavailable ({e}); running the [READ] steps in runbook order", status="warn")
@@ -145,7 +145,7 @@ class Crew:
         for attempt in range(1 + MODEL_RETRIES_ON_BAD_STEP):
             t0 = time.perf_counter()
             try:
-                res, cost = t.call_llm("planner", "large", prompts.SYSTEM_PLANNER,
+                res, cost = self._agent_call("Planner", inc, "planner", "large", prompts.SYSTEM_PLANNER,
                                        prompts.planner_user(facts, "; ".join(problems) if problems else None), 500)
             except LLMError as e:
                 problems = [f"model unavailable ({e})"]
@@ -177,8 +177,9 @@ class Crew:
             t0 = time.perf_counter()
             try:
                 plain = ", ".join(t.cat.services[s].name for s in inc.services if s in t.cat.services)
-                res, cost = t.call_llm("scribe", "small", prompts.SYSTEM_SCRIBE, prompts.scribe_user({
+                res, cost = self._agent_call("Scribe", inc, "scribe", "small", prompts.SYSTEM_SCRIBE, prompts.scribe_user({
                     "what": plain, "severity": inc.severity, "next_update": t.next_update_time(),
+                    "state": "down" if any(a.severity == "critical" for a in inc.alerts) else "degraded (slow or partly failing)",
                     "action": "a recommended fix is waiting for approval by a person"}), 250)
                 ov = guardrails.check_output(res.text, prompts.PROTECTED) if t.s.on("output_check") else None
                 brief.status_update = ov.text if ov else res.text
@@ -211,6 +212,11 @@ class Crew:
         return inc
 
     # -------------------------------------------------------------------------------------------------------------
+    def _agent_call(self, agent: str, inc: Incident, purpose: str, role: str, system: str, user: str, max_tokens: int):
+        """One model call made by a named agent. In Phoenix it shows as an AGENT span with the LLM span inside it."""
+        with self.t.tracer.span(f"agent.{agent}", incident=inc.incident_id):
+            return self.t.call_llm(purpose, role, system, user, max_tokens)
+
     def _facts(self, inc: Incident, svc, sim) -> dict:
         t = self.t
         return {

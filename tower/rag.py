@@ -16,14 +16,36 @@ _STOP = {"the", "a", "an", "of", "to", "is", "are", "in", "on", "and", "or", "fo
          "this", "that", "be", "by", "with", "at", "as", "we", "you", "can", "should", "there", "if", "from"}
 
 
+def _stem(t: str) -> str:
+    """Light stemming so 'approve', 'approves', 'approval' and 'approved' meet. Ids like rb-04 are left alone."""
+    if len(t) < 5 or "-" in t or any(c.isdigit() for c in t):
+        return t
+    for suf in ("ing", "ed", "es", "al", "s", "e"):
+        if t.endswith(suf) and len(t) - len(suf) >= 4:
+            return t[:-len(suf)]
+    return t
+
+
+# Words an operator uses that the policy says differently. Added to the query only (never shown), so 'Saturday' finds the change freeze.
+_EXPAND = {
+    "saturday": "freeze", "sunday": "freeze", "weekend": "freeze", "friday": "freeze", "evening": "freeze", "monday": "freeze",
+    "sign-off": "approval", "authorise": "approval", "restart": "change", "fail over": "failover", "failover": "replica",
+}
+
+
+def expand(question: str) -> str:
+    low = question.lower()
+    return question + " " + " ".join(v for k, v in _EXPAND.items() if re.search(rf"\b{re.escape(k)}\b", low))
+
+
 def tokens(text: str) -> list[str]:
     out = []
     for t in _TOKEN.findall(text.lower()):
         if t in _STOP:
             continue
-        out.append(t)
+        out.append(_stem(t))
         if "-" in t:
-            out.extend(p for p in t.split("-") if p and p not in _STOP)
+            out.extend(_stem(p) for p in t.split("-") if p and p not in _STOP)
     return out
 
 
@@ -74,7 +96,7 @@ class Index:
         if extra:
             for c in extra:
                 pool.append((c, Counter(tokens(c["source"] + " " + c["text"]))))
-        q = tokens(question)
+        q = tokens(expand(question))
         n = len(pool)
         rb_ids = {m.upper().replace("RB", "RB-") if "-" not in m else m.upper() for m in re.findall(r"\brb-?\d{2}\b", question, re.I)}
         clauses = set(re.findall(r"\b\d\.\d\b", question))

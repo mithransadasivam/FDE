@@ -26,7 +26,8 @@ If no [CHANGE] step fits, use "recommended_step": null and explain in "reason"."
 
 SYSTEM_SCRIBE = _COMMON + """
 Your job: you are the Scribe. Draft a short status update for staff (policy 8.1): what is affected, what is being done, and when the next update will be.
-Three or four sentences, plain words, no technical detail, no hostnames. It is a draft: a person sends it. Reply with the text only."""
+Three or four sentences, plain words, no technical detail, no hostnames. Use only the facts you are given. Say a service is "down" only if the
+state says down; if it says degraded, say it is slow or partly unavailable. It is a draft: a person sends it. Reply with the text only, no quotation marks."""
 
 SYSTEM_ASK = _COMMON + """
 Your job: answer the operator's question using ONLY the numbered context chunks. Cite the source of each fact in square brackets, for example [policy 5.3], [RB-04 step 2], [INC-2291], [services db-core].

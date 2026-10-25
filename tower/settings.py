@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"  # part of the /ask cache key: change it and every cached answer misses
 
 # Bounded loops and limits (CLAUDE.md: every loop is bounded)
 MAX_QUESTION_CHARS = 1000
@@ -61,12 +61,12 @@ class Settings:
     api_key: str = field(default="", repr=False)
     base_url: str = "https://openrouter.ai/api/v1"
     llm_model: str = "deepseek/deepseek-v4-flash"
-    small_model: str = "meta-llama/llama-3.1-8b-instruct"
+    small_model: str = "google/gemini-2.5-flash-lite"
     # US dollars per million tokens (check openrouter.ai; these are the prices on 2026-10-24)
     llm_in_price: float = 0.091
     llm_out_price: float = 0.182
-    small_in_price: float = 0.05
-    small_out_price: float = 0.08
+    small_in_price: float = 0.10
+    small_out_price: float = 0.40
 
     # Part 2 switches (baseline = routing off, cache off)
     routing: bool = True
@@ -109,11 +109,11 @@ class Settings:
             api_key=key,
             base_url=os.environ.get("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
             llm_model=os.environ.get("LLM_MODEL", "deepseek/deepseek-v4-flash"),
-            small_model=os.environ.get("SMALL_MODEL", "meta-llama/llama-3.1-8b-instruct"),
+            small_model=os.environ.get("SMALL_MODEL", "google/gemini-2.5-flash-lite"),
             llm_in_price=_float("INPUT_PRICE", 0.091),
             llm_out_price=_float("OUTPUT_PRICE", 0.182),
-            small_in_price=_float("SMALL_INPUT_PRICE", 0.05),
-            small_out_price=_float("SMALL_OUTPUT_PRICE", 0.08),
+            small_in_price=_float("SMALL_INPUT_PRICE", 0.10),
+            small_out_price=_float("SMALL_OUTPUT_PRICE", 0.40),
             routing=_flag("ROUTING", True),
             cache=_flag("CACHE", True),
             cache_ttl_s=_float("CACHE_TTL_S", 60.0),

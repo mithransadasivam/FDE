@@ -14,38 +14,38 @@
   "Which runbook covers certificates?"
  ],
  "errors": 0,
- "p50_ms": 68.4,
- "p95_ms": 3243.8,
- "throughput_qps": 5.45,
- "wall_s": 11.0,
- "cost_per_1000_usd": 0.1112,
+ "p50_ms": 80.3,
+ "p95_ms": 2642.7,
+ "throughput_qps": 6.53,
+ "wall_s": 9.2,
+ "cost_per_1000_usd": 0.1446,
  "cache_hit_rate": 0.462,
  "routes": {
   "data": 34,
-  "small": 8,
+  "small": 7,
   "cache": 12,
-  "large": 6
+  "large": 7
  },
  "route_p50_ms": {
-  "data": 24.92,
-  "small": 2399.94,
-  "cache": 8.9,
-  "large": 2063.24
+  "data": 31.61,
+  "small": 1522.83,
+  "cache": 12.56,
+  "large": 2595.95
  },
- "tokens_total": 8583,
- "cost_per_brief_usd": 0.002028,
+ "tokens_total": 9976,
+ "cost_per_brief_usd": 0.002282,
  "briefs": 8,
- "triage_s": 65.2,
- "ttft_ms_p50": 904.7,
- "first_visible_ms_p50": 1411.6,
- "stream_total_ms_p50": 1692.4,
+ "triage_s": 58.0,
+ "ttft_ms_p50": 594.2,
+ "first_visible_ms_p50": 802.2,
+ "stream_total_ms_p50": 851.1,
  "stream_n": 9,
  "answers": {
-  "What is the difference between P2 and P3?": "The context does not answer the question.",
-  "What should I do about flapping alerts?": "According to [policy 2.5], flapping alerts that cleared by themselves within 15 minutes and need no action should be ignored.",
+  "What is the difference between P2 and P3?": "The provided context does not define P3 incidents. It only defines P2 incidents as a tier-1 service being degraded, or a tier-2 service being down [policy 2.3].",
+  "What should I do about flapping alerts?": "Flapping alerts are P4 alerts that cleared by themselves within 15 minutes and need no action [policy 2.5].",
   "List the [CHANGE] steps in RB-02.": "RB-02 (RB-02 \u00b7 Web application slow or high memory) has 1 [CHANGE] step(s), and each needs approval (policy 5): step 3 [CHANGE] restart_service: Restart the affected node only, one node at a time, nev",
-  "What does runbook RB-04 say to do first?": "RB-04 step 1: check_disk_usage [2].",
-  "Which runbook covers certificates?": "Based on the context, I can't determine which runbook covers certificates. The context only mentions data/services.csv, but it doesn't specify what services are listed there.",
+  "What does runbook RB-04 say to do first?": "Runbook RB-04 says to first check disk usage to find the folders using the most space [RB-04 step 1].",
+  "Which runbook covers certificates?": "RB-06 covers certificates [RB-06].",
   "What is the status of the Ticketing API?": "ticketing-api (Ticketing API) is in INC-3003: P1, waiting for approval. Root cause: db-core. 2 approval(s) needed.",
   "Is the VPN gateway healthy?": "vpn-gw (VPN Gateway) is in INC-3004: P4, auto resolved. 0 approval(s) needed.",
   "Which incidents are open right now?": "9 incident(s) are open: INC-3001 P3 fs-02 (waiting for approval); INC-3002 P3 cache-redis (waiting for approval); INC-3003 P1 db-core (waiting for approval); INC-3005 P3 mail-gw (waiting for approval)",
@@ -56,6 +56,6 @@
  },
  "models": {
   "large": "anthropic/claude-haiku-4.5",
-  "small": "meta-llama/llama-3.1-8b-instruct"
+  "small": "google/gemini-2.5-flash-lite"
  }
 }

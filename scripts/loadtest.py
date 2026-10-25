@@ -204,7 +204,10 @@ def write_report() -> None:
                   "need approval?* scored 2/2 on the large model and 0/2 on the small one (`llama-3.1-8b-instruct` said \"steps 2 and 3\"; it is 3 and 4). "
                   "The question is a filter over parsed runbook steps, so a model can only add mistakes. It now goes to the **data route** "
                   "(exact, no model, free), and the check passes. That is the answer to \"which questions are safe without a model\": "
-                  "those whose answer is a row, a count or a filter in our own tables.", ""]
+                  "those whose answer is a row, a count or a filter in our own tables. "
+                  "A second run caught the small model itself: asked *How do I fail over the core database?* three times with identical context, "
+                  "`llama-3.1-8b-instruct` answered correctly twice and once said \"You cannot fail over the core database\". "
+                  "The small model is now `google/gemini-2.5-flash-lite`, which gave the same correct answer four times out of four.", ""]
     lines += ["## How to reproduce", "", "```", "python -m scripts.loadtest --label baseline --routing off --cache off",
               "python -m scripts.loadtest --label after --routing on --cache on", "python -m scripts.answer_check", "python -m scripts.loadtest --report", "```", ""]
     (ROOT / "PERF_REPORT.md").write_text("\n".join(lines), encoding="utf-8")

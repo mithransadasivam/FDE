@@ -1,7 +1,7 @@
 # EVAL_REPORT: the 10 scenarios
 
-Run: 2026-10-25 00:05 · model mode: **real** · large `anthropic/claude-haiku-4.5` · small `meta-llama/llama-3.1-8b-instruct`
-· whole starter set triaged and briefed in **57.0 s**.
+Run: 2026-10-25 01:17 · model mode: **real** · large `anthropic/claude-haiku-4.5` · small `google/gemini-2.5-flash-lite`
+· whole starter set triaged and briefed in **56.0 s**.
 
 ## Scorecard
 
@@ -18,7 +18,7 @@ Run: 2026-10-25 00:05 · model mode: **real** · large `anthropic/claude-haiku-4
 
 Incidents produced: **10** (expected 10 from 22 alerts).
 
-Model calls: 34 · tokens: 32,799 · cost: $0.0162 · cost per incident brief: $0.0020
+Model calls: 34 · tokens: 36,807 · cost: $0.0182 · cost per incident brief: $0.0023
 
 ## Scenario by scenario
 

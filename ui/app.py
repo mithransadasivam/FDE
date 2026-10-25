@@ -9,6 +9,7 @@ import csv
 import html
 import json
 import os
+import re
 import time
 from pathlib import Path
 
@@ -24,7 +25,7 @@ st.set_page_config(page_title="Operations Control Tower", page_icon="🗼", layo
 CSS = """
 <style>
 :root { --navy:#1b1f3b; --amber:#f5a623; --teal:#0f9d8a; --red:#d64545; --blue:#3b6fd4; --grey:#6b7280; --soft:#f3f4fa; }
-.block-container { padding-top: 1.2rem; }
+.block-container { padding-top: 3.6rem; }
 .band { background: var(--navy); color:#fff; padding: 14px 20px; border-radius: 8px; display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; }
 .band h2 { margin:0; font-size: 1.25rem; color:#fff; } .band small { color:#c9cbe0; }
 .chip { display:inline-block; padding:2px 9px; border-radius:11px; font-size:.72rem; font-weight:600; letter-spacing:.02em; white-space:nowrap; }
@@ -117,6 +118,9 @@ metrics = get("/metrics") or {}
 incidents = get("/incidents") or []
 settings = metrics.get("settings", {})
 st.session_state.setdefault("selected", incidents[0]["incident_id"] if incidents else None)
+if st.query_params.get("incident") and st.session_state.get("_deep_link") != st.query_params["incident"]:
+    st.session_state.selected = st.query_params["incident"]  # a link like ?incident=INC-3008 opens that incident
+    st.session_state["_deep_link"] = st.query_params["incident"]
 
 with st.sidebar:
     st.markdown("### 🗼 Operations Control Tower")
@@ -181,7 +185,7 @@ with tabs[1]:
     if not inc:
         st.info("Pick an incident in the Incidents tab.")
     else:
-        title = (inc["brief"]["summary"].split(".")[0] if inc.get("brief") else f"{inc['root_cause'] or 'Unknown service'}")
+        title = (re.split(r"(?<=[.!?])\s", inc["brief"]["summary"].strip())[0] if inc.get("brief") else f"{inc['root_cause'] or 'Unknown service'}")
         band(f"{inc['incident_id']} · {html.escape(title[:90])}", f"opened {when(inc['opened'])} · {len(inc['alert_ids'])} alert(s)")
         left, right = st.columns([3, 2])
         with left:
@@ -376,12 +380,14 @@ with tabs[3]:
             st.caption(f"Streaming: model's first token p50 {after['ttft_ms_p50'] / 1000:.2f} s · first readable sentence p50 {after['first_visible_ms_p50'] / 1000:.2f} s "
                        f"· whole answer p50 {after['stream_total_ms_p50'] / 1000:.2f} s. Load test: {after['questions']} questions, {after['users']} users, seed {after['seed']}, model `{after['model']}`.")
         st.markdown("**Blocked by a guardrail so far:** " + (", ".join(f"{k} {v}" for k, v in metrics.get("blocked", {}).items()) or "nothing yet"))
-        last = [s for s in (get("/traces/recent", limit=200) or []) if s["name"] == "ask"]
+        recent = get("/traces/recent", limit=400) or []
+        with_model = [s for s in recent if s["name"].startswith("llm.ask")]  # the latest question that really called a model
+        last = with_model or [s for s in recent if s["name"] == "ask"]
         if last:
-            spans = get("/traces/recent", request_id=last[-1]["request_id"], limit=40) or []
+            spans = sorted(get("/traces/recent", request_id=last[-1]["request_id"], limit=60) or [], key=lambda s: s["start"])
             mx = max((s["ms"] for s in spans), default=1) or 1
-            slow = max(spans, key=lambda s: s["ms"] if s["name"] != "http" else 0, default=None)
-            st.markdown("**Trace of the last question** <span class='meta'>the same spans go to Phoenix</span>", unsafe_allow_html=True)
+            slow = max((s for s in spans if s["name"] not in ("http", "ask", "crew")), key=lambda s: s["ms"], default=None)  # slowest step
+            st.markdown("**Trace of the last model answer** <span class='meta'>the same spans go to Phoenix · slowest step in red</span>", unsafe_allow_html=True)
             rows = "".join(f"<tr><td style='padding-left:{8 + s['depth'] * 14}px' class='mono'>{html.escape(s['name'])}</td><td>{s['ms']:.1f} ms</td>"
                            f"<td style='width:45%'><div class='bar'><div style='width:{s['ms'] / mx * 100:.0f}%;background:{'#d64545' if slow and s is slow else '#5b64c9'}'></div></div></td></tr>" for s in spans)
             st.markdown(f"<table class='inc'>{rows}</table>", unsafe_allow_html=True)

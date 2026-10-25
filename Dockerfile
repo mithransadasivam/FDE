@@ -9,6 +9,7 @@ RUN pip install -r requirements.txt && python -m spacy download en_core_web_sm
 
 COPY tower ./tower
 COPY ui ./ui
+COPY .streamlit ./.streamlit
 COPY scripts ./scripts
 COPY data/*.csv data/*.json ./data/
 COPY docs ./docs
