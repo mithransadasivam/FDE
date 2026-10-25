@@ -1,0 +1,4 @@
+# Keep line endings identical everywhere so the SHA-256 hashes in governance/evidence/MANIFEST.json match on every machine.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
