@@ -1,0 +1,14 @@
+fastapi==0.150.0
+uvicorn==0.54.0
+pydantic>=2.7
+requests>=2.32
+streamlit==1.64.0
+presidio_analyzer==2.2.364
+presidio_anonymizer==2.2.364
+spacy==3.8.16
+opentelemetry-sdk==1.45.1
+opentelemetry-exporter-otlp-proto-http==1.45.1
+httpx==0.28.1
+pytest==9.1.1
+playwright==1.63.0
+pytest-playwright==0.9.0
