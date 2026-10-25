@@ -1,0 +1,13 @@
+service_id,name,tier,owner_team,depends_on,runbooks
+storage-san,Storage Array,1,Infrastructure,,RB-04
+db-core,Core Database,1,Data Platform,storage-san,RB-01
+sso,Single Sign-On,1,Identity,,RB-05
+payportal,Payment Portal,1,Finance Apps,db-core;sso,RB-02
+vpn-gw,VPN Gateway,1,Network,,RB-08;RB-06
+cache-redis,Shared Cache,2,Platform,,RB-07
+hr-selfservice,HR Self-Service,2,People Apps,db-core;sso,RB-02
+ticketing-api,Ticketing API,2,Service Desk Tools,db-core;cache-redis,RB-07
+mail-gw,Mail Gateway,2,Messaging,,RB-06
+fs-02,File Server 02,3,Infrastructure,storage-san,RB-04
+build-01,Build Server,3,Developer Tools,,RB-03;RB-04
+intranet,Intranet,3,Comms Apps,sso,RB-02;RB-06

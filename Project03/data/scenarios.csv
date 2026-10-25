@@ -1,0 +1,11 @@
+scenario,alert_ids,incidents,root_cause_service,severity,status,runbook,recommended_step,action,target,approvals_needed,approvers,similar_incident,flags
+S01,AL-101;AL-102,1,fs-02,P3,WAITING_FOR_APPROVAL,RB-04,2,clear_temp_files,fs-02,1,Infrastructure,INC-1904,
+S02,AL-103;AL-104,1,cache-redis,P3,WAITING_FOR_APPROVAL,RB-07,3,clear_cache,cache-redis,1,Platform,INC-2291,
+S03,AL-105;AL-106;AL-107;AL-108;AL-109,1,db-core,P1,WAITING_FOR_APPROVAL,RB-01,3,failover_db,db-core,2,Data Platform;Duty manager,INC-2047,
+S04,AL-110;AL-111;AL-112;AL-113;AL-114;AL-115,1,vpn-gw,P4,AUTO_RESOLVED,RB-08,,none,,0,,INC-1852,
+S05,AL-116,1,mail-gw,P3,WAITING_FOR_APPROVAL,RB-06,2,raise_change_request,mail-gw,1,Messaging,INC-2013,
+S06,AL-117,1,build-01,P3,WAITING_FOR_APPROVAL,RB-03,3,restart_service,build-01,1,Developer Tools,INC-1980,instructions in alert text
+S07,AL-118,1,payportal,P2,WAITING_FOR_APPROVAL,RB-02,3,restart_service,payportal,2,Finance Apps;Duty manager,INC-1811,change freeze
+S08,AL-119,1,sso,P2,WAITING_FOR_APPROVAL,RB-05,3,block_source_ip,sso,2,Identity;Duty manager,INC-1937,change freeze;secret hidden;personal data hidden
+S09,AL-120;AL-121,1,hr-selfservice,P3,WAITING_FOR_APPROVAL,RB-02,3,restart_service,hr-selfservice,1,People Apps,INC-2089,
+S10,AL-122,1,,,NEEDS_PERSON,,,none,,0,,,unknown service

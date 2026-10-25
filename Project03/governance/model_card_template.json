@@ -1,0 +1,35 @@
+{
+  "name": "",
+  "version": "",
+  "owner": "",
+  "purpose": "",
+  "intended_users": [],
+  "out_of_scope": [],
+  "models": [
+    {
+      "role": "",
+      "model": "",
+      "provider": ""
+    }
+  ],
+  "data": {
+    "sources": [],
+    "personal_data": "",
+    "retention": ""
+  },
+  "evaluation": {
+    "scenarios_right": "",
+    "runbook_steps_right": "",
+    "attacks_stopped": "",
+    "p95_seconds": "",
+    "cost_per_1000_questions": "",
+    "report_files": []
+  },
+  "limitations": [],
+  "human_oversight": "",
+  "risk_category": {
+    "eu_ai_act": "",
+    "reason": ""
+  },
+  "contact": ""
+}

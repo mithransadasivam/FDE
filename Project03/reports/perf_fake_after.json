@@ -1,0 +1,61 @@
+{
+ "label": "after",
+ "model": "fake",
+ "routing": true,
+ "cache": true,
+ "seed": 17,
+ "questions": 60,
+ "users": 4,
+ "first_five": [
+  "What is the difference between P2 and P3?",
+  "What should I do about flapping alerts?",
+  "List the [CHANGE] steps in RB-02.",
+  "What does runbook RB-04 say to do first?",
+  "Which runbook covers certificates?"
+ ],
+ "errors": 0,
+ "p50_ms": 127.5,
+ "p95_ms": 1318.6,
+ "throughput_qps": 12.18,
+ "wall_s": 4.9,
+ "cost_per_1000_usd": 0.1104,
+ "cache_hit_rate": 0.538,
+ "routes": {
+  "data": 34,
+  "small": 7,
+  "cache": 14,
+  "large": 5
+ },
+ "route_p50_ms": {
+  "data": 50.13,
+  "small": 943.2,
+  "cache": 19.67,
+  "large": 1278.54
+ },
+ "tokens_total": 7835,
+ "cost_per_brief_usd": 0.001279,
+ "briefs": 8,
+ "triage_s": 17.2,
+ "ttft_ms_p50": 100.6,
+ "first_visible_ms_p50": 302.7,
+ "stream_total_ms_p50": 743.7,
+ "stream_n": 9,
+ "answers": {
+  "What is the difference between P2 and P3?": "I can't share that. My instructions and tool list are not part of what I can show. Ask about the policy, a runbook, a service or an incident instead.",
+  "What should I do about flapping alerts?": "P4: alerts that cleared by themselves within 15 minutes and need no action (\"flapping\"), and informational alerts. [policy 2.5] Incident INC-3001 P3 waiting for approval, root cause fs-02, services fs",
+  "List the [CHANGE] steps in RB-02.": "RB-02 (RB-02 \u00b7 Web application slow or high memory) has 1 [CHANGE] step(s), and each needs approval (policy 5): step 3 [CHANGE] restart_service: Restart the affected node only, one node at a time, nev",
+  "What does runbook RB-04 say to do first?": "RB-04 \u00b7 Disk space low. Step 3 [CHANGE] extend_volume: Extend the volume. Needs an approved capacity ticket first. This step needs approval (policy 5). [RB-04 step 3] RB-04 \u00b7 Disk space low. Step 1 [R",
+  "Which runbook covers certificates?": "RB-06 \u00b7 Certificate expiring. Step 1 [READ] check_certificate: Check the certificate's expiry date and which names it covers. This step may run without approval. [RB-06 step 1] One approval covers one",
+  "What is the status of the Ticketing API?": "ticketing-api (Ticketing API) is in INC-3003: P1, waiting for approval. Root cause: db-core. 2 approval(s) needed.",
+  "Is the VPN gateway healthy?": "vpn-gw (VPN Gateway) is in INC-3004: P4, auto resolved. 0 approval(s) needed.",
+  "Which incidents are open right now?": "9 incident(s) are open: INC-3001 P3 fs-02 (waiting for approval); INC-3002 P3 cache-redis (waiting for approval); INC-3003 P1 db-core (waiting for approval); INC-3005 P3 mail-gw (waiting for approval)",
+  "What is the status of the Payment Portal?": "payportal (Payment Portal) is in INC-3007: P2, waiting for approval. 2 approval(s) needed.",
+  "When does the change freeze start and end?": "Change freeze: from Friday 18:00 to Monday 06:00, any change to a tier-1 service also needs the duty manager's approval with a written reason, whatever the severity.",
+  "How many alerts fired for hr-selfservice today?": "2 alert(s) fired for hr-selfservice on 2026-10-24.",
+  "Which services depend on db-core?": "Services that depend on db-core, directly or through others: hr-selfservice, payportal, ticketing-api."
+ },
+ "models": {
+  "large": "fake-large",
+  "small": "fake-small"
+ }
+}

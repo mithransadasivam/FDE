@@ -1,0 +1,30 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "EVAL_REPORT.md": {
+      "sha256": "c4b56f3e08eec59b7de447469e4a79ac698951a22be597cfd1771b227db956c9",
+      "bytes": 2508,
+      "source": "EVAL_REPORT.md"
+    },
+    "PERF_REPORT.md": {
+      "sha256": "43883d1cbff536b2e80e9fd2f26981817257c37d054b6f6c69ea845e85373686",
+      "bytes": 5038,
+      "source": "PERF_REPORT.md"
+    },
+    "SECURITY_FINDINGS.md": {
+      "sha256": "e756bef50a8843d8e08d892bf7df50c976345fd00fb59786f7afb50a9909a486",
+      "bytes": 6802,
+      "source": "SECURITY_FINDINGS.md"
+    },
+    "REDTEAM_REPORT.md": {
+      "sha256": "bd6c7dcb904ee906c1744957000d0b928658fb22e5ed2f463878bb134edbd60c",
+      "bytes": 5208,
+      "source": "reports/REDTEAM_REPORT.md"
+    },
+    "CLASSIFICATION.md": {
+      "sha256": "1194a288c23c178f88584972d78737abc99fcd79acef93925f6b20eeab411b38",
+      "bytes": 5117,
+      "source": "governance/classification.md"
+    }
+  }
+}

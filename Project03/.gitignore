@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+data/tower.db*
+data/loadtest.db*
+Day18_Weekend_Project_Starter_Data/
+Day18_Weekend_Project_Starter_Data.zip
+*.log
+.streamlit/secrets.toml

@@ -1,0 +1,13 @@
+.env
+.venv
+.git
+__pycache__
+*.pyc
+.pytest_cache
+logs
+data/tower.db*
+data/loadtest.db*
+Day18_Weekend_Project_Starter_Data
+tests
+reports
+screenshots

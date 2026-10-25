@@ -1,0 +1,49 @@
+# docker compose up --build        (ports busy? set TOWER_API_PORT, TOWER_UI_PORT, PHOENIX_PORT in the shell or .env)
+#   API       http://localhost:8000/docs      Screen  http://localhost:8501      Traces (Phoenix)  http://localhost:6006
+# The model key and model names come from .env at run time (see .env.example). Nothing secret is in the image.
+services:
+  api:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006
+      TOWER_DB: /app/state/tower.db
+      ALLOW_ADMIN_DEBUG: "1"   # demo helpers only: simulate a model outage, advance the clock
+    ports:
+      - "${TOWER_API_PORT:-8000}:8000"
+    volumes:
+      - tower-state:/app/state
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+    depends_on:
+      - phoenix
+    restart: unless-stopped
+
+  ui:
+    build: .
+    command: ["streamlit", "run", "ui/app.py", "--server.port", "8501", "--server.address", "0.0.0.0", "--server.headless", "true", "--browser.gatherUsageStats", "false"]
+    environment:
+      TOWER_API: http://api:8000
+      PHOENIX_URL: http://localhost:${PHOENIX_PORT:-6006}
+    ports:
+      - "${TOWER_UI_PORT:-8501}:8501"
+    volumes:
+      - ./data:/app/data:ro
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "${PHOENIX_PORT:-6006}:6006"   # screen and OTLP over HTTP
+    volumes:
+      - phoenix-data:/mnt/data
+    environment:
+      PHOENIX_WORKING_DIR: /mnt/data
+
+volumes:
+  tower-state:
+  phoenix-data:

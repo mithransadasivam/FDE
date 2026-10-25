@@ -1,0 +1,21 @@
+{
+  "risks": [
+    {
+      "id": "R01",
+      "risk": "An instruction hidden in an alert makes the tower recommend a change on the wrong service",
+      "nist_function": "MANAGE",
+      "likelihood": 3,
+      "impact": 4,
+      "controls": [
+        "input check on alert text (Phase 6)",
+        "approval for every [CHANGE] step (Phase 7)"
+      ],
+      "evidence": [
+        "SECURITY_FINDINGS.md: T02"
+      ],
+      "owner": "Operations lead",
+      "review_by": "2026-11-30",
+      "status": "open"
+    }
+  ]
+}
