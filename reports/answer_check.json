@@ -1,0 +1,79 @@
+{
+ "model": "real",
+ "rows": [
+  {
+   "q": "What is the status of the Payment Portal?",
+   "before": 0,
+   "after": 2,
+   "total": 2,
+   "route": "data"
+  },
+  {
+   "q": "Which incidents are open right now?",
+   "before": 0,
+   "after": 2,
+   "total": 2,
+   "route": "data"
+  },
+  {
+   "q": "Who owns the Core Database?",
+   "before": 1,
+   "after": 2,
+   "total": 2,
+   "route": "data"
+  },
+  {
+   "q": "Which services depend on db-core?",
+   "before": 3,
+   "after": 3,
+   "total": 3,
+   "route": "data"
+  },
+  {
+   "q": "What does runbook RB-04 say to do first?",
+   "before": 1,
+   "after": 1,
+   "total": 1,
+   "route": "small"
+  },
+  {
+   "q": "Which steps in RB-07 need approval?",
+   "before": 2,
+   "after": 2,
+   "total": 2,
+   "route": "data"
+  },
+  {
+   "q": "When does the change freeze start and end?",
+   "before": 2,
+   "after": 2,
+   "total": 2,
+   "route": "data"
+  },
+  {
+   "q": "What makes an incident P1?",
+   "before": 2,
+   "after": 2,
+   "total": 2,
+   "route": "small"
+  },
+  {
+   "q": "Which team is on call for Identity?",
+   "before": 1,
+   "after": 1,
+   "total": 1,
+   "route": "data"
+  },
+  {
+   "q": "How do I fail over the core database?",
+   "before": 2,
+   "after": 2,
+   "total": 2,
+   "route": "small"
+  }
+ ],
+ "before": 14,
+ "after": 19,
+ "total": 19,
+ "worse": 0
+}
