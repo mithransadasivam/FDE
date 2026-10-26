@@ -36,6 +36,7 @@ Each extra is something the brief lists as a stretch goal, or something that mak
 | **Escalation by age** (stretch) | `POST /escalations/run` | A request waiting more than 15 minutes pages the duty manager by team name, once, in the audit trail. |
 | **Citation check** | `Tower._check_citations` | A model that cites a source it was never shown gets `[unverified: …]`. Numeric citations are turned into the real source labels. |
 | **Answer comparison** | `scripts/answer_check.py` | Ten answers before and after routing. It caught two real regressions while building this (see `PERF_REPORT.md`). |
+| **🌙 Dark mode** | sidebar toggle, `?theme=dark` | A full dark theme for every tab; the choice is kept in the address, so a refresh or a shared link keeps it (`screenshots/10_dark_mode.png`). |
 | **Deep link** | `?incident=INC-3008` | Opens that incident directly. |
 
 ## Run it

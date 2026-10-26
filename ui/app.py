@@ -77,6 +77,54 @@ button[kind="primary"] { box-shadow: 0 1px 2px rgba(27,31,59,.25); }
 """
 st.markdown(CSS, unsafe_allow_html=True)
 
+# Dark mode: the same screen on a dark surface. Streamlit's own widgets are restyled here because its theme cannot change at run time.
+DARK_CSS = """
+<style>
+:root { --navy:#e6e8f5; --grey:#9aa0c8; --soft:#151933; }
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stMain"] { background:#0f1226 !important; color:#e6e8f5 !important; }
+[data-testid="stSidebar"], [data-testid="stSidebar"] > div { background:#141830 !important; }
+.stApp p, .stApp label, .stApp li, .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, [data-testid="stWidgetLabel"] p,
+[data-testid="stMarkdownContainer"], [data-testid="stCaptionContainer"], [data-testid="stSidebar"] * { color:#e6e8f5; }
+.stApp .meta, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p { color:#9aa0c8 !important; }
+.band { background: linear-gradient(135deg, #1a2050 0%, #2c3a8c 100%) !important; border:1px solid #2c3260; } .band h2, .band small { color:#fff !important; }
+[data-baseweb="input"], [data-baseweb="select"] > div, [data-baseweb="textarea"], input, textarea { background:#1b2046 !important; color:#e6e8f5 !important; border-color:#33396a !important; }
+[data-baseweb="select"] *, [data-baseweb="input"] *, [data-baseweb="base-input"], [data-baseweb="base-input"] * { background-color:#1b2046 !important; color:#e6e8f5 !important; }
+[data-baseweb="select"] svg { fill:#e6e8f5 !important; }
+input::placeholder, textarea::placeholder { color:#8a91c4 !important; opacity:1; }
+[data-testid="stSelectbox"] > div:last-child, [data-testid="stSelectbox"] > div:last-child *, [data-testid="stTextInput"] .react-aria-TextField > div:last-child,
+[data-testid="stTextInput"] .react-aria-TextField > div:last-child * { background-color:#1b2046 !important; color:#e6e8f5 !important; border-color:#33396a !important; }
+button[kind="primary"] p, button[kind="primary"] span, [data-testid="stSidebar"] button[kind="primary"] * { color:#1b1f3b !important; }
+[data-baseweb="popover"] ul, [data-baseweb="menu"] { background:#1b2046 !important; } [data-baseweb="menu"] li { color:#e6e8f5 !important; }
+.stButton button, .stDownloadButton button { background:#1b2046; color:#e6e8f5; border:1px solid #3a4180; }
+.stButton button:hover { border-color:#f5a623; color:#f5a623; }
+button[kind="primary"], .stButton button[kind="primary"] { background:#f5a623 !important; color:#1b1f3b !important; border:none !important; font-weight:700; }
+[data-testid="stVerticalBlockBorderWrapper"] { border-color:#2c3260 !important; background:#121630; }
+[data-testid="stExpander"], [data-testid="stExpander"] details { background:#121630 !important; border-color:#2c3260 !important; }
+[data-testid="stChatMessage"] { background:#151933 !important; }
+[data-testid="stCode"] pre, .stCodeBlock pre, pre { background:#0c0f22 !important; color:#cfd3ff !important; }
+code { background:#1b2046 !important; color:#ffd699 !important; }
+.stTabs [data-baseweb="tab"] { color:#aeb3dc !important; } .stTabs [aria-selected="true"] { color:#fff !important; } .stTabs [data-baseweb="tab-highlight"] { background:#f5a623 !important; }
+.stTabs [data-baseweb="tab-border"] { background:#2c3260 !important; }
+hr { border-color:#2c3260 !important; }
+.tile { background:#151933; border-color:#2c3260; } .tile .val { color:#fff; } .tile .lbl, .tile .sub { color:#9aa0c8; }
+.card { background:#151933; border-color:#2c3260; } .step { background:#151933; } .step.fail { background:#2a1618; } .agent { color:#fff; }
+table.inc th { border-color:#2c3260; color:#9aa0c8; } table.inc td { border-color:#222750; } table.inc tr:hover td { background:#1b2046; }
+.notice { background:#14264a; border-color:#2b4a85; color:#bcd7f7 !important; } .notice * { color:#bcd7f7; }
+.warn { background:#3a2a10; border-color:#7a5a1e; color:#f1c27d !important; } .warn * { color:#f1c27d; }
+.lv-outage { background:#3a1a1c; border-color:#7a2f33; } .lv-degraded { background:#3a2a10; border-color:#7a5a1e; } .lv-resolved { background:#0f3329; border-color:#1f6b57; }
+.avatar { background:#262c5c; color:#cfd3ff; } .avatar.dm { background:#4a3512; color:#ffd699; } .avatar.ok { background:#0f3d34; color:#9ff0dc; }
+.who { border-color:#222750; } .evid div { border-color:#2c3260; } .evid b { color:#ffd699; }
+.stepper .s .dot { background:#2c3260; } .stepper .s::before { background:#2c3260; } .stepper .s.done .dot, .stepper .s.done::before { background:#0f9d8a; }
+.stepper .s.now .dot { background:#f5a623; color:#1b1f3b; box-shadow:0 0 0 4px rgba(245,166,35,.25); } .stepper .s.now { color:#fff; } .stepper .s.now::before { background:#0f9d8a; }
+.bar { background:#262c5c; }
+.sev-P3 { background:#e9c24a; color:#3a2f00 !important; }
+.st-WAITING_FOR_APPROVAL { background:#1f3366; color:#bcd0ff !important; } .st-NEEDS_PERSON { background:#4a1d20; color:#ffb3b3 !important; }
+.st-AUTO_RESOLVED { background:#0f3d34; color:#9ff0dc !important; } .st-CHANGE_DONE { background:#0f4a3d; color:#9ff0dc !important; } .st-REJECTED { background:#2c3260; color:#cfd3ff !important; }
+.k-rules { background:#262c5c; color:#cfd3ff !important; } .k-model, .k-model\\+tools, .k-tool { background:#4a3512; color:#ffd699 !important; } .k-people { background:#0f3d34; color:#9ff0dc !important; }
+.mono { color:#cfd3ff; }
+</style>
+"""
+
 
 # ---------------------------------------------------------------------------------------------------------------------
 def get(path: str, **params):
@@ -152,6 +200,12 @@ if st.query_params.get("incident") and st.session_state.get("_deep_link") != st.
 with st.sidebar:
     st.markdown("### 🗼 Operations Control Tower")
     st.caption("Alerts in · a person approves every change")
+    st.session_state.setdefault("dark", st.query_params.get("theme") == "dark")
+    dark = st.toggle("🌙 Dark mode", key="dark")
+    if dark:
+        st.query_params["theme"] = "dark"  # remembered in the address, so a refresh or a shared link keeps it
+    elif "theme" in st.query_params:
+        del st.query_params["theme"]
     open_ = [i for i in incidents if i["status"] in ("WAITING_FOR_APPROVAL", "NEEDS_PERSON")]
     st.markdown("**SETTINGS**")
     st.markdown(f"Guardrails {chip('ON' if settings.get('guardrails') else 'OFF', 'st-AUTO_RESOLVED' if settings.get('guardrails') else 'st-NEEDS_PERSON')}", unsafe_allow_html=True)
@@ -171,6 +225,9 @@ with st.sidebar:
         st.success(f"{out.get('alerts', '?')} alerts → {out.get('count', '?')} incidents") if code == 200 else st.error(out.get("detail", "failed"))
         st.rerun()
     st.markdown(f'<div class="notice">🤖 This tower uses AI to write briefs and answers. A person approves every change.</div>', unsafe_allow_html=True)
+
+if st.session_state.get("dark"):
+    st.markdown(DARK_CSS, unsafe_allow_html=True)  # after the base styles, so it wins on equal specificity
 
 tabs = st.tabs(["Incidents", "Incident", "Ask the tower", "Health & cost", "🤖 Agent crew", "⏱ Live replay", "📣 Status page"])
 
