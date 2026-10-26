@@ -47,7 +47,7 @@
     "scenarios_right": "10/10 scenarios right on grouping, root cause, severity, status, approvals, similar incident and flags with the real models (EVAL_REPORT.md); the rules alone score the same with no model",
     "runbook_steps_right": "10/10 runbook steps match with the real models, checked by code against the runbook before anyone sees them (EVAL_REPORT.md)",
     "attacks_stopped": "7/8 attacks stopped with the defences on; T08 (a paraphrased instruction in an alert) is an accepted risk, with the harm blocked by the Verifier and the approval step (SECURITY_FINDINGS.md)",
-    "p95_seconds": "2.64 s p95 for /ask after routing and caching with the real models, against 4.13 s before (PERF_REPORT.md); the slow tail is the uncached large-model questions",
+    "p95_seconds": "2.26 s p95 for /ask after routing and caching with the real models, against 3.29 s before (PERF_REPORT.md); the slow tail is the uncached large-model questions",
     "cost_per_1000_questions": "$0.14 per 1,000 questions after routing and caching, against $1.12 before (PERF_REPORT.md)",
     "report_files": [
       "EVAL_REPORT.md",

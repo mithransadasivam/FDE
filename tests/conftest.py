@@ -44,3 +44,17 @@ def triaged(tower) -> Tower:
 
 def mk(alert_id, time, service, check="http_check", severity="major", status="firing", message="Response time 9 s", source="monitor"):
     return Alert(alert_id=alert_id, time=time, source=source, service=service, check=check, severity=severity, status=status, message=message)
+
+
+@pytest.fixture(autouse=True)
+def litellm_never_called(monkeypatch):
+    """LiteLLM talks over httpx, which the requests block above does not cover. A test must never reach a real model."""
+    try:
+        import litellm
+    except ImportError:
+        return
+
+    def blocked(*a, **k):
+        raise AssertionError("a test tried to call a real model through LiteLLM")
+
+    monkeypatch.setattr(litellm, "completion", blocked)

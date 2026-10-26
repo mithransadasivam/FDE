@@ -14,10 +14,10 @@
   "Which runbook covers certificates?"
  ],
  "errors": 0,
- "p50_ms": 80.3,
- "p95_ms": 2642.7,
- "throughput_qps": 6.53,
- "wall_s": 9.2,
+ "p50_ms": 77.3,
+ "p95_ms": 2260.6,
+ "throughput_qps": 7.79,
+ "wall_s": 7.7,
  "cost_per_1000_usd": 0.1446,
  "cache_hit_rate": 0.462,
  "routes": {
@@ -27,18 +27,18 @@
   "large": 7
  },
  "route_p50_ms": {
-  "data": 31.61,
-  "small": 1522.83,
-  "cache": 12.56,
-  "large": 2595.95
+  "data": 30.95,
+  "small": 969.55,
+  "cache": 9.07,
+  "large": 2187.83
  },
  "tokens_total": 9976,
  "cost_per_brief_usd": 0.002282,
  "briefs": 8,
- "triage_s": 58.0,
- "ttft_ms_p50": 594.2,
- "first_visible_ms_p50": 802.2,
- "stream_total_ms_p50": 851.1,
+ "triage_s": 53.4,
+ "ttft_ms_p50": 381.7,
+ "first_visible_ms_p50": 588.4,
+ "stream_total_ms_p50": 619.8,
  "stream_n": 9,
  "answers": {
   "What is the difference between P2 and P3?": "The provided context does not define P3 incidents. It only defines P2 incidents as a tier-1 service being degraded, or a tier-2 service being down [policy 2.3].",

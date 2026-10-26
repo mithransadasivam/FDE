@@ -1,7 +1,7 @@
 # EVAL_REPORT: the 10 scenarios
 
-Run: 2026-10-25 01:17 · model mode: **real** · large `anthropic/claude-haiku-4.5` · small `google/gemini-2.5-flash-lite`
-· whole starter set triaged and briefed in **56.0 s**.
+Run: 2026-10-25 18:23 · model mode: **real** · large `anthropic/claude-haiku-4.5` · small `google/gemini-2.5-flash-lite`
+· whole starter set triaged and briefed in **59.5 s**.
 
 ## Scorecard
 
