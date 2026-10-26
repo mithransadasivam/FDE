@@ -36,11 +36,13 @@ NIST = {"GOVERN", "MAP", "MEASURE", "MANAGE"}
 RISK_FIELDS = ["id", "risk", "nist_function", "likelihood", "impact", "controls", "evidence", "owner", "review_by", "status"]
 
 
+def _lf(data: bytes) -> bytes:
+    return data.replace(bytes([13, 10]), bytes([10]))  # CRLF to LF
+
+
 def sha256(p: Path) -> str:
     """Hash with line endings normalised to LF, so the same file hashes the same on Windows, Linux and in a fresh clone."""
-    return hashlib.sha256(p.read_bytes().replace(b"
-", b"
-")).hexdigest()
+    return hashlib.sha256(_lf(p.read_bytes())).hexdigest()
 
 
 def collect(root: Path) -> dict:
@@ -51,9 +53,7 @@ def collect(root: Path) -> dict:
         s = root / src
         if not s.exists():
             continue
-        (ev / name).write_bytes(s.read_bytes().replace(b"
-", b"
-"))
+        (ev / name).write_bytes(_lf(s.read_bytes()))
         manifest["files"][name] = {"sha256": sha256(ev / name), "bytes": (ev / name).stat().st_size, "source": src}
     (ev / "MANIFEST.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest
