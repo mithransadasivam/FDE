@@ -46,6 +46,33 @@ table.inc td { padding:9px 8px; border-bottom:1px solid #eceef5; vertical-align:
 .warn { background:#fff4e0; border:1px solid #f1c27d; border-radius:8px; padding:8px 12px; font-size:.82rem; color:#6b4300; }
 .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.8rem; }
 .status-card { border-radius:10px; padding:14px 18px; margin:10px 0; border:1px solid #e3e5f0; } .lv-outage { background:#fdeaea; border-color:#f0b4b4; } .lv-degraded { background:#fff4e0; border-color:#f1c27d; } .lv-resolved { background:#e4f6f1; border-color:#9fd8c9; }
+/* ---- refinement ---- */
+html, body, .stMarkdown, .stButton button, .stSelectbox, .stTextInput, table.inc { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; }
+[data-testid="stIconMaterial"] { font-family: "Material Symbols Rounded", "Material Icons" !important; }
+.band h2 { flex: 1 1 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .band small { flex: none; white-space: nowrap; margin-left: 16px; }
+table.inc td:nth-child(5) { white-space: nowrap; }
+.band { background: linear-gradient(135deg, #1b1f3b 0%, #2a3066 100%); box-shadow: 0 2px 8px rgba(27,31,59,.18); padding: 16px 22px; }
+.band h2 { font-size: 1.35rem; letter-spacing: -.01em; }
+.card, .tile { box-shadow: 0 1px 3px rgba(27,31,59,.07); }
+.tile { border: 1px solid #e6e8f3; background: #fff; border-left: 4px solid var(--navy); }
+.tile.p1 { border-left-color: #d64545; } .tile.p2 { border-left-color: #e8833a; } .tile.p3 { border-left-color: #e9c24a; }
+.tile.ok { border-left-color: var(--teal); } .tile.wait { border-left-color: var(--blue); } .tile.warn { border-left-color: #a42626; }
+table.inc tr:hover td { background:#f6f7fd; } table.inc td:first-child { border-left: 4px solid transparent; }
+table.inc tr.sev-row-P1 td:first-child { border-left-color:#d64545; } table.inc tr.sev-row-P2 td:first-child { border-left-color:#e8833a; }
+table.inc tr.sev-row-P3 td:first-child { border-left-color:#e9c24a; } table.inc tr.sev-row-P4 td:first-child { border-left-color:#cdd1da; }
+.stepper { display:flex; gap:0; margin: 4px 0 12px 0; } .stepper .s { flex:1; text-align:center; position:relative; font-size:.72rem; color:var(--grey); }
+.stepper .s .dot { width:22px; height:22px; border-radius:50%; background:#e5e7eb; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 4px; font-size:.7rem; font-weight:700; position:relative; z-index:1; }
+.stepper .s::before { content:""; position:absolute; top:11px; left:-50%; width:100%; height:3px; background:#e5e7eb; z-index:0; } .stepper .s:first-child::before { display:none; }
+.stepper .s.done .dot { background:var(--teal); } .stepper .s.done::before { background:var(--teal); }
+.stepper .s.now .dot { background:var(--navy); box-shadow:0 0 0 4px rgba(27,31,59,.15); } .stepper .s.now { color:var(--navy); font-weight:700; }
+.stepper .s.now::before { background:var(--teal); } .stepper .s.stop .dot { background:var(--red); } .stepper .s.stop { color:var(--red); font-weight:700; }
+.who { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #eef0f7; } .who:last-of-type { border-bottom:none; }
+.who .txt { flex:1; line-height:1.25; }
+.avatar { width:34px; height:34px; border-radius:50%; background:#e6e8f5; color:#2b3170; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.78rem; flex:none; }
+.avatar.dm { background:#fdebc8; color:#7a4b00; } .avatar.ok { background:#c8efe6; color:#075a4c; }
+.evid div { font-size:.78rem; padding:3px 0; border-bottom:1px dashed #eceef5; line-height:1.35; } .evid b { color: var(--navy); font-family: ui-monospace, Menlo, Consolas, monospace; }
+.sumrow { margin: 6px 0 10px 0; } .sumrow .chip { margin-right: 6px; }
+button[kind="primary"] { box-shadow: 0 1px 2px rgba(27,31,59,.25); }
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
@@ -126,16 +153,6 @@ with st.sidebar:
     st.markdown("### 🗼 Operations Control Tower")
     st.caption("Alerts in · a person approves every change")
     open_ = [i for i in incidents if i["status"] in ("WAITING_FOR_APPROVAL", "NEEDS_PERSON")]
-    st.markdown("**OPEN NOW**")
-    c = st.columns(2)
-    for sev in ("P1", "P2", "P3"):
-        n = sum(1 for i in open_ if i["severity"] == sev)
-        c[0].markdown(sev_chip(sev), unsafe_allow_html=True)
-        c[1].markdown(f"**{n}**")
-    c[0].write("Needs a person")
-    c[1].markdown(f"**{sum(1 for i in open_ if i['status'] == 'NEEDS_PERSON')}**")
-    c[0].write("Waiting for approval")
-    c[1].markdown(f"**{sum(1 for i in open_ if i['status'] == 'WAITING_FOR_APPROVAL')}**")
     st.markdown("**SETTINGS**")
     st.markdown(f"Guardrails {chip('ON' if settings.get('guardrails') else 'OFF', 'st-AUTO_RESOLVED' if settings.get('guardrails') else 'st-NEEDS_PERSON')}", unsafe_allow_html=True)
     st.markdown(f"Changes {chip('APPROVAL ONLY' if settings.get('approvals_enforced') else 'UNSAFE', 'st-WAITING_FOR_APPROVAL' if settings.get('approvals_enforced') else 'st-NEEDS_PERSON')}", unsafe_allow_html=True)
@@ -143,10 +160,10 @@ with st.sidebar:
     st.caption(f"Model (brief): `{settings.get('llm_model', '?')}`  \nModel (lookups): `{settings.get('small_model', '?')}`  \nTower clock: {settings.get('clock', '?')}")
     sc = (get("/scenarios/score") or {}).get("summary")
     if sc:
-        st.markdown("**SCENARIOS (10)**")
-        for label, key in (("Grouping right", "grouping"), ("Root cause right", "root_cause"), ("Severity right", "severity"),
-                           ("Approvals right", "approvals"), ("Runbook step right", "runbook_step")):
-            st.markdown(f"{label}: **{sc[key]}/10**")
+        with st.expander(f"Scenarios right: {sc['grouping']}/10 grouping", expanded=False):
+            for label, key in (("Grouping", "grouping"), ("Root cause", "root_cause"), ("Severity", "severity"),
+                               ("Approvals", "approvals"), ("Runbook step", "runbook_step")):
+                st.markdown(f"{label}: **{sc[key]}/10**")
     st.divider()
     if st.button("▶ Triage the 22 starter alerts", use_container_width=True, type="primary"):
         with st.spinner("Rules group the alerts, then the crew briefs each incident…"):
@@ -163,13 +180,22 @@ with tabs[0]:
     if not incidents:
         st.info("No incidents yet. Press **Triage the 22 starter alerts** in the sidebar.")
     else:
+        def count(**kw):
+            return sum(1 for i in open_ if all(i.get(k) == v for k, v in kw.items()))
+        kpis = [("P1 open", count(severity="P1"), "p1", "tier-1 down, or 3+ services"), ("P2 open", count(severity="P2"), "p2", "tier-1 degraded"),
+                ("P3 open", count(severity="P3"), "p3", "plan the fix"), ("Needs a person", count(status="NEEDS_PERSON"), "warn", "the tower will not guess"),
+                ("Waiting for approval", count(status="WAITING_FOR_APPROVAL"), "wait", "nothing has run"),
+                ("Cleared by itself", sum(1 for i in incidents if i["status"] == "AUTO_RESOLVED"), "ok", "flapping, no action")]
+        for col, (lbl, val, cls, sub) in zip(st.columns(len(kpis)), kpis):
+            col.markdown(f"<div class='tile {cls}'><div class='lbl'>{lbl}</div><div class='val'>{val}</div><div class='sub'>{sub}</div></div>", unsafe_allow_html=True)
+        st.write("")
         rows = []
         for i in sorted(incidents, key=lambda x: x["incident_id"], reverse=True):
             rc = i["root_cause"] or '<i>not in catalogue</i>'
             if i.get("root_cause") and i["services"] and len(i["services"]) > 1:
                 rc += f' <span class="meta">(+{len(i["services"]) - 1} affected)</span>'
             flags = " · ".join(html.escape(f) for f in i["flags"])
-            rows.append(f"<tr><td class='mono'>{i['incident_id']}</td><td>{sev_chip(i['severity'])}</td><td>{rc}</td><td>{len(i['alert_ids'])}</td>"
+            rows.append(f"<tr class='sev-row-{i['severity'] or 'P4'}'><td class='mono'>{i['incident_id']}</td><td>{sev_chip(i['severity'])}</td><td>{rc}</td><td>{len(i['alert_ids'])}</td>"
                         f"<td>{when(i['opened'])}</td><td>{status_chip(i['status'])}</td><td>{html.escape(next_step(i))}</td><td class='meta'>{flags}</td></tr>")
         st.markdown("<table class='inc'><tr><th>INCIDENT</th><th>SEV</th><th>ROOT CAUSE</th><th>ALERTS</th><th>OPENED</th><th>STATUS</th><th>NEXT STEP</th><th>FLAGS</th></tr>"
                     + "".join(rows) + "</table>", unsafe_allow_html=True)
@@ -186,7 +212,25 @@ with tabs[1]:
         st.info("Pick an incident in the Incidents tab.")
     else:
         title = (re.split(r"(?<=[.!?])\s", inc["brief"]["summary"].strip())[0] if inc.get("brief") else f"{inc['root_cause'] or 'Unknown service'}")
-        band(f"{inc['incident_id']} · {html.escape(title[:90])}", f"opened {when(inc['opened'])} · {len(inc['alert_ids'])} alert(s)")
+        title = title if len(title) <= 62 else title[:60].rstrip(" ,.;:") + "…"
+        band(f"{inc['incident_id']} · {html.escape(title)}", f"opened {when(inc['opened'])} · {len(inc['alert_ids'])} alert(s)")
+        req = get(f"/actions/{inc['request_id']}") if inc.get("request_id") else None
+        approved_n = len({a["approver"] for a in (req or {}).get("approvals", []) if a["decision"] == "approve"})
+        steps_ = ["Alerts in", "Grouped", "Investigated", "Recommended", "Approved", "Done"]
+        status_ = inc["status"]
+        if status_ in ("AUTO_RESOLVED", "CHANGE_DONE"):
+            done_to, current, stopped = 6, 0, False  # finished
+        elif status_ == "WAITING_FOR_APPROVAL":
+            done_to, current, stopped = 4, 5, False  # waiting for people
+            steps_[4] = f"Approved {approved_n}/{inc['approvals_needed']}"
+        else:  # NEEDS_PERSON or REJECTED: stop at the first stage that did not happen
+            done_to = 1 if not inc.get("root_cause") else (3 if inc.get("reads") else 2)
+            current, stopped = done_to + 1, True
+        dots = []
+        for n, label in enumerate(steps_, 1):
+            cls = "done" if n <= done_to else (("stop" if stopped else "now") if n == current else "")
+            dots.append(f"<div class='s {cls}'><div class='dot'>{'✓' if cls == 'done' else ('!' if cls == 'stop' else n)}</div>{label}</div>")
+        st.markdown(f"<div class='stepper'>{''.join(dots)}</div>", unsafe_allow_html=True)
         left, right = st.columns([3, 2])
         with left:
             st.markdown(f"{sev_chip(inc['severity'])} {status_chip(inc['status'])} root cause **{inc['root_cause'] or 'unknown'}** "
@@ -222,15 +266,16 @@ with tabs[1]:
         with right:
             with st.container(border=True):
                 st.markdown(f"**Approvals** <span class='meta'>{inc['approvals_needed']} needed · {'two different people' if inc['approvals_needed'] > 1 else 'the owning team'}</span>", unsafe_allow_html=True)
-                req = get(f"/actions/{inc['request_id']}") if inc.get("request_id") else None
                 if not req:
                     st.caption("No approval is needed for this incident." if inc["approvals_needed"] == 0 else "No request is open yet. Run the crew.")
                 else:
                     done = {a["approver"]: a for a in req["approvals"] if a["decision"] == "approve"}
                     for a in inc["approvers"]:
                         ok = a["engineer"] in done
-                        st.markdown(f"**{a['engineer']}** · {a['team']}  \n<span class='meta'>{a['why']}</span> "
-                                    f"{chip('APPROVED ' + done[a['engineer']]['ts'][11:], 'st-AUTO_RESOLVED') if ok else chip('WAITING', 'st-WAITING_FOR_APPROVAL')}", unsafe_allow_html=True)
+                        initials = "".join(w[0] for w in a["engineer"].replace(".", " ").split())[:2].upper()
+                        st.markdown(f"<div class='who'><div class='avatar {'ok' if ok else ('dm' if a['role'] == 'duty_manager' else '')}'>{'✓' if ok else initials}</div>"
+                                    f"<div class='txt'><b>{html.escape(a['engineer'])}</b> · {html.escape(a['team'])}<br><span class='meta'>{html.escape(a['why'])}</span></div>"
+                                    f"{chip('APPROVED ' + done[a['engineer']]['ts'][11:], 'st-AUTO_RESOLVED') if ok else chip('WAITING', 'st-WAITING_FOR_APPROVAL')}</div>", unsafe_allow_html=True)
                     st.caption("One approval covers one step on one service. " + ("Nothing has changed yet." if req["status"] == "PENDING" else ""))
                     if req["status"] == "CHANGE_DONE":
                         st.success(f"Executed once (simulated): {req['action']} on {req['target_service']}")
@@ -249,8 +294,8 @@ with tabs[1]:
                             st.rerun()
             with st.container(border=True):
                 st.markdown("**Evidence** <span class='meta'>every claim has a source</span>", unsafe_allow_html=True)
-                for r in inc["rules_applied"]:
-                    st.markdown(f"<span class='mono'>{html.escape(r)}</span>", unsafe_allow_html=True)
+                st.markdown("<div class='evid'>" + "".join(
+                    f"<div>{re.sub(r'^([0-9]\.[0-9](?:/[0-9]\.[0-9])?)', r'<b>\1</b>', html.escape(r))}</div>" for r in inc["rules_applied"]) + "</div>", unsafe_allow_html=True)
             with st.container(border=True):
                 hid_s = sum(a["hidden"].get("secrets", 0) for a in inc["alerts"])
                 hid_p = sum(a["hidden"].get("personal", 0) for a in inc["alerts"])
@@ -424,6 +469,16 @@ with tabs[4]:
         run = st.button("🚀 Run the crew live on this incident", type="primary")
         holder = st.container()
 
+        def crew_summary(steps: list[dict]) -> str:
+            calls = [s for s in steps if s["model"]]
+            rules = sum(1 for s in steps if s["kind"] == "rules")
+            tools = sum(1 for s in steps if s["kind"] == "tool")
+            people = sum(1 for s in steps if s["kind"] == "people")
+            return (f"<div class='sumrow'>{chip(f'{rules} rule steps', 'k-rules')}{chip(f'{len(calls)} model calls', 'k-model')}"
+                    f"{chip(f'{tools} read tools', 'k-tool')}{chip(f'{people} for people', 'k-people')} "
+                    f"<span class='meta'>{sum(s['tokens'] for s in calls):,} tokens · ${sum(s['cost_usd'] for s in calls):.4f} · "
+                    f"{sum(s['ms'] for s in calls) / 1000:.1f} s in models</span></div>")
+
         def render_step(s: dict, box) -> None:
             kind = s["kind"].replace(" ", "")
             cls = "fail" if s["status"] in ("fail",) else ("stop" if s["status"] == "stop" else kind)
@@ -444,6 +499,7 @@ with tabs[4]:
                 st.markdown("#### Crew at work")
                 final = None
                 n_model = n_rules = 0
+                shown_steps: list[dict] = []
                 try:
                     with requests.post(f"{API}/incidents/{cur}/crew/stream", stream=True, timeout=600) as r:
                         for line in r.iter_lines():
@@ -453,6 +509,7 @@ with tabs[4]:
                             if ev["type"] == "step":
                                 s = ev["step"]
                                 render_step(s, st.container())
+                                shown_steps.append(s)
                                 n_model += 1 if s["model"] else 0
                                 n_rules += 0 if s["model"] else 1
                             elif ev["type"] == "done":
@@ -463,6 +520,7 @@ with tabs[4]:
                     st.error(f"stream failed: {type(e).__name__}")
                 if final:
                     st.success(f"Done: {n_rules} steps by rules or people, {n_model} steps that called a model. Status: {final['status'].replace('_', ' ')}.")
+                    st.markdown(crew_summary(shown_steps), unsafe_allow_html=True)
                     if final.get("recommended_step"):
                         st.markdown(f"**Recommendation:** {final['runbook_id']} step {final['recommended_step']} · `{final['action']}` on **{final['target']}** "
                                     f"— needs **{final['approvals_needed']}** approval(s): " + ", ".join(a["engineer"] for a in final["approvers"]) + ". Nothing has run.")
@@ -471,6 +529,7 @@ with tabs[4]:
             steps = inc.get("crew", [])
             if steps:
                 st.markdown("#### Last run")
+                st.markdown(crew_summary(steps), unsafe_allow_html=True)
                 for s in steps:
                     render_step(s, st.container())
             else:
@@ -487,6 +546,13 @@ with tabs[5]:
     step_one = c[1].button("Next alert ▶")
     play = c[2].button("Play all ⏵⏵")
     st.session_state.setdefault("replay_log", [])
+    bar = st.empty()
+
+    def show_bar() -> None:
+        k = len(st.session_state.replay_log)
+        bar.progress(min(k / 22, 1.0), text=f"{k} of 22 alerts have arrived")
+
+    show_bar()
     feed = st.container()
     n = 1 if step_one else (22 if play else 0)
     for _ in range(n):
@@ -496,6 +562,7 @@ with tabs[5]:
         a = out["alert"]
         tag = "new incident" if out["new_incident"] else ("joined " + out["incident_id"] + f" (now {out['incident_alerts']} alerts)")
         st.session_state.replay_log.insert(0, f"{a['time'][11:]}  {a['alert_id']}  {a['service']:<14} {a['severity']:<8} → {out['incident_id']} · {tag}")
+        show_bar()
         with feed:
             st.markdown(f"<div class='card'><span class='mono'><b>{a['alert_id']}</b> {a['time'][11:]} {a['service']} {a['severity']}</span> → "
                         f"{'🆕' if out['new_incident'] else '⬆'} <b>{out['incident_id']}</b> {tag}</div>", unsafe_allow_html=True)
