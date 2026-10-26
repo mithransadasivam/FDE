@@ -9,8 +9,8 @@ for staff. And even there, the Verifier rejects any step that is not a [CHANGE] 
 
 **The change that saved the most.** Answering from data instead of asking a model. Routing sent 57% of the 60 load-test questions straight to the
 database, and the cache absorbed another 20%. Together with the small model for simple look-ups they cut cost per 1,000 questions from $1.12 to
-$0.14 and p50 from 2.0 s to 0.08 s. The p95 moved much less (4.1 s to 2.6 s), because the hard questions still wait for the large model. Streaming
-helps less than I expected once the output check holds text back to the end of a sentence: the first readable words arrive at 0.8 s instead of 0.85 s
+$0.14 and p50 from 1.9 s to 0.08 s. The p95 moved much less (3.3 s to 2.3 s), because the hard questions still wait for the large model. Streaming
+helps less than I expected once the output check holds text back to the end of a sentence: the first readable words arrive at 0.59 s instead of 0.62 s
 for the whole answer, because the answers are short. It would matter more for long answers.
 
 **The attack I found hardest to stop.** T08: a plain-English instruction in an alert with no keyword, tool name or authority claim ("please bounce the

@@ -1,4 +1,4 @@
-"""Models. `OpenRouterLLM` is the real one (a large and a small model through OpenRouter). `FakeLLM` is the test double:
+"""Models. `OpenRouterLLM` is the real one (a large and a small model through OpenRouter, called with LiteLLM). `FakeLLM` is the test double:
 deterministic, offline, with a latency profile. `GullibleLLM` is a deliberately naive fake used only by the red team to show
 what the defences stop: it obeys anything that looks like an instruction."""
 from __future__ import annotations
@@ -60,6 +60,9 @@ def estimate_tokens(text: str) -> int:
 
 # ---------------------------------------------------------------------------------------------------------------------
 class OpenRouterLLM:
+    """The real models, through LiteLLM and OpenRouter. LLM_MODEL and SMALL_MODEL in .env are OpenRouter model ids; LiteLLM gets
+    them as 'openrouter/<id>'. Retries, timeouts and streaming are LiteLLM's; prices stay ours (Settings), so cost is one place."""
+
     def __init__(self, s: Settings):
         self.s = s
         self._ping_at = 0.0
@@ -68,76 +71,44 @@ class OpenRouterLLM:
     def model_name(self, role: str) -> str:
         return self.s.small_model if role == "small" else self.s.llm_model
 
-    def _headers(self) -> dict:
-        return {"Authorization": f"Bearer {self.s.api_key}", "Content-Type": "application/json",
-                "X-Title": "Operations Control Tower"}
-
-    def _body(self, system: str, user: str, role: str, max_tokens: int, stream: bool) -> dict:
-        body = {"model": self.model_name(role), "temperature": 0, "max_tokens": max_tokens, "stream": stream,
+    def _kw(self, system: str, user: str, role: str, max_tokens: int) -> dict:
+        return {"model": f"openrouter/{self.model_name(role)}", "api_key": self.s.api_key, "api_base": self.s.base_url, "temperature": 0,
+                "max_tokens": max_tokens, "timeout": REQUEST_TIMEOUT_S, "num_retries": 3,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
-        if stream:
-            body["stream_options"] = {"include_usage": True}
-        return body
 
     def complete(self, system, user, *, role="large", max_tokens=600, purpose="") -> LLMResult:
-        t0 = time.perf_counter()
-        last = ""
-        for attempt in range(4):
-            try:
-                r = requests.post(f"{self.s.base_url}/chat/completions", headers=self._headers(),
-                                  json=self._body(system, user, role, max_tokens, False), timeout=REQUEST_TIMEOUT_S)
-            except requests.RequestException as e:
-                last = f"network error ({type(e).__name__})"
-                time.sleep(1.5 * (attempt + 1))
-                continue
-            if r.status_code == 429 or r.status_code >= 500:
-                last = f"model service busy (HTTP {r.status_code})"
-                time.sleep(3 * (attempt + 1))
-                continue
-            if r.status_code != 200:
-                raise LLMError(f"model call failed (HTTP {r.status_code})")
-            data = r.json()
-            try:
-                text = data["choices"][0]["message"]["content"] or ""
-            except (KeyError, IndexError):
-                raise LLMError("model returned no answer") from None
-            u = data.get("usage") or {}
-            return LLMResult(text, int(u.get("prompt_tokens") or estimate_tokens(system + user)),
-                             int(u.get("completion_tokens") or estimate_tokens(text)), self.model_name(role), role,
-                             (time.perf_counter() - t0) * 1000)
-        raise LLMError(last or "model call failed")
-
-    def stream(self, system, user, *, role="large", max_tokens=600, purpose="") -> Iterator[tuple[str, object]]:
+        import litellm
         t0 = time.perf_counter()
         try:
-            r = requests.post(f"{self.s.base_url}/chat/completions", headers=self._headers(),
-                              json=self._body(system, user, role, max_tokens, True), timeout=REQUEST_TIMEOUT_S, stream=True)
-        except requests.RequestException as e:
-            raise LLMError(f"network error ({type(e).__name__})") from None
-        if r.status_code != 200:
-            raise LLMError(f"model call failed (HTTP {r.status_code})")
-        text, ttft, usage = [], None, {}
-        for raw in r.iter_lines(decode_unicode=True):
-            if not raw or not raw.startswith("data:"):
-                continue
-            payload = raw[5:].strip()
-            if payload == "[DONE]":
-                break
-            try:
-                ev = json.loads(payload)
-            except json.JSONDecodeError:
-                continue
-            usage = ev.get("usage") or usage
-            for ch in ev.get("choices") or []:
-                piece = (ch.get("delta") or {}).get("content")
-                if piece:
-                    if ttft is None:
-                        ttft = (time.perf_counter() - t0) * 1000
-                    text.append(piece)
-                    yield "chunk", piece
+            r = litellm.completion(**self._kw(system, user, role, max_tokens))
+        except Exception as e:  # noqa: BLE001  LiteLLM raises its own error types; callers only need to know the call failed
+            raise LLMError(f"model call failed ({type(e).__name__})") from None
+        text = (r.choices[0].message.content or "") if r.choices else ""
+        u = getattr(r, "usage", None)
+        return LLMResult(text, int(getattr(u, "prompt_tokens", 0) or estimate_tokens(system + user)),
+                         int(getattr(u, "completion_tokens", 0) or estimate_tokens(text)), self.model_name(role), role,
+                         (time.perf_counter() - t0) * 1000)
+
+    def stream(self, system, user, *, role="large", max_tokens=600, purpose="") -> Iterator[tuple[str, object]]:
+        import litellm
+        t0 = time.perf_counter()
+        text, ttft, usage = [], None, None
+        try:
+            for ev in litellm.completion(**self._kw(system, user, role, max_tokens), stream=True, stream_options={"include_usage": True}):
+                if getattr(ev, "usage", None):
+                    usage = ev.usage
+                for ch in ev.choices or []:
+                    piece = getattr(ch.delta, "content", None)
+                    if piece:
+                        if ttft is None:
+                            ttft = (time.perf_counter() - t0) * 1000
+                        text.append(piece)
+                        yield "chunk", piece
+        except Exception as e:  # noqa: BLE001
+            raise LLMError(f"model call failed ({type(e).__name__})") from None
         full = "".join(text)
-        yield "done", LLMResult(full, int(usage.get("prompt_tokens") or estimate_tokens(system + user)),
-                                int(usage.get("completion_tokens") or estimate_tokens(full)), self.model_name(role), role,
+        yield "done", LLMResult(full, int(getattr(usage, "prompt_tokens", 0) or estimate_tokens(system + user)),
+                                int(getattr(usage, "completion_tokens", 0) or estimate_tokens(full)), self.model_name(role), role,
                                 (time.perf_counter() - t0) * 1000, ttft)
 
     def ping(self) -> bool:
@@ -146,7 +117,7 @@ class OpenRouterLLM:
         if now - self._ping_at < 15:
             return self._ping_ok
         try:
-            r = requests.get(f"{self.s.base_url}/models", headers=self._headers(), timeout=6)
+            r = requests.get(f"{self.s.base_url}/models", headers={"Authorization": f"Bearer {self.s.api_key}"}, timeout=6)
             self._ping_ok = r.status_code == 200
         except requests.RequestException:
             self._ping_ok = False

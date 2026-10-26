@@ -18,6 +18,7 @@ similar past incident, and then **waits**. Nothing runs until the right people a
 | **Approvals** (`tower/actions.py`) | an `ActionRequest` names one step on one service; two different people when two are needed; a written reason in the freeze; runs once; written to `logs/actions.log` (simulated). |
 | **Least privilege** (`tower/tools.py`, `tower/db.py`) | READ tools for models, CHANGE tools never called by a model, and `personal_mobile` in a table the application's database connection **cannot read** (SQLite authorizer). |
 | **Service** (`tower/api.py`) | FastAPI: `/triage` `/incidents` `/ask` `/ask/stream` `/health` `/ready` `/metrics`, request ids, JSON logs scrubbed of secrets, traces to Phoenix. |
+| **Models** (`tower/llm.py`) | a large and a small model through **LiteLLM** and OpenRouter (`LLM_MODEL`, `SMALL_MODEL` in `.env`), plus a deterministic fake for tests. Every test is blocked from reaching a real model. |
 | **Screen** (`ui/app.py`) | Streamlit: Incidents · Incident · Ask the tower · Health & cost, plus the Project03 extras below. |
 | **Proof** | 160+ tests with fake models, a load test, a red team with regression tests, a governance check. Reports are committed. |
 
@@ -82,9 +83,9 @@ Real models: large `anthropic/claude-haiku-4.5`, small `google/gemini-2.5-flash-
 | Scenarios right: grouping, root cause, severity, status, runbook step, approvals, similar incident, flags | **10/10 on every check** (rules alone: 10/10 with no model) | `EVAL_REPORT.md` |
 | Runbook steps matching `scenarios.csv` (the brief asks for 8 of 10) | **10/10** | `EVAL_REPORT.md` |
 | Cost per incident brief | **$0.0023** (34 model calls for all 22 alerts, 47 to 56 s) | `EVAL_REPORT.md` |
-| `/ask` p50, 60 questions, 4 users, seed 17 | **2.01 s → 0.08 s** (-96%) | `PERF_REPORT.md` |
-| `/ask` p95 | **4.13 s → 2.64 s** (-36%). The slow tail is the uncached large-model questions | `PERF_REPORT.md` |
-| Throughput | **1.6 → 6.5 questions/s** | `PERF_REPORT.md` |
+| `/ask` p50, 60 questions, 4 users, seed 17 | **1.86 s → 0.08 s** (-96%) | `PERF_REPORT.md` |
+| `/ask` p95 | **3.29 s → 2.26 s** (-31%). The slow tail is the uncached large-model questions | `PERF_REPORT.md` |
+| Throughput | **1.7 → 7.8 questions/s** | `PERF_REPORT.md` |
 | Cost per 1,000 questions | **$1.12 → $0.14** (-87%) | `PERF_REPORT.md` |
 | Where questions went (after) | no model 57%, small 12%, large 12%, cache 20% | `PERF_REPORT.md` |
 | Ten answers compared before and after | **14/19 facts → 19/19, none worse** | `PERF_REPORT.md` |

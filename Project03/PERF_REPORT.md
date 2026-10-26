@@ -27,18 +27,18 @@ Large model `anthropic/claude-haiku-4.5`, small model `google/gemini-2.5-flash-l
 
 | Run | p50 | p95 | Throughput | Cost per 1,000 questions | Cache hit rate | Errors |
 |---|---|---|---|---|---|---|
-| baseline (routing off, cache off) | 2.01 s | 4.13 s | 1.6 q/s | $1.12 | 0% | 0 |
-| after (routing on, cache on) | 0.08 s | 2.64 s | 6.53 q/s | $0.14 | 46% | 0 |
+| baseline (routing off, cache off) | 1.86 s | 3.29 s | 1.7 q/s | $1.12 | 0% | 0 |
+| after (routing on, cache on) | 0.08 s | 2.26 s | 7.79 q/s | $0.14 | 46% | 0 |
 
-**Change:** p50 -96%, p95 -36%, cost per 1,000 -87%, throughput +308%.
+**Change:** p50 -96%, p95 -31%, cost per 1,000 -87%, throughput +358%.
 
-- **baseline** · where the questions went: large 60 · p50 by route: large 1.97 s · same first five questions: yes
+- **baseline** · where the questions went: large 60 · p50 by route: large 1.83 s · same first five questions: yes
 
-- **after** · where the questions went: cache 12, data 34, large 7, small 7 · p50 by route: cache 0.01 s, data 0.03 s, large 2.60 s, small 1.52 s · same first five questions: yes
+- **after** · where the questions went: cache 12, data 34, large 7, small 7 · p50 by route: cache 0.01 s, data 0.03 s, large 2.19 s, small 0.97 s · same first five questions: yes
 
-**Streaming (after):** the model's first token arrives at p50 0.59 s; the first text a person can read (after the sentence-level output check) at p50 0.80 s, against 0.85 s for the whole answer (9 model-routed questions).
+**Streaming (after):** the model's first token arrives at p50 0.38 s; the first text a person can read (after the sentence-level output check) at p50 0.59 s, against 0.62 s for the whole answer (9 model-routed questions).
 
-**Cost per incident brief:** $0.0023 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 63.9 s).
+**Cost per incident brief:** $0.0023 (investigator + planner + scribe calls, averaged over 8 briefs; triage of all 22 alerts took 51.4 s).
 
 ## Did the answers get worse? Ten answers before and after
 
