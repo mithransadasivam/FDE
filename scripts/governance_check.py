@@ -37,7 +37,10 @@ RISK_FIELDS = ["id", "risk", "nist_function", "likelihood", "impact", "controls"
 
 
 def sha256(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+    """Hash with line endings normalised to LF, so the same file hashes the same on Windows, Linux and in a fresh clone."""
+    return hashlib.sha256(p.read_bytes().replace(b"
+", b"
+")).hexdigest()
 
 
 def collect(root: Path) -> dict:
@@ -48,7 +51,9 @@ def collect(root: Path) -> dict:
         s = root / src
         if not s.exists():
             continue
-        shutil.copyfile(s, ev / name)
+        (ev / name).write_bytes(s.read_bytes().replace(b"
+", b"
+"))
         manifest["files"][name] = {"sha256": sha256(ev / name), "bytes": (ev / name).stat().st_size, "source": src}
     (ev / "MANIFEST.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     return manifest

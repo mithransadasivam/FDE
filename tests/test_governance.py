@@ -97,3 +97,11 @@ def test_classification_names_the_deciding_article():
     text = (REPO / "governance" / "classification.md").read_text(encoding="utf-8")
     for must in ("Article 5", "Annex I", "Annex III", "Article 6(3)", "Article 50"):
         assert must in text
+
+
+def test_hashes_do_not_depend_on_line_endings(pack, tmp_path):
+    # a fresh clone on another machine may check the files out with CRLF or LF; the manifest must still match
+    assert gc.check(pack) == []
+    ev = pack / "governance" / "evidence" / "EVAL_REPORT.md"
+    ev.write_bytes(ev.read_bytes().replace(b"\n", b"\r\n"))
+    assert gc.check(pack, do_collect=False) == []
