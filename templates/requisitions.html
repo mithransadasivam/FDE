@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Requisitions{% endblock %}
+{% block content %}
+<h1>Requisitions</h1>
+{% if user.role == 'hiring_manager' %}<p><a class="btn" href="/requisitions/new">New requisition from a voice note</a></p>{% endif %}
+<table>
+  <tr><th>ID</th><th>Title</th><th>Status</th><th>Candidates</th><th>Created by</th></tr>
+  {% for r in reqs %}
+  <tr>
+    <td><a href="/requisitions/{{ r.id }}">{{ r.id | reqid }}</a></td>
+    <td>{{ r.title }}</td>
+    <td><span class="badge {{ 'good' if r.status in ('APPROVED','PUBLISHED') else ('bad' if r.status == 'ERROR' else 'warn') }}">{{ r.status }}</span></td>
+    <td>{{ counts.get(r.id, 0) }}</td><td class="small">{{ r.created_by }}</td>
+  </tr>
+  {% else %}<tr><td colspan="5" class="muted">No requisitions yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

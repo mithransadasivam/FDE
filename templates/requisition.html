@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ req.id | reqid }} {{ req.title }}{% endblock %}
+{% block content %}
+<h1>{{ req.id | reqid }} &middot; {{ req.title }} <span class="badge {{ 'good' if req.status in ('APPROVED','PUBLISHED') else ('bad' if req.status == 'ERROR' else 'warn') }}">{{ req.status }}</span></h1>
+<p class="muted small">Created by {{ req.created_by }} on {{ req.created_at.strftime('%Y-%m-%d %H:%M') }} UTC &middot; original file: {{ req.audio_name }}</p>
+
+<div class="card">
+  <h2 style="margin-top:0">Voice note</h2>
+  <audio controls preload="none" src="/requisitions/{{ req.id }}/audio" style="width:100%"></audio>
+  {% if req.status == 'ERROR' %}
+    <div class="flash bad" style="margin-top:.8rem">{{ req.error }}</div>
+  {% elif req.transcript %}
+    <h3>Transcript</h3>
+    <pre class="transcript">{{ req.transcript }}</pre>
+  {% else %}
+    <p class="muted">Transcribing... <a href="/requisitions/{{ req.id }}">refresh</a></p>
+  {% endif %}
+</div>
+{% endblock %}

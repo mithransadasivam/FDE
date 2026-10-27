@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import get_settings
 from app.db import init_db
-from app.web import pages
+from app.web import pages, requisitions
 
 
 @asynccontextmanager
@@ -20,6 +20,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Hiring Intelligence", lifespan=lifespan)
 app.add_middleware(SessionMiddleware, secret_key=get_settings().secret_key, same_site="lax", max_age=8 * 3600)
 app.include_router(pages.router)
+app.include_router(requisitions.router)
 
 
 @app.exception_handler(HTTPException)
