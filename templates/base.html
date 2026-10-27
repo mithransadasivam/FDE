@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Hiring Intelligence{% endblock %}</title>
+<style>
+  :root { --ink:#1b2430; --muted:#5d6b7a; --line:#dde3ea; --bg:#f5f7fa; --brand:#1f4fd8; --good:#17803d; --bad:#b42318; --warn:#b7791f; --card:#fff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:#10243f; color:#fff; padding:.7rem 1.5rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+  header .brand { font-weight:700; font-size:1.1rem; letter-spacing:.2px; }
+  header nav { display:flex; gap:.25rem; flex:1; flex-wrap:wrap; }
+  header nav a { color:#cdd9ea; text-decoration:none; padding:.35rem .75rem; border-radius:6px; }
+  header nav a:hover, header nav a.active { background:#24426b; color:#fff; }
+  header .who { font-size:.9rem; color:#cdd9ea; display:flex; gap:.75rem; align-items:center; }
+  header form { margin:0; }
+  main { max-width:1100px; margin:1.5rem auto; padding:0 1.25rem; }
+  h1 { font-size:1.5rem; margin:.2rem 0 1rem; } h2 { font-size:1.15rem; margin:1.4rem 0 .6rem; } h3 { font-size:1rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; margin-bottom:1rem; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin-bottom:1rem; }
+  .stat { font-size:2rem; font-weight:700; color:var(--brand); } .stat-label { color:var(--muted); }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th, td { text-align:left; padding:.5rem .7rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#eef2f7; font-size:.85rem; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); }
+  tr:last-child td { border-bottom:0; }
+  a { color:var(--brand); }
+  button, .btn { font:inherit; background:var(--brand); color:#fff; border:0; border-radius:6px; padding:.45rem .9rem; cursor:pointer; text-decoration:none; display:inline-block; }
+  button.secondary, .btn.secondary { background:#fff; color:var(--brand); border:1px solid var(--brand); }
+  button.danger { background:var(--bad); }
+  button.small { padding:.2rem .6rem; font-size:.85rem; }
+  input[type=text], input[type=email], input[type=password], input[type=number], input[type=file], select, textarea { font:inherit; padding:.4rem .55rem; border:1px solid #b9c3cf; border-radius:6px; width:100%; }
+  td input[type=number] { width:5.5rem; } td input[type=text] { min-width:12rem; }
+  label { display:block; margin:.7rem 0 .25rem; font-weight:600; }
+  label.inline { display:inline; font-weight:400; }
+  .flash { padding:.6rem .9rem; border-radius:8px; margin-bottom:1rem; border:1px solid; }
+  .flash.good { background:#e8f6ec; border-color:#9bd3ac; color:#0f5c2a; } .flash.bad { background:#fdecea; border-color:#f1aaa3; color:#8a1c12; }
+  .badge { display:inline-block; padding:.1rem .55rem; border-radius:99px; font-size:.78rem; font-weight:600; background:#e6ecf5; color:#27415f; }
+  .badge.good { background:#e0f3e6; color:#0f5c2a; } .badge.bad { background:#fdecea; color:#8a1c12; } .badge.warn { background:#fdf3dc; color:#7a4e0b; }
+  .muted { color:var(--muted); } .small { font-size:.85rem; }
+  .row { display:flex; gap:1rem; flex-wrap:wrap; } .row > * { flex:1; min-width:280px; }
+  .board { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(190px,1fr); gap:.75rem; overflow-x:auto; align-items:start; }
+  .col { background:#eaeff6; border-radius:10px; padding:.6rem; min-height:140px; } .col h3 { margin:.1rem 0 .5rem; display:flex; justify-content:space-between; }
+  .chip { background:#fff; border:1px solid var(--line); border-radius:8px; padding:.35rem .5rem; margin-bottom:.4rem; font-size:.85rem; }
+  pre.transcript, .quote { background:#f1f4f9; border-left:4px solid var(--brand); padding:.6rem .8rem; white-space:pre-wrap; border-radius:4px; }
+  .center { max-width:420px; margin:4rem auto; }
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Hiring Intelligence</span>
+  {% if user %}
+  <nav>{% for label, href in menu %}<a href="{{ href }}" class="{{ 'active' if path == href or path.startswith(href + '/') else '' }}">{{ label }}</a>{% endfor %}</nav>
+  <div class="who"><span>{{ user.name }} &middot; {{ role_label }}</span>
+    <form method="post" action="/logout"><button class="secondary small" type="submit">Sign out</button></form></div>
+  {% else %}
+  <nav><a href="/jobs">Open jobs</a><a href="/login">Staff sign-in</a></nav>
+  {% endif %}
+</header>
+<main>
+  {% for m in messages %}<div class="flash {{ m.kind }}">{{ m.text }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>
