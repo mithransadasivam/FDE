@@ -59,7 +59,8 @@ async def create(request: Request, background: BackgroundTasks, title: str = For
 @router.get("/{req_id}")
 def detail(request: Request, req_id: int, user: User = Depends(STAFF), db: Session = Depends(get_db)):
     req = get_req(db, req_id)
-    return render(request, "requisition.html", user, req=req)
+    total = sum(i["weight"] for i in req.rubric["items"]) if req.rubric else 0
+    return render(request, "requisition.html", user, req=req, rubric_total=total)
 
 
 @router.get("/{req_id}/audio")
@@ -72,3 +73,27 @@ def audio(req_id: int, user: User = Depends(STAFF), db: Session = Depends(get_db
     if not p.exists():
         raise HTTPException(404, "The recording is no longer stored")
     return FileResponse(p, media_type=AUDIO_MEDIA.get(p.suffix.lower(), "application/octet-stream"))
+
+
+@router.post("/{req_id}/generate")
+def generate(request: Request, req_id: int, user: User = Depends(HM), db: Session = Depends(get_db)):
+    from app.agents.requisition import generate_job
+    from app.ai.llm import ModelError
+
+    req = get_req(db, req_id)
+    if req.status not in ("TRANSCRIBED", "GENERATED") or not req.transcript:
+        flash(request, "The job description can only be generated once the voice note is transcribed (and before approval).", "bad")
+        return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
+    try:
+        draft = generate_job(req.transcript)
+    except ModelError as e:
+        flash(request, f"Could not generate the job description: {e}", "bad")
+        return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
+    req.job = draft.job.model_dump()
+    req.rubric = draft.rubric.model_dump()
+    req.status = "GENERATED"
+    db.add(DecisionLog(actor=user.email, action="draft generated", subject=f"requisition:{req.id}",
+                       reason=f"{len(draft.rubric.items)} skills, weights add to {draft.rubric.total}"))
+    db.commit()
+    flash(request, "Job description and rubric generated. Please check them, then approve.")
+    return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
