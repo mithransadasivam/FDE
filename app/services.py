@@ -10,6 +10,7 @@ from app.config import get_settings
 from app.db import SessionLocal
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem
 from app.schemas import CandidateProfile, Stage
+from app.supervisor import move
 
 
 def transcribe_requisition(req_id: int) -> None:
@@ -83,10 +84,9 @@ def process_candidate(cand_id: int) -> None:
         for field, value, conf in items:
             db.add(ReviewItem(candidate_id=cand.id, field=field, value=value, confidence=conf))
         new_stage = Stage.REVIEW if items or failed else Stage.EXTRACTED
-        db.add(DecisionLog(actor="system", action="cv read", subject=f"candidate:{cand.id}",
-                           reason=(cand.error or f"{cand.cv_format}: {len(items)} field(s) to review")))
-        cand.stage = new_stage.value
-        db.add(DecisionLog(actor="system", action=f"move {Stage.APPLIED.value} -> {new_stage.value}", subject=f"candidate:{cand.id}"))
+        reason = cand.error or f"{cand.cv_format}: {len(items)} field(s) to review"
+        db.add(DecisionLog(actor="system", action="cv read", subject=f"candidate:{cand.id}", reason=reason))
+        move(db, cand, new_stage, "system", reason)
         db.commit()
     finally:
         db.close()

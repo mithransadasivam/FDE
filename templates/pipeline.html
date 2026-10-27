@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Pipeline{% endblock %}
+{% block content %}
+<h1>Pipeline {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
+<p class="muted">Each candidate sits in one stage. The system can make automatic steps; every decision is a person's, needs a reason, and is written to the decision log.</p>
+
+{% if user.role == 'recruiter' %}
+<div class="card">
+  <h2 style="margin-top:0">Move a candidate</h2>
+  <form method="post" action="/pipeline/move" class="row" style="align-items:end">
+    <div><label for="candidate_id">Candidate</label>
+      <select id="candidate_id" name="candidate_id">{% for c in everyone %}<option value="{{ c.id }}">#{{ c.id }} {{ c.label }}</option>{% endfor %}</select></div>
+    <div><label for="to">Move to</label>
+      <select id="to" name="to">{% for s in stages %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
+    <div style="flex:2"><label for="reason">Reason (needed for a decision)</label><input id="reason" name="reason" type="text" placeholder="Why are you moving this candidate?"></div>
+    <div style="flex:0"><button type="submit">Move</button></div>
+  </form>
+  <details style="margin-top:.6rem"><summary class="small">Which moves are allowed?</summary>
+    <table style="margin-top:.4rem"><tr><th>From</th><th>Can go to</th></tr>
+      {% for frm, moves in allowed.items() %}<tr><td>{{ frm }}</td><td>{% for to, who in moves %}{{ to }} <span class="badge {{ 'good' if who == 'system' else 'warn' }}">{{ who }}</span> {% else %}<span class="muted">nowhere (process ended)</span>{% endfor %}</td></tr>{% endfor %}
+    </table></details>
+</div>
+{% endif %}
+
+<div class="board">
+  {% for stage, chips in columns.items() %}
+  <div class="col">
+    <h3>{{ stage.value }} <span class="badge">{{ chips | length }}</span></h3>
+    {% for c in chips %}
+    <div class="chip"><a href="/candidates/{{ c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}"><strong>#{{ c.id }}</strong> {{ c.label if not is_blind else '' }}</a><br>
+      <span class="muted">{{ c.title or '' }}</span></div>
+    {% else %}<div class="muted small">empty</div>{% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

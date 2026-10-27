@@ -1,7 +1,7 @@
 """Candidates, the review queue and identity hiding (Prompt 12). The pipeline board is added in Prompt 13."""
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import FileResponse, RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -10,7 +10,8 @@ from app.auth import RECRUITER, STAFF
 from app.db import get_db
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem, User
 from app.privacy import identity_leaks, make_blind
-from app.schemas import CandidateProfile
+from app.schemas import CandidateProfile, Stage
+from app.supervisor import ALLOWED, MoveRefused, move
 from app.services import CORE_FIELDS, OPTIONAL_FIELDS, correct_fields, value_text
 from app.web.common import flash, render, templates
 
@@ -116,10 +117,47 @@ def review_confirm(request: Request, cand_id: int, user: User = Depends(RECRUITE
     elif left:
         flash(request, f"Candidate #{cand.id} still has {len(left)} field(s) to check.", "bad")
     else:
-        cand.stage = "EXTRACTED"
+        try:
+            move(db, cand, Stage.EXTRACTED, user.email, "review complete: every unsure field was checked by a person")
+        except MoveRefused as e:
+            flash(request, str(e), "bad")
+            return RedirectResponse("/review", status_code=303)
         cand.error = None
-        db.add(DecisionLog(actor=user.email, action="move REVIEW -> EXTRACTED", subject=f"candidate:{cand.id}",
-                           reason="review complete: every unsure field was checked by a person"))
         db.commit()
         flash(request, f"Candidate #{cand.id} confirmed and moved to EXTRACTED.")
     return RedirectResponse("/review", status_code=303)
+
+
+# ---- pipeline board (Prompt 13) -------------------------------------------------------------------------------------
+@router.get("/pipeline")
+def pipeline(request: Request, blind: int | None = None, user: User = Depends(STAFF), db: Session = Depends(get_db)):
+    is_blind = effective_blind(user, blind)
+    columns = {s: [] for s in Stage}
+    everyone = []
+    for c in db.scalars(select(Candidate).order_by(Candidate.id)):
+        p = CandidateProfile.model_validate(c.profile or {})
+        label = f"Candidate #{c.id}" if is_blind else (p.name.value or f"Candidate #{c.id}")
+        chip = {"id": c.id, "label": label, "title": make_blind(c).current_title if is_blind else p.current_title.value,
+                "format": c.cv_format}
+        columns[Stage(c.stage)].append(chip)
+        everyone.append(chip)
+    allowed = {s.value: [(t.value, who) for t, who in moves.items()] for s, moves in ALLOWED.items()}
+    return render(request, "pipeline.html", user, columns=columns, everyone=everyone, is_blind=is_blind, allowed=allowed,
+                  stages=[s.value for s in Stage])
+
+
+@router.post("/pipeline/move")
+def pipeline_move(request: Request, candidate_id: int = Form(...), to: str = Form(...), reason: str = Form(""),
+                  user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    """A person moves a candidate. The supervisor refuses anything the table of allowed moves does not permit."""
+    cand = get_candidate(db, candidate_id)
+    try:
+        frm = cand.stage
+        move(db, cand, to, user.email, reason)
+    except MoveRefused as e:
+        db.rollback()
+        flash(request, f"Refused: {e}", "bad")
+    else:
+        db.commit()
+        flash(request, f"Candidate #{cand.id} moved from {frm} to {to}.")
+    return RedirectResponse("/pipeline", status_code=303)
