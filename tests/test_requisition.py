@@ -171,3 +171,113 @@ def test_flags_are_stored_and_shown_on_the_requisition_page(hm, db):
     html = hm.get("/requisitions/1").text
     assert "young and energetic" in html and "native English speaker" in html and "fluent written and spoken English" in html
     assert "2 flags" in html
+
+
+# ---- Prompt 9: edit, approve, publish -----------------------------------------------------------------
+def generated(hm):
+    make_req(hm)
+    hm.post("/requisitions/1/generate")
+
+
+def rubric_form(req, **changes):
+    data = {}
+    for n, i in enumerate(req.rubric["items"]):
+        data[f"weight_{n}"] = str(i["weight"])
+        if i["must_have"]:
+            data[f"must_{n}"] = "1"
+    data.update({k: str(v) for k, v in changes.items()})
+    data["min_years"] = str(req.rubric["min_years"])
+    return data
+
+
+def test_edit_that_breaks_the_100_total_is_rejected_with_a_clear_message(hm, db):
+    generated(hm)
+    form = rubric_form(db.get(Requisition, 1), weight_0=30)
+    hm.post("/requisitions/1/rubric", data=form)
+    assert "must add to 100" in hm.get("/requisitions/1").text
+    assert db.get(Requisition, 1).rubric["items"][0]["weight"] == 19  # unchanged
+
+
+def test_valid_edit_is_saved_and_needs_new_approval(hm, db):
+    generated(hm)
+    hm.post("/requisitions/1/approve", data={"comment": "ok"})
+    assert db.get(Requisition, 1).status == "APPROVED"
+    form = rubric_form(db.get(Requisition, 1), weight_0=20, weight_5=6)  # 19->20 and 7->6: still 100
+    hm.post("/requisitions/1/rubric", data=form)
+    db.expire_all()
+    req = db.get(Requisition, 1)
+    assert req.status == "GENERATED" and req.rubric["items"][0]["weight"] == 20
+    assert "rubric edited" in [e.action for e in db.query(DecisionLog)]
+
+
+def test_untick_must_have_and_remove_a_skill(hm, db):
+    generated(hm)
+    req = db.get(Requisition, 1)
+    form = rubric_form(req)
+    del form["must_2"]
+    form["remove_7"] = "1"  # removes 6 points -> total 94, so give them to skill 6
+    form["weight_6"] = str(req.rubric["items"][6]["weight"] + 6)
+    hm.post("/requisitions/1/rubric", data=form)
+    db.expire_all()
+    items = db.get(Requisition, 1).rubric["items"]
+    assert len(items) == 7 and items[2]["must_have"] is False and sum(i["weight"] for i in items) == 100
+
+
+def test_removing_too_many_skills_is_refused(hm, db):
+    generated(hm)
+    form = rubric_form(db.get(Requisition, 1))
+    for n in range(4):
+        form[f"remove_{n}"] = "1"
+    hm.post("/requisitions/1/rubric", data=form)
+    assert len(db.get(Requisition, 1).rubric["items"]) == 8
+
+
+def test_publishing_before_approval_is_refused_even_when_posted_directly(hm, db):
+    generated(hm)
+    hm.post("/requisitions/1/publish")
+    assert db.get(Requisition, 1).status == "GENERATED"
+    assert "can only be published after the rubric is approved" in hm.get("/requisitions/1").text
+
+
+def test_approval_is_logged_with_email_comment_and_rubric_then_publish(hm, db):
+    generated(hm)
+    hm.post("/requisitions/1/approve", data={"comment": "Matches my note"})
+    hm.post("/requisitions/1/publish")
+    assert db.get(Requisition, 1).status == "PUBLISHED"
+    e = db.query(DecisionLog).filter_by(action="rubric approved").one()
+    assert e.actor == "hm@example.com" and e.reason == "Matches my note"
+    assert e.evidence["rubric"]["items"][0]["skill"] == "Linux troubleshooting"
+    assert [x.action for x in db.query(DecisionLog).order_by(DecisionLog.id)] == [
+        "requisition created", "transcribed", "draft generated", "rubric approved", "job published"]
+
+
+def test_cannot_approve_twice_or_before_generation(hm, db):
+    make_req(hm)
+    hm.post("/requisitions/1/approve")
+    assert db.get(Requisition, 1).status == "TRANSCRIBED"
+    hm.post("/requisitions/1/generate")
+    hm.post("/requisitions/1/approve")
+    hm.post("/requisitions/1/approve")
+    assert db.query(DecisionLog).filter_by(action="rubric approved").count() == 1
+
+
+def test_approval_refused_while_job_text_contains_a_flagged_phrase(hm, db):
+    generated(hm)
+    hm.post("/requisitions/1/job", data={"title": "Cloud Support Engineer", "summary": "We want a young and energetic person.",
+                                         "responsibilities": "Fix things", "requirements": "Linux", "nice_to_have": ""})
+    hm.post("/requisitions/1/approve")
+    assert db.get(Requisition, 1).status == "GENERATED"
+    assert "biased wording" in hm.get("/requisitions/1").text
+    hm.post("/requisitions/1/job", data={"title": "Cloud Support Engineer", "summary": "We want a motivated person to join the team.",
+                                         "responsibilities": "Fix things", "requirements": "Linux", "nice_to_have": ""})
+    hm.post("/requisitions/1/approve")
+    assert db.get(Requisition, 1).status == "APPROVED"
+
+
+def test_recruiter_cannot_approve_publish_or_edit(hm, db):
+    generated(hm)
+    with TestClient(app, follow_redirects=False) as rc:
+        rc.post("/login", data={"email": "recruiter@example.com", "password": DEMO_PASSWORD})
+        for path in ("approve", "publish", "rubric", "job", "generate"):
+            assert rc.post(f"/requisitions/1/{path}").status_code == 403
+        assert "Approve rubric" not in rc.get("/requisitions/1").text

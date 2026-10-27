@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ req.id | reqid }} {{ req.title }}{% endblock %}
 {% block content %}
+{% set is_hm = user.role == 'hiring_manager' %}
 <h1>{{ req.id | reqid }} &middot; {{ req.title }} <span class="badge {{ 'good' if req.status in ('APPROVED','PUBLISHED') else ('bad' if req.status == 'ERROR' else 'warn') }}">{{ req.status }}</span></h1>
-<p class="muted small">Created by {{ req.created_by }} on {{ req.created_at.strftime('%Y-%m-%d %H:%M') }} UTC &middot; original file: {{ req.audio_name }}</p>
+<p class="muted small">Created by {{ req.created_by }} on {{ req.created_at.strftime('%Y-%m-%d %H:%M') }} UTC &middot; original file: {{ req.audio_name }}
+  {% if req.status == 'PUBLISHED' %}&middot; <a href="/jobs/{{ req.id }}">public job page</a>{% endif %}</p>
 
 <div class="card">
   <h2 style="margin-top:0">Voice note</h2>
@@ -22,7 +24,7 @@
   <h2 style="margin-top:0">Wording check
     <span class="badge {{ 'bad' if req.wording_flags else 'good' }}">{{ req.wording_flags | length }} flag{{ '' if req.wording_flags | length == 1 else 's' }}</span></h2>
   {% if req.wording_flags %}
-  <p class="muted small">These phrases can put good people off or be discriminatory. Say it differently in the job text before you approve.</p>
+  <p class="muted small">These phrases can put good people off or be discriminatory. The generated job text avoids them; if any appear in the job text itself, change it before you approve.</p>
   <table>
     <tr><th>Phrase</th><th>Found in</th><th>Why it matters</th><th>Neutral suggestion</th></tr>
     {% for f in req.wording_flags %}
@@ -33,15 +35,27 @@
 </div>
 {% endif %}
 
-{% if user.role == 'hiring_manager' and req.status in ('TRANSCRIBED', 'GENERATED') %}
+{% if is_hm and req.status in ('TRANSCRIBED', 'GENERATED') %}
 <form method="post" action="/requisitions/{{ req.id }}/generate" style="margin-bottom:1rem">
-  <button type="submit">{{ 'Generate again' if req.job else 'Generate job description and rubric' }}</button>
+  <button type="submit" class="{{ 'secondary' if req.job else '' }}">{{ 'Generate again (replaces the draft)' if req.job else 'Generate job description and rubric' }}</button>
 </form>
 {% endif %}
 
 {% if req.job %}
 <div class="card">
   <h2 style="margin-top:0">Job description</h2>
+  {% if is_hm and req.status in ('GENERATED', 'APPROVED', 'PUBLISHED') %}
+  <details><summary>Edit the job text</summary>
+    <form method="post" action="/requisitions/{{ req.id }}/job">
+      <label for="jt">Title</label><input id="jt" name="title" type="text" value="{{ req.job.title }}">
+      <label for="js">Summary</label><textarea id="js" name="summary" rows="3">{{ req.job.summary }}</textarea>
+      <label for="jr">What you will do (one per line)</label><textarea id="jr" name="responsibilities" rows="4">{{ req.job.responsibilities | join('\n') }}</textarea>
+      <label for="jq">What we need (one per line)</label><textarea id="jq" name="requirements" rows="4">{{ req.job.requirements | join('\n') }}</textarea>
+      <label for="jn">Nice to have (one per line)</label><textarea id="jn" name="nice_to_have" rows="3">{{ req.job.nice_to_have | join('\n') }}</textarea>
+      <p><button type="submit" class="secondary">Save job text</button> <span class="muted small">Saving sends the requisition back to GENERATED: it needs approving again.</span></p>
+    </form>
+  </details>
+  {% endif %}
   <h3>{{ req.job.title }}</h3>
   <p>{{ req.job.summary }}</p>
   <h3>What you will do</h3><ul>{% for x in req.job.responsibilities %}<li>{{ x }}</li>{% endfor %}</ul>
@@ -51,13 +65,48 @@
 
 <div class="card">
   <h2 style="margin-top:0">Rubric</h2>
+  {% set editable = is_hm and req.status in ('GENERATED', 'APPROVED', 'PUBLISHED') %}
+  {% if editable %}<form method="post" action="/requisitions/{{ req.id }}/rubric">{% endif %}
   <table>
-    <tr><th>Skill</th><th>Weight</th><th>Must-have</th><th>Words from the note</th></tr>
+    <tr><th>Skill</th><th>Weight</th><th>Must-have</th><th>Words from the note</th>{% if editable %}<th>Remove</th>{% endif %}</tr>
     {% for i in req.rubric['items'] %}
-    <tr><td>{{ i.skill }}</td><td>{{ i.weight }}</td><td>{{ 'Yes' if i.must_have else '' }}</td><td><em>&ldquo;{{ i.evidence_from_note }}&rdquo;</em></td></tr>
+    <tr>
+      <td>{{ i.skill }}</td>
+      {% if editable %}
+      <td><input type="number" name="weight_{{ loop.index0 }}" value="{{ i.weight }}" min="1" max="40"></td>
+      <td><input type="checkbox" name="must_{{ loop.index0 }}" value="1" {{ 'checked' if i.must_have }}></td>
+      {% else %}<td>{{ i.weight }}</td><td>{{ 'Yes' if i.must_have else '' }}</td>{% endif %}
+      <td><em>&ldquo;{{ i.evidence_from_note }}&rdquo;</em></td>
+      {% if editable %}<td><input type="checkbox" name="remove_{{ loop.index0 }}" value="1"></td>{% endif %}
+    </tr>
     {% endfor %}
-    <tr><th>Total</th><th>{{ rubric_total }}</th><th></th><th>Minimum experience: {{ req.rubric['min_years'] }} years</th></tr>
+    <tr><th>Total</th><th>{{ rubric_total }}</th><th></th>
+      <th>Minimum experience: {% if editable %}<input type="number" name="min_years" step="0.5" min="0" max="20" value="{{ req.rubric['min_years'] }}"> years{% else %}{{ req.rubric['min_years'] }} years{% endif %}</th>
+      {% if editable %}<th></th>{% endif %}</tr>
   </table>
+  {% if editable %}
+  <p><button type="submit" class="secondary">Save rubric</button>
+     <span class="muted small">Weights must add up to exactly 100. Saving sends the requisition back to GENERATED: it needs approving again.</span></p>
+  </form>
+  {% endif %}
 </div>
+
+{% if is_hm %}
+<div class="card">
+  <h2 style="margin-top:0">Your decision</h2>
+  {% if req.status == 'GENERATED' %}
+  <form method="post" action="/requisitions/{{ req.id }}/approve">
+    <label for="comment">Comment (optional)</label>
+    <input id="comment" name="comment" type="text" placeholder="e.g. Checked against my voice note">
+    <p><button type="submit">Approve rubric</button> <span class="muted small">Nothing is scored until you approve. Your approval is written to the decision log.</span></p>
+  </form>
+  {% elif req.status == 'APPROVED' %}
+  <p>Rubric approved. Publishing makes the job visible to candidates.</p>
+  <form method="post" action="/requisitions/{{ req.id }}/publish"><button type="submit">Publish job</button></form>
+  {% elif req.status == 'PUBLISHED' %}
+  <p>This job is published: <a href="/jobs/{{ req.id }}">/jobs/{{ req.id }}</a>.</p>
+  {% endif %}
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}

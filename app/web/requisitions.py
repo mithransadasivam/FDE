@@ -100,3 +100,113 @@ def generate(request: Request, req_id: int, user: User = Depends(HM), db: Sessio
     db.commit()
     flash(request, "Job description and rubric generated. Please check them, then approve.")
     return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
+
+
+# ---- Prompt 9: edit, approve, publish ---------------------------------------------------------------
+from pydantic import ValidationError  # noqa: E402
+
+from app.agents.wording import check_requisition, check_wording  # noqa: E402
+from app.schemas import JobDescription, Rubric  # noqa: E402
+
+
+def _back(req_id: int) -> RedirectResponse:
+    return RedirectResponse(f"/requisitions/{req_id}", status_code=303)
+
+
+def _validation_message(e: ValidationError) -> str:
+    return "; ".join(x["msg"].replace("Value error, ", "") for x in e.errors()[:3])
+
+
+def _send_back_to_generated(db: Session, req: Requisition, user: User, what: str, reason: str) -> None:
+    """Any edit needs a new approval, so the requisition goes back to GENERATED (and a live job is withdrawn)."""
+    was = req.status
+    req.status = "GENERATED"
+    req.wording_flags = [f.model_dump() for f in check_requisition(req.transcript, JobDescription.model_validate(req.job).as_text())]
+    db.add(DecisionLog(actor=user.email, action=what, subject=f"requisition:{req.id}",
+                       reason=f"{reason} (was {was}; needs approval again)", evidence=req.rubric))
+
+
+@router.post("/{req_id}/rubric")
+async def edit_rubric(request: Request, req_id: int, user: User = Depends(HM), db: Session = Depends(get_db)):
+    req = get_req(db, req_id)
+    if req.status not in ("GENERATED", "APPROVED", "PUBLISHED") or not req.rubric:
+        flash(request, "There is no rubric to edit yet.", "bad")
+        return _back(req.id)
+    form = await request.form()
+    items = []
+    try:
+        for n, old in enumerate(req.rubric["items"]):
+            if form.get(f"remove_{n}"):
+                continue
+            items.append({**old, "weight": int(form.get(f"weight_{n}", old["weight"])), "must_have": bool(form.get(f"must_{n}"))})
+        rubric = Rubric(items=items, min_years=float(form.get("min_years", req.rubric["min_years"])))
+    except ValueError as e:  # includes pydantic's ValidationError
+        msg = _validation_message(e) if isinstance(e, ValidationError) else "Weights and years must be numbers."
+        flash(request, f"The rubric was not saved: {msg}", "bad")
+        return _back(req.id)
+    before = req.rubric
+    req.rubric = rubric.model_dump()
+    _send_back_to_generated(db, req, user, "rubric edited", f"{len(rubric.items)} skills, weights add to {rubric.total}")
+    db.commit()
+    flash(request, "Rubric saved. It needs to be approved again.")
+    return _back(req.id)
+
+
+@router.post("/{req_id}/job")
+async def edit_job(request: Request, req_id: int, user: User = Depends(HM), db: Session = Depends(get_db)):
+    req = get_req(db, req_id)
+    if req.status not in ("GENERATED", "APPROVED", "PUBLISHED") or not req.job:
+        flash(request, "There is no job description to edit yet.", "bad")
+        return _back(req.id)
+    form = await request.form()
+
+    def lines(key: str) -> list[str]:
+        return [ln.strip() for ln in str(form.get(key, "")).splitlines() if ln.strip()]
+
+    try:
+        job = JobDescription(title=str(form.get("title", "")).strip(), summary=str(form.get("summary", "")).strip(),
+                             responsibilities=lines("responsibilities"), requirements=lines("requirements"),
+                             nice_to_have=lines("nice_to_have"))
+    except ValidationError as e:
+        flash(request, f"The job description was not saved: {_validation_message(e)}", "bad")
+        return _back(req.id)
+    req.job = job.model_dump()
+    _send_back_to_generated(db, req, user, "job text edited", "job description changed")
+    db.commit()
+    flash(request, "Job description saved. Check the wording flags, then approve.")
+    return _back(req.id)
+
+
+@router.post("/{req_id}/approve")
+def approve(request: Request, req_id: int, comment: str = Form(""), user: User = Depends(HM), db: Session = Depends(get_db)):
+    req = get_req(db, req_id)
+    if req.status != "GENERATED":  # checked here on the server, not only by hiding the button
+        flash(request, "The rubric can only be approved when it is generated and has not been approved yet.", "bad")
+        return _back(req.id)
+    job = JobDescription.model_validate(req.job)
+    flagged = check_wording(job.as_text(), "job text")
+    if flagged:
+        flash(request, "Not approved: the job text still has biased wording ("
+                       + ", ".join(f'"{f.phrase}"' for f in flagged) + "). Change it first.", "bad")
+        return _back(req.id)
+    rubric = Rubric.model_validate(req.rubric)  # one more check that the weights still add to 100
+    req.status = "APPROVED"
+    db.add(DecisionLog(actor=user.email, action="rubric approved", subject=f"requisition:{req.id}",
+                       reason=comment.strip(), evidence={"rubric": rubric.model_dump(), "job": req.job,
+                                                         "wording_flags_in_voice_note": req.wording_flags}))
+    db.commit()
+    flash(request, "Rubric approved. You can now publish the job.")
+    return _back(req.id)
+
+
+@router.post("/{req_id}/publish")
+def publish(request: Request, req_id: int, user: User = Depends(HM), db: Session = Depends(get_db)):
+    req = get_req(db, req_id)
+    if req.status != "APPROVED":
+        flash(request, "A job can only be published after the rubric is approved.", "bad")
+        return _back(req.id)
+    req.status = "PUBLISHED"
+    db.add(DecisionLog(actor=user.email, action="job published", subject=f"requisition:{req.id}", reason=req.title))
+    db.commit()
+    flash(request, f"Job published. Candidates can apply at /jobs/{req.id}.")
+    return _back(req.id)
