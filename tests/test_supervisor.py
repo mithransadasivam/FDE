@@ -152,3 +152,12 @@ def test_day1_demo_runs_end_to_end_on_all_52_cvs(monkeypatch, capsys, db):
     assert "Applications: 52 (52 accepted, 0 refused) stages: {'EXTRACTED': 44, 'REVIEW': 8}" in out
     assert "Fields in the review queue: 24 identity leaks in blind records: 0" in out
     assert "Forbidden move refused" in out and "Day 1 demo complete." in out
+
+
+def test_demo_also_flags_the_duplicate_and_publishes_the_second_role(monkeypatch, capsys, db):
+    from scripts import day1_demo
+    monkeypatch.setattr(sys, "argv", ["day1_demo", "--reset"])
+    assert day1_demo.main() == 0
+    out = capsys.readouterr().out
+    assert "C-015_cv.pdf and C-048_cv.png" in out
+    assert "REQ-002 PUBLISHED: 7 skills, weights 100; wording flags: He will, rockstar" in out

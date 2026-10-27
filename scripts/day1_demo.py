@@ -21,6 +21,7 @@ from app.config import get_settings
 from app.db import SessionLocal, engine, init_db
 from app.main import app
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem
+from app.duplicates import duplicate_map
 from app.privacy import identity_leaks, make_blind
 from app.schemas import Stage
 from app.supervisor import MoveRefused, move
@@ -28,6 +29,7 @@ from scripts.create_users import DEMO_PASSWORD, create_users
 from scripts.upload_cvs import DEFAULT_FOLDER, upload_all
 
 VOICE_NOTE = Path("starter_kit/voice_notes/REQ_cloud_support_engineer.wav")
+SECOND_NOTE = Path("starter_kit/voice_notes/REQ_data_analyst.wav")  # stretch: a second role
 
 
 def reset() -> None:
@@ -63,6 +65,11 @@ def main() -> int:
         hm.post("/requisitions/1/publish")
         print("3. Applying with every CV in the starter kit (reading PDF, Word, scans and screenshots) ...")
         accepted, refused = upload_all(visitor, 1, DEFAULT_FOLDER)
+        print("4. Stretch: a second role, Data Analyst, from its own voice note ...")
+        hm.post("/requisitions", data={"title": "Data Analyst"}, files={"audio": (SECOND_NOTE.name, SECOND_NOTE.read_bytes(), "audio/wav")})
+        hm.post("/requisitions/2/generate")
+        hm.post("/requisitions/2/approve", data={"comment": "Day 1 demo: wording checked, job text is neutral"})
+        hm.post("/requisitions/2/publish")
 
     with SessionLocal() as db:
         req = db.get(Requisition, 1)
@@ -85,8 +92,17 @@ def main() -> int:
             except MoveRefused as e:
                 print(f"Forbidden move refused: {e}")
             db.rollback()
+        names = {c.id: c.cv_name for c in cands}
+        pairs = sorted({tuple(sorted((a, b))) for a, others in duplicate_map(db).items() for b in others})
+        for a, b in pairs:
+            print(f"Possible duplicate flagged for a person to decide: {names[a]} and {names[b]}")
+        req2 = db.get(Requisition, 2)
+        items2 = req2.rubric["items"] if req2 and req2.rubric else []
+        if req2:
+            print(f"REQ-{req2.id:03d} {req2.status}: {len(items2)} skills, weights {sum(i['weight'] for i in items2)}; "
+                  f"wording flags: {', '.join(f['phrase'] for f in (req2.wording_flags or []))}")
         print(f"Decision log entries: {db.scalar(select(func.count()).select_from(DecisionLog))}")
-    ok = (accepted == len(cands) and leaks == 0 and refused == 0)
+    ok = (accepted == len(cands) and leaks == 0 and refused == 0 and req2 is not None and req2.status == "PUBLISHED")
     print("\nDay 1 demo complete." if ok else "\nDay 1 demo finished with problems: see above.")
     return 0 if ok else 1
 

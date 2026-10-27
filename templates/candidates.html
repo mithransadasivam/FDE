@@ -19,7 +19,8 @@
     <td>{{ r.title or '' }}</td><td>{{ r.years if r.years is not none else '' }}</td>
     <td class="small">{{ r.skills[:6] | join(', ') }}{{ ' ...' if r.skills | length > 6 }}</td>
     <td>{{ r.c.cv_format }}</td>
-    <td><span class="badge {{ 'warn' if r.c.stage == 'REVIEW' else '' }}">{{ r.c.stage }}</span></td>
+    <td><span class="badge {{ 'warn' if r.c.stage == 'REVIEW' else '' }}">{{ r.c.stage }}</span>
+      {% if dups.get(r.c.id) %}<br><span class="badge bad" title="Same email or phone as another application">duplicate of {% for t in dups[r.c.id] %}#{{ t }} {% endfor %}</span>{% endif %}</td>
   </tr>
   {% else %}<tr><td colspan="7" class="muted">No candidates yet.</td></tr>{% endfor %}
 </table>

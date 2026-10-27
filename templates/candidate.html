@@ -10,6 +10,21 @@
 <div class="flash bad">{{ pending | length }} field(s) still need checking: <a href="/review">open the review queue</a>.</div>
 {% endif %}
 
+{% if twins %}
+<div class="flash bad">
+  <strong>Possible duplicate:</strong> the same email or phone number appears on
+  {% for t in twins %}<a href="/candidates/{{ t }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}">candidate #{{ t }}</a>{{ ', ' if not loop.last }}{% endfor %}.
+  The platform only flags this; a person decides.
+  {% if user.role == 'recruiter' %}
+  <form method="post" action="/pipeline/move" style="margin-top:.5rem">
+    <input type="hidden" name="candidate_id" value="{{ cand.id }}"><input type="hidden" name="to" value="WITHDRAWN">
+    <input type="hidden" name="reason" value="Duplicate application of candidate{% for t in twins %} #{{ t }}{% endfor %}">
+    <button type="submit" class="danger small">Withdraw this application as a duplicate</button>
+  </form>
+  {% endif %}
+</div>
+{% endif %}
+
 <div class="row">
   <div class="card">
     <h2 style="margin-top:0">Blind record</h2>

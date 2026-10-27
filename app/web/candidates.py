@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.auth import RECRUITER, STAFF
 from app.db import get_db
+from app.duplicates import duplicate_map
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem, User
 from app.privacy import identity_leaks, make_blind
 from app.schemas import CandidateProfile, Stage
@@ -45,6 +46,7 @@ def candidates(request: Request, blind: int | None = None, job: int | None = Non
     if job:
         query = query.where(Candidate.requisition_id == job)
     rows = []
+    dups = duplicate_map(db)
     for c in db.scalars(query):
         if is_blind:
             b = make_blind(c)
@@ -54,7 +56,7 @@ def candidates(request: Request, blind: int | None = None, job: int | None = Non
             p = CandidateProfile.model_validate(c.profile or {})
             rows.append({"c": c, "name": p.name.value or "(not read)", "title": p.current_title.value,
                          "years": p.years_experience.value, "skills": p.skills.value or []})
-    return render(request, "candidates.html", user, rows=rows, is_blind=is_blind, job=job)
+    return render(request, "candidates.html", user, rows=rows, is_blind=is_blind, job=job, dups=dups)
 
 
 @router.get("/candidates/{cand_id}")
@@ -65,7 +67,7 @@ def candidate(request: Request, cand_id: int, blind: int | None = None, user: Us
     fields = [(f, FIELD_LABELS[f], getattr(profile, f)) for f in CORE_FIELDS + OPTIONAL_FIELDS]
     pending = db.scalars(select(ReviewItem).where(ReviewItem.candidate_id == cand.id, ReviewItem.resolved.is_(False))).all()
     return render(request, "candidate.html", user, cand=cand, blind_record=make_blind(cand), is_blind=is_blind, fields=fields,
-                  pending=pending, threshold=0.8)
+                  pending=pending, threshold=0.8, twins=duplicate_map(db).get(cand.id, []))
 
 
 @router.get("/candidates/{cand_id}/cv")
@@ -134,11 +136,12 @@ def pipeline(request: Request, blind: int | None = None, user: User = Depends(ST
     is_blind = effective_blind(user, blind)
     columns = {s: [] for s in Stage}
     everyone = []
+    dups = duplicate_map(db)
     for c in db.scalars(select(Candidate).order_by(Candidate.id)):
         p = CandidateProfile.model_validate(c.profile or {})
         label = f"Candidate #{c.id}" if is_blind else (p.name.value or f"Candidate #{c.id}")
         chip = {"id": c.id, "label": label, "title": make_blind(c).current_title if is_blind else p.current_title.value,
-                "format": c.cv_format}
+                "format": c.cv_format, "dup": dups.get(c.id, [])}
         columns[Stage(c.stage)].append(chip)
         everyone.append(chip)
     allowed = {s.value: [(t.value, who) for t, who in moves.items()] for s, moves in ALLOWED.items()}

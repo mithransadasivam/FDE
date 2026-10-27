@@ -8,6 +8,7 @@ from app.agents.wording import check_wording
 from app.ai.voice import transcribe
 from app.config import get_settings
 from app.db import SessionLocal
+from app.duplicates import duplicate_map
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem
 from app.schemas import CandidateProfile, Stage
 from app.supervisor import move
@@ -87,6 +88,11 @@ def process_candidate(cand_id: int) -> None:
         reason = cand.error or f"{cand.cv_format}: {len(items)} field(s) to review"
         db.add(DecisionLog(actor="system", action="cv read", subject=f"candidate:{cand.id}", reason=reason))
         move(db, cand, new_stage, "system", reason)
+        db.flush()
+        twins = duplicate_map(db, cand.requisition_id).get(cand.id)
+        if twins:  # only flagged: a person decides what to do
+            db.add(DecisionLog(actor="system", action="possible duplicate", subject=f"candidate:{cand.id}",
+                               reason=f"same email or phone as candidate {', '.join('#' + str(t) for t in twins)}; a recruiter decides"))
         db.commit()
     finally:
         db.close()
