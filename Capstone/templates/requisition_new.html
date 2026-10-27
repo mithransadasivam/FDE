@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}New requisition{% endblock %}
+{% block content %}
+<h1>New requisition</h1>
+<div class="card" style="max-width:640px">
+  <p class="muted">Record a short voice note describing the role (about two minutes), then upload it here.
+  The platform will write the transcript, a job description and a rubric for you to check and approve.</p>
+  {% if error %}<div class="flash bad">{{ error }}</div>{% endif %}
+  <form method="post" action="/requisitions" enctype="multipart/form-data">
+    <label for="title">Working title</label>
+    <input id="title" name="title" type="text" value="{{ title or '' }}" placeholder="e.g. Cloud Support Engineer" required>
+    <label for="audio">Voice note (.wav .mp3 .m4a .webm .ogg, up to 25 MB)</label>
+    <input id="audio" name="audio" type="file" accept=".wav,.mp3,.m4a,.webm,.ogg" required>
+    <p><button type="submit">Upload voice note</button> <a class="btn secondary" href="/requisitions">Cancel</a></p>
+  </form>
+</div>
+{% endblock %}

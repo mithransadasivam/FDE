@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Decision log{% endblock %}
+{% block content %}
+<h1>Decision log</h1>
+<p class="muted">Every step, approval and reason, newest first.</p>
+<table>
+  <tr><th>When (UTC)</th><th>Who</th><th>What</th><th>About</th><th>Reason / comment</th><th>Evidence</th></tr>
+  {% for e in entries %}
+  <tr>
+    <td class="small">{{ e.at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+    <td>{{ e.actor }}</td><td>{{ e.action }}</td><td>{{ e.subject }}</td><td>{{ e.reason }}</td>
+    <td class="small">{% if e.evidence %}<details><summary>show</summary><pre style="white-space:pre-wrap">{{ e.evidence | tojson(indent=1) }}</pre></details>{% endif %}</td>
+  </tr>
+  {% else %}<tr><td colspan="6" class="muted">Nothing has been logged yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

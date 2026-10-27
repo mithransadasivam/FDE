@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Sign in - Hiring Intelligence{% endblock %}
+{% block content %}
+<div class="center card">
+  <h1>Staff sign-in</h1>
+  <p class="muted small">For hiring managers and recruiters. Candidates do not need an account: use the <a href="/jobs">open jobs</a> page.</p>
+  {% if error %}<div class="flash bad">{{ error }}</div>{% endif %}
+  <form method="post" action="/login">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" value="{{ email or '' }}" required autofocus>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required>
+    <p><button type="submit">Sign in</button></p>
+  </form>
+</div>
+{% endblock %}
