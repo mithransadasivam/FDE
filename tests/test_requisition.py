@@ -118,3 +118,56 @@ def test_recruiter_cannot_generate(hm, db):
     with TestClient(app, follow_redirects=False) as rc:
         rc.post("/login", data={"email": "recruiter@example.com", "password": DEMO_PASSWORD})
         assert rc.post("/requisitions/1/generate").status_code == 403
+
+
+# ---- Prompt 8: biased-wording check -------------------------------------------------------------------
+from app.agents.wording import check_requisition, check_wording  # noqa: E402
+
+
+def phrases(text):
+    return [f.phrase.lower() for f in check_wording(text)]
+
+
+def test_cloud_support_note_is_flagged_for_young_and_native_speaker():
+    flags = check_wording(NOTES["cloud_support_engineer"])
+    assert [f.phrase.lower() for f in flags] == ["young and energetic", "native english speaker"]
+    assert all(f.reason and f.suggestion for f in flags)
+
+
+def test_data_analyst_note_flags_rockstar_and_he_will():
+    assert phrases(NOTES["data_analyst"]) == ["he will", "rockstar"]
+
+
+def test_platform_note_has_no_flags_and_neutral_text_gives_none():
+    assert check_wording(NOTES["platform_engineer"]) == []
+    assert check_wording("Strong Linux skills and clear writing. They will join the on-call rota.") == []
+
+
+def test_each_phrase_once_longest_first():
+    flags = check_wording("We want someone young and energetic. Young and energetic people thrive here.")
+    assert [f.phrase.lower() for f in flags] == ["young and energetic"]  # not 'young' and 'energetic' separately
+    assert len(check_wording("A ninja. Another ninja.")) == 1
+
+
+@pytest.mark.parametrize("text,expected", [
+    ("a rock star", "rock star"), ("our guru", "guru"), ("a recent graduate", "recent graduate"),
+    ("a digital native", "digital native"), ("the manpower plan", "manpower"), ("she will lead", "she will"),
+])
+def test_other_rules(text, expected):
+    assert phrases(text) == [expected]
+
+
+def test_generated_job_text_is_clean_so_only_voice_note_flags_remain():
+    for note in NOTES.values():
+        draft = generate_job(note)
+        flags = check_requisition(note, draft.job.as_text())
+        assert all(f.where == "voice note" for f in flags)
+
+
+def test_flags_are_stored_and_shown_on_the_requisition_page(hm, db):
+    make_req(hm)
+    assert [f["phrase"].lower() for f in db.get(Requisition, 1).wording_flags] == ["young and energetic", "native english speaker"]
+    hm.post("/requisitions/1/generate")
+    html = hm.get("/requisitions/1").text
+    assert "young and energetic" in html and "native English speaker" in html and "fluent written and spoken English" in html
+    assert "2 flags" in html

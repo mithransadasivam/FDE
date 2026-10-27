@@ -17,6 +17,22 @@
   {% endif %}
 </div>
 
+{% if req.wording_flags is not none and req.transcript %}
+<div class="card">
+  <h2 style="margin-top:0">Wording check
+    <span class="badge {{ 'bad' if req.wording_flags else 'good' }}">{{ req.wording_flags | length }} flag{{ '' if req.wording_flags | length == 1 else 's' }}</span></h2>
+  {% if req.wording_flags %}
+  <p class="muted small">These phrases can put good people off or be discriminatory. Say it differently in the job text before you approve.</p>
+  <table>
+    <tr><th>Phrase</th><th>Found in</th><th>Why it matters</th><th>Neutral suggestion</th></tr>
+    {% for f in req.wording_flags %}
+    <tr><td><strong>&ldquo;{{ f.phrase }}&rdquo;</strong></td><td>{{ f.where }}</td><td>{{ f.reason }}</td><td>{{ f.suggestion }}</td></tr>
+    {% endfor %}
+  </table>
+  {% else %}<p class="muted">No biased wording found.</p>{% endif %}
+</div>
+{% endif %}
+
 {% if user.role == 'hiring_manager' and req.status in ('TRANSCRIBED', 'GENERATED') %}
 <form method="post" action="/requisitions/{{ req.id }}/generate" style="margin-bottom:1rem">
   <button type="submit">{{ 'Generate again' if req.job else 'Generate job description and rubric' }}</button>

@@ -89,11 +89,14 @@ def generate(request: Request, req_id: int, user: User = Depends(HM), db: Sessio
     except ModelError as e:
         flash(request, f"Could not generate the job description: {e}", "bad")
         return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
+    from app.agents.wording import check_requisition
+
     req.job = draft.job.model_dump()
     req.rubric = draft.rubric.model_dump()
+    req.wording_flags = [f.model_dump() for f in check_requisition(req.transcript, draft.job.as_text())]
     req.status = "GENERATED"
     db.add(DecisionLog(actor=user.email, action="draft generated", subject=f"requisition:{req.id}",
-                       reason=f"{len(draft.rubric.items)} skills, weights add to {draft.rubric.total}"))
+                       reason=f"{len(draft.rubric.items)} skills, weights add to {draft.rubric.total}, {len(req.wording_flags)} wording flag(s)"))
     db.commit()
     flash(request, "Job description and rubric generated. Please check them, then approve.")
     return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
