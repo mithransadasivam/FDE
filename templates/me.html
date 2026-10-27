@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Your application{% endblock %}
+{% block content %}
+<div class="card" style="max-width:680px">
+  <h1>Your application</h1>
+  <p>For: <strong>{{ cand.requisition.job.title if cand.requisition.job else cand.requisition.title }}</strong> &middot; applied {{ cand.applied_at.strftime('%Y-%m-%d') }}</p>
+  <p>Status: <span class="badge warn">{{ cand.stage }}</span></p>
+  <p>{{ status_text }}</p>
+  <h3>Your rights</h3>
+  <ul>
+    <li>AI helps read your CV; people make every decision.</li>
+    <li>You can ask for an interview with a person instead of an AI interviewer.</li>
+    <li>Your CV is kept for {{ retention_days }} days and then deleted.</li>
+  </ul>
+</div>
+{% endblock %}

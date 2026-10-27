@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Open jobs{% endblock %}
+{% block content %}
+<h1>Open jobs</h1>
+<p class="muted">Apply with your CV. You do not need an account.</p>
+{% for r in reqs %}
+<div class="card">
+  <h2 style="margin-top:0"><a href="/jobs/{{ r.id }}">{{ r.job.title }}</a></h2>
+  <p>{{ r.job.summary }}</p>
+  <a class="btn" href="/jobs/{{ r.id }}">See the job and apply</a>
+</div>
+{% else %}<div class="card muted">There are no open jobs at the moment.</div>{% endfor %}
+{% endblock %}

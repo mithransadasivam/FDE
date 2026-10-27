@@ -28,3 +28,8 @@ def transcribe_requisition(req_id: int) -> None:
         db.commit()
     finally:
         db.close()
+
+
+def process_candidate(cand_id: int) -> None:
+    """Reads the CV into a profile. Written in Prompt 11; until then the candidate simply stays APPLIED."""
+    return None

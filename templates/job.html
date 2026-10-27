@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ req.job.title }}{% endblock %}
+{% block content %}
+<h1>{{ req.job.title }}</h1>
+{% if error %}<div class="flash bad">{{ error }}</div>{% endif %}
+<div class="row">
+  <div>
+    <div class="card">
+      <p>{{ req.job.summary }}</p>
+      <h3>What you will do</h3><ul>{% for x in req.job.responsibilities %}<li>{{ x }}</li>{% endfor %}</ul>
+      <h3>What we need</h3><ul>{% for x in req.job.requirements %}<li>{{ x }}</li>{% endfor %}</ul>
+      {% if req.job.nice_to_have %}<h3>Nice to have</h3><ul>{% for x in req.job.nice_to_have %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    <div class="card">
+      <h2 style="margin-top:0">What we look for</h2>
+      <p class="muted small">We compare your CV with these skills. Essential skills are marked.</p>
+      <ul>{% for i in req.rubric['items'] %}<li>{{ i.skill }} {% if i.must_have %}<span class="badge good">Essential</span>{% endif %}</li>{% endfor %}</ul>
+      {% if req.rubric['min_years'] %}<p>Experience: at least {{ '%g' | format(req.rubric['min_years']) }} years.</p>{% endif %}
+    </div>
+  </div>
+  <div>
+    <div class="card" id="ai-notice" style="border-color:#1f4fd8">
+      <h2 style="margin-top:0">How we use AI in this process</h2>
+      <ul>
+        <li><strong>AI reads your CV</strong> and compares your skills with the skills for this job.</li>
+        <li>Your <strong>name, contact details, date of birth and address are hidden</strong> while AI compares skills.</li>
+        <li>If you are shortlisted you may be offered a <strong>first interview with an AI interviewer</strong>. You can
+          <strong>ask for an interview with a person instead</strong>, at any time.</li>
+        <li><strong>People make every decision.</strong> AI never shortlists, rejects or contacts you on its own.</li>
+        <li>We keep your CV for <strong>{{ retention_days }} days</strong> and then delete it.</li>
+        <li>AI is never used to judge your voice, emotions, accent or appearance.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2 style="margin-top:0">Apply</h2>
+      <form method="post" action="/jobs/{{ req.id }}/apply" enctype="multipart/form-data">
+        <label for="cv">Your CV (.pdf .docx .png .jpg .jpeg, up to 5 MB)</label>
+        <input id="cv" name="cv" type="file" accept=".pdf,.docx,.png,.jpg,.jpeg" required>
+        <p><input id="consent" name="consent" type="checkbox" value="yes" required>
+           <label class="inline" for="consent">I have read how AI is used and I agree to my CV being read this way.</label></p>
+        <button type="submit">Apply</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
