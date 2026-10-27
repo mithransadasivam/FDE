@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     vision_model: str = "openrouter/google/gemini-2.5-flash-lite"
     openrouter_api_key: str = ""
     whisper_model: str = "base.en"
+    tesseract_cmd: str = ""  # full path to tesseract.exe if it is not on PATH
     review_threshold: float = 0.8  # fields with lower confidence go to the review queue
     fake_transcripts_dir: Path = Path("starter_kit/voice_notes")
 

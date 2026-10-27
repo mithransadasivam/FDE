@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Candidates{% endblock %}
+{% block content %}
+<h1>Candidates {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
+{% if user.role == 'recruiter' %}
+<p>
+  {% if is_blind %}<a class="btn secondary" href="/candidates?blind=0{{ '&job=%d' % job if job }}">Show identity</a>
+  {% else %}<a class="btn secondary" href="/candidates?blind=1{{ '&job=%d' % job if job }}">Switch on blind view</a>{% endif %}
+</p>
+{% else %}
+<p class="muted">As a hiring manager you always see the blind view: names, contact details, dates of birth and addresses are hidden.</p>
+{% endif %}
+<table>
+  <tr><th>#</th><th>{{ 'Candidate' if is_blind else 'Name' }}</th><th>Current title</th><th>Years</th><th>Skills</th><th>Format</th><th>Stage</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.c.id }}</td>
+    <td><a href="/candidates/{{ r.c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}">{{ r.name }}</a></td>
+    <td>{{ r.title or '' }}</td><td>{{ r.years if r.years is not none else '' }}</td>
+    <td class="small">{{ r.skills[:6] | join(', ') }}{{ ' ...' if r.skills | length > 6 }}</td>
+    <td>{{ r.c.cv_format }}</td>
+    <td><span class="badge {{ 'warn' if r.c.stage == 'REVIEW' else '' }}">{{ r.c.stage }}</span>
+      {% if dups.get(r.c.id) %}<br><span class="badge bad" title="Same email or phone as another application">duplicate of {% for t in dups[r.c.id] %}#{{ t }} {% endfor %}</span>{% endif %}</td>
+  </tr>
+  {% else %}<tr><td colspan="7" class="muted">No candidates yet.</td></tr>{% endfor %}
+</table>
+{% endblock %}

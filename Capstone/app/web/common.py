@@ -20,7 +20,8 @@ ROLE_LABELS = {"hiring_manager": "Hiring manager", "recruiter": "Recruiter"}
 
 def flash(request: Request, message: str, kind: str = "good") -> None:
     """Kept in the signed session cookie so it survives the redirect after a form post."""
-    request.session.setdefault("_flash", []).append({"text": message, "kind": kind})
+    # Reassign (not append in place): the session only notices changes to its top-level keys.
+    request.session["_flash"] = [*request.session.get("_flash", []), {"text": message, "kind": kind}]
 
 
 def render(request: Request, name: str, user=None, status_code: int = 200, **context):

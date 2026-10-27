@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Application received{% endblock %}
+{% block content %}
+<div class="card" style="max-width:680px">
+  <h1>Thank you, your application is in</h1>
+  <p>Keep this private link. It is the only way to see the status of your application, and we do not ask you to create an account.</p>
+  <p><a href="/me/{{ cand.access_token }}"><strong>/me/{{ cand.access_token }}</strong></a></p>
+  <p class="muted small">Anyone with this link can see your application status, so please do not share it.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Review queue{% endblock %}
+{% block content %}
+<h1>Review queue <span class="badge warn">{{ total }} field{{ '' if total == 1 else 's' }}</span></h1>
+<p class="muted">The reader was not sure about these fields (confidence below 0.8). Check each one against the original CV, correct it if needed and save.
+  Lists are separated by semicolons. When a candidate has nothing left to check, press Confirm to move them on.</p>
+{% for c in waiting %}
+{% set its = items.get(c.id, []) %}
+<div class="card">
+  <h2 style="margin-top:0">Candidate #{{ c.id }} <span class="muted small">({{ c.cv_format }}, {{ c.cv_name }}) &middot; <a href="/candidates/{{ c.id }}/cv">open the CV</a> &middot; <a href="/candidates/{{ c.id }}">candidate page</a></span></h2>
+  {% if c.error %}<div class="flash bad">{{ c.error }}</div>{% endif %}
+  {% if its %}
+  <form method="post" action="/review/{{ c.id }}/save">
+    <table>
+      <tr><th>Field</th><th>Confidence</th><th>Value (editable)</th></tr>
+      {% for it in its %}
+      <tr><td>{{ labels[it.field] }}</td><td><span class="badge warn">{{ '%.2f' | format(it.confidence) }}</span></td>
+        <td><input type="text" name="value_{{ it.field }}" value="{{ it.value }}" style="width:100%"></td></tr>
+      {% endfor %}
+    </table>
+    <p><button type="submit">Save corrections</button> <span class="muted small">Saving marks these fields as checked by a person.</span></p>
+  </form>
+  {% else %}
+  <p>Nothing left to check.</p>
+  <form method="post" action="/review/{{ c.id }}/confirm"><button type="submit">Confirm (move to EXTRACTED)</button></form>
+  {% endif %}
+</div>
+{% else %}
+<div class="card muted">Nothing is waiting for review.</div>
+{% endfor %}
+{% endblock %}
