@@ -127,7 +127,7 @@ em { color: var(--ink-2); }
 .kbd { font-family: var(--mono); font-size: .78rem; border: 1px solid var(--line-2); border-bottom-width: 2px; padding: 0 .35rem; border-radius: 5px; background: var(--surface); }
 
 /* ---------- small screens ---------- */
-.menu-toggle { display: none; }
+.menu-toggle, .menu-scrim { display: none; }
 @media (max-width: 960px) {
   .app { grid-template-columns: 1fr; } .side { position: fixed; inset: 0 auto 0 0; width: 280px; z-index: 30; transform: translateX(-102%); transition: transform .2s ease; box-shadow: var(--shadow-lg); }
   .menu-toggle:checked ~ .side { transform: none; } .menu-scrim { display: none; } .menu-toggle:checked ~ .menu-scrim { display: block; position: fixed; inset: 0; background: rgba(2,6,23,.5); z-index: 20; }

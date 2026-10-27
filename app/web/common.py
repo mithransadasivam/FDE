@@ -10,13 +10,29 @@ templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 # One place for the menus. Hiding a link is not security: each route also has its own role check.
 MENUS = {
     "hiring_manager": [("Requisitions", "/requisitions"), ("Candidates (blind)", "/candidates"),
-                       ("Screening", "/screening"), ("Interviews", "/interviews"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log")],
+                       ("Screening", "/screening"), ("Interviews", "/interviews"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Demo mode", "/demo")],
     "recruiter": [("Requisitions", "/requisitions"), ("Candidates", "/candidates"),
                   ("Review queue", "/review"), ("Screening", "/screening"), ("Interviews", "/interviews"),
-                  ("Copilot", "/copilot"), ("Outbox", "/outbox"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log")],
+                  ("Copilot", "/copilot"), ("Outbox", "/outbox"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Demo mode", "/demo")],
 }
 
 ROLE_LABELS = {"hiring_manager": "Hiring manager", "recruiter": "Recruiter"}
+
+# How the sidebar groups the menu, and the icon for each link (the icons are in templates/base.html)
+NAV_GROUPS = [("Hiring", ["/requisitions", "/candidates", "/review", "/screening"]), ("Interviews", ["/interviews", "/copilot"]),
+              ("Assist", ["/assistant", "/outbox"]), ("Control", ["/pipeline", "/compliance", "/trust", "/log", "/demo"])]
+ICONS = {"/requisitions": "i-doc", "/candidates": "i-users", "/review": "i-check", "/screening": "i-target", "/interviews": "i-mic", "/copilot": "i-headset",
+         "/assistant": "i-chat", "/outbox": "i-mail", "/pipeline": "i-board", "/compliance": "i-shield", "/trust": "i-chart", "/log": "i-log", "/demo": "i-play"}
+
+
+def grouped_menu(menu: list[tuple[str, str]]) -> list[tuple[str, list[tuple[str, str, str]]]]:
+    by_href = dict((href, label) for label, href in menu)
+    out = []
+    for group, hrefs in NAV_GROUPS:
+        items = [(by_href[h], h, ICONS.get(h, "i-doc")) for h in hrefs if h in by_href]
+        if items:
+            out.append((group, items))
+    return out
 
 
 def flash(request: Request, message: str, kind: str = "good") -> None:
@@ -30,6 +46,7 @@ def render(request: Request, name: str, user=None, status_code: int = 200, **con
     context.update(
         user=user,
         menu=MENUS.get(user.role, []) if user else [],
+        nav_groups=grouped_menu(MENUS.get(user.role, [])) if user else [],
         role_label=ROLE_LABELS.get(user.role, "") if user else "",
         messages=messages,
         path=request.url.path,

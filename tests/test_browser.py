@@ -70,7 +70,8 @@ def test_interview_page_notice_diagram_recorded_answers_and_scorecard(live, brow
         seen_follow_up = seen_follow_up or "(follow-up)" in page.get_by_test_id("progress").inner_text()
         if page.get_by_test_id("diagram").is_visible():
             seen_diagram = True
-            assert page.get_by_test_id("diagram").evaluate("el => el.complete && el.naturalWidth > 0")  # the image really loaded
+            # the image really loaded (wait for it: the browser fetches it just after the question appears)
+            page.wait_for_function("() => { const i = document.querySelector('[data-testid=diagram]'); return i.complete && i.naturalWidth > 0; }", timeout=8000)
         options = page.locator("[data-testid=fixture-select] option:not([hidden])")
         if options.count() == 0 or "follow-up" in page.get_by_test_id("progress").inner_text():
             page.get_by_test_id("answer-text").fill("I would also check the logs and what changed recently.")

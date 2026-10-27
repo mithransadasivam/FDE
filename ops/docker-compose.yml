@@ -11,6 +11,7 @@ x-app: &app
   image: hiring-intelligence:latest
   environment: &env
     FAKE_MODELS: "${FAKE_MODELS:-1}"
+    DEMO_MODE: "${DEMO_MODE:-1}"
     OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
     SECRET_KEY: "${SECRET_KEY:-change-this-long-random-text-before-real-use}"
     DATABASE_URL: sqlite:////data/hiring.db

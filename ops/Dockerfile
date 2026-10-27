@@ -13,6 +13,7 @@ COPY app ./app
 COPY mcp_server ./mcp_server
 COPY scripts ./scripts
 COPY templates ./templates
+COPY static ./static
 COPY starter_kit ./starter_kit
 COPY ops/entrypoint.sh ./ops/entrypoint.sh
 RUN chmod +x ./ops/entrypoint.sh && mkdir -p /data

@@ -6,6 +6,21 @@ affects a candidate is made and logged by a person. The system is measured, atta
 
 **Everything in it is fictional** (people, CVs, voices, companies). It runs with **fake models** by default and switches to real models with two settings (see below).
 
+## What it looks like
+
+| | |
+|---|---|
+| ![Sign in](docs/screenshots/01-sign-in.png) | ![Overview](docs/screenshots/02-overview.png) |
+| **Sign in** (demo accounts shown in demo mode) | **Overview**: what is waiting for you, the pipeline, recent activity |
+| ![Screening](docs/screenshots/04-screening-shortlist.png) | ![Scorecard](docs/screenshots/07-scorecard.png) |
+| **Screening**: every score has its exact CV quote | **Scorecard**: every quote, links to the moment in the recording, the logged decision |
+| ![Copilot](docs/screenshots/13-copilot-forbidden-question.png) | ![Trust and cost](docs/screenshots/11-trust-and-cost.png) |
+| **Interview copilot** warning about a forbidden question | **Trust & cost**: the quality bar, with evidence |
+| ![Apply](docs/screenshots/15-apply-with-ai-notice.png) | ![Mobile](docs/screenshots/18-mobile-job-page.png) |
+| **Candidate's page**: the AI notice and consent | Works on a phone |
+
+More in `docs/screenshots/`. Retake them with `python -m scripts.take_screenshots` (the app must be running and seeded).
+
 ## Run it
 
 ```

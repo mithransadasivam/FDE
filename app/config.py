@@ -32,6 +32,7 @@ class Settings(BaseSettings):
     guardrails_enabled: bool = True  # switched off only by the red-team script, to measure the "before" state
     phoenix_endpoint: str = ""  # e.g. http://phoenix:6006/v1/traces; traces are always kept in the database too
     kit_dir: Path = Path("starter_kit")
+    demo_mode: bool = False  # shows the demo accounts on the sign-in page (fictional demo data only)
 
 
 @lru_cache

@@ -1,37 +1,48 @@
 {% extends "base.html" %}
 {% block title %}Screening {{ req.id | reqid }}{% endblock %}
-{% block content %}
-<h1>Screening &middot; {{ req.id | reqid }} {{ req.title }}</h1>
-{% if user.role == 'recruiter' %}
-<form method="post" action="/screening/{{ req.id }}/run" style="margin-bottom:1rem">
-  <button type="submit">Score all candidates and suggest a shortlist</button>
-  <span class="muted small">{{ unscored | length }} candidate(s) not scored yet (REVIEW ones wait for a person to check their fields).</span>
-</form>
-{% endif %}
-{% if rows %}
-<form method="post" action="/screening/{{ req.id }}/approve">
-<table>
-  <tr>{% if user.role == 'recruiter' %}<th>Pick</th>{% endif %}<th>Rank</th><th>Candidate</th><th>Weighted total</th>
-      {% for s in skills %}<th title="{{ s }}">{{ s[:14] }}</th>{% endfor %}<th>Strengths and gaps</th><th>Status</th></tr>
-  {% for row in rows %}
+{% macro score_row(row) %}
   {% set e = row.e %}
   <tr>
-    {% if user.role == 'recruiter' %}<td>{% if row.cand.stage == 'SCREENED' %}<input type="checkbox" name="candidate_id" value="{{ e.candidate_id }}" {{ 'checked' if e.status == 'SUGGESTED' }}>{% endif %}</td>{% endif %}
+    {% if user.role == 'recruiter' %}<td>{% if row.cand.stage == 'SCREENED' %}<input type="checkbox" name="candidate_id" value="{{ e.candidate_id }}" {{ 'checked' if e.status == 'SUGGESTED' }} aria-label="Shortlist candidate {{ e.candidate_id }}">{% endif %}</td>{% endif %}
     <td>{{ e.rank }}</td>
     <td><a href="/candidates/{{ e.candidate_id }}{{ '?blind=1' if user.role == 'recruiter' }}">Candidate #{{ e.candidate_id }}</a><br><span class="badge">{{ row.cand.stage }}</span></td>
-    <td><strong>{{ '%.1f' | format(e.weighted_total) }}</strong> / 100</td>
-    {% for sc in row.scores %}<td title="&ldquo;{{ sc.quote }}&rdquo;"><span class="badge {{ 'good' if sc.score == 3 else ('warn' if sc.score >= 1 else 'bad') }}">{{ sc.score }}</span></td>{% endfor %}
-    <td class="small">
-      {% for s in e.strengths %}<div>+ {{ s }}</div>{% endfor %}
-      {% for g in e.gaps %}<div class="muted">- {{ g }}</div>{% endfor %}
+    <td><strong>{{ '%.1f' | format(e.weighted_total) }}</strong> <span class="muted small">/ 100</span></td>
+    {% for sc in row.scores %}<td title="&ldquo;{{ sc.quote }}&rdquo;" style="text-align:center"><span class="badge {{ 'good' if sc.score == 3 else ('warn' if sc.score >= 1 else 'bad') }}">{{ sc.score }}</span></td>{% endfor %}
+    <td class="small" style="min-width:16rem;max-width:26rem">
+      <details><summary>Why</summary>
+        {% for s in e.strengths %}<div>+ {{ s }}</div>{% endfor %}
+        {% for g in e.gaps %}<div class="muted">- {{ g }}</div>{% endfor %}
+      </details>
     </td>
-    <td><span class="badge {{ 'good' if e.status in ('SUGGESTED','APPROVED') else '' }}">{{ e.status }}</span></td>
+    <td><span class="badge {{ 'good' if e.status in ('SUGGESTED','APPROVED') else ('bad' if e.status == 'HELD' else '') }}">{{ e.status }}</span></td>
   </tr>
-  {% endfor %}
+{% endmacro %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Screening</div><h1>{{ req.id | reqid }} &middot; {{ req.title }}</h1>
+  <p class="muted">Each candidate is scored 0-3 on every rubric skill with the exact CV sentence behind it. The AI suggests a shortlist; a recruiter approves it.</p></div>
+  {% if user.role == 'recruiter' %}
+  <form method="post" action="/screening/{{ req.id }}/run"><button type="submit">Score all candidates and suggest a shortlist</button>
+    <div class="muted small" style="margin-top:.3rem">{{ unscored | length }} not scored yet (REVIEW ones wait for a person to check their fields)</div></form>
+  {% endif %}</div>
+
+{% if rows %}
+<form method="post" action="/screening/{{ req.id }}/approve">
+<div class="table-wrap">
+<table>
+  <tr>{% if user.role == 'recruiter' %}<th>Pick</th>{% endif %}<th>Rank</th><th>Candidate</th><th>Total</th>
+      {% for s in skills %}<th title="{{ s }}" style="text-align:center">{{ s[:12] }}</th>{% endfor %}<th>Strengths and gaps</th><th>Status</th></tr>
+  {% for row in rows[:12] %}{{ score_row(row) }}{% endfor %}
+  {% if rows | length > 12 %}
+  <tr><td colspan="{{ skills | length + (7 if user.role == 'recruiter' else 6) }}" style="background:var(--surface-2)">
+    <details><summary>Show the other {{ rows | length - 12 }} candidates</summary>
+      <table style="margin-top:.6rem">{% for row in rows[12:] %}{{ score_row(row) }}{% endfor %}</table>
+    </details></td></tr>
+  {% endif %}
 </table>
+</div>
 {% if user.role == 'recruiter' %}
 <div class="card" style="margin-top:1rem">
-  <h2 style="margin-top:0">Your decision</h2>
+  <h2>Your decision</h2>
   <p class="muted small">Tick who goes on the shortlist. Only a person can do this. Your reason is written to the decision log with the scores you saw.</p>
   <label for="reason">Reason</label><input id="reason" name="reason" type="text" placeholder="e.g. Best evidence for the three must-have skills">
   <p><button type="submit">Approve shortlist</button></p>
@@ -39,7 +50,7 @@
 {% endif %}
 </form>
 {% else %}
-<div class="card muted">Nothing scored yet.</div>
+<div class="card"><div class="empty"><svg viewBox="0 0 24 24"><use href="#i-target"/></svg><div>Nothing scored yet.</div><div class="small">Press &ldquo;Score all candidates&rdquo; once the rubric is approved.</div></div></div>
 {% endif %}
 <p class="muted small">Hover over a score to see the sentence from the CV behind it. Open a candidate to see every quote.</p>
 {% endblock %}
