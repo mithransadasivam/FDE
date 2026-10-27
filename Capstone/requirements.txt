@@ -17,3 +17,16 @@ pytest
 httpx
 rapidocr
 onnxruntime
+numpy
+langgraph
+langgraph-checkpoint-sqlite
+mcp<2
+presidio-analyzer
+presidio-anonymizer
+spacy
+opentelemetry-sdk
+opentelemetry-exporter-otlp-proto-http
+reportlab
+playwright
+pytest-playwright
+av>=14,<17

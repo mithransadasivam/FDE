@@ -73,3 +73,6 @@ class DecisionLog(Base):
     subject: Mapped[str] = mapped_column(String(200))
     reason: Mapped[str] = mapped_column(Text, default="")
     evidence: Mapped[dict | list | None] = mapped_column(JSON, nullable=True)
+
+
+from app import models_ext  # noqa: E402,F401  (registers the Day 2-4 tables)

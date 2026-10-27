@@ -1,0 +1,72 @@
+{
+ "mode": "SIMULATED recognition errors (no speech model run)",
+ "variants": [
+  {
+   "variant": "V1",
+   "label": "US male, normal pace",
+   "mean_wer": 0.0,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V2",
+   "label": "US female, normal pace",
+   "mean_wer": 0.0,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V3",
+   "label": "US male, slow and low",
+   "mean_wer": 0.0306,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V4",
+   "label": "US female, fast and high",
+   "mean_wer": 0.0824,
+   "mean_score": 2.4,
+   "diff_vs_V1": -0.6,
+   "scores": [
+    2,
+    2,
+    2,
+    3,
+    3
+   ]
+  }
+ ],
+ "findings": [
+  {
+   "variant": "V4",
+   "diff_vs_V1": -0.6,
+   "mean_wer": 0.0824,
+   "finding": "Scores for US female, fast and high differ from US male, normal pace by -0.6 points (more than half a point)."
+  }
+ ],
+ "reported": true,
+ "clips": 20,
+ "limitation": "voice variants made with a text-to-speech engine, not real accents: a real accent test needs real speakers"
+}

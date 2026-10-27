@@ -1,0 +1,2634 @@
+[
+ {
+  "id": "T-01",
+  "skill": "Linux troubleshooting",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "A Linux server is suddenly very slow. Walk me through how you would find out why.",
+  "key_points": [
+   "check load and CPU with top or uptime",
+   "check memory and swap pressure",
+   "check disk space and disk io",
+   "look at logs and recent changes"
+  ],
+  "key_point_detail": [
+   {
+    "text": "check load and CPU with top or uptime",
+    "say": "I would start with top and uptime to see the load and which process uses the CPU.",
+    "keywords": [
+     "top",
+     "uptime",
+     "load",
+     "cpu"
+    ]
+   },
+   {
+    "text": "check memory and swap pressure",
+    "say": "Then I check memory and swap, because heavy swapping makes everything slow.",
+    "keywords": [
+     "memory",
+     "swap",
+     "free"
+    ]
+   },
+   {
+    "text": "check disk space and disk io",
+    "say": "I look at disk space and disk io with df and iostat.",
+    "keywords": [
+     "disk",
+     "df",
+     "iostat",
+     "io"
+    ]
+   },
+   {
+    "text": "look at logs and recent changes",
+    "say": "Finally I read the logs and ask what changed recently, such as a deploy or update.",
+    "keywords": [
+     "logs",
+     "journalctl",
+     "changed",
+     "recent"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "Which command shows what is using the disk?",
+   "How do you tell memory pressure from a CPU problem?"
+  ],
+  "hint": "Think about the four resources: CPU, memory, disk and the network."
+ },
+ {
+  "id": "T-02",
+  "skill": "Linux troubleshooting",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "A service will not start after a reboot. What do you check?",
+  "key_points": [
+   "check the service status and its error",
+   "read the journal logs",
+   "check config syntax and permissions",
+   "check dependencies and ports"
+  ],
+  "key_point_detail": [
+   {
+    "text": "check the service status and its error",
+    "say": "I run systemctl status to see the exact error.",
+    "keywords": [
+     "systemctl",
+     "status",
+     "error"
+    ]
+   },
+   {
+    "text": "read the journal logs",
+    "say": "I read the journal with journalctl for that unit.",
+    "keywords": [
+     "journalctl",
+     "journal",
+     "logs"
+    ]
+   },
+   {
+    "text": "check config syntax and permissions",
+    "say": "I check the config file syntax, file permissions and paths.",
+    "keywords": [
+     "config",
+     "permissions",
+     "syntax"
+    ]
+   },
+   {
+    "text": "check dependencies and ports",
+    "say": "I check dependent services and whether the port is already in use.",
+    "keywords": [
+     "dependencies",
+     "port",
+     "dependent"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How would you see which process holds a port?"
+  ],
+  "hint": "Start with what the service manager says."
+ },
+ {
+  "id": "T-03",
+  "skill": "Resilience",
+  "type": "technical",
+  "core": true,
+  "diagram": "D-03",
+  "question": "The database here has a single primary. Walk me through what happens to orders if it goes down, and how you would change this design.",
+  "key_points": [
+   "orders fail or queue while the primary is down",
+   "add a replica with automatic failover",
+   "health checks to detect the failure",
+   "mention data loss risk (replication lag)"
+  ],
+  "key_point_detail": [
+   {
+    "text": "orders fail or queue while the primary is down",
+    "say": "While the primary is down, orders fail or have to be queued.",
+    "keywords": [
+     "fail",
+     "queue",
+     "down"
+    ]
+   },
+   {
+    "text": "add a replica with automatic failover",
+    "say": "I would add a replica with automatic failover.",
+    "keywords": [
+     "replica",
+     "failover"
+    ]
+   },
+   {
+    "text": "health checks to detect the failure",
+    "say": "Health checks would detect the failure quickly.",
+    "keywords": [
+     "health",
+     "checks",
+     "detect"
+    ]
+   },
+   {
+    "text": "mention data loss risk (replication lag)",
+    "say": "There is a data loss risk from replication lag during failover.",
+    "keywords": [
+     "data loss",
+     "lag",
+     "replication"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How would you know the database is down?",
+   "What could you lose during a failover?"
+  ],
+  "hint": "Think about what the app nodes need on every order."
+ },
+ {
+  "id": "T-04",
+  "skill": "Cloud networking",
+  "type": "technical",
+  "core": true,
+  "diagram": "D-05",
+  "question": "A VM in a private subnet cannot reach the internet. How do you find the cause?",
+  "key_points": [
+   "check the route table",
+   "check outbound security group and network ACL rules",
+   "a private subnet needs a NAT gateway",
+   "test from the VM with curl, traceroute and DNS lookup"
+  ],
+  "key_point_detail": [
+   {
+    "text": "check the route table",
+    "say": "First I check the route table of the subnet.",
+    "keywords": [
+     "route",
+     "table"
+    ]
+   },
+   {
+    "text": "check outbound security group and network ACL rules",
+    "say": "Then outbound security group and network ACL rules.",
+    "keywords": [
+     "security",
+     "group",
+     "acl",
+     "outbound"
+    ]
+   },
+   {
+    "text": "a private subnet needs a NAT gateway",
+    "say": "A private subnet needs a NAT gateway for outbound internet access.",
+    "keywords": [
+     "nat",
+     "gateway"
+    ]
+   },
+   {
+    "text": "test from the VM with curl, traceroute and DNS lookup",
+    "say": "From the VM I test with curl, traceroute and a DNS lookup.",
+    "keywords": [
+     "curl",
+     "traceroute",
+     "dns"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What is the difference between a security group and a network ACL?"
+  ],
+  "hint": "Follow the packet out of the subnet."
+ },
+ {
+  "id": "T-05",
+  "skill": "Cloud networking",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "Users report that a website name does not resolve for some people. How do you investigate?",
+  "key_points": [
+   "check DNS records and TTL",
+   "query different resolvers with dig or nslookup",
+   "look for recent changes or propagation delay",
+   "check caching at the client and resolver"
+  ],
+  "key_point_detail": [
+   {
+    "text": "check DNS records and TTL",
+    "say": "I check the DNS records and their TTL.",
+    "keywords": [
+     "dns",
+     "records",
+     "ttl"
+    ]
+   },
+   {
+    "text": "query different resolvers with dig or nslookup",
+    "say": "I query different resolvers with dig or nslookup.",
+    "keywords": [
+     "dig",
+     "nslookup",
+     "resolver"
+    ]
+   },
+   {
+    "text": "look for recent changes or propagation delay",
+    "say": "I look for a recent change or propagation delay.",
+    "keywords": [
+     "propagation",
+     "change",
+     "recent"
+    ]
+   },
+   {
+    "text": "check caching at the client and resolver",
+    "say": "I consider caching at the client and the resolver.",
+    "keywords": [
+     "cache",
+     "caching"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What does a TTL of 3600 mean?"
+  ],
+  "hint": "Is it everyone, or only some resolvers?"
+ },
+ {
+  "id": "T-06",
+  "skill": "Incident handling",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "You are first on call and a major outage alert fires. What are your first ten minutes?",
+  "key_points": [
+   "acknowledge the alert and assess the impact",
+   "communicate early to stakeholders and set up a channel",
+   "mitigate first, for example roll back, then find the root cause",
+   "record a timeline and hold a post incident review"
+  ],
+  "key_point_detail": [
+   {
+    "text": "acknowledge the alert and assess the impact",
+    "say": "I acknowledge the alert and assess who is affected and how badly.",
+    "keywords": [
+     "acknowledge",
+     "impact",
+     "assess"
+    ]
+   },
+   {
+    "text": "communicate early to stakeholders and set up a channel",
+    "say": "I communicate early and open an incident channel for stakeholders.",
+    "keywords": [
+     "communicate",
+     "channel",
+     "stakeholders"
+    ]
+   },
+   {
+    "text": "mitigate first, for example roll back, then find the root cause",
+    "say": "I mitigate first, for example by rolling back, and find the root cause afterwards.",
+    "keywords": [
+     "mitigate",
+     "rollback",
+     "roll back",
+     "root cause"
+    ]
+   },
+   {
+    "text": "record a timeline and hold a post incident review",
+    "say": "I keep a timeline and hold a blameless post incident review.",
+    "keywords": [
+     "timeline",
+     "review",
+     "post"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "When would you escalate?"
+  ],
+  "hint": "Fix people's problem before finding the full cause."
+ },
+ {
+  "id": "T-07",
+  "skill": "Incident handling",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "The same alert fires every night at 2am and nobody knows why. What do you do?",
+  "key_points": [
+   "look at what is scheduled or changes at that time",
+   "correlate with metrics and logs",
+   "fix the cause or tune the alert threshold",
+   "document it in a runbook"
+  ],
+  "key_point_detail": [
+   {
+    "text": "look at what is scheduled or changes at that time",
+    "say": "I look at what runs at 2am: cron jobs, backups or batch jobs.",
+    "keywords": [
+     "cron",
+     "scheduled",
+     "backup",
+     "batch"
+    ]
+   },
+   {
+    "text": "correlate with metrics and logs",
+    "say": "I correlate the alert with metrics and logs around that time.",
+    "keywords": [
+     "metrics",
+     "logs",
+     "correlate"
+    ]
+   },
+   {
+    "text": "fix the cause or tune the alert threshold",
+    "say": "Then I fix the cause or tune the alert threshold.",
+    "keywords": [
+     "threshold",
+     "tune",
+     "fix"
+    ]
+   },
+   {
+    "text": "document it in a runbook",
+    "say": "I document the finding in a runbook.",
+    "keywords": [
+     "runbook",
+     "document"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How would you avoid alert fatigue?"
+  ],
+  "hint": "Look for a pattern in time."
+ },
+ {
+  "id": "T-08",
+  "skill": "Scripting (Python or Bash)",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "How would you automate checking disk space on 50 servers?",
+  "key_points": [
+   "loop over the servers with ssh or a tool like ansible",
+   "run df and parse the usage percentage",
+   "alert when above a threshold",
+   "run on a schedule, handle failures and log results"
+  ],
+  "key_point_detail": [
+   {
+    "text": "loop over the servers with ssh or a tool like ansible",
+    "say": "I would loop over the servers with ssh or use ansible.",
+    "keywords": [
+     "ssh",
+     "ansible",
+     "loop"
+    ]
+   },
+   {
+    "text": "run df and parse the usage percentage",
+    "say": "I run df and parse the usage percentage.",
+    "keywords": [
+     "df",
+     "parse",
+     "percentage"
+    ]
+   },
+   {
+    "text": "alert when above a threshold",
+    "say": "The script alerts when usage is above a threshold.",
+    "keywords": [
+     "alert",
+     "threshold"
+    ]
+   },
+   {
+    "text": "run on a schedule, handle failures and log results",
+    "say": "I schedule it with cron, handle unreachable hosts and log the results.",
+    "keywords": [
+     "cron",
+     "schedule",
+     "failures",
+     "log"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How would you handle a server that does not answer?"
+  ],
+  "hint": "Think about running it, reading it and reporting it."
+ },
+ {
+  "id": "T-09",
+  "skill": "Scripting (Python or Bash)",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "You have a 2GB log file and need the ten most common error messages. How?",
+  "key_points": [
+   "stream the file instead of loading it all",
+   "filter lines with grep or a regex",
+   "count with sort and uniq or a dictionary",
+   "take the top ten"
+  ],
+  "key_point_detail": [
+   {
+    "text": "stream the file instead of loading it all",
+    "say": "I stream the file line by line instead of loading it all in memory.",
+    "keywords": [
+     "stream",
+     "line",
+     "memory"
+    ]
+   },
+   {
+    "text": "filter lines with grep or a regex",
+    "say": "I filter the error lines with grep or a regular expression.",
+    "keywords": [
+     "grep",
+     "regex",
+     "filter"
+    ]
+   },
+   {
+    "text": "count with sort and uniq or a dictionary",
+    "say": "I count with sort and uniq or a dictionary.",
+    "keywords": [
+     "sort",
+     "uniq",
+     "dictionary",
+     "count"
+    ]
+   },
+   {
+    "text": "take the top ten",
+    "say": "Then I take the top ten with head or most_common.",
+    "keywords": [
+     "head",
+     "top",
+     "most_common"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Do not load it all at once."
+ },
+ {
+  "id": "T-10",
+  "skill": "Customer communication",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "A customer is angry because their service has been down for an hour. How do you handle the call?",
+  "key_points": [
+   "listen and acknowledge their frustration",
+   "explain what is known in plain language",
+   "give a clear next step and a time for the next update",
+   "follow up afterwards and record the issue"
+  ],
+  "key_point_detail": [
+   {
+    "text": "listen and acknowledge their frustration",
+    "say": "I listen without interrupting and acknowledge their frustration.",
+    "keywords": [
+     "listen",
+     "acknowledge",
+     "frustration"
+    ]
+   },
+   {
+    "text": "explain what is known in plain language",
+    "say": "I explain what we know in plain language, without jargon.",
+    "keywords": [
+     "plain",
+     "jargon",
+     "explain"
+    ]
+   },
+   {
+    "text": "give a clear next step and a time for the next update",
+    "say": "I give a clear next step and a time for the next update.",
+    "keywords": [
+     "next step",
+     "update",
+     "time"
+    ]
+   },
+   {
+    "text": "follow up afterwards and record the issue",
+    "say": "I follow up afterwards and record the issue so it is not repeated.",
+    "keywords": [
+     "follow up",
+     "record"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What would you not say?"
+  ],
+  "hint": "Calm first, then facts, then commitments."
+ },
+ {
+  "id": "T-11",
+  "skill": "Customer communication",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How would you explain a DNS problem to a customer who is not technical?",
+  "key_points": [
+   "use an everyday analogy such as a phone book",
+   "avoid jargon",
+   "say what it means for them and what we are doing",
+   "check that they understood"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use an everyday analogy such as a phone book",
+    "say": "I use an analogy: DNS is like a phone book for websites.",
+    "keywords": [
+     "analogy",
+     "phone book",
+     "directory"
+    ]
+   },
+   {
+    "text": "avoid jargon",
+    "say": "I avoid jargon and acronyms.",
+    "keywords": [
+     "jargon",
+     "acronyms",
+     "avoid"
+    ]
+   },
+   {
+    "text": "say what it means for them and what we are doing",
+    "say": "I say what it means for them and what we are doing about it.",
+    "keywords": [
+     "means",
+     "doing"
+    ]
+   },
+   {
+    "text": "check that they understood",
+    "say": "I check that they understood and ask if they have questions.",
+    "keywords": [
+     "check",
+     "understood",
+     "questions"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Use an analogy."
+ },
+ {
+  "id": "T-12",
+  "skill": "Kubernetes",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-04",
+  "question": "A pod keeps restarting in a Kubernetes cluster. How do you debug it?",
+  "key_points": [
+   "check pod status and events with kubectl describe",
+   "read the container logs, including the previous container",
+   "check resource limits and OOMKilled",
+   "check the liveness and readiness probes and config"
+  ],
+  "key_point_detail": [
+   {
+    "text": "check pod status and events with kubectl describe",
+    "say": "I run kubectl describe to see the status and events.",
+    "keywords": [
+     "describe",
+     "events",
+     "status"
+    ]
+   },
+   {
+    "text": "read the container logs, including the previous container",
+    "say": "I read the container logs, including the previous container with kubectl logs.",
+    "keywords": [
+     "logs",
+     "previous"
+    ]
+   },
+   {
+    "text": "check resource limits and OOMKilled",
+    "say": "I check resource limits and whether it was OOMKilled.",
+    "keywords": [
+     "limits",
+     "oom",
+     "memory"
+    ]
+   },
+   {
+    "text": "check the liveness and readiness probes and config",
+    "say": "I check liveness and readiness probes and the configuration.",
+    "keywords": [
+     "probe",
+     "liveness",
+     "readiness",
+     "config"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What does CrashLoopBackOff mean?"
+  ],
+  "hint": "Look at what Kubernetes says first."
+ },
+ {
+  "id": "T-13",
+  "skill": "Terraform",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How do you make infrastructure changes safely with Terraform?",
+  "key_points": [
+   "use remote state with locking",
+   "review the plan before applying",
+   "use modules and version control with code review",
+   "apply through a pipeline with least privilege credentials"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use remote state with locking",
+    "say": "I use remote state with locking.",
+    "keywords": [
+     "remote",
+     "state",
+     "lock"
+    ]
+   },
+   {
+    "text": "review the plan before applying",
+    "say": "I always review the plan before applying.",
+    "keywords": [
+     "plan",
+     "review"
+    ]
+   },
+   {
+    "text": "use modules and version control with code review",
+    "say": "I use modules, version control and code review.",
+    "keywords": [
+     "modules",
+     "version",
+     "review"
+    ]
+   },
+   {
+    "text": "apply through a pipeline with least privilege credentials",
+    "say": "Changes are applied by a pipeline with least privilege credentials.",
+    "keywords": [
+     "pipeline",
+     "least privilege",
+     "credentials"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What is state drift?"
+  ],
+  "hint": "Think of plan, state and process."
+ },
+ {
+  "id": "T-14",
+  "skill": "Monitoring (Prometheus, Grafana)",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-06",
+  "question": "What would you monitor for a web application, and how would you alert?",
+  "key_points": [
+   "the golden signals: latency, traffic, errors, saturation",
+   "dashboards in Grafana for the trends",
+   "alerts on symptoms with sensible thresholds",
+   "link alerts to runbooks and avoid noise"
+  ],
+  "key_point_detail": [
+   {
+    "text": "the golden signals: latency, traffic, errors, saturation",
+    "say": "I watch the golden signals: latency, traffic, errors and saturation.",
+    "keywords": [
+     "latency",
+     "traffic",
+     "errors",
+     "saturation"
+    ]
+   },
+   {
+    "text": "dashboards in Grafana for the trends",
+    "say": "I build Grafana dashboards for the trends.",
+    "keywords": [
+     "grafana",
+     "dashboard"
+    ]
+   },
+   {
+    "text": "alerts on symptoms with sensible thresholds",
+    "say": "I alert on symptoms users feel, with sensible thresholds.",
+    "keywords": [
+     "alert",
+     "symptoms",
+     "threshold"
+    ]
+   },
+   {
+    "text": "link alerts to runbooks and avoid noise",
+    "say": "Each alert links to a runbook, and I remove noisy alerts.",
+    "keywords": [
+     "runbook",
+     "noise",
+     "noisy"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What is the difference between a metric and a log?"
+  ],
+  "hint": "What does the user feel?"
+ },
+ {
+  "id": "T-15",
+  "skill": "SQL",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "You have a customers table and an orders table. How do you find the top five customers by total spend last month?",
+  "key_points": [
+   "join orders to customers on the customer id",
+   "filter to last month with a date condition",
+   "group by customer and sum the amount",
+   "order by the total descending and limit to five"
+  ],
+  "key_point_detail": [
+   {
+    "text": "join orders to customers on the customer id",
+    "say": "I join orders to customers on the customer id.",
+    "keywords": [
+     "join",
+     "customer id"
+    ]
+   },
+   {
+    "text": "filter to last month with a date condition",
+    "say": "I filter the orders to last month with a date condition.",
+    "keywords": [
+     "filter",
+     "where",
+     "date",
+     "month"
+    ]
+   },
+   {
+    "text": "group by customer and sum the amount",
+    "say": "I group by customer and sum the order amount.",
+    "keywords": [
+     "group by",
+     "sum"
+    ]
+   },
+   {
+    "text": "order by the total descending and limit to five",
+    "say": "Then I order by the total descending and limit to five.",
+    "keywords": [
+     "order by",
+     "limit",
+     "descending"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What changes if a customer has no orders?"
+  ],
+  "hint": "Join, filter, group, sort."
+ },
+ {
+  "id": "T-16",
+  "skill": "SQL",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "A query that used to take a second now takes a minute. What do you do?",
+  "key_points": [
+   "look at the query plan with explain",
+   "check for missing indexes",
+   "check data growth and statistics",
+   "rewrite the query to avoid full scans"
+  ],
+  "key_point_detail": [
+   {
+    "text": "look at the query plan with explain",
+    "say": "I look at the query plan with explain.",
+    "keywords": [
+     "explain",
+     "plan"
+    ]
+   },
+   {
+    "text": "check for missing indexes",
+    "say": "I check for missing indexes on filter and join columns.",
+    "keywords": [
+     "index",
+     "indexes"
+    ]
+   },
+   {
+    "text": "check data growth and statistics",
+    "say": "I check whether the data has grown and whether statistics are out of date.",
+    "keywords": [
+     "statistics",
+     "growth",
+     "grown"
+    ]
+   },
+   {
+    "text": "rewrite the query to avoid full scans",
+    "say": "I rewrite the query to avoid full table scans.",
+    "keywords": [
+     "scan",
+     "rewrite"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Ask the database how it runs the query."
+ },
+ {
+  "id": "T-17",
+  "skill": "Data cleaning",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "You receive a spreadsheet with duplicate rows, missing values and dates in three formats. How do you clean it?",
+  "key_points": [
+   "profile the data first to see what is wrong",
+   "remove or merge duplicates using a key",
+   "handle missing values explicitly and say how",
+   "standardise dates and validate the result"
+  ],
+  "key_point_detail": [
+   {
+    "text": "profile the data first to see what is wrong",
+    "say": "I profile the data first to see what is wrong.",
+    "keywords": [
+     "profile",
+     "inspect",
+     "explore"
+    ]
+   },
+   {
+    "text": "remove or merge duplicates using a key",
+    "say": "I remove or merge duplicates using a sensible key.",
+    "keywords": [
+     "duplicate",
+     "key",
+     "merge"
+    ]
+   },
+   {
+    "text": "handle missing values explicitly and say how",
+    "say": "I handle missing values explicitly, by filling, flagging or removing them, and I document it.",
+    "keywords": [
+     "missing",
+     "fill",
+     "flag",
+     "document"
+    ]
+   },
+   {
+    "text": "standardise dates and validate the result",
+    "say": "I standardise the dates to one format and validate the result.",
+    "keywords": [
+     "standardise",
+     "standardize",
+     "dates",
+     "validate"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How do you decide whether to drop a row?"
+  ],
+  "hint": "Look before you change."
+ },
+ {
+  "id": "T-18",
+  "skill": "Dashboards",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "A manager asks for a sales dashboard. How do you design it?",
+  "key_points": [
+   "ask what decisions it should support",
+   "pick a few key metrics and avoid clutter",
+   "choose the right chart for each question",
+   "test it with the users and keep the data fresh"
+  ],
+  "key_point_detail": [
+   {
+    "text": "ask what decisions it should support",
+    "say": "I first ask what decisions the dashboard should support.",
+    "keywords": [
+     "decisions",
+     "ask",
+     "audience"
+    ]
+   },
+   {
+    "text": "pick a few key metrics and avoid clutter",
+    "say": "I pick a few key metrics and avoid clutter.",
+    "keywords": [
+     "key metrics",
+     "clutter",
+     "few"
+    ]
+   },
+   {
+    "text": "choose the right chart for each question",
+    "say": "I choose the right chart for each question, such as lines for trends.",
+    "keywords": [
+     "chart",
+     "trend",
+     "line"
+    ]
+   },
+   {
+    "text": "test it with the users and keep the data fresh",
+    "say": "I test it with the users and make sure the data is refreshed.",
+    "keywords": [
+     "test",
+     "users",
+     "refresh",
+     "fresh"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Start from the decision, not the chart."
+ },
+ {
+  "id": "T-19",
+  "skill": "Python with pandas",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How would you combine two CSV files and compute the average order value per region in pandas?",
+  "key_points": [
+   "read both files with read_csv",
+   "merge them on a shared key",
+   "group by region",
+   "calculate the mean and check for nulls"
+  ],
+  "key_point_detail": [
+   {
+    "text": "read both files with read_csv",
+    "say": "I read both files with read_csv.",
+    "keywords": [
+     "read_csv",
+     "csv"
+    ]
+   },
+   {
+    "text": "merge them on a shared key",
+    "say": "I merge them on a shared key.",
+    "keywords": [
+     "merge",
+     "join",
+     "key"
+    ]
+   },
+   {
+    "text": "group by region",
+    "say": "I group by region.",
+    "keywords": [
+     "groupby",
+     "group by",
+     "region"
+    ]
+   },
+   {
+    "text": "calculate the mean and check for nulls",
+    "say": "I calculate the mean of the amount and check for nulls first.",
+    "keywords": [
+     "mean",
+     "average",
+     "null",
+     "nan"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Load, join, group, aggregate."
+ },
+ {
+  "id": "T-20",
+  "skill": "Explaining numbers to managers",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "Revenue fell 8 percent this month. How do you explain it to a non-technical manager?",
+  "key_points": [
+   "lead with the headline in one sentence",
+   "show the cause with a simple chart",
+   "separate fact from interpretation",
+   "end with a recommendation or next step"
+  ],
+  "key_point_detail": [
+   {
+    "text": "lead with the headline in one sentence",
+    "say": "I lead with the headline in one sentence.",
+    "keywords": [
+     "headline",
+     "one sentence",
+     "lead"
+    ]
+   },
+   {
+    "text": "show the cause with a simple chart",
+    "say": "I show the cause with a simple chart.",
+    "keywords": [
+     "chart",
+     "cause"
+    ]
+   },
+   {
+    "text": "separate fact from interpretation",
+    "say": "I separate what the data shows from what I think it means.",
+    "keywords": [
+     "fact",
+     "interpretation",
+     "separate"
+    ]
+   },
+   {
+    "text": "end with a recommendation or next step",
+    "say": "I end with a recommendation or a next step.",
+    "keywords": [
+     "recommendation",
+     "next step"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Headline, evidence, recommendation."
+ },
+ {
+  "id": "T-21",
+  "skill": "Cloud data warehouse",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "Why would you use a cloud data warehouse instead of a normal database for reporting?",
+  "key_points": [
+   "it separates storage and compute so it scales",
+   "columnar storage is fast for analytical queries",
+   "it handles large volumes and many users",
+   "watch the cost of queries and storage"
+  ],
+  "key_point_detail": [
+   {
+    "text": "it separates storage and compute so it scales",
+    "say": "It separates storage and compute, so each can scale.",
+    "keywords": [
+     "storage",
+     "compute",
+     "scale"
+    ]
+   },
+   {
+    "text": "columnar storage is fast for analytical queries",
+    "say": "Columnar storage makes analytical queries fast.",
+    "keywords": [
+     "columnar",
+     "analytical"
+    ]
+   },
+   {
+    "text": "it handles large volumes and many users",
+    "say": "It handles large volumes of data and many concurrent users.",
+    "keywords": [
+     "large",
+     "volumes",
+     "concurrent"
+    ]
+   },
+   {
+    "text": "watch the cost of queries and storage",
+    "say": "I watch the cost of queries and storage.",
+    "keywords": [
+     "cost",
+     "pricing"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Think analytics, not transactions."
+ },
+ {
+  "id": "T-22",
+  "skill": "Basic statistics",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "Two versions of a web page were shown to different users. How do you decide which is better?",
+  "key_points": [
+   "compare the conversion rates",
+   "check the sample size is big enough",
+   "test for statistical significance",
+   "check the groups were comparable and random"
+  ],
+  "key_point_detail": [
+   {
+    "text": "compare the conversion rates",
+    "say": "I compare the conversion rates of the two groups.",
+    "keywords": [
+     "conversion",
+     "rate"
+    ]
+   },
+   {
+    "text": "check the sample size is big enough",
+    "say": "I check the sample size is big enough.",
+    "keywords": [
+     "sample",
+     "size"
+    ]
+   },
+   {
+    "text": "test for statistical significance",
+    "say": "I test for statistical significance, for example with a p value.",
+    "keywords": [
+     "significance",
+     "p value",
+     "p-value"
+    ]
+   },
+   {
+    "text": "check the groups were comparable and random",
+    "say": "I check the groups were random and comparable.",
+    "keywords": [
+     "random",
+     "comparable"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Is the difference real, or luck?"
+ },
+ {
+  "id": "T-23",
+  "skill": "Kubernetes in production",
+  "type": "technical",
+  "core": true,
+  "diagram": "D-04",
+  "question": "How do you roll out a new version of an application on Kubernetes without downtime?",
+  "key_points": [
+   "use a rolling update strategy",
+   "use readiness probes so traffic only reaches ready pods",
+   "be able to roll back quickly",
+   "use a pod disruption budget and enough replicas"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use a rolling update strategy",
+    "say": "I use a rolling update so pods are replaced gradually.",
+    "keywords": [
+     "rolling",
+     "update"
+    ]
+   },
+   {
+    "text": "use readiness probes so traffic only reaches ready pods",
+    "say": "Readiness probes make sure traffic only reaches ready pods.",
+    "keywords": [
+     "readiness",
+     "probe"
+    ]
+   },
+   {
+    "text": "be able to roll back quickly",
+    "say": "I can roll back quickly with kubectl rollout undo.",
+    "keywords": [
+     "roll back",
+     "rollback",
+     "undo"
+    ]
+   },
+   {
+    "text": "use a pod disruption budget and enough replicas",
+    "say": "I use a pod disruption budget and enough replicas.",
+    "keywords": [
+     "disruption",
+     "budget",
+     "replicas"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What is a canary release?"
+  ],
+  "hint": "Gradually, and checked."
+ },
+ {
+  "id": "T-24",
+  "skill": "Kubernetes in production",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-04",
+  "question": "A node in your production cluster fails. What happens, and what do you check?",
+  "key_points": [
+   "the scheduler reschedules the pods on other nodes",
+   "stateful workloads need persistent volumes and care",
+   "check capacity for the extra pods",
+   "investigate the node and replace it"
+  ],
+  "key_point_detail": [
+   {
+    "text": "the scheduler reschedules the pods on other nodes",
+    "say": "Kubernetes reschedules the pods onto other nodes.",
+    "keywords": [
+     "reschedule",
+     "scheduler",
+     "other nodes"
+    ]
+   },
+   {
+    "text": "stateful workloads need persistent volumes and care",
+    "say": "Stateful workloads need persistent volumes and extra care.",
+    "keywords": [
+     "stateful",
+     "persistent",
+     "volume"
+    ]
+   },
+   {
+    "text": "check capacity for the extra pods",
+    "say": "I check there is enough capacity for the extra pods.",
+    "keywords": [
+     "capacity",
+     "resources"
+    ]
+   },
+   {
+    "text": "investigate the node and replace it",
+    "say": "I investigate the node and replace it, often with autoscaling.",
+    "keywords": [
+     "investigate",
+     "replace",
+     "autoscal"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Who moves the pods?"
+ },
+ {
+  "id": "T-25",
+  "skill": "Infrastructure as code (Terraform)",
+  "type": "technical",
+  "core": true,
+  "diagram": null,
+  "question": "Someone changed a cloud resource by hand and now Terraform wants to change it back. What do you do?",
+  "key_points": [
+   "this is configuration drift",
+   "look at the plan to see the difference",
+   "decide whether the code or the manual change is right",
+   "prevent it with access controls and review"
+  ],
+  "key_point_detail": [
+   {
+    "text": "this is configuration drift",
+    "say": "This is configuration drift between the code and reality.",
+    "keywords": [
+     "drift"
+    ]
+   },
+   {
+    "text": "look at the plan to see the difference",
+    "say": "I read the plan to see exactly what differs.",
+    "keywords": [
+     "plan",
+     "difference"
+    ]
+   },
+   {
+    "text": "decide whether the code or the manual change is right",
+    "say": "I decide whether the manual change should become code or be reverted.",
+    "keywords": [
+     "decide",
+     "revert",
+     "code"
+    ]
+   },
+   {
+    "text": "prevent it with access controls and review",
+    "say": "I prevent it with access controls and a review process.",
+    "keywords": [
+     "prevent",
+     "access",
+     "review"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Which one is the source of truth?"
+ },
+ {
+  "id": "T-26",
+  "skill": "Continuous integration pipelines",
+  "type": "technical",
+  "core": true,
+  "diagram": "D-02",
+  "question": "Describe a good CI pipeline for a web service.",
+  "key_points": [
+   "build and run unit tests on every commit",
+   "run linting and security scans",
+   "build an artifact or container image once and promote it",
+   "keep it fast and make failures visible"
+  ],
+  "key_point_detail": [
+   {
+    "text": "build and run unit tests on every commit",
+    "say": "It builds and runs unit tests on every commit.",
+    "keywords": [
+     "build",
+     "unit",
+     "tests",
+     "commit"
+    ]
+   },
+   {
+    "text": "run linting and security scans",
+    "say": "It runs linting and security scans.",
+    "keywords": [
+     "lint",
+     "security",
+     "scan"
+    ]
+   },
+   {
+    "text": "build an artifact or container image once and promote it",
+    "say": "It builds one artifact or container image and promotes it.",
+    "keywords": [
+     "artifact",
+     "image",
+     "promote"
+    ]
+   },
+   {
+    "text": "keep it fast and make failures visible",
+    "say": "I keep it fast and make failures visible to the team.",
+    "keywords": [
+     "fast",
+     "visible",
+     "feedback"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "How would you stop a flaky test blocking everyone?"
+  ],
+  "hint": "Build once, test early."
+ },
+ {
+  "id": "T-27",
+  "skill": "Continuous integration pipelines",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-02",
+  "question": "Your pipeline takes 40 minutes. How do you speed it up?",
+  "key_points": [
+   "run independent stages in parallel",
+   "cache dependencies and build layers",
+   "run only the tests affected by the change",
+   "measure first to find the slowest steps"
+  ],
+  "key_point_detail": [
+   {
+    "text": "run independent stages in parallel",
+    "say": "I run independent stages in parallel.",
+    "keywords": [
+     "parallel"
+    ]
+   },
+   {
+    "text": "cache dependencies and build layers",
+    "say": "I cache dependencies and build layers.",
+    "keywords": [
+     "cache",
+     "caching"
+    ]
+   },
+   {
+    "text": "run only the tests affected by the change",
+    "say": "I run only the tests affected by the change.",
+    "keywords": [
+     "affected",
+     "only"
+    ]
+   },
+   {
+    "text": "measure first to find the slowest steps",
+    "say": "I measure first to find the slowest steps.",
+    "keywords": [
+     "measure",
+     "slowest"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Measure before you tune."
+ },
+ {
+  "id": "T-28",
+  "skill": "Linux",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How do you secure SSH access to a fleet of Linux servers?",
+  "key_points": [
+   "use keys instead of passwords",
+   "disable root login and limit users",
+   "use a bastion host or VPN",
+   "log and audit access and keep systems patched"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use keys instead of passwords",
+    "say": "I use keys instead of passwords.",
+    "keywords": [
+     "keys",
+     "passwords"
+    ]
+   },
+   {
+    "text": "disable root login and limit users",
+    "say": "I disable root login and limit which users can log in.",
+    "keywords": [
+     "root",
+     "disable",
+     "limit"
+    ]
+   },
+   {
+    "text": "use a bastion host or VPN",
+    "say": "I use a bastion host or VPN.",
+    "keywords": [
+     "bastion",
+     "vpn"
+    ]
+   },
+   {
+    "text": "log and audit access and keep systems patched",
+    "say": "I log and audit access and keep systems patched.",
+    "keywords": [
+     "audit",
+     "log",
+     "patch"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Who can get in, and from where?"
+ },
+ {
+  "id": "T-29",
+  "skill": "Networking",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-05",
+  "question": "Explain what happens when you type a web address into a browser.",
+  "key_points": [
+   "DNS resolves the name to an IP address",
+   "a TCP connection is made, with TLS for https",
+   "the browser sends an HTTP request to the server",
+   "the server responds and the browser renders the page"
+  ],
+  "key_point_detail": [
+   {
+    "text": "DNS resolves the name to an IP address",
+    "say": "DNS resolves the name to an IP address.",
+    "keywords": [
+     "dns",
+     "ip"
+    ]
+   },
+   {
+    "text": "a TCP connection is made, with TLS for https",
+    "say": "A TCP connection is made, and TLS is set up for https.",
+    "keywords": [
+     "tcp",
+     "tls",
+     "handshake"
+    ]
+   },
+   {
+    "text": "the browser sends an HTTP request to the server",
+    "say": "The browser sends an HTTP request to the server.",
+    "keywords": [
+     "http",
+     "request"
+    ]
+   },
+   {
+    "text": "the server responds and the browser renders the page",
+    "say": "The server responds and the browser renders the page.",
+    "keywords": [
+     "responds",
+     "response",
+     "render"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Name first, then connection."
+ },
+ {
+  "id": "T-30",
+  "skill": "Explaining an architecture",
+  "type": "technical",
+  "core": true,
+  "diagram": "D-01",
+  "question": "Look at this architecture. Explain it to a new colleague, including its trade-offs.",
+  "key_points": [
+   "users reach a load balancer that spreads traffic over app nodes",
+   "a shared database holds the state",
+   "trade-off: the database is a single point of failure",
+   "trade-off: scaling the app tier is easy, the database tier is harder"
+  ],
+  "key_point_detail": [
+   {
+    "text": "users reach a load balancer that spreads traffic over app nodes",
+    "say": "Users reach a load balancer that spreads the traffic over the app nodes.",
+    "keywords": [
+     "load balancer",
+     "app nodes",
+     "traffic"
+    ]
+   },
+   {
+    "text": "a shared database holds the state",
+    "say": "A shared database holds the state.",
+    "keywords": [
+     "database",
+     "state"
+    ]
+   },
+   {
+    "text": "trade-off: the database is a single point of failure",
+    "say": "A trade-off is that the database is a single point of failure.",
+    "keywords": [
+     "single point",
+     "failure",
+     "trade-off"
+    ]
+   },
+   {
+    "text": "trade-off: scaling the app tier is easy, the database tier is harder",
+    "say": "Scaling the app tier is easy, the database tier is harder.",
+    "keywords": [
+     "scaling",
+     "scale",
+     "harder"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What would you change first?"
+  ],
+  "hint": "Walk the request through."
+ },
+ {
+  "id": "T-31",
+  "skill": "Explaining an architecture",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-07",
+  "question": "This design uses a queue between the web app and workers. Why, and what are the risks?",
+  "key_points": [
+   "the queue decouples the web app from slow work",
+   "workers can scale independently",
+   "risk: messages can be lost or duplicated",
+   "use retries, a dead letter queue and idempotent work"
+  ],
+  "key_point_detail": [
+   {
+    "text": "the queue decouples the web app from slow work",
+    "say": "The queue decouples the web app from slow work.",
+    "keywords": [
+     "decouple",
+     "slow"
+    ]
+   },
+   {
+    "text": "workers can scale independently",
+    "say": "Workers can scale independently of the web tier.",
+    "keywords": [
+     "scale",
+     "independent"
+    ]
+   },
+   {
+    "text": "risk: messages can be lost or duplicated",
+    "say": "A risk is that messages can be lost or processed twice.",
+    "keywords": [
+     "lost",
+     "duplicate",
+     "twice"
+    ]
+   },
+   {
+    "text": "use retries, a dead letter queue and idempotent work",
+    "say": "I use retries, a dead letter queue and idempotent handlers.",
+    "keywords": [
+     "retries",
+     "dead letter",
+     "idempotent"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "What does the user wait for?"
+ },
+ {
+  "id": "T-32",
+  "skill": "Observability tools",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-06",
+  "question": "How do metrics, logs and traces differ, and when would you use each?",
+  "key_points": [
+   "metrics show trends and alert",
+   "logs give detail about single events",
+   "traces follow a request across services",
+   "use them together, starting from the alert"
+  ],
+  "key_point_detail": [
+   {
+    "text": "metrics show trends and alert",
+    "say": "Metrics show trends and drive alerts.",
+    "keywords": [
+     "metrics",
+     "trends",
+     "alert"
+    ]
+   },
+   {
+    "text": "logs give detail about single events",
+    "say": "Logs give detail about single events.",
+    "keywords": [
+     "logs",
+     "events",
+     "detail"
+    ]
+   },
+   {
+    "text": "traces follow a request across services",
+    "say": "Traces follow one request across services.",
+    "keywords": [
+     "traces",
+     "request",
+     "across"
+    ]
+   },
+   {
+    "text": "use them together, starting from the alert",
+    "say": "I use them together, starting from the alert and drilling down.",
+    "keywords": [
+     "together",
+     "drill"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Trend, event, journey."
+ },
+ {
+  "id": "T-33",
+  "skill": "Programming (Go or Python)",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How do you write a small command line tool in Go or Python so that others can maintain it?",
+  "key_points": [
+   "use clear function names and small functions",
+   "handle errors explicitly and give useful messages",
+   "add tests",
+   "document usage and use arguments or flags"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use clear function names and small functions",
+    "say": "I use clear names and small functions.",
+    "keywords": [
+     "names",
+     "small",
+     "functions"
+    ]
+   },
+   {
+    "text": "handle errors explicitly and give useful messages",
+    "say": "I handle errors explicitly and give useful messages.",
+    "keywords": [
+     "errors",
+     "messages"
+    ]
+   },
+   {
+    "text": "add tests",
+    "say": "I add tests for the main behaviour.",
+    "keywords": [
+     "tests",
+     "test"
+    ]
+   },
+   {
+    "text": "document usage and use arguments or flags",
+    "say": "I document usage and use command line arguments or flags.",
+    "keywords": [
+     "document",
+     "arguments",
+     "flags",
+     "readme"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Think about the next person."
+ },
+ {
+  "id": "T-34",
+  "skill": "Resilience",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-08",
+  "question": "This service runs in one region. What happens in a regional outage, and how could you improve it?",
+  "key_points": [
+   "everything in that region is unavailable",
+   "deploy to a second region with traffic routing",
+   "replicate data across regions",
+   "test the failover regularly and accept the cost"
+  ],
+  "key_point_detail": [
+   {
+    "text": "everything in that region is unavailable",
+    "say": "A regional outage makes everything in that region unavailable.",
+    "keywords": [
+     "unavailable",
+     "region"
+    ]
+   },
+   {
+    "text": "deploy to a second region with traffic routing",
+    "say": "I would deploy to a second region with traffic routing such as DNS failover.",
+    "keywords": [
+     "second region",
+     "routing",
+     "failover"
+    ]
+   },
+   {
+    "text": "replicate data across regions",
+    "say": "I would replicate the data across regions.",
+    "keywords": [
+     "replicate",
+     "data"
+    ]
+   },
+   {
+    "text": "test the failover regularly and accept the cost",
+    "say": "I would test the failover regularly and accept the extra cost.",
+    "keywords": [
+     "test",
+     "regularly",
+     "cost"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Where is the data?"
+ },
+ {
+  "id": "T-35",
+  "skill": "Resilience",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-03",
+  "question": "How do you make an application tolerate a slow dependency?",
+  "key_points": [
+   "set timeouts",
+   "retry with backoff, carefully",
+   "use a circuit breaker",
+   "degrade gracefully with a fallback"
+  ],
+  "key_point_detail": [
+   {
+    "text": "set timeouts",
+    "say": "I set timeouts so calls cannot hang.",
+    "keywords": [
+     "timeout"
+    ]
+   },
+   {
+    "text": "retry with backoff, carefully",
+    "say": "I retry with exponential backoff, carefully.",
+    "keywords": [
+     "retry",
+     "backoff"
+    ]
+   },
+   {
+    "text": "use a circuit breaker",
+    "say": "I use a circuit breaker to stop calling a failing service.",
+    "keywords": [
+     "circuit"
+    ]
+   },
+   {
+    "text": "degrade gracefully with a fallback",
+    "say": "I degrade gracefully with a fallback response.",
+    "keywords": [
+     "degrade",
+     "fallback"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Do not wait forever."
+ },
+ {
+  "id": "T-36",
+  "skill": "Incident handling",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "After an outage, what should a good post-incident review contain?",
+  "key_points": [
+   "a timeline of what happened",
+   "the root cause and contributing factors",
+   "blameless: focus on the system, not people",
+   "action items with owners and dates"
+  ],
+  "key_point_detail": [
+   {
+    "text": "a timeline of what happened",
+    "say": "A timeline of what happened.",
+    "keywords": [
+     "timeline"
+    ]
+   },
+   {
+    "text": "the root cause and contributing factors",
+    "say": "The root cause and contributing factors.",
+    "keywords": [
+     "root cause",
+     "contributing"
+    ]
+   },
+   {
+    "text": "blameless: focus on the system, not people",
+    "say": "It is blameless: it looks at the system, not individuals.",
+    "keywords": [
+     "blameless"
+    ]
+   },
+   {
+    "text": "action items with owners and dates",
+    "say": "Action items with owners and dates.",
+    "keywords": [
+     "action",
+     "owners"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Learn, do not blame."
+ },
+ {
+  "id": "T-37",
+  "skill": "Cloud networking",
+  "type": "technical",
+  "core": false,
+  "diagram": "D-05",
+  "question": "How would you design the network for a three-tier app in the cloud?",
+  "key_points": [
+   "separate public and private subnets",
+   "put only the load balancer in the public subnet",
+   "use security groups to restrict traffic between tiers",
+   "use NAT and private endpoints for outbound access"
+  ],
+  "key_point_detail": [
+   {
+    "text": "separate public and private subnets",
+    "say": "I separate public and private subnets.",
+    "keywords": [
+     "public",
+     "private",
+     "subnet"
+    ]
+   },
+   {
+    "text": "put only the load balancer in the public subnet",
+    "say": "Only the load balancer sits in the public subnet.",
+    "keywords": [
+     "load balancer",
+     "public"
+    ]
+   },
+   {
+    "text": "use security groups to restrict traffic between tiers",
+    "say": "Security groups restrict traffic between the tiers.",
+    "keywords": [
+     "security group",
+     "restrict"
+    ]
+   },
+   {
+    "text": "use NAT and private endpoints for outbound access",
+    "say": "I use a NAT gateway and private endpoints for outbound access.",
+    "keywords": [
+     "nat",
+     "endpoint"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "What must be public?"
+ },
+ {
+  "id": "T-38",
+  "skill": "Linux troubleshooting",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "A disk is 100 percent full. How do you find out what filled it and fix it safely?",
+  "key_points": [
+   "use df to find the full filesystem",
+   "use du to find the large directories",
+   "check for deleted files still held open and inodes",
+   "clean or rotate logs safely and add monitoring"
+  ],
+  "key_point_detail": [
+   {
+    "text": "use df to find the full filesystem",
+    "say": "I use df to find which filesystem is full.",
+    "keywords": [
+     "df",
+     "filesystem"
+    ]
+   },
+   {
+    "text": "use du to find the large directories",
+    "say": "I use du to find the largest directories.",
+    "keywords": [
+     "du",
+     "directories",
+     "largest"
+    ]
+   },
+   {
+    "text": "check for deleted files still held open and inodes",
+    "say": "I check for deleted files still held open and for inode exhaustion.",
+    "keywords": [
+     "deleted",
+     "open",
+     "inode",
+     "lsof"
+    ]
+   },
+   {
+    "text": "clean or rotate logs safely and add monitoring",
+    "say": "I rotate or clean logs safely and add monitoring so it does not happen again.",
+    "keywords": [
+     "rotate",
+     "logrotate",
+     "monitoring"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Find, free, prevent."
+ },
+ {
+  "id": "T-39",
+  "skill": "Scripting (Python or Bash)",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How do you make a deployment script safe to run twice?",
+  "key_points": [
+   "make it idempotent",
+   "check state before changing it",
+   "fail fast and report errors",
+   "support a dry run"
+  ],
+  "key_point_detail": [
+   {
+    "text": "make it idempotent",
+    "say": "I make each step idempotent.",
+    "keywords": [
+     "idempotent"
+    ]
+   },
+   {
+    "text": "check state before changing it",
+    "say": "I check the current state before changing anything.",
+    "keywords": [
+     "check",
+     "state"
+    ]
+   },
+   {
+    "text": "fail fast and report errors",
+    "say": "I fail fast and report errors clearly.",
+    "keywords": [
+     "fail",
+     "errors"
+    ]
+   },
+   {
+    "text": "support a dry run",
+    "say": "I support a dry run mode.",
+    "keywords": [
+     "dry run",
+     "dry-run"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Running twice should change nothing."
+ },
+ {
+  "id": "T-40",
+  "skill": "Terraform",
+  "type": "technical",
+  "core": false,
+  "diagram": null,
+  "question": "How do you manage secrets in infrastructure code?",
+  "key_points": [
+   "never commit secrets to the repository",
+   "use a secret manager or vault",
+   "grant least privilege access",
+   "rotate secrets and audit use"
+  ],
+  "key_point_detail": [
+   {
+    "text": "never commit secrets to the repository",
+    "say": "I never commit secrets to the repository.",
+    "keywords": [
+     "commit",
+     "repository"
+    ]
+   },
+   {
+    "text": "use a secret manager or vault",
+    "say": "I use a secret manager or a vault.",
+    "keywords": [
+     "secret manager",
+     "vault"
+    ]
+   },
+   {
+    "text": "grant least privilege access",
+    "say": "I grant least privilege access to those secrets.",
+    "keywords": [
+     "least privilege",
+     "access"
+    ]
+   },
+   {
+    "text": "rotate secrets and audit use",
+    "say": "I rotate secrets and audit how they are used.",
+    "keywords": [
+     "rotate",
+     "audit"
+    ]
+   }
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [],
+  "hint": "Where do secrets live?"
+ },
+ {
+  "id": "B-01",
+  "skill": "Customer communication",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you dealt with an upset customer.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-02",
+  "skill": "Incident handling",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you handled an outage or urgent problem.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-03",
+  "skill": "Teamwork",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you disagreed with a colleague and how you resolved it.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-04",
+  "skill": "Learning",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you had to learn a new technology quickly.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-05",
+  "skill": "Ownership",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you found and fixed a problem nobody asked you to fix.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-06",
+  "skill": "Mistakes",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a mistake you made at work and what you learned.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-07",
+  "skill": "Prioritisation",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you had too many urgent tasks at once.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-08",
+  "skill": "Explaining",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you explained something technical to a non-technical person.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-09",
+  "skill": "Improvement",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you improved a process.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ },
+ {
+  "id": "B-10",
+  "skill": "Pressure",
+  "type": "behavioural",
+  "core": false,
+  "diagram": null,
+  "question": "Tell me about a time you worked under pressure.",
+  "star_checklist": [
+   "Situation: sets the scene briefly",
+   "Task: says what they were responsible for",
+   "Action: says what they did themselves",
+   "Result: says what happened, ideally with a measure"
+  ],
+  "scoring": {
+   "3": "all four points, clearly",
+   "2": "three points",
+   "1": "one or two points",
+   "0": "none, or off-topic"
+  },
+  "follow_ups": [
+   "What was your own part in it?",
+   "What was the result, and how do you know?"
+  ],
+  "hint": "Use Situation, Task, Action, Result."
+ }
+]

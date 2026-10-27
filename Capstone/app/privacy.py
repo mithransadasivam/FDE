@@ -7,6 +7,7 @@ that says whether anything identifying still got through.
 import json
 import re
 
+from app.config import get_settings
 from app.models import Candidate
 from app.schemas import BlindCandidate
 
@@ -47,14 +48,48 @@ def _pattern(secret: str) -> re.Pattern:
     return re.compile(r"(?<![\w])" + re.escape(secret) + r"(?![\w])", re.I)
 
 
+# Age and gender PROXIES that can sit inside an ordinary field (a graduation year, a pronoun, a women-only scholarship).
+PROXY_RX = [re.compile(p, re.I) for p in (
+    r"\s*\((?:graduated\s+)?(?:19|20)\d{2}\)", r"\bgraduated\s+(?:in\s+)?(?:19|20)\d{2}\b",
+    r"\bwomen(?:'s)?\s+in\s+\w+(?:\s+(?:society|network|scholarship))?", r"\bmen(?:'s)?\s+in\s+\w+\b",
+    r"\b(?:she|he|her|his|hers|him)\b", r"\bwomen\b", r"\bmentors\s+other\s+\w+")]
+
+_presidio = None
+
+
+def _presidio_scrub(text: str) -> str:
+    """Second layer: Presidio finds e-mails, phone numbers and web links that the exact-match rules did not know about.
+    Its name detector (PERSON) is NOT used: on CVs it wrongly hides tool and company names such as Grafana or Docker,
+    which would lower a candidate's score for no reason. Names are hidden by exact match on the candidate's own details."""
+    global _presidio
+    try:
+        if _presidio is None:
+            from presidio_analyzer import AnalyzerEngine
+            from presidio_analyzer.nlp_engine import NlpEngineProvider
+
+            nlp = NlpEngineProvider(nlp_configuration={"nlp_engine_name": "spacy", "models": [{"lang_code": "en", "model_name": "en_core_web_sm"}]}).create_engine()
+            _presidio = AnalyzerEngine(nlp_engine=nlp, supported_languages=["en"])
+        found = _presidio.analyze(text=text, language="en", entities=["EMAIL_ADDRESS", "PHONE_NUMBER", "URL"], score_threshold=0.6)
+    except Exception:
+        return text  # Presidio is a bonus layer: the rules above already hide everything we know about
+    for r in sorted(found, key=lambda r: r.start, reverse=True):
+        text = text[:r.start] + HIDDEN + text[r.end:]
+    return text
+
+
 def _scrub(text: str | None, secrets: list[str]) -> str | None:
     if text is None:
         return None
     for secret in secrets:
         text = _pattern(secret).sub(HIDDEN, text)
+    if not get_settings().guardrails_enabled:  # the red-team 'before' state: only the candidate's own known details are hidden
+        return text
     text = EMAIL_RX.sub(HIDDEN, text)
     text = PHONE_RX.sub(HIDDEN, text)
-    return DOB_RX.sub(HIDDEN, text)
+    text = DOB_RX.sub(HIDDEN, text)
+    for rx in PROXY_RX:
+        text = rx.sub("", text)
+    return _presidio_scrub(re.sub(r"\s{2,}", " ", text).strip())
 
 
 def make_blind(candidate: Candidate) -> BlindCandidate:
@@ -65,7 +100,7 @@ def make_blind(candidate: Candidate) -> BlindCandidate:
         return _scrub(_val(p, field), secrets)
 
     def many(field):
-        return [_scrub(x, secrets) for x in (_val(p, field) or [])]
+        return [x for x in (_scrub(v, secrets) for v in (_val(p, field) or [])) if x]  # an item that was only a proxy is dropped
 
     return BlindCandidate(candidate_id=candidate.id, current_title=one("current_title"), jobs=many("jobs"),
                           years_experience=_val(p, "years_experience"), skills=many("skills"),

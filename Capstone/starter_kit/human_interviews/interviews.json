@@ -1,0 +1,396 @@
+[
+ {
+  "id": "H-1",
+  "kind": "strong",
+  "cv_file": "C-001_cv.pdf",
+  "turns": [
+   {
+    "speaker": "recruiter",
+    "text": "Hello, thanks for joining. I will ask a few questions about your experience, and we can talk about the role at the end.",
+    "voice": "V1",
+    "start": 0.5,
+    "end": 9.14
+   },
+   {
+    "speaker": "candidate",
+    "text": "Hello, thank you for having me.",
+    "voice": "V2",
+    "start": 9.84,
+    "end": 12.72
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A Linux server is suddenly very slow. Walk me through how you would find out why.",
+    "qid": "T-01",
+    "voice": "V1",
+    "start": 13.42,
+    "end": 19.22
+   },
+   {
+    "speaker": "candidate",
+    "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat. Finally, finally I read the logs and ask what changed recently, such as a deploy or update.",
+    "qid": "T-01",
+    "voice": "V2",
+    "start": 19.92,
+    "end": 42.36
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A VM in a private subnet cannot reach the internet. How do you find the cause?",
+    "qid": "T-04",
+    "voice": "V1",
+    "start": 43.06,
+    "end": 49.07
+   },
+   {
+    "speaker": "candidate",
+    "text": "First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.",
+    "qid": "T-04",
+    "voice": "V2",
+    "start": 49.77,
+    "end": 68.47
+   },
+   {
+    "speaker": "recruiter",
+    "text": "You are first on call and a major outage alert fires. What are your first ten minutes?",
+    "qid": "T-06",
+    "voice": "V1",
+    "start": 69.17,
+    "end": 75.42
+   },
+   {
+    "speaker": "candidate",
+    "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+    "qid": "T-06",
+    "voice": "V2",
+    "start": 76.12,
+    "end": 96.87
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Tell me about a time you dealt with an upset customer.",
+    "qid": "B-01",
+    "voice": "V1",
+    "start": 97.57,
+    "end": 101.23
+   },
+   {
+    "speaker": "candidate",
+    "text": "The situation was an outage that left a customer without their service for an hour. My task was to restore it and keep them informed. I acknowledged their frustration, explained the cause in plain words, and gave an update every fifteen minutes. The result was that service came back and the customer thanked us in writing.",
+    "qid": "B-01",
+    "voice": "V2",
+    "start": 101.93,
+    "end": 121.95
+   },
+   {
+    "speaker": "recruiter",
+    "text": "To check on-call availability, can you work the evening rota like everyone else?",
+    "voice": "V1",
+    "start": 122.65,
+    "end": 128.1
+   },
+   {
+    "speaker": "candidate",
+    "text": "Yes, I am happy to be on the rota.",
+    "voice": "V2",
+    "start": 128.8,
+    "end": 132.03
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Great, thank you. That is all from me.",
+    "voice": "V1",
+    "start": 132.73,
+    "end": 136.85
+   }
+  ],
+  "expect": {
+   "scores": {
+    "T-01": 3,
+    "T-04": 3,
+    "T-06": 3
+   },
+   "forbidden": [],
+   "conflicts": []
+  },
+  "file": "human_interviews/H-1.wav",
+  "duration_s": 138.0
+ },
+ {
+  "id": "H-2",
+  "kind": "weak",
+  "cv_file": "C-002_cv.pdf",
+  "turns": [
+   {
+    "speaker": "recruiter",
+    "text": "Hello, thanks for joining. I will ask a few questions about your experience, and we can talk about the role at the end.",
+    "voice": "V1",
+    "start": 0.5,
+    "end": 9.14
+   },
+   {
+    "speaker": "candidate",
+    "text": "Hello, thank you for having me.",
+    "voice": "V3",
+    "start": 9.84,
+    "end": 13.77
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A Linux server is suddenly very slow. Walk me through how you would find out why.",
+    "qid": "T-01",
+    "voice": "V1",
+    "start": 14.47,
+    "end": 20.27
+   },
+   {
+    "speaker": "candidate",
+    "text": "Finally I read the logs and ask what changed recently, such as a deploy or update.",
+    "qid": "T-01",
+    "voice": "V3",
+    "start": 20.97,
+    "end": 29.18
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A VM in a private subnet cannot reach the internet. How do you find the cause?",
+    "qid": "T-04",
+    "voice": "V1",
+    "start": 29.88,
+    "end": 35.88
+   },
+   {
+    "speaker": "candidate",
+    "text": "I am not sure about that one, I have not done much networking.",
+    "qid": "T-04",
+    "voice": "V3",
+    "start": 36.59,
+    "end": 42.77
+   },
+   {
+    "speaker": "recruiter",
+    "text": "You are first on call and a major outage alert fires. What are your first ten minutes?",
+    "qid": "T-06",
+    "voice": "V1",
+    "start": 43.47,
+    "end": 49.72
+   },
+   {
+    "speaker": "candidate",
+    "text": "I acknowledge the alert and assess who is affected and how badly.",
+    "qid": "T-06",
+    "voice": "V3",
+    "start": 50.42,
+    "end": 56.13
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Tell me about a time you dealt with an upset customer.",
+    "qid": "B-01",
+    "voice": "V1",
+    "start": 56.83,
+    "end": 60.49
+   },
+   {
+    "speaker": "candidate",
+    "text": "I try to stay calm with customers and be polite.",
+    "qid": "B-01",
+    "voice": "V3",
+    "start": 61.19,
+    "end": 66.08
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Thank you, that is all from me.",
+    "voice": "V1",
+    "start": 66.78,
+    "end": 69.67
+   }
+  ],
+  "expect": {
+   "scores": {
+    "T-01": 1,
+    "T-04": 0,
+    "T-06": 1
+   },
+   "forbidden": [],
+   "conflicts": []
+  },
+  "file": "human_interviews/H-2.wav",
+  "duration_s": 70.9
+ },
+ {
+  "id": "H-3",
+  "kind": "cv_conflict",
+  "cv_file": "C-011_cv.docx",
+  "turns": [
+   {
+    "speaker": "recruiter",
+    "text": "Hello, thanks for joining. I will ask a few questions about your experience, and we can talk about the role at the end.",
+    "voice": "V1",
+    "start": 0.5,
+    "end": 9.14
+   },
+   {
+    "speaker": "candidate",
+    "text": "Hello, thank you for having me.",
+    "voice": "V2",
+    "start": 9.84,
+    "end": 12.72
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Your CV lists Kubernetes and the Certified Kubernetes Administrator certification. Tell me about your Kubernetes experience.",
+    "voice": "V1",
+    "start": 13.42,
+    "end": 22.19
+   },
+   {
+    "speaker": "candidate",
+    "text": "Honestly, I have only used Kubernetes in a training course, I have never run it in production.",
+    "conflict": "Kubernetes",
+    "voice": "V2",
+    "start": 22.89,
+    "end": 29.41
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A pod keeps restarting in a Kubernetes cluster. How do you debug it?",
+    "qid": "T-12",
+    "voice": "V1",
+    "start": 30.11,
+    "end": 35.66
+   },
+   {
+    "speaker": "candidate",
+    "text": "I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs.",
+    "qid": "T-12",
+    "voice": "V2",
+    "start": 36.36,
+    "end": 45.97
+   },
+   {
+    "speaker": "recruiter",
+    "text": "You are first on call and a major outage alert fires. What are your first ten minutes?",
+    "qid": "T-06",
+    "voice": "V1",
+    "start": 46.67,
+    "end": 52.92
+   },
+   {
+    "speaker": "candidate",
+    "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+    "qid": "T-06",
+    "voice": "V2",
+    "start": 53.62,
+    "end": 74.37
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Thank you, that is all from me.",
+    "voice": "V1",
+    "start": 75.07,
+    "end": 77.96
+   }
+  ],
+  "expect": {
+   "scores": {
+    "T-12": 1,
+    "T-06": 3
+   },
+   "forbidden": [],
+   "conflicts": [
+    "Kubernetes"
+   ]
+  },
+  "file": "human_interviews/H-3.wav",
+  "duration_s": 79.2
+ },
+ {
+  "id": "H-4",
+  "kind": "forbidden_question",
+  "cv_file": "C-004_cv.docx",
+  "turns": [
+   {
+    "speaker": "recruiter",
+    "text": "Hello, thanks for joining. I will ask a few questions about your experience, and we can talk about the role at the end.",
+    "voice": "V1",
+    "start": 0.5,
+    "end": 9.14
+   },
+   {
+    "speaker": "candidate",
+    "text": "Hello, thank you for having me.",
+    "voice": "V3",
+    "start": 9.84,
+    "end": 13.77
+   },
+   {
+    "speaker": "recruiter",
+    "text": "A Linux server is suddenly very slow. Walk me through how you would find out why.",
+    "qid": "T-01",
+    "voice": "V1",
+    "start": 14.47,
+    "end": 20.27
+   },
+   {
+    "speaker": "candidate",
+    "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat.",
+    "qid": "T-01",
+    "voice": "V3",
+    "start": 20.97,
+    "end": 42.63
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Do you have children? Just wondering about the on-call rota.",
+    "forbidden": true,
+    "voice": "V1",
+    "start": 43.33,
+    "end": 48.1
+   },
+   {
+    "speaker": "candidate",
+    "text": "I would rather keep family matters out of this, but I can work the rota.",
+    "voice": "V3",
+    "start": 48.8,
+    "end": 55.45
+   },
+   {
+    "speaker": "recruiter",
+    "text": "You are first on call and a major outage alert fires. What are your first ten minutes?",
+    "qid": "T-06",
+    "voice": "V1",
+    "start": 56.15,
+    "end": 62.41
+   },
+   {
+    "speaker": "candidate",
+    "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+    "qid": "T-06",
+    "voice": "V3",
+    "start": 63.11,
+    "end": 92.28
+   },
+   {
+    "speaker": "recruiter",
+    "text": "Thank you, that is all from me.",
+    "voice": "V1",
+    "start": 92.98,
+    "end": 95.88
+   }
+  ],
+  "expect": {
+   "scores": {
+    "T-01": 2,
+    "T-06": 3
+   },
+   "forbidden": [
+    "Do you have children?"
+   ],
+   "conflicts": []
+  },
+  "file": "human_interviews/H-4.wav",
+  "duration_s": 97.1
+ }
+]

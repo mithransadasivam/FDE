@@ -1,0 +1,75 @@
+{
+ "roles": [
+  {
+   "role": "cloud_support_engineer",
+   "cvs": 20,
+   "platform_top5": [
+    "C-004_cv.docx",
+    "C-011_cv.docx",
+    "C-018_cv.png",
+    "C-020_cv.png",
+    "C-008_cv.docx"
+   ],
+   "recruiter_top5": [
+    "C-011_cv.docx",
+    "C-008_cv.docx",
+    "C-001_cv.pdf",
+    "C-004_cv.docx",
+    "C-007_cv.pdf"
+   ],
+   "strict_overlap": 3,
+   "tie_aware_overlap": 5,
+   "candidates_tied_at_fifth_place": 5,
+   "overlap": 5,
+   "passed": true
+  },
+  {
+   "role": "data_analyst",
+   "cvs": 20,
+   "platform_top5": [
+    "DA-012_cv.docx",
+    "DA-015_cv.docx",
+    "DA-019_cv.docx",
+    "DA-004_cv.docx",
+    "DA-011_cv.docx"
+   ],
+   "recruiter_top5": [
+    "DA-012_cv.docx",
+    "DA-019_cv.docx",
+    "DA-004_cv.docx",
+    "DA-011_cv.docx",
+    "DA-014_cv.docx"
+   ],
+   "strict_overlap": 4,
+   "tie_aware_overlap": 4,
+   "candidates_tied_at_fifth_place": 4,
+   "overlap": 4,
+   "passed": true
+  },
+  {
+   "role": "platform_engineer",
+   "cvs": 20,
+   "platform_top5": [
+    "PL-014_cv.docx",
+    "PL-011_cv.docx",
+    "PL-006_cv.docx",
+    "PL-001_cv.docx",
+    "PL-003_cv.docx"
+   ],
+   "recruiter_top5": [
+    "PL-011_cv.docx",
+    "PL-006_cv.docx",
+    "PL-001_cv.docx",
+    "PL-003_cv.docx",
+    "PL-002_cv.docx"
+   ],
+   "strict_overlap": 4,
+   "tie_aware_overlap": 4,
+   "candidates_tied_at_fifth_place": 3,
+   "overlap": 4,
+   "passed": true
+  }
+ ],
+ "target_overlap": 4,
+ "passed": true
+}

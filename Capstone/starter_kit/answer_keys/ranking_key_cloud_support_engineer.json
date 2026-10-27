@@ -1,0 +1,322 @@
+{
+ "role": "cloud_support_engineer",
+ "rubric_weights": {
+  "Linux troubleshooting": 19,
+  "Cloud networking": 19,
+  "Incident handling": 19,
+  "Scripting (Python or Bash)": 12,
+  "Customer communication": 12,
+  "Kubernetes": 7,
+  "Terraform": 6,
+  "Monitoring (Prometheus, Grafana)": 6
+ },
+ "candidates": [
+  {
+   "file": "C-011_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 3,
+    "Terraform": 3,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 94.0,
+   "rank": 1
+  },
+  {
+   "file": "C-008_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 3,
+    "Monitoring (Prometheus, Grafana)": 3
+   },
+   "total": 93.0,
+   "rank": 2
+  },
+  {
+   "file": "C-001_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 3,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 87.0,
+   "rank": 3
+  },
+  {
+   "file": "C-004_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 3
+   },
+   "total": 87.0,
+   "rank": 4
+  },
+  {
+   "file": "C-007_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 3
+   },
+   "total": 87.0,
+   "rank": 5
+  },
+  {
+   "file": "C-018_cv.png",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 3,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 87.0,
+   "rank": 6
+  },
+  {
+   "file": "C-020_cv.png",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 3,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 3
+   },
+   "total": 87.0,
+   "rank": 7
+  },
+  {
+   "file": "C-006_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 3,
+    "Cloud networking": 3,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 3,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 56.0,
+   "rank": 8
+  },
+  {
+   "file": "C-014_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 3,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 50.0,
+   "rank": 9
+  },
+  {
+   "file": "C-005_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 2,
+    "Cloud networking": 2,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 2,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 2,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 45.3,
+   "rank": 10
+  },
+  {
+   "file": "C-013_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 2,
+    "Cloud networking": 2,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 2,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 2
+   },
+   "total": 45.3,
+   "rank": 11
+  },
+  {
+   "file": "C-019_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 2,
+    "Incident handling": 2,
+    "Scripting (Python or Bash)": 2,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 2
+   },
+   "total": 45.3,
+   "rank": 12
+  },
+  {
+   "file": "C-015_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 2,
+    "Incident handling": 2,
+    "Scripting (Python or Bash)": 2,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 41.3,
+   "rank": 13
+  },
+  {
+   "file": "C-017_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 0,
+    "Incident handling": 3,
+    "Scripting (Python or Bash)": 3,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 3
+   },
+   "total": 37.0,
+   "rank": 14
+  },
+  {
+   "file": "C-002_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 2,
+    "Cloud networking": 0,
+    "Incident handling": 2,
+    "Scripting (Python or Bash)": 0,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 2,
+    "Monitoring (Prometheus, Grafana)": 2
+   },
+   "total": 33.3,
+   "rank": 15
+  },
+  {
+   "file": "C-016_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 2,
+    "Cloud networking": 2,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 0,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 33.3,
+   "rank": 16
+  },
+  {
+   "file": "C-012_cv.docx",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 0,
+    "Incident handling": 2,
+    "Scripting (Python or Bash)": 2,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 2,
+    "Monitoring (Prometheus, Grafana)": 0
+   },
+   "total": 32.7,
+   "rank": 17
+  },
+  {
+   "file": "C-003_cv.jpg",
+   "recruiter_scores": {
+    "Linux troubleshooting": 2,
+    "Cloud networking": 0,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 0,
+    "Customer communication": 2,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 2
+   },
+   "total": 24.7,
+   "rank": 18
+  },
+  {
+   "file": "C-010_cv.png",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 1,
+    "Incident handling": 1,
+    "Scripting (Python or Bash)": 1,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 1
+   },
+   "total": 18.7,
+   "rank": 19
+  },
+  {
+   "file": "C-009_cv.pdf",
+   "recruiter_scores": {
+    "Linux troubleshooting": 0,
+    "Cloud networking": 1,
+    "Incident handling": 0,
+    "Scripting (Python or Bash)": 1,
+    "Customer communication": 0,
+    "Kubernetes": 0,
+    "Terraform": 0,
+    "Monitoring (Prometheus, Grafana)": 1
+   },
+   "total": 12.3,
+   "rank": 20
+  }
+ ],
+ "shortlist_top5": [
+  "C-011_cv.docx",
+  "C-008_cv.docx",
+  "C-001_cv.pdf",
+  "C-004_cv.docx",
+  "C-007_cv.pdf"
+ ]
+}

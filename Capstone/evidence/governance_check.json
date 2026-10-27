@@ -1,0 +1,90 @@
+{
+ "passed": true,
+ "checks": [
+  {
+   "check": "all governance documents exist",
+   "passed": true,
+   "detail": "7 files"
+  },
+  {
+   "check": "classification: high risk, Annex III point 4",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classification: prohibited practices (Art. 5(1)(f) emotion recognition)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "classification: names the obligations (Art. 9, 12, 14, 15)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "risk register has at least 10 risks",
+   "passed": true,
+   "detail": "14 risks"
+  },
+  {
+   "check": "every risk has an owner, a control, an evidence file and a review date",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "risks cover all four NIST AI RMF functions",
+   "passed": true,
+   "detail": "Govern, Manage, Map, Measure"
+  },
+  {
+   "check": "every risk points to an evidence file that exists",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "every evidence file matches its hash in the manifest",
+   "passed": true,
+   "detail": "14 files; mismatches: none"
+  },
+  {
+   "check": "every number in the model card points to evidence and matches it",
+   "passed": true,
+   "detail": "12 cited numbers; all match"
+  },
+  {
+   "check": "model card states the mode and the limitations",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "model card lists the recordings it holds and their retention (rule 10)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "candidate notice: AI is used, what is recorded, how long, ask for a person",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "candidate notice covers the copilot-assisted interview",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "explanation template says a recruiter reviews it before it is sent",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "bias findings are in the risk register",
+   "passed": true,
+   "detail": "1 accent finding(s) logged"
+  },
+  {
+   "check": "bias tests (screening and accents) have run",
+   "passed": true,
+   "detail": ""
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ code }} - Hiring Intelligence{% endblock %}
+{% block content %}
+<div class="center" style="text-align:center;max-width:520px">
+  <div class="empty">
+    <svg viewBox="0 0 24 24"><path d="M12 3l9 16H3zM12 10v4m0 3h.01" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h1>{{ headline }}</h1>
+  <p class="muted">{{ detail }}</p>
+  <p style="margin-top:1.4rem"><a class="btn" href="{{ back or '/' }}">Back to the console</a> <a class="btn secondary" href="/jobs">Open jobs</a></p>
+  <p class="muted small">Error {{ code }}</p>
+</div>
+{% endblock %}

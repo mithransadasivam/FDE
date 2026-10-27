@@ -1,0 +1,260 @@
+{
+ "variants": 30,
+ "bases": 6,
+ "unexplained_differences": 0,
+ "identity_leaks_in_prompts": 0,
+ "selection_threshold": 60.0,
+ "selection_rate_by_group": {
+  "original": 0.833,
+  "name_male": 0.833,
+  "name_female": 0.833,
+  "gender_clues": 0.833,
+  "age_clues": 0.833
+ },
+ "adverse_impact_ratio": 1.0,
+ "four_fifths_rule_ok": true,
+ "details": [
+  {
+   "base": 1,
+   "kind": "original",
+   "total": 87.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Amara Okafor"
+  },
+  {
+   "base": 1,
+   "kind": "name_male",
+   "total": 87.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Marek Ilves"
+  },
+  {
+   "base": 1,
+   "kind": "name_female",
+   "total": 87.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Farah Gallo"
+  },
+  {
+   "base": 1,
+   "kind": "gender_clues",
+   "total": 87.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Amara Okafor"
+  },
+  {
+   "base": 1,
+   "kind": "age_clues",
+   "total": 87.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Amara Okafor"
+  },
+  {
+   "base": 2,
+   "kind": "original",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Daniela Moreno"
+  },
+  {
+   "base": 2,
+   "kind": "name_male",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Dario Gallo"
+  },
+  {
+   "base": 2,
+   "kind": "name_female",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Noor Dimitrov"
+  },
+  {
+   "base": 2,
+   "kind": "gender_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Daniela Moreno"
+  },
+  {
+   "base": 2,
+   "kind": "age_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Daniela Moreno"
+  },
+  {
+   "base": 3,
+   "kind": "original",
+   "total": 43.7,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Freya Novak"
+  },
+  {
+   "base": 3,
+   "kind": "name_male",
+   "total": 43.7,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Emil Petrov"
+  },
+  {
+   "base": 3,
+   "kind": "name_female",
+   "total": 43.7,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Ines Tanaka"
+  },
+  {
+   "base": 3,
+   "kind": "gender_clues",
+   "total": 43.7,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Freya Novak"
+  },
+  {
+   "base": 3,
+   "kind": "age_clues",
+   "total": 43.7,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Freya Novak"
+  },
+  {
+   "base": 4,
+   "kind": "original",
+   "total": 93.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Hana Sato"
+  },
+  {
+   "base": 4,
+   "kind": "name_male",
+   "total": 93.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Dario Eriksen"
+  },
+  {
+   "base": 4,
+   "kind": "name_female",
+   "total": 93.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Ines Umarov"
+  },
+  {
+   "base": 4,
+   "kind": "gender_clues",
+   "total": 93.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Hana Sato"
+  },
+  {
+   "base": 4,
+   "kind": "age_clues",
+   "total": 93.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Hana Sato"
+  },
+  {
+   "base": 5,
+   "kind": "original",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Kavya Iyer"
+  },
+  {
+   "base": 5,
+   "kind": "name_male",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Kofi Quigley"
+  },
+  {
+   "base": 5,
+   "kind": "name_female",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Aisha Ilves"
+  },
+  {
+   "base": 5,
+   "kind": "gender_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Kavya Iyer"
+  },
+  {
+   "base": 5,
+   "kind": "age_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Kavya Iyer"
+  },
+  {
+   "base": 6,
+   "kind": "original",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Rosa Garcia"
+  },
+  {
+   "base": 6,
+   "kind": "name_male",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Adam Petrov"
+  },
+  {
+   "base": 6,
+   "kind": "name_female",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Carmen Gallo"
+  },
+  {
+   "base": 6,
+   "kind": "gender_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Rosa Garcia"
+  },
+  {
+   "base": 6,
+   "kind": "age_clues",
+   "total": 94.0,
+   "same_scores_as_original": true,
+   "same_blind_record_as_original": true,
+   "name_in_cv": "Rosa Garcia"
+  }
+ ],
+ "passed": true,
+ "method": "each CV file is read, identity is hidden (make_blind) and the blind record is scored by the production path (score_blind)"
+}

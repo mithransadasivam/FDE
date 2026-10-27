@@ -1,18 +1,47 @@
 {% extends "base.html" %}
+{% block title %}Overview - Hiring Intelligence{% endblock %}
 {% block content %}
-<h1>Welcome, {{ user.name }}</h1>
+<div class="page-head">
+  <div><div class="crumbs">Overview</div><h1>Welcome back, {{ user.name.split(' (')[0].split(' ')[0] }}</h1>
+    <p class="muted">AI prepares, people decide. Every approval, correction and stage move is written to the <a href="/log">decision log</a> with who, when and why.</p></div>
+  <div>{% if user.role == 'hiring_manager' %}<a class="btn" href="/requisitions/new">New requisition</a>{% else %}<a class="btn" href="/review">Review queue</a> <a class="btn secondary" href="/pipeline">Pipeline</a>{% endif %}</div>
+</div>
+
 <div class="cards">
   {% for label, n in counts.items() %}
   <div class="card"><div class="stat">{{ n }}</div><div class="stat-label">{{ label }}</div></div>
   {% endfor %}
 </div>
+
+<div class="row">
+  <div class="card" data-testid="waiting">
+    <h2>Waiting for you</h2>
+    {% if user.role == 'recruiter' %}
+    <table>
+      {% for label, n, href in waiting %}<tr><td><a href="{{ href }}">{{ label }}</a></td><td style="text-align:right"><span class="badge {{ 'warn' if n else 'good' }}">{{ n }}</span></td></tr>{% endfor %}
+    </table>
+    {% else %}
+    <p class="muted">Your decisions are the rubric (approve it, then publish) and, if you wish, a look at the blind candidate scores. The recruiter handles the shortlist, interviews and emails.</p>
+    <p><a class="btn secondary small" href="/requisitions">Requisitions</a> <a class="btn secondary small" href="/screening">Screening</a></p>
+    {% endif %}
+  </div>
+  <div class="card">
+    <h2>Pipeline</h2>
+    {% if total_candidates %}
+    {% for stage, n in funnel %}
+    <div style="display:flex;align-items:center;gap:.6rem;margin:.28rem 0"><span class="small muted" style="width:8.2rem">{{ stage }}</span>
+      <div style="flex:1;background:var(--surface-2);border-radius:99px;height:.7rem;overflow:hidden"><div style="width:{{ (100 * n / total_candidates) | round(1) }}%;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2))"></div></div>
+      <span class="small" style="width:2rem;text-align:right">{{ n }}</span></div>
+    {% endfor %}
+    {% else %}<div class="empty"><svg viewBox="0 0 24 24"><use href="#i-board"/></svg><div>No candidates yet.</div><div class="small">Publish a job and applications will appear here.</div></div>{% endif %}
+  </div>
+</div>
+
 <div class="card">
-  <p><strong>AI prepares, people decide.</strong> Every approval, correction and stage move is written to the
-  <a href="/log">decision log</a> with who, when and why.</p>
-  {% if user.role == 'hiring_manager' %}
-  <p><a class="btn" href="/requisitions/new">Start a new requisition</a></p>
-  {% else %}
-  <p><a class="btn" href="/review">Open the review queue</a> <a class="btn secondary" href="/pipeline">Pipeline board</a></p>
-  {% endif %}
+  <h2>Recent activity</h2>
+  <table>
+    {% for e in recent %}<tr><td class="small muted" style="white-space:nowrap">{{ e.at.strftime('%d %b %H:%M') }}</td><td><span class="badge {{ 'info' if '@' in e.actor else '' }}">{{ e.actor.split('@')[0] }}</span></td><td>{{ e.action }}</td><td class="small muted">{{ e.subject }}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">Nothing has happened yet.</td></tr>{% endfor %}
+  </table>
 </div>
 {% endblock %}

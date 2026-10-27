@@ -1,0 +1,1 @@
+While the primary is down, orders fail or have to be queued. Then i would add a replica with automatic failover. Also, there is a data loss risk from replication lag during failover.

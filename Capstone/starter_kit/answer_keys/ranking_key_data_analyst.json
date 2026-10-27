@@ -1,0 +1,301 @@
+{
+ "role": "data_analyst",
+ "rubric_weights": {
+  "SQL": 20,
+  "Data cleaning": 20,
+  "Dashboards": 20,
+  "Python with pandas": 13,
+  "Explaining numbers to managers": 13,
+  "Cloud data warehouse": 7,
+  "Basic statistics": 7
+ },
+ "candidates": [
+  {
+   "file": "DA-012_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 3,
+    "Dashboards": 3,
+    "Python with pandas": 3,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 3
+   },
+   "total": 100.0,
+   "rank": 1
+  },
+  {
+   "file": "DA-019_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 3,
+    "Dashboards": 3,
+    "Python with pandas": 3,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 0
+   },
+   "total": 93.0,
+   "rank": 2
+  },
+  {
+   "file": "DA-004_cv.docx",
+   "recruiter_scores": {
+    "SQL": 0,
+    "Data cleaning": 3,
+    "Dashboards": 3,
+    "Python with pandas": 3,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 3
+   },
+   "total": 80.0,
+   "rank": 3
+  },
+  {
+   "file": "DA-011_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 0,
+    "Dashboards": 3,
+    "Python with pandas": 3,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 3
+   },
+   "total": 80.0,
+   "rank": 4
+  },
+  {
+   "file": "DA-014_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 3,
+    "Dashboards": 3,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 0
+   },
+   "total": 80.0,
+   "rank": 5
+  },
+  {
+   "file": "DA-017_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 0,
+    "Dashboards": 3,
+    "Python with pandas": 3,
+    "Explaining numbers to managers": 3,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 3
+   },
+   "total": 80.0,
+   "rank": 6
+  },
+  {
+   "file": "DA-005_cv.docx",
+   "recruiter_scores": {
+    "SQL": 3,
+    "Data cleaning": 3,
+    "Dashboards": 3,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 3,
+    "Basic statistics": 3
+   },
+   "total": 74.0,
+   "rank": 7
+  },
+  {
+   "file": "DA-015_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 2,
+    "Dashboards": 2,
+    "Python with pandas": 2,
+    "Explaining numbers to managers": 2,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 66.7,
+   "rank": 8
+  },
+  {
+   "file": "DA-006_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 2,
+    "Dashboards": 2,
+    "Python with pandas": 2,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 58.0,
+   "rank": 9
+  },
+  {
+   "file": "DA-003_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 0,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 36.0,
+   "rank": 10
+  },
+  {
+   "file": "DA-008_cv.docx",
+   "recruiter_scores": {
+    "SQL": 0,
+    "Data cleaning": 2,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 36.0,
+   "rank": 11
+  },
+  {
+   "file": "DA-020_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 0,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 36.0,
+   "rank": 12
+  },
+  {
+   "file": "DA-010_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 0,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 0
+   },
+   "total": 31.3,
+   "rank": 13
+  },
+  {
+   "file": "DA-013_cv.docx",
+   "recruiter_scores": {
+    "SQL": 0,
+    "Data cleaning": 0,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 2,
+    "Cloud data warehouse": 2,
+    "Basic statistics": 2
+   },
+   "total": 31.3,
+   "rank": 14
+  },
+  {
+   "file": "DA-001_cv.docx",
+   "recruiter_scores": {
+    "SQL": 2,
+    "Data cleaning": 0,
+    "Dashboards": 2,
+    "Python with pandas": 0,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 0,
+    "Basic statistics": 0
+   },
+   "total": 26.7,
+   "rank": 15
+  },
+  {
+   "file": "DA-018_cv.docx",
+   "recruiter_scores": {
+    "SQL": 1,
+    "Data cleaning": 0,
+    "Dashboards": 1,
+    "Python with pandas": 1,
+    "Explaining numbers to managers": 1,
+    "Cloud data warehouse": 1,
+    "Basic statistics": 1
+   },
+   "total": 26.7,
+   "rank": 16
+  },
+  {
+   "file": "DA-009_cv.docx",
+   "recruiter_scores": {
+    "SQL": 1,
+    "Data cleaning": 0,
+    "Dashboards": 1,
+    "Python with pandas": 1,
+    "Explaining numbers to managers": 1,
+    "Cloud data warehouse": 0,
+    "Basic statistics": 1
+   },
+   "total": 24.3,
+   "rank": 17
+  },
+  {
+   "file": "DA-016_cv.docx",
+   "recruiter_scores": {
+    "SQL": 1,
+    "Data cleaning": 1,
+    "Dashboards": 0,
+    "Python with pandas": 1,
+    "Explaining numbers to managers": 1,
+    "Cloud data warehouse": 0,
+    "Basic statistics": 0
+   },
+   "total": 22.0,
+   "rank": 18
+  },
+  {
+   "file": "DA-007_cv.docx",
+   "recruiter_scores": {
+    "SQL": 0,
+    "Data cleaning": 1,
+    "Dashboards": 0,
+    "Python with pandas": 1,
+    "Explaining numbers to managers": 1,
+    "Cloud data warehouse": 1,
+    "Basic statistics": 1
+   },
+   "total": 20.0,
+   "rank": 19
+  },
+  {
+   "file": "DA-002_cv.docx",
+   "recruiter_scores": {
+    "SQL": 0,
+    "Data cleaning": 0,
+    "Dashboards": 1,
+    "Python with pandas": 1,
+    "Explaining numbers to managers": 0,
+    "Cloud data warehouse": 0,
+    "Basic statistics": 1
+   },
+   "total": 13.3,
+   "rank": 20
+  }
+ ],
+ "shortlist_top5": [
+  "DA-012_cv.docx",
+  "DA-019_cv.docx",
+  "DA-004_cv.docx",
+  "DA-011_cv.docx",
+  "DA-014_cv.docx"
+ ]
+}

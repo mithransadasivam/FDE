@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Interview scorecard #{{ cand.id }}{% endblock %}
+{% block content %}
+<h1>AI interview &middot; candidate #{{ cand.id }} <span class="badge {{ 'good' if s and s.status == 'DONE' else 'warn' }}">{{ s.status if s else 'NOT_STARTED' }}</span></h1>
+<p class="muted">Identity is hidden while scoring. The AI only recommends: a recruiter reviews the scorecard and decides.</p>
+{% if user.role == 'recruiter' and s is none or (user.role == 'recruiter' and s and s.status == 'NOT_STARTED') %}{% endif %}
+{% if user.role == 'recruiter' and cand.stage == 'AI_INTERVIEW' %}
+<form method="post" action="/interviews/{{ cand.id }}/replay" class="card">
+  <strong>Demo (fake mode)</strong> <span class="muted small">Run the whole interview from the recorded answers.</span>
+  <select name="quality" style="width:auto"><option value="strong">strong answers</option><option value="partial">partial answers</option><option value="weak">weak answers</option></select>
+  <button class="small">Replay recorded interview</button>
+</form>
+{% endif %}
+{% if s and s.scorecard %}
+{% set card = s.scorecard %}
+<div class="card">
+  <h2 style="margin-top:0">Scorecard <span class="badge">{{ card.total }} / 3</span> <span class="muted small">ended: {{ card.ended_reason }}</span></h2>
+  <table>
+    <tr><th>Question</th><th>Skill</th><th>Score</th><th>Evidence (exact words from the transcript)</th><th>Notes</th><th>Second scorer</th></tr>
+    {% for a in card.answers %}
+    <tr>
+      <td>{{ a.question_id }}<div class="small muted">{{ qs[a.question_id].question[:70] }}...</div></td><td>{{ a.skill }}</td>
+      <td>{% if a.skipped %}<span class="badge">skipped</span>{% else %}<span class="badge {{ 'good' if a.score == 3 else ('warn' if a.score >= 1 else 'bad') }}">{{ a.score }}/3</span>{% endif %}</td>
+      <td>{% if a.quote %}<em>&ldquo;{{ a.quote }}&rdquo;</em>
+          {% if a.audio_file and user.role == 'recruiter' %}<br><audio controls preload="none" src="/media/interview/{{ cand.id }}?ref={{ a.audio_file | urlencode }}" style="height:28px"></audio><span class="small muted"> from {{ '%d:%02d' | format((a.audio_start_s // 60) | int, (a.audio_start_s % 60) | int) }}</span>{% endif %}
+          {% else %}<span class="muted">no scoring evidence</span>{% endif %}</td>
+      <td class="small">{% if a.hint_used %}<span class="badge warn">hint given (best score 2)</span> {% endif %}{% if a.follow_up_asked %}follow-up: {{ a.follow_up_asked }}{% endif %}
+          {% if a.key_points_missed and not a.skipped %}<div class="muted">missed: {{ a.key_points_missed | join('; ') }}</div>{% endif %}</td>
+      <td>{{ card.second_scorer.get(a.question_id, '') }}{% if a.question_id in card.disagreements %} <span class="badge bad">please review</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% if card.disagreements %}<p class="small"><strong>The two scorers disagree on {{ card.disagreements | join(', ') }}:</strong> please read those answers yourself.</p>{% endif %}
+  {% if user.role == 'recruiter' %}
+  <form method="post" action="/interviews/{{ cand.id }}/review">
+    {% if s.reviewed_by %}<span class="badge good">reviewed by {{ s.reviewed_by }}</span>{% else %}<button>I have reviewed this scorecard</button>{% endif %}
+  </form>{% endif %}
+</div>
+{% elif s and s.status == 'PERSON_REQUESTED' %}
+<div class="card"><span class="badge warn">asked for a person</span> The candidate chose an interview with a person. Please arrange it.</div>
+{% else %}
+<div class="card muted">No interview scorecard yet.</div>
+{% endif %}
+{% endblock %}

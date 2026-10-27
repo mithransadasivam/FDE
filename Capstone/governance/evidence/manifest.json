@@ -1,0 +1,19 @@
+{
+ "generated": "2026-10-27",
+ "files": {
+  "bias_accents.json": "c55f48e2123ae9a0ed88aeb5b9e65718b12da92cd89325fb9295d069b1ca0aad",
+  "bias_accents_whisper.json": "2fb6811921b36265123eff558993b278dead590229f820d0589a6748175a0964",
+  "bias_screening.json": "159fc31587b7bd28370abf635f34f3d0d290f9ef69f5c5b7976276d3be7e4e8b",
+  "eval_copilot.json": "8aac91115e7833a529fe197c6357e225bf86066f7ed27016647428bc43eaaf61",
+  "eval_extraction.json": "c5d9d3705df80b92435f23353a9bd0ca2e0716a73e8076edecf76b1fd7d77c82",
+  "eval_interview.json": "eaa673e8ad2187255e6a1fa74d23c98470f902b0ac3298604d851346384e5f52",
+  "eval_ranking.json": "45523cd35a776e0e57449c6917dccf9e2f2a601a6d94f53e8e9b463225322461",
+  "governance_check.json": "4d8d5a560ad128ce8d0220a154af15572303d114de0a3c8d6b54cf10c8beb038",
+  "perf.json": "2a743ab77f2a1fcda9b7b725ff61f43260bc0cf3fff33210abe23490340a502b",
+  "red_team.json": "fe9956a1028b9588b4b23f368d7628a0861bc45cdc221c6538ec0cddd2bbfa20",
+  "EVAL_REPORT.md": "6c01382d68f25d22d0d06163bff211ccfed3d3c0adee08900af5f913e4f816ce",
+  "PERF_REPORT.md": "b47e0e581d71107630f0eb66da1c204937d2aa90c5fa51604886a4e1aa55e70a",
+  "SECURITY_FINDINGS.md": "c0208a28d7b1e99364897e79e1fb77d40937972d18334b5ee092534819b093c4",
+  "BIAS_REPORT.md": "ba838d45520e123ed93d9ec2d4cf93c76f102f119d694cc0867fbf7306471ee9"
+ }
+}

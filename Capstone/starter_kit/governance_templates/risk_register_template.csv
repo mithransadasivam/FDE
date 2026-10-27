@@ -1,0 +1,2 @@
+id,risk,nist_function,likelihood,impact,owner,control,evidence,review_date
+R-001,<risk>,Govern|Map|Measure|Manage,low|medium|high,low|medium|high,<owner>,<control>,<evidence file>,<date>

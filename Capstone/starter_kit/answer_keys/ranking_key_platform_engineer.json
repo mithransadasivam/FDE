@@ -1,0 +1,322 @@
+{
+ "role": "platform_engineer",
+ "rubric_weights": {
+  "Kubernetes in production": 17,
+  "Infrastructure as code (Terraform)": 17,
+  "Continuous integration pipelines": 18,
+  "Linux": 12,
+  "Networking": 12,
+  "Explaining an architecture": 12,
+  "Observability tools": 6,
+  "Programming (Go or Python)": 6
+ },
+ "candidates": [
+  {
+   "file": "PL-011_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 3,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 3,
+    "Explaining an architecture": 0,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 3
+   },
+   "total": 88.0,
+   "rank": 1
+  },
+  {
+   "file": "PL-006_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 3,
+    "Explaining an architecture": 3,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 3
+   },
+   "total": 83.0,
+   "rank": 2
+  },
+  {
+   "file": "PL-001_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 3,
+    "Linux": 0,
+    "Networking": 3,
+    "Explaining an architecture": 3,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 3
+   },
+   "total": 71.0,
+   "rank": 3
+  },
+  {
+   "file": "PL-003_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 3,
+    "Explaining an architecture": 0,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 3
+   },
+   "total": 71.0,
+   "rank": 4
+  },
+  {
+   "file": "PL-002_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 3,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 0
+   },
+   "total": 70.0,
+   "rank": 5
+  },
+  {
+   "file": "PL-004_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 3,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 0
+   },
+   "total": 70.0,
+   "rank": 6
+  },
+  {
+   "file": "PL-008_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 3,
+    "Continuous integration pipelines": 3,
+    "Linux": 0,
+    "Networking": 3,
+    "Explaining an architecture": 0,
+    "Observability tools": 0,
+    "Programming (Go or Python)": 3
+   },
+   "total": 70.0,
+   "rank": 7
+  },
+  {
+   "file": "PL-018_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 3,
+    "Explaining an architecture": 3,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 3
+   },
+   "total": 66.0,
+   "rank": 8
+  },
+  {
+   "file": "PL-019_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 3,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 3,
+    "Linux": 3,
+    "Networking": 0,
+    "Explaining an architecture": 3,
+    "Observability tools": 3,
+    "Programming (Go or Python)": 0
+   },
+   "total": 65.0,
+   "rank": 9
+  },
+  {
+   "file": "PL-014_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 2,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 2,
+    "Linux": 2,
+    "Networking": 2,
+    "Explaining an architecture": 2,
+    "Observability tools": 2,
+    "Programming (Go or Python)": 0
+   },
+   "total": 62.7,
+   "rank": 10
+  },
+  {
+   "file": "PL-015_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 2,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 2,
+    "Linux": 2,
+    "Networking": 0,
+    "Explaining an architecture": 2,
+    "Observability tools": 0,
+    "Programming (Go or Python)": 2
+   },
+   "total": 54.7,
+   "rank": 11
+  },
+  {
+   "file": "PL-009_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 2,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 2,
+    "Linux": 2,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 2,
+    "Programming (Go or Python)": 2
+   },
+   "total": 50.7,
+   "rank": 12
+  },
+  {
+   "file": "PL-013_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 2,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 0,
+    "Linux": 2,
+    "Networking": 0,
+    "Explaining an architecture": 2,
+    "Observability tools": 2,
+    "Programming (Go or Python)": 2
+   },
+   "total": 46.7,
+   "rank": 13
+  },
+  {
+   "file": "PL-010_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 2,
+    "Linux": 0,
+    "Networking": 2,
+    "Explaining an architecture": 0,
+    "Observability tools": 2,
+    "Programming (Go or Python)": 2
+   },
+   "total": 39.3,
+   "rank": 14
+  },
+  {
+   "file": "PL-016_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 2,
+    "Continuous integration pipelines": 2,
+    "Linux": 2,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 0,
+    "Programming (Go or Python)": 2
+   },
+   "total": 35.3,
+   "rank": 15
+  },
+  {
+   "file": "PL-017_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 2,
+    "Infrastructure as code (Terraform)": 0,
+    "Continuous integration pipelines": 0,
+    "Linux": 2,
+    "Networking": 0,
+    "Explaining an architecture": 2,
+    "Observability tools": 2,
+    "Programming (Go or Python)": 0
+   },
+   "total": 31.3,
+   "rank": 16
+  },
+  {
+   "file": "PL-005_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 1,
+    "Continuous integration pipelines": 1,
+    "Linux": 0,
+    "Networking": 1,
+    "Explaining an architecture": 0,
+    "Observability tools": 1,
+    "Programming (Go or Python)": 1
+   },
+   "total": 19.7,
+   "rank": 17
+  },
+  {
+   "file": "PL-007_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 1,
+    "Continuous integration pipelines": 1,
+    "Linux": 1,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 1,
+    "Programming (Go or Python)": 0
+   },
+   "total": 17.7,
+   "rank": 18
+  },
+  {
+   "file": "PL-012_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 1,
+    "Continuous integration pipelines": 0,
+    "Linux": 0,
+    "Networking": 1,
+    "Explaining an architecture": 0,
+    "Observability tools": 1,
+    "Programming (Go or Python)": 0
+   },
+   "total": 11.7,
+   "rank": 19
+  },
+  {
+   "file": "PL-020_cv.docx",
+   "recruiter_scores": {
+    "Kubernetes in production": 0,
+    "Infrastructure as code (Terraform)": 1,
+    "Continuous integration pipelines": 0,
+    "Linux": 1,
+    "Networking": 0,
+    "Explaining an architecture": 0,
+    "Observability tools": 0,
+    "Programming (Go or Python)": 1
+   },
+   "total": 11.7,
+   "rank": 20
+  }
+ ],
+ "shortlist_top5": [
+  "PL-011_cv.docx",
+  "PL-006_cv.docx",
+  "PL-001_cv.docx",
+  "PL-003_cv.docx",
+  "PL-002_cv.docx"
+ ]
+}

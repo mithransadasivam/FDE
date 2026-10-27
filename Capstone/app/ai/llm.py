@@ -1,19 +1,32 @@
-"""The only place text and vision models are called (Prompts 7 and 11). FAKE_MODELS=1 switches to fakes."""
+"""The only place text and vision models are called. FAKE_MODELS=1 switches every call to a fake.
+
+Every call goes through the router (small, large or local model by kind of step), the cache, the fallback model and the
+ledger (prompt log plus cost). To use real models set FAKE_MODELS=0 and OPENROUTER_API_KEY in .env: nothing else changes.
+"""
 import base64
+import hashlib
 import json
 import re
+import time
 from pathlib import Path
 from typing import Callable, TypeVar
 
 from pydantic import BaseModel, ValidationError
 
+from app.ai import router
+from app.ai.ledger import record_call
 from app.config import get_settings
 
 T = TypeVar("T", bound=BaseModel)
+_CACHE: dict[str, str] = {}
 
 
 class ModelError(Exception):
     """The model (or a check on its reply) failed. The message is safe to show on a page."""
+
+
+def clear_cache() -> None:
+    _CACHE.clear()
 
 
 def _strip_fences(text: str) -> str:
@@ -24,12 +37,12 @@ def _strip_fences(text: str) -> str:
 
 def _call(model: str, messages: list[dict], max_tokens: int = 3000) -> str:
     s = get_settings()
-    if not s.openrouter_api_key:
+    if not s.openrouter_api_key and not model.startswith("ollama/"):
         raise ModelError("No model key: set OPENROUTER_API_KEY in .env, or FAKE_MODELS=1")
     import litellm  # imported late: slow, and never needed in fake mode
 
     try:
-        resp = litellm.completion(model=model, messages=messages, api_key=s.openrouter_api_key,
+        resp = litellm.completion(model=model, messages=messages, api_key=s.openrouter_api_key or None,
                                   max_tokens=max_tokens, temperature=0, timeout=90)
     except Exception as e:
         raise ModelError(f"The model call failed: {type(e).__name__}: {str(e)[:200]}") from e
@@ -37,27 +50,52 @@ def _call(model: str, messages: list[dict], max_tokens: int = 3000) -> str:
 
 
 def complete_json(system: str, user: str, schema: type[T], fake: Callable[[str], T | dict] | None = None,
-                  model: str | None = None) -> T:
+                  model: str | None = None, task: str = "judgement", agent: str = "", candidate_id: int | None = None) -> T:
     """Ask for JSON that matches `schema`; retry once with the validation error; then raise ModelError.
-    With FAKE_MODELS=1 the fake is validated and returned instead (no model is called)."""
+    With FAKE_MODELS=1 the fake is validated and returned instead (no model is called).
+
+    task picks the model: extraction / point_ticking use the small model, judgement the large one, identity the local one."""
     s = get_settings()
+    tier, routed = router.pick(task)
+    model = model or routed
+    started = time.perf_counter()
     if s.fake_models:
         if fake is None:
             raise ModelError("No fake available for this call")
+        key = hashlib.sha256(f"{model}|{system}|{user}|{schema.__name__}".encode()).hexdigest()
+        cached = s.cache_enabled and key in _CACHE
         out = fake(user)
-        try:
-            return out if isinstance(out, schema) else schema.model_validate(out)
-        except ValidationError as e:
-            raise ModelError(f"The reply did not match the expected format: {e.errors()[0]['msg']}") from e
+        result = out if isinstance(out, schema) else _validate(schema, out)
+        text = result.model_dump_json()
+        if s.cache_enabled:
+            _CACHE[key] = text
+        record_call(agent, task, tier, model, system, user, text, (time.perf_counter() - started) * 1000, simulated=True,
+                    cached=cached, candidate_id=candidate_id)
+        return result
 
     full_system = (f"{system}\n\nReply with JSON only, no commentary, matching this JSON Schema:\n"
                    f"{json.dumps(schema.model_json_schema())}")
+    key = hashlib.sha256(f"{model}|{full_system}|{user}".encode()).hexdigest()
+    if s.cache_enabled and key in _CACHE:
+        record_call(agent, task, tier, model, system, user, _CACHE[key], 0.0, simulated=False, cached=True, candidate_id=candidate_id)
+        return schema.model_validate_json(_CACHE[key])
     messages = [{"role": "system", "content": full_system}, {"role": "user", "content": user}]
     last_error = ""
+    used_model, used_tier = model, tier
     for attempt in (1, 2):
-        text = _call(model or s.llm_model, messages)
         try:
-            return schema.model_validate_json(_strip_fences(text))
+            text = _call(used_model, messages)
+        except ModelError:
+            if used_tier == "fallback":
+                raise
+            used_tier, used_model = "fallback", router.model_for("fallback")  # the fallback model takes over
+            text = _call(used_model, messages)
+        try:
+            result = schema.model_validate_json(_strip_fences(text))
+            _CACHE[key] = result.model_dump_json()
+            record_call(agent, task, used_tier, used_model, system, user, text, (time.perf_counter() - started) * 1000, simulated=False,
+                        candidate_id=candidate_id)
+            return result
         except ValidationError as e:
             last_error = "; ".join(f"{'.'.join(map(str, x['loc']))}: {x['msg']}" for x in e.errors()[:5])
             if attempt == 2:
@@ -67,8 +105,15 @@ def complete_json(system: str, user: str, schema: type[T], fake: Callable[[str],
     raise ModelError(last_error)  # unreachable, keeps type checkers calm
 
 
+def _validate(schema: type[T], out) -> T:
+    try:
+        return schema.model_validate(out)
+    except ValidationError as e:
+        raise ModelError(f"The reply did not match the expected format: {e.errors()[0]['msg']}") from e
+
+
 def read_image_text(path: Path) -> str:
-    """Text from a scanned CV or a profile screenshot: tesseract OCR in fake mode, a vision model otherwise."""
+    """Text from a scanned CV or a profile screenshot: OCR in fake mode, a vision model otherwise."""
     s = get_settings()
     if s.fake_models:
         return _ocr(path)

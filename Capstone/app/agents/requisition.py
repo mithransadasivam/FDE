@@ -127,7 +127,7 @@ def _norm(text: str) -> str:
 
 
 def generate_job(transcript: str) -> JobDraft:
-    draft = complete_json(SYSTEM, f"<transcript>\n{transcript}\n</transcript>", JobDraft, fake=_fake)
+    draft = complete_json(SYSTEM, f"<transcript>\n{transcript}\n</transcript>", JobDraft, fake=_fake, task="judgement", agent="requisition")
     # Rule 2 in code: every rubric item must come from what the hiring manager really said.
     haystack = _norm(transcript)
     missing = [i.skill for i in draft.rubric.items if _norm(i.evidence_from_note) not in haystack]

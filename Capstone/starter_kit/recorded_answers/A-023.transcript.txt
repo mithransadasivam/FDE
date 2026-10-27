@@ -1,0 +1,1 @@
+I watch the golden signals: latency, traffic, errors and saturation. Then i build Grafana dashboards for the trends. Also, each alert links to a runbook, and I remove noisy alerts.

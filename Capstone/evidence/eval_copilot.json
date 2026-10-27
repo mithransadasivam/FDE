@@ -1,0 +1,151 @@
+{
+ "key_point_agreement_pct": 100.0,
+ "points_compared": 40,
+ "forbidden_flags": [
+  {
+   "interview": "H-4",
+   "category": "family or pregnancy",
+   "lag_s": 0.0009,
+   "within_limit": true
+  }
+ ],
+ "details": [
+  {
+   "interview": "H-1",
+   "question": "T-01",
+   "expected": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "copilot": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "interview": "H-1",
+   "question": "T-04",
+   "expected": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "copilot": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "interview": "H-1",
+   "question": "T-06",
+   "expected": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "copilot": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "interview": "H-2",
+   "question": "T-01",
+   "expected": [
+    4
+   ],
+   "copilot": [
+    4
+   ]
+  },
+  {
+   "interview": "H-2",
+   "question": "T-04",
+   "expected": [],
+   "copilot": []
+  },
+  {
+   "interview": "H-2",
+   "question": "T-06",
+   "expected": [
+    1
+   ],
+   "copilot": [
+    1
+   ]
+  },
+  {
+   "interview": "H-3",
+   "question": "T-12",
+   "expected": [
+    1,
+    2
+   ],
+   "copilot": [
+    1,
+    2
+   ]
+  },
+  {
+   "interview": "H-3",
+   "question": "T-06",
+   "expected": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "copilot": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "interview": "H-4",
+   "question": "T-01",
+   "expected": [
+    1,
+    2,
+    3
+   ],
+   "copilot": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "interview": "H-4",
+   "question": "T-06",
+   "expected": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "copilot": [
+    1,
+    2,
+    3,
+    4
+   ]
+  }
+ ],
+ "passed": true,
+ "targets": {
+  "key_points_min_pct": 80,
+  "flag_within_s": 3.0
+ }
+}

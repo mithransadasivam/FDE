@@ -1,0 +1,20 @@
+# Risk register
+
+NIST AI RMF functions: Govern, Map, Measure, Manage. Review date for every risk: 2027-01-31.
+
+| Id | Risk | Function | Likelihood | Impact | Owner | Control | Evidence |
+|---|---|---|---|---|---|---|---|
+| R-001 | Screening treats candidates differently because of name, gender or age clues | Measure | medium | high | Trust & quality lead | Identity hidden before scoring (app/privacy.py); age and gender proxies scrubbed; counterfactual test on 6x5 CV variants | `bias_screening.json` |
+| R-002 | Interview transcription is less accurate for some voices, lowering their scores | Measure | medium | high | Voice & interviews lead | Accent test with word error rate and score per variant; 1 finding(s) logged from the simulated run; second scorer; recruiter reviews every scorecard; re-test with real accented speech | `bias_accents.json` |
+| R-003 | Instructions hidden in a CV, PDF metadata, an email or a spoken answer change a score or an action | Manage | high | high | Trust & quality lead | Candidate text is data: scanned, flagged and removed before models read it; evidence check; people approve; 20-attack red team before and after | `red_team.json` |
+| R-004 | The assistant or a tool leaks private data (contact details, date of birth, salary) or its own instructions | Manage | medium | high | Agents & platform lead | Requests refused by code; the tracking database refuses private columns (SQLite authorizer); read-only connection | `red_team.json` |
+| R-005 | A score cites evidence that does not exist (a fabricated quote) | Measure | medium | high | Intake & screening lead | Code checks every quote is in its source; a score without a verified quote becomes 0; the compliance reviewer re-checks and sends work back | `eval_ranking.json` |
+| R-006 | A decision, message or stage move happens without a person | Govern | low | high | Agents & platform lead | supervisor.move() refuses system decisions; approve_and_send refuses non-persons; decision-log completeness check | `red_team.json` |
+| R-007 | Emotion or voice features (tone, accent, confidence) leak into interview scoring | Govern | low | high | Voice & interviews lead | Scoring functions receive transcript text only; a test proves no audio feature is used; no camera | `eval_interview.json` |
+| R-008 | CVs and recordings are kept longer than allowed or sent to an unapproved model | Govern | medium | medium | Agents & platform lead | Retention purge (scripts/purge_expired.py); model router keeps identity-seeing steps on the local model; recordings listed in the model card | `perf.json` |
+| R-009 | Model accuracy changes when the real model or prompt changes | Measure | high | medium | Trust & quality lead | Quality gate in CI re-runs extraction, ranking, interview, copilot, red-team and bias evaluations on every change | `eval_extraction.json` |
+| R-010 | Candidates are not told AI is involved, or cannot ask for a person | Govern | low | high | Intake & screening lead | Notice and consent on the apply page; notice acknowledged before the AI interview and before the copilot; ask-for-a-person flow | `eval_copilot.json` |
+| R-011 | Numbers measured with fake models are mistaken for real-model performance | Map | high | medium | Trust & quality lead | Every report states the mode; the model card repeats it; real-model re-run is listed as an open action | `eval_interview.json` |
+| R-012 | A real person's CV or voice enters the system | Map | low | high | Trust & quality lead | Fictional data only (rule 11); all fixtures are generated; README and CLAUDE.md say so | `eval_extraction.json` |
+| R-013 | Cost or voice latency grows beyond the targets | Manage | medium | low | Agents & platform lead | Cost per 100 CVs and per interview, and voice p95, measured in PERF_REPORT.md; routing and caching | `perf.json` |
+| R-014 | A model outage stops screening or interviews | Manage | medium | medium | Agents & platform lead | Fallback model in the router; /ready reports when a dependency is missing; interview state resumes after a dropped connection | `perf.json` |

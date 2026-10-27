@@ -1,0 +1,1 @@
+First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, from the VM I test with curl, traceroute and a DNS lookup.

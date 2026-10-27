@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Compliance{% endblock %}
+{% block content %}
+<h1>Compliance review <span class="badge {{ 'bad' if findings else 'good' }}">{{ findings | length }} open</span></h1>
+<p class="muted">The compliance reviewer checks that every score's quote really is in its source, that no identity detail or protected trait reached a scoring prompt, and that the decision log is complete. It sends bad work back. Its findings come to you; it never decides anything.</p>
+{% if user.role == 'recruiter' %}<form method="post" action="/compliance/run"><button>Run the compliance review now</button></form>{% endif %}
+<table style="margin-top:1rem">
+  <tr><th>Check</th><th>Candidate</th><th>Detail</th><th></th></tr>
+  {% for f in findings %}
+  <tr><td><span class="badge bad">{{ f.check }}</span></td><td>{{ '#%d' % f.candidate_id if f.candidate_id else '' }}</td><td class="small">{{ f.detail }}</td>
+    <td>{% if user.role == 'recruiter' %}
+      {% if f.check == 'quote not in source' %}<form method="post" action="/compliance/{{ f.id }}/rescore" style="display:inline"><button class="small">Score again</button></form>{% endif %}
+      <form method="post" action="/compliance/{{ f.id }}/resolve" style="display:inline"><button class="small secondary">Mark resolved</button></form>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">No open findings.</td></tr>{% endfor %}
+</table>
+{% if resolved %}<h2>Recently resolved</h2><table>{% for f in resolved %}<tr><td>{{ f.check }}</td><td class="small">{{ f.detail }}</td></tr>{% endfor %}</table>{% endif %}
+{% endblock %}

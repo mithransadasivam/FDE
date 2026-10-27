@@ -1,16 +1,41 @@
 {% extends "base.html" %}
 {% block title %}Sign in - Hiring Intelligence{% endblock %}
-{% block content %}
-<div class="center card">
-  <h1>Staff sign-in</h1>
-  <p class="muted small">For hiring managers and recruiters. Candidates do not need an account: use the <a href="/jobs">open jobs</a> page.</p>
-  {% if error %}<div class="flash bad">{{ error }}</div>{% endif %}
-  <form method="post" action="/login">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" value="{{ email or '' }}" required autofocus>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" required>
-    <p><button type="submit">Sign in</button></p>
-  </form>
+{% block shell %}
+<div class="hero">
+  <section class="hero-art">
+    <a class="brand" href="/jobs"><span class="logo"><svg width="20" height="20"><use href="#i-logo"/></svg></span><span>Hiring Intelligence</span></a>
+    <h1>Hire fairly, faster.<br>AI prepares. People decide.</h1>
+    <p>Agents read every CV, score each candidate with the exact sentence behind every score, interview by voice and sit beside the recruiter, while a person approves every decision and the whole system is measured, attacked and documented.</p>
+    <ul>
+      <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>No quote, no score.</b> Code checks every piece of evidence is really in the CV.</span></li>
+      <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Identity hidden</b> while scoring: names, contact details, age and gender clues never reach a model.</span></li>
+      <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>A person decides</b> at every gate, with a reason in the decision log.</span></li>
+    </ul>
+  </section>
+  <section class="hero-form">
+    <div class="card">
+      <h1 style="font-size:1.45rem">Staff sign-in</h1>
+      <p class="muted small">For hiring managers and recruiters. Candidates do not need an account: see the <a href="/jobs">open jobs</a>.</p>
+      {% for m in messages %}<div class="flash {{ m.kind }}">{{ m.text }}</div>{% endfor %}
+      {% if error %}<div class="flash bad" role="alert">{{ error }}</div>{% endif %}
+      <form method="post" action="/login">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" value="{{ email or '' }}" required autofocus autocomplete="username">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password">
+        <p style="margin-top:1.1rem"><button type="submit" style="width:100%;justify-content:center">Sign in</button></p>
+      </form>
+      {% if demo %}
+      <div class="demo-box"><strong>Demo accounts</strong> <span class="muted">(fictional; password <code>demo-password-1</code>)</span><br>
+        Hiring manager: <code>hm@example.com</code><br>Recruiter: <code>recruiter@example.com</code></div>
+      {% endif %}
+    </div>
+  </section>
 </div>
+<script>
+  document.querySelectorAll(".demo-box code").forEach(c => c.addEventListener("click", () => {
+    const t = c.textContent.trim();
+    if (t.includes("@")) { document.getElementById("email").value = t; document.getElementById("password").value = "demo-password-1"; }
+  }));
+</script>
 {% endblock %}
