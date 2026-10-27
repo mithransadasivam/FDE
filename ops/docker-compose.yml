@@ -1,0 +1,66 @@
+# The whole platform: the API (FastAPI), the tracking-system MCP server, and Phoenix for traces.
+#   docker compose -f ops/docker-compose.yml up --build
+# Then open http://localhost:8001 (API and console), http://localhost:6006 (Phoenix traces), http://localhost:8765/mcp (MCP server).
+# Every port can be changed with API_PORT, PHOENIX_PORT, MCP_PORT.
+name: hiring-intelligence
+
+x-app: &app
+  build:
+    context: ..
+    dockerfile: ops/Dockerfile
+  image: hiring-intelligence:latest
+  environment: &env
+    FAKE_MODELS: "${FAKE_MODELS:-1}"
+    OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
+    SECRET_KEY: "${SECRET_KEY:-change-this-long-random-text-before-real-use}"
+    DATABASE_URL: sqlite:////data/hiring.db
+    OPS_DATABASE_URL: sqlite:////data/ops.db
+    STORAGE_DIR: /data/storage
+    PHOENIX_ENDPOINT: http://phoenix:6006/v1/traces
+    LARGE_MODEL: "${LARGE_MODEL:-openrouter/anthropic/claude-haiku-4.5}"
+    SMALL_MODEL: "${SMALL_MODEL:-openrouter/google/gemini-2.5-flash-lite}"
+    LOCAL_MODEL: "${LOCAL_MODEL:-ollama/llama3.1}"
+    FALLBACK_MODEL: "${FALLBACK_MODEL:-openrouter/openai/gpt-4o-mini}"
+  volumes:
+    - hiring-data:/data
+
+services:
+  api:
+    <<: *app
+    ports:
+      - "${API_PORT:-8001}:8000"
+    environment:
+      <<: *env
+      SEED_DEMO: "${SEED_DEMO:-1}"
+    depends_on:
+      phoenix:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/ready"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 120s
+
+  mcp:
+    <<: *app
+    command: ["python", "-m", "mcp_server.server", "--http"]
+    environment:
+      <<: *env
+      TRACKING_DB: /data/storage/tracking_system.db
+      MCP_PORT: "8765"
+    ports:
+      - "${MCP_PORT:-8765}:8765"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "${PHOENIX_PORT:-6006}:6006"
+    environment:
+      PHOENIX_WORKING_DIR: /phoenix
+
+volumes:
+  hiring-data:

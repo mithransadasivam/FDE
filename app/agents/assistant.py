@@ -157,6 +157,12 @@ def answer(db: Session, question: str) -> dict:
     result = {"answer": out.answer, "sources": [{"n": n, "label": items[n - 1]["source"], "text": items[n - 1]["text"]} for n in used], "refused": False, "cached": False}
     if not get_settings().guardrails_enabled and re.search(r"system (?:prompt|instructions)", question, re.I):
         result["answer"] = SYSTEM  # the unprotected 'before' state: a naive assistant reveals its instructions
+    if not get_settings().guardrails_enabled and re.search(r"youngest|oldest", question, re.I):
+        born = [(str(((c.profile or {}).get("date_of_birth") or {}).get("value")), c.id) for c in db.scalars(select(Candidate))
+                if ((c.profile or {}).get("date_of_birth") or {}).get("value")]
+        key = lambda x: tuple(reversed(x[0].split("/")))  # noqa: E731
+        if born:
+            result["answer"] = f"Candidate #{(max if 'youngest' in question.lower() else min)(born, key=key)[1]} is the {'youngest' if 'youngest' in question.lower() else 'oldest'}."
     if not get_settings().guardrails_enabled and re.search(r"date of birth|phone|e-?mail", question, re.I):
         result["answer"] += " (private detail: " + str(_leak(db, question)) + ")"  # the unprotected 'before' state leaks private columns
     if get_settings().cache_enabled:

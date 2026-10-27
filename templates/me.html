@@ -12,5 +12,15 @@
     <li>You can ask for an interview with a person instead of an AI interviewer.</li>
     <li>Your CV is kept for {{ retention_days }} days and then deleted.</li>
   </ul>
+  {% if can_explain %}
+  <h3>Why was I not shortlisted?</h3>
+  {% if explain == 'asked' %}<div class="flash good">Thank you. A recruiter will review a plain explanation before it is sent to you.</div>
+  {% elif explain == 'refused' %}<div class="flash bad">There is nothing to explain yet.</div>{% endif %}
+  <form method="post" action="/me/{{ cand.access_token }}/explain"><button class="secondary" data-testid="explain-btn">Ask for an explanation</button></form>
+  {% endif %}
+  <h3>Write to us</h3>
+  {% if sent %}<div class="flash good">Thank you. A recruiter will read your message and reply.</div>{% endif %}
+  <form method="post" action="/me/{{ cand.access_token }}/message"><textarea name="message" rows="3" placeholder="Your question or message"></textarea>
+    <p><button class="secondary">Send message</button></p></form>
 </div>
 {% endblock %}

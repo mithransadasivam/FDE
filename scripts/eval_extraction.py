@@ -76,6 +76,9 @@ def main() -> int:
         print(f"  {fmt:11} {r}/{t}")
     pct = 100 * right / total
     print(f"Fields right: {right}/{total} = {pct:.0f}% (target: at least 90%)")
+    Path("evidence").mkdir(exist_ok=True)
+    Path("evidence/eval_extraction.json").write_text(json.dumps({"fields_right": right, "fields_total": total, "pct": round(pct, 1), "by_format": {k: f"{v[0]}/{v[1]}" for k, v in by_format.items()},
+                                                                 "target_pct": 90, "passed": pct >= 90, "source": "database" if args.db else "starter kit files"}, indent=1), encoding="utf-8")
     return 0 if pct >= 90 else 1
 
 

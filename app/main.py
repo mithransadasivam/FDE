@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import get_settings
 from app.db import init_db
-from app.web import assistant, candidates, interview, outbox, pages, public, requisitions, screening
+from app.web import assistant, candidates, compliance, copilot, interview, ops, outbox, pages, public, requisitions, scorecard, screening, trust
 
 
 @asynccontextmanager
@@ -27,6 +27,12 @@ app.include_router(screening.router)
 app.include_router(interview.router)
 app.include_router(outbox.router)
 app.include_router(assistant.router)
+app.include_router(copilot.router)
+app.include_router(compliance.router)
+app.include_router(ops.router)
+app.include_router(scorecard.router)
+app.include_router(trust.router)
+app.middleware("http")(ops.count_requests)
 
 
 @app.exception_handler(HTTPException)

@@ -183,9 +183,34 @@ class SearchArgs(BaseModel):
     requisition_id: int | None = None
 
 
+_CV_INDEX_CACHE: dict[tuple, HybridIndex] = {}
+INDEX_BUILDS = {"built": 0, "reused": 0}
+
+
+def cv_index(db, requisition_id: int | None = None) -> HybridIndex:
+    """The CV search index. Building it (hiding identity and computing the vectors) is the expensive part, so it is cached
+    until the pool changes (a different number of candidates, a different last id or different stages)."""
+    from sqlalchemy import func, select
+
+    from app.models import Candidate
+
+    if not get_settings().cache_enabled:
+        INDEX_BUILDS["built"] += 1
+        return HybridIndex(cv_chunks(db, requisition_id))
+    sig = (requisition_id, db.scalar(select(func.count(Candidate.id))), db.scalar(select(func.max(Candidate.id))),
+           hash(tuple(db.scalars(select(Candidate.stage).order_by(Candidate.id)))))
+    if sig not in _CV_INDEX_CACHE:
+        _CV_INDEX_CACHE.clear()
+        _CV_INDEX_CACHE[sig] = HybridIndex(cv_chunks(db, requisition_id))
+        INDEX_BUILDS["built"] += 1
+    else:
+        INDEX_BUILDS["reused"] += 1
+    return _CV_INDEX_CACHE[sig]
+
+
 @register_tool("search_cvs", SearchArgs, "Hybrid keyword + vector search over the blind sections of the CV pool")
 def search_cvs(args: SearchArgs, ctx: dict) -> list[dict]:
-    idx = HybridIndex(cv_chunks(ctx["db"], args.requisition_id))
+    idx = cv_index(ctx["db"], args.requisition_id)
     return [{"candidate_id": int(h.chunk.ref), "section": h.chunk.section, "text": h.chunk.text, "score": h.score,
              "source": format_source(h.chunk)} for h in idx.search(args.query, args.k)]
 

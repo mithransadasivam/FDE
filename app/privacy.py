@@ -7,6 +7,7 @@ that says whether anything identifying still got through.
 import json
 import re
 
+from app.config import get_settings
 from app.models import Candidate
 from app.schemas import BlindCandidate
 
@@ -81,6 +82,8 @@ def _scrub(text: str | None, secrets: list[str]) -> str | None:
         return None
     for secret in secrets:
         text = _pattern(secret).sub(HIDDEN, text)
+    if not get_settings().guardrails_enabled:  # the red-team 'before' state: only the candidate's own known details are hidden
+        return text
     text = EMAIL_RX.sub(HIDDEN, text)
     text = PHONE_RX.sub(HIDDEN, text)
     text = DOB_RX.sub(HIDDEN, text)
@@ -97,7 +100,7 @@ def make_blind(candidate: Candidate) -> BlindCandidate:
         return _scrub(_val(p, field), secrets)
 
     def many(field):
-        return [_scrub(x, secrets) for x in (_val(p, field) or [])]
+        return [x for x in (_scrub(v, secrets) for v in (_val(p, field) or [])) if x]  # an item that was only a proxy is dropped
 
     return BlindCandidate(candidate_id=candidate.id, current_title=one("current_title"), jobs=many("jobs"),
                           years_experience=_val(p, "years_experience"), skills=many("skills"),

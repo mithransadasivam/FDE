@@ -87,8 +87,33 @@ def applied(request: Request, token: str, db: Session = Depends(get_db)):
     return render(request, "applied.html", None, cand=_by_token(db, token))
 
 
+@router.post("/me/{token}/explain")
+def explain(request: Request, token: str, db: Session = Depends(get_db)):
+    """The candidate asks why they were not shortlisted. A plain explanation is drafted from the evidence for a recruiter to review (BR-19)."""
+    from app.decisions import explain_not_shortlisted
+    from app.supervisor import MoveRefused
+    cand = _by_token(db, token)
+    try:
+        explain_not_shortlisted(db, cand)
+    except MoveRefused as e:
+        return RedirectResponse(f"/me/{token}?explain=refused", status_code=303)
+    db.commit()
+    return RedirectResponse(f"/me/{token}?explain=asked", status_code=303)
+
+
+@router.post("/me/{token}/message")
+def send_message(request: Request, token: str, message: str = Form(""), db: Session = Depends(get_db)):
+    """A candidate writes to us. The text is data: it is logged, scanned for instructions and answered by a draft a recruiter must approve."""
+    from app.agents.communications import handle_candidate_message
+    cand = _by_token(db, token)
+    handle_candidate_message(db, cand, message)
+    db.commit()
+    return RedirectResponse(f"/me/{token}?sent=1", status_code=303)
+
+
 @router.get("/me/{token}")
 def me(request: Request, token: str, db: Session = Depends(get_db)):
     cand = _by_token(db, token)
     return render(request, "me.html", None, cand=cand, status_text=STAGE_TEXT.get(cand.stage, ""),
-                  retention_days=get_settings().retention_days)
+                  retention_days=get_settings().retention_days, sent=request.query_params.get("sent") == "1",
+                  explain=request.query_params.get("explain"), can_explain=cand.stage in ("SCREENED", "WITHDRAWN", "DECISION"))

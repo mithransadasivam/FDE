@@ -184,3 +184,24 @@ def reject_draft(db: Session, draft_id: int, actor: str, reason: str = "") -> No
 
 def queue(db: Session) -> list[EmailDraft]:
     return list(db.scalars(select(EmailDraft).where(EmailDraft.status == "DRAFT").order_by(EmailDraft.id)))
+
+
+def handle_candidate_message(db: Session, cand: Candidate, text: str) -> dict:
+    """A message from a candidate is DATA (rule 8). It is logged and scanned; any instruction in it is flagged and ignored, and the only
+    thing that happens is a neutral acknowledgement drafted into the approval queue. The platform never acts on what the message says."""
+    from app import guardrails
+    from app.models_ext import Flag
+
+    text = (text or "").strip()[:2000]
+    hits = guardrails.scan_injection(text) if get_settings().guardrails_enabled else []
+    for h in hits:
+        db.add(Flag(candidate_id=cand.id, kind="instructions in candidate email ignored", detail=h[:300]))
+    db.add(DecisionLog(actor="candidate", action="message received", subject=f"candidate:{cand.id}",
+                       reason=("contains instructions: ignored" if hits else "no instructions"), evidence={"text": text}))
+    draft_id = CommsAgent(db, cand.id).call("draft_email", candidate_id=cand.id, kind="update")["draft_id"]
+    if not get_settings().guardrails_enabled and text:  # the unprotected 'before' state: a naive drafter repeats what the message asks for
+        d = db.get(EmailDraft, draft_id)
+        d.body += "\n\n" + text
+        if "salary" in text.lower():  # a careless drafter also "helpfully" adds the private figure it was asked for
+            d.body += f"\n\nSalary expectations on file: {28000 + (cand.id * 1731) % 30000}"
+    return {"draft_id": draft_id, "flagged": hits}

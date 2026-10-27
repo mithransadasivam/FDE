@@ -1,0 +1,65 @@
+{
+ "mode": "faster-whisper tiny.en on synthesised audio (measured)",
+ "variants": [
+  {
+   "variant": "V1",
+   "label": "US male, normal pace",
+   "mean_wer": 0.0499,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V2",
+   "label": "US female, normal pace",
+   "mean_wer": 0.0565,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V3",
+   "label": "US male, slow and low",
+   "mean_wer": 0.0452,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  },
+  {
+   "variant": "V4",
+   "label": "US female, fast and high",
+   "mean_wer": 0.0861,
+   "mean_score": 3.0,
+   "diff_vs_V1": 0.0,
+   "scores": [
+    3,
+    3,
+    3,
+    3,
+    3
+   ]
+  }
+ ],
+ "findings": [],
+ "reported": true,
+ "clips": 20,
+ "limitation": "voice variants made with a text-to-speech engine, not real accents: a real accent test needs real speakers"
+}

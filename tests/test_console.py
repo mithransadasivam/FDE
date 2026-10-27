@@ -1,3 +1,5 @@
+from html import escape
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -31,12 +33,16 @@ def test_each_role_sees_its_own_menu(client, email, role, absent):
     sign_in(client, email)
     html = client.get("/").text
     for label, href in MENUS[role]:
-        assert f'href="{href}"' in html and label in html
+        assert f'href="{href}"' in html and escape(label) in html
     assert absent not in html
 
 
-def test_menu_sizes():
-    assert len(MENUS["hiring_manager"]) == 4 and len(MENUS["recruiter"]) == 5
+def test_menus_keep_the_day_one_items_and_the_recruiter_has_the_working_tools():
+    hm = [label for label, _ in MENUS["hiring_manager"]]
+    rc = [label for label, _ in MENUS["recruiter"]]
+    assert {"Requisitions", "Candidates (blind)", "Pipeline", "Decision log"} <= set(hm)
+    assert {"Requisitions", "Candidates", "Review queue", "Pipeline", "Decision log"} <= set(rc)
+    assert {"Outbox", "Copilot", "Compliance"} <= set(rc) and not {"Outbox", "Copilot", "Review queue"} & set(hm)
 
 
 def test_home_shows_counts_and_log_lists_entries(client, db):

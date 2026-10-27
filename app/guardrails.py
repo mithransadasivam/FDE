@@ -13,21 +13,36 @@ INJECTION_PATTERNS = [
 INJECTION_RX = [re.compile(p, re.I) for p in INJECTION_PATTERNS]
 
 
+ZERO_WIDTH = dict.fromkeys(map(ord, "​‌‍⁠﻿­"), None)
+# look-alike letters (Cyrillic and similar) that an attacker can use to dodge a text match
+CONFUSABLES = str.maketrans({"а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "х": "x", "у": "y",
+                             "і": "i", "ѕ": "s", "ԁ": "d", "ɡ": "g", "Α": "A", "Ε": "E", "Ο": "O"})
+
+
+def normalize(text: str) -> str:
+    """Undo common evasion tricks before looking for instructions: unicode forms, zero-width characters and look-alike letters."""
+    import unicodedata
+    return unicodedata.normalize("NFKC", text or "").translate(ZERO_WIDTH).translate(CONFUSABLES)
+
+
+def _is_instruction(segment: str) -> bool:
+    return any(rx.search(segment) for rx in INJECTION_RX)
+
+
 def scan_injection(text: str) -> list[str]:
-    """The pieces of text that look like instructions to an AI. They are flagged and ignored, never followed."""
-    hits = []
-    for line in re.split(r"[\n.;]", text or ""):
-        if any(rx.search(line) for rx in INJECTION_RX):
-            hits.append(line.strip())
+    """The pieces of text that look like instructions to an AI. They are flagged and ignored, never followed.
+    A payload split over two lines is found by also looking at the text with its line breaks joined."""
+    t = normalize(text)
+    hits = [seg.strip() for seg in re.split(r"[\n.;]", t) if _is_instruction(seg)]
+    if not hits:
+        joined = re.sub(r"\s+", " ", t)
+        hits = [seg.strip() for seg in re.split(r"[.;]", joined) if _is_instruction(seg)]
     return [h for h in hits if h]
 
 
 def strip_injection(text: str) -> str:
     """The text with every line that looks like an instruction removed (used before a model reads candidate text)."""
-    out = []
-    for line in (text or "").splitlines():
-        out.append(line if not any(rx.search(line) for rx in INJECTION_RX) else "")
-    return "\n".join(out)
+    return "\n".join("" if _is_instruction(normalize(line)) else line for line in (text or "").splitlines())
 
 
 # ---- rules 3 and 4: protected traits must never reach a scoring prompt ------------------------------------------------------
@@ -40,7 +55,7 @@ TRAIT_RX = [
     ("family", re.compile(r"\b(?:pregnan\w*|maternity|married|marital|children|kids|family plans|husband|wife)\b", re.I)),
     ("religion", re.compile(r"\b(?:muslim|christian|jewish|hindu|sikh|buddhist|church|mosque|temple|religio\w*)\b", re.I)),
     ("health", re.compile(r"\b(?:disabled|disability|illness|diagnos\w*|chronic|mental health|wheelchair)\b", re.I)),
-    ("union_politics", re.compile(r"\b(?:trade union|union member\w*|political party|voted)\b", re.I)),
+    ("union_politics", re.compile(r"\b(?:trade union|union member\w*|member of a union|in a union|unions?|political party|voted)\b", re.I)),
     ("nationality", re.compile(r"\b(?:nationality|citizen of|ethnic\w*|immigrant|native speaker)\b", re.I)),
 ]
 
@@ -72,7 +87,7 @@ FORBIDDEN = {
     "age": r"\bhow old\b|\byour age\b|\bwhat year were you born\b|\bdate of birth\b|\bwhen were you born\b|\bplan to retire\b|\btoo old\b|\btoo young\b",
     "family or pregnancy": r"\bdo you have (?:any )?(?:kids|children)\b|\b(?:any )?(?:kids|children)\b.*\?|\bmarried\b|\bmarital\b|\bhusband\b|\bwife\b|\bpregnan\w*|\bfamily plans\b|\bstart a family\b|\bboyfriend\b|\bgirlfriend\b",
     "religion": r"\breligio\w*|\bchurch\b|\bmosque\b|\bwhich god\b|\bwhat faith\b|\byour beliefs?\b",
-    "health or disability": r"\bdisab\w*|\bhealth condition\b|\bmedical\b|\billness\b|\bmental health\b|\bdiagnos\w*|\bmedication\b",
+    "health or disability": r"\bdisab\w*|\bhealth (?:condition|problem|issue)s?\b|\bmedical\b|\billness\b|\bmental health\b|\bdiagnos\w*|\bmedication\b",
     "nationality or origin": r"\bwhere are you (?:really )?from\b|\bnationality\b|\bcitizen\w*\b|\bethnic\w*\b|\bmother tongue\b|\bwhere were you born\b|\bnative language\b",
     "sexual orientation or gender identity": r"\bsexual\w*|\bgay\b|\blesbian\b|\bgender identity\b|\btransgender\b",
     "political views or union membership": r"\bpolitic\w*|\bwho did you vote\b|\btrade union\b|\bunion member\w*|\bjoin a union\b",

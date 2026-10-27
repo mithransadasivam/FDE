@@ -29,16 +29,19 @@ def suggest_shortlist(db: Session, req_id: int, top_n: int = 5) -> list[Shortlis
         sc = scores_for(db, req_id, cand.id)
         if not sc:
             continue
+        held = any(r.status == "returned" for r in sc)  # sent back by the compliance reviewer: not shown as suggested
         missing = [r.skill for r in sc if r.skill in must and r.score == 0]
         strengths = [f"{r.skill} ({r.score}/3): \"{r.quote}\"" for r in sorted(sc, key=lambda r: -r.weight * r.score) if r.score >= 2][:3]
         gaps = [f"{r.skill}: " + ("no evidence" if r.score == 0 else f"only mentioned ({r.score}/3)") + (" (must-have)" if r.skill in must else "")
                 for r in sc if r.score <= 1 and (r.skill in must or r.score == 0)]
-        rows.append((bool(missing), -weighted_total(sc), cand.id, weighted_total(sc), strengths, gaps))
-    rows.sort()  # candidates with every must-have first, then by weighted total, then by id (stable)
+        if held:
+            gaps = ["held by the compliance reviewer: a score was sent back for a missing quote"] + gaps
+        rows.append((held, bool(missing), -weighted_total(sc), cand.id, weighted_total(sc), strengths, gaps))
+    rows.sort()  # held candidates last; then those with every must-have first, then by weighted total, then by id (stable)
     entries = []
-    for rank, (_missing, _neg, cid, total, strengths, gaps) in enumerate(rows, 1):
+    for rank, (held, _missing, _neg, cid, total, strengths, gaps) in enumerate(rows, 1):
         e = ShortlistEntry(requisition_id=req_id, candidate_id=cid, rank=rank, weighted_total=total, strengths=strengths, gaps=gaps,
-                           status="SUGGESTED" if rank <= top_n else "NOT_SELECTED")
+                           status="HELD" if held else ("SUGGESTED" if rank <= top_n else "NOT_SELECTED"))
         db.add(e)
         entries.append(e)
     db.add(DecisionLog(actor="system", action="shortlist suggested", subject=f"requisition:{req_id}",
@@ -57,7 +60,7 @@ def approve_shortlist(db: Session, req_id: int, candidate_ids: list[int], actor:
         if cand is None or cand.requisition_id != req_id:
             raise MoveRefused(f"Candidate {cid} is not an applicant for this job.")
         sc = scores_for(db, req_id, cid)
-        unverified = [r.skill for r in sc if r.score > 0 and not r.verified]
+        unverified = [r.skill for r in sc if r.score > 0 and (not r.verified or r.status == "returned")]
         if unverified:
             raise MoveRefused(f"Candidate {cid} has scores without a verified quote ({', '.join(unverified)}): they cannot be approved.")
         move(db, cand, Stage.SHORTLISTED, actor, reason,

@@ -1,0 +1,61 @@
+{
+ "assumptions": {
+  "stt_usd_per_minute": 0.006,
+  "tts_usd_per_1k_chars": 0.015,
+  "stt_latency_s": 0.35,
+  "llm_scoring_latency_s": 1.1,
+  "tts_first_audio_s": 0.4,
+  "network_margin_s": 0.3,
+  "avg_answer_seconds": 22.0
+ },
+ "n_cvs": 52,
+ "n_interviews": 5,
+ "fake_mode": true,
+ "cost": {
+  "per_100_cvs_before": 0.246,
+  "per_100_cvs_after": 0.1015,
+  "per_100_cvs_after_small_extraction": 0.1137,
+  "tokens_in": 38215,
+  "tokens_out": 17940,
+  "extraction_tokens": 29425,
+  "scoring_tokens": 26730,
+  "per_ai_interview_llm": 0.00383,
+  "per_ai_interview_stt": 0.0176,
+  "per_ai_interview_tts": 0.0192,
+  "per_ai_interview_total": 0.04063
+ },
+ "speed": {
+  "read_52_cvs_seconds": 31.2,
+  "screen_52_cvs_seconds": 5.89,
+  "interview_compute_seconds_each": 0.082
+ },
+ "voice": {
+  "turns_measured": 46,
+  "p50_compute_ms": 2.34,
+  "p95_compute_ms": 3.35,
+  "p95_estimated_s": 2.15,
+  "target_s": 2.5,
+  "passed": true
+ },
+ "caching": {
+  "cache_off": {
+   "asked": 15,
+   "model_calls_paid": 15,
+   "cost_usd": 0.01632,
+   "seconds": 39.373,
+   "index_builds": 12
+  },
+  "cache_on": {
+   "asked": 15,
+   "model_calls_paid": 5,
+   "cost_usd": 0.00544,
+   "seconds": 3.191,
+   "index_builds": 1
+  },
+  "rescreen": {
+   "first_run_paid": 5,
+   "second_run_paid": 0,
+   "second_run_cached": 5
+  }
+ }
+}

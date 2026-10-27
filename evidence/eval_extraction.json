@@ -1,0 +1,14 @@
+{
+ "fields_right": 96,
+ "fields_total": 96,
+ "pct": 100.0,
+ "by_format": {
+  "pdf": "24/24",
+  "scan": "24/24",
+  "docx": "24/24",
+  "screenshot": "24/24"
+ },
+ "target_pct": 90,
+ "passed": true,
+ "source": "starter kit files"
+}

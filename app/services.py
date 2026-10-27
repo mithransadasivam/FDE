@@ -3,7 +3,9 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-from app.agents.document import extract_profile, pdf_metadata, read_text
+from app.agents.document import extract_profile, pdf_metadata
+from app.agents.document_tools import DocumentAgent
+from app.agents.requisition_tools import RequisitionAgent
 from app.guardrails import scan_injection
 from app.models_ext import CvText, Flag
 from app.agents.wording import check_wording
@@ -24,7 +26,7 @@ def transcribe_requisition(req_id: int) -> None:
         if req is None:
             return
         try:
-            req.transcript = transcribe(Path(req.audio_path), req.audio_name)
+            req.transcript = RequisitionAgent(db).transcribe(req)
             req.status = "TRANSCRIBED"
             req.wording_flags = [f.model_dump() for f in check_wording(req.transcript, "voice note")]
             req.error = None
@@ -76,7 +78,8 @@ def process_candidate(cand_id: int) -> None:
         failed = False
         try:
             path = Path(cand.cv_path)
-            text = read_text(path)
+            agent = DocumentAgent(db, cand.id)
+            text = agent.read(path)
             meta = pdf_metadata(path)
             for old_text in db.scalars(select(CvText).where(CvText.candidate_id == cand.id)):
                 db.delete(old_text)

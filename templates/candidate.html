@@ -4,7 +4,7 @@
 <h1>Candidate #{{ cand.id }} <span class="badge {{ 'warn' if cand.stage == 'REVIEW' else '' }}">{{ cand.stage }}</span>
   {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
 <p class="muted small">Applied {{ cand.applied_at.strftime('%Y-%m-%d %H:%M') }} UTC &middot; CV format: {{ cand.cv_format }}
-  {% if user.role == 'recruiter' and not is_blind %}&middot; <a href="/candidates/{{ cand.id }}/cv">open the original CV</a>{% endif %}</p>
+  {% if user.role == 'recruiter' and not is_blind %}&middot; <a href="/candidates/{{ cand.id }}/cv">open the original CV</a>{% endif %} &middot; <a href="/scorecard/{{ cand.id }}">scorecard</a></p>
 {% if cand.error %}<div class="flash bad">{{ cand.error }}</div>{% endif %}
 {% if pending and user.role == 'recruiter' %}
 <div class="flash bad">{{ pending | length }} field(s) still need checking: <a href="/review">open the review queue</a>.</div>

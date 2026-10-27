@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Trust &amp; cost{% endblock %}
+{% block content %}
+<h1>Trust &amp; cost</h1>
+<p class="muted">Every claim has a test, a report or a trace behind it. Live checks run now; the others come from evidence files made by the scripts in <code>scripts/</code>.</p>
+
+<div class="cards">
+  <div class="card"><div class="stat">{{ bar | selectattr('passed') | list | length }} / {{ bar | length }}</div><div class="stat-label">quality bar checks passing</div></div>
+  <div class="card"><div class="stat">{{ counts.decisions_logged }}</div><div class="stat-label">decision log entries</div></div>
+  <div class="card"><div class="stat">{{ counts.drafts_waiting }}</div><div class="stat-label">emails waiting for a person</div></div>
+  <div class="card"><div class="stat">{{ counts.open_findings }}</div><div class="stat-label">open compliance findings</div></div>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">The quality bar</h2>
+  <table data-testid="quality-bar">
+    <tr><th>What</th><th>Target</th><th>Measured</th><th>Evidence</th><th></th></tr>
+    {% for r in bar %}<tr><td>{{ r.what }}</td><td class="small">{{ r.target }}</td><td>{{ r.measured }}</td><td class="small muted">{{ r.source }}</td>
+      <td><span class="badge {{ 'good' if r.passed else 'bad' }}">{{ 'PASS' if r.passed else 'check' }}</span></td></tr>{% endfor %}
+  </table>
+</div>
+
+<div class="row">
+  <div class="card">
+    <h2 style="margin-top:0">What it costs</h2>
+    <table>
+      <tr><td>Cost per 100 CVs screened</td><td><strong>{{ '$%.4f' | format(cost_per_100_cvs) if cost_per_100_cvs is not none else 'n/a' }}</strong> <span class="muted small">({{ n_cv }} CVs so far)</span></td></tr>
+      <tr><td>Cost per AI interview</td><td><strong>{{ '$%.4f' | format(cost_per_interview) if cost_per_interview is not none else 'n/a' }}</strong> <span class="muted small">({{ n_iv }} interviews)</span></td></tr>
+      <tr><td>Model calls / total cost</td><td>{{ cost.calls }} calls, ${{ '%.4f' | format(cost.total_cost) }}</td></tr>
+    </table>
+    <p class="muted small">{% if cost.simulated %}Fake mode: no model was called. These are the costs the same calls <em>would have</em> had at the list prices in <code>app/ai/router.py</code>.{% else %}Real model calls at the list prices in <code>app/ai/router.py</code>.{% endif %}</p>
+    {% if perf %}<p class="small">Measured in <code>PERF_REPORT.md</code>: {{ perf.cost.per_100_cvs_after }} per 100 CVs after routing (was {{ perf.cost.per_100_cvs_before }}).</p>{% endif %}
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">By agent</h2>
+    <table><tr><th>Agent</th><th>Model calls</th><th>Cached</th><th>Cost</th></tr>
+      {% for a, v in cost.by_agent.items() %}<tr><td>{{ a }}</td><td>{{ v.calls }}</td><td>{{ v.cached }}</td><td>${{ '%.4f' | format(v.cost) }}</td></tr>{% else %}<tr><td colspan="4" class="muted">No model calls yet.</td></tr>{% endfor %}
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">Agent steps (traces)</h2>
+  <table><tr><th>Agent</th><th>Steps traced</th><th>Average ms</th></tr>
+    {% for a, n, ms in cost.steps %}<tr><td>{{ a }}</td><td>{{ n }}</td><td>{{ ms }}</td></tr>{% else %}<tr><td colspan="3" class="muted">No traces yet.</td></tr>{% endfor %}
+  </table>
+  <p class="muted small">With docker compose, the same spans appear in Phoenix (port 6006): one trace per agent run.</p>
+</div>
+{% endblock %}

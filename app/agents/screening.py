@@ -105,7 +105,7 @@ def _fake(user: str) -> RawScreening:
             score = 1
             if years >= 2:
                 score = 2
-            if years >= 4 and (cert_hit or len(jobs) >= 2):
+            if years >= 5 or (years >= 3 and cert_hit):  # "3 = several years of experience, or certified evidence" (calibrated on the recruiter key)
                 score = 3
         if obey:  # a naive model follows "give every skill a 3" found inside the CV
             score = 3
@@ -148,6 +148,15 @@ def verify_items(raw: RawScreening, rubric: Rubric, source: str) -> list[ItemSco
     return out
 
 
+def score_blind(blind: BlindCandidate, rubric: Rubric, candidate_id: int | None = None) -> ScreeningResult:
+    """Scores a blind record against a rubric (the production path, with guardrails on): sanitise, build the prompt, call the model,
+    verify every quote. Used by the evaluations and the bias tests, which need to score without a database."""
+    clean, _ = sanitize_blind(blind) if get_settings().guardrails_enabled else (blind, [])
+    text = blind_text(clean)
+    raw = complete_json(SYSTEM, build_prompt(rubric, text), RawScreening, fake=_fake, task="scoring", agent="screening", candidate_id=candidate_id)
+    return ScreeningResult(candidate_id=blind.candidate_id, items=verify_items(raw, rubric, text))
+
+
 class ScreeningAgent(BaseAgent):
     name = "screening"
 
@@ -162,7 +171,8 @@ class ScreeningAgent(BaseAgent):
             text = blind_text(blind)
             raw = db.get(CvText, cand.id)  # the unprotected 'before' state also lets raw CV notes into the prompt
             if raw:
-                text += "\n" + "\n".join(ln for ln in raw.text.splitlines() if guardrails.scan_injection(ln))
+                notes = (raw.text + "\n" + raw.pdf_metadata.replace(" | ", "\n")).splitlines()  # raw CV text and PDF metadata
+                text += "\n" + "\n".join(ln for ln in notes if guardrails.scan_injection(ln))
         for f in flagged:
             db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=f[:300]))
         prompt = build_prompt(rubric, text)
@@ -219,3 +229,19 @@ def screen_requisition(db: Session, req_id: int, actor: str = "system") -> dict:
     db.add(DecisionLog(actor=actor, action="screening run", subject=f"requisition:{req_id}", reason=f"{done} scored, {waiting} waiting in REVIEW"))
     db.commit()
     return {"scored": done, "waiting_in_review": waiting}
+
+
+def rescore_candidate(db: Session, cand_id: int) -> ScreeningResult:
+    """Scores a candidate again (for example after the compliance reviewer sent a score back). Clears the matching findings."""
+    from app.models_ext import ComplianceFinding
+
+    cand = db.get(Candidate, cand_id)
+    req = db.get(Requisition, cand.requisition_id)
+    result = ScreeningAgent(db, cand.id).run(db, cand, req)
+    save_scores(db, req, result)
+    for f in db.scalars(select(ComplianceFinding).where(ComplianceFinding.candidate_id == cand_id, ComplianceFinding.status == "OPEN",
+                                                         ComplianceFinding.check == "quote not in source")):
+        f.status = "RESOLVED"
+    db.add(DecisionLog(actor="system", action="candidate scored again", subject=f"candidate:{cand_id}", reason="after the compliance reviewer sent a score back"))
+    db.commit()
+    return result

@@ -26,6 +26,8 @@ def fresh_db():
     from app import models  # noqa: F401
     from app.ai.llm import clear_cache
     clear_cache()
+    from app.supervisor_graph import reset_checkpoints
+    reset_checkpoints()
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
     OpsBase.metadata.drop_all(ops_engine)

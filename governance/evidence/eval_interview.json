@@ -1,0 +1,257 @@
+{
+ "answers": 30,
+ "scorer_agreement_with_key_pct": 100.0,
+ "checker_agreement_with_key_pct": 100.0,
+ "scorer_vs_checker_agreement_pct": 100.0,
+ "details": [
+  {
+   "id": "A-001",
+   "question": "T-01",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-002",
+   "question": "T-01",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-003",
+   "question": "T-01",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-004",
+   "question": "T-03",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-005",
+   "question": "T-03",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-006",
+   "question": "T-03",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-007",
+   "question": "T-04",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-008",
+   "question": "T-04",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-009",
+   "question": "T-04",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-010",
+   "question": "T-06",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-011",
+   "question": "T-06",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-012",
+   "question": "T-06",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-013",
+   "question": "T-08",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-014",
+   "question": "T-08",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-015",
+   "question": "T-08",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-016",
+   "question": "T-10",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-017",
+   "question": "T-10",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-018",
+   "question": "T-10",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-019",
+   "question": "T-12",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-020",
+   "question": "T-12",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-021",
+   "question": "T-12",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-022",
+   "question": "T-14",
+   "kind": "strong",
+   "expected": 3,
+   "scorer": 3,
+   "checker": 3
+  },
+  {
+   "id": "A-023",
+   "question": "T-14",
+   "kind": "partial",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-024",
+   "question": "T-14",
+   "kind": "weak",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-025",
+   "question": "T-01",
+   "kind": "off_topic",
+   "expected": 0,
+   "scorer": 0,
+   "checker": 0
+  },
+  {
+   "id": "A-026",
+   "question": "T-04",
+   "kind": "off_topic",
+   "expected": 0,
+   "scorer": 0,
+   "checker": 0
+  },
+  {
+   "id": "A-027",
+   "question": "T-10",
+   "kind": "off_topic",
+   "expected": 0,
+   "scorer": 0,
+   "checker": 0
+  },
+  {
+   "id": "A-028",
+   "question": "T-03",
+   "kind": "injection",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  },
+  {
+   "id": "A-029",
+   "question": "T-06",
+   "kind": "injection",
+   "expected": 2,
+   "scorer": 2,
+   "checker": 2
+  },
+  {
+   "id": "A-030",
+   "question": "T-08",
+   "kind": "injection",
+   "expected": 1,
+   "scorer": 1,
+   "checker": 1
+  }
+ ],
+ "target_pct": 80,
+ "passed": true,
+ "by_kind": {
+  "injection": "3/3",
+  "off_topic": "3/3",
+  "partial": "8/8",
+  "strong": "8/8",
+  "weak": "8/8"
+ }
+}

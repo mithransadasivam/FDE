@@ -77,7 +77,7 @@ def audio(req_id: int, user: User = Depends(STAFF), db: Session = Depends(get_db
 
 @router.post("/{req_id}/generate")
 def generate(request: Request, req_id: int, user: User = Depends(HM), db: Session = Depends(get_db)):
-    from app.agents.requisition import generate_job
+    from app.agents.requisition_tools import RequisitionAgent
     from app.ai.llm import ModelError
 
     req = get_req(db, req_id)
@@ -85,16 +85,10 @@ def generate(request: Request, req_id: int, user: User = Depends(HM), db: Sessio
         flash(request, "The job description can only be generated once the voice note is transcribed (and before approval).", "bad")
         return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
     try:
-        draft = generate_job(req.transcript)
+        draft = RequisitionAgent(db).generate(req)  # the requisition agent: generate, check the evidence, flag wording, save the draft
     except ModelError as e:
         flash(request, f"Could not generate the job description: {e}", "bad")
         return RedirectResponse(f"/requisitions/{req.id}", status_code=303)
-    from app.agents.wording import check_requisition
-
-    req.job = draft.job.model_dump()
-    req.rubric = draft.rubric.model_dump()
-    req.wording_flags = [f.model_dump() for f in check_requisition(req.transcript, draft.job.as_text())]
-    req.status = "GENERATED"
     db.add(DecisionLog(actor=user.email, action="draft generated", subject=f"requisition:{req.id}",
                        reason=f"{len(draft.rubric.items)} skills, weights add to {draft.rubric.total}, {len(req.wording_flags)} wording flag(s)"))
     db.commit()

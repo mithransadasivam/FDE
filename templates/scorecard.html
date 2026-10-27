@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Scorecard #{{ cand.id }}{% endblock %}
+{% block content %}
+<h1>Scorecard &middot; candidate #{{ cand.id }} <span class="badge">{{ card.stage }}</span></h1>
+<p class="muted">{{ card.job }} &middot; identity hidden while scoring{% if user.role == 'hiring_manager' %} and for you{% endif %} &middot; the AI only recommends: a recruiter decides.</p>
+
+<div class="row">
+  <div class="card">
+    <h2 style="margin-top:0">Checks</h2>
+    <table>
+      <tr><td>Every score has a quote</td><td><span class="badge {{ 'good' if card.checks.every_score_has_a_quote else 'bad' }}">{{ 'yes' if card.checks.every_score_has_a_quote else 'NO' }}</span></td></tr>
+      <tr><td>Protected traits in prompts</td><td><span class="badge {{ 'good' if card.checks.protected_traits_in_prompts else 'bad' }}">{{ 'none' if card.checks.protected_traits_in_prompts else 'FOUND' }}</span></td></tr>
+      <tr><td>Spoken or written instructions</td><td><span class="badge {{ 'warn' if card.flags else 'good' }}">{{ card.flags | length ~ ' ignored' if card.flags else 'none' }}</span></td></tr>
+      <tr><td>Compliance reviewer</td><td><span class="badge {{ 'good' if card.checks.compliance_reviewer == 'passed' else 'bad' }}">{{ card.checks.compliance_reviewer }}</span></td></tr>
+    </table>
+    {% for f in card.flags %}<div class="small muted">{{ f.kind }}: &ldquo;{{ f.detail }}&rdquo;</div>{% endfor %}
+  </div>
+  <div class="card" data-testid="recommendation">
+    <h2 style="margin-top:0">Recommendation <span class="badge warn">AI suggests</span></h2>
+    <p>{{ card.recommendation }}</p>
+    {% if card.decision %}
+    <div class="flash good"><strong>Decision: {{ card.decision.decision }}</strong> by {{ card.decision.actor }}<br>Reason: {{ card.decision.reason }}</div>
+    {% elif user.role == 'recruiter' and card.stage in ('HUMAN_INTERVIEW', 'DECISION') %}
+    <form method="post" action="/scorecard/{{ cand.id }}/decide" data-testid="decision-form">
+      <label for="decision">Your decision</label>
+      <select id="decision" name="decision">{% for d in decisions %}<option>{{ d }}</option>{% endfor %}</select>
+      <label for="reason">Reason (logged with the evidence you see here)</label>
+      <input id="reason" name="reason" type="text" placeholder="Why?" required>
+      <p><button>Record my decision</button> <span class="muted small">An email is drafted but not sent until you approve it in the outbox.</span></p>
+    </form>
+    {% elif user.role == 'recruiter' %}<p class="muted small">A decision is made after the human interview.</p>{% endif %}
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">1. CV scores <span class="badge">{{ card.cv_total if card.cv_total is not none else '-' }} / 100</span></h2>
+  <table>
+    <tr><th>Skill</th><th>Weight</th><th>Score</th><th>Evidence (exact CV text)</th></tr>
+    {% for r in card.cv_scores %}<tr><td>{{ r.skill }}</td><td>{{ r.weight }}</td><td><span class="badge {{ 'good' if r.score == 3 else ('warn' if r.score >= 1 else 'bad') }}">{{ r.score }}/3</span></td>
+      <td>{% if r.quote %}<em>&ldquo;{{ r.quote }}&rdquo;</em> <span class="muted small">{{ 'verified' if r.verified else 'NOT verified' }}</span>{% else %}<span class="muted">none</span>{% endif %}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">Not scored yet.</td></tr>{% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">2. AI first-round interview {% if card.ai_interview %}<span class="badge">{{ card.ai_interview.total }} / 3</span>{% endif %}
+    {% if card.ai_reviewed_by %}<span class="badge good">reviewed by {{ card.ai_reviewed_by }}</span>{% endif %}</h2>
+  {% if card.ai_interview %}
+  <table>
+    <tr><th>Question</th><th>Score</th><th>Evidence (exact words from the transcript)</th><th>Recording</th><th>Second scorer</th></tr>
+    {% for a in card.ai_interview.answers %}
+    <tr><td>{{ a.question_id }} {{ a.skill }}{% if a.hint_used %} <span class="badge warn">hint</span>{% endif %}</td>
+      <td>{% if a.skipped %}skipped{% else %}<span class="badge {{ 'good' if a.score == 3 else ('warn' if a.score >= 1 else 'bad') }}">{{ a.score }}/3</span>{% endif %}</td>
+      <td>{% if a.quote %}<em>&ldquo;{{ a.quote }}&rdquo;</em>{% endif %}</td>
+      <td>{% if a.audio_file and user.role == 'recruiter' %}<a href="/media/interview/{{ cand.id }}?ref={{ a.audio_file | urlencode }}">&#9654; {{ '%d:%02d' | format((a.audio_start_s // 60) | int, (a.audio_start_s % 60) | int) }}</a>{% endif %}</td>
+      <td>{{ card.ai_interview.second_scorer.get(a.question_id, '') }}{% if a.question_id in card.ai_interview.disagreements %} <span class="badge bad">scorers differ: please review</span>{% endif %}</td></tr>
+    {% endfor %}
+  </table>
+  {% else %}<p class="muted">No AI interview yet ({{ card.ai_status or 'not started' }}).</p>{% endif %}
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">3. Human interview (copilot draft, then your scores)</h2>
+  {% if card.human_interview %}
+    {% set h = card.human_interview %}
+    <table><tr><th>Question</th><th>Copilot draft</th><th>Your score</th></tr>
+      {% for a in h.draft.answers if a.type == 'technical' %}<tr><td>{{ a.question_id }} {{ a.skill }}</td><td>{{ a.suggested_score }}/3</td>
+        <td>{{ h.recruiter_scores.scores.get(a.question_id, '') if h.recruiter_scores else '' }}</td></tr>{% endfor %}
+    </table>
+    {% if h.draft.warnings %}<div class="flash bad">&#9888; {{ h.draft.warnings | length }} question(s) that must not be asked were flagged during the call; the answers were not scored.</div>{% endif %}
+    {% for c in h.draft.cv_checks %}<div class="small"><strong>CV check:</strong> {{ c.text }}</div>{% endfor %}
+    {% if user.role == 'recruiter' and h.moments %}
+    <h3>Moments in the recording</h3>
+    {% for m in h.moments %}<div class="small"><a href="/copilot/{{ cand.id }}/audio#t={{ m.t | int }}">&#9654; {{ '%d:%02d' | format((m.t // 60) | int, (m.t % 60) | int) }}</a> {{ m.q }}: &ldquo;{{ m.quote }}&rdquo;</div>{% endfor %}{% endif %}
+  {% else %}<p class="muted">No human interview yet.</p>{% endif %}
+</div>
+
+<div class="card">
+  <h2 style="margin-top:0">4. Emails</h2>
+  {% for e in card.emails %}<div class="small"><span class="badge {{ 'good' if e.status == 'SENT' else 'warn' }}">{{ e.status }}</span> {{ e.kind }}: {{ e.subject }}</div>{% else %}<p class="muted">None drafted.</p>{% endfor %}
+</div>
+{% endblock %}

@@ -50,6 +50,8 @@ def run_screening(request: Request, req_id: int, user: User = Depends(RECRUITER)
     except ValueError as e:
         flash(request, str(e), "bad")
         return RedirectResponse(f"/screening/{req_id}", status_code=303)
+    from app.agents.compliance import review
+    review(db, req_id)  # the compliance reviewer checks every quote BEFORE the recruiter sees the shortlist
     suggest_shortlist(db, req_id)
     flash(request, f"Scored {out['scored']} candidate(s); {out['waiting_in_review']} still waiting in the review queue. A shortlist is suggested below: a recruiter must approve it.")
     return RedirectResponse(f"/screening/{req_id}", status_code=303)
