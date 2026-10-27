@@ -115,3 +115,6 @@ class BlindCandidate(BaseModel):
     skills: list[str] = []
     certifications: list[str] = []
     education: str | None = None
+
+
+from app.schemas_ext import *  # noqa: E402,F401,F403  (Day 2-4 handoff models)

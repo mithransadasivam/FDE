@@ -3,7 +3,9 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-from app.agents.document import extract_profile
+from app.agents.document import extract_profile, pdf_metadata, read_text
+from app.guardrails import scan_injection
+from app.models_ext import CvText, Flag
 from app.agents.wording import check_wording
 from app.ai.voice import transcribe
 from app.config import get_settings
@@ -73,7 +75,17 @@ def process_candidate(cand_id: int) -> None:
             return
         failed = False
         try:
-            profile = extract_profile(Path(cand.cv_path), cand.cv_format)
+            path = Path(cand.cv_path)
+            text = read_text(path)
+            meta = pdf_metadata(path)
+            for old_text in db.scalars(select(CvText).where(CvText.candidate_id == cand.id)):
+                db.delete(old_text)
+            db.add(CvText(candidate_id=cand.id, text=text, pdf_metadata=meta))
+            # rule 8: anything in the CV or its metadata that looks like an instruction is flagged and then ignored
+            for hit in scan_injection(text + "\n" + meta):
+                db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=hit[:300]))
+                db.add(DecisionLog(actor="system", action="instructions in CV ignored", subject=f"candidate:{cand.id}", reason=hit[:200]))
+            profile = extract_profile(path, cand.cv_format, text=text, candidate_id=cand.id)
             cand.error = None
         except Exception as e:  # never silently drop a CV: it goes to REVIEW with the error
             profile, failed = CandidateProfile(), True

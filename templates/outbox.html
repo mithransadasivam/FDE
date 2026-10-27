@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Outbox{% endblock %}
+{% block content %}
+<h1>Outbox <span class="badge warn">{{ drafts | length }} waiting</span></h1>
+<p class="muted">Emails to candidates are drafted by the AI and wait here. Nothing is sent until a recruiter approves it. &ldquo;Sent&rdquo; means written to the outbox log: no real mail server exists.</p>
+{% for d in drafts %}
+<div class="card">
+  <h3 style="margin-top:0">{{ d.subject }} <span class="badge">{{ d.kind }}</span> <span class="muted small">to candidate #{{ d.candidate_id }}</span></h3>
+  <form method="post" action="/outbox/{{ d.id }}/approve">
+    <textarea name="body" rows="9">{{ d.body }}</textarea>
+    <p><button type="submit">Approve and send</button></p>
+  </form>
+  <form method="post" action="/outbox/{{ d.id }}/reject" style="display:flex;gap:.5rem"><input type="text" name="reason" placeholder="Reason for rejecting (optional)"><button class="danger small">Reject</button></form>
+</div>
+{% else %}<div class="card muted">No drafts are waiting.</div>{% endfor %}
+<h2>Sent (outbox log)</h2>
+<table><tr><th>When (UTC)</th><th>Subject</th><th>To</th><th>Approved by</th></tr>
+  {% for s in sent %}<tr><td class="small">{{ s.at.strftime('%Y-%m-%d %H:%M') }}</td><td>{{ s.subject }}</td><td>#{{ s.to_candidate }}</td><td>{{ s.approved_by }}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">Nothing has been sent.</td></tr>{% endfor %}
+</table>
+{% endblock %}

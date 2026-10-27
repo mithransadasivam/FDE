@@ -1,0 +1,1 @@
+I alert on symptoms users feel, with sensible thresholds.

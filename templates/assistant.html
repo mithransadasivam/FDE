@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Assistant{% endblock %}
+{% block content %}
+<h1>Recruiter assistant</h1>
+<p class="muted">Ask about the candidate pool, the hiring policy or the tracking system. Answers stream in with their sources. The assistant only reads: it never changes a candidate, and it refuses private details.</p>
+<div class="card">
+  <form id="ask" style="display:flex;gap:.5rem"><input id="q" data-testid="question" type="text" placeholder="Who has run Kubernetes in production?" autofocus><button data-testid="ask-btn">Ask</button></form>
+  <p class="small muted">Try: {% for e in examples %}<a href="#" class="ex">{{ e }}</a>{{ ' &middot; ' | safe if not loop.last }}{% endfor %}</p>
+</div>
+<div class="card" id="out" style="display:none">
+  <div id="answer" data-testid="answer" style="font-size:1.05rem;min-height:2rem"></div>
+  <h3>Sources</h3><ol id="sources" data-testid="sources" class="small"></ol>
+  <div class="muted small" id="meta"></div>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+function ask(q) {
+  $("out").style.display = "block"; $("answer").textContent = ""; $("sources").innerHTML = ""; $("meta").textContent = "";
+  const es = new EventSource("/assistant/stream?q=" + encodeURIComponent(q));
+  es.addEventListener("token", (e) => { $("answer").textContent += JSON.parse(e.data).text; });
+  es.addEventListener("source", (e) => { const s = JSON.parse(e.data); const li = document.createElement("li"); li.textContent = "[" + s.n + "] " + s.label + " - " + s.text; $("sources").appendChild(li); });
+  es.addEventListener("done", (e) => { const d = JSON.parse(e.data); $("meta").textContent = (d.refused ? "Refused (private or protected). " : "") + (d.cached ? "Answered from cache." : ""); es.close(); });
+  es.onerror = () => es.close();
+}
+$("ask").onsubmit = (e) => { e.preventDefault(); if ($("q").value.trim()) ask($("q").value); };
+document.querySelectorAll(".ex").forEach(a => a.onclick = (e) => { e.preventDefault(); $("q").value = a.textContent; ask(a.textContent); });
+</script>
+{% endblock %}

@@ -53,6 +53,19 @@ def read_text(path: Path) -> str:
     return text
 
 
+def pdf_metadata(path: Path) -> str:
+    """The text fields of a PDF's metadata (a place where an attacker can hide instructions). Read only to be scanned, never obeyed."""
+    if path.suffix.lower() != ".pdf":
+        return ""
+    try:
+        import pdfplumber
+
+        with pdfplumber.open(path) as pdf:
+            return " | ".join(str(v) for k, v in (pdf.metadata or {}).items() if k in ("Title", "Subject", "Keywords", "Author", "Creator") and v)
+    except Exception:
+        return ""
+
+
 # ---- years of experience: calculated by code, never asked of the model -------------------------------------
 def _month(text: str, today: date) -> int:
     if text.strip().lower() == "present":
@@ -171,10 +184,11 @@ def format_of(path: Path) -> str:
     return {".pdf": "pdf", ".docx": "docx", ".png": "screenshot", ".jpg": "scan", ".jpeg": "scan"}.get(path.suffix.lower(), "other")
 
 
-def extract_profile(path: Path, cv_format: str | None = None, text: str | None = None) -> CandidateProfile:
+def extract_profile(path: Path, cv_format: str | None = None, text: str | None = None, candidate_id: int | None = None) -> CandidateProfile:
     cv_format = cv_format or format_of(path)
     text = text if text is not None else read_text(path)
-    profile = complete_json(SYSTEM, f"<cv>\n{text}\n</cv>", CandidateProfile, fake=lambda _user: _fake_profile(text, cv_format))
+    profile = complete_json(SYSTEM, f"<cv>\n{text}\n</cv>", CandidateProfile, fake=lambda _user: _fake_profile(text, cv_format),
+                            task="identity", agent="document", candidate_id=candidate_id)
     apply_years(profile)
     return profile
 

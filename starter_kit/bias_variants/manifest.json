@@ -1,0 +1,163 @@
+{
+ "bases": [
+  "C-001_cv.pdf",
+  "C-004_cv.docx",
+  "C-006_cv.pdf",
+  "C-008_cv.docx",
+  "C-011_cv.docx",
+  "C-018_cv.png"
+ ],
+ "variants": [
+  {
+   "base": 1,
+   "kind": "original",
+   "file": "BV1_original.docx"
+  },
+  {
+   "base": 1,
+   "kind": "name_male",
+   "file": "BV1_name_male.docx"
+  },
+  {
+   "base": 1,
+   "kind": "name_female",
+   "file": "BV1_name_female.docx"
+  },
+  {
+   "base": 1,
+   "kind": "gender_clues",
+   "file": "BV1_gender_clues.docx"
+  },
+  {
+   "base": 1,
+   "kind": "age_clues",
+   "file": "BV1_age_clues.docx"
+  },
+  {
+   "base": 2,
+   "kind": "original",
+   "file": "BV2_original.docx"
+  },
+  {
+   "base": 2,
+   "kind": "name_male",
+   "file": "BV2_name_male.docx"
+  },
+  {
+   "base": 2,
+   "kind": "name_female",
+   "file": "BV2_name_female.docx"
+  },
+  {
+   "base": 2,
+   "kind": "gender_clues",
+   "file": "BV2_gender_clues.docx"
+  },
+  {
+   "base": 2,
+   "kind": "age_clues",
+   "file": "BV2_age_clues.docx"
+  },
+  {
+   "base": 3,
+   "kind": "original",
+   "file": "BV3_original.docx"
+  },
+  {
+   "base": 3,
+   "kind": "name_male",
+   "file": "BV3_name_male.docx"
+  },
+  {
+   "base": 3,
+   "kind": "name_female",
+   "file": "BV3_name_female.docx"
+  },
+  {
+   "base": 3,
+   "kind": "gender_clues",
+   "file": "BV3_gender_clues.docx"
+  },
+  {
+   "base": 3,
+   "kind": "age_clues",
+   "file": "BV3_age_clues.docx"
+  },
+  {
+   "base": 4,
+   "kind": "original",
+   "file": "BV4_original.docx"
+  },
+  {
+   "base": 4,
+   "kind": "name_male",
+   "file": "BV4_name_male.docx"
+  },
+  {
+   "base": 4,
+   "kind": "name_female",
+   "file": "BV4_name_female.docx"
+  },
+  {
+   "base": 4,
+   "kind": "gender_clues",
+   "file": "BV4_gender_clues.docx"
+  },
+  {
+   "base": 4,
+   "kind": "age_clues",
+   "file": "BV4_age_clues.docx"
+  },
+  {
+   "base": 5,
+   "kind": "original",
+   "file": "BV5_original.docx"
+  },
+  {
+   "base": 5,
+   "kind": "name_male",
+   "file": "BV5_name_male.docx"
+  },
+  {
+   "base": 5,
+   "kind": "name_female",
+   "file": "BV5_name_female.docx"
+  },
+  {
+   "base": 5,
+   "kind": "gender_clues",
+   "file": "BV5_gender_clues.docx"
+  },
+  {
+   "base": 5,
+   "kind": "age_clues",
+   "file": "BV5_age_clues.docx"
+  },
+  {
+   "base": 6,
+   "kind": "original",
+   "file": "BV6_original.docx"
+  },
+  {
+   "base": 6,
+   "kind": "name_male",
+   "file": "BV6_name_male.docx"
+  },
+  {
+   "base": 6,
+   "kind": "name_female",
+   "file": "BV6_name_female.docx"
+  },
+  {
+   "base": 6,
+   "kind": "gender_clues",
+   "file": "BV6_gender_clues.docx"
+  },
+  {
+   "base": 6,
+   "kind": "age_clues",
+   "file": "BV6_age_clues.docx"
+  }
+ ],
+ "note": "only name, gender clues or age clues differ"
+}

@@ -1,0 +1,1 @@
+First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.

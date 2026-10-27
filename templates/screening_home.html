@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Screening{% endblock %}
+{% block content %}
+<h1>Screening</h1>
+<p class="muted">Candidates are scored 0-3 on each rubric skill, with the exact CV sentence behind every score. The AI only suggests a shortlist: a recruiter approves it.</p>
+<table>
+  <tr><th>Job</th><th>Candidates</th><th>Scored</th><th>Shortlisted</th><th></th></tr>
+  {% for r in reqs %}
+  <tr><td>{{ r.id | reqid }} {{ r.title }}</td><td>{{ stats[r.id].candidates }}</td><td>{{ stats[r.id].screened }}</td><td>{{ stats[r.id].shortlisted }}</td>
+      <td><a class="btn secondary small" href="/screening/{{ r.id }}">Open</a></td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No approved rubric yet: the hiring manager approves it first.</td></tr>{% endfor %}
+</table>
+{% endblock %}

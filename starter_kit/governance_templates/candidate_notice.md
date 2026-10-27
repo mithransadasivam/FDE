@@ -1,0 +1,2 @@
+# Notice to candidates
+You are about to talk to an AI interviewer. It will ask you up to 8 questions, some with a diagram. Your answers are recorded and turned into text, and the text is scored by AI against the skills for this role. Only what you say is scored, never your voice, accent or how you speak. A recruiter reviews every interview and makes every decision. Recordings are kept for 6 months and then deleted. If you would rather speak to a person, choose "Ask for a person instead": it will not affect how your application is treated.

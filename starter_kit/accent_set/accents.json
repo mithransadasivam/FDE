@@ -1,0 +1,182 @@
+[
+ {
+  "id": "X-T-01-V1",
+  "question_id": "T-01",
+  "voice": "V1",
+  "label": "US male, normal pace",
+  "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat. Finally, finally I read the logs and ask what changed recently, such as a deploy or update.",
+  "expected_score": 3,
+  "file": "accent_set/T-01_V1.wav"
+ },
+ {
+  "id": "X-T-01-V2",
+  "question_id": "T-01",
+  "voice": "V2",
+  "label": "US female, normal pace",
+  "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat. Finally, finally I read the logs and ask what changed recently, such as a deploy or update.",
+  "expected_score": 3,
+  "file": "accent_set/T-01_V2.wav"
+ },
+ {
+  "id": "X-T-01-V3",
+  "question_id": "T-01",
+  "voice": "V3",
+  "label": "US male, slow and low",
+  "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat. Finally, finally I read the logs and ask what changed recently, such as a deploy or update.",
+  "expected_score": 3,
+  "file": "accent_set/T-01_V3.wav"
+ },
+ {
+  "id": "X-T-01-V4",
+  "question_id": "T-01",
+  "voice": "V4",
+  "label": "US female, fast and high",
+  "text": "I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, i look at disk space and disk io with df and iostat. Finally, finally I read the logs and ask what changed recently, such as a deploy or update.",
+  "expected_score": 3,
+  "file": "accent_set/T-01_V4.wav"
+ },
+ {
+  "id": "X-T-04-V1",
+  "question_id": "T-04",
+  "voice": "V1",
+  "label": "US male, normal pace",
+  "text": "First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.",
+  "expected_score": 3,
+  "file": "accent_set/T-04_V1.wav"
+ },
+ {
+  "id": "X-T-04-V2",
+  "question_id": "T-04",
+  "voice": "V2",
+  "label": "US female, normal pace",
+  "text": "First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.",
+  "expected_score": 3,
+  "file": "accent_set/T-04_V2.wav"
+ },
+ {
+  "id": "X-T-04-V3",
+  "question_id": "T-04",
+  "voice": "V3",
+  "label": "US male, slow and low",
+  "text": "First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.",
+  "expected_score": 3,
+  "file": "accent_set/T-04_V3.wav"
+ },
+ {
+  "id": "X-T-04-V4",
+  "question_id": "T-04",
+  "voice": "V4",
+  "label": "US female, fast and high",
+  "text": "First I check the route table of the subnet. Then then outbound security group and network ACL rules. Also, a private subnet needs a NAT gateway for outbound internet access. Finally, from the VM I test with curl, traceroute and a DNS lookup.",
+  "expected_score": 3,
+  "file": "accent_set/T-04_V4.wav"
+ },
+ {
+  "id": "X-T-06-V1",
+  "question_id": "T-06",
+  "voice": "V1",
+  "label": "US male, normal pace",
+  "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+  "expected_score": 3,
+  "file": "accent_set/T-06_V1.wav"
+ },
+ {
+  "id": "X-T-06-V2",
+  "question_id": "T-06",
+  "voice": "V2",
+  "label": "US female, normal pace",
+  "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+  "expected_score": 3,
+  "file": "accent_set/T-06_V2.wav"
+ },
+ {
+  "id": "X-T-06-V3",
+  "question_id": "T-06",
+  "voice": "V3",
+  "label": "US male, slow and low",
+  "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+  "expected_score": 3,
+  "file": "accent_set/T-06_V3.wav"
+ },
+ {
+  "id": "X-T-06-V4",
+  "question_id": "T-06",
+  "voice": "V4",
+  "label": "US female, fast and high",
+  "text": "I acknowledge the alert and assess who is affected and how badly. Then i communicate early and open an incident channel for stakeholders. Also, i mitigate first, for example by rolling back, and find the root cause afterwards. Finally, i keep a timeline and hold a blameless post incident review.",
+  "expected_score": 3,
+  "file": "accent_set/T-06_V4.wav"
+ },
+ {
+  "id": "X-T-10-V1",
+  "question_id": "T-10",
+  "voice": "V1",
+  "label": "US male, normal pace",
+  "text": "I listen without interrupting and acknowledge their frustration. Then i explain what we know in plain language, without jargon. Also, i give a clear next step and a time for the next update. Finally, i follow up afterwards and record the issue so it is not repeated.",
+  "expected_score": 3,
+  "file": "accent_set/T-10_V1.wav"
+ },
+ {
+  "id": "X-T-10-V2",
+  "question_id": "T-10",
+  "voice": "V2",
+  "label": "US female, normal pace",
+  "text": "I listen without interrupting and acknowledge their frustration. Then i explain what we know in plain language, without jargon. Also, i give a clear next step and a time for the next update. Finally, i follow up afterwards and record the issue so it is not repeated.",
+  "expected_score": 3,
+  "file": "accent_set/T-10_V2.wav"
+ },
+ {
+  "id": "X-T-10-V3",
+  "question_id": "T-10",
+  "voice": "V3",
+  "label": "US male, slow and low",
+  "text": "I listen without interrupting and acknowledge their frustration. Then i explain what we know in plain language, without jargon. Also, i give a clear next step and a time for the next update. Finally, i follow up afterwards and record the issue so it is not repeated.",
+  "expected_score": 3,
+  "file": "accent_set/T-10_V3.wav"
+ },
+ {
+  "id": "X-T-10-V4",
+  "question_id": "T-10",
+  "voice": "V4",
+  "label": "US female, fast and high",
+  "text": "I listen without interrupting and acknowledge their frustration. Then i explain what we know in plain language, without jargon. Also, i give a clear next step and a time for the next update. Finally, i follow up afterwards and record the issue so it is not repeated.",
+  "expected_score": 3,
+  "file": "accent_set/T-10_V4.wav"
+ },
+ {
+  "id": "X-T-12-V1",
+  "question_id": "T-12",
+  "voice": "V1",
+  "label": "US male, normal pace",
+  "text": "I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs. Also, i check resource limits and whether it was OOMKilled. Finally, i check liveness and readiness probes and the configuration.",
+  "expected_score": 3,
+  "file": "accent_set/T-12_V1.wav"
+ },
+ {
+  "id": "X-T-12-V2",
+  "question_id": "T-12",
+  "voice": "V2",
+  "label": "US female, normal pace",
+  "text": "I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs. Also, i check resource limits and whether it was OOMKilled. Finally, i check liveness and readiness probes and the configuration.",
+  "expected_score": 3,
+  "file": "accent_set/T-12_V2.wav"
+ },
+ {
+  "id": "X-T-12-V3",
+  "question_id": "T-12",
+  "voice": "V3",
+  "label": "US male, slow and low",
+  "text": "I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs. Also, i check resource limits and whether it was OOMKilled. Finally, i check liveness and readiness probes and the configuration.",
+  "expected_score": 3,
+  "file": "accent_set/T-12_V3.wav"
+ },
+ {
+  "id": "X-T-12-V4",
+  "question_id": "T-12",
+  "voice": "V4",
+  "label": "US female, fast and high",
+  "text": "I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs. Also, i check resource limits and whether it was OOMKilled. Finally, i check liveness and readiness probes and the configuration.",
+  "expected_score": 3,
+  "file": "accent_set/T-12_V4.wav"
+ }
+]

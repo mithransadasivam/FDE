@@ -1,0 +1,1 @@
+I run kubectl describe to see the status and events. Then i read the container logs, including the previous container with kubectl logs. Also, i check resource limits and whether it was OOMKilled. Finally, i check liveness and readiness probes and the configuration.

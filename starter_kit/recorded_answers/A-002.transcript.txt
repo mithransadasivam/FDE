@@ -1,0 +1,1 @@
+I would start with top and uptime to see the load and which process uses the CPU. Then then I check memory and swap, because heavy swapping makes everything slow. Also, finally I read the logs and ask what changed recently, such as a deploy or update.

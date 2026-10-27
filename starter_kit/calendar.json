@@ -1,0 +1,226 @@
+[
+ {
+  "slot_id": "S-001",
+  "start": "2026-11-02T09:00:00",
+  "end": "2026-11-02T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-002",
+  "start": "2026-11-02T11:00:00",
+  "end": "2026-11-02T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-003",
+  "start": "2026-11-02T14:00:00",
+  "end": "2026-11-02T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-004",
+  "start": "2026-11-02T16:00:00",
+  "end": "2026-11-02T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-005",
+  "start": "2026-11-03T09:00:00",
+  "end": "2026-11-03T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-006",
+  "start": "2026-11-03T11:00:00",
+  "end": "2026-11-03T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-007",
+  "start": "2026-11-03T14:00:00",
+  "end": "2026-11-03T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-008",
+  "start": "2026-11-03T16:00:00",
+  "end": "2026-11-03T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-009",
+  "start": "2026-11-04T09:00:00",
+  "end": "2026-11-04T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-010",
+  "start": "2026-11-04T11:00:00",
+  "end": "2026-11-04T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-011",
+  "start": "2026-11-04T14:00:00",
+  "end": "2026-11-04T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-012",
+  "start": "2026-11-04T16:00:00",
+  "end": "2026-11-04T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-013",
+  "start": "2026-11-05T09:00:00",
+  "end": "2026-11-05T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-014",
+  "start": "2026-11-05T11:00:00",
+  "end": "2026-11-05T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-015",
+  "start": "2026-11-05T14:00:00",
+  "end": "2026-11-05T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-016",
+  "start": "2026-11-05T16:00:00",
+  "end": "2026-11-05T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-017",
+  "start": "2026-11-06T09:00:00",
+  "end": "2026-11-06T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-018",
+  "start": "2026-11-06T11:00:00",
+  "end": "2026-11-06T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-019",
+  "start": "2026-11-06T14:00:00",
+  "end": "2026-11-06T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-020",
+  "start": "2026-11-06T16:00:00",
+  "end": "2026-11-06T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-021",
+  "start": "2026-11-09T09:00:00",
+  "end": "2026-11-09T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-022",
+  "start": "2026-11-09T11:00:00",
+  "end": "2026-11-09T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-023",
+  "start": "2026-11-09T14:00:00",
+  "end": "2026-11-09T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-024",
+  "start": "2026-11-09T16:00:00",
+  "end": "2026-11-09T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-025",
+  "start": "2026-11-10T09:00:00",
+  "end": "2026-11-10T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-026",
+  "start": "2026-11-10T11:00:00",
+  "end": "2026-11-10T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-027",
+  "start": "2026-11-10T14:00:00",
+  "end": "2026-11-10T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-028",
+  "start": "2026-11-10T16:00:00",
+  "end": "2026-11-10T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-029",
+  "start": "2026-11-11T09:00:00",
+  "end": "2026-11-11T09:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-030",
+  "start": "2026-11-11T11:00:00",
+  "end": "2026-11-11T11:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ },
+ {
+  "slot_id": "S-031",
+  "start": "2026-11-11T14:00:00",
+  "end": "2026-11-11T14:45:00",
+  "interviewer": "Ravi Clarke",
+  "booked": false
+ },
+ {
+  "slot_id": "S-032",
+  "start": "2026-11-11T16:00:00",
+  "end": "2026-11-11T16:45:00",
+  "interviewer": "Hana Marsh",
+  "booked": false
+ }
+]

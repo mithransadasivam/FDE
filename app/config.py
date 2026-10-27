@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     database_url: str = "sqlite:///./data/hiring.db"
+    ops_database_url: str = "sqlite:///./data/ops.db"  # prompt log, cost ledger and traces
     storage_dir: Path = Path("storage")
     retention_days: int = 180
     secret_key: str = "change-me"
@@ -20,6 +21,17 @@ class Settings(BaseSettings):
     tesseract_cmd: str = ""  # full path to tesseract.exe if it is not on PATH
     review_threshold: float = 0.8  # fields with lower confidence go to the review queue
     fake_transcripts_dir: Path = Path("starter_kit/voice_notes")
+    # ---- model router (Day 3): a small model for extraction and point-ticking, a large one for judgement, a local one
+    # for any step that sees identity, and a fallback if a model call fails
+    large_model: str = "openrouter/anthropic/claude-haiku-4.5"
+    small_model: str = "openrouter/google/gemini-2.5-flash-lite"
+    local_model: str = "ollama/llama3.1"
+    fallback_model: str = "openrouter/openai/gpt-4o-mini"
+    router_enabled: bool = True
+    cache_enabled: bool = True
+    guardrails_enabled: bool = True  # switched off only by the red-team script, to measure the "before" state
+    phoenix_endpoint: str = ""  # e.g. http://phoenix:6006/v1/traces; traces are always kept in the database too
+    kit_dir: Path = Path("starter_kit")
 
 
 @lru_cache

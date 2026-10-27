@@ -1,0 +1,1 @@
+I would loop over the servers with ssh or use ansible. Then i run df and parse the usage percentage. Also, the script alerts when usage is above a threshold. Finally, i schedule it with cron, handle unreachable hosts and log the results.

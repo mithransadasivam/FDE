@@ -10,6 +10,7 @@ from app.auth import RECRUITER, STAFF
 from app.db import get_db
 from app.duplicates import duplicate_map
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem, User
+from app.models_ext import Flag, ItemScoreRow
 from app.privacy import identity_leaks, make_blind
 from app.schemas import CandidateProfile, Stage
 from app.supervisor import ALLOWED, MoveRefused, move
@@ -66,8 +67,11 @@ def candidate(request: Request, cand_id: int, blind: int | None = None, user: Us
     profile = CandidateProfile.model_validate(cand.profile or {})
     fields = [(f, FIELD_LABELS[f], getattr(profile, f)) for f in CORE_FIELDS + OPTIONAL_FIELDS]
     pending = db.scalars(select(ReviewItem).where(ReviewItem.candidate_id == cand.id, ReviewItem.resolved.is_(False))).all()
+    scores = list(db.scalars(select(ItemScoreRow).where(ItemScoreRow.candidate_id == cand.id).order_by(ItemScoreRow.id)))
+    flags = list(db.scalars(select(Flag).where(Flag.candidate_id == cand.id)))
     return render(request, "candidate.html", user, cand=cand, blind_record=make_blind(cand), is_blind=is_blind, fields=fields,
-                  pending=pending, threshold=0.8, twins=duplicate_map(db).get(cand.id, []))
+                  pending=pending, threshold=0.8, twins=duplicate_map(db).get(cand.id, []), scores=scores, flags=flags,
+                  score_total=round(sum(r.weight * r.score for r in scores) / 3, 1) if scores else None)
 
 
 @router.get("/candidates/{cand_id}/cv")

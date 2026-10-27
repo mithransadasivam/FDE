@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}First-round interview{% endblock %}
+{% block content %}
+<h1>First-round interview &middot; {{ title }}</h1>
+{% if not invited %}
+<div class="card" data-testid="not-invited"><p>You have not been invited to the AI interview yet. A recruiter decides who is invited, and we will email you.</p>
+  <p class="muted small">Your application status: <a href="/me/{{ token }}">/me/{{ token }}</a></p></div>
+{% elif status == 'PERSON_REQUESTED' %}
+<div class="card" data-testid="person-requested"><h2 style="margin-top:0">A person will interview you</h2>
+  <p>You asked for an interview with a person instead. A recruiter will contact you to arrange it. This does not affect your application.</p></div>
+{% elif status == 'DONE' %}
+<div class="card" data-testid="done-msg"><h2 style="margin-top:0">Thank you, your interview is complete</h2>
+  <p>A recruiter reviews every interview and makes every decision. We will be in touch.</p></div>
+{% else %}
+<div class="card" id="notice" data-testid="notice" style="border-color:#1f4fd8">
+  <h2 style="margin-top:0">You are talking to an AI interviewer</h2>
+  <p>{{ notice }}</p>
+  <p>
+    <button id="start-btn" data-testid="start-btn">I understand, start the interview</button>
+    <button id="person-btn" data-testid="person-btn" class="secondary">Ask for a person instead</button>
+  </p>
+</div>
+
+<div id="stage" style="display:none">
+  <div class="row">
+    <div class="card">
+      <div class="muted small" id="progress" data-testid="progress"></div>
+      <h2 id="question-text" data-testid="question-text" style="margin:.4rem 0 1rem"></h2>
+      <div id="diagram-box" style="display:none"><img id="diagram" data-testid="diagram" alt="architecture diagram" style="max-width:100%;border:1px solid var(--line);border-radius:8px"><div class="muted small" id="diagram-title"></div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Your answer</h3>
+      <p><button id="record-btn" data-testid="record-btn">Record my answer</button>
+         <button id="stop-btn" data-testid="stop-btn" class="secondary" style="display:none">I have finished</button>
+         <span id="rec-status" class="muted small"></span></p>
+      <label for="answer-text">Or type your answer</label>
+      <textarea id="answer-text" data-testid="answer-text" rows="4" placeholder="Type here if you cannot record"></textarea>
+      <p><button id="send-answer" data-testid="send-answer" class="secondary">Send typed answer</button></p>
+      {% if fake %}
+      <label for="fixture-select">Demo (fake mode): play a recorded answer</label>
+      <select id="fixture-select" data-testid="fixture-select">{% for f in fixtures %}<option value="{{ f.id }}" data-q="{{ f.q }}">{{ f.id }} &middot; {{ f.q }} &middot; {{ f.kind }}</option>{% endfor %}</select>
+      <p><button id="play-fixture" data-testid="play-fixture" class="secondary">Play this recorded answer</button></p>
+      {% endif %}
+      <div class="muted small">You can say or press: <button class="small secondary cmd" data-say="Please repeat the question">Repeat</button>
+        <button class="small secondary cmd" data-say="Can I have a hint?">Hint</button>
+        <button class="small secondary cmd" data-say="I'd like to skip this one">Skip</button>
+        <button class="small secondary cmd" data-say="I'd like to stop">Stop</button>
+        <button class="small secondary" id="person-btn2">Ask for a person instead</button></div>
+      <h3>What we heard</h3>
+      <pre class="transcript" id="transcript" data-testid="transcript">(nothing yet)</pre>
+    </div>
+  </div>
+</div>
+<div class="card" id="done-box" data-testid="done-msg" style="display:none"><h2 style="margin-top:0">Thank you, your interview is complete</h2>
+  <p>A recruiter reviews every interview and makes every decision. We will be in touch.</p></div>
+<div class="card" id="person-box" data-testid="person-requested" style="display:none"><h2 style="margin-top:0">A person will interview you</h2>
+  <p>A recruiter will contact you to arrange it. This does not affect your application.</p></div>
+
+<script>
+const T = "{{ token }}";
+const $ = (id) => document.getElementById(id);
+let recorder = null, chunks = [];
+
+function speak(text) {
+  try { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.rate = 0.95; window.speechSynthesis.speak(u); } } catch (e) {}
+}
+function show(prompt) {
+  $("stage").style.display = "block"; $("notice").style.display = "none";
+  $("question-text").textContent = prompt.text;
+  $("progress").textContent = "Question " + prompt.number + " of " + prompt.of + (prompt.is_follow_up ? " (follow-up)" : "") + " · about " + Math.ceil(prompt.seconds_left / 60) + " min left";
+  if (prompt.diagram) { $("diagram").src = "/interview/" + T + "/diagram/" + prompt.diagram + "?t=" + Date.now(); $("diagram-title").textContent = prompt.diagram_title || ""; $("diagram-box").style.display = "block"; }
+  else { $("diagram-box").style.display = "none"; }
+  const sel = $("fixture-select");
+  if (sel) { for (const o of sel.options) { o.hidden = o.dataset.q !== prompt.question_id; } const first = [...sel.options].find(o => !o.hidden); if (first) sel.value = first.value; }
+  speak(prompt.text);
+}
+function finished() { $("stage").style.display = "none"; $("done-box").style.display = "block"; }
+async function post(path, body) {
+  const r = await fetch("/interview/" + T + path, { method: "POST", body });
+  if (!r.ok) { let m = r.statusText; try { m = (await r.json()).detail || m; } catch (e) {} alert(m); return null; }
+  return r.json();
+}
+function handle(res) {
+  if (!res) return;
+  $("transcript").textContent = res.transcript || "";
+  if (res.done) { finished(); } else if (res.next) { show(res.next); $("answer-text").value = ""; }
+}
+async function send(fd) { $("rec-status").textContent = "Scoring..."; handle(await post("/answer", fd)); $("rec-status").textContent = ""; }
+
+$("start-btn").onclick = async () => {
+  if (!(await post("/notice", new FormData()))) return;
+  const r = await post("/start", new FormData());
+  if (r) show(r.prompt);
+};
+async function person() { const r = await post("/person", new FormData()); if (r) { $("stage").style.display = "none"; $("notice").style.display = "none"; $("person-box").style.display = "block"; } }
+$("person-btn").onclick = person;
+$("person-btn2").onclick = person;
+$("send-answer").onclick = () => { const fd = new FormData(); fd.append("text", $("answer-text").value); send(fd); };
+document.querySelectorAll(".cmd").forEach(b => b.onclick = () => { const fd = new FormData(); fd.append("text", b.dataset.say); send(fd); });
+const pf = $("play-fixture"); if (pf) pf.onclick = () => { const fd = new FormData(); fd.append("fixture", $("fixture-select").value); send(fd); };
+$("record-btn").onclick = async () => {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recorder = new MediaRecorder(stream); chunks = [];
+    recorder.ondataavailable = (e) => chunks.push(e.data);
+    recorder.onstop = () => { const fd = new FormData(); fd.append("audio", new Blob(chunks, { type: "audio/webm" }), "answer.webm"); fd.append("text", $("answer-text").value); stream.getTracks().forEach(t => t.stop()); send(fd); };
+    recorder.start(); $("record-btn").style.display = "none"; $("stop-btn").style.display = "inline-block"; $("rec-status").textContent = "Recording...";
+  } catch (e) { $("rec-status").textContent = "No microphone available: please type your answer."; }
+};
+$("stop-btn").onclick = () => { if (recorder) recorder.stop(); $("stop-btn").style.display = "none"; $("record-btn").style.display = "inline-block"; };
+{% if status == 'IN_PROGRESS' %}
+fetch("/interview/" + T + "/state").then(r => r.json()).then(s => { if (s.prompt) show(s.prompt); });  // resume after a dropped connection
+{% endif %}
+</script>
+{% endif %}
+{% endblock %}

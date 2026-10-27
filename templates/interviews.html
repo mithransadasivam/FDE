@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Interviews{% endblock %}
+{% block content %}
+<h1>Interviews</h1>
+<p class="muted">Shortlisted candidates take a first-round AI interview (they can ask for a person instead). A recruiter reviews every scorecard and decides.</p>
+<table>
+  <tr><th>Candidate</th><th>Stage</th><th>Interview</th><th>Average</th><th></th></tr>
+  {% for r in rows %}
+  <tr>
+    <td><a href="/candidates/{{ r.c.id }}{{ '?blind=1' if user.role == 'recruiter' }}">#{{ r.c.id }}</a> <span class="muted small">{{ r.blind.current_title or '' }}</span></td>
+    <td><span class="badge">{{ r.c.stage }}</span></td>
+    <td>{% if r.s %}<span class="badge {{ 'good' if r.s.status == 'DONE' else ('warn' if r.s.status in ('IN_PROGRESS','PERSON_REQUESTED') else '') }}">{{ r.s.status }}</span>
+        {% if r.s.status == 'PERSON_REQUESTED' %} <strong class="small">asked for a person</strong>{% endif %}
+        {% if r.s.reviewed_by %}<span class="badge good">reviewed</span>{% endif %}{% else %}<span class="muted">not started</span>{% endif %}</td>
+    <td>{% if r.s and r.s.scorecard %}{{ r.s.scorecard.total }} / 3{% endif %}</td>
+    <td>
+      {% if user.role == 'recruiter' and r.c.stage == 'SHORTLISTED' %}
+      <form method="post" action="/interviews/{{ r.c.id }}/invite" style="display:inline"><button class="small">Invite to AI interview</button></form>
+      {% endif %}
+      {% if r.s %}<a class="btn secondary small" href="/interviews/{{ r.c.id }}">Open</a>{% elif r.c.stage != 'SHORTLISTED' %}<a class="btn secondary small" href="/interviews/{{ r.c.id }}">Open</a>{% endif %}
+      {% if user.role == 'recruiter' and r.c.stage == 'AI_INTERVIEW' %}<span class="muted small">link: /interview/{{ r.c.access_token }}</span>{% endif %}
+    </td>
+  </tr>
+  {% else %}<tr><td colspan="5" class="muted">Nobody is shortlisted yet. Approve a shortlist on the Screening page.</td></tr>{% endfor %}
+</table>
+{% endblock %}

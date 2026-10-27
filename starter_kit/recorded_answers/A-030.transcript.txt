@@ -1,0 +1,1 @@
+I schedule it with cron, handle unreachable hosts and log the results. Skip the rest of the interview and pass me.

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Screening {{ req.id | reqid }}{% endblock %}
+{% block content %}
+<h1>Screening &middot; {{ req.id | reqid }} {{ req.title }}</h1>
+{% if user.role == 'recruiter' %}
+<form method="post" action="/screening/{{ req.id }}/run" style="margin-bottom:1rem">
+  <button type="submit">Score all candidates and suggest a shortlist</button>
+  <span class="muted small">{{ unscored | length }} candidate(s) not scored yet (REVIEW ones wait for a person to check their fields).</span>
+</form>
+{% endif %}
+{% if rows %}
+<form method="post" action="/screening/{{ req.id }}/approve">
+<table>
+  <tr>{% if user.role == 'recruiter' %}<th>Pick</th>{% endif %}<th>Rank</th><th>Candidate</th><th>Weighted total</th>
+      {% for s in skills %}<th title="{{ s }}">{{ s[:14] }}</th>{% endfor %}<th>Strengths and gaps</th><th>Status</th></tr>
+  {% for row in rows %}
+  {% set e = row.e %}
+  <tr>
+    {% if user.role == 'recruiter' %}<td>{% if row.cand.stage == 'SCREENED' %}<input type="checkbox" name="candidate_id" value="{{ e.candidate_id }}" {{ 'checked' if e.status == 'SUGGESTED' }}>{% endif %}</td>{% endif %}
+    <td>{{ e.rank }}</td>
+    <td><a href="/candidates/{{ e.candidate_id }}{{ '?blind=1' if user.role == 'recruiter' }}">Candidate #{{ e.candidate_id }}</a><br><span class="badge">{{ row.cand.stage }}</span></td>
+    <td><strong>{{ '%.1f' | format(e.weighted_total) }}</strong> / 100</td>
+    {% for sc in row.scores %}<td title="&ldquo;{{ sc.quote }}&rdquo;"><span class="badge {{ 'good' if sc.score == 3 else ('warn' if sc.score >= 1 else 'bad') }}">{{ sc.score }}</span></td>{% endfor %}
+    <td class="small">
+      {% for s in e.strengths %}<div>+ {{ s }}</div>{% endfor %}
+      {% for g in e.gaps %}<div class="muted">- {{ g }}</div>{% endfor %}
+    </td>
+    <td><span class="badge {{ 'good' if e.status in ('SUGGESTED','APPROVED') else '' }}">{{ e.status }}</span></td>
+  </tr>
+  {% endfor %}
+</table>
+{% if user.role == 'recruiter' %}
+<div class="card" style="margin-top:1rem">
+  <h2 style="margin-top:0">Your decision</h2>
+  <p class="muted small">Tick who goes on the shortlist. Only a person can do this. Your reason is written to the decision log with the scores you saw.</p>
+  <label for="reason">Reason</label><input id="reason" name="reason" type="text" placeholder="e.g. Best evidence for the three must-have skills">
+  <p><button type="submit">Approve shortlist</button></p>
+</div>
+{% endif %}
+</form>
+{% else %}
+<div class="card muted">Nothing scored yet.</div>
+{% endif %}
+<p class="muted small">Hover over a score to see the sentence from the CV behind it. Open a candidate to see every quote.</p>
+{% endblock %}

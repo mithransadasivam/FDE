@@ -10,9 +10,10 @@ templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 # One place for the menus. Hiding a link is not security: each route also has its own role check.
 MENUS = {
     "hiring_manager": [("Requisitions", "/requisitions"), ("Candidates (blind)", "/candidates"),
-                       ("Pipeline", "/pipeline"), ("Decision log", "/log")],
+                       ("Screening", "/screening"), ("Interviews", "/interviews"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Decision log", "/log")],
     "recruiter": [("Requisitions", "/requisitions"), ("Candidates", "/candidates"),
-                  ("Review queue", "/review"), ("Pipeline", "/pipeline"), ("Decision log", "/log")],
+                  ("Review queue", "/review"), ("Screening", "/screening"), ("Interviews", "/interviews"),
+                  ("Outbox", "/outbox"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Decision log", "/log")],
 }
 
 ROLE_LABELS = {"hiring_manager": "Hiring manager", "recruiter": "Recruiter"}

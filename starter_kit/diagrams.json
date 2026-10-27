@@ -1,0 +1,98 @@
+[
+ {
+  "id": "D-01",
+  "title": "Web service",
+  "file": "diagrams/D-01.png",
+  "description": "Users reach a load balancer, which spreads traffic over two app nodes. Both app nodes use one shared database.",
+  "answer_key": [
+   "load balancer spreads traffic",
+   "app tier can scale out",
+   "one shared database is a single point of failure",
+   "database tier is harder to scale"
+  ]
+ },
+ {
+  "id": "D-02",
+  "title": "CI/CD pipeline",
+  "file": "diagrams/D-02.png",
+  "description": "A commit triggers a build with unit tests, a lint and security scan, and an image pushed to a registry, then staging, then production.",
+  "answer_key": [
+   "build and test on every commit",
+   "scans in the pipeline",
+   "build the image once and promote it",
+   "staging before production"
+  ]
+ },
+ {
+  "id": "D-03",
+  "title": "Order service",
+  "file": "diagrams/D-03.png",
+  "description": "Orders go through two app nodes to a single-primary database, with a cache and an external payment API.",
+  "answer_key": [
+   "orders fail while the primary is down",
+   "add a replica with automatic failover",
+   "health checks",
+   "replication lag can lose data"
+  ]
+ },
+ {
+  "id": "D-04",
+  "title": "Kubernetes cluster",
+  "file": "diagrams/D-04.png",
+  "description": "An ingress sends traffic to a service, which spreads it over three pods on two nodes. Pods read a ConfigMap and a Secret.",
+  "answer_key": [
+   "rolling update behind the service",
+   "readiness probes gate traffic",
+   "node failure reschedules pods",
+   "capacity for rescheduled pods"
+  ]
+ },
+ {
+  "id": "D-05",
+  "title": "Cloud network",
+  "file": "diagrams/D-05.png",
+  "description": "A load balancer sits in a public subnet. App VMs are in a private subnet and reach the internet through a NAT gateway. The database is in a data subnet.",
+  "answer_key": [
+   "route table sends 0.0.0.0/0 to NAT",
+   "security groups and ACLs",
+   "private subnet needs a NAT gateway",
+   "test with curl, traceroute, DNS"
+  ]
+ },
+ {
+  "id": "D-06",
+  "title": "Monitoring stack",
+  "file": "diagrams/D-06.png",
+  "description": "The app exposes metrics to Prometheus and writes logs to a log store. Grafana shows both. Alertmanager notifies the on-call engineer.",
+  "answer_key": [
+   "golden signals",
+   "dashboards for trends",
+   "alerts on symptoms",
+   "runbooks and low noise"
+  ]
+ },
+ {
+  "id": "D-07",
+  "title": "Queue and workers",
+  "file": "diagrams/D-07.png",
+  "description": "The web app puts jobs on a queue. Two workers process them and write to the database. Failed jobs go to a dead letter queue.",
+  "answer_key": [
+   "decouples slow work",
+   "workers scale independently",
+   "messages can be lost or duplicated",
+   "retries, dead letter queue, idempotency"
+  ]
+ },
+ {
+  "id": "D-08",
+  "title": "Two regions",
+  "file": "diagrams/D-08.png",
+  "description": "DNS routes users to region A. Region B holds a standby app tier and a replica of the database.",
+  "answer_key": [
+   "a regional outage makes the region unavailable",
+   "second region with traffic routing",
+   "replicate data across regions",
+   "test failover regularly"
+  ]
+ }
+]

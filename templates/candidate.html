@@ -52,4 +52,24 @@
   </div>
   {% endif %}
 </div>
+{% if flags %}
+<div class="card" style="border-color:#b7791f">
+  <h2 style="margin-top:0">Guardrail flags</h2>
+  {% for f in flags %}<div><span class="badge warn">{{ f.kind }}</span> <span class="small muted">&ldquo;{{ f.detail }}&rdquo; was treated as text about the candidate, never as an instruction.</span></div>{% endfor %}
+</div>
+{% endif %}
+{% if scores %}
+<div class="card">
+  <h2 style="margin-top:0">Scores with evidence <span class="badge">{{ '%.1f' | format(score_total) }} / 100</span></h2>
+  <p class="muted small">Each score points to the exact sentence from the CV. Code checked that the sentence is really there.</p>
+  <table>
+    <tr><th>Skill</th><th>Weight</th><th>Score</th><th>Evidence (exact CV text)</th><th>Checked</th></tr>
+    {% for r in scores %}
+    <tr><td>{{ r.skill }}</td><td>{{ r.weight }}</td><td><span class="badge {{ 'good' if r.score == 3 else ('warn' if r.score >= 1 else 'bad') }}">{{ r.score }}/3</span></td>
+      <td>{% if r.quote %}<em>&ldquo;{{ r.quote }}&rdquo;</em>{% else %}<span class="muted">no evidence found</span>{% endif %}</td>
+      <td>{{ 'verified' if r.verified else 'not verified' }}{% if r.status == 'returned' %} <span class="badge bad">sent back</span>{% endif %}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endif %}
 {% endblock %}
