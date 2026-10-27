@@ -11,7 +11,7 @@ PACKAGES = {
     "itsdangerous": "itsdangerous", "sqlalchemy": "sqlalchemy", "pydantic": "pydantic",
     "pydantic-settings": "pydantic_settings", "bcrypt": "bcrypt", "litellm": "litellm",
     "faster-whisper": "faster_whisper", "pdfplumber": "pdfplumber", "python-docx": "docx",
-    "pytesseract": "pytesseract", "pillow": "PIL", "pytest": "pytest", "httpx": "httpx",
+    "pytesseract": "pytesseract", "rapidocr": "rapidocr", "onnxruntime": "onnxruntime", "pillow": "PIL", "pytest": "pytest", "httpx": "httpx",
 }
 failures = 0
 
@@ -30,8 +30,17 @@ def main() -> int:
     check("Python 3.11 or newer", sys.version_info >= (3, 11), "install Python 3.11+ and recreate .venv")
     check("ffmpeg (needed to read audio)", shutil.which("ffmpeg") is not None,
           "install ffmpeg and add it to PATH (Windows: download from gyan.dev, add its bin folder to PATH)")
-    check("tesseract (fallback for scanned CVs)", shutil.which("tesseract") is not None,
-          "install tesseract (Windows: UB-Mannheim installer) and add it to PATH")
+    from app.ai.llm import tesseract_available
+
+    have_tesseract = tesseract_available()
+    try:
+        import rapidocr  # noqa: F401
+        have_fallback = True
+    except ImportError:
+        have_fallback = False
+    check("tesseract" + (" (OCR for scanned CVs)" if have_tesseract else " (not installed: using the rapidocr fallback)"),
+          have_tesseract or have_fallback,
+          "install tesseract (Windows: UB-Mannheim installer, add to PATH or set TESSERACT_CMD) or pip install rapidocr onnxruntime")
     check(".env present", Path(".env").exists(), "copy .env.example to .env")
     check("SECRET_KEY changed", s.secret_key not in ("", "change-me", "change-me-to-a-long-random-text"),
           "set SECRET_KEY in .env to any long random text")

@@ -82,21 +82,50 @@ def read_image_text(path: Path) -> str:
     return _call(s.vision_model, messages, max_tokens=2500).strip()
 
 
-def _ocr(path: Path) -> str:
+_rapid = None
+
+
+def tesseract_available() -> bool:
     import shutil
 
+    s = get_settings()
+    return bool(s.tesseract_cmd and Path(s.tesseract_cmd).exists()) or shutil.which("tesseract") is not None
+
+
+def _ocr_tesseract(path: Path) -> str:
     import pytesseract
     from PIL import Image
 
     s = get_settings()
     if s.tesseract_cmd:
         pytesseract.pytesseract.tesseract_cmd = s.tesseract_cmd
-    elif shutil.which("tesseract") is None:
-        raise ModelError("Tesseract OCR is not installed, so this scanned CV could not be read. "
-                         "Install tesseract, or set FAKE_MODELS=0 to use the vision model.")
     with Image.open(path) as img:
         img = img.convert("L")
         if img.width < 1600:  # small scans read better when enlarged
             factor = 1600 / img.width
             img = img.resize((int(img.width * factor), int(img.height * factor)))
         return pytesseract.image_to_string(img, config="--psm 6")
+
+
+def _ocr_rapid(path: Path) -> str:
+    """Fallback OCR that installs with pip (no system program needed). Lines are returned top to bottom."""
+    global _rapid
+    if _rapid is None:
+        from rapidocr import RapidOCR
+
+        _rapid = RapidOCR()
+    result = _rapid(str(path))
+    return "\n".join(result.txts) if result is not None and result.txts else ""
+
+
+def _ocr(path: Path) -> str:
+    """Tesseract when it is installed, otherwise the pip-installed fallback."""
+    try:
+        return _ocr_tesseract(path) if tesseract_available() else _ocr_rapid(path)
+    except ModelError:
+        raise
+    except ImportError as e:
+        raise ModelError("No OCR engine is installed, so this scanned CV could not be read. Install tesseract "
+                         "or run: pip install rapidocr onnxruntime") from e
+    except Exception as e:
+        raise ModelError(f"The scanned CV could not be read: {type(e).__name__}: {str(e)[:150]}") from e

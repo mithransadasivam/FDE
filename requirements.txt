@@ -15,3 +15,5 @@ pytesseract
 pillow
 pytest
 httpx
+rapidocr
+onnxruntime
