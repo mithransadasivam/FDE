@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import get_settings
 from app.db import init_db
-from app.web import pages, public, requisitions
+from app.web import candidates, pages, public, requisitions
 
 
 @asynccontextmanager
@@ -22,6 +22,7 @@ app.add_middleware(SessionMiddleware, secret_key=get_settings().secret_key, same
 app.include_router(pages.router)
 app.include_router(requisitions.router)
 app.include_router(public.router)
+app.include_router(candidates.router)
 
 
 @app.exception_handler(HTTPException)

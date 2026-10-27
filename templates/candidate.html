@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Candidate #{{ cand.id }}{% endblock %}
+{% block content %}
+<h1>Candidate #{{ cand.id }} <span class="badge {{ 'warn' if cand.stage == 'REVIEW' else '' }}">{{ cand.stage }}</span>
+  {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
+<p class="muted small">Applied {{ cand.applied_at.strftime('%Y-%m-%d %H:%M') }} UTC &middot; CV format: {{ cand.cv_format }}
+  {% if user.role == 'recruiter' and not is_blind %}&middot; <a href="/candidates/{{ cand.id }}/cv">open the original CV</a>{% endif %}</p>
+{% if cand.error %}<div class="flash bad">{{ cand.error }}</div>{% endif %}
+{% if pending and user.role == 'recruiter' %}
+<div class="flash bad">{{ pending | length }} field(s) still need checking: <a href="/review">open the review queue</a>.</div>
+{% endif %}
+
+<div class="row">
+  <div class="card">
+    <h2 style="margin-top:0">Blind record</h2>
+    <p class="muted small">This is all the scoring step is allowed to see: skills and experience, never identity.</p>
+    <table>
+      <tr><th>Current title</th><td>{{ blind_record.current_title or '' }}</td></tr>
+      <tr><th>Years of experience</th><td>{{ blind_record.years_experience if blind_record.years_experience is not none else '' }}</td></tr>
+      <tr><th>Jobs</th><td>{% for j in blind_record.jobs %}{{ j }}<br>{% endfor %}</td></tr>
+      <tr><th>Skills</th><td>{{ blind_record.skills | join(', ') }}</td></tr>
+      <tr><th>Certifications</th><td>{{ blind_record.certifications | join(', ') }}</td></tr>
+      <tr><th>Education</th><td>{{ blind_record.education or '' }}</td></tr>
+    </table>
+  </div>
+  {% if user.role == 'recruiter' and not is_blind %}
+  <div class="card">
+    <h2 style="margin-top:0">Extracted fields</h2>
+    <p class="muted small">What the reader found, with how sure it was. Below {{ '%g' | format(threshold) }} goes to the review queue.</p>
+    <table>
+      <tr><th>Field</th><th>Value</th><th>Confidence</th></tr>
+      {% for key, label, f in fields %}
+      <tr><td>{{ label }}</td><td>{{ f.value | vt }}</td>
+        <td><span class="badge {{ 'good' if f.confidence >= threshold else ('warn' if f.confidence > 0 else 'bad') }}">{{ '%.2f' | format(f.confidence) }}</span></td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
