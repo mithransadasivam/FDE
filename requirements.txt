@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+itsdangerous
+sqlalchemy
+pydantic
+pydantic-settings
+bcrypt
+litellm
+faster-whisper
+pdfplumber
+python-docx
+pytesseract
+pillow
+pytest
+httpx
