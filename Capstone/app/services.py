@@ -6,6 +6,7 @@ from sqlalchemy import select
 from app.agents.document import extract_profile, pdf_metadata
 from app.agents.document_tools import DocumentAgent
 from app.agents.requisition_tools import RequisitionAgent
+from app import security
 from app.guardrails import scan_injection
 from app.models_ext import CvText, Flag
 from app.agents.wording import check_wording
@@ -81,13 +82,18 @@ def process_candidate(cand_id: int) -> None:
             agent = DocumentAgent(db, cand.id)
             text = agent.read(path)
             meta = pdf_metadata(path)
+            hidden = security.find_hidden_text(path) if path.suffix.lower() == ".pdf" else []
+            for h in hidden:  # text a person cannot see: found by code; kept apart with the metadata, flagged, never read by a model
+                meta = (meta + " | " if meta else "") + h.text
+                db.add(Flag(candidate_id=cand.id, kind="hidden text in CV", detail=f"{h.where}, {h.why}: {h.text}"[:300]))
+                db.add(DecisionLog(actor="system", action="hidden text found in CV", subject=f"candidate:{cand.id}", reason=f"{h.where}, {h.why}: {h.text[:160]}"))
             for old_text in db.scalars(select(CvText).where(CvText.candidate_id == cand.id)):
                 db.delete(old_text)
             db.add(CvText(candidate_id=cand.id, text=text, pdf_metadata=meta))
             # rule 8: anything in the CV or its metadata that looks like an instruction is flagged and then ignored
-            for hit in scan_injection(text + "\n" + meta):
-                db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=hit[:300]))
-                db.add(DecisionLog(actor="system", action="instructions in CV ignored", subject=f"candidate:{cand.id}", reason=hit[:200]))
+            for f in security.scan_for_instructions(text + "\n" + meta, "the CV"):  # plain text and base64
+                db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=f.text[:300]))
+                db.add(DecisionLog(actor="system", action="instructions in CV ignored", subject=f"candidate:{cand.id}", reason=f.text[:200]))
             profile = extract_profile(path, cand.cv_format, text=text, candidate_id=cand.id)
             cand.error = None
         except Exception as e:  # never silently drop a CV: it goes to REVIEW with the error

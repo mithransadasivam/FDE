@@ -13,6 +13,12 @@
 {% endif %}
 
 {% if card %}
+{% if check and check.status == 'NEEDS_REVIEW' %}
+<div class="flash" style="border-color:var(--warn)" data-testid="evidence-box"><strong>Evidence checker: NEEDS_REVIEW.</strong> Read these before you rely on the scores.
+  {% for p in check['items'] %}<div class="small">&bull; <strong>{{ p.where }}</strong>: {{ p.problem }} &mdash; {{ p.detail }}</div>{% endfor %}
+  {% if check.acknowledged_by %}<div class="small muted">You have looked at these ({{ check.acknowledged_by }}).</div>
+  {% elif user.role == 'recruiter' %}<form method="post" action="/screening/checks/{{ check.id }}/ack"><input type="hidden" name="back" value="/interviews/{{ cand.id }}"><button class="small" data-testid="ack-btn">I have looked at these</button></form>{% endif %}</div>
+{% elif check %}<p class="small"><span class="badge good" data-testid="evidence-status">CHECKED</span> The evidence checker found no problems.</p>{% endif %}
 <div class="card" data-testid="overall">
   <h2 style="margin-top:0">Overall <span class="badge good" data-testid="overall-score">{{ card.overall_100 }} / 100</span>
     <span class="muted small">calculated by code from the rubric weights (best answer per skill, level out of 3) &middot; ended: {{ s.scorecard.ended_reason }}</span></h2>
@@ -67,6 +73,7 @@
   {% if audio_open %}
     {% if has_mp3 %}<audio controls preload="none" src="/interviews/{{ s.id }}/recording" data-testid="full-audio" style="width:100%"></audio>
       <p class="small muted">Opening the recording is logged. <a href="/interviews/{{ s.id }}/recording.json">Timeline (JSON)</a></p>
+      <p><a class="btn" href="/interviews/{{ s.id }}/replay" data-testid="open-replay">Open the replay room</a> <span class="small muted">two figures, subtitles, diagrams and a timeline</span></p>
       {% if timeline %}<table class="small" data-testid="timeline"><tr><th>At</th><th>Who</th><th>What was said</th><th>Level</th></tr>
         {% for c in timeline.clips %}<tr><td>{{ '%d:%02d' | format((c.start // 60) | int, (c.start % 60) | int) }}</td><td>{{ c.speaker }}</td><td>{{ c.text[:140] }}</td><td>{{ c.level if c.level is not none else '' }}</td></tr>{% endfor %}</table>{% endif %}
     {% else %}<p class="muted">No recording was built for this interview (the candidate did not agree to recording, or it was deleted after the retention period).</p>{% endif %}

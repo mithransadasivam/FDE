@@ -151,8 +151,8 @@ def test_copilot_panel_follows_the_interview_and_warns_about_a_forbidden_questio
     expect(transcript).to_contain_text("CANDIDATE")
     expect(transcript).to_contain_text("Do you have children?")
     expect(page.get_by_test_id("suggestions")).to_contain_text("technical")  # suggestions appear
-    expect(page.get_by_test_id("draft")).to_be_visible(timeout=20000)
-    expect(page.get_by_test_id("draft")).to_contain_text("draft")
+    expect(page.get_by_test_id("scoring")).to_be_visible(timeout=30000)  # when the interview ends the page shows the recruiter's scoring, with the copilot's labelled suggestion
+    expect(page.get_by_test_id("scoring")).to_contain_text("AI suggestion")
 
 
 def test_copilot_panel_ticks_key_points_and_shows_a_cv_check(live, browser):

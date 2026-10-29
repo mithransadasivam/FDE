@@ -13,9 +13,16 @@
   <form method="post" action="/outbox/{{ d.id }}/reject" style="display:flex;gap:.5rem"><input type="text" name="reason" placeholder="Reason for rejecting (optional)"><button class="danger small">Reject</button></form>
 </div>
 {% else %}<div class="card muted">No drafts are waiting.</div>{% endfor %}
+<h2>Messages from candidates</h2>
+<p class="muted small">Replies and messages are data: they are read by a person, any instruction in them is flagged and ignored, and they never move a candidate or change a score.</p>
+<table data-testid="messages"><tr><th>When (UTC)</th><th>Candidate</th><th>Message</th><th>Note</th></tr>
+  {% for m in candidate_messages %}<tr><td class="small">{{ m.at.strftime('%Y-%m-%d %H:%M') }}</td><td>{{ m.subject.replace('candidate:', '#') }}</td><td class="small">{{ (m.evidence or {}).get('text', '')[:200] }}</td>
+    <td>{% if 'contains instructions' in m.reason %}<span class="badge bad">instructions flagged and ignored</span>{% else %}<span class="badge good">ok</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">No messages.</td></tr>{% endfor %}
+</table>
 <h2>Sent (outbox log)</h2>
-<table><tr><th>When (UTC)</th><th>Subject</th><th>To</th><th>Approved by</th></tr>
-  {% for s in sent %}<tr><td class="small">{{ s.at.strftime('%Y-%m-%d %H:%M') }}</td><td>{{ s.subject }}</td><td>#{{ s.to_candidate }}</td><td>{{ s.approved_by }}</td></tr>
-  {% else %}<tr><td colspan="4" class="muted">Nothing has been sent.</td></tr>{% endfor %}
+<table><tr><th>When (UTC)</th><th>Subject</th><th>To</th><th>Approved by</th><th>File</th></tr>
+  {% for s in sent %}<tr><td class="small">{{ s.at.strftime('%Y-%m-%d %H:%M') }}</td><td>{{ s.subject }}</td><td>#{{ s.to_candidate }}</td><td>{{ s.approved_by }}</td><td class="small">draft_{{ '%05d' % s.draft_id }}.eml</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">Nothing has been sent.</td></tr>{% endfor %}
 </table>
 {% endblock %}

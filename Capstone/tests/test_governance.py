@@ -41,7 +41,7 @@ def test_the_scoring_prompt_contains_only_the_question_the_guide_and_the_words_s
     interviewer.score_text(q, "I would start with top and uptime to see the load.", candidate_id=1)
     assert len(seen) == 1
     system, user = seen[0]
-    assert set(re.findall(r"<(\w+)", user)) == {"question", "key_points", "scoring_guide", "answer"}  # nothing else is passed
+    assert set(re.findall(r"<(\w+)", user)) == {"question", "key_points", "scoring_guide", "candidate_answer"}  # nothing else is passed
     for word in ("duration", "seconds", "pitch", "accent", "tone", "wav", "webm", "emotion", "confidence level"):
         assert word not in user.lower()
 

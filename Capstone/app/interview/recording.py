@@ -58,8 +58,8 @@ def sequence(s: InterviewSession) -> list[dict]:
             if m["kind"] == "hint":  # a hint without a question before it cannot happen; skip defensively
                 i += 1
                 continue
-            clips.append({"speaker": "interviewer", "text": m["text"], "audio": m.get("audio"), "skill": t.get("skill"), "kind": m["kind"],
-                          "diagram": (m.get("diagram") or {}).get("text"), "level": None, "quote": ""})
+            clips.append({"speaker": "interviewer", "text": m["text"], "audio": m.get("audio"), "skill": t.get("skill"), "kind": m["kind"], "why": m.get("why", ""),
+                          "diagram": (m.get("diagram") or {}).get("text"), "diagram_title": (m.get("diagram") or {}).get("title"), "level": None, "quote": ""})
             i += 1
             while i < len(meta) and meta[i]["kind"] == "hint":
                 clips.append({"speaker": "interviewer", "text": meta[i]["text"], "audio": meta[i].get("audio"), "skill": t.get("skill"), "kind": "hint",
@@ -100,7 +100,8 @@ def build_recording(db: Session, s: InterviewSession) -> dict | None:
                 clock += GAP_SECONDS
             wavs.append(target)
             timeline.append({"n": n, "speaker": clip["speaker"], "kind": clip["kind"], "start": round(clock, 2), "end": round(clock + length, 2),
-                             "text": clip["text"], "skill": clip["skill"], "diagram": clip["diagram"], "level": clip["level"], "quote": clip["quote"]})
+                             "text": clip["text"], "skill": clip["skill"], "why": clip.get("why", ""), "diagram": clip["diagram"], "diagram_title": clip.get("diagram_title"),
+                             "level": clip["level"], "quote": clip["quote"]})
             clock += length
         audio.join(wavs, mp3_path(s))
     finally:

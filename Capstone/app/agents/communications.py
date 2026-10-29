@@ -3,6 +3,7 @@ from a fictional calendar. It never sends anything: every draft waits in the app
 outbox log after a PERSON approved it (rule 1). There is no real mail server.
 """
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -94,11 +95,58 @@ def _fake(user: str) -> DraftOut:
         return DraftOut(subject=f"Update on your application for {role}", body=(
             f"Hello {name},\n\nThank you for your interest in {role} and for the time you gave us. After careful consideration by our team, we will not be taking "
             f"your application further this time. You can ask us for an explanation, and you can ask for a person to look at your application again." + sign))
+    if kind == "not_shortlisted":
+        return DraftOut(subject=f"Update on your application for {role}", body=(
+            f"Hello {name},\n\nThank you for applying for {role}. We have looked at every application, and we will not be moving yours to the next step this time. "
+            f"We read applications with the help of an AI system, and a person makes every decision. You can ask us for an explanation, and you can ask for a person to look at your application again." + sign))
     if kind == "explanation":
         return DraftOut(subject=f"Why your application was not shortlisted ({role})", body=(
             f"Hello {name},\n\nThank you for asking. We compared your CV with the skills for {role}.\n\n{f.get('strengths', '')}\n{f.get('gaps', '')}\n\n"
             f"This comparison was suggested by an AI system and the decision was made by a recruiter. You can ask for a person to look at your application again." + sign))
     return DraftOut(subject=f"An update on your application for {role}", body=f"Hello {name},\n\nThank you for applying for {role}. Your application is still being considered, and we will write again soon." + sign)
+
+
+# ---- code checks on every draft (Day 3, prompt 10) --------------------------------------------------------------------------------------------------
+MAX_WORDS = 199
+SCORE_RX = re.compile(r"\b\d{1,3}\s*(?:/|out of)\s*(?:3|4|5|10|100)\b|\blevel\s*[0-4]\b|\byour (?:score|ranking|rank)\b|\bscored?\s+\d|\branked\s+(?:#|no\.?|number)?\s*\d|\bpercentile\b", re.I)
+INTERNAL_RX = re.compile(r"\b(?:scorecard|rubric|decision log|internal note|recruiter note|needs_review|evidence checker|weighting|must-have|other candidates?)\b", re.I)
+PROMISE_RX = re.compile(r"\b(?:we are pleased to offer|offer of employment|we will offer|you(?:'ve| have) (?:got|won) the job|the job is yours|guarantee[sd]?|you will be hired|"
+                        r"we will hire you|you have been selected|your salary will|we will pay you)\b", re.I)
+
+
+def check_draft(subject: str, body: str, kind: str, cand: Candidate) -> list[str]:
+    """What is wrong with a draft (an empty list means it passes): no scores, levels or internal notes; no protected details; no promise of an offer; the private
+    link is right; under 200 words."""
+    from app.agents.checker import protected_hits
+
+    problems = []
+    text = subject + "\n" + body
+    if SCORE_RX.search(text):
+        problems.append("it contains a score, level or ranking")
+    if INTERNAL_RX.search(text):
+        problems.append("it contains an internal term or a note about other candidates")
+    # the fixed AI notice says what is NOT used (voice, accent): only the rest of the email is checked for protected details
+    rest = " ".join(s for s in re.split(r"(?<=[.!?])\s+", body) if not re.search(r"\bnever\b|\bnot (?:affect|used|scored)\b", s, re.I))
+    hits = protected_hits(rest)
+    if hits:
+        problems.append("it mentions a protected detail (" + ", ".join(hits[:3]) + ")")
+    if PROMISE_RX.search(text):
+        problems.append("it promises an offer or a result")
+    if len(body.split()) > MAX_WORDS:
+        problems.append(f"it has {len(body.split())} words: keep it under 200")
+    links = re.findall(r"/(?:interview|me)/([A-Za-z0-9_\-]+)", body)
+    if kind == "ai_interview" and cand.access_token not in links:
+        problems.append("the private interview link is missing or wrong")
+    if any(t != cand.access_token for t in links):
+        problems.append("it contains a link that is not this candidate's own")
+    return problems
+
+
+def safe_draft(kind: str, name: str, role: str, link: str) -> DraftOut:
+    """A short email built by code, used when the written drafts fail the checks twice."""
+    extra = f"\n\nYour private link: {link}" if link else ""
+    return DraftOut(subject=f"An update on your application for {role}", body=f"Hello {name},\n\nThank you for applying for {role}. A member of our team will write to you with the next step. "
+                    f"If you would like to speak to a person, just ask.{extra}\n\nBest wishes,\nThe hiring team")
 
 
 class DraftArgs(BaseModel):
@@ -115,7 +163,19 @@ def draft_email(args: DraftArgs, ctx: dict) -> dict:
     extra = dict(args.extra)
     if args.kind == "ai_interview":
         extra["link"] = f"/interview/{cand.access_token}"
-    out = complete_json(SYSTEM, _facts(args.kind, first_name(cand), role, extra), DraftOut, fake=_fake, task="identity", agent="communications", candidate_id=cand.id)
+    link = extra.get("link", "")
+    why, out, redrafted = "", None, False
+    for attempt in (1, 2):  # check the draft in code; if it fails, ask once more with the problems named
+        retry = f"\n<your_last_draft_was_rejected_because>{why}</your_last_draft_was_rejected_because>" if why else ""
+        out = complete_json(SYSTEM, _facts(args.kind, first_name(cand), role, extra) + retry, DraftOut, fake=_fake, task="identity", agent="communications", candidate_id=cand.id)
+        problems = check_draft(out.subject, out.body, args.kind, cand)
+        if not problems:
+            break
+        redrafted, why = True, "; ".join(problems)
+        db.add(DecisionLog(actor="system", action=f"email draft rejected by the checks ({args.kind})", subject=f"candidate:{cand.id}", reason=why))
+    else:
+        out = safe_draft(args.kind, first_name(cand), role, link)  # two failures: a short, safe email built by code
+        db.add(DecisionLog(actor="system", action=f"email draft replaced by a safe draft ({args.kind})", subject=f"candidate:{cand.id}", reason=why))
     d = EmailDraft(candidate_id=cand.id, kind=args.kind, subject=out.subject, body=out.body, slot=extra.get("slot_id"), status="DRAFT")
     db.add(d)
     db.flush()
@@ -163,13 +223,24 @@ def approve_and_send(db: Session, draft_id: int, actor: str) -> OutboxLog:
     d = db.get(EmailDraft, draft_id)
     if d is None or d.status != "DRAFT":
         raise SendRefused("That draft is not waiting for approval")
+    from app import mailer
+
+    cand = db.get(Candidate, d.candidate_id)
+    problems = check_draft(d.subject, d.body, d.kind, cand)  # a person's edit is checked too: what is sent is what was checked
+    if problems:
+        raise SendRefused("The draft does not pass the checks: " + "; ".join(problems) + ". Edit it first.")
+    try:
+        path = mailer.write_eml(d, cand, actor)  # our fictional mail server
+        mailer.send_live(mailer.message_for(d, cand, actor))  # real sending only if EMAIL_LIVE is on
+    except mailer.MailError as e:
+        raise SendRefused(str(e)) from e
     d.status, d.decided_by = "SENT", actor
     if d.slot:
         book_slot(d.slot)
     row = OutboxLog(draft_id=d.id, to_candidate=d.candidate_id, approved_by=actor, subject=d.subject)
     db.add(row)
     db.add(DecisionLog(actor=actor, action=f"email approved and sent ({d.kind})", subject=f"candidate:{d.candidate_id}", reason=d.subject,
-                       evidence={"draft_id": d.id, "body": d.body}))
+                       evidence={"draft_id": d.id, "body": d.body, "eml": path.name}))
     db.flush()
     return row
 
@@ -189,11 +260,11 @@ def queue(db: Session) -> list[EmailDraft]:
 def handle_candidate_message(db: Session, cand: Candidate, text: str) -> dict:
     """A message from a candidate is DATA (rule 8). It is logged and scanned; any instruction in it is flagged and ignored, and the only
     thing that happens is a neutral acknowledgement drafted into the approval queue. The platform never acts on what the message says."""
-    from app import guardrails
+    from app import guardrails, security
     from app.models_ext import Flag
 
     text = (text or "").strip()[:2000]
-    hits = guardrails.scan_injection(text) if get_settings().guardrails_enabled else []
+    hits = list(dict.fromkeys(guardrails.scan_injection(text) + [f.text for f in security.scan_for_instructions(text, "an email")])) if get_settings().guardrails_enabled else []
     for h in hits:
         db.add(Flag(candidate_id=cand.id, kind="instructions in candidate email ignored", detail=h[:300]))
     db.add(DecisionLog(actor="candidate", action="message received", subject=f"candidate:{cand.id}",

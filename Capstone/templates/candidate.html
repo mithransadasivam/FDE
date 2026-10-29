@@ -52,6 +52,30 @@
   </div>
   {% endif %}
 </div>
+{% if scores or ai_card or human_scores %}
+<div class="card" data-testid="three-stages" style="margin-top:1rem"><h2 style="margin-top:0">Three stages side by side</h2>
+  <div class="row" style="margin:0">
+    <div style="flex:1 1 260px" data-testid="stage-screening"><h3 style="margin-top:0">1. Screening <span class="muted small">CV, out of 3</span></h3>
+      {% if scores %}<p><strong>{{ score_total }} / 100</strong></p><table class="small">{% for r in scores %}<tr><td>{{ r.skill }}</td><td><span class="badge {{ 'good' if r.score == 3 else ('warn' if r.score >= 1 else 'bad') }}">{{ r.score }}</span></td></tr>{% endfor %}</table>{% else %}<p class="muted small">Not screened yet.</p>{% endif %}</div>
+    <div style="flex:1 1 260px" data-testid="stage-ai-interview"><h3 style="margin-top:0">2. AI interview <span class="muted small">out of 3</span></h3>
+      {% if ai_card %}<p><strong>{{ ai_card.overall_100 }} / 100</strong>{% if ai_card.reviewed_by %} <span class="badge good">reviewed</span>{% endif %}{% if ai_card.scorers_disagree %} <span class="badge bad">scorers disagree</span>{% endif %}</p>
+        <table class="small">{% for r in ai_card.skills if r.asked %}<tr><td>{{ r.skill }}</td><td><span class="badge {{ 'good' if r.level == 3 else ('warn' if r.level and r.level >= 1 else 'bad') }}">{{ r.level }}</span></td></tr>{% endfor %}</table>
+        <p class="small"><a href="/interviews/{{ cand.id }}">Open the scorecard</a></p>{% else %}<p class="muted small">No AI interview yet.</p>{% endif %}</div>
+    <div style="flex:1 1 260px" data-testid="stage-human-interview"><h3 style="margin-top:0">3. Human interview <span class="muted small">your levels</span></h3>
+      {% if human_scores %}<table class="small">{% for h in human_scores %}<tr><td>{{ h.skill }}</td><td><span class="badge good">{{ h.level }}</span> <span class="muted">AI suggested {{ h.ai_suggestion }}</span></td></tr>{% endfor %}</table>
+        <p class="small muted">The level is the recruiter's own; the AI's suggestion is shown beside it.</p>{% else %}<p class="muted small">Not scored yet.</p>{% endif %}</div>
+  </div></div>
+{% endif %}
+{% for ck in checks if ck.status == 'NEEDS_REVIEW' %}
+<div class="flash" style="border-color:var(--warn)" data-testid="evidence-box"><strong>Evidence checker ({{ ck.subject }}): NEEDS_REVIEW.</strong>
+  {% for p in ck['items'] %}<div class="small">&bull; <strong>{{ p.where }}</strong>: {{ p.problem }} &mdash; {{ p.detail }}</div>{% endfor %}
+  {% if ck.acknowledged_by %}<div class="small muted">looked at by {{ ck.acknowledged_by }}</div>{% elif user.role == 'recruiter' %}<form method="post" action="/screening/checks/{{ ck.id }}/ack"><input type="hidden" name="back" value="/candidates/{{ cand.id }}"><button class="small" data-testid="ack-btn">I have looked at these</button></form>{% endif %}</div>
+{% endfor %}
+{% if flags | selectattr('kind', 'in', ['hidden text in CV', 'instructions in CV ignored']) | list %}
+<div class="flash bad" data-testid="hidden-badge" role="alert"><span class="badge bad">Hidden instructions found</span>
+  <strong>This CV contains text that tries to give orders to an AI.</strong> It was removed before anything read the CV and it changed no score. The candidate is not rejected: a person decides what it means.
+  {% for f in flags if f.kind in ['hidden text in CV', 'instructions in CV ignored'] %}<div class="small">&bull; {{ f.kind }}: &ldquo;{{ f.detail }}&rdquo;</div>{% endfor %}</div>
+{% endif %}
 {% if flags %}
 <div class="card" style="border-color:#b7791f">
   <h2 style="margin-top:0">Guardrail flags</h2>

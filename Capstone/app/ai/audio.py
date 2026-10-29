@@ -71,14 +71,15 @@ def duration(path: Path) -> float:
 
 
 def join(wavs: list[Path], out_mp3: Path, rate: int = 16000) -> Path:
-    """Joins wav clips, in the order given, into one mp3. Every clip must already be a wav at the same sample rate."""
+    """Joins wav clips, in the order given, into one mp3 (or one wav, if the output name ends in .wav). Every clip must already be a wav at the same sample rate."""
     if not wavs:
         raise AudioError("There is no audio to join")
     out_mp3.parent.mkdir(parents=True, exist_ok=True)
     listing = out_mp3.parent / "_clips.txt"
     listing.write_text("".join(f"file '{Path(w).resolve().as_posix()}'\n" for w in wavs), encoding="utf-8")
     try:
-        _run(["-f", "concat", "-safe", "0", "-i", str(listing), "-ac", "1", "-ar", str(rate), "-codec:a", "libmp3lame", "-q:a", "5", str(out_mp3)])
+        codec = ["-codec:a", "pcm_s16le"] if out_mp3.suffix.lower() == ".wav" else ["-codec:a", "libmp3lame", "-q:a", "5"]
+        _run(["-f", "concat", "-safe", "0", "-i", str(listing), "-ac", "1", "-ar", str(rate), *codec, str(out_mp3)])
     finally:
         listing.unlink(missing_ok=True)
     return out_mp3

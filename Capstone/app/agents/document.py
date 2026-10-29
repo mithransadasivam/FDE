@@ -3,6 +3,7 @@ import re
 from datetime import date
 from pathlib import Path
 
+from app import security
 from app.ai.llm import ModelError, complete_json, read_image_text
 from app.schemas import CandidateProfile, ListField, NumField, StrField
 
@@ -35,7 +36,7 @@ def read_text(path: Path) -> str:
         import pdfplumber
 
         with pdfplumber.open(path) as pdf:
-            text = "\n".join((page.extract_text() or "") for page in pdf.pages)
+            text = "\n".join(security.visible_text(page) for page in pdf.pages)  # text drawn in white or in a tiny font is left out (and flagged)
     elif suffix == ".docx":
         import docx
 
@@ -187,7 +188,7 @@ def format_of(path: Path) -> str:
 def extract_profile(path: Path, cv_format: str | None = None, text: str | None = None, candidate_id: int | None = None) -> CandidateProfile:
     cv_format = cv_format or format_of(path)
     text = text if text is not None else read_text(path)
-    profile = complete_json(SYSTEM, f"<cv>\n{text}\n</cv>", CandidateProfile, fake=lambda _user: _fake_profile(text, cv_format),
+    profile = complete_json(SYSTEM + "\n" + security.DATA_RULE, security.wrap_untrusted("cv", text), CandidateProfile, fake=lambda _user: _fake_profile(text, cv_format),
                             task="identity", agent="document", candidate_id=candidate_id)
     apply_years(profile)
     return profile

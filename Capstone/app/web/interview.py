@@ -338,7 +338,9 @@ def interview_review(request: Request, cand_id: int, user: User = Depends(STAFF)
     s = db.query(InterviewSession).filter_by(candidate_id=cand_id).first()
     card = build_card(db, s) if s and s.status == "DONE" and s.scorecard else None
     timeline = recording.load_timeline(s) if s and card else None
-    return render(request, "interview_review.html", user, cand=cand, s=s, card=card, timeline=timeline, qs=load_questions(), blind=make_blind(cand),
+    from app.models_ext import EvidenceCheck
+    check = db.scalars(select(EvidenceCheck).where(EvidenceCheck.candidate_id == cand_id, EvidenceCheck.subject == "interview")).first() if card else None
+    return render(request, "interview_review.html", user, cand=cand, s=s, card=card, check=check, timeline=timeline, qs=load_questions(), blind=make_blind(cand),
                   audio_open=bool(s and s.review), has_mp3=bool(s and recording.mp3_path(s).exists()))
 
 
@@ -382,6 +384,11 @@ def interview_decision(request: Request, cand_id: int, decision: str = Form(""),
     try:
         if s.status != "DONE" or not s.review:
             raise MoveRefused("Review the scorecard and enter your own levels first: the decision comes after your own review.")
+        from app.agents.checker import explain_refusal, unacknowledged
+
+        pending = unacknowledged(db, cand_id, "interview")
+        if pending:
+            raise MoveRefused(explain_refusal(pending))
         card = build_card(db, s)
         evidence = {"overall_100": card["overall_100"], "review": s.review, "scorers_disagree": card["scorers_disagree"]}
         if decision == "human_interview":
@@ -442,3 +449,46 @@ def recording_timeline(interview_id: int, user: User = Depends(STAFF), db: Sessi
     if doc is None:
         raise HTTPException(404, "The recording has not been built yet, or has been deleted after the retention period")
     return JSONResponse(doc)
+
+
+# ---- the replay room (staff; opens only after the recruiter's own review; every opening is logged) -----------------------------------------------
+def _replay_ready(db: Session, cand_id: int):
+    """The interview and its timeline, or the reason the replay cannot open yet."""
+    s = db.query(InterviewSession).filter_by(candidate_id=cand_id).first()
+    if s is None or s.status != "DONE" or not s.consent_recording:
+        return None, "There is no recorded interview to replay."
+    if not s.review:
+        return None, "Enter your own levels for the must-have skills first: the replay comes after your own review (judge what was said, not how it sounded)."
+    if not recording.mp3_path(s).exists() or recording.load_timeline(s) is None:
+        return None, "The recording has not been built yet, or was deleted after the retention period."
+    return s, ""
+
+
+@router.get("/interviews/{cand_id}/replay")
+def replay_room(request: Request, cand_id: int, user: User = Depends(STAFF), db: Session = Depends(get_db)):
+    cand = db.get(Candidate, cand_id)
+    if cand is None:
+        raise HTTPException(404, "That candidate does not exist")
+    s, why = _replay_ready(db, cand_id)
+    if s is None:
+        flash(request, why, "bad")
+        return RedirectResponse(f"/interviews/{cand_id}", status_code=303)
+    timeline = recording.load_timeline(s)
+    seen, diagrams = set(), []
+    for c in timeline["clips"]:
+        if c.get("diagram") and c["diagram"] not in seen:
+            seen.add(c["diagram"])
+            diagrams.append({"text": c["diagram"], "title": c.get("diagram_title") or ""})
+    db.add(DecisionLog(actor=user.email, action="replay opened", subject=f"interview:{s.id}", reason=f"{user.role} opened the replay room",
+                       evidence={"candidate_id": cand_id}))
+    db.commit()
+    return render(request, "replay.html", user, cand=cand, s=s, sample=bool(s.sample), timeline=timeline, diagrams=diagrams)
+
+
+@router.get("/interviews/{cand_id}/replay/audio")
+def replay_audio(cand_id: int, user: User = Depends(STAFF), db: Session = Depends(get_db)):
+    """The audio for the replay page (the page's opening is what is logged; the player may ask for it in several pieces)."""
+    s, why = _replay_ready(db, cand_id)
+    if s is None:
+        raise HTTPException(403, why)
+    return FileResponse(recording.mp3_path(s), media_type="audio/mpeg")

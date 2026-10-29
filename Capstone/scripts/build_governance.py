@@ -38,7 +38,7 @@ classification, because the system still influences the decision.
 
 | Obligation | Article | Evidence in this repository |
 |---|---|---|
-| Risk management system | Art. 9 | `risk_register.csv` (14 risks, NIST AI RMF functions, owners, controls, evidence, review dates) |
+| Risk management system | Art. 9 | `risk_register.csv` (18 risks, NIST AI RMF functions, owners, controls, evidence, review dates) |
 | Data and data governance | Art. 10 | Fictional data only; identity hidden while scoring (`app/privacy.py`); bias tests on screening and on transcription (`BIAS_REPORT.md`) |
 | Technical documentation | Art. 11 | `model_card.md`, `README.md`, this folder |
 | Record-keeping (logs) | Art. 12 | The decision log, traces per agent (Phoenix / `agent_traces`), the model-call ledger, and the hashed evidence folder |
@@ -104,6 +104,10 @@ def risks() -> list[dict]:
         ("R-012", "A real person's CV or voice enters the system", "Map", "low", "high", "Trust & quality lead", "Fictional data only (rule 11); all fixtures are generated; README and CLAUDE.md say so", "eval_extraction.json"),
         ("R-013", "Cost or voice latency grows beyond the targets", "Manage", "medium", "low", "Agents & platform lead", "Cost per 100 CVs and per interview, and voice p95, measured in PERF_REPORT.md; routing and caching", "perf.json"),
         ("R-014", "A model outage stops screening or interviews", "Manage", "medium", "medium", "Agents & platform lead", "Fallback model in the router; /ready reports when a dependency is missing; interview state resumes after a dropped connection", "perf.json"),
+        ("R-015", "The REST API or a webhook exposes identity or private data, or an integration acts on its own", "Manage", "low", "high", "Agents & platform lead", "API is read-only and blind (no identity fields), keys shown once and rate limited; webhooks are signed and only recorded unless WEBHOOKS_LIVE=1; API and webhooks can be switched off", "red_team.json"),
+        ("R-016", "A candidate's data is not erased or handed over when they ask", "Govern", "low", "high", "Intake & screening lead", "Download and deletion requests from /me/<token>; a recruiter approves or refuses with a reason; every step is in the decision log (app/datarights.py)", "eval_copilot.json"),
+        ("R-017", "Recordings or the replay room are opened by someone who should not, or kept too long", "Govern", "medium", "medium", "Voice & interviews lead", "Staff-only routes; every opening of a recording is logged; audio only; purge script (scripts/purge_recordings.py); the replay shows audio only after the recruiter's own scores", "perf.json"),
+        ("R-018", "Emails to candidates contain a score, a reason or a protected trait, or are sent without a person", "Govern", "low", "high", "Intake & screening lead", "Drafts are checked by code (no score, no protected trait, AI notice present) and redrafted; nothing is sent until a person approves; the evidence checker flags unsupported claims", "red_team.json"),
     ]
     return [dict(zip(("id", "risk", "nist_function", "likelihood", "impact", "owner", "control", "evidence"), r), review_date=REVIEW) for r in rows]
 

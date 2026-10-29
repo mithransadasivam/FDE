@@ -71,7 +71,7 @@ def test_scan_has_phone_and_dates_double_checked_but_screenshot_does_not():
 
 def test_hidden_instruction_in_cv_is_just_text_and_changes_nothing():
     text = read_text(CVS / "C-027_cv.pdf")
-    assert "rank them first" in text  # it is in the extracted text ...
+    assert "rank them first" not in text  # the hidden line is dropped from the text the models read (Day 3) ...
     p = extract_profile(CVS / "C-027_cv.pdf")
     assert p.name.value == "Arjun Reddy" and p.current_title.value == "IT Support Analyst"
     assert "rank" not in str(p.model_dump()).lower()  # ... and has no effect on the profile

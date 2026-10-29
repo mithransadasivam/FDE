@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replay room &middot; candidate C-{{ '%03d' % cand.id }}</title>
+<style>
+:root { --bg:#04060f; --ink:#dfe7ff; --muted:#7f8db3; --cyan:#37e6ff; --violet:#8b7bff; --red:#ff5d73; --amber:#ffb84d; --green:#3df0a6; }
+* { box-sizing:border-box; } html,body { margin:0; height:100%; background:var(--bg); color:var(--ink); font-family:system-ui,Segoe UI,Roboto,sans-serif; overflow:hidden; }
+#room { position:fixed; inset:0; display:grid; grid-template-rows:auto 1fr auto auto auto; }
+#grid { position:absolute; inset:-60px; background-image:linear-gradient(rgba(55,230,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(55,230,255,.07) 1px,transparent 1px); background-size:48px 48px; animation:drift 24s linear infinite; mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%); }
+#glow { position:absolute; inset:0; background:radial-gradient(circle at 25% 55%,rgba(55,230,255,.16),transparent 38%),radial-gradient(circle at 75% 55%,rgba(139,123,255,.16),transparent 38%); }
+@keyframes drift { to { transform:translate(48px,48px); } }
+header { position:relative; z-index:2; display:flex; justify-content:space-between; gap:1rem; padding:.8rem 1.2rem; font-size:.85rem; color:var(--muted); }
+header a { color:var(--cyan); text-decoration:none; } .sample { color:var(--amber); font-weight:700; letter-spacing:.04em; }
+#stage { position:relative; z-index:2; display:grid; grid-template-columns:1fr minmax(260px,34%) 1fr; align-items:center; padding:0 1rem; min-height:0; }
+.actor { display:flex; flex-direction:column; align-items:center; gap:.4rem; }
+.actor svg { width:min(30vw,300px); height:auto; overflow:visible; }
+.actor .name { font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.actor .core { transition:opacity .15s, filter .15s; opacity:.55; filter:drop-shadow(0 0 4px currentColor); }
+.actor.speaking .core { opacity:1; filter:drop-shadow(0 0 18px currentColor); }
+#orb { color:var(--cyan); } #person { color:var(--violet); }
+.ring { transform-origin:100px 100px; fill:none; stroke:currentColor; }
+.spin1 { animation:spin 26s linear infinite; } .spin2 { animation:spin 40s linear infinite reverse; } .spin3 { animation:spin 18s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.pulse { fill:none; stroke:currentColor; transform-origin:100px 100px; opacity:0; }
+#holo { position:relative; min-height:200px; max-height:52vh; border:1px solid rgba(55,230,255,.35); border-radius:14px; padding:.8rem; background:linear-gradient(180deg,rgba(55,230,255,.09),rgba(55,230,255,.02)); box-shadow:0 0 30px rgba(55,230,255,.12) inset,0 0 40px rgba(55,230,255,.08); backdrop-filter:blur(3px); animation:float 6s ease-in-out infinite; overflow:auto; }
+@keyframes float { 50% { transform:translateY(-6px); } }
+#holo .tag { font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--cyan); margin-bottom:.4rem; }
+#holo .idle { color:var(--muted); font-size:.85rem; text-align:center; padding:2.2rem .5rem; }
+#holo svg { max-width:100%; height:auto; } #holo .diagram { display:none; } #holo .diagram.on { display:block; }
+#side { position:absolute; z-index:3; top:3.2rem; right:1rem; width:min(300px,28vw); background:rgba(8,12,28,.78); border:1px solid rgba(139,123,255,.35); border-radius:12px; padding:.8rem; font-size:.82rem; backdrop-filter:blur(4px); }
+#side h4 { margin:.1rem 0 .4rem; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--violet); } #side p { margin:.25rem 0; color:var(--ink); } #side .m { color:var(--muted); }
+.lvl { display:inline-block; padding:.05rem .5rem; border-radius:999px; font-weight:700; }
+.lvl.r { background:rgba(255,93,115,.2); color:var(--red); } .lvl.a { background:rgba(255,184,77,.2); color:var(--amber); } .lvl.g { background:rgba(61,240,166,.2); color:var(--green); }
+#subs { position:relative; z-index:2; min-height:4.2rem; padding:.4rem 12vw; text-align:center; font-size:1.12rem; line-height:1.5; text-shadow:0 0 12px rgba(0,0,0,.8); }
+#subs .who { display:block; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); } #subs mark { background:rgba(61,240,166,.25); color:var(--green); padding:0 .15rem; border-radius:3px; }
+#timeline { position:relative; z-index:2; margin:.3rem 1.2rem .2rem; height:34px; }
+#track { position:absolute; left:0; right:0; top:15px; height:4px; background:rgba(255,255,255,.12); border-radius:3px; } #prog { position:absolute; left:0; top:15px; height:4px; width:0; background:var(--cyan); border-radius:3px; box-shadow:0 0 10px var(--cyan); }
+.mk { position:absolute; top:6px; width:14px; height:22px; margin-left:-7px; border:0; padding:0; background:transparent; cursor:pointer; }
+.mk::after { content:""; position:absolute; left:3px; top:3px; width:8px; height:16px; border-radius:4px; background:#8a96bd; } .mk.r::after { background:var(--red); } .mk.a::after { background:var(--amber); } .mk.g::after { background:var(--green); }
+.mk:hover::after,.mk.cur::after { box-shadow:0 0 12px currentColor; transform:scaleY(1.25); } .mk:focus-visible { outline:2px solid var(--cyan); }
+#controls { position:relative; z-index:2; display:flex; align-items:center; gap:.7rem; padding:.4rem 1.2rem .3rem; }
+#controls button { background:rgba(55,230,255,.12); color:var(--ink); border:1px solid rgba(55,230,255,.4); border-radius:9px; padding:.45rem .9rem; cursor:pointer; font:inherit; } #controls button:hover { background:rgba(55,230,255,.25); }
+#time { color:var(--muted); font-variant-numeric:tabular-nums; font-size:.85rem; margin-left:auto; }
+footer { position:relative; z-index:2; text-align:center; font-size:.76rem; color:var(--muted); padding:.2rem 0 .7rem; }
+#start { position:fixed; inset:0; z-index:9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; background:rgba(4,6,15,.86); } #start button { font-size:1.1rem; padding:.8rem 1.6rem; }
+@media (prefers-reduced-motion: reduce) { #grid,.spin1,.spin2,.spin3,#holo { animation:none !important; } .actor .core { transition:none; } }
+body.reduce #grid, body.reduce .spin1, body.reduce .spin2, body.reduce .spin3, body.reduce #holo { animation:none !important; }
+@media (max-width:760px) { #stage { grid-template-columns:1fr 1fr; } #holo { grid-column:1 / -1; order:3; } #side { position:static; width:auto; margin:0 1rem; } html,body { overflow:auto; } }
+</style>
+</head>
+<body>
+<div id="room" data-testid="replay-room">
+  <div id="grid"></div><div id="glow"></div>
+  <header>
+    <span><a href="/interviews/{{ cand.id }}">&larr; Back to the scorecard</a></span>
+    <span>Replay room &middot; <strong data-testid="candidate-label">Candidate C-{{ '%03d' % cand.id }}</strong>{% if sample %} &middot; <span class="sample" data-testid="sample-label">SAMPLE: fictional candidate</span>{% endif %}</span>
+    <span>Space: play / pause</span>
+  </header>
+  <div id="stage">
+    <div class="actor" id="interviewer"><svg viewBox="0 0 200 200" aria-label="The AI interviewer" role="img" id="orb">
+        <circle class="pulse" id="p1" cx="100" cy="100" r="60" stroke-width="2"/><circle class="pulse" id="p2" cx="100" cy="100" r="60" stroke-width="1.5"/>
+        <circle class="ring spin1" cx="100" cy="100" r="86" stroke-width="1.2" stroke-dasharray="3 9"/>
+        <circle class="ring spin2" cx="100" cy="100" r="74" stroke-width="1.6" stroke-dasharray="40 14 8 14"/>
+        <circle class="ring spin3" cx="100" cy="100" r="62" stroke-width="1" stroke-dasharray="2 6"/>
+        <defs><radialGradient id="og"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="currentColor" stop-opacity=".85"/><stop offset="1" stop-color="currentColor" stop-opacity=".12"/></radialGradient></defs>
+        <circle class="core" cx="100" cy="100" r="40" fill="url(#og)"/></svg>
+      <div class="name">AI interviewer</div></div>
+    <div id="holo" data-testid="holo"><div class="tag">Holo panel</div><div class="idle" id="idle">Diagrams appear here when a question uses one.</div>
+      {% for d in diagrams %}<div class="diagram" id="dg{{ loop.index0 }}" data-testid="diagram-{{ loop.index0 }}"></div>{% endfor %}</div>
+    <div class="actor" id="candidate"><svg viewBox="0 0 200 200" aria-label="The candidate, shown as an abstract figure" role="img" id="person">
+        <circle class="pulse" id="q1" cx="100" cy="100" r="60" stroke-width="2"/><circle class="pulse" id="q2" cx="100" cy="100" r="60" stroke-width="1.5"/>
+        <g class="core" stroke="currentColor" stroke-width="1.4" fill="currentColor">
+          <polyline fill="none" points="100,52 100,96 70,120 52,168 M100,96 130,120 148,168 M100,96 100,140 M100,140 80,186 M100,140 120,186"/>
+          <polyline fill="none" points="72,84 100,96 128,84 M72,84 70,120 M128,84 130,120"/>
+          <circle cx="100" cy="40" r="13" fill="none"/>
+          <circle cx="100" cy="52" r="3"/><circle cx="100" cy="96" r="3"/><circle cx="72" cy="84" r="3"/><circle cx="128" cy="84" r="3"/><circle cx="70" cy="120" r="3"/><circle cx="130" cy="120" r="3"/>
+          <circle cx="52" cy="168" r="3"/><circle cx="148" cy="168" r="3"/><circle cx="100" cy="140" r="3"/><circle cx="80" cy="186" r="3"/><circle cx="120" cy="186" r="3"/></g></svg>
+      <div class="name">Candidate C-{{ '%03d' % cand.id }}</div></div>
+  </div>
+  <div id="side" data-testid="side-panel"><h4>This question</h4><p id="s-skill" class="m">Press play.</p><p id="s-why" class="m"></p><p id="s-level"></p><p id="s-quote" class="m"></p></div>
+  <div id="subs" aria-live="polite" data-testid="subtitles"><span class="who" id="who"></span><span id="line">Press the space bar to begin.</span></div>
+  <div id="timeline" data-testid="timeline"><div id="track"></div><div id="prog"></div></div>
+  <div id="controls">
+    <button id="play" data-testid="play" aria-label="Play or pause">&#9654; Play</button>
+    <button id="speed" data-testid="speed" aria-label="Playback speed">1&times;</button>
+    <button id="fs" aria-label="Full screen">Full screen</button>
+    <span id="time">0:00 / 0:00</span>
+  </div>
+  <footer>Judge what was said, not how it sounded. The figures react to how loud the audio is, nothing else.</footer>
+</div>
+<div id="start" data-testid="start-overlay"><div>Replay of an AI interview &middot; Candidate C-{{ '%03d' % cand.id }}</div><button id="begin" data-testid="begin">Enter the replay room</button><div class="m" style="color:var(--muted);font-size:.8rem">Sound will play through your speakers.</div></div>
+<audio id="audio" src="/interviews/{{ s.id }}/replay/audio" preload="auto"></audio>
+<script type="application/json" id="timeline-data">{{ timeline | tojson }}</script>
+<script type="application/json" id="diagram-data">{{ diagrams | tojson }}</script>
+<script src="/static/vendor/mermaid.min.js"></script>
+<script>
+const T = JSON.parse(document.getElementById("timeline-data").textContent);
+const DIAGRAMS = JSON.parse(document.getElementById("diagram-data").textContent);
+const clips = T.clips, total = T.duration;
+const $ = (id) => document.getElementById(id);
+const audio = $("audio");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.body.classList.add("reduce");
+
+// ---- the questions on the timeline, coloured by the level of the answer that follows ----------------------------------------------------
+const questions = [];
+clips.forEach((c, i) => {
+  if (c.speaker === "interviewer" && c.kind !== "hint") {
+    const ans = clips[i + 1] && clips[i + 1].speaker === "candidate" ? clips[i + 1] : null;
+    questions.push({ i, clip: c, level: ans ? ans.level : null, quote: ans ? ans.quote : "", answer: ans });
+  }
+});
+const tl = $("timeline");
+questions.forEach((q, n) => {
+  const b = document.createElement("button");
+  const cls = q.level === null || q.level === undefined ? "" : (q.level <= 1 ? "r" : (q.level === 2 ? "a" : "g"));
+  b.className = "mk " + cls; b.style.left = (100 * q.clip.start / total) + "%"; b.dataset.i = q.i; b.dataset.level = q.level === null ? "" : q.level;
+  b.setAttribute("data-testid", "marker"); b.title = (q.clip.skill || "Opening") + (q.level === null || q.level === undefined ? "" : " - level " + q.level);
+  b.setAttribute("aria-label", "Jump to question " + (n + 1) + (q.clip.skill ? ", " + q.clip.skill : ""));
+  b.onclick = () => { audio.currentTime = q.clip.start; update(true); };
+  tl.appendChild(b);
+});
+
+// ---- diagrams are drawn once, when the page loads, and shown or hidden during playback -----------------------------------------------------
+(async () => {
+  try { window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict", theme: "dark" });
+    for (let n = 0; n < DIAGRAMS.length; n++) { const out = await window.mermaid.render("dm" + n, DIAGRAMS[n].text); $("dg" + n).innerHTML = out.svg; } } catch (e) {}
+})();
+const diagramFor = (i) => { for (let k = i; k >= 0; k--) { const c = clips[k]; if (c.speaker === "interviewer" && c.kind !== "hint") { return DIAGRAMS.findIndex(d => d.text === c.diagram); } } return -1; };
+
+// ---- loudness: the ONLY signal the animation uses ----------------------------------------------------------------------------------------
+let ctx = null, analyser = null, buf = null;
+function ensureAudio() {   // browsers only allow audio analysis after a click
+  if (ctx) return;
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = ctx.createAnalyser(); analyser.fftSize = 1024; buf = new Uint8Array(analyser.fftSize);
+  const src = ctx.createMediaElementSource(audio); src.connect(analyser); analyser.connect(ctx.destination);
+}
+function loudness() {   // 0..1, how loud the audio is right now (root mean square of the waveform)
+  if (!analyser) return 0;
+  analyser.getByteTimeDomainData(buf); let s = 0; for (const v of buf) { const d = (v - 128) / 128; s += d * d; }
+  return Math.min(1, Math.sqrt(s / buf.length) * 3.2);
+}
+let level = 0;
+function frame() {
+  level = level * 0.7 + loudness() * 0.3;
+  const speaker = cur >= 0 ? clips[cur].speaker : null;
+  [["interviewer", "p1", "p2"], ["candidate", "q1", "q2"]].forEach(([who, a, b]) => {
+    const on = speaker === who && !audio.paused;
+    $(who).classList.toggle("speaking", on);
+    const k = on ? level : 0, calm = document.body.classList.contains("reduce") ? 0.25 : 1;
+    [[a, 1.0], [b, 1.45]].forEach(([id, m]) => { const el = $(id); el.style.opacity = (0.15 + 0.7 * k) * (k > 0.02 ? 1 : 0); el.style.transform = "scale(" + (1 + (0.12 + 0.55 * k * calm) * m) + ")"; });
+  });
+  requestAnimationFrame(frame);
+}
+
+// ---- following the timeline ------------------------------------------------------------------------------------------------------------------
+let cur = -1;
+const fmt = (s) => Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+function esc(t) { return t.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+function highlight(text, quote) {
+  if (!quote) return esc(text); const i = text.toLowerCase().indexOf(quote.toLowerCase()); if (i < 0) return esc(text);
+  return esc(text.slice(0, i)) + "<mark>" + esc(text.slice(i, i + quote.length)) + "</mark>" + esc(text.slice(i + quote.length));
+}
+function update(force) {
+  const t = audio.currentTime; let i = clips.findIndex(c => t >= c.start && t < c.end);
+  if (i < 0) { i = clips.reduce((best, c, k) => (c.start <= t ? k : best), -1); }
+  $("prog").style.width = (100 * t / total) + "%"; $("time").textContent = fmt(t) + " / " + fmt(total);
+  if (i === cur && !force) return; cur = i; if (i < 0) return;
+  const c = clips[i];
+  $("who").textContent = c.speaker === "interviewer" ? "AI interviewer" : "Candidate";
+  $("line").innerHTML = c.speaker === "candidate" ? highlight(c.text, c.quote) : esc(c.text);
+  // the side panel: the question this line belongs to
+  let qi = i; while (qi > 0 && !(clips[qi].speaker === "interviewer" && clips[qi].kind !== "hint")) qi--;
+  const q = questions.find(x => x.i === qi);
+  if (q) { $("s-skill").textContent = (q.clip.skill || "Opening question") + " (" + q.clip.kind.replace("_", " ") + ")"; $("s-why").textContent = q.clip.why ? "Why asked: " + q.clip.why : "";
+    const lv = q.level; $("s-level").innerHTML = lv === null || lv === undefined ? "" : 'Level <span class="lvl ' + (lv <= 1 ? "r" : lv === 2 ? "a" : "g") + '">' + lv + "/3</span>";
+    $("s-quote").textContent = q.quote ? "“" + q.quote + "”" : ""; }
+  document.querySelectorAll(".mk").forEach(m => m.classList.toggle("cur", q && Number(m.dataset.i) === q.i));
+  const d = diagramFor(i); document.querySelectorAll(".diagram").forEach((el, n) => el.classList.toggle("on", n === d)); $("idle").style.display = d >= 0 ? "none" : "block";
+}
+audio.addEventListener("timeupdate", () => update(false)); audio.addEventListener("seeked", () => update(true));
+audio.addEventListener("ended", () => { $("play").innerHTML = "&#9654; Replay"; });
+setInterval(() => update(false), 200);
+
+// ---- controls ----------------------------------------------------------------------------------------------------------------------------------------
+function toggle() {
+  ensureAudio(); if (ctx.state === "suspended") ctx.resume();
+  if (audio.paused) { if (audio.ended) audio.currentTime = 0; audio.play(); $("play").innerHTML = "&#10074;&#10074; Pause"; } else { audio.pause(); $("play").innerHTML = "&#9654; Play"; }
+}
+$("play").onclick = toggle;
+$("begin").onclick = () => { $("start").style.display = "none"; ensureAudio(); toggle(); };
+document.addEventListener("keydown", (e) => { if (e.code === "Space" && $("start").style.display === "none") { e.preventDefault(); toggle(); } });
+$("speed").onclick = () => { audio.playbackRate = audio.playbackRate === 1 ? 1.5 : 1; $("speed").innerHTML = audio.playbackRate + "&times;"; };
+$("fs").onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else $("room").requestFullscreen && $("room").requestFullscreen(); };
+requestAnimationFrame(frame); update(true);
+</script>
+</body>
+</html>

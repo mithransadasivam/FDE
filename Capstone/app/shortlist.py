@@ -63,6 +63,11 @@ def approve_shortlist(db: Session, req_id: int, candidate_ids: list[int], actor:
         unverified = [r.skill for r in sc if r.score > 0 and (not r.verified or r.status == "returned")]
         if unverified:
             raise MoveRefused(f"Candidate {cid} has scores without a verified quote ({', '.join(unverified)}): they cannot be approved.")
+        from app.agents.checker import explain_refusal, unacknowledged
+
+        pending = unacknowledged(db, cid)
+        if pending:  # the checker reported problems and no person has looked at them yet
+            raise MoveRefused(f"Candidate {cid}: " + explain_refusal(pending))
         move(db, cand, Stage.SHORTLISTED, actor, reason,
              evidence={"weighted_total": weighted_total(sc), "scores": {r.skill: {"score": r.score, "quote": r.quote} for r in sc}})
         moved.append(cid)

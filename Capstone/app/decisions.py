@@ -64,6 +64,11 @@ def decide(db: Session, cand: Candidate, decision: str, reason: str, actor: str)
         raise MoveRefused(f"'{decision}' is not a decision. Choose one of: {', '.join(DECISIONS)}.")
     if not (reason or "").strip() or len(reason.strip()) < 3:
         raise MoveRefused("A decision needs a reason.")
+    from app.agents.checker import explain_refusal, unacknowledged
+
+    pending = unacknowledged(db, cand.id)
+    if pending:
+        raise MoveRefused(explain_refusal(pending))
     card = build_scorecard(db, cand)
     if cand.stage == Stage.HUMAN_INTERVIEW.value:
         move(db, cand, Stage.DECISION, d.actor, f"{decision}: {reason.strip()}", evidence={"scorecard": {k: card[k] for k in ("cv_total", "recommendation", "checks")}})

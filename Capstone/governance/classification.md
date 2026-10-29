@@ -20,7 +20,7 @@ classification, because the system still influences the decision.
 
 | Obligation | Article | Evidence in this repository |
 |---|---|---|
-| Risk management system | Art. 9 | `risk_register.csv` (14 risks, NIST AI RMF functions, owners, controls, evidence, review dates) |
+| Risk management system | Art. 9 | `risk_register.csv` (18 risks, NIST AI RMF functions, owners, controls, evidence, review dates) |
 | Data and data governance | Art. 10 | Fictional data only; identity hidden while scoring (`app/privacy.py`); bias tests on screening and on transcription (`BIAS_REPORT.md`) |
 | Technical documentation | Art. 11 | `model_card.md`, `README.md`, this folder |
 | Record-keeping (logs) | Art. 12 | The decision log, traces per agent (Phoenix / `agent_traces`), the model-call ledger, and the hashed evidence folder |

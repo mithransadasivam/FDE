@@ -9,48 +9,101 @@
   <span class="muted small">A person's decision: it is logged with your reason, and the invitation waits in the outbox.</span></form>
 {% endif %}
 
-{% if not rec %}
-<div class="card muted">There is no recorded interview for this candidate in the starter kit.</div>
-{% else %}
 {% if not hi or not hi.notice_ack %}
 <div class="card" style="border-color:#1f4fd8" data-testid="copilot-notice">
-  <h2 style="margin-top:0">Tell the candidate first</h2><p>{{ notice }}</p>
+  <h2 style="margin-top:0">Tell the candidate first</h2><p data-testid="ai-notice">The candidate has been told this interview is assisted by AI. {{ notice }}</p>
   <form method="post" action="/copilot/{{ cand.id }}/ack" style="display:inline"><button data-testid="ack-btn">The candidate was told and agreed: start the copilot</button></form>
   <form method="post" action="/copilot/{{ cand.id }}/decline" style="display:inline"><button class="secondary" data-testid="decline-btn">The candidate asked for no assistant</button></form>
 </div>
 {% elif hi.status == 'NO_COPILOT' %}
 <div class="card">The candidate declined the assistant: this interview is held without the copilot.</div>
 {% else %}
-<div class="card">
-  <strong>Recording {{ rec.id }}</strong> <span class="muted small">{{ rec.kind | replace('_', ' ') }}, {{ rec.duration_s }} s (recruiter on the left channel, candidate on the right)</span>
-  <audio controls preload="none" src="/copilot/{{ cand.id }}/audio" style="width:100%;margin:.4rem 0"></audio>
-  <button id="start" data-testid="start-replay">Replay as if live</button>
-  <label class="inline small">speed <select id="speed" style="width:auto"><option value="8">8x</option><option value="30">30x</option><option value="0">instant</option><option value="1">real time</option></select></label>
+<div class="flash" data-testid="notice-bar">The candidate has been told this interview is assisted by AI.</div>
+
+{% if hi.status != 'DONE' %}
+<div class="card" data-testid="sources">
+  <h3 style="margin-top:0">Source</h3>
+  <div style="display:flex;gap:1.2rem;flex-wrap:wrap">
+    <div style="flex:1 1 320px" data-testid="source-practice">
+      <strong>Practice recording</strong>
+      {% if rec %}<div class="muted small">{{ rec.kind | replace('_', ' ') }} {{ rec.id }}, {{ rec.duration_s }} s. The server plays it and feeds it to the copilot in pieces, as if live.</div>
+      <audio controls preload="none" src="/copilot/{{ cand.id }}/audio" style="width:100%;margin:.4rem 0" id="player"></audio>
+      <button id="start" data-testid="start-replay">Replay as if live</button>
+      <label class="inline small">speed <select id="speed" style="width:auto"><option value="8">8x</option><option value="30">30x</option><option value="0">instant</option><option value="1" selected>real time</option></select></label>
+      {% else %}<div class="muted small">No recording yet. Make one: <code>python -m scripts.make_recruiter_interview --candidate {{ cand.id }}</code></div>{% endif %}
+    </div>
+    <div style="flex:1 1 320px" data-testid="source-live">
+      <strong>Live microphone</strong>
+      <div class="muted small">Your browser records short pieces. Press who is speaking: the copilot never guesses.</div>
+      <div style="display:flex;gap:.6rem;margin:.5rem 0">
+        <button id="spk-recruiter" data-testid="speaker-recruiter" class="secondary" style="flex:1;padding:1rem;font-size:1.05rem">Recruiter speaking</button>
+        <button id="spk-candidate" data-testid="speaker-candidate" class="secondary" style="flex:1;padding:1rem;font-size:1.05rem">Candidate speaking</button>
+      </div>
+      <div class="small muted" id="live-status">Not recording.</div>
+      <label for="typed" class="small">Or type a line</label>
+      <div style="display:flex;gap:.4rem"><input id="typed" data-testid="typed-line" type="text" placeholder="What was said"><button id="send-line" data-testid="send-line" class="secondary small">Add line</button>
+        <button id="end-live" data-testid="end-live" class="small">End interview</button></div>
+    </div>
+  </div>
   <span id="status" class="muted small"></span>
 </div>
+{% endif %}
+
+<div id="musts" class="small" data-testid="must-haves" style="margin:.2rem 0"></div>
 <div id="warn" data-testid="warning" class="flash bad" style="display:none"></div>
 <div class="row">
   <div class="card"><h3 style="margin-top:0">Live transcript</h3><div id="transcript" data-testid="transcript" style="max-height:420px;overflow:auto"></div></div>
   <div>
-    <div class="card"><h3 style="margin-top:0">What a good answer covers</h3><div id="points" data-testid="points" class="small">Waiting for a question...</div></div>
-    <div class="card"><h3 style="margin-top:0">Ask next</h3><div id="suggest" data-testid="suggestions" class="small muted">No suggestions yet.</div></div>
+    <div class="card"><h3 style="margin-top:0">Points heard</h3><div id="points" data-testid="points" class="small">Waiting for a question...</div><div id="pointcount" class="muted small" data-testid="point-count"></div></div>
+    <div class="card"><h3 style="margin-top:0">Suggested next question</h3><div id="suggest" data-testid="suggestions" class="small muted">No suggestions yet.</div></div>
     <div class="card"><h3 style="margin-top:0">CV check</h3><div id="cvcheck" data-testid="cvcheck" class="small muted">Nothing to clarify yet.</div></div>
     <div class="card"><h3 style="margin-top:0">Rubric coverage</h3><div id="coverage" data-testid="coverage" class="small"></div></div>
   </div>
 </div>
-<div class="card" id="draft" data-testid="draft" style="display:none"><h2 style="margin-top:0">Draft scorecard <span class="badge warn">draft</span></h2><div id="draftbody"></div></div>
-{% if hi.recruiter_scores %}<div class="card"><span class="badge good">your scores saved</span> {{ hi.recruiter_scores.scores }}</div>{% endif %}
+
+{% set draft = hi.draft_scorecard %}
+{% if hi.status == 'DONE' and draft %}
+<div class="card" id="scoring" data-testid="scoring"><h2 style="margin-top:0">Your scores <span class="muted small">same 0-3 scale as the AI interview</span></h2>
+  <p class="small muted">The copilot's suggestion is labelled <span class="badge warn">AI suggestion</span>; the level you enter is the score. If you differ by 2 or more, say why. Answers to questions that must not be asked are not shown or used.</p>
+  <form method="post" action="/copilot/{{ cand.id }}/scores">
+  {% for a in draft.answers if a.type == 'technical' %}
+    <div class="card" style="margin:.5rem 0" data-testid="score-row"><strong>{{ a.skill }}</strong> <span class="muted small">{{ a.question_id }}</span>
+      <div class="small">Question: {{ qs[a.question_id].question }}</div>
+      <div class="small muted">Levels: {% for k, v in qs[a.question_id].scoring.items() | sort %}{{ k }} = {{ v }}{{ '; ' if not loop.last }}{% endfor %}</div>
+      <div class="small">Points heard: {{ a.points_hit | join('; ') or 'none' }}.</div>
+      {% if a.quote %}<div class="small"><em>&ldquo;{{ a.quote }}&rdquo;</em></div>{% endif %}
+      <div class="small"><span class="badge warn" data-testid="ai-suggestion">AI suggestion</span> {{ a.suggested_score }}/3</div>
+      <label class="inline">Your level <input type="number" min="0" max="3" name="score_{{ a.question_id }}" data-ai="{{ a.suggested_score }}" data-testid="level-{{ a.question_id }}" style="width:5rem" value="{{ saved.get(a.question_id, '') }}"></label>
+      <input type="text" name="reason_{{ a.question_id }}" placeholder="Reason (needed if you differ from the AI by 2 or more)" data-testid="reason-{{ a.question_id }}" value="{{ reasons.get(a.question_id, '') }}">
+    </div>{% endfor %}
+  {% if draft.cv_checks %}<div class="card" style="margin:.5rem 0"><strong>CV checks to remember</strong>{% for c in draft.cv_checks %}<div class="small">&bull; {{ c.text }}</div>{% endfor %}</div>{% endif %}
+  <p><input type="text" name="note" placeholder="Your note (optional)"> <button data-testid="save-scores">Save my scores</button></p></form>
+  {% if saved %}
+  <h3>Decision</h3>
+  <form method="post" action="/copilot/{{ cand.id }}/decide" data-testid="decision-form"><label for="reason">Reason (required)</label><input id="reason" name="reason" type="text" data-testid="decision-reason">
+    <p><button name="decision" value="offer" data-testid="offer-btn">Recommend for offer stage</button> <button name="decision" value="withdraw" class="danger" data-testid="withdraw-btn">Withdraw</button></p></form>
+  {% endif %}
+</div>
+{% endif %}
 
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const CAND = {{ cand.id }};
 const state = {};  // question id -> {key_points, ticked:Set}
+let mustHaves = [], coverage = {};
 function fmt(t) { return Math.floor(t / 60) + ":" + String(Math.floor(t % 60)).padStart(2, "0"); }
 function renderPoints(qid) {
   const q = state[qid]; if (!q) return;
   $("points").innerHTML = "<div class='muted'>" + esc(q.skill) + " (" + qid + ")</div>" + q.key_points.map((p, i) =>
     "<div>" + (q.ticked.has(i + 1) ? "&#10003; " : "&#9675; ") + esc(p) + "</div>").join("");
+  $("pointcount").textContent = q.ticked.size + " of " + q.key_points.length + " points heard";
 }
+function renderMusts() {
+  if (!mustHaves.length) return;
+  $("musts").innerHTML = "<strong>Must-have skills:</strong> " + mustHaves.map(s => "<span class='badge " + (coverage[s] === "covered" || coverage[s] === "partly" ? "good" : "") + "'>" + (coverage[s] && coverage[s] !== "not yet" ? "&#10003; " : "") + esc(s) + "</span>").join(" ");
+}
+function askedThis(qid) { fetch("/copilot/" + CAND + "/live/asked", { method: "POST", body: new URLSearchParams({ question_id: qid }) }).catch(() => {}); if (state[qid]) renderPoints(qid); }
 function onEvent(e) {
   const d = e.data;
   if (e.kind === "transcript") {
@@ -63,34 +116,75 @@ function onEvent(e) {
     d.points.forEach(p => state[d.question_id].ticked.add(p.n)); renderPoints(d.question_id);
   } else if (e.kind === "star") {
     $("points").innerHTML = "<div class='muted'>Behavioural (STAR)</div>" + ["Situation","Task","Action","Result"].map(k => "<div>" + (d.covered.includes(k) ? "&#10003; " : "&#9675; ") + k + "</div>").join("");
+    $("pointcount").textContent = d.covered.length + " of 4 points heard";
   } else if (e.kind === "suggestion") {
-    $("suggest").className = "small"; $("suggest").innerHTML = d.items.map(s => "<div class='chip'><span class='badge'>" + esc(s.kind) + "</span><br>&ldquo;" + esc(s.text) + "&rdquo;<div class='muted'>" + esc(s.why) + "</div></div>").join("");
+    $("suggest").className = "small";
+    $("suggest").innerHTML = d.items.map(s => "<div class='chip'><span class='badge'>" + esc(s.kind_group || s.kind) + "</span> <strong>" + esc(s.skill || "") + "</strong><br>&ldquo;" + esc(s.text) + "&rdquo;" +
+      "<div class='muted'>Why: " + esc(s.why) + "</div>" + (s.points ? "<div><strong>What a good answer covers</strong><ul style='margin:.2rem 0'>" + s.points.map(p => "<li>" + esc(p) + "</li>").join("") + "</ul>" +
+      "<div class='muted'>" + esc(s.weak || "") + "</div></div>" : "") + (s.question_id ? "<button class='secondary small' onclick=\"askedThis('" + s.question_id + "')\">I asked this</button>" : "") + "</div>").join("");
   } else if (e.kind === "cv_check") {
-    $("cvcheck").className = "small"; $("cvcheck").innerHTML = "<div class='chip'>" + esc(d.text) + "</div>";
+    $("cvcheck").className = "small";
+    $("cvcheck").innerHTML = "<div class='chip' style='border-left:4px solid #d89614;background:#fff7e6'>" + (d.said ? "<div><strong>Said:</strong> &ldquo;" + esc(d.said) + "&rdquo;</div><div><strong>CV:</strong> " + esc(d.cv) + "</div>" +
+      "<div class='muted'>" + esc(d.diff || "") + "</div><div><strong>A neutral way to ask:</strong> " + esc(d.question) + "</div>" : esc(d.text)) + "</div>";
   } else if (e.kind === "coverage") {
+    coverage = d.skills; mustHaves = d.must_haves || mustHaves; renderMusts();
     $("coverage").innerHTML = Object.entries(d.skills).map(([k, v]) => "<div><span class='badge " + (v === "covered" ? "good" : v === "partly" ? "warn" : "") + "'>" + v + "</span> " + esc(k) + "</div>").join("");
   } else if (e.kind === "warning") {
-    $("warn").style.display = "block"; $("warn").innerHTML = "<strong>&#9888; " + esc(d.message) + "</strong><div class='small'>Flagged " + d.lag_s + " s after the question ended.</div>";
+    $("warn").style.display = "block";
+    $("warn").innerHTML = "<strong>&#9888; " + esc(d.message) + "</strong><div class='small'>You asked: &ldquo;" + esc(d.question || "") + "&rdquo;</div><div class='small'>" + esc(d.why || "") + "</div>" +
+      "<div class='small'><strong>Try instead:</strong> &ldquo;" + esc(d.better_question || "") + "&rdquo;</div><div class='small'>Flagged " + d.lag_s + " s after the question ended.</div>";
   } else if (e.kind === "excluded") {
-    const div = document.createElement("div"); div.className = "chip"; div.textContent = d.message; $("transcript").appendChild(div);
+    const div = document.createElement("div"); div.className = "chip"; div.setAttribute("data-testid", "excluded"); div.innerHTML = "<span class='badge warn'>not used</span> " + esc(d.message); $("transcript").appendChild(div);
   }
 }
+{% if rec and hi.status != 'DONE' %}
 $("start").onclick = () => {
   $("start").disabled = true; $("status").textContent = "Following the interview...";
-  const es = new EventSource("/copilot/{{ cand.id }}/events?speed=" + $("speed").value);
+  const speed = $("speed").value;
+  if (speed === "1") { const p = $("player"); p.play().catch(() => {}); }  // real time: the practice recording is played to you as the copilot follows it
+  const es = new EventSource("/copilot/{{ cand.id }}/events?speed=" + speed);
   es.addEventListener("copilot", (m) => onEvent(JSON.parse(m.data)));
-  es.addEventListener("draft", (m) => {
-    const dr = JSON.parse(m.data); $("draft").style.display = "block";
-    $("draftbody").innerHTML = "<table><tr><th>Question</th><th>Suggested</th><th>Evidence</th></tr>" + dr.answers.filter(a => a.type === "technical").map(a =>
-      "<tr><td>" + a.question_id + " " + esc(a.skill) + "</td><td>" + a.suggested_score + "/3</td><td><em>&ldquo;" + esc(a.quote || "") + "&rdquo;</em></td></tr>").join("") + "</table>" +
-      "<form method='post' action='/copilot/{{ cand.id }}/scores'><p class='muted small'>You score the interview. Enter your own scores (0-3):</p>" +
-      dr.answers.filter(a => a.type === "technical").map(a => "<label class='inline'>" + a.question_id + " <input type='number' min='0' max='3' name='score_" + a.question_id + "' value='" + a.suggested_score + "' style='width:4rem'></label> ").join("") +
-      "<p><input type='text' name='note' placeholder='Your note'></p><button>Save my scores</button></form>";
-  });
-  es.addEventListener("end", () => { es.close(); $("status").textContent = "The interview has finished."; });
+  es.addEventListener("draft", () => {});
+  es.addEventListener("end", () => { es.close(); $("status").textContent = "The interview has finished."; setTimeout(() => location.reload(), 800); });
   es.onerror = () => { es.close(); };
 };
-</script>
 {% endif %}
+{% if hi.status != 'DONE' %}
+// ---- live microphone ----------------------------------------------------------------------------------------------------------------------------------
+let speaker = null, stream = null, recorder = null, chunks = [], pieceTimer = null;
+async function sendPiece(spk, blob) {
+  const fd = new FormData(); fd.append("speaker", spk); fd.append("audio", blob, "piece.webm");
+  const r = await fetch("/copilot/" + CAND + "/live/line", { method: "POST", body: fd });
+  if (r.ok) (await r.json()).events.forEach(onEvent); else { try { $("live-status").textContent = (await r.json()).detail; } catch (e) {} }
+}
+function cycle() {
+  if (!stream || !speaker) return;
+  const spk = speaker; chunks = []; recorder = new MediaRecorder(stream);
+  recorder.ondataavailable = (e) => chunks.push(e.data);
+  recorder.onstop = () => { if (chunks.length) sendPiece(spk, new Blob(chunks, { type: "audio/webm" })); if (speaker === spk && stream) cycle(); };
+  recorder.start(); clearTimeout(pieceTimer); pieceTimer = setTimeout(() => { if (recorder && recorder.state === "recording") recorder.stop(); }, 5000);
+}
+async function setSpeaker(spk) {
+  try {
+    if (!stream) stream = await navigator.mediaDevices.getUserMedia({ audio: true });   // audio only, never the camera
+  } catch (e) { $("live-status").textContent = "The microphone is blocked: allow it in the browser, or type the lines below."; return; }
+  const previous = speaker; speaker = spk;
+  $("spk-recruiter").className = spk === "recruiter" ? "" : "secondary"; $("spk-candidate").className = spk === "candidate" ? "" : "secondary";
+  $("live-status").textContent = "Recording: " + spk + " speaking (pieces of 5 seconds).";
+  if (recorder && recorder.state === "recording") recorder.stop(); else cycle();
+}
+$("spk-recruiter").onclick = () => setSpeaker("recruiter"); $("spk-candidate").onclick = () => setSpeaker("candidate");
+$("send-line").onclick = async () => {
+  const text = $("typed").value.trim(); if (!text) return;
+  const fd = new FormData(); fd.append("speaker", speaker || "recruiter"); fd.append("text", text);
+  const r = await fetch("/copilot/" + CAND + "/live/line", { method: "POST", body: fd });
+  if (r.ok) { (await r.json()).events.forEach(onEvent); $("typed").value = ""; } else { try { $("live-status").textContent = (await r.json()).detail; } catch (e) {} }
+};
+$("end-live").onclick = async () => {
+  speaker = null; if (recorder && recorder.state === "recording") recorder.stop(); if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+  const r = await fetch("/copilot/" + CAND + "/live/end", { method: "POST" }); if (r.ok) location.reload();
+};
+{% endif %}
+</script>
 {% endif %}
 {% endblock %}

@@ -17,7 +17,9 @@ router = APIRouter(prefix="/outbox")
 @router.get("")
 def outbox(request: Request, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
     sent = db.scalars(select(OutboxLog).order_by(OutboxLog.id.desc()).limit(50)).all()
-    return render(request, "outbox.html", user, drafts=queue(db), sent=sent)
+    from app.models import DecisionLog
+    messages = db.scalars(select(DecisionLog).where(DecisionLog.action == "message received").order_by(DecisionLog.id.desc()).limit(20)).all()
+    return render(request, "outbox.html", user, drafts=queue(db), sent=sent, candidate_messages=messages)
 
 
 @router.post("/{draft_id}/approve")

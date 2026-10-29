@@ -86,6 +86,9 @@ class HumanInterview(Base):
     events: Mapped[list | None] = mapped_column(JSON, nullable=True)
     draft_scorecard: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     recruiter_scores: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    source: Mapped[str] = mapped_column(String(20), default="recording")  # recording, practice or live (the copilot session's source)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    lines: Mapped[list | None] = mapped_column(JSON, nullable=True)  # the transcript lines of the session, in order
     status: Mapped[str] = mapped_column(String(20), default="CREATED")
 
 
@@ -260,3 +263,33 @@ class DataRequest(Base):
     decided_by: Mapped[str | None] = mapped_column(String(200), nullable=True)
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     reason: Mapped[str] = mapped_column(Text, default="")
+
+
+class EvidenceCheck(Base):
+    """The evidence checker's result for a candidate's screening or AI interview: CHECKED, or NEEDS_REVIEW with the problems. A person must acknowledge the problems
+    before the candidate can be shortlisted or decided on. The checker never changes a score."""
+    __tablename__ = "evidence_checks"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id"))
+    subject: Mapped[str] = mapped_column(String(20))  # screening or interview
+    status: Mapped[str] = mapped_column(String(20))  # CHECKED or NEEDS_REVIEW
+    items: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    checked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    acknowledged_by: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    acknowledged_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class HumanInterviewScore(Base):
+    """The recruiter's OWN level (0-3) for one skill discussed in the human interview. The copilot's suggestion is stored beside it, labelled, but the person's level
+    is what counts. A reason is required when the two differ by 2 or more."""
+    __tablename__ = "human_interview_scores"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id"))
+    question_id: Mapped[str] = mapped_column(String(20))
+    skill: Mapped[str] = mapped_column(String(100))
+    level: Mapped[int] = mapped_column()  # the person's level
+    ai_suggestion: Mapped[int | None] = mapped_column(nullable=True)  # the copilot's suggestion: never what is saved as the score
+    ai_quote: Mapped[str] = mapped_column(Text, default="")
+    reason: Mapped[str] = mapped_column(Text, default="")
+    scored_by: Mapped[str] = mapped_column(String(200))
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)

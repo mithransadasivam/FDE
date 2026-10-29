@@ -1,6 +1,6 @@
 # SECURITY_FINDINGS.md
 
-Generated 2026-10-27 by `python -m scripts.run_red_team` from `evidence/red_team.json`.
+Generated 2026-10-28 by `python -m scripts.run_red_team` from `evidence/red_team.json`.
 
 ## Result
 

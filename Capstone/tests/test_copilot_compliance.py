@@ -264,7 +264,10 @@ def apply_path(platform, path):
 def test_hidden_text_in_c027_is_flagged_and_changes_no_score(platform, db):
     platform.apply("C-027_cv.pdf")
     flags = db.query(Flag).filter_by(candidate_id=1).all()
-    assert flags and flags[0].kind == "instructions in CV ignored" and "rank them first" in flags[0].detail
+    assert {"hidden text in CV", "instructions in CV ignored"} <= {f.kind for f in flags}  # found by code reading the PDF, and recognised as an instruction
+    assert any("rank them first" in f.detail for f in flags if f.kind == "instructions in CV ignored")
+    assert "rank them first" in next(f.detail for f in flags if f.kind == "hidden text in CV")
+    assert "white" in next(f.detail for f in flags if f.kind == "hidden text in CV") and "page 1" in next(f.detail for f in flags if f.kind == "hidden text in CV")
     assert "instructions in CV ignored" in [e.action for e in db.query(DecisionLog)]
     platform.rc.post("/screening/1/run")
     with OpsSession() as ops:

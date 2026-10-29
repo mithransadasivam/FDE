@@ -1,8 +1,9 @@
 """The interview copilot panel (recruiter only): replays a recorded interview as if live and streams what the copilot sees."""
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, Form, HTTPException, Request
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -37,6 +38,13 @@ def _hi(db: Session, cand_id: int) -> HumanInterview | None:
 
 
 def recording_for(cand: Candidate) -> dict | None:
+    """The interview the copilot follows: a practice interview made for this candidate (scripts/make_recruiter_interview.py) if there is one, otherwise the recorded
+    interview from the starter kit."""
+    from app.practice import load_practice
+
+    practice = load_practice(cand.id)
+    if practice:
+        return {**practice, "kind": "practice interview (SAMPLE: fictional)", "storage": True}
     return next((i for i in load_interviews() if i["cv_file"] == cand.cv_name), None)
 
 
@@ -51,7 +59,12 @@ def copilot_home(request: Request, user: User = Depends(RECRUITER), db: Session 
 @router.get("/{cand_id}")
 def copilot_panel(request: Request, cand_id: int, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
     cand = _cand(db, cand_id)
-    return render(request, "copilot.html", user, cand=cand, rec=recording_for(cand), hi=_hi(db, cand_id), notice=COPILOT_NOTICE)
+    from app.interview.bank import load_questions
+    from app.models_ext import HumanInterviewScore
+
+    rows = db.scalars(select(HumanInterviewScore).where(HumanInterviewScore.candidate_id == cand_id)).all()
+    return render(request, "copilot.html", user, cand=cand, rec=recording_for(cand), hi=_hi(db, cand_id), notice=COPILOT_NOTICE, qs=load_questions(),
+                  saved={r.question_id: r.level for r in rows}, reasons={r.question_id: r.reason for r in rows})
 
 
 @router.post("/{cand_id}/to-human-interview")
@@ -78,15 +91,12 @@ def acknowledge(request: Request, cand_id: int, user: User = Depends(RECRUITER),
     """The recruiter confirms the candidate was told AI assists and did not ask for the interview without it (rule 5)."""
     cand = _cand(db, cand_id)
     rec = recording_for(cand)
-    if rec is None:
-        flash(request, "There is no recorded interview for this candidate.", "bad")
-    else:
-        hi = _hi(db, cand_id) or HumanInterview(candidate_id=cand_id, recording=rec["file"])
-        hi.notice_ack, hi.status = True, "READY"
-        db.add(hi)
-        db.add(DecisionLog(actor=user.email, action="copilot notice confirmed", subject=f"candidate:{cand_id}", reason="candidate told an AI assistant follows the interview and agreed"))
-        db.commit()
-        flash(request, "Confirmed. The copilot can follow this interview.")
+    hi = _hi(db, cand_id) or HumanInterview(candidate_id=cand_id, recording=rec["file"] if rec else "")
+    hi.notice_ack, hi.status = True, "READY"
+    db.add(hi)
+    db.add(DecisionLog(actor=user.email, action="copilot notice confirmed", subject=f"candidate:{cand_id}", reason="candidate told an AI assistant follows the interview and agreed"))
+    db.commit()
+    flash(request, "Confirmed. The copilot can follow this interview.")
     return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
 
 
@@ -122,6 +132,8 @@ def events(cand_id: int, speed: float = 8.0, user: User = Depends(RECRUITER), db
             draft = agent.draft_scorecard()
             row = s.get(HumanInterview, hi_id)
             row.events, row.draft_scorecard, row.status = [e.model_dump() for e in agent.events], draft, "DONE"
+            row.source, row.started_at = "practice" if rec.get("storage") else "recording", datetime.now(timezone.utc)
+            row.lines = [{"speaker": e.data["speaker"], "text": e.data["text"], "start": e.data["start"], "end": e.data["end"]} for e in agent.events if e.kind == "transcript"]
             s.add(DecisionLog(actor="system", action="copilot followed interview", subject=f"candidate:{cand_id}",
                               reason=f"{len(agent.warnings)} warning(s), {len(agent.conflicts)} CV check(s); draft scorecard saved for the recruiter"))
             s.commit()
@@ -132,25 +144,166 @@ def events(cand_id: int, speed: float = 8.0, user: User = Depends(RECRUITER), db
 
 @router.post("/{cand_id}/scores")
 async def recruiter_scores(request: Request, cand_id: int, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
-    """The recruiter scores the interview (the copilot's draft is only a suggestion)."""
+    """The recruiter scores the human interview on the SAME 0-3 scale as the AI interview. The copilot's suggestion is shown, labelled, but the person's level is what is
+    saved; when the two differ by 2 or more a short reason is required."""
+    from app.models_ext import HumanInterviewScore
+
     hi = _hi(db, cand_id)
     if hi is None or hi.status != "DONE":
         flash(request, "Let the copilot follow the interview first.", "bad")
         return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
     form = await request.form()
-    scores = {k[len("score_"):]: int(v) for k, v in form.items() if k.startswith("score_") and str(v).isdigit() and 0 <= int(v) <= 3}
+    suggestions = {a["question_id"]: a for a in (hi.draft_scorecard or {}).get("answers", []) if a.get("type") == "technical"}
+    saved, problems = [], []
+    for qid, a in suggestions.items():
+        raw = str(form.get(f"score_{qid}", "")).strip()
+        if raw == "":
+            continue
+        if not raw.isdigit() or not 0 <= int(raw) <= 3:
+            problems.append(f"{a['skill']}: enter a level from 0 to 3.")
+            continue
+        level, ai = int(raw), a.get("suggested_score")
+        reason = str(form.get(f"reason_{qid}", "")).strip()
+        if ai is not None and abs(level - ai) >= 2 and not reason:
+            problems.append(f"{a['skill']}: your level ({level}) is {abs(level - ai)} away from the AI suggestion ({ai}); write a short reason.")
+            continue
+        saved.append(HumanInterviewScore(candidate_id=cand_id, question_id=qid, skill=a["skill"], level=level, ai_suggestion=ai, ai_quote=a.get("quote", ""), reason=reason, scored_by=user.email))
+    if problems:
+        db.rollback()
+        flash(request, "Not saved. " + " ".join(problems), "bad")
+        return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
+    if not saved:
+        flash(request, "Enter at least one level.", "bad")
+        return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
+    for old in db.scalars(select(HumanInterviewScore).where(HumanInterviewScore.candidate_id == cand_id)):
+        db.delete(old)  # saving again replaces the earlier scores
+    for row in saved:
+        db.add(row)
+    scores = {r.question_id: r.level for r in saved}
     hi.recruiter_scores = {"scores": scores, "by": user.email, "note": str(form.get("note", ""))}
-    db.add(DecisionLog(actor=user.email, action="human interview scored", subject=f"candidate:{cand_id}", reason=str(form.get("note", ""))[:200],
-                       evidence={"recruiter_scores": scores, "copilot_draft": hi.draft_scorecard}))
+    db.add(DecisionLog(actor=user.email, action="human interview scored", subject=f"candidate:{cand_id}", reason=str(form.get("note", ""))[:200] or f"{len(saved)} skill(s) scored by the recruiter",
+                       evidence={"recruiter_levels": scores, "ai_suggestions": {q: a.get("suggested_score") for q, a in suggestions.items()}, "copilot_draft": hi.draft_scorecard}))
     db.commit()
-    flash(request, "Your scores were saved. They replace the copilot's draft.")
+    flash(request, "Your levels were saved. They are the scores; the copilot's suggestions stay beside them, labelled.")
+    return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
+
+
+@router.post("/{cand_id}/decide")
+def decide_human(request: Request, cand_id: int, decision: str = Form(""), reason: str = Form(""), user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    """After scoring: "Recommend for offer stage" (HUMAN_INTERVIEW -> DECISION) or "Withdraw", through supervisor.move with the recruiter as actor and a required reason.
+    The evidence checker's problems must have been looked at first."""
+    from app.decisions import decide
+    from app.models_ext import HumanInterviewScore
+
+    cand = _cand(db, cand_id)
+    try:
+        if not db.scalars(select(HumanInterviewScore).where(HumanInterviewScore.candidate_id == cand_id)).first():
+            raise MoveRefused("Score the interview yourself first: the decision comes after your own levels.")
+        if decision == "offer":
+            decide(db, cand, "OFFER_RECOMMENDED", reason, user.email)
+        elif decision == "withdraw":
+            move(db, cand, Stage.WITHDRAWN, user.email, reason, evidence={"human_interview": "withdrawn after the human interview"})
+        else:
+            raise MoveRefused("Choose Recommend for offer stage, or Withdraw.")
+    except (MoveRefused, ValueError) as e:  # a ValueError here is a missing or too-short reason
+        db.rollback()
+        flash(request, f"Not recorded: {e if isinstance(e, MoveRefused) else 'a decision needs a reason'}", "bad")
+    else:
+        db.commit()
+        flash(request, "Your decision and reason are in the decision log." + (" An email draft waits in the outbox for your approval." if decision == "offer" else ""))
     return RedirectResponse(f"/copilot/{cand_id}", status_code=303)
 
 
 @router.get("/{cand_id}/audio")
 def audio(cand_id: int, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
     rec = recording_for(_cand(db, cand_id))
-    p = Path(get_settings().kit_dir) / rec["file"] if rec else None
+    p = (get_settings().storage_dir / rec["file"] if rec.get("storage") else Path(get_settings().kit_dir) / rec["file"]) if rec else None
     if p is None or not p.exists():
         raise HTTPException(404, "No recording")
     return FileResponse(p, media_type="audio/wav")
+
+
+# ---- live microphone: the recruiter's browser sends the interview in short pieces; two buttons say who is speaking --------------------------------------------
+LIVE: dict[int, dict] = {}  # candidate id -> {"agent", "db", "clock"}: one running live session per candidate
+
+
+def _live(db: Session, cand: Candidate, hi: HumanInterview | None) -> dict:
+    if hi is None or not hi.notice_ack:
+        raise HTTPException(403, "The candidate must be told about the AI assistant, and the recruiter must confirm it, before the copilot starts")
+    if cand.id not in LIVE:
+        sess = SessionLocal()
+        c = sess.get(Candidate, cand.id)
+        LIVE[cand.id] = {"agent": CopilotAgent(sess, c, sess.get(Requisition, c.requisition_id)), "db": sess, "clock": 0.0, "lines": []}
+        hi.source, hi.started_at, hi.status = "live", datetime.now(timezone.utc), "LIVE"
+        db.commit()
+    return LIVE[cand.id]
+
+
+@router.post("/{cand_id}/live/line")
+async def live_line(cand_id: int, speaker: str = Form(...), text: str = Form(""), audio_file: UploadFile | None = File(None, alias="audio"),
+                    user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    """One piece of the live interview. The speaker comes from the button the recruiter pressed (Recruiter speaking / Candidate speaking). Audio is transcribed with
+    app/ai/voice.py (in fake mode only recorded fixtures can be, so a typed line is accepted too). The line goes through the same copilot as a recording."""
+    from app.ai import audio as audio_tools, voice
+
+    if speaker not in ("recruiter", "candidate"):
+        raise HTTPException(400, "The speaker must be recruiter or candidate")
+    cand = _cand(db, cand_id)
+    live = _live(db, cand, _hi(db, cand_id))
+    seconds = None
+    if not text.strip() and audio_file is not None and audio_file.filename:
+        data = await audio_file.read()
+        if not data or len(data) > 25 * 1024 * 1024:
+            raise HTTPException(400, "The recording piece is empty or too large")
+        folder = get_settings().storage_dir / "copilot" / str(cand_id)
+        folder.mkdir(parents=True, exist_ok=True)
+        path = folder / f"piece_{len(live['lines']) + 1:03d}{Path(audio_file.filename).suffix.lower() or '.webm'}"
+        path.write_bytes(data)
+        try:
+            src = audio_tools.to_wav(path, path.with_suffix(".wav")) if path.suffix != ".wav" else path
+            text, seconds = voice.transcribe(src, path.name), voice.audio_duration(src)
+        except FileNotFoundError:
+            raise HTTPException(422, "Fake mode cannot transcribe a new recording: type the line instead") from None
+        except audio_tools.AudioError as e:
+            raise HTTPException(422, f"{e} Please try again or type the line.") from e
+        finally:
+            path.unlink(missing_ok=True)
+            path.with_suffix(".wav").unlink(missing_ok=True)
+    text = text.strip()
+    if not text:
+        raise HTTPException(400, "There is nothing to add: no speech was heard")
+    start = live["clock"]
+    end = start + (seconds if seconds else max(1.0, voice.speaking_seconds(text)))
+    live["clock"] = end + 0.3
+    events = live["agent"].process_turn(speaker, text, start, end)
+    live["lines"].append({"speaker": speaker, "text": text, "start": round(start, 2), "end": round(end, 2)})
+    hi = _hi(db, cand_id)
+    hi.lines, hi.events = live["lines"], [e.model_dump() for e in live["agent"].events]  # every line is saved to the session as it arrives
+    db.commit()
+    return {"events": [e.model_dump() for e in events]}
+
+
+@router.post("/{cand_id}/live/asked")
+def live_asked(cand_id: int, question_id: str = Form(...), user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    """"I asked this": tells the copilot which question the next answer is about."""
+    live = LIVE.get(cand_id)
+    if live is None:
+        raise HTTPException(409, "There is no live session running")
+    live["agent"].asked(question_id)
+    return {"ok": True, "active": question_id}
+
+
+@router.post("/{cand_id}/live/end")
+def live_end(cand_id: int, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    live = LIVE.pop(cand_id, None)
+    hi = _hi(db, cand_id)
+    if live is None or hi is None:
+        raise HTTPException(409, "There is no live session running")
+    agent = live["agent"]
+    draft = agent.draft_scorecard()
+    hi.events, hi.draft_scorecard, hi.status = [e.model_dump() for e in agent.events], draft, "DONE"
+    db.add(DecisionLog(actor="system", action="copilot followed interview", subject=f"candidate:{cand_id}",
+                       reason=f"live: {len(agent.warnings)} warning(s), {len(agent.conflicts)} CV check(s); draft scorecard saved for the recruiter"))
+    db.commit()
+    live["db"].close()
+    return {"draft": draft}

@@ -31,6 +31,8 @@ def fresh_db():
     branding.clear_cache()
     import shutil
     shutil.rmtree(_TMP / "storage" / "interviews", ignore_errors=True)  # interview audio from an earlier test must not leak into this one
+    for folder in ("outbox_sent", "inbox", "practice"):  # sent emails, received replies and practice interviews of an earlier test must not leak either
+        shutil.rmtree(_TMP / "storage" / folder, ignore_errors=True)
     from app.supervisor_graph import reset_checkpoints
     reset_checkpoints()
     Base.metadata.drop_all(engine)

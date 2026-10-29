@@ -118,7 +118,7 @@ def test_the_scoring_prompt_has_the_transcript_text_only_and_no_name(agent, db):
     cand = db.get(Candidate, 1)
     with OpsSession() as ops:
         call = ops.query(ModelCall).filter(ModelCall.agent == "interviewer", ModelCall.task == "scoring").first()
-    assert "<answer>" in call.prompt_user and "check the load with top" in call.prompt_user
+    assert "<candidate_answer>" in call.prompt_user and "check the load with top" in call.prompt_user
     for secret in identity_strings(cand.profile):
         assert secret.lower() not in (call.prompt_system + call.prompt_user).lower()
     assert "audio" not in call.prompt_user.lower() and ".wav" not in call.prompt_user.lower()

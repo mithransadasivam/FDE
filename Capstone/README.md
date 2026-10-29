@@ -44,7 +44,7 @@ With Docker (API, MCP server and Phoenix traces): `docker compose -f ops/docker-
 |---|---|---|
 | 1 | A voice note becomes an approved rubric (wording checked); 52 CVs read in four formats; identity hidden; a pipeline that only moves by the rules | `app/agents/requisition.py`, `document.py`, `app/privacy.py`, `app/supervisor.py` |
 | 2 | Every candidate scored on every skill with a verified quote; a ranked shortlist a recruiter approves; a full adaptive AI interview by voice: the notice and recording consent, a fixed opening question, questions written from the CV and the answers (a guard checks every one), Mermaid diagrams drawn on the fly, follow-ups and deeper questions chosen by code, hints, a full recording with a timeline, a scorecard with a second scorer and the recruiter's own review before any audio; an assistant that answers with sources | `app/agents/screening.py`, `interviewer.py`, `diagrams.py`, `assistant.py`, `app/shortlist.py`, `app/interview/recording.py`, `scorecard.py`, `app/web/interview.py` |
-| 3 | The copilot follows a recorded interview live and flags a forbidden question; emails wait for approval; a compliance reviewer catches a planted fake quote; hidden instructions change nothing; containers, traces, 20-attack red team | `app/agents/copilot.py`, `communications.py`, `compliance.py`, `app/guardrails.py`, `mcp_server/`, `ops/` |
+| 3 | Hidden and planted instructions in CVs are found, flagged and ignored (a person is told, nothing is rejected); a 20-attack red team; an evidence checker re-checks every score (CHECKED / NEEDS_REVIEW, acknowledged by a person); emails are checked by code and wait for approval (a `.eml` file, real SMTP only if switched on); a practice recruiter interview; a copilot that follows the recording live, warns about a forbidden question within milliseconds, always offers one technical and one behavioural question with what a good answer covers, and shows CV conflict cards; the recruiter enters their own scores before deciding; a replay room for the AI interview; a three-stage side-by-side card on the candidate page | `app/security.py`, `app/agents/checker.py`, `communications.py`, `copilot.py`, `compliance.py`, `app/practice.py`, `app/mailer.py`, `app/web/copilot.py`, `templates/replay.html`, `mcp_server/`, `ops/` |
 | 4 | One scorecard per candidate with every quote and a link to the moment in the recording; a logged decision; bias tests; cost and speed; the governance pack | `app/decisions.py`, `scripts/run_bias_tests.py`, `run_perf.py`, `build_governance.py` |
 
 The agents (each with its own tools only, a step limit and a trace): **Supervisor** (LangGraph graph with approval gates), **Requisition**, **Document**, **Screening**,
@@ -64,7 +64,7 @@ The agents (each with its own tools only, a step limit and a trace): **Superviso
 | **Candidate data rights**: download my data; ask for deletion, which a recruiter approves or refuses with a reason | `/me/<token>`, `/data-requests`, `app/datarights.py` |
 | **Getting-started checklist** and a **Help** page | `/`, `/help` |
 
-Day 2 in one command: `python -m scripts.day2_demo`. Sample interviews with two voices: `python -m scripts.make_sample_interviews`. Delete old interview audio: `python -m scripts.purge_recordings`.
+Day 2 in one command: `python -m scripts.day2_demo`. Day 3 in one command: `python -m scripts.day3_demo` (security scan, attack suite, checker, practice interview, copilot run, drafts, replay). Attack table: `python -m scripts.attack_report`. Read the sample inbox: `python -m scripts.read_inbox`. Sample interviews with two voices: `python -m scripts.make_sample_interviews`. Delete old interview audio: `python -m scripts.purge_recordings`.
 
 ## The twelve rules (in `CLAUDE.md`) and where each is enforced
 
@@ -97,7 +97,7 @@ python -m scripts.run_perf                  # cost per 100 CVs and per interview
 | `PERF_REPORT.md` | Cost per 100 CVs and per AI interview, voice speed, before and after routing and caching |
 | `SECURITY_FINDINGS.md` | The 20 attacks before and after, defences by layer, accepted risks |
 | `BIAS_REPORT.md` | The same CV with a different name, gender or age; the same answers in four voice variants |
-| `governance/` | Classification (EU AI Act Annex III point 4), model card, risk register (14 risks), candidate notice, explanation template, evidence with hashes |
+| `governance/` | Classification (EU AI Act Annex III point 4), model card, risk register (18 risks), candidate notice, explanation template, evidence with hashes |
 | `REQUEST_LOG.md`, `TEAM_LOG.md` | Every request and what happened; how the work was shared |
 | `DEMO.md` | The 7-minute demo script |
 

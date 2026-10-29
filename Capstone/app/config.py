@@ -33,6 +33,12 @@ class Settings(BaseSettings):
     phoenix_endpoint: str = ""  # e.g. http://phoenix:6006/v1/traces; traces are always kept in the database too
     kit_dir: Path = Path("starter_kit")
     enable_integrations: bool = False  # the REST API, API keys and webhooks are hidden (not mounted) unless this is on
+    email_live: bool = False  # approved emails are only really sent (SMTP) when this is on; they are always written as .eml files
+    smtp_host: str = ""
+    smtp_port: int = 587
+    smtp_user: str = ""
+    smtp_password: str = ""
+    mail_from: str = "The hiring team <careers@example.com>"
     webhooks_live: bool = False  # webhooks are only really sent when this is on; otherwise deliveries are recorded as "not sent"
     demo_mode: bool = False  # shows the demo accounts on the sign-in page (fictional demo data only)
 

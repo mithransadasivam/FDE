@@ -5,7 +5,7 @@
   <tr>
     {% if user.role == 'recruiter' %}<td>{% if row.cand.stage == 'SCREENED' %}<input type="checkbox" name="candidate_id" value="{{ e.candidate_id }}" {{ 'checked' if e.status == 'SUGGESTED' }} aria-label="Shortlist candidate {{ e.candidate_id }}">{% endif %}</td>{% endif %}
     <td>{{ e.rank }}</td>
-    <td><a href="/candidates/{{ e.candidate_id }}{{ '?blind=1' if user.role == 'recruiter' }}">Candidate #{{ e.candidate_id }}</a><br><span class="badge">{{ row.cand.stage }}</span></td>
+    <td><a href="/candidates/{{ e.candidate_id }}{{ '?blind=1' if user.role == 'recruiter' }}">Candidate #{{ e.candidate_id }}</a><br><span class="badge">{{ row.cand.stage }}</span>{% if e.candidate_id in flagged %} <span class="badge bad" data-testid="hidden-badge" title="This CV contains instructions to an AI. They were removed and changed no score.">Hidden instructions found</span>{% endif %}</td>
     <td><strong>{{ '%.1f' | format(e.weighted_total) }}</strong> <span class="muted small">/ 100</span></td>
     {% for sc in row.scores %}<td title="&ldquo;{{ sc.quote }}&rdquo;" style="text-align:center"><span class="badge {{ 'good' if sc.score == 3 else ('warn' if sc.score >= 1 else 'bad') }}">{{ sc.score }}</span></td>{% endfor %}
     <td class="small" style="min-width:16rem;max-width:26rem">
@@ -14,6 +14,11 @@
         {% for g in e.gaps %}<div class="muted">- {{ g }}</div>{% endfor %}
       </details>
     </td>
+    <td data-testid="evidence-cell">{% set ck = checks.get(e.candidate_id) %}{% if ck %}<span class="badge {{ 'good' if ck.status == 'CHECKED' else 'warn' }}" data-testid="evidence-status">{{ ck.status }}</span>
+      {% if ck.status == 'NEEDS_REVIEW' %}<details><summary class="small">{{ ck['items'] | length }} problem(s)</summary>
+        <div class="flash" style="margin:.3rem 0;padding:.4rem .6rem" data-testid="evidence-problems">{% for p in ck['items'] %}<div class="small"><strong>{{ p.where }}</strong>: {{ p.problem }} &mdash; {{ p.detail }}</div>{% endfor %}
+          {% if ck.acknowledged_by %}<div class="small muted">looked at by {{ ck.acknowledged_by }}</div>
+          {% elif user.role == 'recruiter' %}<form method="post" action="/screening/checks/{{ ck.id }}/ack"><input type="hidden" name="back" value="/screening/{{ req.id }}"><button class="small secondary" data-testid="ack-btn">I have looked at these</button></form>{% endif %}</div></details>{% endif %}{% endif %}</td>
     <td><span class="badge {{ 'good' if e.status in ('SUGGESTED','APPROVED') else ('bad' if e.status == 'HELD' else '') }}">{{ e.status }}</span></td>
   </tr>
 {% endmacro %}
@@ -30,7 +35,7 @@
 <div class="table-wrap">
 <table>
   <tr>{% if user.role == 'recruiter' %}<th>Pick</th>{% endif %}<th>Rank</th><th>Candidate</th><th>Total</th>
-      {% for s in skills %}<th title="{{ s }}" style="text-align:center">{{ s[:12] }}</th>{% endfor %}<th>Strengths and gaps</th><th>Status</th></tr>
+      {% for s in skills %}<th title="{{ s }}" style="text-align:center">{{ s[:12] }}</th>{% endfor %}<th>Strengths and gaps</th><th>Evidence check</th><th>Status</th></tr>
   {% for row in rows[:12] %}{{ score_row(row) }}{% endfor %}
   {% if rows | length > 12 %}
   <tr><td colspan="{{ skills | length + (7 if user.role == 'recruiter' else 6) }}" style="background:var(--surface-2)">
@@ -43,6 +48,8 @@
 {% if user.role == 'recruiter' %}
 <div class="card" style="margin-top:1rem">
   <h2>Your decision</h2>
+  <p class="small"><button type="submit" class="secondary small" formaction="/screening/{{ req.id }}/draft-not-shortlisted" formmethod="post" data-testid="draft-not-shortlisted">Draft &ldquo;not shortlisted&rdquo; emails for everyone else</button>
+    <span class="muted">They wait in the outbox for your approval.</span></p>
   <p class="muted small">Tick who goes on the shortlist. Only a person can do this. Your reason is written to the decision log with the scores you saw.</p>
   <label for="reason">Reason</label><input id="reason" name="reason" type="text" placeholder="e.g. Best evidence for the three must-have skills">
   <p><button type="submit">Approve shortlist</button></p>
