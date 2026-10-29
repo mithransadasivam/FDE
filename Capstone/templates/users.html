@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Users{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Users</div><h1>Users and roles</h1>
+  <p class="muted">Hiring managers approve rubrics and manage the team; recruiters run screening, interviews and emails; auditors can only read analytics, the decision log and the audit export. Candidates never sign in.</p></div></div>
+{% if new_password %}<div class="flash good" data-testid="new-password"><strong>Temporary password for {{ new_password.email }}:</strong> <code>{{ new_password.password }}</code>
+  <span class="small">Shown once. They can change it under Account.</span></div>{% endif %}
+<div class="table-wrap"><table data-testid="users-table">
+  <tr><th>Name</th><th>Email</th><th>Role</th><th>Last sign-in</th><th>Status</th><th></th></tr>
+  {% for u in users %}
+  <tr><td>{{ u.name }}</td><td>{{ u.email }}</td>
+    <td>{% if u.id != user.id %}<form method="post" action="/users/{{ u.id }}/role" style="display:flex;gap:.3rem"><select name="role" style="width:auto">{% for k, v in role_choices.items() %}<option value="{{ k }}" {{ 'selected' if k == u.role }}>{{ v }}</option>{% endfor %}</select><button class="secondary small">Set</button></form>{% else %}{{ role_choices.get(u.role, u.role) }} <span class="muted small">(you)</span>{% endif %}</td>
+    <td class="small">{{ u.last_login.strftime('%Y-%m-%d %H:%M') if u.last_login else 'never' }}</td>
+    <td><span class="badge {{ 'good' if u.is_active else 'bad' }}">{{ 'active' if u.is_active else 'deactivated' }}</span>{% if u.locked_until %} <span class="badge warn">locked</span>{% endif %}</td>
+    <td>{% if u.id != user.id %}
+      <form method="post" action="/users/{{ u.id }}/active" style="display:inline"><input type="hidden" name="active" value="{{ 0 if u.is_active else 1 }}"><button class="secondary small">{{ 'Deactivate' if u.is_active else 'Reactivate' }}</button></form>
+      <form method="post" action="/users/{{ u.id }}/reset" style="display:inline"><button class="secondary small">Reset password</button></form>{% endif %}</td></tr>
+  {% endfor %}
+</table></div>
+<form method="post" action="/users" class="card" style="margin-top:1rem;max-width:640px" data-testid="new-user">
+  <h2 style="margin-top:0">Add a person</h2>
+  <label for="name">Name</label><input id="name" name="name" type="text" required>
+  <label for="email">Email</label><input id="email" name="email" type="email" required>
+  <label for="role">Role</label><select id="role" name="role">{% for k, v in role_choices.items() %}<option value="{{ k }}">{{ v }}</option>{% endfor %}</select>
+  <label for="password">Password <span class="muted small">(leave empty to generate a temporary one; 10+ characters with a letter and a digit)</span></label><input id="password" name="password" type="text" autocomplete="off">
+  <p><button type="submit">Create account</button></p>
+</form>
+{% endblock %}

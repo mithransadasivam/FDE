@@ -9,7 +9,7 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import get_settings
 from app.db import init_db
-from app.web import assistant, candidates, compliance, copilot, interview, ops, outbox, pages, public, requisitions, scorecard, screening, trust
+from app.web import admin, assistant, candidates, compliance, copilot, insights, integrations, interview, ops, outbox, pages, public, requisitions, scorecard, screening, trust
 
 
 @asynccontextmanager
@@ -35,6 +35,11 @@ app.include_router(compliance.router)
 app.include_router(ops.router)
 app.include_router(scorecard.router)
 app.include_router(trust.router)
+app.include_router(insights.router)
+app.include_router(admin.router)
+app.include_router(integrations.router)  # candidates' data rights
+if get_settings().enable_integrations:  # hidden unless switched on
+    app.include_router(integrations.api_router)
 app.middleware("http")(ops.count_requests)
 
 
@@ -47,3 +52,18 @@ async def friendly_errors(request: Request, exc: HTTPException):
         headline = {403: "That page is not for your role", 404: "We could not find that page"}[exc.status_code]
         return render(request, "error.html", None, status_code=exc.status_code, code=exc.status_code, headline=headline, detail=exc.detail, back="/")
     return await http_exception_handler(request, exc)
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    """Headers every response carries: no sniffing, no framing, no referrer leaks, the camera off and the microphone only for this site, and a content policy
+    that only lets the page load scripts, styles and audio from itself."""
+    response = await call_next(request)
+    h = response.headers
+    h.setdefault("X-Content-Type-Options", "nosniff")
+    h.setdefault("X-Frame-Options", "DENY")
+    h.setdefault("Referrer-Policy", "same-origin")
+    h.setdefault("Permissions-Policy", "camera=(), geolocation=(), microphone=(self)")
+    h.setdefault("Content-Security-Policy", "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; "
+                                            "media-src 'self' blob: data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'")
+    return response

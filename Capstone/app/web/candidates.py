@@ -3,7 +3,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import FileResponse, RedirectResponse
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.auth import RECRUITER, STAFF
@@ -40,24 +40,37 @@ def get_candidate(db: Session, cand_id: int) -> Candidate:
 
 
 @router.get("/candidates")
-def candidates(request: Request, blind: int | None = None, job: int | None = None, user: User = Depends(STAFF),
-               db: Session = Depends(get_db)):
+def candidates(request: Request, blind: int | None = None, job: int | None = None, stage: str = "", skill: str = "", min_years: float | None = None,
+               min_total: float | None = None, user: User = Depends(STAFF), db: Session = Depends(get_db)):
+    """The candidate list, with filters: stage, a skill (blind text), minimum years and minimum CV score. Filters use blind facts only."""
     is_blind = effective_blind(user, blind)
     query = select(Candidate).order_by(Candidate.id)
     if job:
         query = query.where(Candidate.requisition_id == job)
+    if stage:
+        query = query.where(Candidate.stage == stage)
+    totals: dict[int, float] = {}
+    for cid, total in db.execute(select(ItemScoreRow.candidate_id, func.sum(ItemScoreRow.weight * ItemScoreRow.score)).group_by(ItemScoreRow.candidate_id)).all():
+        totals[cid] = round(float(total) / 3, 1)
     rows = []
     dups = duplicate_map(db)
     for c in db.scalars(query):
+        b = make_blind(c)
+        if skill and not any(skill.lower() in sk.lower() for sk in b.skills):
+            continue
+        if min_years is not None and (b.years_experience or 0) < min_years:
+            continue
+        if min_total is not None and totals.get(c.id, -1) < min_total:
+            continue
         if is_blind:
-            b = make_blind(c)
-            rows.append({"c": c, "name": f"Candidate #{c.id}", "title": b.current_title, "years": b.years_experience,
-                         "skills": b.skills})
+            rows.append({"c": c, "name": f"Candidate #{c.id}", "title": b.current_title, "years": b.years_experience, "skills": b.skills, "total": totals.get(c.id)})
         else:
             p = CandidateProfile.model_validate(c.profile or {})
             rows.append({"c": c, "name": p.name.value or "(not read)", "title": p.current_title.value,
-                         "years": p.years_experience.value, "skills": p.skills.value or []})
-    return render(request, "candidates.html", user, rows=rows, is_blind=is_blind, job=job, dups=dups)
+                         "years": p.years_experience.value, "skills": p.skills.value or [], "total": totals.get(c.id)})
+    return render(request, "candidates.html", user, rows=rows, is_blind=is_blind, job=job, dups=dups, stage=stage, skill=skill, min_years=min_years,
+                  min_total=min_total, stages=[s.value for s in Stage],
+                  filtered=bool(stage or skill or min_years is not None or min_total is not None))
 
 
 @router.get("/candidates/{cand_id}")
@@ -141,11 +154,13 @@ def pipeline(request: Request, blind: int | None = None, user: User = Depends(ST
     columns = {s: [] for s in Stage}
     everyone = []
     dups = duplicate_map(db)
+    from app.models_ext import InterviewSession
+    asked = {i.candidate_id for i in db.scalars(select(InterviewSession).where(InterviewSession.status == "PERSON_REQUESTED"))}
     for c in db.scalars(select(Candidate).order_by(Candidate.id)):
         p = CandidateProfile.model_validate(c.profile or {})
         label = f"Candidate #{c.id}" if is_blind else (p.name.value or f"Candidate #{c.id}")
         chip = {"id": c.id, "label": label, "title": make_blind(c).current_title if is_blind else p.current_title.value,
-                "format": c.cv_format, "dup": dups.get(c.id, [])}
+                "format": c.cv_format, "dup": dups.get(c.id, []), "person": c.id in asked}
         columns[Stage(c.stage)].append(chip)
         everyone.append(chip)
     allowed = {s.value: [(t.value, who) for t, who in moves.items()] for s, moves in ALLOWED.items()}

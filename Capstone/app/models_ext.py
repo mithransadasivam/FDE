@@ -62,6 +62,12 @@ class InterviewSession(Base):
     candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id"), unique=True)
     status: Mapped[str] = mapped_column(String(30), default="NOT_STARTED")  # NOT_STARTED, IN_PROGRESS, DONE, PERSON_REQUESTED
     notice_ack: Mapped[bool] = mapped_column(Boolean, default=False)
+    consent_recording: Mapped[bool] = mapped_column(Boolean, default=False)  # "I understand the interview is recorded" was ticked
+    consent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    person_requested_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    sample: Mapped[bool] = mapped_column(Boolean, default=False)  # a simulated candidate: shown as "SAMPLE: fictional candidate"
+    review: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # the recruiter's OWN level for each must-have, saved before any audio is shown
+    recording_built_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)  # full_conversation.mp3 and recording.json exist
     plan: Mapped[list | None] = mapped_column(JSON, nullable=True)
     state: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     scorecard: Mapped[dict | None] = mapped_column(JSON, nullable=True)
@@ -170,3 +176,87 @@ class AgentTrace(OpsBase):
     duration_ms: Mapped[float] = mapped_column(Float, default=0.0)
     status: Mapped[str] = mapped_column(String(20), default="ok")
     attrs: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+
+class InterviewTurn(Base):
+    """One question asked in an AI interview and the candidate's answer: the text, both audio files and the times. It mirrors the interview's
+    saved state, so the recording, the replay and the scorecard can read plain rows."""
+    __tablename__ = "interview_turns"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    interview_id: Mapped[int] = mapped_column(ForeignKey("interview_sessions.id"))
+    n: Mapped[int] = mapped_column(default=1)
+    question: Mapped[str] = mapped_column(Text, default="")
+    why: Mapped[str] = mapped_column(Text, default="")
+    skill: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    kind: Mapped[str] = mapped_column(String(20), default="technical")  # opening, technical, behavioural or follow_up
+    guard: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # the question guard's results (Day 2, prompt 9)
+    question_audio: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    answer_audio: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    transcript: Mapped[str] = mapped_column(Text, default="")
+    diagram: Mapped[str | None] = mapped_column(Text, nullable=True)  # Mermaid text of a diagram drawn for this question
+    diagram_info: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # title, description, expected points, weakness: never shown to the candidate
+    shown_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    answer_started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    answer_ended_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    score: Mapped[int | None] = mapped_column(nullable=True)
+    quote: Mapped[str] = mapped_column(Text, default="")
+    hint: Mapped[str] = mapped_column(Text, default="")
+    skipped: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class AppSetting(Base):
+    """Company settings (name, colour, contact): one row per key. Only the hiring manager can change them, and each change is logged."""
+    __tablename__ = "app_settings"
+    key: Mapped[str] = mapped_column(String(60), primary_key=True)
+    value: Mapped[str] = mapped_column(Text, default="")
+
+
+# ---- integrations and candidates' data rights ---------------------------------------------------------------------------------------------------
+class ApiKey(Base):
+    """A key for the read-only REST API. Only a hash is kept: the key itself is shown once, when it is made."""
+    __tablename__ = "api_keys"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+    prefix: Mapped[str] = mapped_column(String(16))
+    key_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    created_by: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    last_used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revoked: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class Webhook(Base):
+    __tablename__ = "webhooks"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    url: Mapped[str] = mapped_column(String(500))
+    events: Mapped[list] = mapped_column(JSON)
+    secret: Mapped[str] = mapped_column(String(80))
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_by: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class WebhookDelivery(Base):
+    """Every event a webhook was due, and what happened. Nothing leaves the machine unless webhooks_live is on."""
+    __tablename__ = "webhook_deliveries"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    webhook_id: Mapped[int] = mapped_column(ForeignKey("webhooks.id"))
+    event: Mapped[str] = mapped_column(String(60))
+    payload: Mapped[dict] = mapped_column(JSON)
+    status: Mapped[str] = mapped_column(String(40), default="queued")  # queued, sent, failed or not_sent
+    http_status: Mapped[int | None] = mapped_column(nullable=True)
+    error: Mapped[str] = mapped_column(Text, default="")
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class DataRequest(Base):
+    """A candidate asks for a copy of their data or for it to be deleted. A PERSON decides a deletion (rule 1): nothing is erased automatically."""
+    __tablename__ = "data_requests"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id"))
+    kind: Mapped[str] = mapped_column(String(20))  # export or delete
+    status: Mapped[str] = mapped_column(String(20), default="REQUESTED")  # REQUESTED, DONE or REFUSED
+    requested_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    decided_by: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reason: Mapped[str] = mapped_column(Text, default="")

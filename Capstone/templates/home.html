@@ -13,6 +13,12 @@
   {% endfor %}
 </div>
 
+{% if checklist.done < checklist.steps | length and user.role != 'auditor' %}
+<div class="card" data-testid="checklist"><h2>Getting started <span class="badge">{{ checklist.done }} of {{ checklist.steps | length }}</span></h2>
+  <div style="height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin:.3rem 0 .8rem"><div style="height:100%;width:{{ (100 * checklist.done / checklist.steps | length) | round(0) }}%;background:var(--accent)"></div></div>
+  <ol class="small" style="columns:2;column-gap:2rem;margin:0">{% for label, ok, href in checklist.steps %}<li style="margin:.2rem 0">{% if ok %}<span class="badge good">done</span> {{ label }}{% else %}<a href="{{ href }}">{{ label }}</a>{% endif %}</li>{% endfor %}</ol>
+</div>
+{% endif %}
 <div class="row">
   <div class="card" data-testid="waiting">
     <h2>Waiting for you</h2>

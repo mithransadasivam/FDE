@@ -1,6 +1,6 @@
 # Notice to candidates
 
-You are about to talk to an AI interviewer. It will ask you up to 8 questions, some with a diagram. Your answers are recorded and turned into text, and the text is scored by AI against the skills for this role. Only what you say is scored, never your voice, accent or how you speak. A recruiter reviews every interview and makes every decision. Recordings are kept for 6 months and then deleted. If you would rather speak to a person, choose "Ask for a person instead": it will not affect how your application is treated.
+You are about to talk to an AI interviewer. The interview takes about 25 minutes and you answer by voice. The questions follow on from your answers, and some come with a diagram. Your answers are turned into text, and the text is scored by AI against the skills for this role. Only what you say is scored, never your voice, accent or how you speak. The interview is recorded (the questions and your answers) so the hiring team can review it: the hiring manager and the recruiters for this job can listen to it, and the recording is deleted after 6 months. A recruiter reviews every interview and makes every decision. If you would rather speak to a person, choose "Ask for a person instead": it will not affect how your application is treated.
 
 ## Before a copilot-assisted interview
 

@@ -4,24 +4,27 @@ from pathlib import Path
 from fastapi import Request
 from fastapi.templating import Jinja2Templates
 
+from app import branding
+
 TEMPLATE_DIR = Path(__file__).resolve().parent.parent.parent / "templates"
 templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
 # One place for the menus. Hiding a link is not security: each route also has its own role check.
 MENUS = {
     "hiring_manager": [("Requisitions", "/requisitions"), ("Candidates (blind)", "/candidates"),
-                       ("Screening", "/screening"), ("Interviews", "/interviews"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Demo mode", "/demo")],
+                       ("Screening", "/screening"), ("Interviews", "/interviews"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Compare", "/compare"), ("Analytics", "/analytics"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Users", "/users"), ("Integrations", "/integrations"), ("Settings", "/settings"), ("Account", "/account"), ("Help", "/help"), ("Demo mode", "/demo")],
     "recruiter": [("Requisitions", "/requisitions"), ("Candidates", "/candidates"),
-                  ("Review queue", "/review"), ("Screening", "/screening"), ("Interviews", "/interviews"),
-                  ("Copilot", "/copilot"), ("Outbox", "/outbox"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Demo mode", "/demo")],
+                  ("Review queue", "/review"), ("Data requests", "/data-requests"), ("Screening", "/screening"), ("Interviews", "/interviews"),
+                  ("Copilot", "/copilot"), ("Outbox", "/outbox"), ("Compliance", "/compliance"), ("Assistant", "/assistant"), ("Pipeline", "/pipeline"), ("Compare", "/compare"), ("Analytics", "/analytics"), ("Trust & cost", "/trust"), ("Decision log", "/log"), ("Account", "/account"), ("Help", "/help"), ("Demo mode", "/demo")],
+    "auditor": [("Analytics", "/analytics"), ("Decision log", "/log"), ("Account", "/account"), ("Help", "/help")],
 }
 
 ROLE_LABELS = {"hiring_manager": "Hiring manager", "recruiter": "Recruiter"}
 
 # How the sidebar groups the menu, and the icon for each link (the icons are in templates/base.html)
-NAV_GROUPS = [("Hiring", ["/requisitions", "/candidates", "/review", "/screening"]), ("Interviews", ["/interviews", "/copilot"]),
-              ("Assist", ["/assistant", "/outbox"]), ("Control", ["/pipeline", "/compliance", "/trust", "/log", "/demo"])]
-ICONS = {"/requisitions": "i-doc", "/candidates": "i-users", "/review": "i-check", "/screening": "i-target", "/interviews": "i-mic", "/copilot": "i-headset",
+NAV_GROUPS = [("Hiring", ["/requisitions", "/candidates", "/review", "/data-requests", "/screening", "/compare"]), ("Interviews", ["/interviews", "/copilot"]),
+              ("Assist", ["/assistant", "/outbox"]), ("Control", ["/pipeline", "/analytics", "/compliance", "/trust", "/log", "/demo"]), ("Admin", ["/users", "/integrations", "/settings", "/account", "/help"])]
+ICONS = {"/requisitions": "i-doc", "/candidates": "i-users", "/review": "i-check", "/screening": "i-target", "/compare": "i-users", "/analytics": "i-chart", "/users": "i-users", "/integrations": "i-inbox", "/data-requests": "i-shield", "/settings": "i-gear", "/account": "i-user", "/help": "i-help", "/interviews": "i-mic", "/copilot": "i-headset",
          "/assistant": "i-chat", "/outbox": "i-mail", "/pipeline": "i-board", "/compliance": "i-shield", "/trust": "i-chart", "/log": "i-log", "/demo": "i-play"}
 
 
@@ -43,12 +46,16 @@ def flash(request: Request, message: str, kind: str = "good") -> None:
 
 def render(request: Request, name: str, user=None, status_code: int = 200, **context):
     messages = request.session.pop("_flash", [])
+    from app.config import get_settings
+
+    menu = [m for m in MENUS.get(user.role, []) if get_settings().enable_integrations or m[1] != "/integrations"] if user else []  # hidden unless switched on
     context.update(
         user=user,
-        menu=MENUS.get(user.role, []) if user else [],
-        nav_groups=grouped_menu(MENUS.get(user.role, [])) if user else [],
+        menu=menu,
+        nav_groups=grouped_menu(menu) if user else [],
         role_label=ROLE_LABELS.get(user.role, "") if user else "",
         messages=messages,
+        brand=branding.load(),
         path=request.url.path,
     )
     return templates.TemplateResponse(request, name, context, status_code=status_code)

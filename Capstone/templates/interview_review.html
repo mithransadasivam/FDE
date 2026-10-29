@@ -2,40 +2,93 @@
 {% block title %}Interview scorecard #{{ cand.id }}{% endblock %}
 {% block content %}
 <h1>AI interview &middot; candidate #{{ cand.id }} <span class="badge {{ 'good' if s and s.status == 'DONE' else 'warn' }}">{{ s.status if s else 'NOT_STARTED' }}</span></h1>
-<p class="muted">Identity is hidden while scoring. The AI only recommends: a recruiter reviews the scorecard and decides.</p>
-{% if user.role == 'recruiter' and s is none or (user.role == 'recruiter' and s and s.status == 'NOT_STARTED') %}{% endif %}
-{% if user.role == 'recruiter' and cand.stage == 'AI_INTERVIEW' %}
+{% if s and s.sample %}<div class="flash" data-testid="sample-label"><strong>SAMPLE: fictional candidate.</strong> A simulated candidate answered these questions; nothing here is a real person.</div>{% endif %}
+<p class="muted">Identity is hidden while scoring. The AI only recommends: a recruiter reviews every score and its evidence, and decides.</p>
+{% if user.role == 'recruiter' and cand.stage == 'AI_INTERVIEW' and (s is none or s.status != 'DONE') %}
 <form method="post" action="/interviews/{{ cand.id }}/replay" class="card">
   <strong>Demo (fake mode)</strong> <span class="muted small">Run the whole interview from the recorded answers.</span>
   <select name="quality" style="width:auto"><option value="strong">strong answers</option><option value="partial">partial answers</option><option value="weak">weak answers</option></select>
   <button class="small">Replay recorded interview</button>
 </form>
 {% endif %}
-{% if s and s.scorecard %}
-{% set card = s.scorecard %}
-<div class="card">
-  <h2 style="margin-top:0">Scorecard <span class="badge">{{ card.total }} / 3</span> <span class="muted small">ended: {{ card.ended_reason }}</span></h2>
-  <table>
-    <tr><th>Question</th><th>Skill</th><th>Score</th><th>Evidence (exact words from the transcript)</th><th>Notes</th><th>Second scorer</th></tr>
-    {% for a in card.answers %}
-    <tr>
-      <td>{{ a.question_id }}<div class="small muted">{{ qs[a.question_id].question[:70] }}...</div></td><td>{{ a.skill }}</td>
-      <td>{% if a.skipped %}<span class="badge">skipped</span>{% else %}<span class="badge {{ 'good' if a.score == 3 else ('warn' if a.score >= 1 else 'bad') }}">{{ a.score }}/3</span>{% endif %}</td>
-      <td>{% if a.quote %}<em>&ldquo;{{ a.quote }}&rdquo;</em>
-          {% if a.audio_file and user.role == 'recruiter' %}<br><audio controls preload="none" src="/media/interview/{{ cand.id }}?ref={{ a.audio_file | urlencode }}" style="height:28px"></audio><span class="small muted"> from {{ '%d:%02d' | format((a.audio_start_s // 60) | int, (a.audio_start_s % 60) | int) }}</span>{% endif %}
-          {% else %}<span class="muted">no scoring evidence</span>{% endif %}</td>
-      <td class="small">{% if a.hint_used %}<span class="badge warn">hint given (best score 2)</span> {% endif %}{% if a.follow_up_asked %}follow-up: {{ a.follow_up_asked }}{% endif %}
-          {% if a.key_points_missed and not a.skipped %}<div class="muted">missed: {{ a.key_points_missed | join('; ') }}</div>{% endif %}</td>
-      <td>{{ card.second_scorer.get(a.question_id, '') }}{% if a.question_id in card.disagreements %} <span class="badge bad">please review</span>{% endif %}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  {% if card.disagreements %}<p class="small"><strong>The two scorers disagree on {{ card.disagreements | join(', ') }}:</strong> please read those answers yourself.</p>{% endif %}
-  {% if user.role == 'recruiter' %}
-  <form method="post" action="/interviews/{{ cand.id }}/review">
-    {% if s.reviewed_by %}<span class="badge good">reviewed by {{ s.reviewed_by }}</span>{% else %}<button>I have reviewed this scorecard</button>{% endif %}
-  </form>{% endif %}
+
+{% if card %}
+<div class="card" data-testid="overall">
+  <h2 style="margin-top:0">Overall <span class="badge good" data-testid="overall-score">{{ card.overall_100 }} / 100</span>
+    <span class="muted small">calculated by code from the rubric weights (best answer per skill, level out of 3) &middot; ended: {{ s.scorecard.ended_reason }}</span></h2>
+  <p class="small"><strong>Must-haves covered:</strong>
+    {% for m in card.must_haves %}<span class="badge {{ 'good' if m.covered else 'bad' }}">{{ m.skill }}{% if m.level is not none %}: {{ m.level }}/3{% endif %}</span> {% endfor %}</p>
+  {% if card.summary %}<div class="card" style="background:var(--surface-2)" data-testid="ai-summary"><span class="badge">AI-written summary</span>
+    <p style="margin:.4rem 0">{{ card.summary.text }}</p>
+    <p class="small muted">Written from the scores only. Strengths: {{ card.summary.strengths | join('; ') or 'none' }}. Gaps: {{ card.summary.gaps | join('; ') or 'none' }}.</p></div>{% endif %}
+  {% if card.scorers_disagree %}<div class="flash bad" data-testid="disagree"><strong>scorers disagree: please review</strong> &mdash; the two scorers' levels are 2 or more apart for
+    {{ card.scorers_disagree | join(', ') }}. Read those answers yourself; the levels are not averaged.</div>{% endif %}
 </div>
+
+{% for r in card.skills if r.asked %}
+<div class="card" style="margin-bottom:1rem" data-testid="skill-card">
+  <h3 style="margin-top:0">{{ r.skill }} <span class="muted small">weight {{ r.weight }}</span> {% if r.must_have %}<span class="badge warn">must-have</span>{% endif %}
+    <span class="badge {{ 'good' if r.level == 3 else ('warn' if r.level and r.level >= 1 else 'bad') }}">{{ r.level if r.level is not none else '-' }} / 3</span>
+    {% if r.second_level is not none %}<span class="badge">second scorer: {{ r.second_level }}</span>{% endif %}
+    {% if r.scorers_disagree %}<span class="badge bad">scorers disagree: please review</span>{% elif r.scorers_differ_by == 1 %}<span class="badge">scorers differ by 1</span>{% endif %}</h3>
+  {% if r.level_description %}<p class="small"><strong>Level {{ r.level }} means:</strong> {{ r.level_description }}</p>{% endif %}
+  {% if r.best %}<p><em>&ldquo;{{ r.best.quote }}&rdquo;</em> <span class="muted small">(exact words from the transcript)</span>
+    {% if audio_open and r.best.audio %}<br><audio controls preload="none" src="/media/interview/{{ cand.id }}?ref={{ r.best.audio | urlencode }}" style="height:28px"></audio>{% endif %}</p>
+  {% else %}<p class="muted">No scoring evidence: no verified quote.</p>{% endif %}
+  <p class="small muted">{% if r.hints %}hint given on {{ r.hints }} question(s) (best score 2) &middot; {% endif %}{{ r.follow_ups }} follow-up(s)</p>
+  <details><summary class="small">Questions asked ({{ r.questions | length }}) and why</summary>
+    <ol class="small">{% for q in r.questions %}
+      <li>{{ q.text }}<br><span class="muted">{{ q.kind }} &middot; why: {{ q.why }} &middot; {{ q.guard }}</span>
+        {% if q.diagram %}<pre class="mermaid" data-testid="mermaid-card">{{ q.diagram.text }}</pre>
+          {% if q.diagram_info %}<div class="small"><strong>Expected points</strong> (never shown to the candidate): {{ q.diagram_info.expected_points | join('; ') }}. <strong>Weakness:</strong> {{ q.diagram_info.weakness }}</div>{% endif %}{% endif %}</li>{% endfor %}
+    </ol></details>
+</div>{% endfor %}
+{% if card.skills | rejectattr('asked') | list %}<p class="small muted">Not asked about: {% for r in card.skills if not r.asked %}{{ r.skill }}{{ ', ' if not loop.last }}{% endfor %}.</p>{% endif %}
+
+<div class="card" data-testid="review-box">
+  <h2 style="margin-top:0">Your own review {% if s.review %}<span class="badge good">saved by {{ s.reviewed_by }}</span>{% endif %}</h2>
+  {% if s.review %}
+  <p class="small">Your levels: {% for k, v in s.review.levels.items() %}<strong>{{ k }}</strong> {{ v }}/3{{ '; ' if not loop.last }}{% endfor %}.{% if s.review.note %} Note: {{ s.review.note }}{% endif %}</p>
+  {% elif user.role == 'recruiter' %}
+  <p class="muted small">Read the quotes above and enter your own level (0 to 3) for each must-have skill. The audio stays hidden until you have: judge what was said, not how it sounded.</p>
+  <form method="post" action="/interviews/{{ cand.id }}/review">
+    {% for r in card.skills %}{% if r.must_have %}
+    <p><label for="level_{{ loop.index0 }}"><strong>{{ r.skill }}</strong></label>
+      <select id="level_{{ loop.index0 }}" name="level_{{ loop.index0 }}" data-testid="level-{{ loop.index0 }}" style="width:auto"><option value="">choose</option>{% for n in range(4) %}<option value="{{ n }}">{{ n }}</option>{% endfor %}</select></p>
+    {% endif %}{% endfor %}
+    <label for="note">Note (optional)</label><input id="note" name="note" type="text">
+    <p><button data-testid="save-review">Save my review</button></p>
+  </form>
+  {% else %}<p class="muted small">The recruiter enters their own levels first.</p>{% endif %}
+</div>
+
+<div class="card" data-testid="audio-box">
+  <h2 style="margin-top:0">Recording</h2>
+  {% if audio_open %}
+    {% if has_mp3 %}<audio controls preload="none" src="/interviews/{{ s.id }}/recording" data-testid="full-audio" style="width:100%"></audio>
+      <p class="small muted">Opening the recording is logged. <a href="/interviews/{{ s.id }}/recording.json">Timeline (JSON)</a></p>
+      {% if timeline %}<table class="small" data-testid="timeline"><tr><th>At</th><th>Who</th><th>What was said</th><th>Level</th></tr>
+        {% for c in timeline.clips %}<tr><td>{{ '%d:%02d' | format((c.start // 60) | int, (c.start % 60) | int) }}</td><td>{{ c.speaker }}</td><td>{{ c.text[:140] }}</td><td>{{ c.level if c.level is not none else '' }}</td></tr>{% endfor %}</table>{% endif %}
+    {% else %}<p class="muted">No recording was built for this interview (the candidate did not agree to recording, or it was deleted after the retention period).</p>{% endif %}
+  {% else %}<p class="muted" data-testid="audio-hidden">The audio is hidden until the recruiter has entered their own levels for the must-have skills.</p>{% endif %}
+</div>
+
+{% if user.role == 'recruiter' %}
+<div class="card" data-testid="decision-box">
+  <h2 style="margin-top:0">What happens next? <span class="muted small">your decision, with a reason</span></h2>
+  {% if cand.stage == 'AI_INTERVIEW' and s.review %}
+  <form method="post" action="/interviews/{{ cand.id }}/decision">
+    <label for="reason">Reason (required)</label><input id="reason" name="reason" type="text" data-testid="decision-reason" placeholder="Why are you moving this candidate?">
+    <p><button name="decision" value="human_interview" data-testid="human-interview">Human interview</button>
+       <button name="decision" value="withdraw" class="danger" data-testid="withdraw">Withdraw</button></p>
+  </form>
+  {% elif cand.stage != 'AI_INTERVIEW' %}<p class="muted small">This candidate is now in {{ cand.stage }}.</p>
+  {% else %}<p class="muted small">Save your own review first: the decision comes after it.</p>{% endif %}
+</div>
+{% endif %}
+<script src="/static/vendor/mermaid.min.js"></script>
+<script>if (window.mermaid) { window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict" }); window.mermaid.run({ querySelector: "pre.mermaid" }).catch(() => {}); }</script>
+
 {% elif s and s.status == 'PERSON_REQUESTED' %}
 <div class="card"><span class="badge warn">asked for a person</span> The candidate chose an interview with a person. Please arrange it.</div>
 {% else %}

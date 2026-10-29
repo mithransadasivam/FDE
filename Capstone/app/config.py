@@ -32,6 +32,8 @@ class Settings(BaseSettings):
     guardrails_enabled: bool = True  # switched off only by the red-team script, to measure the "before" state
     phoenix_endpoint: str = ""  # e.g. http://phoenix:6006/v1/traces; traces are always kept in the database too
     kit_dir: Path = Path("starter_kit")
+    enable_integrations: bool = False  # the REST API, API keys and webhooks are hidden (not mounted) unless this is on
+    webhooks_live: bool = False  # webhooks are only really sent when this is on; otherwise deliveries are recorded as "not sent"
     demo_mode: bool = False  # shows the demo accounts on the sign-in page (fictional demo data only)
 
 

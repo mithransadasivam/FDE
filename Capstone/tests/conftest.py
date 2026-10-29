@@ -5,6 +5,7 @@ from pathlib import Path
 
 _TMP = Path(tempfile.mkdtemp(prefix="hiring_tests_"))
 os.environ["FAKE_MODELS"] = "1"
+os.environ["ENABLE_INTEGRATIONS"] = "1"  # the API and webhooks are off by default; the tests that cover them switch them on
 os.environ["DATABASE_URL"] = f"sqlite:///{(_TMP / 'test.db').as_posix()}"
 os.environ["STORAGE_DIR"] = str(_TMP / "storage")
 os.environ["OPS_DATABASE_URL"] = f"sqlite:///{(_TMP / 'ops.db').as_posix()}"
@@ -26,6 +27,10 @@ def fresh_db():
     from app import models  # noqa: F401
     from app.ai.llm import clear_cache
     clear_cache()
+    from app import branding
+    branding.clear_cache()
+    import shutil
+    shutil.rmtree(_TMP / "storage" / "interviews", ignore_errors=True)  # interview audio from an earlier test must not leak into this one
     from app.supervisor_graph import reset_checkpoints
     reset_checkpoints()
     Base.metadata.drop_all(engine)

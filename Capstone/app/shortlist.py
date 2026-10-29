@@ -70,5 +70,8 @@ def approve_shortlist(db: Session, req_id: int, candidate_ids: list[int], actor:
         e.status = "APPROVED" if e.candidate_id in moved else "NOT_SELECTED"
     db.add(DecisionLog(actor=actor, action="shortlist approved", subject=f"requisition:{req_id}", reason=reason.strip(),
                        evidence={"candidates": moved}))
+    from app.integrations import emit
+
+    emit(db, "shortlist.approved", {"requisition": req_id, "candidates": moved})
     db.commit()
     return moved

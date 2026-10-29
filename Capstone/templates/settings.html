@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Settings</div><h1>Company settings</h1>
+  <p class="muted">The name, colour and contact your candidates and team see. Every change is written to the decision log.</p></div></div>
+<form method="post" action="/settings" class="card" style="max-width:640px" data-testid="settings-form">
+  <label for="company_name">Company name</label><input id="company_name" name="company_name" type="text" value="{{ values.company_name }}" required>
+  <label for="tagline">Tagline (under the name in the menu)</label><input id="tagline" name="tagline" type="text" value="{{ values.tagline }}">
+  <label for="accent">Accent colour</label>
+  <div style="display:flex;gap:.6rem;align-items:center"><input id="accent" name="accent" type="text" value="{{ values.accent }}" pattern="#[0-9a-fA-F]{6}" style="max-width:9rem">
+    <span style="width:28px;height:28px;border-radius:8px;background:{{ values.accent }};border:1px solid var(--line)"></span></div>
+  <label for="support_email">Support email (shown to candidates)</label><input id="support_email" name="support_email" type="text" value="{{ values.support_email }}">
+  <label for="welcome">Welcome line on the careers page</label><input id="welcome" name="welcome" type="text" value="{{ values.welcome }}">
+  <p><button type="submit" data-testid="save-settings">Save settings</button></p>
+</form>
+{% endblock %}

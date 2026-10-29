@@ -18,6 +18,10 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(200))
     role: Mapped[str] = mapped_column(String(30))
     password_hash: Mapped[str] = mapped_column(String(200))
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)  # a deactivated user cannot sign in (their past actions stay in the log)
+    last_login: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    failed_logins: Mapped[int] = mapped_column(default=0)
+    locked_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class Requisition(Base):
@@ -51,6 +55,7 @@ class Candidate(Base):
     access_token: Mapped[str] = mapped_column(String(100), unique=True)
     profile: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     stage: Mapped[str] = mapped_column(String(20), default="APPLIED")
+    erased_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)  # personal data was erased at the candidate's request
     error: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 

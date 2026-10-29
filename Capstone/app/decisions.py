@@ -73,6 +73,9 @@ def decide(db: Session, cand: Candidate, decision: str, reason: str, actor: str)
     db.add(row)
     db.add(DecisionLog(actor=actor, action=f"final decision: {decision}", subject=f"candidate:{cand.id}", reason=reason.strip(), evidence=card))
     draft_decision(db, cand, DECISIONS[decision])
+    from app.integrations import emit
+
+    emit(db, "decision.recorded", {"candidate": cand.id, "decision": decision})
     return row
 
 

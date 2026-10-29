@@ -15,26 +15,42 @@
 <div class="card" id="notice" data-testid="notice" style="border-color:#1f4fd8">
   <h2 style="margin-top:0">You are talking to an AI interviewer</h2>
   <p>{{ notice }}</p>
+  {% if not acked %}<label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" id="consent-box" data-testid="consent-box"> {{ consent_text }}</label>{% endif %}
   <p>
-    <button id="start-btn" data-testid="start-btn">I understand, start the interview</button>
+    <button id="start-btn" data-testid="start-btn">Start my interview</button>
     <button id="person-btn" data-testid="person-btn" class="secondary">Ask for a person instead</button>
   </p>
+  <div class="flash bad" id="mic-blocked" data-testid="mic-blocked" style="display:none">Your microphone is blocked. Allow it in your browser (the lock icon next to the address), then reload this page. You can also type your answers instead.</div>
 </div>
 
 <div id="stage" style="display:none">
   <div class="row">
     <div class="card">
       <div class="muted small" id="progress" data-testid="progress"></div>
-      <h2 id="question-text" data-testid="question-text" style="margin:.4rem 0 1rem"></h2>
+      <div class="muted small" id="time-left" data-testid="time-left"></div>
+      <h2 id="question-text" data-testid="question-text" style="margin:.4rem 0 .6rem"></h2>
+      <p><audio id="q-audio" data-testid="q-audio" controls preload="auto" style="width:100%"></audio>
+         <button id="play-again" data-testid="play-again" class="secondary small">Play again</button></p>
       <div id="diagram-box" style="display:none"><img id="diagram" data-testid="diagram" alt="architecture diagram" style="max-width:100%;border:1px solid var(--line);border-radius:8px"><div class="muted small" id="diagram-title"></div></div>
+      <div id="mermaid-box" style="display:none"><div id="mermaid-diagram" data-testid="mermaid-diagram" style="border:1px solid var(--line);border-radius:8px;padding:.5rem;overflow:auto;cursor:zoom-in" title="Click to zoom"></div>
+        <div class="muted small" id="mermaid-title"></div></div>
     </div>
     <div class="card">
       <h3 style="margin-top:0">Your answer</h3>
-      <p><button id="record-btn" data-testid="record-btn">Record my answer</button>
-         <button id="stop-btn" data-testid="stop-btn" class="secondary" style="display:none">I have finished</button>
-         <span id="rec-status" class="muted small"></span></p>
+      <p><button id="record-btn" data-testid="record-btn">Start answer</button>
+         <button id="stop-btn" data-testid="stop-btn" class="secondary" style="display:none">I've finished</button>
+         <span id="timer" data-testid="timer" class="muted small"></span></p>
+      <div id="level" style="height:8px;background:var(--line);border-radius:4px;overflow:hidden;display:none"><div id="level-bar" data-testid="level-bar" style="height:100%;width:0;background:#1f4fd8"></div></div>
+      <div id="rec-status" class="muted small"></div>
+      <div class="flash bad" id="mic-blocked2" style="display:none">Your microphone is blocked. Allow it in your browser (the lock icon next to the address), or type your answer below.</div>
+      <div id="answer-review" data-testid="answer-review" style="display:none">
+        <p class="small muted">This is what we heard. Submit it, or record again.</p>
+        <pre class="transcript" id="heard" data-testid="heard"></pre>
+        <button id="submit-answer" data-testid="submit-answer">Submit this answer</button>
+        <button id="record-again" data-testid="record-again" class="secondary">Record again</button>
+      </div>
       <label for="answer-text">Or type your answer</label>
-      <textarea id="answer-text" data-testid="answer-text" rows="4" placeholder="Type here if you cannot record"></textarea>
+      <textarea id="answer-text" data-testid="answer-text" rows="3" placeholder="Type here if you cannot record"></textarea>
       <p><button id="send-answer" data-testid="send-answer" class="secondary">Send typed answer</button></p>
       {% if fake %}
       <label for="fixture-select">Demo (fake mode): play a recorded answer</label>
@@ -52,29 +68,60 @@
   </div>
 </div>
 <div class="card" id="done-box" data-testid="done-msg" style="display:none"><h2 style="margin-top:0">Thank you, your interview is complete</h2>
-  <p>A recruiter reviews every interview and makes every decision. We will be in touch.</p></div>
+  <p>Thank you. A recruiter will review your interview and contact you.</p></div>
 <div class="card" id="person-box" data-testid="person-requested" style="display:none"><h2 style="margin-top:0">A person will interview you</h2>
   <p>A recruiter will contact you to arrange it. This does not affect your application.</p></div>
 
 <script>
 const T = "{{ token }}";
+const FAKE = {{ 'true' if fake else 'false' }};
 const $ = (id) => document.getElementById(id);
-let recorder = null, chunks = [];
+let recorder = null, chunks = [], stream = null, timerId = null, startedAt = 0, audioCtx = null, leftTimer = null, secondsLeft = 0;
 
-function speak(text) {
+function speakInBrowser(text) {
   try { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.rate = 0.95; window.speechSynthesis.speak(u); } } catch (e) {}
+}
+function playQuestion(prompt) {
+  const a = $("q-audio");
+  if (prompt.audio) {
+    a.src = "/interview/" + T + "/audio/" + prompt.audio.split("/").pop();
+    a.play().catch(() => {});   // allowed: the candidate has just pressed Start or Submit
+    if (FAKE) speakInBrowser(prompt.text);   // fake mode saves a silent file; the browser's voice is used so there is something to hear
+  } else { a.removeAttribute("src"); speakInBrowser(prompt.text); }
+}
+function tickLeft() {
+  secondsLeft = Math.max(0, secondsLeft - 1);
+  $("time-left").textContent = "Time left: about " + Math.ceil(secondsLeft / 60) + " min (" + Math.floor(secondsLeft / 60) + ":" + String(secondsLeft % 60).padStart(2, "0") + ")";
 }
 function show(prompt) {
   $("stage").style.display = "block"; $("notice").style.display = "none";
   $("question-text").textContent = prompt.text;
-  $("progress").textContent = "Question " + prompt.number + " of " + prompt.of + (prompt.is_follow_up ? " (follow-up)" : "") + " · about " + Math.ceil(prompt.seconds_left / 60) + " min left";
+  $("progress").textContent = prompt.opening ? "Opening question" : ("Question " + prompt.number + " of " + prompt.of + (prompt.is_follow_up ? " (follow-up)" : ""));
+  secondsLeft = prompt.seconds_left; clearInterval(leftTimer); tickLeft(); leftTimer = setInterval(tickLeft, 1000);
   if (prompt.diagram) { $("diagram").src = "/interview/" + T + "/diagram/" + prompt.diagram + "?t=" + Date.now(); $("diagram-title").textContent = prompt.diagram_title || ""; $("diagram-box").style.display = "block"; }
   else { $("diagram-box").style.display = "none"; }
+  showMermaid(prompt);
   const sel = $("fixture-select");
   if (sel) { for (const o of sel.options) { o.hidden = o.dataset.q !== prompt.question_id; } const first = [...sel.options].find(o => !o.hidden); if (first) sel.value = first.value; }
-  speak(prompt.text);
+  $("answer-review").style.display = "none";
+  playQuestion(prompt);
 }
-function finished() { $("stage").style.display = "none"; $("done-box").style.display = "block"; }
+let mermaidReady = null;
+function loadMermaid() {
+  if (!mermaidReady) mermaidReady = new Promise((ok, no) => { const s = document.createElement("script"); s.src = "/static/vendor/mermaid.min.js"; s.onload = () => { window.mermaid.initialize({ startOnLoad: false, securityLevel: "strict" }); ok(); }; s.onerror = no; document.head.appendChild(s); });
+  return mermaidReady;
+}
+async function showMermaid(prompt) {
+  const box = $("mermaid-box");
+  if (!prompt.mermaid) { box.style.display = "none"; return; }
+  try {
+    await loadMermaid();
+    const out = await window.mermaid.render("m" + Date.now(), prompt.mermaid.text);
+    $("mermaid-diagram").innerHTML = out.svg; $("mermaid-title").textContent = prompt.mermaid.title || ""; box.style.display = "block";
+  } catch (e) { box.style.display = "none"; }
+}
+$("mermaid-diagram").onclick = () => { const d = $("mermaid-diagram"); d.style.transform = d.style.transform ? "" : "scale(1.8)"; d.style.transformOrigin = "top left"; d.style.cursor = d.style.transform ? "zoom-out" : "zoom-in"; };
+function finished() { clearInterval(leftTimer); $("stage").style.display = "none"; $("done-box").style.display = "block"; }
 async function post(path, body) {
   const r = await fetch("/interview/" + T + path, { method: "POST", body });
   if (!r.ok) { let m = r.statusText; try { m = (await r.json()).detail || m; } catch (e) {} alert(m); return null; }
@@ -85,29 +132,54 @@ function handle(res) {
   $("transcript").textContent = res.transcript || "";
   if (res.done) { finished(); } else if (res.next) { show(res.next); $("answer-text").value = ""; }
 }
-async function send(fd) { $("rec-status").textContent = "Scoring..."; handle(await post("/answer", fd)); $("rec-status").textContent = ""; }
+async function send(path, fd) { $("rec-status").textContent = "Scoring..."; handle(await post(path, fd)); $("rec-status").textContent = ""; }
 
 $("start-btn").onclick = async () => {
-  if (!(await post("/notice", new FormData()))) return;
+  const box = $("consent-box");
+  if (box && !box.checked) { alert("Please tick the box to say you understand the interview is recorded."); return; }
+  const fd = new FormData(); fd.append("agree", "yes");
+  if (!(await post("/notice", fd))) return;
   const r = await post("/start", new FormData());
   if (r) show(r.prompt);
 };
 async function person() { const r = await post("/person", new FormData()); if (r) { $("stage").style.display = "none"; $("notice").style.display = "none"; $("person-box").style.display = "block"; } }
 $("person-btn").onclick = person;
 $("person-btn2").onclick = person;
-$("send-answer").onclick = () => { const fd = new FormData(); fd.append("text", $("answer-text").value); send(fd); };
-document.querySelectorAll(".cmd").forEach(b => b.onclick = () => { const fd = new FormData(); fd.append("text", b.dataset.say); send(fd); });
-const pf = $("play-fixture"); if (pf) pf.onclick = () => { const fd = new FormData(); fd.append("fixture", $("fixture-select").value); send(fd); };
+$("play-again").onclick = () => { const a = $("q-audio"); a.currentTime = 0; a.play().catch(() => {}); if (FAKE) speakInBrowser($("question-text").textContent); };
+$("send-answer").onclick = () => { const fd = new FormData(); fd.append("text", $("answer-text").value); send("/answer", fd); };
+document.querySelectorAll(".cmd").forEach(b => b.onclick = () => { const fd = new FormData(); fd.append("text", b.dataset.say); send("/answer", fd); });
+const pf = $("play-fixture"); if (pf) pf.onclick = () => { const fd = new FormData(); fd.append("fixture", $("fixture-select").value); send("/answer", fd); };
+
+// ---- recording: audio only (no camera is ever requested) ---------------------------------------------------------------------
+function micBlocked() { $("mic-blocked2").style.display = "block"; $("mic-blocked").style.display = "block"; $("rec-status").textContent = ""; }
+if (navigator.permissions && navigator.permissions.query) {
+  navigator.permissions.query({ name: "microphone" }).then(p => { if (p.state === "denied") micBlocked(); p.onchange = () => { if (p.state === "denied") micBlocked(); }; }).catch(() => {});
+}
+function stopLevel() { clearInterval(timerId); $("level").style.display = "none"; if (audioCtx) { audioCtx.close().catch(() => {}); audioCtx = null; } }
 $("record-btn").onclick = async () => {
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     recorder = new MediaRecorder(stream); chunks = [];
     recorder.ondataavailable = (e) => chunks.push(e.data);
-    recorder.onstop = () => { const fd = new FormData(); fd.append("audio", new Blob(chunks, { type: "audio/webm" }), "answer.webm"); fd.append("text", $("answer-text").value); stream.getTracks().forEach(t => t.stop()); send(fd); };
-    recorder.start(); $("record-btn").style.display = "none"; $("stop-btn").style.display = "inline-block"; $("rec-status").textContent = "Recording...";
-  } catch (e) { $("rec-status").textContent = "No microphone available: please type your answer."; }
+    recorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop()); stopLevel();
+      const fd = new FormData(); fd.append("audio", new Blob(chunks, { type: "audio/webm" }), "answer.webm");
+      $("rec-status").textContent = "Turning your answer into text...";
+      const res = await post("/record", fd);
+      $("rec-status").textContent = "";
+      if (res) { $("heard").textContent = res.transcript || "(nothing was heard)"; $("answer-review").style.display = "block"; }
+    };
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const an = audioCtx.createAnalyser(); audioCtx.createMediaStreamSource(stream).connect(an); const buf = new Uint8Array(an.fftSize);
+    startedAt = Date.now(); $("level").style.display = "block";
+    timerId = setInterval(() => { an.getByteTimeDomainData(buf); let m = 0; for (const v of buf) m = Math.max(m, Math.abs(v - 128)); $("level-bar").style.width = Math.min(100, m * 1.6) + "%";
+      const s = Math.floor((Date.now() - startedAt) / 1000); $("timer").textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }, 100);
+    recorder.start(); $("record-btn").style.display = "none"; $("stop-btn").style.display = "inline-block"; $("rec-status").textContent = "Recording... speak your answer.";
+  } catch (e) { micBlocked(); $("rec-status").textContent = ""; }
 };
 $("stop-btn").onclick = () => { if (recorder) recorder.stop(); $("stop-btn").style.display = "none"; $("record-btn").style.display = "inline-block"; };
+$("submit-answer").onclick = () => send("/submit", new FormData());
+$("record-again").onclick = async () => { await post("/discard", new FormData()); $("answer-review").style.display = "none"; $("heard").textContent = ""; };
 {% if status == 'IN_PROGRESS' %}
 fetch("/interview/" + T + "/state").then(r => r.json()).then(s => { if (s.prompt) show(s.prompt); });  // resume after a dropped connection
 {% endif %}

@@ -80,4 +80,19 @@ def build_plan(db: Session, candidate_id: int, req: Requisition) -> InterviewPla
             if q["id"] not in used:
                 plan.append(PlanItem(question_id=q["id"], skill=q["skill"], core=False, diagram=q["diagram"], reason=f"more depth on {item['skill']}"))
                 used.add(q["id"])
-    return InterviewPlan(candidate_id=candidate_id, items=plan[:MAX_QUESTIONS])
+    plan = plan[:MAX_QUESTIONS]
+    # every must-have skill is asked about at least once (Day 2, prompt 11): a missing one replaces the last extra question
+    for item in sorted((i for i in items if i.get("must_have")), key=lambda i: (-i["weight"], i["skill"])):
+        if any(p.skill.lower() == item["skill"].lower() for p in plan):
+            continue
+        q = next(iter(_by_skill(item["skill"], True) or _by_skill(item["skill"])), None)
+        if q is None:
+            continue
+        entry = PlanItem(question_id=q["id"], skill=q["skill"], core=False, diagram=q["diagram"], reason=f"must-have skill: {item['skill']}")
+        if len(plan) < MAX_QUESTIONS:
+            plan.append(entry)
+        else:
+            victim = next((k for k in range(len(plan) - 1, -1, -1) if not plan[k].core and not any(i.get("must_have") and i["skill"].lower() == plan[k].skill.lower() for i in items)), None)
+            if victim is not None:
+                plan[victim] = entry
+    return InterviewPlan(candidate_id=candidate_id, items=plan)

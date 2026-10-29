@@ -15,7 +15,7 @@ def load_recorded() -> list[dict]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
 
 
-def run_recorded_interview(db: Session, cand: Candidate, req: Requisition, quality: str = "strong") -> dict:
+def run_recorded_interview(db: Session, cand: Candidate, req: Requisition, quality: str = "strong", build: bool = False) -> dict:
     """The candidate acknowledges the notice (recorded as a demo replay), then every question is answered from a recorded file.
     quality is the kind of recorded answer to prefer: strong, partial or weak. When a follow-up is asked, the 'candidate'
     adds the first key point they had missed, so the follow-up visibly raises the score."""
@@ -23,14 +23,16 @@ def run_recorded_interview(db: Session, cand: Candidate, req: Requisition, quali
     bank = load_questions()
     session = get_or_create_session(db, cand)
     if not session.notice_ack:
-        session.notice_ack = True
+        session.notice_ack, session.consent_recording = True, True
         db.add(DecisionLog(actor="candidate", action="AI notice acknowledged", subject=f"candidate:{cand.id}", reason="demo replay from recorded answers"))
     agent = InterviewerAgent(db, session)
-    prompt = agent.start(req)
+    prompt = agent.start(req, opening=True)
     kit = Path(get_settings().kit_dir)
     result: dict = {}
     while prompt:
-        if prompt["is_follow_up"]:
+        if prompt.get("opening"):  # the fixed opening question is answered, not scored
+            result = agent.submit(text="In my most recent role I handled support tickets for cloud customers and took part in the on-call rota.")
+        elif prompt["is_follow_up"]:
             q = bank[prompt["question_id"]]
             turn = session.state["turns"][-1]
             missed = turn["score"]["key_points_missed"]
@@ -47,4 +49,8 @@ def run_recorded_interview(db: Session, cand: Candidate, req: Requisition, quali
         prompt = result.get("next")
         if result.get("done"):
             break
+    if result.get("done") and build:
+        from app.interview.recording import build_recording
+
+        build_recording(db, session)
     return result

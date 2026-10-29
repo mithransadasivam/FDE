@@ -1,0 +1,52 @@
+{
+ "steps": [
+  "1. Hiring manager uploads the voice note; the requisition agent writes the job description and rubric; wording is checked; the hiring manager approves and publishes",
+  "2. 52 candidates apply (PDF, Word, scans, screenshots); the document agent reads each CV; identity is hidden; unsure fields go to the review queue",
+  "3. The recruiter checks 8 scanned CVs against the originals and confirms the fields",
+  "4. The screening agent scores every candidate 0-3 on every skill with an exact CV quote; the compliance reviewer checks every quote; a shortlist is suggested",
+  "5. The recruiter approves the shortlist: the top 5 plus 2 added to follow the recorded interviews (a person decides)",
+  "6. The recruiter invites the shortlist to the AI interview and approves the invitations in the outbox; one candidate asks for a person instead",
+  "7. AI interviews run from recorded answers (spoken questions, diagrams, follow-ups); each answer is scored with a quote; the recruiter reviews every scorecard",
+  "8. Second round: the recruiter moves four candidates to a human interview; the copilot follows each recording live; the recruiter scores",
+  "9. The recruiter decides on each interviewed candidate, with a reason; the decision emails are drafted and approved",
+  "10. A candidate who was not shortlisted asks why; an explanation is drafted from the evidence; the recruiter reviews and approves it",
+  "11. Final checks: the compliance reviewer re-checks everything; the decision log is checked for any decision, message or move without a person"
+ ],
+ "summary": {
+  "candidates": 52,
+  "stages": {
+   "AI_INTERVIEW": 3,
+   "DECISION": 4,
+   "SCREENED": 45
+  },
+  "scores_with_verified_quote": "262/262",
+  "ai_interviews_done": 6,
+  "asked_for_a_person": 1,
+  "copilot_interviews": 4,
+  "final_decisions": [
+   [
+    "ADVANCE",
+    "recruiter@example.com"
+   ],
+   [
+    "NOT_THIS_TIME",
+    "recruiter@example.com"
+   ],
+   [
+    "HOLD",
+    "recruiter@example.com"
+   ],
+   [
+    "ADVANCE",
+    "recruiter@example.com"
+   ]
+  ],
+  "emails_sent_after_approval": 16,
+  "emails_waiting": 0,
+  "decision_log_entries": 332,
+  "decisions_messages_or_moves_without_a_person": 0,
+  "new_compliance_findings": 0,
+  "applications_accepted": 52,
+  "applications_refused": 0
+ }
+}

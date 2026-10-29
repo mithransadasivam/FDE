@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Integrations{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Integrations</div><h1>Integrations</h1>
+  <p class="muted">A read-only, blind REST API (candidate numbers, stages, scores and quotes; never names or contact details) and webhooks that announce events. Connect your applicant tracking system or reporting tools.</p></div></div>
+{% if new_key %}<div class="flash good" data-testid="new-key"><strong>Your new API key (shown once, copy it now):</strong> <code>{{ new_key }}</code></div>{% endif %}
+<div class="row">
+  <div class="card" style="flex:1 1 440px" data-testid="keys">
+    <h2>API keys</h2>
+    <table><tr><th>Name</th><th>Key</th><th>Last used</th><th></th></tr>
+      {% for k in keys %}<tr><td>{{ k.name }}</td><td><code>{{ k.prefix }}…</code></td><td class="small">{{ k.last_used_at.strftime('%Y-%m-%d %H:%M') if k.last_used_at else 'never' }}</td>
+        <td>{% if k.revoked %}<span class="badge bad">revoked</span>{% else %}<form method="post" action="/integrations/keys/{{ k.id }}/revoke" style="display:inline"><button class="secondary small">Revoke</button></form>{% endif %}</td></tr>
+      {% else %}<tr><td colspan="4" class="muted">No keys yet.</td></tr>{% endfor %}</table>
+    <form method="post" action="/integrations/keys" style="margin-top:.8rem;display:flex;gap:.5rem"><input name="name" type="text" placeholder="Name, e.g. Reporting tool" required><button type="submit" data-testid="make-key">Create key</button></form>
+    <details style="margin-top:.8rem"><summary class="small">How to use it</summary>
+<pre class="small" style="white-space:pre-wrap">curl -H "Authorization: Bearer &lt;key&gt;" {{ request.base_url }}api/v1/requisitions
+GET /api/v1/requisitions/1/candidates?stage=SHORTLISTED
+GET /api/v1/candidates/7
+GET /api/v1/events?after=120</pre><p class="small muted">60 requests a minute per key. Read-only: the API cannot move, score or decide anyone.</p></details>
+  </div>
+  <div class="card" style="flex:1 1 440px" data-testid="hooks">
+    <h2>Webhooks {% if not live %}<span class="badge warn">test mode: events are recorded, not sent</span>{% else %}<span class="badge good">live</span>{% endif %}</h2>
+    <table><tr><th>URL</th><th>Events</th><th></th></tr>
+      {% for h in hooks if h.active %}<tr><td class="small">{{ h.url }}</td><td class="small">{{ h.events | join(', ') }}</td><td><form method="post" action="/integrations/webhooks/{{ h.id }}/delete"><button class="secondary small">Remove</button></form></td></tr>
+      {% else %}<tr><td colspan="3" class="muted">No webhooks yet.</td></tr>{% endfor %}</table>
+    <form method="post" action="/integrations/webhooks" style="margin-top:.8rem">
+      <label for="url">URL</label><input id="url" name="url" type="text" placeholder="https://example.com/hooks/hiring" required>
+      {% for k, v in events.items() if k != 'test' %}<label style="display:flex;gap:.5rem;align-items:center;font-weight:400"><input type="checkbox" name="event" value="{{ k }}"> {{ v }}</label>{% endfor %}
+      <p><button type="submit" data-testid="add-hook">Add webhook</button></p></form>
+    <form method="post" action="/integrations/test"><button class="secondary small">Send a test event</button></form>
+  </div>
+</div>
+<div class="card" data-testid="deliveries"><h2>Delivery log</h2>
+  <table><tr><th>When</th><th>Event</th><th>Status</th><th>Detail</th></tr>
+    {% for d in deliveries %}<tr><td class="small">{{ d.at.strftime('%Y-%m-%d %H:%M:%S') }}</td><td>{{ d.event }}</td><td><span class="badge {{ 'good' if d.status == 'sent' else ('bad' if d.status == 'failed' else 'warn') }}">{{ d.status }}</span></td><td class="small">{{ d.error }}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">Nothing yet.</td></tr>{% endfor %}</table>
+  <p class="small muted">Each delivery is signed with the webhook's secret in the <code>X-Signature</code> header (HMAC-SHA256 of the body). Payloads hold candidate numbers only.</p></div>
+{% endblock %}

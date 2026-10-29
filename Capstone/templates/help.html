@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Help{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Help</div><h1>How {{ brand.company_name }} works</h1>
+  <p class="muted">A short guide for hiring managers, recruiters and auditors.</p></div></div>
+<div class="row">
+  <div class="card" style="flex:1 1 360px"><h2>The flow</h2>
+    <ol>
+      <li><strong>Requisition</strong> &mdash; the hiring manager records a voice note; the platform writes the job and a fair rubric and checks the wording. The manager approves and publishes.</li>
+      <li><strong>Applications</strong> &mdash; candidates apply on the careers page and are told AI is used. CVs are read (PDF, Word, scans, screenshots); unsure fields wait in the <a href="/review">review queue</a>.</li>
+      <li><strong>Screening</strong> &mdash; every candidate is scored on every skill with the exact CV sentence behind it. <a href="/screening">The recruiter approves the shortlist</a>.</li>
+      <li><strong>AI interview</strong> &mdash; invited candidates are interviewed by voice (they can ask for a person instead). Questions follow their answers; every answer is scored with a quote.</li>
+      <li><strong>Scorecard</strong> &mdash; the recruiter enters their own levels from the transcripts first, then hears the recording, and decides.</li>
+      <li><strong>Human interview and decision</strong> &mdash; the copilot follows a recruiter-led interview; the recruiter records the decision and an email waits for approval.</li>
+    </ol></div>
+  <div class="card" style="flex:1 1 360px"><h2>Who can do what</h2>
+    <table><tr><th>Role</th><th>Can</th></tr>
+      <tr><td>Hiring manager</td><td>Approve rubrics, see blind candidate data, manage users and settings, read analytics and the audit export</td></tr>
+      <tr><td>Recruiter</td><td>Run screening, shortlist, invite, review scorecards, decide, approve emails; may switch identity on when needed</td></tr>
+      <tr><td>Auditor</td><td>Read analytics, the decision log and the audit export. Nothing else; changes nothing</td></tr>
+      <tr><td>Candidate</td><td>No account: a private link shows their status; they can ask for a person, an explanation, a copy of their data or deletion</td></tr>
+    </table></div>
+</div>
+<div class="card"><h2>The twelve rules, in plain words</h2>
+  <ul>
+    <li>A <strong>person decides</strong>; the system only prepares and suggests. Every decision is logged with who, when and why.</li>
+    <li>Every score has <strong>evidence</strong>: a quote that code found in the CV or the transcript. No quote, no score.</li>
+    <li><strong>Identity is hidden</strong> while scoring, and only <strong>content</strong> is scored, never tone, accent or voice.</li>
+    <li>Candidates are <strong>told</strong> and can <strong>ask for a person</strong>; asking never counts against them.</li>
+    <li>Core questions are <strong>the same for everyone</strong>; forbidden questions are flagged; text from candidates is treated as data, never instructions.</li>
+    <li>Each agent has <strong>least privilege</strong>; recordings are personal data and are deleted after the retention period; all data in demos is fictional; every claim is proven by a test or a report.</li>
+  </ul></div>
+<div class="card"><h2>Questions</h2>
+  <p><strong>Why can't I see names?</strong> Hiring managers always see the blind view. Recruiters can switch identity on in the candidate list when they need to contact someone.</p>
+  <p><strong>What does "scorers disagree: please review" mean?</strong> Two independent scorers rated the same skill two levels apart. The levels are never averaged: read the answer yourself.</p>
+  <p><strong>How do I get my data out?</strong> The <a href="/analytics">Analytics</a> page, the CSV exports, the scorecard PDF and the audit bundle are all downloads. Contact: {{ brand.support_email }}.</p>
+</div>
+{% endblock %}

@@ -44,7 +44,7 @@
   {
    "check": "every evidence file matches its hash in the manifest",
    "passed": true,
-   "detail": "12 files; mismatches: none"
+   "detail": "14 files; mismatches: none"
   },
   {
    "check": "every number in the model card points to evidence and matches it",

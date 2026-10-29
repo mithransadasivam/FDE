@@ -4,7 +4,7 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.auth import STAFF, authenticate, current_user
+from app.auth import STAFF, LoginRefused, authenticate, current_user
 from app.config import get_settings
 from app.db import get_db
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem, User
@@ -28,7 +28,10 @@ def login_form(request: Request, db: Session = Depends(get_db)):
 
 @router.post("/login")
 def login(request: Request, email: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
-    user = authenticate(db, email, password)
+    try:
+        user = authenticate(db, email, password)
+    except LoginRefused as e:
+        return render(request, "login.html", status_code=403, error=str(e), email=email, demo=get_settings().demo_mode)
     if user is None:
         return render(request, "login.html", status_code=401, error="Wrong email or password.", email=email, demo=get_settings().demo_mode)
     request.session.clear()
@@ -61,7 +64,18 @@ def home(request: Request, user: User = Depends(STAFF), db: Session = Depends(ge
                ("Email drafts to approve", db.scalar(select(func.count(EmailDraft.id)).where(EmailDraft.status == "DRAFT")) or 0, "/outbox"),
                ("Open compliance findings", db.scalar(select(func.count(ComplianceFinding.id)).where(ComplianceFinding.status == "OPEN")) or 0, "/compliance")]
     recent = db.scalars(select(DecisionLog).order_by(DecisionLog.id.desc()).limit(8)).all()
-    return render(request, "home.html", user, counts=counts, funnel=funnel, total_candidates=sum(stages.values()), waiting=waiting, recent=recent)
+    from app.models_ext import FinalDecision
+    reached = lambda *names: sum(stages.get(n, 0) for n in names)
+    steps = [("Create a requisition from a voice note", counts["Requisitions"] > 0, "/requisitions"),
+             ("Approve the rubric and publish the job", counts["Published jobs"] > 0, "/requisitions"),
+             ("Receive applications", counts["Candidates"] > 0, "/jobs"),
+             ("Check the unsure CV fields", counts["Candidates"] > 0 and counts["Fields to review"] == 0, "/review"),
+             ("Screen candidates and approve a shortlist", reached("SHORTLISTED", "AI_INTERVIEW", "HUMAN_INTERVIEW", "DECISION") > 0, "/screening"),
+             ("Invite someone to the AI interview", bool(db.scalar(select(func.count(InterviewSession.id)))), "/interviews"),
+             ("Review a scorecard with your own levels", bool(db.scalar(select(func.count(InterviewSession.id)).where(InterviewSession.reviewed_by.is_not(None)))), "/interviews"),
+             ("Record a decision", bool(db.scalar(select(func.count(FinalDecision.id)))), "/scorecard/1")]
+    checklist = {"steps": steps, "done": sum(1 for _l, ok, _h in steps if ok)}
+    return render(request, "home.html", user, counts=counts, funnel=funnel, total_candidates=sum(stages.values()), waiting=waiting, recent=recent, checklist=checklist)
 
 
 @router.get("/demo")

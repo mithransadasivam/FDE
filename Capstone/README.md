@@ -43,12 +43,28 @@ With Docker (API, MCP server and Phoenix traces): `docker compose -f ops/docker-
 | Day | You can show | Where |
 |---|---|---|
 | 1 | A voice note becomes an approved rubric (wording checked); 52 CVs read in four formats; identity hidden; a pipeline that only moves by the rules | `app/agents/requisition.py`, `document.py`, `app/privacy.py`, `app/supervisor.py` |
-| 2 | Every candidate scored on every skill with a verified quote; a ranked shortlist a recruiter approves; a full AI interview by voice (diagrams, follow-ups, hints, scorecard); the notice and "ask for a person"; an assistant that answers with sources | `app/agents/screening.py`, `interviewer.py`, `assistant.py`, `app/shortlist.py`, `app/web/interview.py` |
+| 2 | Every candidate scored on every skill with a verified quote; a ranked shortlist a recruiter approves; a full adaptive AI interview by voice: the notice and recording consent, a fixed opening question, questions written from the CV and the answers (a guard checks every one), Mermaid diagrams drawn on the fly, follow-ups and deeper questions chosen by code, hints, a full recording with a timeline, a scorecard with a second scorer and the recruiter's own review before any audio; an assistant that answers with sources | `app/agents/screening.py`, `interviewer.py`, `diagrams.py`, `assistant.py`, `app/shortlist.py`, `app/interview/recording.py`, `scorecard.py`, `app/web/interview.py` |
 | 3 | The copilot follows a recorded interview live and flags a forbidden question; emails wait for approval; a compliance reviewer catches a planted fake quote; hidden instructions change nothing; containers, traces, 20-attack red team | `app/agents/copilot.py`, `communications.py`, `compliance.py`, `app/guardrails.py`, `mcp_server/`, `ops/` |
 | 4 | One scorecard per candidate with every quote and a link to the moment in the recording; a logged decision; bias tests; cost and speed; the governance pack | `app/decisions.py`, `scripts/run_bias_tests.py`, `run_perf.py`, `build_governance.py` |
 
 The agents (each with its own tools only, a step limit and a trace): **Supervisor** (LangGraph graph with approval gates), **Requisition**, **Document**, **Screening**,
 **AI interviewer**, **Interview copilot**, **Recruiter assistant**, **Communications**, **Compliance reviewer**. See `app/agents/base.py` for the table of which agent may call which tool.
+
+## Product features (beyond the course brief)
+
+| Feature | Where |
+|---|---|
+| **Analytics**: funnel, score spread, interview quality, speed, cost, people-in-the-loop numbers | `/analytics`, `app/analytics.py` |
+| **Compare** up to 5 candidates side by side, blind | `/compare` |
+| **Filters** on the candidate list (stage, skill, years, CV score) | `/candidates` |
+| **Exports**: candidates CSV, decision-log CSV, a scorecard PDF, an audit bundle with a SHA-256 checksum | `/export/...`, `app/web/insights.py` |
+| **Company settings and branding** (name, colour, contact) | `/settings` |
+| **Users and roles**, including a read-only **auditor**; lockout after 5 wrong passwords, password policy, security headers | `/users`, `/account`, `app/auth.py` |
+| **REST API** (read-only, blind, keys shown once, rate limited) and **webhooks** (signed; recorded only unless `WEBHOOKS_LIVE=1`) | `/integrations`, `/api/v1/...`, `app/integrations.py` |
+| **Candidate data rights**: download my data; ask for deletion, which a recruiter approves or refuses with a reason | `/me/<token>`, `/data-requests`, `app/datarights.py` |
+| **Getting-started checklist** and a **Help** page | `/`, `/help` |
+
+Day 2 in one command: `python -m scripts.day2_demo`. Sample interviews with two voices: `python -m scripts.make_sample_interviews`. Delete old interview audio: `python -m scripts.purge_recordings`.
 
 ## The twelve rules (in `CLAUDE.md`) and where each is enforced
 

@@ -6,6 +6,20 @@
   <p>For: <strong>{{ cand.requisition.job.title if cand.requisition.job else cand.requisition.title }}</strong> &middot; applied {{ cand.applied_at.strftime('%Y-%m-%d') }}</p>
   <p>Status: <span class="badge warn">{{ cand.stage }}</span></p>
   <p>{{ status_text }}</p>
+  {% if invited and iv and iv.status in ('INVITED','NOT_STARTED','IN_PROGRESS') or invited and not iv %}
+  <div class="card" data-testid="interview-notice" style="border-color:#1f4fd8;margin:1rem 0">
+    <h2 style="margin-top:0">Your first-round interview</h2>
+    <p>{{ notice }}</p>
+    {% if interview_error %}<div class="flash bad" data-testid="consent-error">{{ interview_error }}</div>{% endif %}
+    <form method="post" action="/me/{{ cand.access_token }}/interview/start">
+      <label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" name="agree" value="yes" data-testid="consent-box"> {{ consent_text }}</label>
+      <p><button type="submit" data-testid="start-interview">Start my interview</button></p>
+    </form>
+    <form method="post" action="/me/{{ cand.access_token }}/interview/person"><button class="secondary" data-testid="person-btn">I would like to speak to a person instead</button></form>
+  </div>
+  {% elif iv and iv.status == 'PERSON_REQUESTED' %}
+  <div class="flash good" data-testid="person-requested">You asked to speak to a person instead. A recruiter will contact you. This does not affect your application.</div>
+  {% endif %}
   <h3>Your rights</h3>
   <ul>
     <li>AI helps read your CV; people make every decision.</li>
@@ -17,6 +31,16 @@
   {% if explain == 'asked' %}<div class="flash good">Thank you. A recruiter will review a plain explanation before it is sent to you.</div>
   {% elif explain == 'refused' %}<div class="flash bad">There is nothing to explain yet.</div>{% endif %}
   <form method="post" action="/me/{{ cand.access_token }}/explain"><button class="secondary" data-testid="explain-btn">Ask for an explanation</button></form>
+  {% endif %}
+  <h3>Your data</h3>
+  {% if cand.erased_at %}<div class="flash good" data-testid="erased">Your personal data was erased on {{ cand.erased_at.strftime('%Y-%m-%d') }}. We keep only a record that you applied and that a person decided to erase your data.</div>
+  {% else %}
+  {% if data_requested %}<div class="flash good">Thank you. A recruiter will decide on your request and tell you the answer.</div>{% endif %}
+  <p class="small">You can download a copy of the data we hold about you, or ask for it to be deleted.</p>
+  <p><a class="btn secondary" href="/me/{{ cand.access_token }}/data.json" data-testid="download-data">Download my data</a>
+    {% if data_request and data_request.status == 'REQUESTED' %}<span class="badge warn" data-testid="delete-pending">deletion requested: waiting for a recruiter</span>
+    {% elif data_request and data_request.status == 'REFUSED' %}<span class="badge bad">deletion refused: {{ data_request.reason }}</span>
+    {% else %}</p><form method="post" action="/me/{{ cand.access_token }}/delete-request" style="display:inline"><button class="secondary" data-testid="delete-request">Ask for my data to be deleted</button></form><p>{% endif %}</p>
   {% endif %}
   <h3>Write to us</h3>
   {% if sent %}<div class="flash good">Thank you. A recruiter will read your message and reply.</div>{% endif %}

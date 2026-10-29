@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Analytics{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Analytics</div><h1>Hiring analytics</h1>
+  <p class="muted">How candidates move through the process, how the scoring is behaving and what it costs. Process numbers only: the platform holds no age, gender or origin and does not infer them.</p></div>
+  <form method="get" action="/analytics"><select name="req" onchange="this.form.submit()" style="width:auto" data-testid="req-filter">
+    <option value="">All jobs</option>{% for r in requisitions %}<option value="{{ r.id }}" {{ 'selected' if req_id == r.id }}>{{ r.id | reqid }} &middot; {{ r.title }}</option>{% endfor %}</select></form></div>
+
+<div class="cards">
+  <div class="card"><div class="stat" data-testid="kpi-applied">{{ funnel[0].n }}</div><div class="stat-label">Applications</div></div>
+  <div class="card"><div class="stat">{{ funnel[3].n }}</div><div class="stat-label">Shortlisted ({{ funnel[3].of_applied }}% of applied)</div></div>
+  <div class="card"><div class="stat">{{ interviews.done }}</div><div class="stat-label">AI interviews finished</div></div>
+  <div class="card"><div class="stat">{{ oversight.by_a_person }}<span class="muted" style="font-size:1rem"> / {{ oversight.moves }}</span></div><div class="stat-label">Stage moves made by a person</div></div>
+</div>
+
+<div class="row">
+  <div class="card" style="flex:1 1 420px" data-testid="funnel">
+    <h2>Funnel</h2>
+    {% for r in funnel %}
+    <div style="margin:.45rem 0"><div style="display:flex;justify-content:space-between" class="small"><span>{{ r.stage }}</span><span><strong>{{ r.n }}</strong>{% if r.of_previous is not none %} <span class="muted">({{ r.of_previous }}% of the step before)</span>{% endif %}</span></div>
+      <div style="height:10px;background:var(--line);border-radius:6px;overflow:hidden"><div style="height:100%;width:{{ (100 * r.n / top) | round(1) }}%;background:var(--brand)"></div></div></div>
+    {% endfor %}
+  </div>
+  <div class="card" style="flex:1 1 420px" data-testid="scores">
+    <h2>CV score spread <span class="muted small">(out of 100)</span></h2>
+    <div style="display:flex;align-items:flex-end;gap:6px;height:150px">
+      {% for b in scores %}<div style="flex:1;text-align:center"><div title="{{ b.n }} candidate(s) scored {{ b.from }}-{{ b.to }}" style="height:{{ (120 * b.n / peak) | round(0) }}px;background:var(--accent);border-radius:4px 4px 0 0;min-height:{{ 2 if b.n else 0 }}px"></div><div class="muted" style="font-size:.7rem">{{ b.from }}</div></div>{% endfor %}
+    </div>
+    <p class="small muted">A wide spread means the rubric separates candidates; a single tall bar means it does not.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="card" style="flex:1 1 320px" data-testid="interview-stats">
+    <h2>AI interviews</h2>
+    <table>
+      <tr><td>Invited</td><td>{{ interviews.invited }}</td></tr>
+      <tr><td>Finished</td><td>{{ interviews.done }}</td></tr>
+      <tr><td>Asked for a person instead</td><td>{{ interviews.asked_for_person }}</td></tr>
+      <tr><td>Average overall score</td><td>{{ interviews.avg_overall if interviews.avg_overall is not none else '-' }}{{ ' / 100' if interviews.avg_overall is not none }}</td></tr>
+      <tr><td>Average length</td><td>{{ interviews.avg_minutes if interviews.avg_minutes is not none else '-' }}{{ ' min' if interviews.avg_minutes is not none }}</td></tr>
+      <tr><td>Scorers disagreed on a skill</td><td>{{ interviews.with_scorer_disagreement }} interview(s)</td></tr>
+      <tr><td>Reviewed by a person</td><td>{{ interviews.reviewed_by_a_person }} of {{ interviews.done }}</td></tr>
+      <tr><td>Recordings kept</td><td>{{ interviews.recordings }}</td></tr>
+      {% if interviews.samples %}<tr><td>Sample (simulated) interviews</td><td>{{ interviews.samples }}</td></tr>{% endif %}
+    </table>
+  </div>
+  <div class="card" style="flex:1 1 320px" data-testid="time">
+    <h2>Speed</h2>
+    <table><tr><th>Stage</th><th>Candidates</th><th>Average time from applying</th></tr>
+      {% for t in time %}<tr><td>{{ t.stage }}</td><td>{{ t.n }}</td><td>{% if t.avg_hours is not none %}{{ t.avg_hours }} h{% else %}-{% endif %}</td></tr>{% endfor %}</table>
+  </div>
+  <div class="card" style="flex:1 1 320px" data-testid="cost">
+    <h2>Model cost {% if cost.simulated %}<span class="badge warn">fake models: what it would cost</span>{% endif %}</h2>
+    <table>
+      <tr><td>Total</td><td>${{ cost.total }}</td></tr>
+      <tr><td>Per candidate screened</td><td>{% if cost.per_cv is not none %}${{ cost.per_cv }}{% else %}-{% endif %}</td></tr>
+      <tr><td>Per AI interview</td><td>{% if cost.per_interview is not none %}${{ cost.per_interview }}{% else %}-{% endif %}</td></tr>
+    </table>
+    <p class="small"><a href="/trust">Trust &amp; cost</a> has the full breakdown.</p>
+  </div>
+</div>
+
+<div class="card" data-testid="oversight">
+  <h2>People in the loop</h2>
+  <p>{{ oversight.by_a_person }} of {{ oversight.moves }} stage moves were made by a person ({{ oversight.with_reason }} with a reason on record); the system made {{ oversight.by_the_system }} automatic steps (reading and scoring). {{ oversight.emails_sent }} email(s) were sent, each only after a person approved it.</p>
+  <p class="small"><a class="btn secondary small" href="/export/decision-log.csv">Export decision log (CSV)</a>
+    {% if user.role == 'hiring_manager' %}<a class="btn secondary small" href="/export/audit.json">Audit bundle (JSON, with checksum)</a>{% endif %}</p>
+</div>
+{% endblock %}

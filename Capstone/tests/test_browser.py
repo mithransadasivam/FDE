@@ -25,7 +25,7 @@ def live(platform, db):
     platform.rc.post("/screening/1/run")
     platform.rc.post("/screening/1/approve", data={"reason": "best evidence", "candidate_id": [1, 2, 3, 4]})
     for cid in (1, 2, 3, 4):
-        platform.rc.post(f"/interviews/{cid}/invite")
+        platform.rc.post(f"/interviews/{cid}/invite", data={"reason": "invited"})
     for cid in (3, 4):  # candidates 3 and 4 go on to a human interview (recordings H-3 and H-4)
         platform.rc.post(f"/interviews/{cid}/replay", data={"quality": "strong"})
         platform.rc.post(f"/copilot/{cid}/to-human-interview")
@@ -60,6 +60,7 @@ def test_interview_page_notice_diagram_recorded_answers_and_scorecard(live, brow
     page.goto(f"{base}/interview/{tokens[1]}")
     expect(page.get_by_test_id("notice")).to_contain_text("You are talking to an AI interviewer")
     expect(page.get_by_test_id("person-btn")).to_be_visible()  # the candidate can always ask for a person
+    page.get_by_test_id("consent-box").check()  # "I understand the interview is recorded": starting needs the tick
     page.get_by_test_id("start-btn").click()
     expect(page.get_by_test_id("question-text")).not_to_be_empty()
     seen_diagram, seen_follow_up, answered = False, False, 0
@@ -89,7 +90,7 @@ def test_interview_page_notice_diagram_recorded_answers_and_scorecard(live, brow
         except Exception:
             raise AssertionError("page did not advance after answer %d. Progress=%r Question=%r Transcript=%r" % (answered, page.get_by_test_id("progress").inner_text(), question, page.get_by_test_id("transcript").inner_text()))
     expect(page.get_by_test_id("done-msg")).to_be_visible(timeout=15000)
-    assert seen_diagram and seen_follow_up and 8 <= answered <= 16
+    assert seen_diagram and seen_follow_up and 9 <= answered <= 17
 
 
 def test_interview_page_ask_for_a_person_instead(live, browser):

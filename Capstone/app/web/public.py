@@ -111,9 +111,21 @@ def send_message(request: Request, token: str, message: str = Form(""), db: Sess
     return RedirectResponse(f"/me/{token}?sent=1", status_code=303)
 
 
+def me_context(db: Session, cand: Candidate, request: Request | None = None) -> dict:
+    """Everything the candidate's own page shows, including the AI interview notice once they have been invited."""
+    from app.models_ext import DataRequest, InterviewSession
+    from app.web.interview import CONSENT_TEXT, NOTICE
+
+    iv = db.query(InterviewSession).filter_by(candidate_id=cand.id).first()
+    q = request.query_params if request is not None else {}
+    return dict(cand=cand, status_text=STAGE_TEXT.get(cand.stage, ""), retention_days=get_settings().retention_days, sent=q.get("sent") == "1",
+                explain=q.get("explain"), can_explain=cand.stage in ("SCREENED", "WITHDRAWN", "DECISION"),
+                invited=cand.stage == "AI_INTERVIEW", iv=iv, notice=NOTICE, consent_text=CONSENT_TEXT, interview_error=None,
+                data_request=db.scalars(select(DataRequest).where(DataRequest.candidate_id == cand.id, DataRequest.kind == "delete").order_by(DataRequest.id.desc())).first(),
+                data_requested=q.get("data") == "requested")
+
+
 @router.get("/me/{token}")
 def me(request: Request, token: str, db: Session = Depends(get_db)):
     cand = _by_token(db, token)
-    return render(request, "me.html", None, cand=cand, status_text=STAGE_TEXT.get(cand.stage, ""),
-                  retention_days=get_settings().retention_days, sent=request.query_params.get("sent") == "1",
-                  explain=request.query_params.get("explain"), can_explain=cand.stage in ("SCREENED", "WITHDRAWN", "DECISION"))
+    return render(request, "me.html", None, **me_context(db, cand, request))

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Compare candidates{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Compare</div><h1>Compare candidates</h1>
+  <p class="muted">Up to {{ max_compare }} candidates side by side, blind (numbers only). Pick who to compare; the best score for each skill is highlighted.</p></div></div>
+<form method="get" action="/compare" class="card">
+  <div class="row" style="align-items:end">
+    <div><label for="req">Job</label><select id="req" name="req" onchange="document.getElementById('ids').value='';this.form.submit()">{% for r in reqs %}<option value="{{ r.id }}" {{ 'selected' if r.id == req_id }}>{{ r.id | reqid }} &middot; {{ r.title }}</option>{% endfor %}</select></div>
+    <div style="flex:2"><label for="pick">Candidates</label>
+      <select id="pick" multiple size="6" data-testid="pick" onchange="document.getElementById('ids').value=[...this.selectedOptions].slice(0,{{ max_compare }}).map(o=>o.value).join(',')">
+        {% for c in pool %}<option value="{{ c.id }}" {{ 'selected' if c.id in chosen }}>Candidate #{{ c.id }} &middot; {{ c.stage }}</option>{% endfor %}</select>
+      <input type="hidden" id="ids" name="ids" value="{{ chosen | join(',') }}"></div>
+    <div style="flex:0"><button type="submit" data-testid="compare-btn">Compare</button></div>
+  </div>
+</form>
+{% if data and data.cols %}
+<div class="table-wrap"><table data-testid="compare-table">
+  <tr><th>Skill</th>{% for c in data.cols %}<th>Candidate #{{ c.id }}<br><span class="badge">{{ c.stage }}</span></th>{% endfor %}</tr>
+  {% for sk in data.skills %}
+  <tr><td>{{ sk }}</td>
+    {% for c in data.cols %}{% set r = c.scores.get(sk) %}
+    <td {% if r and r.score == data.best[sk] and r.score > 0 %}style="background:var(--good-soft)"{% endif %} title="{{ ('“' ~ r.quote ~ '”') if r and r.quote else 'no evidence' }}">
+      {% if r %}<strong>{{ r.score }}</strong>/3{% if r.quote %}<div class="small muted">&ldquo;{{ r.quote[:40] }}&rdquo;</div>{% endif %}{% else %}-{% endif %}
+      {% if c.interview_levels.get(sk) is not none and sk in c.interview_levels %}<div class="small">interview: {{ c.interview_levels[sk] }}/3</div>{% endif %}</td>{% endfor %}
+  </tr>{% endfor %}
+  <tr><th>CV total</th>{% for c in data.cols %}<th>{{ c.total if c.total is not none else '-' }}{{ ' / 100' if c.total is not none }}</th>{% endfor %}</tr>
+  <tr><th>AI interview overall</th>{% for c in data.cols %}<th>{{ c.interview if c.interview is not none else '-' }}{{ ' / 100' if c.interview is not none }}</th>{% endfor %}</tr>
+  <tr><td></td>{% for c in data.cols %}<td><a class="btn secondary small" href="/export/scorecard/{{ c.id }}.pdf">Scorecard PDF</a></td>{% endfor %}</tr>
+</table></div>
+<p class="small muted">The AI recommends; a person decides. Hover over a score to see the exact words behind it.</p>
+{% elif chosen %}<div class="card"><div class="empty">None of those candidates belong to this job.</div></div>
+{% else %}<div class="card"><div class="empty"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg><div>Pick two or more candidates to compare.</div></div></div>{% endif %}
+{% endblock %}

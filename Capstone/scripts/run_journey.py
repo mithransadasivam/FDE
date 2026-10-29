@@ -103,7 +103,7 @@ def main() -> int:
         step(6, "The recruiter invites the shortlist to the AI interview and approves the invitations in the outbox; one candidate asks for a person instead")
         asked_for_person = ids["C-002_cv.pdf"]
         for cid in chosen:
-            rc.post(f"/interviews/{cid}/invite")
+            rc.post(f"/interviews/{cid}/invite", data={"reason": "strongest evidence on the must-have skills; invited to the first-round AI interview"})
         with SessionLocal() as db:
             drafts = [d.id for d in db.scalars(select(EmailDraft).where(EmailDraft.status == "DRAFT", EmailDraft.kind == "ai_interview"))]
             tokens = {c.id: c.access_token for c in db.scalars(select(Candidate))}

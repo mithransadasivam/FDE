@@ -22,7 +22,7 @@ def shortlisted(platform, db):
 
 @pytest.fixture
 def invited(shortlisted, db):
-    shortlisted.rc.post("/interviews/1/invite")
+    shortlisted.rc.post("/interviews/1/invite", data={"reason": "invited"})
     db.expire_all()
     return shortlisted
 
@@ -106,8 +106,8 @@ def test_candidate_not_invited_cannot_start(shortlisted, db):
 
 
 def test_invitation_moves_to_ai_interview_only_by_a_person_and_drafts_an_email(shortlisted, db):
-    assert shortlisted.hm.post("/interviews/1/invite").status_code == 403
-    shortlisted.rc.post("/interviews/1/invite")
+    assert shortlisted.hm.post("/interviews/1/invite", data={"reason": "invited"}).status_code == 403
+    shortlisted.rc.post("/interviews/1/invite", data={"reason": "invited"})
     db.expire_all()
     assert db.get(Candidate, 1).stage == "AI_INTERVIEW"
     d = db.query(EmailDraft).one()
@@ -126,14 +126,23 @@ def test_notice_must_be_acknowledged_before_the_interview_starts(invited, db):
     assert invited.visitor.post(f"/interview/{t}/start").status_code == 409
 
 
+def start_past_opening(client, t):
+    """Starts the interview, answers the fixed opening question, and returns the first planned question."""
+    first = client.post(f"/interview/{t}/start").json()["prompt"]
+    assert first["opening"] and first["text"] == "Please describe your most recent role and what you were responsible for."
+    return client.post(f"/interview/{t}/answer", data={"text": "In my most recent role I handled support tickets and the on-call rota."}).json()["next"]
+
+
 def run_over_the_web(client, db, t, quality="strong"):
-    client.post(f"/interview/{t}/notice")
+    client.post(f"/interview/{t}/notice", data={"agree": "yes"})
     prompt = client.post(f"/interview/{t}/start").json()["prompt"]
     recorded = load_recorded()
     seen = []
     while prompt:
         seen.append(prompt)
-        if prompt["is_follow_up"]:
+        if prompt.get("opening"):
+            res = client.post(f"/interview/{t}/answer", data={"text": "In my most recent role I handled support tickets and the on-call rota."}).json()
+        elif prompt["is_follow_up"]:
             res = client.post(f"/interview/{t}/answer", data={"text": "I would also check the logs and what changed recently."}).json()
         else:
             pick = next((a for a in recorded if a["question_id"] == prompt["question_id"] and a["kind"] == quality), None)
@@ -161,7 +170,7 @@ def test_full_interview_runs_with_a_diagram_a_follow_up_and_a_scorecard_with_quo
 
 def test_diagram_is_served_only_for_questions_in_the_plan(invited, db):
     t = token(db)
-    invited.visitor.post(f"/interview/{t}/notice")
+    invited.visitor.post(f"/interview/{t}/notice", data={"agree": "yes"})
     invited.visitor.post(f"/interview/{t}/start")
     plan = db.query(InterviewSession).one().plan
     d = next(p["diagram"] for p in plan if p["diagram"])
@@ -173,21 +182,21 @@ def test_diagram_is_served_only_for_questions_in_the_plan(invited, db):
 
 def test_state_is_saved_after_every_turn_and_a_dropped_connection_resumes(invited, db):
     t = token(db)
-    invited.visitor.post(f"/interview/{t}/notice")
-    first = invited.visitor.post(f"/interview/{t}/start").json()["prompt"]
+    invited.visitor.post(f"/interview/{t}/notice", data={"agree": "yes"})
+    first = start_past_opening(invited.visitor, t)
     rec = next(a for a in load_recorded() if a["question_id"] == first["question_id"] and a["kind"] == "strong")
     second = invited.visitor.post(f"/interview/{t}/answer", data={"fixture": rec["id"]}).json()["next"]
     # the connection drops: a fresh request resumes at the same question, with the saved answers
     resumed = invited.visitor.get(f"/interview/{t}/state").json()
     assert resumed["status"] == "IN_PROGRESS" and resumed["prompt"]["question_id"] == second["question_id"]
     db.expire_all()
-    assert len(db.query(InterviewSession).one().state["turns"][0]["answers"]) == 1
+    assert len(db.query(InterviewSession).one().state["turns"][1]["answers"]) == 1  # turn 0 is the opening question
 
 
 def test_repeat_hint_skip_and_stop_commands(invited, db):
     t = token(db)
-    invited.visitor.post(f"/interview/{t}/notice")
-    q1 = invited.visitor.post(f"/interview/{t}/start").json()["prompt"]
+    invited.visitor.post(f"/interview/{t}/notice", data={"agree": "yes"})
+    q1 = start_past_opening(invited.visitor, t)
     r = invited.visitor.post(f"/interview/{t}/answer", data={"text": "Please repeat the question"}).json()
     assert r["command"] == "repeat" and r["next"]["question_id"] == q1["question_id"]
     h = invited.visitor.post(f"/interview/{t}/answer", data={"text": "Can I have a hint?"}).json()
@@ -203,14 +212,20 @@ def test_repeat_hint_skip_and_stop_commands(invited, db):
     assert len(skipped) >= 1
 
 
-def test_the_interview_ends_at_25_minutes(invited, db):
+def test_the_interview_ends_at_25_minutes_but_a_must_have_not_yet_asked_is_still_asked(invited, db):
     s = get_or_create_session(db, db.get(Candidate, 1))
     s.notice_ack = True
     db.commit()
     agent = InterviewerAgent(db, s)
     agent.start(db.get(Requisition, 1))
-    res = agent.submit(text="I would check the logs.", duration_s=1600)
-    assert res["done"] and res["scorecard"]["ended_reason"] == "25 minute limit reached"
+    res = agent.submit(text="I would check the logs.", duration_s=1600)  # the 25 minutes are used up by the first answer
+    musts = agent._must_haves()
+    while not res["done"]:  # the must-have skills that have not been asked about still come before the end
+        assert res["next"]["skill"] in musts
+        res = agent.submit(text="I would check the logs.", duration_s=5)
+    assert res["scorecard"]["ended_reason"] == "25 minute limit reached"
+    asked = {a["skill"] for a in res["scorecard"]["answers"]}
+    assert musts <= asked
 
 
 def test_asking_for_a_person_is_logged_and_ends_the_ai_interview(invited, db):
@@ -219,27 +234,39 @@ def test_asking_for_a_person_is_logged_and_ends_the_ai_interview(invited, db):
     db.expire_all()
     assert db.query(InterviewSession).one().status == "PERSON_REQUESTED"
     assert "asked for a person" in [e.action for e in db.query(DecisionLog)]
-    assert invited.visitor.post(f"/interview/{t}/notice").status_code == 200  # still allowed, but...
+    assert invited.visitor.post(f"/interview/{t}/notice", data={"agree": "yes"}).status_code == 200  # still allowed, but...
     assert invited.visitor.post(f"/interview/{t}/start").status_code == 409
     assert "asked for a person" in invited.rc.get("/interviews").text
     assert "A person will interview you" in invited.visitor.get(f"/interview/{t}").text
 
 
+def review_form(db, levels="2"):
+    """The recruiter's own levels for every must-have skill, as the review form posts them."""
+    from app.interview.scorecard import build_card
+
+    card = build_card(db, db.query(InterviewSession).one())
+    return {f"level_{n}": levels for n, r in enumerate(card["skills"]) if r["must_have"]}
+
+
 def test_recruiter_replays_reviews_and_marks_the_scorecard(invited, db):
     invited.rc.post("/interviews/1/replay", data={"quality": "strong"})
     html = invited.rc.get("/interviews/1").text
-    assert "Scorecard" in html and "&ldquo;" in html and "<audio" in html
-    assert invited.hm.post("/interviews/1/review").status_code == 403
-    invited.rc.post("/interviews/1/review")
+    assert "Overall" in html and "&ldquo;" in html and "<audio" not in html and "audio-hidden" in html  # audio waits for the recruiter's own levels
+    assert invited.hm.post("/interviews/1/review", data=review_form(db)).status_code == 403
+    invited.rc.post("/interviews/1/review", data={})  # no levels: refused
+    db.expire_all()
+    assert db.query(InterviewSession).one().reviewed_by is None
+    invited.rc.post("/interviews/1/review", data=review_form(db))
     db.expire_all()
     assert db.query(InterviewSession).one().reviewed_by == "recruiter@example.com"
     assert "AI interview scorecard reviewed" in [e.action for e in db.query(DecisionLog)]
+    assert "<audio" in invited.rc.get("/interviews/1").text
 
 
 def test_hiring_manager_sees_the_interview_scorecard_without_identity(invited, db):
     run_recorded_interview(db, db.get(Candidate, 1), db.get(Requisition, 1), "strong")
     html = invited.hm.get("/interviews/1").text
-    assert "Scorecard" in html and "@example.com" not in html and "Amara" not in html and "<audio" not in html
+    assert "Overall" in html and "@example.com" not in html and "Amara" not in html and "<audio" not in html
 
 
 def test_interviewer_cannot_use_other_agents_tools(invited, db):

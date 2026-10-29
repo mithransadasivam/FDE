@@ -16,7 +16,7 @@ def journey(platform, db):
     platform.rc.post("/screening/1/run")
     platform.rc.post("/screening/1/approve", data={"reason": "best evidence", "candidate_id": [1, 2, 3, 4]})
     for cid in (1, 2, 3, 4):
-        platform.rc.post(f"/interviews/{cid}/invite")
+        platform.rc.post(f"/interviews/{cid}/invite", data={"reason": "invited"})
         platform.rc.post(f"/interviews/{cid}/replay", data={"quality": "strong"})
         platform.rc.post(f"/interviews/{cid}/review")
         platform.rc.post(f"/copilot/{cid}/to-human-interview")

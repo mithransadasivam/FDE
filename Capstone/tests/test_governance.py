@@ -65,7 +65,7 @@ def invited_db(platform, db):
     platform.apply("C-001_cv.pdf")
     platform.rc.post("/screening/1/run")
     platform.rc.post("/screening/1/approve", data={"reason": "ok", "candidate_id": [1]})
-    platform.rc.post("/interviews/1/invite")
+    platform.rc.post("/interviews/1/invite", data={"reason": "invited"})
     s = interviewer.get_or_create_session(db, db.get(Candidate, 1))
     s.notice_ack = True
     db.commit()

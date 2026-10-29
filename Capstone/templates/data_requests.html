@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Data requests{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Data requests</div><h1>Candidates' data requests</h1>
+  <p class="muted">A candidate can ask for their personal data to be deleted. Nothing is erased automatically: a recruiter decides, with a reason on record. What is erased: the CV, the details read from it, scores and quotes, interview transcripts and audio. What stays: the decision log (what happened and who decided), without its evidence.</p></div></div>
+<div class="table-wrap"><table data-testid="requests">
+  <tr><th>#</th><th>Candidate</th><th>Asked</th><th>Status</th><th>Decision</th></tr>
+  {% for r in rows %}
+  <tr><td>{{ r.id }}</td><td>#{{ r.candidate_id }}</td><td class="small">{{ r.requested_at.strftime('%Y-%m-%d %H:%M') }}</td>
+    <td><span class="badge {{ 'warn' if r.status == 'REQUESTED' else ('good' if r.status == 'DONE' else 'bad') }}">{{ r.status }}</span></td>
+    <td>{% if r.status == 'REQUESTED' %}
+      <form method="post" action="/data-requests/{{ r.id }}/decide" style="display:flex;gap:.4rem;flex-wrap:wrap">
+        <input name="reason" type="text" placeholder="Reason (required)" required style="min-width:14rem" data-testid="reason-{{ r.id }}">
+        <button name="decision" value="approve" class="danger small" data-testid="approve-{{ r.id }}">Approve erasure</button>
+        <button name="decision" value="refuse" class="secondary small" data-testid="refuse-{{ r.id }}">Refuse</button></form>
+      {% else %}<span class="small">by {{ r.decided_by }}: {{ r.reason }}</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No requests.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

@@ -29,6 +29,7 @@
     {% for c in chips %}
     <div class="chip"><a href="/candidates/{{ c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}"><strong>#{{ c.id }}</strong> {{ c.label if not is_blind else '' }}</a><br>
       <span class="muted">{{ c.title or '' }}</span>
+      {% if c.person %}<br><span class="badge warn" data-testid="person-flag">asked for a person</span>{% endif %}
       {% if c.dup %}<br><span class="badge bad">duplicate of {% for t in c.dup %}#{{ t }} {% endfor %}</span>{% endif %}</div>
     {% else %}<div class="muted small">empty</div>{% endfor %}
   </div>

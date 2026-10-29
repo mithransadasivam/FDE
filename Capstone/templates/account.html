@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Account{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="crumbs">Account</div><h1>Your account</h1>
+  <p class="muted">{{ user.name }} &middot; {{ user.email }} &middot; {{ role_label }}</p></div></div>
+<form method="post" action="/account/password" class="card" style="max-width:520px" data-testid="password-form">
+  <h2 style="margin-top:0">Change your password</h2>
+  <label for="current">Current password</label><input id="current" name="current" type="password" required autocomplete="current-password">
+  <label for="new">New password <span class="muted small">(10+ characters, a letter and a digit)</span></label><input id="new" name="new" type="password" required autocomplete="new-password">
+  <label for="again">New password again</label><input id="again" name="again" type="password" required autocomplete="new-password">
+  <p><button type="submit">Change password</button></p>
+</form>
+<div class="card" style="max-width:520px"><h2 style="margin-top:0">Security</h2>
+  <p class="small">After 5 wrong passwords in a row an account is locked for 15 minutes. Sessions end after 8 hours. Everything you decide is written to the decision log with your name.</p></div>
+{% endblock %}

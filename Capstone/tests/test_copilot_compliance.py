@@ -26,7 +26,7 @@ def team(platform, db):
     platform.rc.post("/screening/1/run")
     platform.rc.post("/screening/1/approve", data={"reason": "best evidence", "candidate_id": [1, 2, 3, 4]})
     for cid in (1, 2, 3, 4):
-        platform.rc.post(f"/interviews/{cid}/invite")
+        platform.rc.post(f"/interviews/{cid}/invite", data={"reason": "invited"})
         platform.rc.post(f"/copilot/{cid}/to-human-interview")
     db.expire_all()
     return platform
@@ -318,7 +318,7 @@ def test_a_candidate_who_asked_for_a_person_goes_straight_to_a_human_interview(p
     platform.rc.post("/screening/1/approve", data={"reason": "ok", "candidate_id": [1, 2]})
     platform.rc.post("/copilot/1/to-human-interview")  # candidate 1 did NOT ask for a person: refused (cannot skip the AI interview)
     assert db.get(Candidate, 1).stage == "SHORTLISTED"
-    platform.rc.post("/interviews/2/invite")
+    platform.rc.post("/interviews/2/invite", data={"reason": "invited"})
     platform.visitor.post(f"/interview/{db.get(Candidate, 2).access_token}/person")
     platform.rc.post("/copilot/2/to-human-interview")
     db.expire_all()

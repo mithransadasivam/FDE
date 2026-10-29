@@ -10,18 +10,31 @@
 {% else %}
 <p class="muted">As a hiring manager you always see the blind view: names, contact details, dates of birth and addresses are hidden.</p>
 {% endif %}
+<form method="get" action="/candidates" class="card" data-testid="filters">
+  {% if user.role == 'recruiter' and is_blind %}<input type="hidden" name="blind" value="1">{% endif %}{% if job %}<input type="hidden" name="job" value="{{ job }}">{% endif %}
+  <div class="row" style="align-items:end;margin:0">
+    <div><label for="stage">Stage</label><select id="stage" name="stage"><option value="">Any</option>{% for s in stages %}<option {{ 'selected' if s == stage }}>{{ s }}</option>{% endfor %}</select></div>
+    <div><label for="skill">Skill</label><input id="skill" name="skill" type="text" value="{{ skill }}" placeholder="e.g. Kubernetes"></div>
+    <div><label for="min_years">Min years</label><input id="min_years" name="min_years" type="number" step="0.5" value="{{ min_years if min_years is not none }}" style="width:6rem"></div>
+    <div><label for="min_total">Min CV score</label><input id="min_total" name="min_total" type="number" step="1" value="{{ min_total if min_total is not none }}" style="width:6rem"></div>
+    <div style="flex:0"><button type="submit">Filter</button></div>
+    {% if filtered %}<div style="flex:0"><a class="btn secondary" href="/candidates{{ '?blind=1' if user.role == 'recruiter' and is_blind }}">Clear</a></div>{% endif %}
+  </div>
+</form>
+{% if filtered %}<p class="muted small" data-testid="filter-count">{{ rows | length }} candidate(s) match.</p>{% endif %}
 <table>
-  <tr><th>#</th><th>{{ 'Candidate' if is_blind else 'Name' }}</th><th>Current title</th><th>Years</th><th>Skills</th><th>Format</th><th>Stage</th></tr>
+  <tr><th>#</th><th>{{ 'Candidate' if is_blind else 'Name' }}</th><th>Current title</th><th>Years</th><th>Skills</th><th>CV score</th><th>Format</th><th>Stage</th></tr>
   {% for r in rows %}
   <tr>
     <td>{{ r.c.id }}</td>
     <td><a href="/candidates/{{ r.c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}">{{ r.name }}</a></td>
     <td>{{ r.title or '' }}</td><td>{{ r.years if r.years is not none else '' }}</td>
     <td class="small">{{ r.skills[:6] | join(', ') }}{{ ' ...' if r.skills | length > 6 }}</td>
+    <td>{{ r.total if r.total is not none else '' }}</td>
     <td>{{ r.c.cv_format }}</td>
     <td><span class="badge {{ 'warn' if r.c.stage == 'REVIEW' else '' }}">{{ r.c.stage }}</span>
       {% if dups.get(r.c.id) %}<br><span class="badge bad" title="Same email or phone as another application">duplicate of {% for t in dups[r.c.id] %}#{{ t }} {% endfor %}</span>{% endif %}</td>
   </tr>
-  {% else %}<tr><td colspan="7" class="muted">No candidates yet.</td></tr>{% endfor %}
+  {% else %}<tr><td colspan="8" class="muted">No candidates yet.</td></tr>{% endfor %}
 </table>
 {% endblock %}
