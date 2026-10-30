@@ -4,6 +4,7 @@ FAKE_MODELS=1: transcription reads the .transcript.txt that sits next to every r
 and speech is not synthesised (the interview page speaks with the browser). FAKE_MODELS=0: faster-whisper transcribes, and
 pyttsx3 (the operating system's voices) or your provider's text-to-speech speaks.
 """
+import time
 import wave
 from pathlib import Path
 
@@ -27,11 +28,34 @@ def transcribe(path: Path, original_name: str = "") -> str:
         if side is None:
             raise FileNotFoundError(f"No fake transcript for {Path(original_name or path.name).name}: in fake mode only the recorded fixtures can be transcribed")
         return side.read_text(encoding="utf-8").strip()
-    from faster_whisper import WhisperModel  # imported late: it is slow to import and not needed in tests
+    return transcribe_real(path)
 
-    model = WhisperModel(s.whisper_model, device="cpu", compute_type="int8")
-    segments, _info = model.transcribe(str(path), language="en", vad_filter=True)
-    return " ".join(seg.text.strip() for seg in segments).strip()
+
+_MODELS: dict = {}
+
+
+def whisper_model():
+    """The speech model, loaded once. Raises if faster-whisper or the model files are not available."""
+    name = get_settings().whisper_model
+    if name not in _MODELS:
+        from faster_whisper import WhisperModel  # imported late: it is slow to import and not needed in tests
+
+        _MODELS[name] = WhisperModel(name, device="cpu", compute_type="int8")
+    return _MODELS[name]
+
+
+def transcribe_real(path: Path) -> str:
+    """Real speech to text with the local Whisper model, whatever FAKE_MODELS says (Whisper is local: no key, no cost).
+    The accent test uses this directly because transcription is exactly what it tests and cannot be faked."""
+    from app import timing
+    from app.ai import ledger
+
+    started = time.perf_counter()
+    with timing.timed("transcription"):
+        segments, _info = whisper_model().transcribe(str(path), language="en", vad_filter=True)
+        text = " ".join(seg.text.strip() for seg in segments).strip()
+    ledger.record_timed("voice", "transcription", time.perf_counter() - started, model=get_settings().whisper_model)
+    return text
 
 
 def transcribe_segments(path: Path) -> list[dict]:

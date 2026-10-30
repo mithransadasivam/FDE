@@ -30,3 +30,4 @@ reportlab
 playwright
 pytest-playwright
 av>=14,<17
+piper-tts

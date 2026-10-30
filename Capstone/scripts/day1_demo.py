@@ -36,7 +36,13 @@ def reset() -> None:
     engine.dispose()
     url = get_settings().database_url
     if url.startswith("sqlite:///"):
-        Path(url.replace("sqlite:///", "", 1)).unlink(missing_ok=True)
+        try:
+            Path(url.replace("sqlite:///", "", 1)).unlink(missing_ok=True)
+        except PermissionError:  # Windows: another part of this process still holds the file open, so empty the tables instead of deleting the file
+            from app.db import Base
+            from app import models, models_ext  # noqa: F401  (registers the tables)
+
+            Base.metadata.drop_all(engine)
     shutil.rmtree(get_settings().storage_dir, ignore_errors=True)
     print("Reset: removed the database and storage folder.")
 

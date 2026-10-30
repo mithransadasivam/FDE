@@ -29,14 +29,20 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 copy .env.example .env                                   # set SECRET_KEY; FAKE_MODELS=1 needs no key
 python -m scripts.check_setup                            # every line should say OK
-python -m scripts.run_journey --reset                    # the whole REQ-014 journey in one command
+python -m scripts.run_journey --reset                    # the demo data in one command (wipes data/ and storage/)
 uvicorn app.main:app --port 8001                         # then open http://127.0.0.1:8001
 ```
+
+**Fake mode and real mode.** `FAKE_MODELS=1` (the default for every test and demo) uses rule-based stand-ins, recorded answers and fictional data, needs no key and costs nothing. `FAKE_MODELS=0` with an
+`OPENROUTER_API_KEY` in `.env` uses real models: see *Switching to real models*. Speech to text (Whisper) and the neural accent voices run on your machine in both modes.
 
 Demo accounts (fictional), password `demo-password-1`: **hm@example.com** (hiring manager) and **recruiter@example.com** (recruiter). Candidates have no account:
 they apply at `/jobs` and get a private link `/me/<token>`; a shortlisted candidate gets an interview link `/interview/<token>`.
 
 With Docker (API, MCP server and Phoenix traces): `docker compose -f ops/docker-compose.yml up --build`, then http://localhost:8001 (console), http://localhost:6006 (Phoenix).
+
+**The whole journey in one command** (voice note to decision, on a fresh database of its own, with the time of every step): `python -m scripts.journey --fake` (or `--real` with a key).
+It prints the links to open and writes `reports/journey.md`.
 
 ## What it does, day by day
 
@@ -45,7 +51,7 @@ With Docker (API, MCP server and Phoenix traces): `docker compose -f ops/docker-
 | 1 | A voice note becomes an approved rubric (wording checked); 52 CVs read in four formats; identity hidden; a pipeline that only moves by the rules | `app/agents/requisition.py`, `document.py`, `app/privacy.py`, `app/supervisor.py` |
 | 2 | Every candidate scored on every skill with a verified quote; a ranked shortlist a recruiter approves; a full adaptive AI interview by voice: the notice and recording consent, a fixed opening question, questions written from the CV and the answers (a guard checks every one), Mermaid diagrams drawn on the fly, follow-ups and deeper questions chosen by code, hints, a full recording with a timeline, a scorecard with a second scorer and the recruiter's own review before any audio; an assistant that answers with sources | `app/agents/screening.py`, `interviewer.py`, `diagrams.py`, `assistant.py`, `app/shortlist.py`, `app/interview/recording.py`, `scorecard.py`, `app/web/interview.py` |
 | 3 | Hidden and planted instructions in CVs are found, flagged and ignored (a person is told, nothing is rejected); a 20-attack red team; an evidence checker re-checks every score (CHECKED / NEEDS_REVIEW, acknowledged by a person); emails are checked by code and wait for approval (a `.eml` file, real SMTP only if switched on); a practice recruiter interview; a copilot that follows the recording live, warns about a forbidden question within milliseconds, always offers one technical and one behavioural question with what a good answer covers, and shows CV conflict cards; the recruiter enters their own scores before deciding; a replay room for the AI interview; a three-stage side-by-side card on the candidate page | `app/security.py`, `app/agents/checker.py`, `communications.py`, `copilot.py`, `compliance.py`, `app/practice.py`, `app/mailer.py`, `app/web/copilot.py`, `templates/replay.html`, `mcp_server/`, `ops/` |
-| 4 | One scorecard per candidate with every quote and a link to the moment in the recording; a logged decision; bias tests; cost and speed; the governance pack | `app/decisions.py`, `scripts/run_bias_tests.py`, `run_perf.py`, `build_governance.py` |
+| 4 | One scorecard per candidate: the three stages side by side per skill, every quote, a "play this moment" link into the replay room, the logged decision, a print-to-PDF view; an identity swap test (names, pronouns, age and other clues, with blinding on and off) and an accent test (real Whisper, neural voices); a copilot evaluation against planned moments; cost and speed measured from the logs, with one improvement measured before and after; candidate rights (see my data, delete my application, why was I not shortlisted); the whole journey in one command; a governance pack built from the code, the settings and the reports; credential checks (certifications against a register, overlapping job dates) | `app/stages.py`, `app/web/scorecard.py`, `evals/`, `app/costing.py`, `app/timing.py`, `app/datarights.py`, `app/credentials.py`, `scripts/journey.py`, `scripts/governance_pack.py`, `scripts/final_check.py` |
 
 The agents (each with its own tools only, a step limit and a trace): **Supervisor** (LangGraph graph with approval gates), **Requisition**, **Document**, **Screening**,
 **AI interviewer**, **Interview copilot**, **Recruiter assistant**, **Communications**, **Compliance reviewer**. See `app/agents/base.py` for the table of which agent may call which tool.
@@ -61,8 +67,13 @@ The agents (each with its own tools only, a step limit and a trace): **Superviso
 | **Company settings and branding** (name, colour, contact) | `/settings` |
 | **Users and roles**, including a read-only **auditor**; lockout after 5 wrong passwords, password policy, security headers | `/users`, `/account`, `app/auth.py` |
 | **REST API** (read-only, blind, keys shown once, rate limited) and **webhooks** (signed; recorded only unless `WEBHOOKS_LIVE=1`) | `/integrations`, `/api/v1/...`, `app/integrations.py` |
-| **Candidate data rights**: download my data; ask for deletion, which a recruiter approves or refuses with a reason | `/me/<token>`, `/data-requests`, `app/datarights.py` |
+| **Candidate data rights**: see my data (with where AI was used), download it, delete my application (confirm, then everything personal is deleted at once and one anonymous line stays in the log), ask why I was not shortlisted (an evidence-based draft a recruiter approves) | `/me/<token>`, `/data-requests`, `app/datarights.py` |
+| **Credential checks**: certifications against a (fictional) register and overlapping job dates, flagged for a person | candidate page and scorecard, `app/credentials.py` |
+| **Recruiter assistant** with a chat interface: streaming answers, sources as cards, refusals shown plainly | `/assistant` |
 | **Getting-started checklist** and a **Help** page | `/`, `/help` |
+
+Retention: run `python -m scripts.purge_recordings` **every night** (Windows Task Scheduler, or a cron line such as `15 3 * * *  cd /app && python -m scripts.purge_recordings`). After `RETENTION_DAYS` it deletes
+interview audio, the written transcripts (the levels and decisions stay) and CV files, and logs each deletion.
 
 Day 2 in one command: `python -m scripts.day2_demo`. Day 3 in one command: `python -m scripts.day3_demo` (security scan, attack suite, checker, practice interview, copilot run, drafts, replay). Attack table: `python -m scripts.attack_report`. Read the sample inbox: `python -m scripts.read_inbox`. Sample interviews with two voices: `python -m scripts.make_sample_interviews`. Delete old interview audio: `python -m scripts.purge_recordings`.
 
@@ -91,13 +102,28 @@ python -m scripts.run_bias_tests --whisper  # counterfactual screening + voice-v
 python -m scripts.run_perf                  # cost per 100 CVs and per interview, voice speed  -> PERF_REPORT.md
 ```
 
+The Day 4 evaluations write dated, pass-or-fail reports into `reports/` (Markdown and JSON). The governance pack reads them and refuses reports that are missing or older than 7 days:
+
+```
+python -m evals.identity_swap        # the same CV with other names, pronouns, age and other clues; also with blinding off   -> reports/identity_swap.md
+python -m evals.accent_test          # the same answers in 7 voices (real Whisper); word error rate and level per voice       -> reports/accent_test.md  (--quick for class)
+python -m evals.copilot_eval         # planned moments caught, warning time, false alarms on 4 practice interviews           -> reports/copilot_eval.md
+python -m scripts.attack_report      # the attack suite as a dated report                                                    -> reports/attack_report.md
+python -m scripts.cost_report --measure   # cost and speed from the logs, one improvement before and after                  -> reports/cost_and_speed.md
+python -m scripts.journey --fake     # the whole journey with timings                                                        -> reports/journey.md
+python -m scripts.governance_pack    # classification, model card, risk register, evidence, oversight + governance_pack.html -> governance/
+python -m scripts.final_check        # repository checks (no keys, no real personal data) and BR-01 to BR-20 as OK or MISSING -> reports/final_check.md
+```
+
 | Report | What it says |
 |---|---|
 | `EVAL_REPORT.md` | The quality bar: extraction, ranking, interview scoring, copilot, red team, bias, speed, governance |
 | `PERF_REPORT.md` | Cost per 100 CVs and per AI interview, voice speed, before and after routing and caching |
 | `SECURITY_FINDINGS.md` | The 20 attacks before and after, defences by layer, accepted risks |
 | `BIAS_REPORT.md` | The same CV with a different name, gender or age; the same answers in four voice variants |
-| `governance/` | Classification (EU AI Act Annex III point 4), model card, risk register (18 risks), candidate notice, explanation template, evidence with hashes |
+| `reports/*.md`, `reports/*.json` | The Day 4 reports above: dated, with the models and settings used, the results and a pass or fail |
+| `EVAL_NOTES.md` | What each evaluation taught us and what we decided (for example which identity clues `make_blind` now removes) |
+| `governance/` | `governance_pack.html` (everything in one file), `classification.md`, `model_card.md`, `risk_register.md` (22 risks, each with a control in the code, a test and a latest result), `evidence.md`, `oversight.md`, candidate notice, explanation template, evidence with hashes |
 | `REQUEST_LOG.md`, `TEAM_LOG.md` | Every request and what happened; how the work was shared |
 | `DEMO.md` | The 7-minute demo script |
 
@@ -130,7 +156,8 @@ What changes: the rule-based stand-ins are replaced by prompts that are already 
 | `app/web/`, `templates/` | The console, the candidate pages, the interview page, the copilot panel |
 | `mcp_server/` | The tracking-system MCP server (3 read-only tools; private columns refused by the database) |
 | `ops/`, `.github/workflows/ci.yml` | Dockerfile, docker compose (API, MCP, Phoenix), CI |
-| `scripts/` | Setup, demo, evaluations, red team, bias tests, cost and speed, governance, retention, kit builders (`scripts/kit/`) |
+| `evals/` | The Day 4 evaluations: identity swap, accent test, copilot evaluation (and `common.py`, which writes the dated reports) |
+| `scripts/` | Setup, demos, the journey, evaluations, red team, bias tests, cost and speed, the governance pack, the final check, retention, kit builders (`scripts/kit/`) |
 | `starter_kit/` | Test material, never loaded into the app: voice notes, 52 CVs and their answer key (given) plus the fictional material built for Days 2-4: see `starter_kit/FICTIONAL_ADDITIONS.md` |
 | `evidence/`, `governance/` | Evidence files made by the scripts, and the governance pack |
 
@@ -138,6 +165,9 @@ What changes: the rule-based stand-ins are replaced by prompts that are already 
 
 - Fake-model numbers (above). Real-model behaviour is unmeasured until you run it.
 - The four recorded human interviews are 70-140 seconds long (the brief says 10-15 minutes): enough to show every copilot feature.
-- Windows speech voices only come in two voices; the four "accents" are four speaking styles.
+- The accent test uses neural computer voices (British, Scottish, Irish-influenced, US, slow and fast): they show whether the speech model and the scorer are steady across voices, not how real people sound. Passing proves nothing about real accents.
+- Cost numbers in fake mode are what the same tokens would cost at list prices. A real-model run is needed for real cost and speed.
+- BR-20's register is fictional; real use needs the issuers' own register or a verification service.
+- The journey takes about two minutes in fake mode (reading 52 CVs with identity hiding is most of it).
 - Scans are read with `rapidocr` (pip) when tesseract is not installed; tesseract is used automatically if it is.
 - CI is in `.github/workflows/ci.yml`; GitHub only runs it when the project is the root of its repository.

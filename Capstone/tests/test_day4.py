@@ -95,7 +95,7 @@ def test_a_candidate_not_shortlisted_can_ask_why_and_a_recruiter_reviews_it_firs
     db.expire_all()
     req = db.query(ExplanationRequest).one()
     d = db.get(EmailDraft, req.draft_id)
-    assert d.kind == "explanation" and d.status == "DRAFT" and "recruiter" in d.body.lower() and "more evidence of" in d.body
+    assert d.kind == "explanation" and d.status == "DRAFT" and "recruiter" in d.body.lower() and "evidence" in d.body and "other applications" not in d.body.lower() and "other candidates" not in d.body.lower()
     assert "@example.com" not in d.body and "score" not in d.body.lower().replace("scored", "")  # plain words, no private details
     assert db.query(OutboxLog).count() == 0  # nothing is sent until a recruiter approves it
     platform.rc.post(f"/outbox/{d.id}/approve")

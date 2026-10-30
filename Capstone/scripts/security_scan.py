@@ -15,6 +15,7 @@ from app import security
 from app.db import SessionLocal, init_db
 from app.models import Candidate, DecisionLog
 from app.models_ext import CvText, Flag
+from app.privacy import redact_identity
 
 
 def scan_candidate(db, cand: Candidate) -> list[security.Finding]:
@@ -51,7 +52,7 @@ def main() -> int:
                 total += 1
                 print(f"  [{f.kind}] {f.where}{', ' + f.why if f.why else ''}: \"{f.text}\"")
                 if args.save and not db.scalars(select(Flag).where(Flag.candidate_id == c.id, Flag.detail.contains(f.text[:60]))).first():
-                    db.add(Flag(candidate_id=c.id, kind="hidden text in CV" if f.kind == "hidden text" else "instructions in CV ignored", detail=f"{f.where}: {f.text}"[:300]))
+                    db.add(Flag(candidate_id=c.id, kind="hidden text in CV" if f.kind == "hidden text" else "instructions in CV ignored", detail=(redact_identity(c, f"{f.where}: {f.text}") or "")[:300]))
                     db.add(DecisionLog(actor="system", action="security scan finding", subject=f"candidate:{c.id}", reason=f"{f.kind}: {f.text[:160]}"))
         db.commit()
         print(f"\nScanned {len(cands)} candidate(s): {total} finding(s) in {flagged_candidates} CV(s). Nothing is rejected automatically: a person decides.")

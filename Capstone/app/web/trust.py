@@ -84,5 +84,11 @@ def trust(request: Request, user: User = Depends(STAFF), db: Session = Depends(g
     counts = {"decisions_logged": db.scalar(select(func.count(DecisionLog.id))), "emails_sent": db.scalar(select(func.count(OutboxLog.id))),
               "drafts_waiting": db.scalar(select(func.count(EmailDraft.id)).where(EmailDraft.status == "DRAFT")),
               "open_findings": db.scalar(select(func.count(ComplianceFinding.id)).where(ComplianceFinding.status == "OPEN"))}
-    return render(request, "trust.html", user, bar=quality_bar(db), cost=cs, counts=counts, perf=load("perf.json"),
-                  cost_per_100_cvs=round(cv_cost / n_cv * 100, 4) if n_cv else None, cost_per_interview=round(iv_cost / n_iv, 4) if n_iv else None, n_cv=n_cv, n_iv=n_iv)
+    from app import costing
+
+    costs = costing.cost_numbers()
+    return render(request, "trust.html", user, bar=quality_bar(db), cost=cs, counts=counts, perf=load("perf.json"), costs=costs, speed=costing.speed_numbers(),
+                  reports=costing.latest_reports(), copilot_times=costing.copilot_warning_times(),
+                  cost_per_100_cvs=costs["per_100_cvs"] if costs["per_100_cvs"] is not None else (round(cv_cost / n_cv * 100, 4) if n_cv else None),
+                  cost_per_interview=costs["per_interview"]["per_unit"] if costs["per_interview"]["per_unit"] is not None else (round(iv_cost / n_iv, 4) if n_iv else None),
+                  n_cv=n_cv, n_iv=n_iv)

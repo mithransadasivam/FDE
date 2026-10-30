@@ -130,3 +130,15 @@ def build_recording_job(interview_id: int) -> None:
 def load_timeline(s: InterviewSession) -> dict | None:
     p = json_path(s)
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+def moment_time(timeline: dict | None, quote: str | None) -> float | None:
+    """Where in the recording a quote was said: the start of the candidate's line that contains it, minus one second (so the replay opens just before the words)."""
+    if not timeline or not quote:
+        return None
+    norm = lambda x: " ".join("".join(ch.lower() if ch.isalnum() else " " for ch in x).split())
+    want = norm(quote)
+    for c in timeline.get("clips", []):
+        if c.get("speaker") == "candidate" and want and want in norm(c.get("text", "")):
+            return round(max(0.0, float(c["start"]) - 1.0), 1)
+    return None

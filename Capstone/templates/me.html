@@ -28,19 +28,20 @@
   </ul>
   {% if can_explain %}
   <h3>Why was I not shortlisted?</h3>
-  {% if explain == 'asked' %}<div class="flash good">Thank you. A recruiter will review a plain explanation before it is sent to you.</div>
+  <p class="small">We will explain, from your own CV, which skills the role needs that we could not find evidence of. We never compare you with other people.</p>
+  {% if explain == 'asked' %}<div class="flash good" data-testid="explain-asked">Thank you. A person will reply within 5 working days. A recruiter reads the explanation before it is sent to you.</div>
   {% elif explain == 'refused' %}<div class="flash bad">There is nothing to explain yet.</div>{% endif %}
   <form method="post" action="/me/{{ cand.access_token }}/explain"><button class="secondary" data-testid="explain-btn">Ask for an explanation</button></form>
   {% endif %}
   <h3>Your data</h3>
-  {% if cand.erased_at %}<div class="flash good" data-testid="erased">Your personal data was erased on {{ cand.erased_at.strftime('%Y-%m-%d') }}. We keep only a record that you applied and that a person decided to erase your data.</div>
+  {% if cand.erased_at %}<div class="flash good" data-testid="erased">{% if deleted %}Your application has been deleted. {% endif %}Your personal data was deleted on {{ cand.erased_at.strftime('%Y-%m-%d') }}: your CV, any recordings and transcripts, and what we read from your CV. We keep only a record that you applied and that you deleted your data.</div>
   {% else %}
-  {% if data_requested %}<div class="flash good">Thank you. A recruiter will decide on your request and tell you the answer.</div>{% endif %}
-  <p class="small">You can download a copy of the data we hold about you, or ask for it to be deleted.</p>
-  <p><a class="btn secondary" href="/me/{{ cand.access_token }}/data.json" data-testid="download-data">Download my data</a>
-    {% if data_request and data_request.status == 'REQUESTED' %}<span class="badge warn" data-testid="delete-pending">deletion requested: waiting for a recruiter</span>
-    {% elif data_request and data_request.status == 'REFUSED' %}<span class="badge bad">deletion refused: {{ data_request.reason }}</span>
-    {% else %}</p><form method="post" action="/me/{{ cand.access_token }}/delete-request" style="display:inline"><button class="secondary" data-testid="delete-request">Ask for my data to be deleted</button></form><p>{% endif %}</p>
+  <p class="small">You can see everything we hold about you, download a copy, or delete your application.</p>
+  <p><a class="btn" href="/me/{{ cand.access_token }}/my-data" data-testid="see-my-data">See my data</a>
+    <a class="btn secondary" href="/me/{{ cand.access_token }}/data.json" data-testid="download-data">Download my data</a>
+    <a class="btn secondary" href="/me/{{ cand.access_token }}/delete" data-testid="delete-application">Delete my application</a></p>
+  {% if data_request and data_request.status == 'REQUESTED' %}<p><span class="badge warn" data-testid="delete-pending">a deletion request is waiting for a recruiter</span></p>
+  {% elif data_request and data_request.status == 'REFUSED' %}<p><span class="badge bad">deletion refused: {{ data_request.reason }}</span></p>{% endif %}
   {% endif %}
   <h3>Write to us</h3>
   {% if sent %}<div class="flash good">Thank you. A recruiter will read your message and reply.</div>{% endif %}

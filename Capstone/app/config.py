@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     ops_database_url: str = "sqlite:///./data/ops.db"  # prompt log, cost ledger and traces
     storage_dir: Path = Path("storage")
     retention_days: int = 180
+    speech_cache: bool = True  # reuse the recording of a fixed question (the question guide's own wording) instead of speaking it again
     secret_key: str = "change-me"
     fake_models: bool = False
     llm_model: str = "openrouter/anthropic/claude-haiku-4.5"

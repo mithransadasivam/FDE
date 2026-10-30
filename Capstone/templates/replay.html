@@ -195,6 +195,8 @@ document.addEventListener("keydown", (e) => { if (e.code === "Space" && $("start
 $("speed").onclick = () => { audio.playbackRate = audio.playbackRate === 1 ? 1.5 : 1; $("speed").innerHTML = audio.playbackRate + "&times;"; };
 $("fs").onclick = () => { if (document.fullscreenElement) document.exitFullscreen(); else $("room").requestFullscreen && $("room").requestFullscreen(); };
 requestAnimationFrame(frame); update(true);
+// ?t=<seconds> (from the scorecard's "play this moment"): start there
+(() => { const t = parseFloat(new URLSearchParams(location.search).get("t")); if (!isNaN(t) && t >= 0) { const go = () => { audio.currentTime = Math.min(t, total); update(true); }; if (audio.readyState > 0) go(); else audio.addEventListener("loadedmetadata", go, { once: true }); } })();
 </script>
 </body>
 </html>

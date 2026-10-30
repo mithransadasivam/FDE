@@ -1,6 +1,8 @@
 """Candidates, the review queue and identity hiding (Prompt 12). The pipeline board is added in Prompt 13."""
 from pathlib import Path
 
+from types import SimpleNamespace
+
 from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import FileResponse, RedirectResponse
 from sqlalchemy import func, select
@@ -15,6 +17,8 @@ from app.privacy import identity_leaks, make_blind
 from app.schemas import CandidateProfile, Stage
 from app.supervisor import ALLOWED, MoveRefused, move
 from app.services import CORE_FIELDS, OPTIONAL_FIELDS, correct_fields, value_text
+from app.credentials import credential_checks
+from app.privacy import redact_identity
 from app.web.common import flash, render, templates
 
 router = APIRouter()
@@ -81,14 +85,14 @@ def candidate(request: Request, cand_id: int, blind: int | None = None, user: Us
     fields = [(f, FIELD_LABELS[f], getattr(profile, f)) for f in CORE_FIELDS + OPTIONAL_FIELDS]
     pending = db.scalars(select(ReviewItem).where(ReviewItem.candidate_id == cand.id, ReviewItem.resolved.is_(False))).all()
     scores = list(db.scalars(select(ItemScoreRow).where(ItemScoreRow.candidate_id == cand.id).order_by(ItemScoreRow.id)))
-    flags = list(db.scalars(select(Flag).where(Flag.candidate_id == cand.id)))
+    flags = [SimpleNamespace(kind=f.kind, detail=redact_identity(cand, f.detail)) for f in db.scalars(select(Flag).where(Flag.candidate_id == cand.id))]  # flags can quote text next to the name
     from app.interview.scorecard import build_card
     from app.models_ext import HumanInterviewScore, InterviewSession
     iv = db.query(InterviewSession).filter_by(candidate_id=cand.id).first()
     ai_card = build_card(db, iv) if iv and iv.status == "DONE" and iv.scorecard else None
     human_scores = list(db.scalars(select(HumanInterviewScore).where(HumanInterviewScore.candidate_id == cand.id).order_by(HumanInterviewScore.id)))
     return render(request, "candidate.html", user, cand=cand, blind_record=make_blind(cand), is_blind=is_blind, fields=fields,
-                  checks=list(db.scalars(select(EvidenceCheck).where(EvidenceCheck.candidate_id == cand.id))), ai_card=ai_card, human_scores=human_scores, pending=pending, threshold=0.8, twins=duplicate_map(db).get(cand.id, []), scores=scores, flags=flags,
+                  checks=list(db.scalars(select(EvidenceCheck).where(EvidenceCheck.candidate_id == cand.id))), ai_card=ai_card, human_scores=human_scores, pending=pending, threshold=0.8, twins=duplicate_map(db).get(cand.id, []), scores=scores, flags=flags, credentials=credential_checks(cand.profile),
                   score_total=round(sum(r.weight * r.score for r in scores) / 3, 1) if scores else None)
 
 

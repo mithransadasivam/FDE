@@ -5,3 +5,5 @@ storage/
 __pycache__/
 *.pyc
 .pytest_cache/
+reports/accent_audio/
+tmp_sample/

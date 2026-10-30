@@ -1,9 +1,12 @@
 """Every test runs with fake models and a temporary database, set before the app is imported."""
+import atexit
 import os
+import shutil
 import tempfile
 from pathlib import Path
 
 _TMP = Path(tempfile.mkdtemp(prefix="hiring_tests_"))
+atexit.register(shutil.rmtree, _TMP, ignore_errors=True)  # a run must not leave hundreds of MB of recordings behind
 os.environ["FAKE_MODELS"] = "1"
 os.environ["ENABLE_INTEGRATIONS"] = "1"  # the API and webhooks are off by default; the tests that cover them switch them on
 os.environ["DATABASE_URL"] = f"sqlite:///{(_TMP / 'test.db').as_posix()}"

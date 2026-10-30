@@ -15,6 +15,7 @@ from app.config import get_settings
 from app.db import SessionLocal
 from app.duplicates import duplicate_map
 from app.models import Candidate, DecisionLog, Requisition, ReviewItem
+from app.privacy import redact_identity
 from app.schemas import CandidateProfile, Stage
 from app.supervisor import move
 
@@ -85,14 +86,14 @@ def process_candidate(cand_id: int) -> None:
             hidden = security.find_hidden_text(path) if path.suffix.lower() == ".pdf" else []
             for h in hidden:  # text a person cannot see: found by code; kept apart with the metadata, flagged, never read by a model
                 meta = (meta + " | " if meta else "") + h.text
-                db.add(Flag(candidate_id=cand.id, kind="hidden text in CV", detail=f"{h.where}, {h.why}: {h.text}"[:300]))
+                db.add(Flag(candidate_id=cand.id, kind="hidden text in CV", detail=(redact_identity(cand, f"{h.where}, {h.why}: {h.text}") or "")[:300]))
                 db.add(DecisionLog(actor="system", action="hidden text found in CV", subject=f"candidate:{cand.id}", reason=f"{h.where}, {h.why}: {h.text[:160]}"))
             for old_text in db.scalars(select(CvText).where(CvText.candidate_id == cand.id)):
                 db.delete(old_text)
             db.add(CvText(candidate_id=cand.id, text=text, pdf_metadata=meta))
             # rule 8: anything in the CV or its metadata that looks like an instruction is flagged and then ignored
             for f in security.scan_for_instructions(text + "\n" + meta, "the CV"):  # plain text and base64
-                db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=f.text[:300]))
+                db.add(Flag(candidate_id=cand.id, kind="instructions in CV ignored", detail=(redact_identity(cand, f.text) or "")[:300]))
                 db.add(DecisionLog(actor="system", action="instructions in CV ignored", subject=f"candidate:{cand.id}", reason=f.text[:200]))
             profile = extract_profile(path, cand.cv_format, text=text, candidate_id=cand.id)
             cand.error = None

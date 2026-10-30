@@ -1,0 +1,249 @@
+{
+  "report": "final_check",
+  "title": "Final check: the repository and requirements BR-01 to BR-20",
+  "date": "2026-10-30T04:05:04+00:00",
+  "run": {
+    "mode": "fake models (simulated)",
+    "models": {
+      "llm": "openrouter/anthropic/claude-haiku-4.5",
+      "large": "openrouter/anthropic/claude-haiku-4.5",
+      "small": "openrouter/google/gemini-2.5-flash-lite",
+      "local": "ollama/llama3.1",
+      "vision": "openrouter/google/gemini-2.5-flash-lite",
+      "whisper": "base.en"
+    },
+    "guardrails_enabled": true
+  },
+  "settings": {
+    "full_suite": false
+  },
+  "results": {
+    "repository": [
+      {
+        "check": "no .env file is tracked, now or in the history",
+        "ok": true,
+        "detail": "git ls-files and git log --all"
+      },
+      {
+        "check": ".gitignore covers .env, data/, storage/, the raw audio in reports/ and the virtual environment",
+        "ok": true,
+        "detail": ".env, data/, storage/, reports/accent_audio/, .venv/"
+      },
+      {
+        "check": "no API key or secret in any tracked file",
+        "ok": true,
+        "detail": "586 files scanned"
+      },
+      {
+        "check": "the real value of SECRET_KEY in .env appears nowhere in the files or history",
+        "ok": true,
+        "detail": "searched every commit"
+      },
+      {
+        "check": "no API key pattern appears anywhere in the history",
+        "ok": true,
+        "detail": "git log --all -G (key patterns)"
+      },
+      {
+        "check": "no real personal data: every e-mail address in the files is a fictional one (example.com and similar)",
+        "ok": true,
+        "detail": "all addresses are fictional"
+      },
+      {
+        "check": "no large files or model weights are tracked",
+        "ok": true,
+        "detail": "largest tracked file is under 15 MB; no model weights"
+      },
+      {
+        "check": "fictional data only is stated in the project rules",
+        "ok": true,
+        "detail": "CLAUDE.md rule 11"
+      },
+      {
+        "check": "the working tree is committed (nothing left uncommitted)",
+        "ok": true,
+        "detail": "clean"
+      }
+    ],
+    "requirements": [
+      {
+        "id": "BR-01",
+        "requirement": "Voice note to job description and weighted rubric; biased wording flagged",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-02",
+        "requirement": "Read CVs in PDF, Word, scan and screenshot form; unclear fields go to review",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-03",
+        "requirement": "Hide name, age, gender, photo, nationality and contact details before scoring",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-04",
+        "requirement": "Set stages; stop for a person's approval before each move",
+        "status": "OK",
+        "tests": 3,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-05",
+        "requirement": "Score each skill with the exact CV sentence behind each score",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-06",
+        "requirement": "A ranked shortlist with strengths and gaps, approved by the recruiter",
+        "status": "OK",
+        "tests": 1,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-07",
+        "requirement": "A first-round voice interview: spoken questions, diagrams, recorded and transcribed answers, follow-ups, each answer scored with a quote",
+        "status": "OK",
+        "tests": 4,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-08",
+        "requirement": "Tell candidates AI is used before the interview; let them ask for a person",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-09",
+        "requirement": "Answer recruiters' questions about the pool and the policy, with sources",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-10",
+        "requirement": "Follow a recruiter-led interview: live transcript, suggested questions, key points, CV conflicts",
+        "status": "OK",
+        "tests": 2,
+        "reports": [
+          "copilot_eval"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-11",
+        "requirement": "Warn at once on a question that must not be asked",
+        "status": "OK",
+        "tests": 2,
+        "reports": [
+          "copilot_eval"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-12",
+        "requirement": "Draft emails; send nothing without a person's approval",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-13",
+        "requirement": "Check every score has real evidence and no protected detail was used, before the recruiter sees it",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-14",
+        "requirement": "Ignore instructions hidden in CVs, emails or spoken answers",
+        "status": "OK",
+        "tests": 3,
+        "reports": [
+          "attack_report"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-15",
+        "requirement": "One scorecard per candidate with every score, quote and link to the moment in the recording; the recruiter's decision and reason",
+        "status": "OK",
+        "tests": 2,
+        "reports": [
+          "journey"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-16",
+        "requirement": "Changing only name, gender or age clues, or the accent of the same answer, does not change the score",
+        "status": "OK",
+        "tests": 2,
+        "reports": [
+          "identity_swap",
+          "accent_test"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-17",
+        "requirement": "Cost per 100 CVs and per interview, and how fast the voice interview responds",
+        "status": "OK",
+        "tests": 2,
+        "reports": [
+          "cost_and_speed"
+        ],
+        "problems": []
+      },
+      {
+        "id": "BR-18",
+        "requirement": "A governance pack for the EU AI Act: classification, model card, risk register and evidence",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-19",
+        "requirement": "Explain to a candidate, on request, why they were not shortlisted, reviewed by a recruiter before sending",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      },
+      {
+        "id": "BR-20",
+        "requirement": "Check certifications against a register and flag overlapping job dates",
+        "status": "OK",
+        "tests": 2,
+        "reports": [],
+        "problems": []
+      }
+    ],
+    "tests": "50 passed in 120.22s (0:02:00)",
+    "failing_tests": [],
+    "ok": 20,
+    "of": 20
+  },
+  "passed": true
+}

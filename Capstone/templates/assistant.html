@@ -1,28 +1,114 @@
 {% extends "base.html" %}
 {% block title %}Assistant{% endblock %}
 {% block content %}
-<h1>Recruiter assistant</h1>
-<p class="muted">Ask about the candidate pool, the hiring policy or the tracking system. Answers stream in with their sources. The assistant only reads: it never changes a candidate, and it refuses private details.</p>
-<div class="card">
-  <form id="ask" style="display:flex;gap:.5rem"><input id="q" data-testid="question" type="text" placeholder="Who has run Kubernetes in production?" autofocus><button data-testid="ask-btn">Ask</button></form>
-  <p class="small muted">Try: {% for e in examples %}<a href="#" class="ex">{{ e }}</a>{{ ' &middot; ' | safe if not loop.last }}{% endfor %}</p>
+<style>
+.ai { --glow-a: #7c5cff; --glow-b: #22d3ee; --glow-c: #f472b6; position: relative; max-width: 900px; margin: 0 auto; }
+.ai-aurora { position: absolute; inset: -40px -20px auto -20px; height: 380px; z-index: 0; pointer-events: none; filter: blur(60px); opacity: .35;
+  background: radial-gradient(40% 60% at 25% 30%, var(--glow-a), transparent 70%), radial-gradient(35% 55% at 75% 25%, var(--glow-b), transparent 70%), radial-gradient(30% 50% at 55% 70%, var(--glow-c), transparent 70%); }
+.ai > :not(.ai-aurora) { position: relative; z-index: 1; }
+.ai-head { display: flex; align-items: center; gap: 1rem; margin-bottom: .5rem; }
+.orb { width: 54px; height: 54px; border-radius: 50%; flex: none; position: relative;
+  background: conic-gradient(from 0deg, var(--glow-a), var(--glow-b), var(--glow-c), var(--glow-a)); animation: spin 8s linear infinite; box-shadow: 0 0 28px color-mix(in srgb, var(--glow-a) 55%, transparent); }
+.orb::after { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--surface); }
+.orb::before { content: ""; position: absolute; inset: 17px; border-radius: 50%; z-index: 2; background: radial-gradient(circle at 35% 35%, #fff, var(--glow-b) 60%, var(--glow-a)); animation: breathe 3s ease-in-out infinite; }
+.orb.thinking { animation-duration: 1.6s; } .orb.thinking::before { animation-duration: .9s; }
+.ai h1 { margin: 0; font-size: 1.55rem; letter-spacing: -.01em; background: linear-gradient(90deg, var(--ink), var(--glow-a) 70%, var(--glow-b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ai-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin: .35rem 0 1.1rem; }
+.pill { font-size: .74rem; padding: .18rem .6rem; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--muted); backdrop-filter: blur(6px); }
+.pill i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; margin-right: .4rem; box-shadow: 0 0 8px #22c55e; animation: pulse 2s ease-in-out infinite; }
+.thread { display: flex; flex-direction: column; gap: 1rem; min-height: 120px; margin-bottom: 7rem; }
+.welcome { text-align: center; padding: 1.2rem 0 .4rem; }
+.welcome p { color: var(--muted); max-width: 560px; margin: .2rem auto 1rem; }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .6rem; }
+.chip { display: flex; flex-direction: column; text-align: left; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 85%, transparent); border-radius: 14px; padding: .75rem .9rem; color: var(--ink); cursor: pointer; font: inherit; font-size: .9rem; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.chip:hover, .chip:focus-visible { transform: translateY(-2px); border-color: var(--glow-a); box-shadow: 0 6px 22px color-mix(in srgb, var(--glow-a) 25%, transparent); outline: none; }
+.chip small { display: block; color: var(--muted); font-size: .72rem; margin-bottom: .2rem; text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: flex; gap: .7rem; animation: rise .35s ease both; }
+.msg.user { justify-content: flex-end; }
+.bubble { max-width: 82%; padding: .75rem 1rem; border-radius: 18px; line-height: 1.55; }
+.msg.user .bubble { background: linear-gradient(135deg, var(--glow-a), color-mix(in srgb, var(--glow-a) 55%, var(--glow-b))); color: #fff; border-bottom-right-radius: 5px; }
+.msg.bot .bubble { background: color-mix(in srgb, var(--surface) 88%, transparent); border: 1px solid var(--line); border-bottom-left-radius: 5px; box-shadow: 0 4px 24px rgba(0,0,0,.06); backdrop-filter: blur(8px); width: 100%; max-width: 100%; }
+.mini { width: 28px; height: 28px; border-radius: 50%; flex: none; margin-top: 4px; background: conic-gradient(var(--glow-a), var(--glow-b), var(--glow-c), var(--glow-a)); box-shadow: 0 0 12px color-mix(in srgb, var(--glow-a) 50%, transparent); }
+.answer { font-size: 1.02rem; white-space: pre-wrap; min-height: 1.6rem; }
+.answer.live:not(.waiting)::after { content: ""; display: inline-block; width: 8px; height: 1.05em; margin-left: 2px; vertical-align: text-bottom; border-radius: 2px; background: var(--glow-b); animation: blink .9s steps(2) infinite; }
+.dots { display: inline-flex; gap: 5px; padding: .35rem 0; } .dots span { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--glow-a), var(--glow-b)); animation: bounce 1.1s ease-in-out infinite; }
+.dots span:nth-child(2) { animation-delay: .15s; } .dots span:nth-child(3) { animation-delay: .3s; }
+.sources-title { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: .9rem 0 .4rem; }
+ol.sources { list-style: none; padding: 0; margin: 0; display: grid; gap: .45rem; }
+ol.sources li { display: flex; gap: .6rem; align-items: flex-start; font-size: .82rem; color: var(--muted); border: 1px solid var(--line); border-radius: 12px; padding: .5rem .65rem; background: var(--surface-2); animation: rise .3s ease both; }
+ol.sources li b { flex: none; width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; font-size: .72rem; color: #fff; background: linear-gradient(135deg, var(--glow-a), var(--glow-b)); }
+.meta { margin-top: .5rem; display: flex; gap: .4rem; flex-wrap: wrap; } .tag { font-size: .72rem; padding: .12rem .55rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); } .tag.warn { color: #b45309; border-color: #f59e0b; } .tag.fast { color: #0e7490; border-color: #22d3ee; }
+.dock { position: sticky; bottom: 14px; z-index: 5; margin-top: -5.5rem; }
+.dock form { display: flex; gap: .5rem; align-items: center; padding: .5rem .5rem .5rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(14px); box-shadow: 0 10px 40px rgba(60, 40, 160, .18); transition: box-shadow .2s, border-color .2s; }
+.dock form:focus-within { border-color: var(--glow-a); box-shadow: 0 10px 44px color-mix(in srgb, var(--glow-a) 38%, transparent), 0 0 0 3px color-mix(in srgb, var(--glow-a) 22%, transparent); }
+.dock input { flex: 1; border: 0; background: transparent; font: inherit; color: var(--ink); padding: .55rem 0; outline: none; min-width: 0; }
+.dock button { border: 0; border-radius: 999px; padding: .6rem 1.15rem; color: #fff; font: inherit; font-weight: 600; cursor: pointer; background: linear-gradient(135deg, var(--glow-a), var(--glow-b)); box-shadow: 0 4px 16px color-mix(in srgb, var(--glow-a) 45%, transparent); }
+.dock button:disabled { opacity: .55; cursor: progress; }
+.dock .hint { text-align: center; font-size: .72rem; color: var(--muted); margin-top: .4rem; }
+@keyframes spin { to { transform: rotate(360deg); } } @keyframes breathe { 50% { transform: scale(.72); opacity: .85; } } @keyframes pulse { 50% { opacity: .35; } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } } @keyframes blink { 50% { opacity: 0; } } @keyframes bounce { 40% { transform: translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .orb, .orb::before, .pill i, .dots span, .answer.live::after, .msg, ol.sources li { animation: none !important; } }
+@media (max-width: 560px) { .bubble { max-width: 94%; } }
+</style>
+
+<div class="ai">
+  <div class="ai-aurora" aria-hidden="true"></div>
+  <div class="ai-head"><div class="orb" id="orb" aria-hidden="true"></div>
+    <div><h1>Recruiter assistant</h1>
+      <div class="ai-pills"><span class="pill"><i></i>Online</span><span class="pill">Read-only: never changes a candidate</span><span class="pill">Cites its sources</span><span class="pill">Refuses private details</span></div></div></div>
+
+  <div class="thread" id="thread" aria-live="polite">
+    <div class="welcome" id="hero">
+      <p>Ask about the candidate pool, the hiring policy or the tracking system. Answers stream in with the exact sources they came from.</p>
+      <div class="chips">
+        {% for e in examples %}<button type="button" class="chip ex"><small>{{ ['Candidates', 'Skills', 'Policy', 'Pipeline'][loop.index0 % 4] }}</small>{{ e }}</button>{% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="dock">
+    <form id="ask" autocomplete="off"><input id="q" data-testid="question" type="text" placeholder="Ask anything about your candidates or policy..." autofocus aria-label="Your question"><button id="go" data-testid="ask-btn">Ask</button></form>
+    <div class="hint">Answers come only from the CVs, the policy and the tracking system, and are never a decision: a person decides.</div>
+  </div>
 </div>
-<div class="card" id="out" style="display:none">
-  <div id="answer" data-testid="answer" style="font-size:1.05rem;min-height:2rem"></div>
-  <h3>Sources</h3><ol id="sources" data-testid="sources" class="small"></ol>
-  <div class="muted small" id="meta"></div>
-</div>
+
 <script>
 const $ = (id) => document.getElementById(id);
+let busy = false;
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+function scroll() { window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }); }
+
 function ask(q) {
-  $("out").style.display = "block"; $("answer").textContent = ""; $("sources").innerHTML = ""; $("meta").textContent = "";
+  if (busy) return; busy = true; $("go").disabled = true; $("orb").classList.add("thinking");
+  const hero = $("hero"); if (hero) hero.remove();
+  document.querySelectorAll('[data-testid="answer"]').forEach(a => a.removeAttribute("data-testid"));
+  document.querySelectorAll('[data-testid="sources"]').forEach(a => a.removeAttribute("data-testid"));
+  const u = el("div", "msg user"); u.appendChild(el("div", "bubble", q)); $("thread").appendChild(u);
+  const bot = el("div", "msg bot"); bot.appendChild(el("div", "mini"));
+  const bubble = el("div", "bubble"); const dots = el("div", "dots"); dots.innerHTML = "<span></span><span></span><span></span>";
+  const answer = el("div", "answer live"); answer.setAttribute("data-testid", "answer"); answer.classList.add("waiting"); answer.appendChild(dots);
+  const title = el("div", "sources-title", "Sources"); title.style.display = "none";
+  const sources = el("ol", "sources"); sources.setAttribute("data-testid", "sources");
+  const meta = el("div", "meta");
+  bubble.append(answer, title, sources, meta); bot.appendChild(bubble); $("thread").appendChild(bot); scroll();
+  const t0 = performance.now(); let first = true;
+  const done = () => { busy = false; $("go").disabled = false; $("orb").classList.remove("thinking"); answer.classList.remove("live"); $("q").focus(); };
   const es = new EventSource("/assistant/stream?q=" + encodeURIComponent(q));
-  es.addEventListener("token", (e) => { $("answer").textContent += JSON.parse(e.data).text; });
-  es.addEventListener("source", (e) => { const s = JSON.parse(e.data); const li = document.createElement("li"); li.textContent = "[" + s.n + "] " + s.label + " - " + s.text; $("sources").appendChild(li); });
-  es.addEventListener("done", (e) => { const d = JSON.parse(e.data); $("meta").textContent = (d.refused ? "Refused (private or protected). " : "") + (d.cached ? "Answered from cache." : ""); es.close(); });
-  es.onerror = () => es.close();
+  es.addEventListener("token", (e) => { if (first) { answer.textContent = ""; answer.classList.remove("waiting"); first = false; } answer.textContent += JSON.parse(e.data).text; scroll(); });
+  es.addEventListener("source", (e) => {
+    const s = JSON.parse(e.data); title.style.display = "block";
+    const li = el("li"); const n = el("b", "", s.n); li.appendChild(n); li.appendChild(el("span", "", s.text.startsWith(s.label) ? s.text : s.label + " - " + s.text)); sources.appendChild(li);
+  });
+  es.addEventListener("done", (e) => {
+    const d = JSON.parse(e.data); if (first) { answer.textContent = ""; }
+    if (d.refused) meta.appendChild(el("span", "tag warn", "Refused: private or protected"));
+    if (d.cached) meta.appendChild(el("span", "tag fast", "Answered from cache"));
+    meta.appendChild(el("span", "tag", ((performance.now() - t0) / 1000).toFixed(1) + " s"));
+    es.close(); done();
+  });
+  es.onerror = () => { if (first) { answer.textContent = "Sorry, I could not answer that just now."; } es.close(); done(); };
 }
-$("ask").onsubmit = (e) => { e.preventDefault(); if ($("q").value.trim()) ask($("q").value); };
-document.querySelectorAll(".ex").forEach(a => a.onclick = (e) => { e.preventDefault(); $("q").value = a.textContent; ask(a.textContent); });
+$("ask").onsubmit = (e) => { e.preventDefault(); const v = $("q").value.trim(); if (v) { $("q").value = ""; ask(v); } };
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => ask(b.lastChild.textContent.trim()));
 </script>
 {% endblock %}

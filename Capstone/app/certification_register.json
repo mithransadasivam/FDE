@@ -1,0 +1,17 @@
+{
+  "about": "A FICTIONAL register of recognised certifications, made for this project. In real use this is the issuers' own register or a verification service. A certification that is not listed is flagged for a person to check; nothing is rejected.",
+  "certifications": [
+    {"name": "Certified Kubernetes Administrator", "issuer": "Cloud Native Computing Foundation (fictional register entry)", "aliases": ["CKA"]},
+    {"name": "Linux Professional Institute LPIC-1", "issuer": "Linux Professional Institute (fictional register entry)", "aliases": ["LPIC-1"]},
+    {"name": "ITIL 4 Foundation", "issuer": "PeopleCert (fictional register entry)", "aliases": ["ITIL 4"]},
+    {"name": "AWS Certified Cloud Practitioner", "issuer": "Amazon Web Services (fictional register entry)", "aliases": ["AWS CCP"]},
+    {"name": "CompTIA Network+", "issuer": "CompTIA (fictional register entry)", "aliases": ["Network+"]},
+    {"name": "Microsoft Azure Fundamentals (AZ-900)", "issuer": "Microsoft (fictional register entry)", "aliases": ["AZ-900", "Microsoft Azure Fundamentals"]},
+    {"name": "CompTIA A+", "issuer": "CompTIA (fictional register entry)", "aliases": ["A+"]},
+    {"name": "CompTIA Security+", "issuer": "CompTIA (fictional register entry)", "aliases": ["Security+"]},
+    {"name": "AWS Certified Solutions Architect - Associate", "issuer": "Amazon Web Services (fictional register entry)", "aliases": ["AWS SAA"]},
+    {"name": "HashiCorp Certified: Terraform Associate", "issuer": "HashiCorp (fictional register entry)", "aliases": ["Terraform Associate"]},
+    {"name": "Certified Kubernetes Application Developer", "issuer": "Cloud Native Computing Foundation (fictional register entry)", "aliases": ["CKAD"]},
+    {"name": "Google Associate Cloud Engineer", "issuer": "Google Cloud (fictional register entry)", "aliases": []}
+  ]
+}

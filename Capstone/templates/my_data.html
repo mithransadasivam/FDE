@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}My data{% endblock %}
+{% block content %}
+<div class="card" style="max-width:760px" data-testid="my-data">
+  <p class="small"><a href="/me/{{ cand.access_token }}">&larr; Back to your application</a></p>
+  <h1>The data we hold about you</h1>
+  <p class="muted">This is everything we keep about your application. We do not show internal notes or anything about other candidates.</p>
+
+  <h2>Your application</h2>
+  <table>
+    <tr><td>Application number</td><td>{{ data.application.candidate_number }}</td></tr>
+    <tr><td>Applied</td><td>{{ (data.application.applied_at or '')[:10] }}</td></tr>
+    <tr><td>Where it is now</td><td>{{ data.application.current_stage }}</td></tr>
+    <tr><td>You agreed to AI being used</td><td>{{ 'yes' if data.application.agreed_to_ai_use else 'no' }}</td></tr>
+    <tr><td>CV file</td><td>{{ data.application.cv_file_name }}</td></tr>
+  </table>
+
+  <h2>What we read from your CV</h2>
+  <table>
+    {% for k, v in data.details_read_from_your_cv.items() %}<tr><td>{{ k.replace('_', ' ') }}</td><td>{% if v is iterable and v is not string %}{{ v | join('; ') }}{% else %}{{ v if v is not none else '-' }}{% endif %}</td></tr>{% endfor %}
+  </table>
+
+  <h2>Where your application has been, and where AI was used</h2>
+  <table data-testid="stages">
+    <tr><th>Stage</th><th>Date</th><th>AI used?</th><th>What happened</th></tr>
+    {% for s in data.ai_used_at_each_stage %}<tr><td>{{ s.stage }}</td><td>{{ (s.at or '')[:10] }}</td><td><span class="badge {{ 'warn' if s.ai_used else 'good' }}">{{ 'AI helped' if s.ai_used else 'a person' }}</span></td><td class="small">{{ s.what_happened }}</td></tr>{% endfor %}
+  </table>
+
+  {% if data.cv_scores %}
+  <h2>How your CV was assessed</h2>
+  <table><tr><th>Skill</th><th>Score (0-3)</th><th>The words from your CV</th></tr>
+    {% for r in data.cv_scores %}<tr><td>{{ r.skill }}</td><td>{{ r.score_out_of_3 }}</td><td class="small">{{ r.quote_from_your_cv or '-' }}</td></tr>{% endfor %}
+  </table>{% endif %}
+
+  {% if data.ai_interview %}
+  <h2>Your AI interview</h2>
+  <p class="small">Status: {{ data.ai_interview.status }}. {{ 'It was recorded' if data.ai_interview.recorded else 'It was not recorded' }}{% if data.ai_interview.recorded %} and the recording is kept for {{ data.ai_interview.recording_kept_for_days }} days{% endif %}.</p>
+  <div data-testid="transcript">
+    {% for qa in data.ai_interview.questions_and_answers %}<p><strong>Question:</strong> {{ qa.question }}<br><strong>You:</strong> {{ qa.your_answer or '(no answer)' }}</p>{% endfor %}
+  </div>{% endif %}
+
+  {% if data.human_interview_transcript %}
+  <h2>Your interview with a recruiter</h2>
+  {% for ln in data.human_interview_transcript %}<p class="small"><strong>{{ 'Recruiter' if ln.speaker == 'recruiter' else 'You' }}:</strong> {{ ln.text }}</p>{% endfor %}{% endif %}
+
+  {% if data.emails_about_you %}
+  <h2>Emails about you</h2>
+  <ul>{% for e in data.emails_about_you %}<li>{{ e.subject }} <span class="muted small">({{ e.status.lower() }})</span></li>{% endfor %}</ul>{% endif %}
+
+  <p><a class="btn secondary" href="/me/{{ cand.access_token }}/data.json">Download a copy</a> <a class="btn secondary" href="/me/{{ cand.access_token }}/delete">Delete my application</a></p>
+</div>
+{% endblock %}

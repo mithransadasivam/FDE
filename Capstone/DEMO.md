@@ -25,3 +25,18 @@ Every member of the team speaks. The trainer may try one of the twelve rules liv
 | Plant a score with a made-up quote | The compliance reviewer catches it and sends it back | `app/agents/compliance.py` |
 | Plant "ignore the rules" in a spoken answer, an email or CV metadata | It is wrapped as data, flagged, and changes nothing | `app/security.py`, `tests/test_attacks.py` |
 | Ask for a private column through the MCP server | The database refuses | `mcp_server/tracking.py` |
+
+## The 5-minute demo (Day 4 running order)
+
+Before you start: `python -m scripts.journey --fake`, then serve its database (the command it prints) on port 8003 and sign in as **recruiter@example.com** (and **hm@example.com** in a second window).
+
+| Time | Show | Say |
+|---|---|---|
+| 0:00-0:30 | **Pipeline** board | "AI prepares, a person decides. The rule I am proudest of: no code moves a candidate to a decision stage without a person and a reason." |
+| 0:30-1:30 | The requisition (voice note, rubric, the two flagged phrases) and a **candidate** page: clean, blind record and the credential checks | "Messy inputs become clean data. A person checks every field the reader was unsure about." |
+| 1:30-2:30 | **Screening** (every score with its quote), then an **AI interview** page | "Questions are written from the CV and the answers, and code checks every one." |
+| 2:30-3:30 | The **replay room** on the strong candidate (`/interviews/<id>/replay`) | "Scores come from what was said; the figures react to loudness only." |
+| 3:30-4:15 | **Copilot** (practice interview): the forbidden-question warning and the CV conflict card | "The copilot suggests; the recruiter decides." |
+| 4:15-5:00 | The **scorecard** (`/candidates/<id>/scorecard`: three stages side by side, click "play this moment"), **Trust and cost**, and `governance/governance_pack.html` | "Identity swap: no total moved. Accent test: no level moved. Cost per 100 CVs is on this page. One honest gap: it was all measured with fake models and computer voices." |
+
+If something breaks: open `reports/journey.md` and the governance pack, and say what broke and why.

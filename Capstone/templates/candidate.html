@@ -76,6 +76,12 @@
   <strong>This CV contains text that tries to give orders to an AI.</strong> It was removed before anything read the CV and it changed no score. The candidate is not rejected: a person decides what it means.
   {% for f in flags if f.kind in ['hidden text in CV', 'instructions in CV ignored'] %}<div class="small">&bull; {{ f.kind }}: &ldquo;{{ f.detail }}&rdquo;</div>{% endfor %}</div>
 {% endif %}
+<div class="card" data-testid="credential-checks" {% if credentials.needs_review %}style="border-color:#b7791f"{% endif %}>
+  <h2 style="margin-top:0">Credential checks <span class="badge {{ 'warn' if credentials.needs_review else 'good' }}">{{ 'for a person to check' if credentials.needs_review else 'nothing to flag' }}</span></h2>
+  <p class="small muted">Certifications are checked against a register and job dates against each other, by code. This only flags: a person decides, and no score changes.</p>
+  {% for c in credentials.certifications %}<div class="small">&bull; {{ c.certification }}: {% if c.in_register %}<span class="badge good">in the register</span> <span class="muted">{{ c.issuer }}</span>{% else %}<span class="badge warn">not in the register</span>{% endif %}</div>{% else %}<div class="small muted">No certifications on the CV.</div>{% endfor %}
+  {% for o in credentials.overlaps %}<div class="small">&bull; <span class="badge warn">dates overlap</span> {{ o.first }} and {{ o.second }} ({{ o.months_overlapping }} months)</div>{% endfor %}
+</div>
 {% if flags %}
 <div class="card" style="border-color:#b7791f">
   <h2 style="margin-top:0">Guardrail flags</h2>

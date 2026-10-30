@@ -119,7 +119,7 @@ def me_context(db: Session, cand: Candidate, request: Request | None = None) -> 
     iv = db.query(InterviewSession).filter_by(candidate_id=cand.id).first()
     q = request.query_params if request is not None else {}
     return dict(cand=cand, status_text=STAGE_TEXT.get(cand.stage, ""), retention_days=get_settings().retention_days, sent=q.get("sent") == "1",
-                explain=q.get("explain"), can_explain=cand.stage in ("SCREENED", "WITHDRAWN", "DECISION"),
+                explain=q.get("explain"), can_explain=cand.stage in ("SCREENED", "DECISION") and not cand.erased_at, deleted=q.get("deleted") == "1",
                 invited=cand.stage == "AI_INTERVIEW", iv=iv, notice=NOTICE, consent_text=CONSENT_TEXT, interview_error=None,
                 data_request=db.scalars(select(DataRequest).where(DataRequest.candidate_id == cand.id, DataRequest.kind == "delete").order_by(DataRequest.id.desc())).first(),
                 data_requested=q.get("data") == "requested")

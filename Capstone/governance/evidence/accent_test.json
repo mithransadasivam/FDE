@@ -1,0 +1,421 @@
+{
+  "report": "accent_test",
+  "title": "Accent test",
+  "date": "2026-10-30T01:37:39+00:00",
+  "run": {
+    "mode": "fake models (simulated)",
+    "models": {
+      "llm": "openrouter/anthropic/claude-haiku-4.5",
+      "large": "openrouter/anthropic/claude-haiku-4.5",
+      "small": "openrouter/google/gemini-2.5-flash-lite",
+      "local": "ollama/llama3.1",
+      "vision": "openrouter/google/gemini-2.5-flash-lite",
+      "whisper": "base.en"
+    },
+    "guardrails_enabled": true
+  },
+  "settings": {
+    "answers": 6,
+    "voices": [
+      "British English (alan)",
+      "Scottish English (alba)",
+      "Irish-influenced English (jenny_dioco)",
+      "US English (lessac)",
+      "US English (ryan)",
+      "US English, slow (lessac x1.5)",
+      "US English, fast (lessac x0.65)"
+    ],
+    "max_level_difference": 1,
+    "whisper_model": "base.en",
+    "scoring": "fake (rule-based)",
+    "quick": false
+  },
+  "results": {
+    "wer_by_voice": {
+      "British English (alan)": 0.0189,
+      "Scottish English (alba)": 0.0491,
+      "Irish-influenced English (jenny_dioco)": 0.0272,
+      "US English (lessac)": 0.0217,
+      "US English (ryan)": 0.0633,
+      "US English, slow (lessac x1.5)": 0.0448,
+      "US English, fast (lessac x0.65)": 0.0807
+    },
+    "largest_level_difference": 0,
+    "highest_wer_recording": "reports\\accent_audio\\answer6_partial_fast_en_US-lessac-medium.wav",
+    "answers": [
+      {
+        "answer": 1,
+        "bucket": "strong",
+        "question_id": "T-04",
+        "skill": "Cloud networking",
+        "source": "sample interview 3",
+        "text": "First I check the route table of the subnet. Then outbound security group and network ACL rules. A private subnet needs a NAT gateway for outbound internet access. From the VM I test with curl, traceroute and a DNS lookup. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer.",
+        "level_from_text": 3,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer1_strong_normal_en_GB-alan-medium.wav",
+            "wer": 0.0833,
+            "level": 3,
+            "transcript": "First, I check the root table of the subnet. Then outbound security group and network ACL rules. A private subnet needs an 80 gateway for outbound internet access. From the VM I test with curl, trace root and a DNS lookup. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer1_strong_normal_en_GB-alba-medium.wav",
+            "wer": 0.1667,
+            "level": 3,
+            "transcript": "First, I check the root table of the subnet, then outbound security group and network ACL rules. A private subnet needs our NET gateway for outbound internet access. From the VMI test with curl, trace root, and the DNS lookup, for example, last quarter are used exactly, these steps to find the calls of a slow service for a customer."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer1_strong_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.05,
+            "level": 3,
+            "transcript": "First, I check the root table of the subnet, then outbound security group and network ACL rules. A private subnet needs a NAT gateway for outbound internet access. From the verm, I test with curl, tristroot and a DNS lookup. For example, last quarter, I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer1_strong_normal_en_US-lessac-medium.wav",
+            "wer": 0.1,
+            "level": 3,
+            "transcript": "First I check the route table of the subnet, then outbound security group and network ACL rules. A private subnet needs an AT gateway for outbound internet access, from the VMI test with curl, trace route and a DNS lookup, for example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer1_strong_normal_en_US-ryan-medium.wav",
+            "wer": 0.1833,
+            "level": 3,
+            "transcript": "First I check the route table of the subnet. Then I'll bound security group and network ACL rules. A private subnet needs ANAT gateway for outbound internet access. From a VMI test with curl, trace route, and a DNS look up. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer1_strong_slow_en_US-lessac-medium.wav",
+            "wer": 0.1,
+            "level": 3,
+            "transcript": "First, I check the route table of the subnet, then outbound security group and network ACL rules. A private subnet needs an AT gateway for outbound internet access. From the VMI test with curl, trace route, and a DNS lookup, for example. Last quarter, I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer1_strong_fast_en_US-lessac-medium.wav",
+            "wer": 0.1167,
+            "level": 3,
+            "transcript": "First I check the route table of the subnet, then outbound security group and network ACL rules. A private subnet needs an AT gateway for outbound internet access, from the VMI test with curl, trace route and a DNS lookup, for example, last quarter I used exactly these steps to find the cause of a slow service for customer."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      },
+      {
+        "answer": 2,
+        "bucket": "strong",
+        "question_id": "T-06",
+        "skill": "Incident handling",
+        "source": "sample interview 3",
+        "text": "I acknowledge the alert and assess who is affected and how badly. I communicate early and open an incident channel for stakeholders. I mitigate first, for example by rolling back, and find the root cause afterwards. I keep a timeline and hold a blameless post incident review. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer.",
+        "level_from_text": 3,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer2_strong_normal_en_GB-alan-medium.wav",
+            "wer": 0.0299,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly. I communicate early and open an incident channel for stakeholders. I mitigate first, for example, by rolling back and find the root cause afterwards. I keep a timeline and hold a blameless post-incident review. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer2_strong_normal_en_GB-alba-medium.wav",
+            "wer": 0.0448,
+            "level": 3,
+            "transcript": "I can acknowledge the alert and assess who is affected and how badly. I communicate early and open an incident channel for stakeholders. I mitigate first, for example, by rolling back and find the root cause afterwards. I keep a timeline and hold a blameless post-incident review. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer2_strong_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.0299,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly. I communicate early and open an incident channel for stakeholders. I mitigate first, for example by rolling back, and find the root cause afterwards. I keep a timeline and hold a blameless post-incident review. For example, last quarter, I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer2_strong_normal_en_US-lessac-medium.wav",
+            "wer": 0.0299,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly I communicate early and open an incident channel for stakeholders. I mitigate first, for example by rolling back, and find the root cause afterwards. I keep a timeline and hold a blameless post-incident review, for example. Last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer2_strong_normal_en_US-ryan-medium.wav",
+            "wer": 0.0299,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly. I communicate early and open an incident channel for stakeholders. I mitigate first, for example, by rolling back and find the root cause afterwards. I keep a timeline and hold a blameless post-incident review. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer2_strong_slow_en_US-lessac-medium.wav",
+            "wer": 0.0149,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly I communicate early and open an incident channel for stakeholders. I mitigate first. For example, by rolling back and find the root cause afterwards. I keep a timeline and hold a planeless post incident review. For example, last quarter I used exactly these steps to find the cause of a slow service for a customer."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer2_strong_fast_en_US-lessac-medium.wav",
+            "wer": 0.0597,
+            "level": 3,
+            "transcript": "I acknowledge the alert and assess who is affected and how badly I communicate early and open an incident channel for stakeholders, I mitigate first, for example by rolling back, and find the root cause afterwards, I keep a timeline and hold a blameless post-incident review, for example, last quarter I use exactly the steps to find the cause of a slow service for a customer."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      },
+      {
+        "answer": 3,
+        "bucket": "weak",
+        "question_id": "T-01",
+        "skill": "Linux troubleshooting",
+        "source": "sample interview 5",
+        "text": "I would probably restart it and hope it helps.",
+        "level_from_text": 0,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer3_weak_normal_en_GB-alan-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer3_weak_normal_en_GB-alba-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer3_weak_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer3_weak_normal_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer3_weak_normal_en_US-ryan-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer3_weak_slow_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer3_weak_fast_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would probably restart it and hope it helps."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      },
+      {
+        "answer": 4,
+        "bucket": "weak",
+        "question_id": "T-10",
+        "skill": "Customer communication",
+        "source": "sample interview 5",
+        "text": "I would just check the logs.",
+        "level_from_text": 0,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer4_weak_normal_en_GB-alan-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer4_weak_normal_en_GB-alba-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer4_weak_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer4_weak_normal_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer4_weak_normal_en_US-ryan-medium.wav",
+            "wer": 0.1667,
+            "level": 0,
+            "transcript": "I would just check the laws."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer4_weak_slow_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer4_weak_fast_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 0,
+            "transcript": "I would just check the logs."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      },
+      {
+        "answer": 5,
+        "bucket": "partial",
+        "question_id": "T-03",
+        "skill": "Resilience",
+        "source": "sample interview 3, cut to its first 1 sentence(s)",
+        "text": "While the primary is down, orders fail or have to be queued.",
+        "level_from_text": 1,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer5_partial_normal_en_GB-alan-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "while the primary is down, orders fail or have to be queued."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer5_partial_normal_en_GB-alba-medium.wav",
+            "wer": 0.0833,
+            "level": 1,
+            "transcript": "while the primary is down, orders fail or have to be cute."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer5_partial_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.0833,
+            "level": 1,
+            "transcript": "while the primary is dang orders fail or have to be queued."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer5_partial_normal_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "while the primary is down, orders fail or have to be queued."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer5_partial_normal_en_US-ryan-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "While the primary is down, orders fail or have to be queued."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer5_partial_slow_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "While the primary is down, orders fail or have to be queued."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer5_partial_fast_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "while the primary is down, orders fail or have to be queued."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      },
+      {
+        "answer": 6,
+        "bucket": "partial",
+        "question_id": "T-07",
+        "skill": "Incident handling",
+        "source": "sample interview 3, cut to its first 1 sentence(s)",
+        "text": "I look at what runs at 2am: cron jobs, backups or batch jobs.",
+        "level_from_text": 1,
+        "per_voice": [
+          {
+            "voice": "British English (alan)",
+            "file": "reports\\accent_audio\\answer6_partial_normal_en_GB-alan-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "I look at what runs at 2am, cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "Scottish English (alba)",
+            "file": "reports\\accent_audio\\answer6_partial_normal_en_GB-alba-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "I look at what runs at 2am cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "Irish-influenced English (jenny_dioco)",
+            "file": "reports\\accent_audio\\answer6_partial_normal_en_GB-jenny_dioco-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "I look at what runs at 2am, cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "US English (lessac)",
+            "file": "reports\\accent_audio\\answer6_partial_normal_en_US-lessac-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "I look at what runs at 2am, cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "US English (ryan)",
+            "file": "reports\\accent_audio\\answer6_partial_normal_en_US-ryan-medium.wav",
+            "wer": 0.0,
+            "level": 1,
+            "transcript": "I look at what runs at 2am, cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "US English, slow (lessac x1.5)",
+            "file": "reports\\accent_audio\\answer6_partial_slow_en_US-lessac-medium.wav",
+            "wer": 0.1538,
+            "level": 1,
+            "transcript": "I look at what runs at 2 am, cron jobs, backups or batch jobs."
+          },
+          {
+            "voice": "US English, fast (lessac x0.65)",
+            "file": "reports\\accent_audio\\answer6_partial_fast_en_US-lessac-medium.wav",
+            "wer": 0.3077,
+            "level": 1,
+            "transcript": "I look at what runs at 2am, cron jobs, back up to our batch jobs."
+          }
+        ],
+        "largest_level_difference": 0,
+        "difference_from_text_level": 0
+      }
+    ]
+  },
+  "passed": true
+}

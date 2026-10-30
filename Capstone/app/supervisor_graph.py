@@ -4,7 +4,7 @@ survives a restart and resumes at the same gate. Every move still goes through a
 of allowed moves does not permit, and writes it to the decision log.
 
     graph = SupervisorAgent(db).run(candidate_id)            # advances automatic steps, then waits at a gate
-    SupervisorAgent(db).approve(candidate_id, "r@x.com", "reason")   # a person decides: the graph resumes and makes that move
+    SupervisorAgent(db).approve(candidate_id, "recruiter@example.com", "reason")   # a person decides: the graph resumes and makes that move
 """
 import sqlite3
 from contextvars import ContextVar

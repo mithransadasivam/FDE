@@ -293,3 +293,19 @@ class HumanInterviewScore(Base):
     reason: Mapped[str] = mapped_column(Text, default="")
     scored_by: Mapped[str] = mapped_column(String(200))
     at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class ResponseTiming(OpsBase):
+    """How long the interviewer took to get the next question playable after an answer (Day 4, prompt 5), split by step. The candidate id is also the interview id."""
+    __tablename__ = "response_timings"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+    candidate_id: Mapped[int] = mapped_column()
+    turn: Mapped[int | None] = mapped_column(nullable=True)
+    transcription: Mapped[float] = mapped_column(Float, default=0.0)
+    scoring: Mapped[float] = mapped_column(Float, default=0.0)
+    question: Mapped[float] = mapped_column(Float, default=0.0)
+    diagram: Mapped[float] = mapped_column(Float, default=0.0)
+    speech: Mapped[float] = mapped_column(Float, default=0.0)
+    total_s: Mapped[float] = mapped_column(Float, default=0.0)
+    simulated: Mapped[bool] = mapped_column(Boolean, default=True)  # fake mode: model calls took no real time

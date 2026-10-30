@@ -1,0 +1,215 @@
+{
+  "report": "copilot_eval",
+  "title": "Copilot evaluation",
+  "date": "2026-10-30T02:00:06+00:00",
+  "run": {
+    "mode": "fake models (simulated)",
+    "models": {
+      "llm": "openrouter/anthropic/claude-haiku-4.5",
+      "large": "openrouter/anthropic/claude-haiku-4.5",
+      "small": "openrouter/google/gemini-2.5-flash-lite",
+      "local": "ollama/llama3.1",
+      "vision": "openrouter/google/gemini-2.5-flash-lite",
+      "whisper": "base.en"
+    },
+    "guardrails_enabled": true
+  },
+  "settings": {
+    "speed": 4.0,
+    "within_seconds": 2.0,
+    "interviews": [
+      1,
+      2,
+      3,
+      18
+    ],
+    "mode": "fake"
+  },
+  "results": {
+    "interviews": 4,
+    "per_kind": {
+      "forbidden_question": {
+        "caught": 4,
+        "planned": 4
+      },
+      "cv_conflict": {
+        "caught": 4,
+        "planned": 4
+      },
+      "vague_answer": {
+        "caught": 4,
+        "planned": 4
+      },
+      "good_technical_answer": {
+        "caught": 4,
+        "planned": 4
+      },
+      "behavioural_answer": {
+        "caught": 4,
+        "planned": 4
+      }
+    },
+    "warning_seconds_average": 0.0255,
+    "warning_seconds_slowest": 0.031,
+    "code_seconds_slowest": 0.0309,
+    "false_alarms": {
+      "warnings": 0,
+      "cv_cards": 0
+    },
+    "runs": [
+      {
+        "candidate": 1,
+        "duration_s": 16.96,
+        "interview": "storage\\practice\\1\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.028,
+            "code_time_s": 0.0282,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Terraform for 13 years in production, across several large systems.",
+            "cv": "The CV lists Terraform and shows 8 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: acknowledge the alert and assess the impact"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
+        "candidate": 2,
+        "duration_s": 17.12,
+        "interview": "storage\\practice\\2\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.02,
+            "code_time_s": 0.02,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Terraform for six years in production, across several large systems.",
+            "cv": "The CV lists Terraform and shows 1 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: check load and CPU with top or uptime"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
+        "candidate": 3,
+        "duration_s": 17.24,
+        "interview": "storage\\practice\\3\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.031,
+            "code_time_s": 0.0309,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Prometheus for six years in production, across several large systems.",
+            "cv": "The CV lists Prometheus and shows 1 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: listen and acknowledge their frustration"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
+        "candidate": 18,
+        "duration_s": 16.94,
+        "interview": "storage\\practice\\18\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.023,
+            "code_time_s": 0.0227,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Terraform for ten years in production, across several large systems.",
+            "cv": "The CV lists Terraform and shows 5 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: acknowledge the alert and assess the impact"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      }
+    ]
+  },
+  "passed": true
+}

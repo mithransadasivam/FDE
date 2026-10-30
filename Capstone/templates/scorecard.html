@@ -4,6 +4,43 @@
 <h1>Scorecard &middot; candidate #{{ cand.id }} <span class="badge">{{ card.stage }}</span></h1>
 <p class="muted">{{ card.job }} &middot; identity hidden while scoring{% if user.role == 'hiring_manager' %} and for you{% endif %} &middot; the AI only recommends: a recruiter decides.</p>
 
+<style>@media print { .side, .topbar, .no-print, form { display: none !important; } .app { display: block !important; } .card { break-inside: avoid; box-shadow: none !important; border: 1px solid #999 !important; } body { background: #fff !important; color: #000 !important; } }</style>
+<p class="no-print"><button type="button" onclick="window.print()" data-testid="pdf-btn">Download as PDF</button> <span class="muted small">Opens your browser's print window: choose &ldquo;Save as PDF&rdquo;. Opening this page is logged.</span></p>
+
+<div class="card" data-testid="stage-summary">
+  <h2 style="margin-top:0">The three stages side by side</h2>
+  <table>
+    <tr><th>Skill</th><th>Screening (0-3)</th><th>AI interview (0-3)</th><th>Human interview (0-3)</th><th></th></tr>
+    {% for r in stages.rows %}<tr data-skill="{{ r.skill }}"><td>{{ r.skill }}{% if r.must_have %} <span class="badge">must-have</span>{% endif %}</td>
+      <td>{{ r.screening if r.screening is not none else '-' }}</td><td>{{ r.ai if r.ai is not none else '-' }}</td><td>{{ r.human if r.human is not none else '-' }}</td>
+      <td>{% if r.differ %}<span class="badge warn">stages differ: read both pieces of evidence</span>{% endif %}</td></tr>
+    {% endfor %}
+  </table>
+  <p class="muted small">A high CV score with a low interview level (or the other way round) is a reason to read the evidence below, not a verdict: the recruiter decides.</p>
+</div>
+
+<div class="card" data-testid="moments">
+  <h2 style="margin-top:0">Evidence by skill</h2>
+  {% for r in stages.rows if r.cv_quote or r.ai_quote or r.human_ai_suggestion is not none %}
+  <h3>{{ r.skill }}</h3>
+  {% if r.cv_quote %}<div class="small"><strong>CV:</strong> <em>&ldquo;{{ r.cv_quote }}&rdquo;</em> <span class="muted">{{ 'verified' if r.cv_verified else 'NOT verified' }}</span></div>{% endif %}
+  {% for q in r.ai_questions %}<div class="small muted">AI asked ({{ q.kind }}): {{ q.text }}</div>{% endfor %}
+  {% if r.ai_quote %}<div class="small"><strong>Interview:</strong> <em>&ldquo;{{ r.ai_quote }}&rdquo;</em>
+    {% if r.ai_play_t is not none and user.role == 'recruiter' %}<a class="play-link" data-t="{{ r.ai_play_t }}" href="/interviews/{{ cand.id }}/replay?t={{ r.ai_play_t }}">&#9654; play this moment ({{ '%d:%02d' | format((r.ai_play_t // 60) | int, (r.ai_play_t % 60) | int) }})</a>{% endif %}
+    {% if r.hints %}<span class="badge warn">{{ r.hints }} hint(s)</span>{% endif %}{% if r.follow_ups %}<span class="badge">{{ r.follow_ups }} follow-up(s)</span>{% endif %}</div>{% endif %}
+  {% if r.human_ai_suggestion is not none %}<div class="small"><strong>Human interview:</strong> AI suggested {{ r.human_ai_suggestion }}/3 ({{ r.human_points_heard }} point(s) heard); the recruiter's level: {{ r.human if r.human is not none else 'not entered yet' }}</div>{% endif %}
+  {% endfor %}
+  {% for c in stages.cv_conflicts %}<div class="small"><strong>CV check in the human interview:</strong> {{ c }}</div>{% endfor %}
+  {% if not stages.replay %}<p class="muted small">The replay links appear once the recruiter has entered their own levels for the AI interview.</p>{% endif %}
+</div>
+
+<div class="card" data-testid="checker-status">
+  <h2 style="margin-top:0">Checker and security</h2>
+  {% for c in stages.checks %}<div class="small"><span class="badge {{ 'good' if c.status == 'CHECKED' else ('warn' if c.acknowledged else 'bad') }}">{{ c.status }}{% if c.status != 'CHECKED' and c.acknowledged %} (acknowledged){% endif %}</span> {{ c.subject }}</div>{% else %}<p class="muted small">The checker has not run yet.</p>{% endfor %}
+  {% for f in card.flags %}<div class="small"><span class="badge warn">{{ f.kind }}</span> &ldquo;{{ f.detail }}&rdquo;</div>{% endfor %}
+  {% for i in stages.credentials['items'] %}<div class="small"><span class="badge warn">credential check</span> {{ i }}</div>{% endfor %}
+</div>
+
 <div class="row">
   <div class="card">
     <h2 style="margin-top:0">Checks</h2>

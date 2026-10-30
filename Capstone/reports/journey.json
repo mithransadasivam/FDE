@@ -1,0 +1,299 @@
+{
+  "report": "journey",
+  "title": "The whole journey in one command",
+  "date": "2026-10-30T03:49:35+00:00",
+  "run": {
+    "mode": "fake models (simulated)",
+    "models": {
+      "llm": "openrouter/anthropic/claude-haiku-4.5",
+      "large": "openrouter/anthropic/claude-haiku-4.5",
+      "small": "openrouter/google/gemini-2.5-flash-lite",
+      "local": "ollama/llama3.1",
+      "vision": "openrouter/google/gemini-2.5-flash-lite",
+      "whisper": "base.en"
+    },
+    "guardrails_enabled": true
+  },
+  "settings": {
+    "mode": "fake models (fictional data)",
+    "database": "data/journey.db (fresh)",
+    "cvs": 52
+  },
+  "results": {
+    "steps": [
+      {
+        "n": 1,
+        "name": "Upload the starter-kit voice note",
+        "who": "ON A PERSON'S BEHALF: hiring manager",
+        "status": "OK",
+        "seconds": 0.25,
+        "result": "REQ_cloud_support_engineer.wav uploaded"
+      },
+      {
+        "n": 2,
+        "name": "Generate and approve the job and rubric (with a reason)",
+        "who": "ON A PERSON'S BEHALF: hiring manager",
+        "status": "OK",
+        "seconds": 0.61,
+        "result": "8 rubric skills, 2 wording flag(s), approved with a reason"
+      },
+      {
+        "n": 3,
+        "name": "Publish the job",
+        "who": "ON A PERSON'S BEHALF: hiring manager",
+        "status": "OK",
+        "seconds": 0.15,
+        "result": "the job page is public"
+      },
+      {
+        "n": 4,
+        "name": "Upload the 52 CVs (candidates apply; CVs are read and blinded)",
+        "who": "candidates (public page)",
+        "status": "OK",
+        "seconds": 56.74,
+        "result": "52 CVs read; 8 sent to the review queue"
+      },
+      {
+        "n": 5,
+        "name": "Review queue confirmed (a person would do this: logged)",
+        "who": "ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 1.92,
+        "result": "8 CV(s) confirmed; the log notes that a person would do this"
+      },
+      {
+        "n": 6,
+        "name": "Security scan: hidden and planted instructions",
+        "who": "code",
+        "status": "OK",
+        "seconds": 0.63,
+        "result": "3 hidden or planted instruction(s) found and flagged for a person; nothing was rejected"
+      },
+      {
+        "n": 7,
+        "name": "Screening and the evidence checker",
+        "who": "AI + code",
+        "status": "OK",
+        "seconds": 26.08,
+        "result": "52 candidates scored, every quote verified, 0 checker item(s) for a person"
+      },
+      {
+        "n": 8,
+        "name": "Shortlist the top 6 (with a reason)",
+        "who": "ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 0.18,
+        "result": "top 6 shortlisted with a reason: [27, 49, 4, 11, 18, 20]"
+      },
+      {
+        "n": 9,
+        "name": "The scoring scale",
+        "who": "code + ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 0.2,
+        "result": "5 core questions have a described 0-3 scale (8 of 8 rubric skills have questions with scales)"
+      },
+      {
+        "n": 10,
+        "name": "Invite 2 to the AI interview and approve the invitations",
+        "who": "ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 1.02,
+        "result": "candidates 27 and 20 invited; both invitation emails approved"
+      },
+      {
+        "n": 11,
+        "name": "AI interviews: a strong and a weak simulated candidate",
+        "who": "AI interviewer + simulated candidates",
+        "status": "OK",
+        "seconds": 20.52,
+        "result": "strong simulated candidate 81.0/100, weak simulated candidate 19.0/100"
+      },
+      {
+        "n": 12,
+        "name": "Recordings and the recruiter's own review of the AI interviews",
+        "who": "code + ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 0.58,
+        "result": "full_conversation.mp3 and recording.json for both; the replay room opens after the recruiter's own levels"
+      },
+      {
+        "n": 13,
+        "name": "A practice recruiter interview followed by the copilot",
+        "who": "copilot + ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 6.29,
+        "result": "practice interview followed by the copilot: 1 forbidden-question warning(s), 1 CV check(s)"
+      },
+      {
+        "n": 14,
+        "name": "The recruiter's scores and decisions",
+        "who": "ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 0.72,
+        "result": "recruiter scored and decided ADVANCE with a reason; the weak candidate was withdrawn with a reason"
+      },
+      {
+        "n": 15,
+        "name": "Emails approved",
+        "who": "ON A PERSON'S BEHALF: recruiter",
+        "status": "OK",
+        "seconds": 0.35,
+        "result": "2 more email(s) approved by the recruiter; nothing is sent without a person"
+      },
+      {
+        "n": 16,
+        "name": "The scorecard",
+        "who": "code",
+        "status": "OK",
+        "seconds": 0.36,
+        "result": "all three stages side by side; play links work; the hiring manager's view is blind"
+      }
+    ],
+    "total_seconds": 117.3,
+    "cost": {
+      "per_cv_read": {
+        "cost": 0.0,
+        "units": 52,
+        "per_unit": 0.0,
+        "calls": 52
+      },
+      "per_cv_screened": {
+        "cost": 0.089334,
+        "units": 52,
+        "per_unit": 0.001718,
+        "calls": 158
+      },
+      "per_cv": 0.001718,
+      "per_100_cvs": 0.1718,
+      "per_interview": {
+        "cost": 0.048237,
+        "units": 2,
+        "per_unit": 0.024119,
+        "calls": 55
+      },
+      "per_copilot_session": {
+        "cost": 0.004096,
+        "units": 1,
+        "per_unit": 0.004096,
+        "calls": 19
+      },
+      "by_agent": {
+        "screening": {
+          "calls": 52,
+          "cost": 0.053985,
+          "tokens": 28976,
+          "cached": 1,
+          "seconds": 0.063
+        },
+        "interviewer": {
+          "calls": 50,
+          "cost": 0.045381,
+          "tokens": 37013,
+          "cached": 0,
+          "seconds": 0.052
+        },
+        "checker": {
+          "calls": 106,
+          "cost": 0.035349,
+          "tokens": 32718,
+          "cached": 59,
+          "seconds": 0.017
+        },
+        "copilot": {
+          "calls": 19,
+          "cost": 0.004096,
+          "tokens": 3906,
+          "cached": 2,
+          "seconds": 0.004
+        },
+        "requisition": {
+          "calls": 1,
+          "cost": 0.002381,
+          "tokens": 797,
+          "cached": 0,
+          "seconds": 0.002
+        },
+        "diagrams": {
+          "calls": 3,
+          "cost": 0.001673,
+          "tokens": 855,
+          "cached": 1,
+          "seconds": 0.0
+        },
+        "scorecard": {
+          "calls": 2,
+          "cost": 0.001183,
+          "tokens": 547,
+          "cached": 0,
+          "seconds": 0.0
+        },
+        "document": {
+          "calls": 52,
+          "cost": 0.0,
+          "tokens": 31807,
+          "cached": 0,
+          "seconds": 0.009
+        },
+        "communications": {
+          "calls": 4,
+          "cost": 0.0,
+          "tokens": 1225,
+          "cached": 0,
+          "seconds": 0.0
+        }
+      },
+      "calls": 289,
+      "total_cost": 0.144,
+      "simulated": true,
+      "provider_priced": 0,
+      "free_local_calls": 56
+    },
+    "speed": {
+      "answers": 31,
+      "steps": {
+        "transcription": {
+          "median": 0.0,
+          "slowest": 0.0
+        },
+        "scoring": {
+          "median": 0.1227,
+          "slowest": 0.4157
+        },
+        "question": {
+          "median": 0.0583,
+          "slowest": 0.1336
+        },
+        "diagram": {
+          "median": 0.0,
+          "slowest": 0.0698
+        },
+        "speech": {
+          "median": 0.0,
+          "slowest": 0.0
+        }
+      },
+      "simulated": true,
+      "total": {
+        "median": 0.1744,
+        "slowest": 0.5732,
+        "p95": 0.2665
+      },
+      "slowest_step_overall": "scoring",
+      "slowest_answer": {
+        "candidate": 20,
+        "turn": 12,
+        "total_s": 0.5732
+      }
+    },
+    "system_final_decisions": 0,
+    "links": {
+      "The strong candidate's scorecard": "/candidates/27/scorecard",
+      "The replay room": "/interviews/27/replay",
+      "Trust and cost": "/trust",
+      "The pipeline": "/pipeline",
+      "The outbox": "/outbox"
+    }
+  },
+  "passed": true
+}

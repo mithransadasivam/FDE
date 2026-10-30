@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import time
+from contextvars import ContextVar
 from pathlib import Path
 from typing import Callable, TypeVar
 
@@ -35,6 +36,9 @@ def _strip_fences(text: str) -> str:
     return m.group(1) if m else text
 
 
+_LAST_COST: ContextVar = ContextVar("last_call_cost", default=None)
+
+
 def _call(model: str, messages: list[dict], max_tokens: int = 3000) -> str:
     s = get_settings()
     if not s.openrouter_api_key and not model.startswith("ollama/"):
@@ -46,6 +50,10 @@ def _call(model: str, messages: list[dict], max_tokens: int = 3000) -> str:
                                   max_tokens=max_tokens, temperature=0, timeout=90)
     except Exception as e:
         raise ModelError(f"The model call failed: {type(e).__name__}: {str(e)[:200]}") from e
+    try:  # the provider's own cost for this call (LiteLLM prices it from the model name and the tokens it reports); None if it cannot say
+        _LAST_COST.set(float(litellm.completion_cost(completion_response=resp)))
+    except Exception:
+        _LAST_COST.set(None)
     return resp.choices[0].message.content or ""
 
 
@@ -94,7 +102,7 @@ def complete_json(system: str, user: str, schema: type[T], fake: Callable[[str],
             result = schema.model_validate_json(_strip_fences(text))
             _CACHE[key] = result.model_dump_json()
             record_call(agent, task, used_tier, used_model, system, user, text, (time.perf_counter() - started) * 1000, simulated=False,
-                        candidate_id=candidate_id)
+                        candidate_id=candidate_id, cost=_LAST_COST.get())
             return result
         except ValidationError as e:
             last_error = "; ".join(f"{'.'.join(map(str, x['loc']))}: {x['msg']}" for x in e.errors()[:5])

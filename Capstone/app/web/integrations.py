@@ -1,6 +1,7 @@
 """The read-only REST API (blind), its keys and webhooks, and candidates' data requests."""
 import json
 import secrets
+from datetime import date
 
 from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import JSONResponse, RedirectResponse, Response
@@ -9,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from app import integrations
 from app.auth import HM, RECRUITER
-from app.datarights import erase, export_data, open_delete_request, refuse
+from app.datarights import delete_my_application, erase, export_data, open_delete_request, refuse
 from app.db import get_db
 from app.models import Candidate, DecisionLog, Requisition, User
 from app.models_ext import ApiKey, DataRequest, InterviewSession, ItemScoreRow, Webhook, WebhookDelivery
@@ -173,6 +174,43 @@ def my_data(token: str, db: Session = Depends(get_db)):
     db.commit()
     return Response(json.dumps(export_data(db, cand), indent=1), media_type="application/json",
                     headers={"Content-Disposition": f'attachment; filename="my-data-candidate-{cand.id}.json"'})
+
+
+@router.get("/me/{token}/my-data")
+def see_my_data(request: Request, token: str, db: Session = Depends(get_db)):
+    """'See my data' (Day 4, prompt 6): the profile read from their CV, the stages and dates, where AI was used, and their interview transcript. No internal notes, no other candidates."""
+    cand = _cand(db, token)
+    if cand.erased_at:
+        return RedirectResponse(f"/me/{token}", status_code=303)
+    db.add(DecisionLog(actor="candidate", action="data viewed", subject=f"candidate:{cand.id}", reason="the candidate looked at the data we hold about them"))
+    db.commit()
+    return render(request, "my_data.html", None, cand=cand, data=export_data(db, cand))
+
+
+@router.get("/me/{token}/delete")
+def confirm_delete(request: Request, token: str, db: Session = Depends(get_db)):
+    cand = _cand(db, token)
+    if cand.erased_at:
+        return RedirectResponse(f"/me/{token}", status_code=303)
+    return render(request, "delete_confirm.html", None, cand=cand, now_date=date.today().isoformat())
+
+
+@router.post("/me/{token}/delete")
+def delete_application(request: Request, token: str, confirm: str = Form(""), db: Session = Depends(get_db)):
+    """The candidate confirmed: their CV file, recordings, transcripts and profile are deleted at once and they are WITHDRAWN. Only an anonymous line stays in the decision log."""
+    cand = _cand(db, token)
+    if confirm != "yes":
+        return render(request, "delete_confirm.html", None, cand=cand, now_date=date.today().isoformat(), error="Please tick the box to confirm. Nothing has been deleted.")
+    try:
+        delete_my_application(db, cand)
+    except MoveRefused:
+        db.rollback()
+        return RedirectResponse(f"/me/{token}", status_code=303)
+    from app.integrations import emit
+
+    emit(db, "candidate.data_deleted", {"candidate": cand.id})
+    db.commit()
+    return RedirectResponse(f"/me/{token}?deleted=1", status_code=303)
 
 
 @router.post("/me/{token}/delete-request")

@@ -39,6 +39,39 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="card" data-testid="cost-breakdown">
+    <h2 style="margin-top:0">Cost, from the logged calls</h2>
+    <table>
+      <tr><td>Per CV read</td><td>{{ '$%.5f' | format(costs.per_cv_read.per_unit) if costs.per_cv_read.per_unit is not none else 'n/a' }} <span class="muted small">({{ costs.per_cv_read.units }} CVs)</span></td></tr>
+      <tr><td>Per CV screened and checked</td><td>{{ '$%.5f' | format(costs.per_cv_screened.per_unit) if costs.per_cv_screened.per_unit is not none else 'n/a' }} <span class="muted small">({{ costs.per_cv_screened.units }} CVs)</span></td></tr>
+      <tr><td><strong>Per 100 CVs</strong></td><td><strong>{{ '$%.4f' | format(costs.per_100_cvs) if costs.per_100_cvs is not none else 'n/a' }}</strong></td></tr>
+      <tr><td>Per AI interview</td><td>{{ '$%.4f' | format(costs.per_interview.per_unit) if costs.per_interview.per_unit is not none else 'n/a' }} <span class="muted small">({{ costs.per_interview.units }} interviews)</span></td></tr>
+      <tr><td>Per copilot session</td><td>{{ '$%.4f' | format(costs.per_copilot_session.per_unit) if costs.per_copilot_session.per_unit is not none else 'n/a' }} <span class="muted small">({{ costs.per_copilot_session.units }} sessions)</span></td></tr>
+    </table>
+    <p class="muted small">Transcription and text-to-speech run on this machine: they cost nothing and are timed below. {{ costs.free_local_calls }} local call(s) logged.
+      {% if costs.simulated %}<strong>Fake mode:</strong> these are the costs the same calls would have had at the list prices.{% else %}Costs come from the provider's own price for each call (LiteLLM).{% endif %}</p>
+  </div>
+  <div class="card" data-testid="interviewer-speed">
+    <h2 style="margin-top:0">How fast the interviewer replies</h2>
+    {% if speed.answers %}
+    <p class="small muted">Seconds from the candidate's answer to the next question being playable ({{ speed.answers }} answers{% if speed.simulated %}; fake mode: model calls took no real time, speech and transcription are real only when a real voice is used{% endif %}).</p>
+    <table><tr><th>Step</th><th>Median</th><th>Slowest</th></tr>
+      {% for step, v in speed.steps.items() %}<tr{% if step == speed.slowest_step_overall %} style="font-weight:600"{% endif %}><td>{{ step }}{% if step == speed.slowest_step_overall %} <span class="badge warn">slowest</span>{% endif %}</td><td>{{ '%.3f' | format(v.median) }} s</td><td>{{ '%.3f' | format(v.slowest) }} s</td></tr>{% endfor %}
+      <tr><td><strong>Whole reply</strong></td><td><strong>{{ '%.3f' | format(speed.total.median) }} s</strong></td><td><strong>{{ '%.3f' | format(speed.total.slowest) }} s</strong></td></tr></table>
+    {% else %}<p class="muted small">No interview answers have been timed yet. Run an interview and this fills in.</p>{% endif %}
+    {% if copilot_times %}<p class="small">Copilot warning for a forbidden question: average <strong>{{ copilot_times.average_s }} s</strong>, slowest <strong>{{ copilot_times.slowest_s }} s</strong> after the question ended ({{ copilot_times.interviews }} practice interviews, {{ copilot_times.date }}, from <code>reports/copilot_eval.json</code>).</p>
+    {% else %}<p class="small muted">Copilot warning time: not measured yet (run <code>python -m evals.copilot_eval</code>).</p>{% endif %}
+  </div>
+</div>
+
+<div class="card" data-testid="latest-reports">
+  <h2 style="margin-top:0">Latest test reports</h2>
+  <table><tr><th>Report</th><th>Result</th><th>Date</th><th>What it found</th></tr>
+    {% for r in reports %}<tr><td>{{ r.label }}</td><td><span class="badge {{ 'good' if r.passed else ('bad' if r.passed is not none else '') }}">{{ r.status }}</span></td><td class="small">{{ r.date or '-' }}{% if r.age_days is not none and r.age_days > 7 %} <span class="badge warn">older than 7 days</span>{% endif %}</td><td class="small">{{ r.detail or 'Run it to fill this in' }}</td></tr>{% endfor %}
+  </table>
+</div>
+
 <div class="card">
   <h2 style="margin-top:0">Agent steps (traces)</h2>
   <table><tr><th>Agent</th><th>Steps traced</th><th>Average ms</th></tr>

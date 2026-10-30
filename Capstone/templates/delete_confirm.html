@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Delete my application{% endblock %}
+{% block content %}
+<div class="card" style="max-width:640px" data-testid="delete-confirm">
+  <p class="small"><a href="/me/{{ cand.access_token }}">&larr; Back to your application</a></p>
+  <h1>Delete my application</h1>
+  {% if error %}<div class="flash bad" data-testid="delete-error">{{ error }}</div>{% endif %}
+  <p>If you confirm, this happens <strong>at once and cannot be undone</strong>:</p>
+  <ul>
+    <li>your CV file is deleted;</li>
+    <li>any interview recordings and transcripts are deleted;</li>
+    <li>everything we read from your CV (your profile) and your scores are deleted;</li>
+    <li>your application is closed (WITHDRAWN) and you will not be considered for this role.</li>
+  </ul>
+  <p>We keep only a line in our decision log that says <em>&ldquo;candidate {{ cand.id }} deleted their data on {{ now_date }}&rdquo;</em>, with no personal details. We keep it so that we can show that we respected your choice.</p>
+  <form method="post" action="/me/{{ cand.access_token }}/delete">
+    <label style="display:flex;gap:.5rem;align-items:center"><input type="checkbox" name="confirm" value="yes" data-testid="confirm-box"> Yes, delete my application and my data.</label>
+    <p><button type="submit" style="background:#b42318" data-testid="confirm-delete">Delete everything now</button> <a class="btn secondary" href="/me/{{ cand.access_token }}">Keep my application</a></p>
+  </form>
+</div>
+{% endblock %}

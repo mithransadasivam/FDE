@@ -1,0 +1,175 @@
+{
+  "report": "cost_and_speed",
+  "title": "Cost and speed",
+  "date": "2026-10-30T02:12:05+00:00",
+  "run": {
+    "mode": "fake models (simulated)",
+    "models": {
+      "llm": "openrouter/anthropic/claude-haiku-4.5",
+      "large": "openrouter/anthropic/claude-haiku-4.5",
+      "small": "openrouter/google/gemini-2.5-flash-lite",
+      "local": "ollama/llama3.1",
+      "vision": "openrouter/google/gemini-2.5-flash-lite",
+      "whisper": "base.en"
+    },
+    "guardrails_enabled": true
+  },
+  "settings": {
+    "measured_run": true
+  },
+  "results": {
+    "cost": {
+      "per_cv_read": {
+        "cost": 0.0,
+        "units": 52,
+        "per_unit": 0.0,
+        "calls": 52
+      },
+      "per_cv_screened": {
+        "cost": 0.047461,
+        "units": 44,
+        "per_unit": 0.001079,
+        "calls": 47
+      },
+      "per_cv": 0.001079,
+      "per_100_cvs": 0.1079,
+      "per_interview": {
+        "cost": 0.073821,
+        "units": 3,
+        "per_unit": 0.024607,
+        "calls": 89
+      },
+      "per_copilot_session": {
+        "cost": 0.00721,
+        "units": 2,
+        "per_unit": 0.003605,
+        "calls": 38
+      },
+      "by_agent": {
+        "interviewer": {
+          "calls": 83,
+          "cost": 0.070604,
+          "tokens": 60239,
+          "cached": 8,
+          "seconds": 0.072
+        },
+        "screening": {
+          "calls": 44,
+          "cost": 0.045588,
+          "tokens": 24583,
+          "cached": 1,
+          "seconds": 0.056
+        },
+        "copilot": {
+          "calls": 38,
+          "cost": 0.00721,
+          "tokens": 7816,
+          "cached": 10,
+          "seconds": 0.042
+        },
+        "requisition": {
+          "calls": 2,
+          "cost": 0.004418,
+          "tokens": 1486,
+          "cached": 0,
+          "seconds": 0.004
+        },
+        "checker": {
+          "calls": 3,
+          "cost": 0.001873,
+          "tokens": 1049,
+          "cached": 0,
+          "seconds": 0.001
+        },
+        "diagrams": {
+          "calls": 3,
+          "cost": 0.001673,
+          "tokens": 855,
+          "cached": 1,
+          "seconds": 0.0
+        },
+        "scorecard": {
+          "calls": 3,
+          "cost": 0.001544,
+          "tokens": 772,
+          "cached": 0,
+          "seconds": 0.001
+        },
+        "document": {
+          "calls": 52,
+          "cost": 0.0,
+          "tokens": 31807,
+          "cached": 0,
+          "seconds": 0.012
+        },
+        "speech": {
+          "calls": 100,
+          "cost": 0.0,
+          "tokens": 0,
+          "cached": 0,
+          "seconds": 12.897
+        }
+      },
+      "calls": 328,
+      "total_cost": 0.1329,
+      "simulated": true,
+      "provider_priced": 0,
+      "free_local_calls": 152
+    },
+    "speed": {
+      "answers": 50,
+      "steps": {
+        "transcription": {
+          "median": 0.0,
+          "slowest": 0.0
+        },
+        "scoring": {
+          "median": 0.0032,
+          "slowest": 0.006
+        },
+        "question": {
+          "median": 0.0016,
+          "slowest": 0.0389
+        },
+        "diagram": {
+          "median": 0.0,
+          "slowest": 0.0013
+        },
+        "speech": {
+          "median": 0.1222,
+          "slowest": 0.1487
+        }
+      },
+      "simulated": true,
+      "total": {
+        "median": 0.1292,
+        "slowest": 0.1646,
+        "p95": 0.1574
+      },
+      "slowest_step_overall": "speech",
+      "slowest_answer": {
+        "candidate": 1,
+        "turn": 17,
+        "total_s": 0.1646
+      }
+    },
+    "speech_cache": {
+      "measured": true,
+      "questions": 8,
+      "before_s": 1.084,
+      "after_s": 0.078,
+      "first_candidate_after_s": 1.131,
+      "saved_s": 1.006,
+      "improvement_pct": 92.8,
+      "voice": "operating-system voice (pyttsx3)"
+    },
+    "copilot_warning": {
+      "average_s": 0.0255,
+      "slowest_s": 0.031,
+      "interviews": 4,
+      "date": "2026-10-30"
+    },
+    "measured_run": true
+  },
+  "passed": true
+}

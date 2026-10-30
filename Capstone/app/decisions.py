@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.agents.communications import CommsAgent, draft_decision
 from app.models import Candidate, DecisionLog, Requisition
+from app.privacy import redact_identity
 from app.models_ext import (ComplianceFinding, EmailDraft, ExplanationRequest, FinalDecision, Flag, HumanInterview, InterviewSession, ItemScoreRow)
 from app.schemas import Decision, Stage
 from app.supervisor import MoveRefused, move
@@ -49,7 +50,7 @@ def build_scorecard(db: Session, cand: Candidate) -> dict:
         "checks": {"every_score_has_a_quote": quotes_checked, "protected_traits_in_prompts": not any(f.check == "protected detail in scoring prompt" and f.status == "OPEN" for f in findings),
                    "open_findings": [f.detail for f in findings if f.status == "OPEN"],
                    "compliance_reviewer": "passed" if quotes_checked and not any(f.status == "OPEN" for f in findings) else "findings open"},
-        "flags": [{"kind": f.kind, "detail": f.detail} for f in db.scalars(select(Flag).where(Flag.candidate_id == cand.id))],
+        "flags": [{"kind": f.kind, "detail": redact_identity(cand, f.detail)} for f in db.scalars(select(Flag).where(Flag.candidate_id == cand.id))],
         "decision": next(({"decision": d.decision, "reason": d.reason, "actor": d.actor, "at": str(d.at)} for d in db.scalars(select(FinalDecision).where(FinalDecision.candidate_id == cand.id).order_by(FinalDecision.id.desc()))), None),
         "recommendation": recommendation(scores, (ai_card or {}).get("total")),
         "emails": [{"id": e.id, "kind": e.kind, "subject": e.subject, "status": e.status} for e in db.scalars(select(EmailDraft).where(EmailDraft.candidate_id == cand.id))],
@@ -85,18 +86,27 @@ def decide(db: Session, cand: Candidate, decision: str, reason: str, actor: str)
 
 
 def explain_not_shortlisted(db: Session, cand: Candidate) -> ExplanationRequest:
-    """A candidate asked why they were not shortlisted. Drafts a plain explanation built from the evidence (their own scores and quotes),
-    for a recruiter to review before anything is sent (BR-19)."""
-    scores = list(db.scalars(select(ItemScoreRow).where(ItemScoreRow.candidate_id == cand.id)))
+    """A candidate asked why they were not shortlisted (Day 4, prompt 6). A short, kind explanation is drafted from THEIR OWN screening evidence only: which must-have skills
+    had no evidence in the CV, with what the job asked for. It never compares them with other candidates and never mentions anything about identity. It goes to the
+    outbox as a draft for a recruiter to check and approve (nothing is sent without that)."""
+    if cand.stage not in (Stage.SCREENED.value, Stage.DECISION.value) or cand.erased_at:
+        raise MoveRefused("An explanation is for applications that were not shortlisted.")
+    req = db.get(Requisition, cand.requisition_id)
+    scores = {r.skill: r for r in db.scalars(select(ItemScoreRow).where(ItemScoreRow.candidate_id == cand.id))}
     if not scores:
         raise MoveRefused("There is nothing to explain yet: your application has not been compared with the role.")
-    strengths = [f"your CV showed {r.skill.lower()} (\"{r.quote}\")" for r in sorted(scores, key=lambda r: -r.weight * r.score) if r.score >= 2][:2]
-    gaps = [r.skill.lower() for r in sorted(scores, key=lambda r: (r.score, -r.weight)) if r.score <= 1][:3]
-    extra = {"strengths": ("In your favour: " + "; ".join(strengths) + ".") if strengths else "",
-             "gaps": ("Other applications showed more evidence of: " + ", ".join(gaps) + ".") if gaps else ""}
+    rubric = (req.rubric or {}).get("items", [])
+    missing = [i for i in rubric if i.get("must_have") and scores.get(i["skill"]) is not None and scores[i["skill"]].score == 0]
+    shown = [i for i in sorted(rubric, key=lambda i: -i["weight"]) if scores.get(i["skill"]) is not None and scores[i["skill"]].score >= 2 and scores[i["skill"]].quote][:2]
+    asked = {i["skill"]: i.get("evidence_from_note", "") for i in rubric}
+    gaps = "; ".join(f"{i['skill']} (the role asks for: {asked.get(i['skill']) or 'evidence of this skill'})" for i in missing[:3])
+    extra = {"strengths": ("What we did see in your CV: " + "; ".join(f"{i['skill'].lower()} (\"{scores[i['skill']].quote}\")" for i in shown) + ".") if shown else "",
+             "gaps": (f"We could not find evidence in your CV of these skills the role needs: {gaps}. If your CV is missing something you have done, you are welcome to apply again with it added "
+                      f"or ask for a person to look at your application again.") if missing else
+                     "None of the essential skills was missing from your CV, but other parts of the role's skills showed less evidence than we needed this time."}
     agent = CommsAgent(db, cand.id)
     draft_id = agent.call("draft_email", candidate_id=cand.id, kind="explanation", extra=extra)["draft_id"]
-    req = ExplanationRequest(candidate_id=cand.id, draft_id=draft_id, status="WAITING_FOR_RECRUITER")
-    db.add(req)
+    row = ExplanationRequest(candidate_id=cand.id, draft_id=draft_id, status="WAITING_FOR_RECRUITER")
+    db.add(row)
     db.add(DecisionLog(actor="candidate", action="asked why not shortlisted", subject=f"candidate:{cand.id}", reason="an explanation was drafted for a recruiter to review"))
-    return req
+    return row

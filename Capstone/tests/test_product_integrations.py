@@ -193,7 +193,7 @@ def test_a_recruiter_approves_and_personal_data_is_erased_but_the_trail_stays(in
     assert {"asked for their data to be deleted", "personal data erased"} <= {e.action for e in log}
     assert db.query(DecisionLog).filter(DecisionLog.action == "move AI_INTERVIEW -> WITHDRAWN").one().actor == "recruiter@example.com"
     page = invited.visitor.get(f"/me/{t}").text
-    assert "personal data was erased" in page
+    assert "personal data was deleted" in page
     assert invited.visitor.get(f"/me/{t}/data.json").status_code == 410
     assert db.get(Candidate, 2).profile  # nobody else is touched
 

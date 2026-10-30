@@ -5,11 +5,14 @@ speak(text, path)  writes a wav with an offline engine: pyttsx3 (the operating s
                    In fake mode it writes a short silent wav instead (tests never wait for a voice). If no engine works it logs a
                    warning and returns None: the page then shows the question text only.
 """
+import hashlib
 import logging
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
+from app.ai import ledger
 from app.ai.audio import silent_wav
 from app.config import get_settings
 
@@ -63,7 +66,37 @@ def speak(text: str, path: Path, voice: str = "interviewer", real: bool | None =
     use_real = (not get_settings().fake_models) if real is None else real
     if not use_real:
         return silent_wav(path, _fake_seconds(text))
-    if _pyttsx3(text, path, voice) or _espeak(text, path, voice):
-        return path
+    from app import timing
+
+    cached = _cache_file(text, voice)
+    started = time.perf_counter()
+    with timing.timed("speech"):
+        if cached is not None and cached.exists():  # a fixed question has been spoken before: reuse the recording (no personal data is in it)
+            shutil.copyfile(cached, path)
+            ledger.record_timed("speech", "text_to_speech (cached)", time.perf_counter() - started)
+            return path
+        if _pyttsx3(text, path, voice) or _espeak(text, path, voice):
+            if cached is not None:
+                cached.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(path, cached)
+            ledger.record_timed("speech", "text_to_speech", time.perf_counter() - started)
+            return path
     log.warning("No text-to-speech voice is available: the question will be shown as text only")
     return None
+
+
+def _fixed_texts() -> set[str]:
+    """The questions that are the same for every candidate (the question guide's own wording). Written questions mention the CV, so they are never cached."""
+    from app.interview.bank import load_questions
+
+    out: set[str] = set()
+    for q in load_questions().values():
+        out.add(q["question"])
+        out.update(q.get("follow_ups") or [])
+    return out
+
+
+def _cache_file(text: str, voice: str) -> Path | None:
+    if not getattr(get_settings(), "speech_cache", True) or text not in _fixed_texts():
+        return None
+    return get_settings().storage_dir / "tts_cache" / (hashlib.sha256(f"{voice}|{text}".encode()).hexdigest()[:24] + ".wav")

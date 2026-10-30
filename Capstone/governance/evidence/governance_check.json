@@ -24,7 +24,7 @@
   {
    "check": "risk register has at least 10 risks",
    "passed": true,
-   "detail": "14 risks"
+   "detail": "22 risks"
   },
   {
    "check": "every risk has an owner, a control, an evidence file and a review date",
@@ -44,7 +44,7 @@
   {
    "check": "every evidence file matches its hash in the manifest",
    "passed": true,
-   "detail": "14 files; mismatches: none"
+   "detail": "21 files; mismatches: none"
   },
   {
    "check": "every number in the model card points to evidence and matches it",

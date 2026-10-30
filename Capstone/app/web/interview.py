@@ -1,5 +1,6 @@
 """The AI first-round interview: the candidate's page (private link, no sign-in) and the recruiter's review (Day 2)."""
 import re
+import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -191,12 +192,13 @@ async def record(token: str, audio_file: UploadFile = File(..., alias="audio"), 
     data, suffix = await _read_audio(audio_file)
     _discard(agent)  # a recording that was not submitted is replaced
     dest, ref = _save_answer_audio(agent, data, suffix)
+    t0 = time.perf_counter()
     try:
         text, seconds = _heard(dest, audio_file.filename or "")
     except HTTPException:
         dest.unlink(missing_ok=True)
         raise
-    agent.session.state["pending"] = {"audio": ref, "text": text, "seconds": seconds}
+    agent.session.state["pending"] = {"audio": ref, "text": text, "seconds": seconds, "transcription_s": round(time.perf_counter() - t0, 4)}
     agent._save()
     return {"transcript": text, "seconds": seconds}
 
@@ -226,7 +228,8 @@ def submit(token: str, background: BackgroundTasks, db: Session = Depends(get_db
         raise HTTPException(409, "There is no recorded answer to submit")
     agent.session.state.pop("pending")
     try:
-        return _finished(background, agent, agent.submit(text=pending["text"], audio_ref=pending["audio"], duration_s=pending["seconds"] or None))
+        return _finished(background, agent, agent.submit(text=pending["text"], audio_ref=pending["audio"], duration_s=pending["seconds"] or None,
+                                                         transcription_s=pending.get("transcription_s", 0.0)))
     except PermissionError as e:
         raise HTTPException(409, str(e)) from e
 
@@ -249,6 +252,7 @@ async def answer(token: str, background: BackgroundTasks, audio_file: UploadFile
         if audio_file is not None and audio_file.filename:
             data, suffix = await _read_audio(audio_file)
             dest, ref = _save_answer_audio(agent, data, suffix)
+            t0 = time.perf_counter()
             try:
                 heard, seconds = _heard(dest, audio_file.filename)
             except HTTPException:
@@ -256,7 +260,7 @@ async def answer(token: str, background: BackgroundTasks, audio_file: UploadFile
                     dest.unlink(missing_ok=True)
                     raise
                 return _finished(background, agent, agent.submit(text=text))
-            return _finished(background, agent, agent.submit(text=heard, audio_ref=ref, duration_s=seconds or None))
+            return _finished(background, agent, agent.submit(text=heard, audio_ref=ref, duration_s=seconds or None, transcription_s=round(time.perf_counter() - t0, 4)))
         return _finished(background, agent, agent.submit(text=text))
     except PermissionError as e:
         raise HTTPException(409, str(e)) from e

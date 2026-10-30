@@ -52,7 +52,14 @@ def _pattern(secret: str) -> re.Pattern:
 PROXY_RX = [re.compile(p, re.I) for p in (
     r"\s*\((?:graduated\s+)?(?:19|20)\d{2}\)", r"\bgraduated\s+(?:in\s+)?(?:19|20)\d{2}\b",
     r"\bwomen(?:'s)?\s+in\s+\w+(?:\s+(?:society|network|scholarship))?", r"\bmen(?:'s)?\s+in\s+\w+\b",
-    r"\b(?:she|he|her|his|hers|him)\b", r"\bwomen\b", r"\bmentors\s+other\s+\w+")]
+    r"\b(?:she|he|her|his|hers|him|they|their|theirs)\b", r"\bwomen\b", r"\bmentors\s+other\s+\w+")]
+
+# A line that is only about a personal circumstance is dropped whole, not trimmed (found by evals/identity_swap.py: a club, a church group or a
+# parental-leave gap inside a field the extractor reads reached the blind text). A hobby line says nothing about the job either.
+DROP_RX = [re.compile(p, re.I) for p in (
+    r"\b(?:church|mosque|synagogue|temple|gurdwara|religio\w*|faith)\b", r"\b(?:parental|maternity|paternity|family)\s+(?:leave|break)\b",
+    r"\bcareer\s+(?:gap|break)\b.*\b(?:leave|parent|child|family|health|illness)\b", r"\b(?:women|men)'?s\s+\w*\s*(?:club|team|society|group|network)\b",
+    r"\b(?:football|netball|cricket|rugby|hockey|sports?)\s+club\b", r"\bhobb(?:y|ies)\b", r"\b\d{2}\s+years\s+of\s+experience\s+(?:restoring|collecting|playing|growing)\b")]
 
 _presidio = None
 
@@ -84,12 +91,24 @@ def _scrub(text: str | None, secrets: list[str]) -> str | None:
         text = _pattern(secret).sub(HIDDEN, text)
     if not get_settings().guardrails_enabled:  # the red-team 'before' state: only the candidate's own known details are hidden
         return text
+    if any(rx.search(text) for rx in DROP_RX):
+        return ""
     text = EMAIL_RX.sub(HIDDEN, text)
     text = PHONE_RX.sub(HIDDEN, text)
     text = DOB_RX.sub(HIDDEN, text)
     for rx in PROXY_RX:
         text = rx.sub("", text)
     return _presidio_scrub(re.sub(r"\s{2,}", " ", text).strip())
+
+
+def redact_identity(candidate: Candidate, text: str | None) -> str | None:
+    """Hides the candidate's own name, e-mail, phone, address and date of birth wherever they appear in a piece of text, for example a flag that quotes a planted instruction
+    together with the PDF's title ("CV Arjun Reddy"). Used wherever such text is stored or shown, so the blind view stays blind."""
+    if not text:
+        return text
+    for secret in identity_strings(candidate.profile or {}):
+        text = _pattern(secret).sub(HIDDEN, text)
+    return text
 
 
 def make_blind(candidate: Candidate) -> BlindCandidate:

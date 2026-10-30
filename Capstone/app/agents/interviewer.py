@@ -14,7 +14,7 @@ from pydantic import BaseModel
 from sqlalchemy import delete
 from sqlalchemy.orm import Session
 
-from app import guardrails, security
+from app import guardrails, security, timing
 from app.agents.base import BaseAgent, register_tool
 from app.ai import speech, voice
 from app.ai.llm import complete_json
@@ -489,15 +489,17 @@ class InterviewerAgent(BaseAgent):
         ctx = self._context()
         target = {"skill": skill, "kind": kind, "base": base, "key_points": key_points, "fallback": fallback, "has_picture": has_picture,
                   "hook": cv_hook(skill, ctx["blind_text"]) if hook else None}
-        return ask_next(target, ctx["blind_text"], self._earlier_questions(), self._all_answers(), self._minutes_left(), ctx["allowed"],
-                        self.candidate_id, must_cover=bool(self.session.state.get("must_cover")))
+        with timing.timed("question"):
+            return ask_next(target, ctx["blind_text"], self._earlier_questions(), self._all_answers(), self._minutes_left(), ctx["allowed"],
+                            self.candidate_id, must_cover=bool(self.session.state.get("must_cover")))
 
     def _diagram_for(self, nq: NextQuestion) -> tuple[dict | None, dict | None]:
         """Draws a diagram for a written question that needs one: at most 3 per interview, and a failed one is dropped (the question is still asked)."""
         st = self.session.state
         if not nq.needs_diagram or st.get("diagrams_used", 0) >= diagrams.MAX_DIAGRAMS:
             return None, None
-        d = diagrams.make_diagram(nq.diagram_brief or nq.text, nq.skill, self.candidate_id)
+        with timing.timed("diagram"):
+            d = diagrams.make_diagram(nq.diagram_brief or nq.text, nq.skill, self.candidate_id)
         if d is None:
             return None, None
         st["diagrams_used"] = st.get("diagrams_used", 0) + 1
@@ -631,7 +633,15 @@ class InterviewerAgent(BaseAgent):
 
     # -- one turn
     def submit(self, text: str | None = None, audio_path: Path | None = None, original_name: str = "", duration_s: float | None = None,
-               audio_ref: str | None = None) -> dict:
+               audio_ref: str | None = None, transcription_s: float = 0.0) -> dict:
+        """One answer in, the next question out. The time each step takes is saved (app/timing.py): transcription, scoring, question, diagram, speech."""
+        timing.begin(transcription_s)
+        try:
+            return self._submit(text, audio_path, original_name, duration_s, audio_ref)
+        finally:
+            timing.finish(self.candidate_id, self.question_number())
+
+    def _submit(self, text: str | None, audio_path: Path | None, original_name: str, duration_s: float | None, audio_ref: str | None) -> dict:
         s = self.session
         if s.status != "IN_PROGRESS":
             raise PermissionError("The interview is not in progress")
@@ -678,7 +688,8 @@ class InterviewerAgent(BaseAgent):
         if t.get("opening"):  # the opening answer is kept (the interviewer reads it) but not scored
             return {**result, **self._advance(from_opening=True)}
         combined = " ".join(a["text"] for a in t["answers"])
-        scored = self.call("score_answer", question_id=q["id"], transcript=combined, hint_used=t["hint_used"], candidate_id=self.candidate_id)
+        with timing.timed("scoring"):
+            scored = self.call("score_answer", question_id=q["id"], transcript=combined, hint_used=t["hint_used"], candidate_id=self.candidate_id)
         t["score"] = scored
         result["score"] = scored
         if t.get("deeper_pending"):  # the answer to a deeper question: it is scored (together with the first answer) and the interview moves on
