@@ -1,7 +1,7 @@
 {
   "report": "attack_report",
   "title": "Attack tests (hidden and planted instructions)",
-  "date": "2026-10-30T02:06:17+00:00",
+  "date": "2026-11-01T21:17:32+00:00",
   "run": {
     "mode": "fake models (simulated)",
     "models": {

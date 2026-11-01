@@ -47,7 +47,7 @@ See `risk_register.csv`.
 
 
 ---
-# Part 2: read from the settings, the code and the reports (generated 2026-10-30)
+# Part 2: read from the settings, the code and the reports (generated 2026-11-01)
 
 ## Every agent, with its model, its inputs and outputs, and what it must never do
 Models configured in `app/config.py`: large `openrouter/anthropic/claude-haiku-4.5`, small `openrouter/google/gemini-2.5-flash-lite`, local `ollama/llama3.1`, fallback `openrouter/openai/gpt-4o-mini`, vision `openrouter/google/gemini-2.5-flash-lite`, speech to text `faster-whisper base.en`. Mode when this was built: **fake models**.

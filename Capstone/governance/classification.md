@@ -20,7 +20,7 @@ classification, because the system still influences the decision.
 ## Proof that the platform does no emotion recognition (Article 5(1)(f)): read from the code and settings, not asserted
 
 - **Settings.** The platform's settings (`app/config.py::Settings`) have 32 fields: `database_url`, `ops_database_url`, `storage_dir`, `retention_days`, `speech_cache`, `secret_key`, `fake_models`, `llm_model`, `vision_model`, `openrouter_api_key`, `whisper_model`, `tesseract_cmd`, `review_threshold`, `fake_transcripts_dir`, and more. Fields about a camera, video, emotion, face, sentiment, biometrics or tone: **none**.
-- **Code.** 120 files (`app/**/*.py`, `templates/**/*.html`, `static/*.js`) were scanned for emotion, face, voice-analysis and camera code: **0 match(es)**.
+- **Code.** 121 files (`app/**/*.py`, `templates/**/*.html`, `static/*.js`) were scanned for emotion, face, voice-analysis and camera code: **0 match(es)**.
 
 - **What scoring receives.** `app/agents/interviewer.py::score_text(q: dict, transcript: str, hint_used: bool = False, candidate_id: int | None = None) -> app.schemas_ext.AnswerScore`: a question, the words said, whether a hint was used and an id. Not audio, not a recording, not a picture. (Test: `tests/test_governance.py::test_scoring_functions_take_text_only`.)
 - **Camera.** The interview page asks only for the microphone (`getUserMedia({audio: true})`). No video is requested or stored.

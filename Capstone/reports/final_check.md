@@ -1,7 +1,7 @@
 # Final check: the repository and requirements BR-01 to BR-20
 
 **Result: PASS**  
-Date: 2026-10-30T04:05:04+00:00  
+Date: 2026-11-01T21:25:01+00:00  
 Run: fake models (simulated); models: openrouter/anthropic/claude-haiku-4.5  
 Settings: {"full_suite": false}
 
@@ -10,7 +10,7 @@ Settings: {"full_suite": false}
 |---|---|---|
 | no .env file is tracked, now or in the history | OK | git ls-files and git log --all |
 | .gitignore covers .env, data/, storage/, the raw audio in reports/ and the virtual environment | OK | .env, data/, storage/, reports/accent_audio/, .venv/ |
-| no API key or secret in any tracked file | OK | 586 files scanned |
+| no API key or secret in any tracked file | OK | 588 files scanned |
 | the real value of SECRET_KEY in .env appears nowhere in the files or history | OK | searched every commit |
 | no API key pattern appears anywhere in the history | OK | git log --all -G (key patterns) |
 | no real personal data: every e-mail address in the files is a fictional one (example.com and similar) | OK | all addresses are fictional |
@@ -19,7 +19,7 @@ Settings: {"full_suite": false}
 | the working tree is committed (nothing left uncommitted) | OK | clean |
 
 ## Requirements BR-01 to BR-20: 20 of 20 OK
-Tests run for this check: 50 passed in 120.22s (0:02:00) (the tests each requirement names).
+Tests run for this check: 50 passed in 124.70s (0:02:04) (the tests each requirement names).
 
 | id | requirement | status | tests | reports | problems |
 |---|---|---|---|---|---|

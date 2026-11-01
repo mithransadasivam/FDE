@@ -36,4 +36,4 @@ Read from `app/supervisor.py::ALLOWED`: every move marked as a person's decision
 | The AI interview scorecard | the recruiter enters their own level for each must-have before any audio | `app/web/interview.py::save_review` |
 | The human interview | the recruiter enters their own levels; the copilot only suggests | `app/web/copilot.py::recruiter_scores` |
 | A candidate's explanation | a recruiter reviews the draft before it is sent | `app/decisions.py::explain_not_shortlisted` |
-| Erasure approved by the company | a recruiter approves or refuses with a reason | `app/datarights.py::erase` |
+| A candidate's data is deleted | the candidate confirms it themselves, and only then is anything deleted | `app/datarights.py::delete_my_application` |

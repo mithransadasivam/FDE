@@ -1,7 +1,7 @@
 {
   "report": "final_check",
   "title": "Final check: the repository and requirements BR-01 to BR-20",
-  "date": "2026-10-30T04:05:04+00:00",
+  "date": "2026-11-01T21:25:01+00:00",
   "run": {
     "mode": "fake models (simulated)",
     "models": {
@@ -32,7 +32,7 @@
       {
         "check": "no API key or secret in any tracked file",
         "ok": true,
-        "detail": "586 files scanned"
+        "detail": "588 files scanned"
       },
       {
         "check": "the real value of SECRET_KEY in .env appears nowhere in the files or history",
@@ -240,7 +240,7 @@
         "problems": []
       }
     ],
-    "tests": "50 passed in 120.22s (0:02:00)",
+    "tests": "50 passed in 124.70s (0:02:04)",
     "failing_tests": [],
     "ok": 20,
     "of": 20

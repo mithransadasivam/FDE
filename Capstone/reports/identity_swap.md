@@ -1,7 +1,7 @@
 # Identity swap test
 
 **Result: PASS**  
-Date: 2026-10-30T01:16:56+00:00  
+Date: 2026-11-01T21:17:00+00:00  
 Run: fake models (simulated); models: openrouter/anthropic/claude-haiku-4.5  
 Settings: {"candidates": 10, "max_total_change": 2.0, "planner": "app.interview.bank.build_plan", "run": "fake models (simulated)"}
 
@@ -23,14 +23,14 @@ The 'blinding OFF' column is the comparison: the same variants scored from the r
 |---|---|---|---|---|
 | 1 | 0.0 | 0.0 | 0 | 0 |
 | 2 | 0.0 | 0.0 | 0 | 0 |
+| 3 | 0.0 | 0.0 | 0 | 0 |
 | 4 | 0.0 | 0.0 | 0 | 0 |
+| 5 | 0.0 | 0.0 | 0 | 0 |
+| 6 | 0.0 | 0.0 | 0 | 0 |
 | 11 | 0.0 | 0.0 | 0 | 0 |
 | 18 | 0.0 | 0.0 | 0 | 0 |
 | 27 | 0.0 | 0.0 | 0 | 0 |
 | 49 | 0.0 | 0.0 | 0 | 0 |
-| 20 | 0.0 | 0.0 | 0 | 0 |
-| 39 | 0.0 | 0.0 | 0 | 0 |
-| 45 | 0.0 | 0.0 | 0 | 0 |
 
 ## Findings: identity clues that survived into the blind text
 - none reached the blind text

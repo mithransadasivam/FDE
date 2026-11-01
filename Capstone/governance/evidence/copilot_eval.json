@@ -1,7 +1,7 @@
 {
   "report": "copilot_eval",
   "title": "Copilot evaluation",
-  "date": "2026-10-30T02:00:06+00:00",
+  "date": "2026-11-01T21:16:13+00:00",
   "run": {
     "mode": "fake models (simulated)",
     "models": {
@@ -21,37 +21,40 @@
       1,
       2,
       3,
+      4,
+      5,
+      6,
       18
     ],
     "mode": "fake"
   },
   "results": {
-    "interviews": 4,
+    "interviews": 7,
     "per_kind": {
       "forbidden_question": {
-        "caught": 4,
-        "planned": 4
+        "caught": 7,
+        "planned": 7
       },
       "cv_conflict": {
-        "caught": 4,
-        "planned": 4
+        "caught": 7,
+        "planned": 7
       },
       "vague_answer": {
-        "caught": 4,
-        "planned": 4
+        "caught": 7,
+        "planned": 7
       },
       "good_technical_answer": {
-        "caught": 4,
-        "planned": 4
+        "caught": 7,
+        "planned": 7
       },
       "behavioural_answer": {
-        "caught": 4,
-        "planned": 4
+        "caught": 7,
+        "planned": 7
       }
     },
-    "warning_seconds_average": 0.0255,
-    "warning_seconds_slowest": 0.031,
-    "code_seconds_slowest": 0.0309,
+    "warning_seconds_average": 0.0577,
+    "warning_seconds_slowest": 0.075,
+    "code_seconds_slowest": 0.0753,
     "false_alarms": {
       "warnings": 0,
       "cv_cards": 0
@@ -64,8 +67,8 @@
         "moments": {
           "forbidden_question": {
             "caught": true,
-            "seconds_after_question_ended": 0.028,
-            "code_time_s": 0.0282,
+            "seconds_after_question_ended": 0.024,
+            "code_time_s": 0.0243,
             "found_by": "rules",
             "answer_excluded": true
           },
@@ -102,8 +105,8 @@
         "moments": {
           "forbidden_question": {
             "caught": true,
-            "seconds_after_question_ended": 0.02,
-            "code_time_s": 0.02,
+            "seconds_after_question_ended": 0.073,
+            "code_time_s": 0.0729,
             "found_by": "rules",
             "answer_excluded": true
           },
@@ -140,8 +143,8 @@
         "moments": {
           "forbidden_question": {
             "caught": true,
-            "seconds_after_question_ended": 0.031,
-            "code_time_s": 0.0309,
+            "seconds_after_question_ended": 0.056,
+            "code_time_s": 0.0557,
             "found_by": "rules",
             "answer_excluded": true
           },
@@ -172,14 +175,128 @@
         }
       },
       {
+        "candidate": 4,
+        "duration_s": 16.96,
+        "interview": "storage\\practice\\4\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.055,
+            "code_time_s": 0.0554,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Docker for 13 years in production, across several large systems.",
+            "cv": "The CV lists Docker and shows 8 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: acknowledge the alert and assess the impact"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
+        "candidate": 5,
+        "duration_s": 16.92,
+        "interview": "storage\\practice\\5\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.075,
+            "code_time_s": 0.0753,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Terraform for seven years in production, across several large systems.",
+            "cv": "The CV lists Terraform and shows 2 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: check load and CPU with top or uptime"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
+        "candidate": 6,
+        "duration_s": 16.94,
+        "interview": "storage\\practice\\6\\practice.json",
+        "moments": {
+          "forbidden_question": {
+            "caught": true,
+            "seconds_after_question_ended": 0.064,
+            "code_time_s": 0.0642,
+            "found_by": "rules",
+            "answer_excluded": true
+          },
+          "cv_conflict": {
+            "caught": true,
+            "both_quotes": true,
+            "said": "I have used Terraform for nine years in production, across several large systems.",
+            "cv": "The CV lists Terraform and shows 4 year(s) of experience in all."
+          },
+          "vague_answer": {
+            "caught": true,
+            "suggestion": "Ask them to say more about: check load and CPU with top or uptime"
+          },
+          "good_technical_answer": {
+            "caught": true,
+            "ticked": 3,
+            "of": 4
+          },
+          "behavioural_answer": {
+            "caught": true,
+            "heard": 4,
+            "of": 4
+          }
+        },
+        "false_alarms": {
+          "warnings": [],
+          "cv_cards": []
+        }
+      },
+      {
         "candidate": 18,
         "duration_s": 16.94,
         "interview": "storage\\practice\\18\\practice.json",
         "moments": {
           "forbidden_question": {
             "caught": true,
-            "seconds_after_question_ended": 0.023,
-            "code_time_s": 0.0227,
+            "seconds_after_question_ended": 0.057,
+            "code_time_s": 0.0567,
             "found_by": "rules",
             "answer_excluded": true
           },

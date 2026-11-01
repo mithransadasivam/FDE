@@ -1,5 +1,5 @@
 {
- "summary": "44 passed in 157.28s (0:02:37)",
+ "summary": "44 passed in 169.81s (0:02:49)",
  "results": {
   "tests/test_accent_test.py::test_one_answer_spoken_two_ways_is_really_transcribed_and_scored": "PASS",
   "tests/test_accent_test.py::test_the_report_is_dated_and_says_what_it_used": "PASS",
@@ -47,6 +47,6 @@
   "tests/test_supervisor.py::test_system_can_read_and_screen_but_cannot_shortlist": "PASS"
  },
  "full": false,
- "at": "2026-10-30T04:07:59+00:00",
+ "at": "2026-11-01T21:20:27+00:00",
  "exit_code": 0
 }

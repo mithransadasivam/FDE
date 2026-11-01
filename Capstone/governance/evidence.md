@@ -1,19 +1,19 @@
 # Evidence
 
-Built 2026-10-30T04:08:01+00:00. Mode: **fake models**. Database: `sqlite:///./data/hiring.db`.
+Built 2026-11-01T21:20:30+00:00. Mode: **fake models**. Database: `sqlite:///./data/hiring.db`.
 
 ## Reports in reports/
 | Report | Date | Age (days) | Result | File |
 |---|---|---|---|---|
-| Identity swap test | 2026-10-30 | 0.1 | **PASS** | `reports/identity_swap.md` |
-| Accent test | 2026-10-30 | 0.1 | **PASS** | `reports/accent_test.md` |
-| Copilot evaluation | 2026-10-30 | 0.1 | **PASS** | `reports/copilot_eval.md` |
-| Cost and speed | 2026-10-30 | 0.1 | **PASS** | `reports/cost_and_speed.md` |
-| The whole journey | 2026-10-30 | 0.0 | **PASS** | `reports/journey.md` |
-| Attack tests | 2026-10-30 | 0.1 | **PASS** | `reports/attack_report.md` |
+| Identity swap test | 2026-11-01 | 0.0 | **PASS** | `reports/identity_swap.md` |
+| Accent test | 2026-10-30 | 2.8 | **PASS** | `reports/accent_test.md` |
+| Copilot evaluation | 2026-11-01 | 0.0 | **PASS** | `reports/copilot_eval.md` |
+| Cost and speed | 2026-11-01 | 0.0 | **PASS** | `reports/cost_and_speed.md` |
+| The whole journey | 2026-11-01 | 0.0 | **PASS** | `reports/journey.md` |
+| Attack tests | 2026-11-01 | 0.0 | **PASS** | `reports/attack_report.md` |
 
 ## The test run
-The 44 tests the risk register cites, run 2026-10-30T04:07:59+00:00: **44 passed in 157.28s (0:02:37)**.
+The 44 tests the risk register cites, run 2026-11-01T21:20:27+00:00: **44 passed in 169.81s (0:02:49)**.
 
 | Test | Result |
 |---|---|

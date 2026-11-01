@@ -1,24 +1,24 @@
 # Copilot evaluation
 
 **Result: PASS**  
-Date: 2026-10-30T02:00:06+00:00  
+Date: 2026-11-01T21:16:13+00:00  
 Run: fake models (simulated); models: openrouter/anthropic/claude-haiku-4.5  
-Settings: {"speed": 4.0, "within_seconds": 2.0, "interviews": [1, 2, 3, 18], "mode": "fake"}
+Settings: {"speed": 4.0, "within_seconds": 2.0, "interviews": [1, 2, 3, 4, 5, 6, 18], "mode": "fake"}
 
 ## Pass rule
-Every forbidden question must be warned within 2 seconds of the question ending. Warned: **4 of 4**; slowest warning **0.031 s** after the question ended.
+Every forbidden question must be warned within 2 seconds of the question ending. Warned: **7 of 7**; slowest warning **0.075 s** after the question ended.
 
 ## Caught out of planned
 | moment | caught | planned |
 |---|---|---|
-| forbidden_question | 4 | 4 |
-| cv_conflict | 4 | 4 |
-| vague_answer | 4 | 4 |
-| good_technical_answer | 4 | 4 |
-| behavioural_answer | 4 | 4 |
+| forbidden_question | 7 | 7 |
+| cv_conflict | 7 | 7 |
+| vague_answer | 7 | 7 |
+| good_technical_answer | 7 | 7 |
+| behavioural_answer | 7 | 7 |
 
 ## Warning time (seconds after the forbidden question ended, on the interview's own timeline)
-Average **0.0255 s**, slowest **0.031 s**. This is the time the copilot needed after the question ended; a live deployment adds the speech-to-text delay on top.
+Average **0.0577 s**, slowest **0.075 s**. This is the time the copilot needed after the question ended; a live deployment adds the speech-to-text delay on top.
 
 ## False alarms
 Warnings where no forbidden question was planned: **0**. CV-check cards where no conflict was planned: **0**.
@@ -29,6 +29,9 @@ Warnings where no forbidden question was planned: **0**. CV-check cards where no
 | 1 | yes | yes | yes | yes | yes | 0 |
 | 2 | yes | yes | yes | yes | yes | 0 |
 | 3 | yes | yes | yes | yes | yes | 0 |
+| 4 | yes | yes | yes | yes | yes | 0 |
+| 5 | yes | yes | yes | yes | yes | 0 |
+| 6 | yes | yes | yes | yes | yes | 0 |
 | 18 | yes | yes | yes | yes | yes | 0 |
 
 ## Limits

@@ -1,7 +1,7 @@
 # Attack tests (hidden and planted instructions)
 
 **Result: PASS**  
-Date: 2026-10-30T02:06:17+00:00  
+Date: 2026-11-01T21:17:32+00:00  
 Run: fake models (simulated); models: openrouter/anthropic/claude-haiku-4.5  
 Settings: {"mode": "fake (gullible) models", "attacks": 7}
 

@@ -1,7 +1,7 @@
 {
   "report": "cost_and_speed",
   "title": "Cost and speed",
-  "date": "2026-10-30T02:12:05+00:00",
+  "date": "2026-11-01T21:22:13+00:00",
   "run": {
     "mode": "fake models (simulated)",
     "models": {
@@ -26,7 +26,7 @@
         "calls": 52
       },
       "per_cv_screened": {
-        "cost": 0.047461,
+        "cost": 0.047486,
         "units": 44,
         "per_unit": 0.001079,
         "calls": 47
@@ -34,9 +34,9 @@
       "per_cv": 0.001079,
       "per_100_cvs": 0.1079,
       "per_interview": {
-        "cost": 0.073821,
+        "cost": 0.073837,
         "units": 3,
-        "per_unit": 0.024607,
+        "per_unit": 0.024612,
         "calls": 89
       },
       "per_copilot_session": {
@@ -48,31 +48,31 @@
       "by_agent": {
         "interviewer": {
           "calls": 83,
-          "cost": 0.070604,
-          "tokens": 60239,
+          "cost": 0.07062,
+          "tokens": 60255,
           "cached": 8,
-          "seconds": 0.072
+          "seconds": 0.073
         },
         "screening": {
           "calls": 44,
-          "cost": 0.045588,
-          "tokens": 24583,
+          "cost": 0.045613,
+          "tokens": 24608,
           "cached": 1,
-          "seconds": 0.056
+          "seconds": 0.06
         },
         "copilot": {
           "calls": 38,
           "cost": 0.00721,
           "tokens": 7816,
           "cached": 10,
-          "seconds": 0.042
+          "seconds": 0.007
         },
         "requisition": {
           "calls": 2,
           "cost": 0.004418,
           "tokens": 1486,
           "cached": 0,
-          "seconds": 0.004
+          "seconds": 0.003
         },
         "checker": {
           "calls": 3,
@@ -100,18 +100,18 @@
           "cost": 0.0,
           "tokens": 31807,
           "cached": 0,
-          "seconds": 0.012
+          "seconds": 0.011
         },
         "speech": {
           "calls": 100,
           "cost": 0.0,
           "tokens": 0,
           "cached": 0,
-          "seconds": 12.897
+          "seconds": 13.635
         }
       },
       "calls": 328,
-      "total_cost": 0.1329,
+      "total_cost": 0.133,
       "simulated": true,
       "provider_priced": 0,
       "free_local_calls": 152
@@ -124,50 +124,50 @@
           "slowest": 0.0
         },
         "scoring": {
-          "median": 0.0032,
-          "slowest": 0.006
+          "median": 0.0033,
+          "slowest": 0.0066
         },
         "question": {
-          "median": 0.0016,
-          "slowest": 0.0389
+          "median": 0.0017,
+          "slowest": 0.0386
         },
         "diagram": {
           "median": 0.0,
-          "slowest": 0.0013
+          "slowest": 0.0014
         },
         "speech": {
-          "median": 0.1222,
-          "slowest": 0.1487
+          "median": 0.123,
+          "slowest": 0.3159
         }
       },
       "simulated": true,
       "total": {
-        "median": 0.1292,
-        "slowest": 0.1646,
-        "p95": 0.1574
+        "median": 0.129,
+        "slowest": 0.3349,
+        "p95": 0.1691
       },
       "slowest_step_overall": "speech",
       "slowest_answer": {
         "candidate": 1,
-        "turn": 17,
-        "total_s": 0.1646
+        "turn": 12,
+        "total_s": 0.3349
       }
     },
     "speech_cache": {
       "measured": true,
       "questions": 8,
-      "before_s": 1.084,
-      "after_s": 0.078,
-      "first_candidate_after_s": 1.131,
-      "saved_s": 1.006,
-      "improvement_pct": 92.8,
+      "before_s": 0.987,
+      "after_s": 0.067,
+      "first_candidate_after_s": 1.04,
+      "saved_s": 0.92,
+      "improvement_pct": 93.2,
       "voice": "operating-system voice (pyttsx3)"
     },
     "copilot_warning": {
-      "average_s": 0.0255,
-      "slowest_s": 0.031,
-      "interviews": 4,
-      "date": "2026-10-30"
+      "average_s": 0.0577,
+      "slowest_s": 0.075,
+      "interviews": 7,
+      "date": "2026-11-01"
     },
     "measured_run": true
   },

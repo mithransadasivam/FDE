@@ -19,7 +19,7 @@ blockquote{border-left:4px solid var(--accent);margin:1rem 0;padding:.2rem 1rem;
 <h2>Proof that the platform does no emotion recognition (Article 5(1)(f)): read from the code and settings, not asserted</h2>
 <ul>
 <li><strong>Settings.</strong> The platform's settings (<code>app/config.py::Settings</code>) have 32 fields: <code>database_url</code>, <code>ops_database_url</code>, <code>storage_dir</code>, <code>retention_days</code>, <code>speech_cache</code>, <code>secret_key</code>, <code>fake_models</code>, <code>llm_model</code>, <code>vision_model</code>, <code>openrouter_api_key</code>, <code>whisper_model</code>, <code>tesseract_cmd</code>, <code>review_threshold</code>, <code>fake_transcripts_dir</code>, and more. Fields about a camera, video, emotion, face, sentiment, biometrics or tone: <strong>none</strong>.</li>
-<li><strong>Code.</strong> 120 files (<code>app/**/*.py</code>, <code>templates/**/<em>.html</code>, <code>static/</em>.js</code>) were scanned for emotion, face, voice-analysis and camera code: <strong>0 match(es)</strong>.</li>
+<li><strong>Code.</strong> 121 files (<code>app/**/*.py</code>, <code>templates/**/<em>.html</code>, <code>static/</em>.js</code>) were scanned for emotion, face, voice-analysis and camera code: <strong>0 match(es)</strong>.</li>
 </ul>
 <ul>
 <li><strong>What scoring receives.</strong> <code>app/agents/interviewer.py::score_text(q: dict, transcript: str, hint_used: bool = False, candidate_id: int | None = None) -&gt; app.schemas_ext.AnswerScore</code>: a question, the words said, whether a hint was used and an id. Not audio, not a recording, not a picture. (Test: <code>tests/test_governance.py::test_scoring_functions_take_text_only</code>.)</li>
@@ -86,7 +86,7 @@ blockquote{border-left:4px solid var(--accent);margin:1rem 0;padding:.2rem 1rem;
 <h2>Risks</h2>
 <p>See <code>risk_register.csv</code>.</p>
 <hr>
-<h1>Part 2: read from the settings, the code and the reports (generated 2026-10-30)</h1>
+<h1>Part 2: read from the settings, the code and the reports (generated 2026-11-01)</h1>
 <h2>Every agent, with its model, its inputs and outputs, and what it must never do</h2>
 <p>Models configured in <code>app/config.py</code>: large <code>openrouter/anthropic/claude-haiku-4.5</code>, small <code>openrouter/google/gemini-2.5-flash-lite</code>, local <code>ollama/llama3.1</code>, fallback <code>openrouter/openai/gpt-4o-mini</code>, vision <code>openrouter/google/gemini-2.5-flash-lite</code>, speech to text <code>faster-whisper base.en</code>. Mode when this was built: <strong>fake models</strong>.</p>
 <table><thead><tr><th>Agent</th><th>Models actually called (from the model-call log)</th><th>Tools it may call (the only inputs and outputs it has)</th><th>Step limit</th></tr></thead><tbody>
@@ -165,18 +165,18 @@ blockquote{border-left:4px solid var(--accent);margin:1rem 0;padding:.2rem 1rem;
 <tr><td>R-021</td><td>A CV is read wrongly (a field extracted incorrectly) and the candidate is scored on the wrong facts</td><td>Measure</td><td>Intake &amp; screening lead</td><td><code>app/web/candidates.py::review_confirm</code></td><td><code>test_confirm_needs_everything_checked_then_moves_to_extracted</code> (PASS)<br><code>test_every_score_has_a_verified_quote_that_is_really_in_the_cv</code> (PASS)</td><td><strong>PASS</strong></td></tr>
 <tr><td>R-022</td><td>The hiring manager's blind view shows who the candidate is (a name inside a flag, a quote or a title)</td><td>Manage</td><td>Trust &amp; quality lead</td><td><code>app/privacy.py::redact_identity</code></td><td><code>test_a_flag_that_quotes_the_pdf_title_does_not_leak_the_name_to_the_hiring_manager</code> (PASS)<br><code>test_hiring_manager_sees_a_blind_screening_page</code> (PASS)<br>report <code>journey</code>: PASS</td><td><strong>PASS</strong></td></tr>
 </tbody></table></section><section id="evidence"><h1>Evidence</h1>
-<p>Built 2026-10-30T04:08:01+00:00. Mode: <strong>fake models</strong>. Database: <code>sqlite:///./data/hiring.db</code>.</p>
+<p>Built 2026-11-01T21:20:30+00:00. Mode: <strong>fake models</strong>. Database: <code>sqlite:///./data/hiring.db</code>.</p>
 <h2>Reports in reports/</h2>
 <table><thead><tr><th>Report</th><th>Date</th><th>Age (days)</th><th>Result</th><th>File</th></tr></thead><tbody>
-<tr><td>Identity swap test</td><td>2026-10-30</td><td>0.1</td><td><strong>PASS</strong></td><td><code>reports/identity_swap.md</code></td></tr>
-<tr><td>Accent test</td><td>2026-10-30</td><td>0.1</td><td><strong>PASS</strong></td><td><code>reports/accent_test.md</code></td></tr>
-<tr><td>Copilot evaluation</td><td>2026-10-30</td><td>0.1</td><td><strong>PASS</strong></td><td><code>reports/copilot_eval.md</code></td></tr>
-<tr><td>Cost and speed</td><td>2026-10-30</td><td>0.1</td><td><strong>PASS</strong></td><td><code>reports/cost_and_speed.md</code></td></tr>
-<tr><td>The whole journey</td><td>2026-10-30</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/journey.md</code></td></tr>
-<tr><td>Attack tests</td><td>2026-10-30</td><td>0.1</td><td><strong>PASS</strong></td><td><code>reports/attack_report.md</code></td></tr>
+<tr><td>Identity swap test</td><td>2026-11-01</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/identity_swap.md</code></td></tr>
+<tr><td>Accent test</td><td>2026-10-30</td><td>2.8</td><td><strong>PASS</strong></td><td><code>reports/accent_test.md</code></td></tr>
+<tr><td>Copilot evaluation</td><td>2026-11-01</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/copilot_eval.md</code></td></tr>
+<tr><td>Cost and speed</td><td>2026-11-01</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/cost_and_speed.md</code></td></tr>
+<tr><td>The whole journey</td><td>2026-11-01</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/journey.md</code></td></tr>
+<tr><td>Attack tests</td><td>2026-11-01</td><td>0.0</td><td><strong>PASS</strong></td><td><code>reports/attack_report.md</code></td></tr>
 </tbody></table>
 <h2>The test run</h2>
-<p>The 44 tests the risk register cites, run 2026-10-30T04:07:59+00:00: <strong>44 passed in 157.28s (0:02:37)</strong>.</p>
+<p>The 44 tests the risk register cites, run 2026-11-01T21:20:27+00:00: <strong>44 passed in 169.81s (0:02:49)</strong>.</p>
 <table><thead><tr><th>Test</th><th>Result</th></tr></thead><tbody>
 <tr><td><code>tests/test_accent_test.py::test_one_answer_spoken_two_ways_is_really_transcribed_and_scored</code></td><td>PASS</td></tr>
 <tr><td><code>tests/test_accent_test.py::test_the_report_is_dated_and_says_what_it_used</code></td><td>PASS</td></tr>
@@ -274,5 +274,5 @@ blockquote{border-left:4px solid var(--accent);margin:1rem 0;padding:.2rem 1rem;
 <tr><td>The AI interview scorecard</td><td>the recruiter enters their own level for each must-have before any audio</td><td><code>app/web/interview.py::save_review</code></td></tr>
 <tr><td>The human interview</td><td>the recruiter enters their own levels; the copilot only suggests</td><td><code>app/web/copilot.py::recruiter_scores</code></td></tr>
 <tr><td>A candidate's explanation</td><td>a recruiter reviews the draft before it is sent</td><td><code>app/decisions.py::explain_not_shortlisted</code></td></tr>
-<tr><td>Erasure approved by the company</td><td>a recruiter approves or refuses with a reason</td><td><code>app/datarights.py::erase</code></td></tr>
+<tr><td>A candidate's data is deleted</td><td>the candidate confirms it themselves, and only then is anything deleted</td><td><code>app/datarights.py::delete_my_application</code></td></tr>
 </tbody></table></section></main></body></html>
