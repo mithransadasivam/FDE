@@ -10,6 +10,7 @@ from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.agents.communications import free_slots
 from app.agents.interviewer import InterviewerAgent, get_or_create_session, request_person
 from app.ai import audio, voice
 from app.interview import recording
@@ -345,7 +346,7 @@ def interview_review(request: Request, cand_id: int, user: User = Depends(STAFF)
     from app.models_ext import EvidenceCheck
     check = db.scalars(select(EvidenceCheck).where(EvidenceCheck.candidate_id == cand_id, EvidenceCheck.subject == "interview")).first() if card else None
     return render(request, "interview_review.html", user, cand=cand, s=s, card=card, check=check, timeline=timeline, qs=load_questions(), blind=make_blind(cand),
-                  audio_open=bool(s and s.review), has_mp3=bool(s and recording.mp3_path(s).exists()))
+                  audio_open=bool(s and s.review), has_mp3=bool(s and recording.mp3_path(s).exists()), slots=free_slots(8))
 
 
 @router.post("/interviews/{cand_id}/review")
@@ -378,7 +379,7 @@ async def save_review(request: Request, cand_id: int, user: User = Depends(RECRU
 
 
 @router.post("/interviews/{cand_id}/decision")
-def interview_decision(request: Request, cand_id: int, decision: str = Form(""), reason: str = Form(""), user: User = Depends(RECRUITER),
+def interview_decision(request: Request, cand_id: int, decision: str = Form(""), reason: str = Form(""), slot_id: str = Form(""), user: User = Depends(RECRUITER),
                        db: Session = Depends(get_db)):
     """The recruiter decides what happens next: "Human interview" or "Withdraw", through supervisor.move with a required reason."""
     cand = db.get(Candidate, cand_id)
@@ -399,12 +400,12 @@ def interview_decision(request: Request, cand_id: int, decision: str = Form(""),
             move(db, cand, Stage.HUMAN_INTERVIEW, user.email, reason, evidence=evidence)
             from app.agents.communications import draft_invitation
 
-            draft_invitation(db, cand, kind="invitation")
+            draft_invitation(db, cand, kind="invitation", slot_id=slot_id)
         elif decision == "withdraw":
             move(db, cand, Stage.WITHDRAWN, user.email, reason, evidence=evidence)
         else:
             raise MoveRefused("Choose Human interview or Withdraw.")
-    except MoveRefused as e:
+    except (MoveRefused, ValueError) as e:
         db.rollback()
         flash(request, f"Not recorded: {e}", "bad")
     else:

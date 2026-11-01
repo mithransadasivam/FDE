@@ -86,6 +86,8 @@
   {% if cand.stage == 'AI_INTERVIEW' and s.review %}
   <form method="post" action="/interviews/{{ cand.id }}/decision">
     <label for="reason">Reason (required)</label><input id="reason" name="reason" type="text" data-testid="decision-reason" placeholder="Why are you moving this candidate?">
+    <label for="slot_id">Proposed time for the human interview</label>
+    <select id="slot_id" name="slot_id" data-testid="slot-picker"><option value="">The first free time</option>{% for sl in slots %}<option value="{{ sl.slot_id }}">{{ sl.start[:10] }} {{ sl.start[11:16] }} with {{ sl.interviewer }}</option>{% endfor %}</select>
     <p><button name="decision" value="human_interview" data-testid="human-interview">Human interview</button>
        <button name="decision" value="withdraw" class="danger" data-testid="withdraw">Withdraw</button></p>
   </form>

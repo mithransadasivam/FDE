@@ -44,6 +44,13 @@ With Docker (API, MCP server and Phoenix traces): `docker compose -f ops/docker-
 **The whole journey in one command** (voice note to decision, on a fresh database of its own, with the time of every step): `python -m scripts.journey --fake` (or `--real` with a key).
 It prints the links to open and writes `reports/journey.md`.
 
+## The interface
+
+A short sidebar (Overview, Jobs, Candidates, Screening, Interviews, Copilot, Assistant, Inbox, Insights) with tab bars that group related pages: **Candidates** (List, Board, Compare), **Inbox** (Overview, Emails to approve,
+Fields to check, Deletions) and **Insights** (Analytics, Trust & cost, Compliance, Decision log). The top bar has a search box (press `/`), a bell that counts what is waiting for a person, and the user menu. Messages appear as
+toasts. The Overview leads with what needs you today; the candidate page has a header with the stage tracker and CV score and tabs (Overview, Evidence, Interviews, Checks, Notes, Activity); the screening page is a colour
+heat map with a pinned decision bar; the board supports drag and drop (a box asks for the reason and the supervisor decides); the scorecard has a pinned decision panel. Everything works on a phone and in dark mode.
+
 ## What it does, day by day
 
 | Day | You can show | Where |
@@ -61,7 +68,11 @@ The agents (each with its own tools only, a step limit and a trace): **Superviso
 | Feature | Where |
 |---|---|
 | **Analytics**: funnel, score spread, interview quality, speed, cost, people-in-the-loop numbers | `/analytics`, `app/analytics.py` |
-| **Compare** up to 5 candidates side by side, blind | `/compare` |
+| **Compare** up to 5 candidates side by side, blind (tick them in the list) | `/compare` |
+| **Search** across candidates, skills and jobs (blind for the hiring manager), sorting, and a CSV of the ticked candidates | top bar, `/search`, `/candidates` |
+| **Notes with @mentions** on a candidate, hidden-identity safe | candidate page, Notes tab |
+| **Pick the time** for the human interview from the free slots | the AI interview scorecard |
+| **Email sign-off** set by the hiring manager | `/settings` |
 | **Filters** on the candidate list (stage, skill, years, CV score) | `/candidates` |
 | **Exports**: candidates CSV, decision-log CSV, a scorecard PDF, an audit bundle with a SHA-256 checksum | `/export/...`, `app/web/insights.py` |
 | **Company settings and branding** (name, colour, contact) | `/settings` |

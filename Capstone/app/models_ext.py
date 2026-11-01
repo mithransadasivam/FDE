@@ -309,3 +309,16 @@ class ResponseTiming(OpsBase):
     speech: Mapped[float] = mapped_column(Float, default=0.0)
     total_s: Mapped[float] = mapped_column(Float, default=0.0)
     simulated: Mapped[bool] = mapped_column(Boolean, default=True)  # fake mode: model calls took no real time
+
+
+class CandidateNote(Base):
+    """A note one member of staff leaves on a candidate for the others (a recruiter and a hiring manager can work on the same candidate). It is shown with the same blindness as the
+    rest of the page: for a hiring manager (or in the blind view) the candidate's name, e-mail and phone are hidden even if someone typed them."""
+    __tablename__ = "candidate_notes"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    candidate_id: Mapped[int] = mapped_column(ForeignKey("candidates.id"))
+    author: Mapped[str] = mapped_column(String(200))
+    author_role: Mapped[str] = mapped_column(String(30), default="")
+    body: Mapped[str] = mapped_column(Text)
+    mentions: Mapped[list | None] = mapped_column(JSON, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)

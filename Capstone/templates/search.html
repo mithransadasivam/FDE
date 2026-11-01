@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Search</h1><p class="page-sub">{% if q %}Results for <strong>&ldquo;{{ q }}&rdquo;</strong>{% else %}Type a candidate number, a skill, a job title or a stage.{% endif %}{% if blind %} Names are never searched in the blind view.{% endif %}</p></div></div>
+{% if q %}
+<div class="section-title"><h2>Candidates <span class="muted small">({{ total }})</span></h2></div>
+<div class="card" style="padding:0" data-testid="search-candidates">
+  {% for p in people %}<a class="result" href="/candidates/{{ p.id }}"><span class="avatar-sm {{ 'blind' if p.blind }}">{{ '#' ~ p.id if p.blind else p.label[:1] }}</span>
+    <span class="grow"><b>{{ p.label }}</b> <small>#{{ p.id }}{% if p.title %} &middot; {{ p.title }}{% endif %}</small><br><span class="chips">{% for s in p.skills %}<span class="skill-chip">{{ s }}</span>{% endfor %}</span></span>
+    <span class="badge">{{ p.stage }}</span></a>
+  {% else %}<div class="empty-state"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg><b>No candidates match</b>Try a skill such as Kubernetes, a job title, or a candidate number.</div>{% endfor %}
+</div>
+{% if jobs %}
+<div class="section-title"><h2>Jobs</h2></div>
+<div class="card" style="padding:0">{% for r in jobs %}<a class="result" href="/requisitions/{{ r.id }}"><span class="avatar-sm blind">{{ r.id | reqid }}</span><span class="grow"><b>{{ r.title }}</b></span><span class="badge">{{ r.status }}</span></a>{% endfor %}</div>
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,17 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Requisitions{% endblock %}
+{% block title %}Jobs{% endblock %}
 {% block content %}
-<h1>Requisitions</h1>
-{% if user.role == 'hiring_manager' %}<p><a class="btn" href="/requisitions/new">New requisition from a voice note</a></p>{% endif %}
-<table>
-  <tr><th>ID</th><th>Title</th><th>Status</th><th>Candidates</th><th>Created by</th></tr>
+<div class="page-head"><div><h1>Jobs</h1><p class="page-sub">Each job starts as a hiring manager's voice note and becomes an approved, fair rubric before anyone applies.</p></div>
+  {% if user.role == 'hiring_manager' %}<div><a class="btn" href="/requisitions/new">New job from a voice note</a></div>{% endif %}</div>
+{% if reqs %}
+<div class="jobs-grid">
   {% for r in reqs %}
-  <tr>
-    <td><a href="/requisitions/{{ r.id }}">{{ r.id | reqid }}</a></td>
-    <td>{{ r.title }}</td>
-    <td><span class="badge {{ 'good' if r.status in ('APPROVED','PUBLISHED') else ('bad' if r.status == 'ERROR' else 'warn') }}">{{ r.status }}</span></td>
-    <td>{{ counts.get(r.id, 0) }}</td><td class="small">{{ r.created_by }}</td>
-  </tr>
-  {% else %}<tr><td colspan="5" class="muted">No requisitions yet.</td></tr>{% endfor %}
-</table>
+  <a class="job-card" href="/requisitions/{{ r.id }}" style="color:inherit;text-decoration:none">
+    <div style="display:flex;justify-content:space-between;gap:.5rem;align-items:start"><h3>{{ r.title }}</h3>
+      <span class="badge {{ 'good' if r.status in ('APPROVED','PUBLISHED') else ('bad' if r.status == 'ERROR' else 'warn') }}">{{ r.status }}</span></div>
+    <div class="meta"><span>{{ r.id | reqid }}</span><span>{{ counts.get(r.id, 0) }} candidate{{ '' if counts.get(r.id, 0) == 1 else 's' }}</span><span>by {{ r.created_by.split('@')[0] }}</span></div>
+    <div class="stepper">
+      {% set order = ['TRANSCRIBED', 'GENERATED', 'APPROVED', 'PUBLISHED'] %}{% set at = order.index(r.status) if r.status in order else -1 %}
+      <span class="st {{ 'done' if at >= 0 else '' }}"><i></i>Voice note</span><span class="bar {{ 'done' if at >= 1 }}"></span>
+      <span class="st {{ 'done' if at >= 1 else '' }}"><i></i>Rubric</span><span class="bar {{ 'done' if at >= 2 }}"></span>
+      <span class="st {{ 'done' if at >= 2 else ('now' if at == 1 else '') }}"><i></i>Approved</span><span class="bar {{ 'done' if at >= 3 }}"></span>
+      <span class="st {{ 'done' if at >= 3 else ('now' if at == 2 else '') }}"><i></i>Published</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}<div class="card empty-state"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg><b>No jobs yet</b>{% if user.role == 'hiring_manager' %}Record a voice note and the platform writes the job description and a fair rubric for you to approve.<p><a class="btn" href="/requisitions/new">New job from a voice note</a></p>{% else %}A hiring manager creates jobs from a voice note.{% endif %}</div>{% endif %}
 {% endblock %}

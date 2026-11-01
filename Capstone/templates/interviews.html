@@ -1,26 +1,61 @@
 {% extends "base.html" %}
 {% block title %}Interviews{% endblock %}
 {% block content %}
-<h1>Interviews</h1>
-<p class="muted">Shortlisted candidates take a first-round AI interview (they can ask for a person instead). A recruiter reviews every scorecard and decides.</p>
+{% macro tracker(r) %}
+  {% set s = r.s %}
+  {% set done = s and s.status == 'DONE' %}
+  <div class="stepper">
+    <span class="st {{ 'done' if s else 'now' }}"><i></i>Invited</span><span class="bar {{ 'done' if s and s.status != 'INVITED' }}"></span>
+    <span class="st {{ 'done' if s and s.status not in ('INVITED', 'NOT_STARTED') else ('now' if s else '') }}"><i></i>Started</span><span class="bar {{ 'done' if done }}"></span>
+    <span class="st {{ 'done' if done else '' }}"><i></i>Finished</span><span class="bar {{ 'done' if s and s.reviewed_by }}"></span>
+    <span class="st {{ 'done' if s and s.reviewed_by else ('now' if done else '') }}"><i></i>Reviewed</span>
+  </div>
+{% endmacro %}
+<div class="page-head"><div><h1>Interviews</h1>
+  <p class="page-sub">Shortlisted candidates take a first-round AI interview (they can ask for a person instead). A recruiter reviews every scorecard and decides.</p></div></div>
+{% if rows %}
+<div class="table-wrap">
 <table>
-  <tr><th>Candidate</th><th>Stage</th><th>Interview</th><th>Average</th><th></th></tr>
+  <thead><tr><th>Candidate</th><th>Stage</th><th>Progress</th><th>Average</th><th></th></tr></thead>
+  <tbody>
   {% for r in rows %}
-  <tr>
-    <td><a href="/candidates/{{ r.c.id }}{{ '?blind=1' if user.role == 'recruiter' }}">#{{ r.c.id }}</a> <span class="muted small">{{ r.blind.current_title or '' }}</span></td>
+  <tr class="cand-row">
+    <td><div class="cand-name"><span class="avatar-sm blind">#{{ r.c.id }}</span><div><b><a href="/candidates/{{ r.c.id }}{{ '?blind=1' if user.role == 'recruiter' }}">Candidate #{{ r.c.id }}</a></b><small>{{ r.blind.current_title or '' }}</small></div></div></td>
     <td><span class="badge">{{ r.c.stage }}</span></td>
-    <td>{% if r.s %}{% if r.s.sample %}<span class="badge warn" data-testid="sample-label">SAMPLE: fictional candidate</span> {% endif %}<span class="badge {{ 'good' if r.s.status == 'DONE' else ('warn' if r.s.status in ('IN_PROGRESS','PERSON_REQUESTED') else '') }}">{{ r.s.status }}</span>
-        {% if r.s.status == 'PERSON_REQUESTED' %} <strong class="small">asked for a person</strong>{% endif %}
-        {% if r.s.reviewed_by %}<span class="badge good">reviewed</span>{% endif %}{% else %}<span class="muted">not started</span>{% endif %}</td>
-    <td>{% if r.s and r.s.scorecard %}{{ r.s.scorecard.total }} / 3{% endif %}</td>
-    <td>
-      {% if user.role == 'recruiter' and r.c.stage == 'SHORTLISTED' %}
-      <form method="post" action="/interviews/{{ r.c.id }}/invite" style="display:inline"><input name="reason" type="text" required placeholder="Reason for inviting" data-testid="invite-reason" style="width:14rem"> <button class="small">Invite to AI interview</button></form>
-      {% endif %}
-      {% if r.s %}<a class="btn secondary small" href="/interviews/{{ r.c.id }}">Open</a>{% elif r.c.stage != 'SHORTLISTED' %}<a class="btn secondary small" href="/interviews/{{ r.c.id }}">Open</a>{% endif %}
-      {% if user.role == 'recruiter' and r.c.stage == 'AI_INTERVIEW' %}<span class="muted small">link: /interview/{{ r.c.access_token }}</span>{% endif %}
+    <td>{% if r.s %}{% if r.s.sample %}<span class="badge warn" data-testid="sample-label">SAMPLE: fictional candidate</span> {% endif %}
+        {% if r.s.status == 'PERSON_REQUESTED' %}<span class="badge warn"><strong>asked for a person</strong></span>
+        {% else %}{{ tracker(r) }}{% endif %}
+        {% else %}<span class="muted small">not invited yet</span>{% endif %}</td>
+    <td>{% if r.s and r.s.scorecard %}<b>{{ r.s.scorecard.total }}</b> <span class="muted small">/ 3</span>{% endif %}</td>
+    <td style="text-align:right;white-space:nowrap">
+      {% if user.role == 'recruiter' and r.c.stage == 'SHORTLISTED' %}<button type="button" class="invite-btn small" data-id="{{ r.c.id }}">Invite to AI interview</button>{% endif %}
+      {% if r.s or r.c.stage != 'SHORTLISTED' %}<a class="btn secondary small" href="/interviews/{{ r.c.id }}">Open</a>{% endif %}
+      {% if user.role == 'recruiter' and r.c.stage == 'AI_INTERVIEW' %}<span class="muted small" title="The candidate's private interview link">link: /interview/{{ r.c.access_token }}</span>{% endif %}
     </td>
   </tr>
-  {% else %}<tr><td colspan="5" class="muted">Nobody is shortlisted yet. Approve a shortlist on the Screening page.</td></tr>{% endfor %}
+  {% endfor %}
+  </tbody>
 </table>
+</div>
+{% else %}<div class="card empty-state"><svg viewBox="0 0 24 24"><use href="#i-mic"/></svg><b>Nobody is shortlisted yet</b>Approve a shortlist on the Screening page and your candidates appear here, ready to invite.</div>{% endif %}
+
+{% if user.role == 'recruiter' %}
+<div class="modal" id="invite-modal" role="dialog" aria-modal="true" aria-labelledby="invite-title">
+  <form class="modal-box" id="invite-form" method="post">
+    <h2 id="invite-title">Invite to the AI interview</h2>
+    <p class="muted">The candidate gets an email draft that waits in your outbox. They will see the AI notice first and can ask for a person instead.</p>
+    <label for="invite-reason">Reason for inviting (logged with your name)</label>
+    <input id="invite-reason" name="reason" type="text" required placeholder="e.g. Strong evidence on the must-have skills" data-testid="invite-reason" autocomplete="off">
+    <div class="modal-actions"><button type="button" class="secondary" id="invite-cancel">Cancel</button><button type="submit">Invite</button></div>
+  </form>
+</div>
+<script>
+(function () {
+  const modal = document.getElementById("invite-modal"), form = document.getElementById("invite-form");
+  document.querySelectorAll(".invite-btn").forEach(b => b.addEventListener("click", () => { form.action = "/interviews/" + b.dataset.id + "/invite"; document.getElementById("invite-title").textContent = "Invite candidate #" + b.dataset.id + " to the AI interview"; modal.classList.add("open"); document.getElementById("invite-reason").focus(); }));
+  const close = () => modal.classList.remove("open");
+  document.getElementById("invite-cancel").onclick = close; modal.addEventListener("click", e => { if (e.target === modal) close(); }); document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+})();
+</script>
+{% endif %}
 {% endblock %}

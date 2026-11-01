@@ -68,7 +68,7 @@ def copilot_panel(request: Request, cand_id: int, user: User = Depends(RECRUITER
 
 
 @router.post("/{cand_id}/to-human-interview")
-def to_human_interview(request: Request, cand_id: int, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+def to_human_interview(request: Request, cand_id: int, slot_id: str = Form(""), user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
     cand = _cand(db, cand_id)
     session = db.query(InterviewSession).filter_by(candidate_id=cand.id).first()
     asked = bool(session and session.status == "PERSON_REQUESTED")
@@ -76,8 +76,8 @@ def to_human_interview(request: Request, cand_id: int, user: User = Depends(RECR
         move(db, cand, Stage.HUMAN_INTERVIEW, user.email, "interview with a person, as the candidate asked" if asked else "second-round interview with a recruiter",
              evidence={"asked_for_person": True} if asked else None)
         from app.agents.communications import draft_invitation
-        draft_invitation(db, cand, kind="invitation")
-    except MoveRefused as e:
+        draft_invitation(db, cand, kind="invitation", slot_id=slot_id)
+    except (MoveRefused, ValueError) as e:
         db.rollback()
         flash(request, f"Refused: {e}", "bad")
     else:

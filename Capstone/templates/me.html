@@ -5,6 +5,11 @@
   <h1>Your application</h1>
   <p>For: <strong>{{ cand.requisition.job.title if cand.requisition.job else cand.requisition.title }}</strong> &middot; applied {{ cand.applied_at.strftime('%Y-%m-%d') }}</p>
   <p>Status: <span class="badge warn">{{ cand.stage }}</span></p>
+  {% set order = ['APPLIED', 'SCREENED', 'AI_INTERVIEW', 'HUMAN_INTERVIEW', 'DECISION'] %}
+  {% set pos = {'APPLIED': 0, 'REVIEW': 0, 'EXTRACTED': 0, 'SCREENED': 1, 'SHORTLISTED': 1, 'AI_INTERVIEW': 2, 'HUMAN_INTERVIEW': 3, 'DECISION': 4}.get(cand.stage, -1) %}
+  {% if pos >= 0 %}<div class="stepper" style="margin:.4rem 0 .8rem" data-testid="progress">
+    {% for label in ['Received', 'Compared with the role', 'First interview', 'Talk with a recruiter', 'Decision'] %}{% if not loop.first %}<span class="bar {{ 'done' if pos >= loop.index0 }}"></span>{% endif %}<span class="st {{ 'done' if pos > loop.index0 else ('now' if pos == loop.index0 else '') }}"><i></i>{{ label }}</span>{% endfor %}
+  </div>{% endif %}
   <p>{{ status_text }}</p>
   {% if invited and iv and iv.status in ('INVITED','NOT_STARTED','IN_PROGRESS') or invited and not iv %}
   <div class="card" data-testid="interview-notice" style="border-color:#1f4fd8;margin:1rem 0">
@@ -40,8 +45,6 @@
   <p><a class="btn" href="/me/{{ cand.access_token }}/my-data" data-testid="see-my-data">See my data</a>
     <a class="btn secondary" href="/me/{{ cand.access_token }}/data.json" data-testid="download-data">Download my data</a>
     <a class="btn secondary" href="/me/{{ cand.access_token }}/delete" data-testid="delete-application">Delete my application</a></p>
-  {% if data_request and data_request.status == 'REQUESTED' %}<p><span class="badge warn" data-testid="delete-pending">a deletion request is waiting for a recruiter</span></p>
-  {% elif data_request and data_request.status == 'REFUSED' %}<p><span class="badge bad">deletion refused: {{ data_request.reason }}</span></p>{% endif %}
   {% endif %}
   <h3>Write to us</h3>
   {% if sent %}<div class="flash good">Thank you. A recruiter will read your message and reply.</div>{% endif %}

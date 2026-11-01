@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Inbox{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Inbox</h1><p class="page-sub">Everything that is waiting for a person. The platform drafts and checks; nothing is sent, shortlisted or decided until someone here does it.</p></div></div>
+<div class="queue">
+  <a class="tile {{ 'hot' if drafts else 'clear' }}" href="/outbox"><span class="n">{{ drafts | length }}{{ '+' if drafts | length >= 6 }}</span><span class="t">Emails to approve</span><span class="s">Drafts wait here. Nothing is sent without you.</span><span class="go">Open the outbox</span></a>
+  <a class="tile {{ 'hot' if fields else 'clear' }}" href="/review"><span class="n">{{ fields | length }}{{ '+' if fields | length >= 6 }}</span><span class="t">CVs with unsure fields</span><span class="s">Check each against the original CV.</span><span class="go">Open the review queue</span></a>
+  <a class="tile {{ 'hot' if cards else 'clear' }}" href="/interviews"><span class="n">{{ cards | length }}</span><span class="t">AI interviews to review</span><span class="s">Enter your own levels before the audio is shown.</span><span class="go">Open interviews</span></a>
+</div>
+<div class="row">
+  <div class="card"><h2>Emails waiting</h2>
+    {% for d in drafts %}<a class="result" style="padding:.55rem 0" href="/outbox"><span class="grow"><b>{{ d.subject }}</b><br><small>candidate #{{ d.candidate_id }} &middot; {{ d.kind }}</small></span><span class="badge warn">draft</span></a>
+    {% else %}<div class="empty-state"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg><b>No emails waiting</b>New drafts appear when you invite, decide or answer a candidate.</div>{% endfor %}
+  </div>
+  <div class="card"><h2>Unsure CV fields</h2>
+    {% for cid, n in fields %}<a class="result" style="padding:.55rem 0" href="/review"><span class="grow"><b>Candidate #{{ cid }}</b><br><small>{{ n }} field(s) below the confidence threshold</small></span><span class="badge warn">check</span></a>
+    {% else %}<div class="empty-state"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg><b>Everything has been checked</b>Unclear fields from scanned CVs will appear here.</div>{% endfor %}
+  </div>
+</div>
+{% endblock %}

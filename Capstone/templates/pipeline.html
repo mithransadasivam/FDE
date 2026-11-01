@@ -1,38 +1,76 @@
 {% extends "base.html" %}
 {% block title %}Pipeline{% endblock %}
 {% block content %}
-<h1>Pipeline {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
-<p class="muted">Each candidate sits in one stage. The system can make automatic steps; every decision is a person's, needs a reason, and is written to the decision log.</p>
-
-{% if user.role == 'recruiter' %}
-<div class="card">
-  <h2 style="margin-top:0">Move a candidate</h2>
-  <form method="post" action="/pipeline/move" class="row" style="align-items:end">
-    <div><label for="candidate_id">Candidate</label>
-      <select id="candidate_id" name="candidate_id">{% for c in everyone %}<option value="{{ c.id }}">#{{ c.id }} {{ c.label }}</option>{% endfor %}</select></div>
-    <div><label for="to">Move to</label>
-      <select id="to" name="to">{% for s in stages %}<option value="{{ s }}">{{ s }}</option>{% endfor %}</select></div>
-    <div style="flex:2"><label for="reason">Reason (needed for a decision)</label><input id="reason" name="reason" type="text" placeholder="Why are you moving this candidate?"></div>
-    <div style="flex:0"><button type="submit">Move</button></div>
-  </form>
-  <details style="margin-top:.6rem"><summary class="small">Which moves are allowed?</summary>
-    <table style="margin-top:.4rem"><tr><th>From</th><th>Can go to</th></tr>
-      {% for frm, moves in allowed.items() %}<tr><td>{{ frm }}</td><td>{% for to, who in moves %}{{ to }} <span class="badge {{ 'good' if who == 'system' else 'warn' }}">{{ who }}</span> {% else %}<span class="muted">nowhere (process ended)</span>{% endfor %}</td></tr>{% endfor %}
-    </table></details>
+<div class="page-head"><div><h1>Board {% if is_blind %}<span class="badge good">Blind view</span>{% endif %}</h1>
+  <p class="page-sub">Each candidate sits in one stage. {% if user.role == 'recruiter' %}Drag a card to another column to move it: you will be asked for a reason, and the move is logged.{% else %}Only a recruiter can move candidates.{% endif %}</p></div>
+  <div class="toolbar">
+    {% if jobs | length > 1 %}<form method="get" action="/pipeline"><select name="job" onchange="this.form.submit()" aria-label="Job"><option value="">All jobs</option>{% for j in jobs %}<option value="{{ j.id }}" {{ 'selected' if job == j.id }}>{{ j.id | reqid }} {{ j.title }}</option>{% endfor %}</select></form>{% endif %}
+    <details class="dropdown"><summary class="btn secondary small">Which moves are allowed?</summary>
+      <div class="menu-pop right" style="min-width:380px;padding:.8rem"><table style="font-size:.82rem"><tr><th>From</th><th>Can go to</th></tr>
+        {% for frm, moves in allowed.items() %}<tr><td>{{ frm }}</td><td>{% for to, who in moves %}{{ to }} <span class="badge {{ 'good' if who == 'system' else 'warn' }}">{{ who }}</span> {% else %}<span class="muted">nowhere (process ended)</span>{% endfor %}</td></tr>{% endfor %}
+      </table></div></details>
+  </div>
 </div>
-{% endif %}
 
-<div class="board">
+{% if not total %}<div class="card empty-state"><svg viewBox="0 0 24 24"><use href="#i-board"/></svg><b>No candidates yet</b>Publish a job and applications will appear on this board.</div>{% endif %}
+<div class="kanban" id="board" data-can-move="{{ 1 if user.role == 'recruiter' else 0 }}">
   {% for stage, chips in columns.items() %}
-  <div class="col">
+  <div class="k-col {{ 'collapsed' if not chips }}" data-stage="{{ stage.value }}">
     <h3>{{ stage.value }} <span class="badge">{{ chips | length }}</span></h3>
     {% for c in chips %}
-    <div class="chip"><a href="/candidates/{{ c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}"><strong>#{{ c.id }}</strong> {{ c.label if not is_blind else '' }}</a><br>
-      <span class="muted">{{ c.title or '' }}</span>
-      {% if c.person %}<br><span class="badge warn" data-testid="person-flag">asked for a person</span>{% endif %}
-      {% if c.dup %}<br><span class="badge bad">duplicate of {% for t in c.dup %}#{{ t }} {% endfor %}</span>{% endif %}</div>
-    {% else %}<div class="muted small">empty</div>{% endfor %}
+    <div class="k-card" data-id="{{ c.id }}" data-label="{{ c.label }}" draggable="{{ 'true' if user.role == 'recruiter' else 'false' }}">
+      <span class="avatar-sm {{ 'blind' if is_blind }}">{{ c.initial }}</span>
+      <div style="min-width:0;flex:1"><a href="/candidates/{{ c.id }}{{ '?blind=1' if is_blind and user.role == 'recruiter' }}"><strong>#{{ c.id }}</strong> {{ c.label if not is_blind else '' }}</a><small>{{ c.title or '' }}</small>
+        {% if c.person %}<span class="badge warn" data-testid="person-flag">asked for a person</span>{% endif %}
+        {% if c.dup %}<span class="badge bad">duplicate of {% for t in c.dup %}#{{ t }} {% endfor %}</span>{% endif %}</div>
+      {% if c.score is not none %}<span class="ring {{ 'hi' if c.score >= 75 else ('mid' if c.score >= 45 else 'lo') }}" style="--p:{{ c.score }};width:38px;height:38px;font-size:.7rem"><span>{{ c.score }}</span></span>{% endif %}
+    </div>
+    {% else %}<div class="k-empty">empty</div>{% endfor %}
   </div>
   {% endfor %}
 </div>
+
+<div class="modal" id="move-modal" role="dialog" aria-modal="true" aria-labelledby="move-title">
+  <form class="modal-box" id="move-form">
+    <h2 id="move-title">Move candidate</h2>
+    <p class="muted" id="move-sub"></p>
+    <label for="move-reason">Reason (a person's move needs one, and it is logged)</label>
+    <input id="move-reason" type="text" placeholder="Why are you moving this candidate?" autocomplete="off">
+    <div class="modal-err" id="move-err" role="alert"></div>
+    <div class="modal-actions"><button type="button" class="secondary" id="move-cancel">Cancel</button><button type="submit" id="move-go">Move</button></div>
+  </form>
+</div>
+<script>
+(function () {
+  const board = document.getElementById("board");
+  if (board.dataset.canMove !== "1") return;
+  const modal = document.getElementById("move-modal"), err = document.getElementById("move-err"), reason = document.getElementById("move-reason");
+  let drag = null, target = null;
+  board.addEventListener("dragstart", e => { const c = e.target.closest(".k-card"); if (!c) return; drag = c; c.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", c.dataset.id); });
+  board.addEventListener("dragend", () => { if (drag) drag.classList.remove("dragging"); document.querySelectorAll(".k-col.over").forEach(c => c.classList.remove("over")); drag = null; });
+  board.querySelectorAll(".k-col").forEach(col => {
+    col.addEventListener("dragover", e => { if (!drag) return; e.preventDefault(); col.classList.add("over"); });
+    col.addEventListener("dragleave", () => col.classList.remove("over"));
+    col.addEventListener("drop", e => {
+      e.preventDefault(); col.classList.remove("over"); if (!drag) return;
+      const from = drag.closest(".k-col").dataset.stage, to = col.dataset.stage; if (from === to) return;
+      target = { id: drag.dataset.id, to: to };
+      document.getElementById("move-title").textContent = "Move #" + drag.dataset.id + " to " + to;
+      document.getElementById("move-sub").textContent = drag.dataset.label + ": from " + from + " to " + to + ".";
+      reason.value = ""; err.textContent = ""; modal.classList.add("open"); reason.focus();
+    });
+  });
+  const close = () => { modal.classList.remove("open"); target = null; };
+  document.getElementById("move-cancel").onclick = close;
+  modal.addEventListener("click", e => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  document.getElementById("move-form").onsubmit = async e => {
+    e.preventDefault(); if (!target) return;
+    const body = new URLSearchParams({ candidate_id: target.id, to: target.to, reason: reason.value, ajax: "1" });
+    const r = await fetch("/pipeline/move", { method: "POST", body, headers: { "Content-Type": "application/x-www-form-urlencoded" } });
+    let d = {}; try { d = await r.json(); } catch (x) { d = { ok: false, message: "Could not move the candidate." }; }
+    if (d.ok) location.reload(); else err.textContent = d.message;
+  };
+})();
+</script>
 {% endblock %}

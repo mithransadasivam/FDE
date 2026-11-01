@@ -32,7 +32,7 @@ Before you start: `python -m scripts.journey --fake`, then serve its database (t
 
 | Time | Show | Say |
 |---|---|---|
-| 0:00-0:30 | **Pipeline** board | "AI prepares, a person decides. The rule I am proudest of: no code moves a candidate to a decision stage without a person and a reason." |
+| 0:00-0:30 | **Candidates > Board** (drag a card: a box asks for the reason) | "AI prepares, a person decides. The rule I am proudest of: no code moves a candidate to a decision stage without a person and a reason." |
 | 0:30-1:30 | The requisition (voice note, rubric, the two flagged phrases) and a **candidate** page: clean, blind record and the credential checks | "Messy inputs become clean data. A person checks every field the reader was unsure about." |
 | 1:30-2:30 | **Screening** (every score with its quote), then an **AI interview** page | "Questions are written from the CV and the answers, and code checks every one." |
 | 2:30-3:30 | The **replay room** on the strong candidate (`/interviews/<id>/replay`) | "Scores come from what was said; the figures react to loudness only." |

@@ -81,7 +81,7 @@ def _csv(rows: list[list], name: str) -> Response:
 
 
 @router.get("/export/candidates.csv")
-def export_candidates(req: int, user: User = Depends(STAFF), db: Session = Depends(get_db)):
+def export_candidates(req: int, ids: str = "", user: User = Depends(STAFF), db: Session = Depends(get_db)):
     """One row per candidate, blind: a number, the stage, the CV total, each skill's score and the AI interview's overall score. No names or contact details."""
     from app.interview.scorecard import build_card
 
@@ -90,7 +90,10 @@ def export_candidates(req: int, user: User = Depends(STAFF), db: Session = Depen
         raise HTTPException(404, "That requisition does not exist")
     skills = [i["skill"] for i in (job.rubric or {}).get("items", [])]
     rows = [["candidate", "stage", "cv_total_100", *skills, "ai_interview_overall_100"]]
+    picked = {int(x) for x in ids.split(',') if x.strip().isdigit()}  # an empty list means everyone
     for c in db.scalars(select(Candidate).where(Candidate.requisition_id == req).order_by(Candidate.id)):
+        if picked and c.id not in picked:
+            continue
         sc = {r.skill: r.score for r in db.scalars(select(ItemScoreRow).where(ItemScoreRow.candidate_id == c.id, ItemScoreRow.requisition_id == req))}
         s = db.query(InterviewSession).filter_by(candidate_id=c.id).first()
         ai = build_card(db, s)["overall_100"] if s and s.status == "DONE" and s.scorecard else ""

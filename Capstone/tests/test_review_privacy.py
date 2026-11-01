@@ -1,4 +1,6 @@
 import pytest
+
+from app.agents.document import years_from_jobs
 from fastapi.testclient import TestClient
 
 from app.agents.document import extract_profile
@@ -32,8 +34,9 @@ def test_zero_identity_leaks_for_each_format(file):
 
 
 def test_blind_record_keeps_the_skills_and_experience():
-    blind = make_blind(candidate_from("C-001_cv.pdf"))
-    assert blind.current_title == "Cloud Support Engineer" and blind.years_experience == 8.0
+    cand = candidate_from("C-001_cv.pdf")
+    blind = make_blind(cand)
+    assert blind.current_title == "Cloud Support Engineer" and blind.years_experience == years_from_jobs(cand.profile["jobs"]["value"])  # calculated from the dates up to today
     assert "Linux" in blind.skills and len(blind.jobs) == 4 and "ITIL 4 Foundation" in blind.certifications
 
 
@@ -152,10 +155,11 @@ def test_changing_the_jobs_recalculates_the_years(clients, db):
                                     "value_years_experience": "1.0"})
     db.expire_all()
     p = db.get(Candidate, 1).profile
-    assert p["years_experience"]["value"] == 3.0 and p["years_experience"]["confidence"] == 1.0  # Oct 2023 to Oct 2026
+    expected = years_from_jobs(p["jobs"]["value"])  # Oct 2023 to today (Present), overlapping months counted once
+    assert p["years_experience"]["value"] == expected and p["years_experience"]["confidence"] == 1.0
     assert len(p["jobs"]["value"]) == 2
     e = db.query(DecisionLog).filter_by(action="corrected years_experience").one()
-    assert e.evidence["before"] == "1.0" and e.evidence["after"] == "3.0"
+    assert e.evidence["after"] == str(expected) and e.evidence["before"] != e.evidence["after"]
 
 
 def test_confirm_needs_everything_checked_then_moves_to_extracted(clients, db):

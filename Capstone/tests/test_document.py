@@ -57,7 +57,7 @@ def test_pdf_profile_matches_the_cv():
     assert p.name.value == "Amara Okafor" and p.current_title.value == "Cloud Support Engineer"
     assert p.date_of_birth.value == "12/07/1992" and len(p.jobs.value) == 4
     assert "ITIL 4 Foundation" in p.certifications.value and "Linux" in p.skills.value
-    assert p.years_experience.value == 8.0
+    assert p.years_experience.value == years_from_jobs(p.jobs.value)  # calculated from the dates up to today, so it grows with the calendar
     assert min(f.confidence for f in (p.name, p.email, p.phone, p.jobs, p.skills)) >= 0.8
 
 

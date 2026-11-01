@@ -85,19 +85,6 @@ def stages_with_ai(db: Session, cand: Candidate, history: list[dict], interviewe
     return rows
 
 
-def open_delete_request(db: Session, cand: Candidate) -> DataRequest:
-    if cand.erased_at:
-        raise MoveRefused("Your personal data has already been erased.")
-    existing = db.scalars(select(DataRequest).where(DataRequest.candidate_id == cand.id, DataRequest.kind == "delete", DataRequest.status == "REQUESTED")).first()
-    if existing:
-        return existing
-    req = DataRequest(candidate_id=cand.id, kind="delete")
-    db.add(req)
-    db.add(DecisionLog(actor="candidate", action="asked for their data to be deleted", subject=f"candidate:{cand.id}", reason="a recruiter will decide; nothing is erased automatically"))
-    db.flush()
-    return req
-
-
 def _inside_storage(path: str | Path) -> Path | None:
     """A path is only ever deleted if it is inside the platform's own storage folder (the starter kit's recordings are never touched)."""
     if not path:
@@ -154,17 +141,6 @@ def purge_candidate(db: Session, cand: Candidate, actor: str, why: str) -> dict:
     return removed
 
 
-def erase(db: Session, cand: Candidate, req: DataRequest, actor: str, reason: str) -> None:
-    """A recruiter approved a request to erase (the older, reviewed route)."""
-    if "@" not in (actor or ""):
-        raise MoveRefused("Only a person can approve an erasure.")
-    if not (reason or "").strip():
-        raise MoveRefused("An erasure needs a reason on record.")
-    purge_candidate(db, cand, actor, f"data erasure approved: {reason.strip()}")
-    req.status, req.decided_by, req.decided_at, req.reason = "DONE", actor, datetime.now(timezone.utc), reason.strip()
-    db.add(DecisionLog(actor=actor, action="personal data erased", subject=f"candidate:{cand.id}", reason=reason.strip(), evidence={"request_id": req.id}))
-
-
 def delete_my_application(db: Session, cand: Candidate) -> DataRequest:
     """The candidate deleted their own application (Day 4, prompt 6): after they confirmed, everything personal is removed at once and the candidate is WITHDRAWN.
     The decision log gets one anonymous line, and a finished request is recorded so recruiters can see it happened."""
@@ -178,10 +154,3 @@ def delete_my_application(db: Session, cand: Candidate) -> DataRequest:
     db.add(DecisionLog(actor="candidate", action="candidate deleted their data", subject=f"candidate:{cand.id}", reason=f"candidate {cand.id} deleted their data on {today}",
                        evidence={"files_removed": len(removed["files"]), "folders_removed": len(removed["folders"])}))
     return req
-
-
-def refuse(db: Session, cand: Candidate, req: DataRequest, actor: str, reason: str) -> None:
-    if not (reason or "").strip():
-        raise MoveRefused("Say why the request is refused: the candidate is told the reason.")
-    req.status, req.decided_by, req.decided_at, req.reason = "REFUSED", actor, datetime.now(timezone.utc), reason.strip()
-    db.add(DecisionLog(actor=actor, action="erasure request refused", subject=f"candidate:{cand.id}", reason=reason.strip()))

@@ -9,6 +9,7 @@ DEFAULTS = {
     "accent": "#4f46e5",
     "support_email": "careers@example.com",
     "welcome": "Fair, explainable hiring. AI helps read applications; people make every decision.",
+    "email_signoff": "Best wishes,\nThe hiring team",
 }
 _cache: dict = {"at": 0.0, "values": None}
 HEX = re.compile(r"^#[0-9a-fA-F]{6}$")
@@ -59,4 +60,11 @@ def validate(form: dict) -> tuple[dict, list[str]]:
         problems.append("The support email does not look like an email address.")
     out["support_email"] = email
     out["welcome"] = (form.get("welcome") or "").strip()[:240]
+    signoff = "\n".join(l.strip() for l in (form.get("email_signoff") or "").strip().splitlines() if l.strip())[:160]
+    out["email_signoff"] = signoff or DEFAULTS["email_signoff"]
     return out, problems
+
+
+def signoff() -> str:
+    """The closing lines of every email to a candidate (set on the Settings page)."""
+    return load()["email_signoff"]

@@ -68,7 +68,6 @@ def main() -> int:
         shot("09-outbox", "/outbox", full=True)
         shot("10-compliance", "/compliance")
         shot("11-trust-and-cost", "/trust", full=True)
-        shot("12-demo-mode", "/demo", full=True)
         # the copilot: replay the forbidden-question recording instantly
         page.goto(f"{base}/copilot/{i['forbidden']}")
         page.wait_for_timeout(300)

@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 
 from app.agents.base import BaseAgent, register_tool
 from app.ai.llm import complete_json
+from app import branding
 from app.config import get_settings
 from app.models import Candidate, DecisionLog, Requisition
 from app.models_ext import EmailDraft, OutboxLog
@@ -75,7 +76,7 @@ def _facts(kind: str, name: str, role: str, extra: dict) -> str:
 def _fake(user: str) -> DraftOut:
     f = dict(ln.split(": ", 1) for ln in user.splitlines() if ": " in ln and not ln.startswith("<"))
     name, role, kind = f.get("first name", "there"), f.get("role", "the role"), f.get("kind", "update")
-    sign = "\n\nBest wishes,\nThe hiring team"
+    sign = "\n\n" + branding.signoff()
     if kind == "ai_interview":
         return DraftOut(subject=f"Your first-round interview for {role}", body=(
             f"Hello {name},\n\nThank you for applying for {role}. We would like to invite you to a first-round interview.\n\n"
@@ -146,7 +147,7 @@ def safe_draft(kind: str, name: str, role: str, link: str) -> DraftOut:
     """A short email built by code, used when the written drafts fail the checks twice."""
     extra = f"\n\nYour private link: {link}" if link else ""
     return DraftOut(subject=f"An update on your application for {role}", body=f"Hello {name},\n\nThank you for applying for {role}. A member of our team will write to you with the next step. "
-                    f"If you would like to speak to a person, just ask.{extra}\n\nBest wishes,\nThe hiring team")
+                    f"If you would like to speak to a person, just ask.{extra}\n\n" + branding.signoff())
 
 
 class DraftArgs(BaseModel):
@@ -196,14 +197,18 @@ class CommsAgent(BaseAgent):
     name = "communications"
 
 
-def draft_invitation(db: Session, cand: Candidate, kind: str = "invitation") -> int:
-    """Drafts an invitation (to the AI interview or to a human interview with a proposed slot) into the approval queue."""
+def draft_invitation(db: Session, cand: Candidate, kind: str = "invitation", slot_id: str = "") -> int:
+    """Drafts an invitation (to the AI interview or to a human interview with a proposed slot) into the approval queue.
+    slot_id is the time the recruiter picked; without one, the first free slot is proposed."""
     agent = CommsAgent(db, cand.id)
     extra = {}
     if kind == "invitation":
-        slot = agent.call("find_slot", n=1)
-        if slot:
-            extra = {"slot": pretty(slot[0]), "slot_id": slot[0]["slot_id"]}
+        slot = agent.call("find_slot", n=12)
+        chosen = next((x for x in slot if x["slot_id"] == slot_id), None) if slot_id else (slot[0] if slot else None)
+        if slot_id and chosen is None:
+            raise ValueError("That time is no longer free: pick another.")
+        if chosen:
+            extra = {"slot": pretty(chosen), "slot_id": chosen["slot_id"]}
     return agent.call("draft_email", candidate_id=cand.id, kind=kind, extra=extra)["draft_id"]
 
 

@@ -7,6 +7,7 @@
 <title>{% block title %}Hiring Intelligence{% endblock %}</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M9 22V10m0 6h14m0-6v12' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/app2.css">
 <style>:root { --brand: {{ brand.accent }}; --brand-2: {{ brand.accent }}; }</style>
 </head>
 <body>
@@ -40,22 +41,47 @@
     <a class="nav {{ 'active' if path == '/' else '' }}" href="/"><svg><use href="#i-home"/></svg>Overview</a>
     {% for group, items in nav_groups %}
     <div class="nav-group">{{ group }}</div>
-    {% for label, href, icon in items %}<a class="nav {{ 'active' if path == href or path.startswith(href + '/') else '' }}" href="{{ href }}"><svg><use href="#{{ icon }}"/></svg>{{ label }}</a>{% endfor %}
+    {% for label, href, icon in items %}<a class="nav {{ 'active' if href == active_href else '' }}" href="{{ href }}"><svg><use href="#{{ icon }}"/></svg>{{ label }}{% if href == '/inbox' and notification_count %}<span class="count">{{ notification_count }}</span>{% endif %}</a>{% endfor %}
     {% endfor %}
     <div class="spacer"></div>
-    <div class="user-chip"><span class="avatar">{{ user.name[:1] | upper }}</span><span><div class="name">{{ user.name.split(' (')[0] }}</div><div class="role">{{ role_label }}</div></span>
-      <form method="post" action="/logout"><button type="submit" aria-label="Sign out">Sign out</button></form></div>
+    <div class="side-foot">AI prepares. People decide.</div>
   </aside>
   <label class="menu-scrim" for="menu"></label>
   <div class="content">
-    <div class="topbar"><label for="menu" aria-label="Open the menu"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></label>
-      <a class="brand" href="/"><span class="logo" style="width:30px;height:30px"><svg width="16" height="16"><use href="#i-logo"/></svg></span>{{ brand.company_name }}</a></div>
+    <header class="appbar">
+      <label class="menu-btn" for="menu" aria-label="Open the menu"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></label>
+      {% if user.role != 'auditor' %}
+      <form class="search" action="/search" method="get" role="search"><svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input id="global-search" name="q" type="search" placeholder="Search candidates, skills, jobs" aria-label="Search" autocomplete="off"><kbd>/</kbd></form>
+      {% else %}<div class="grow"></div>{% endif %}
+      <div class="appbar-right">
+        {% if user.role == 'recruiter' %}
+        <details class="dropdown" data-testid="bell"><summary class="icon-btn" aria-label="Waiting for you"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 17h12l-1.5-2.2V10a4.5 4.5 0 0 0-9 0v4.8zM10 19.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{% if notification_count %}<span class="dot">{{ notification_count if notification_count < 100 else '99+' }}</span>{% endif %}</summary>
+          <div class="menu-pop"><div class="menu-title">Waiting for you</div>
+            {% for text, href, n in notifications %}<a href="{{ href }}">{{ text }}</a>{% else %}<div class="menu-empty">You are all caught up.</div>{% endfor %}</div></details>
+        {% endif %}
+        <details class="dropdown" data-testid="user-menu"><summary class="user-btn"><span class="avatar">{{ initials or user.name[:1] | upper }}</span><span class="user-text"><b>{{ user.name.split(' (')[0] }}</b><small>{{ role_label }}</small></span></summary>
+          <div class="menu-pop right"><div class="menu-title">Signed in as {{ role_label }}</div>
+            <a href="/account">Account and password</a><a href="/help">Help</a>
+            <form method="post" action="/logout"><button type="submit" class="menu-item">Sign out</button></form></div></details>
+      </div>
+    </header>
     <main>
-      {% for m in messages %}<div class="flash {{ m.kind }}" role="status">{{ m.text }}</div>{% endfor %}
+      {% if tab_bar %}<nav class="tabs" aria-label="Section">{% for label, href, n in tab_bar.tabs %}<a href="{{ href }}" class="{{ 'on' if href == tab_bar.current else '' }}">{{ label }}{% if n %}<span class="count">{{ n }}</span>{% endif %}</a>{% endfor %}</nav>{% endif %}
+      <div class="toasts" aria-live="polite">{% for m in messages %}<div class="flash {{ m.kind }}" role="status"><span>{{ m.text }}</span><button type="button" class="toast-x" aria-label="Dismiss">&times;</button></div>{% endfor %}</div>
       {% block content %}{% endblock %}
     </main>
   </div>
 </div>
+<script>
+(function () {
+  document.querySelectorAll(".toast-x").forEach(b => b.onclick = () => b.parentElement.remove());
+  document.querySelectorAll(".toasts .flash.good").forEach(t => setTimeout(() => { t.classList.add("fade"); setTimeout(() => t.remove(), 400); }, 6000));
+  const search = document.getElementById("global-search");
+  document.addEventListener("keydown", e => { if (e.key === "/" && search && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); search.focus(); } });
+  document.addEventListener("click", e => document.querySelectorAll("details.dropdown[open]").forEach(d => { if (!d.contains(e.target)) d.removeAttribute("open"); }));
+})();
+</script>
 {% else %}
 <header class="public-bar"><div class="in">
   <a class="brand" href="/jobs"><span class="logo"><svg width="20" height="20"><use href="#i-logo"/></svg></span><span>{{ brand.company_name }}<small>Fair, explainable hiring</small></span></a>

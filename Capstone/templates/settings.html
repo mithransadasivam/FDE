@@ -11,6 +11,7 @@
     <span style="width:28px;height:28px;border-radius:8px;background:{{ values.accent }};border:1px solid var(--line)"></span></div>
   <label for="support_email">Support email (shown to candidates)</label><input id="support_email" name="support_email" type="text" value="{{ values.support_email }}">
   <label for="welcome">Welcome line on the careers page</label><input id="welcome" name="welcome" type="text" value="{{ values.welcome }}">
+  <label for="email_signoff">Email sign-off (the closing lines of every email to a candidate)</label><textarea id="email_signoff" name="email_signoff" rows="2" maxlength="160">{{ values.email_signoff }}</textarea>
   <p><button type="submit" data-testid="save-settings">Save settings</button></p>
 </form>
 {% endblock %}

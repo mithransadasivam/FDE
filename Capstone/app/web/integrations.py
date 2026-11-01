@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from app import integrations
 from app.auth import HM, RECRUITER
-from app.datarights import delete_my_application, erase, export_data, open_delete_request, refuse
+from app.datarights import delete_my_application, export_data
 from app.db import get_db
 from app.models import Candidate, DecisionLog, Requisition, User
 from app.models_ext import ApiKey, DataRequest, InterviewSession, ItemScoreRow, Webhook, WebhookDelivery
@@ -213,42 +213,8 @@ def delete_application(request: Request, token: str, confirm: str = Form(""), db
     return RedirectResponse(f"/me/{token}?deleted=1", status_code=303)
 
 
-@router.post("/me/{token}/delete-request")
-def ask_to_delete(token: str, db: Session = Depends(get_db)):
-    cand = _cand(db, token)
-    try:
-        open_delete_request(db, cand)
-    except MoveRefused:
-        return RedirectResponse(f"/me/{token}", status_code=303)
-    db.commit()
-    return RedirectResponse(f"/me/{token}?data=requested", status_code=303)
-
-
 @router.get("/data-requests")
 def data_requests(request: Request, user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
+    """A read-only record of candidates who deleted their own data (they confirm and it is done at once: nothing waits for a recruiter)."""
     rows = db.scalars(select(DataRequest).where(DataRequest.kind == "delete").order_by(DataRequest.id.desc())).all()
     return render(request, "data_requests.html", user, rows=rows)
-
-
-@router.post("/data-requests/{req_id}/decide")
-def decide_request(request: Request, req_id: int, decision: str = Form(""), reason: str = Form(""), user: User = Depends(RECRUITER), db: Session = Depends(get_db)):
-    req = db.get(DataRequest, req_id)
-    if req is None:
-        raise HTTPException(404, "That request does not exist")
-    cand = db.get(Candidate, req.candidate_id)
-    try:
-        if req.status != "REQUESTED":
-            raise MoveRefused("That request has already been decided.")
-        if decision == "approve":
-            erase(db, cand, req, user.email, reason)
-        elif decision == "refuse":
-            refuse(db, cand, req, user.email, reason)
-        else:
-            raise MoveRefused("Choose Approve erasure or Refuse.")
-    except MoveRefused as e:
-        db.rollback()
-        flash(request, f"Not recorded: {e}", "bad")
-    else:
-        db.commit()
-        flash(request, "Personal data erased. The decision log keeps who decided and why." if decision == "approve" else "Refused. The reason is on record.")
-    return RedirectResponse("/data-requests", status_code=303)
