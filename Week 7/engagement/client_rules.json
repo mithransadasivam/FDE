@@ -1,0 +1,6 @@
+{
+  "engagement_weeks": 6,
+  "validation_weeks": 3,
+  "production_gate_approver": "Helen Achebe",
+  "stakeholders": ["Martin Hale", "Deborah Okafor", "Helen Achebe", "Tom Reyes"]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "B",
+  "name": "Parse, then reason",
+  "summary": "OCR reads the words with their positions and confidence; a small model turns the text into fields.",
+  "time_to_pilot_weeks": 4,
+  "strengths": ["Word-level confidence and positions from OCR: we can show where every answer came from", "Very low cost per page"],
+  "weaknesses": ["One more service to run", "Weaker on photos and handwriting"],
+  "cost": { "model": "claude-haiku-5.5", "regional": true, "input_tokens_per_page": 1200, "output_tokens_per_page": 300, "ocr": true, "public_api": false, "fixed_monthly_usd": 520 },
+  "nodes": [
+    { "id": "analyst", "label": "KYC analyst", "kind": "person", "lane": "client", "row": 1, "region": "uk" },
+    { "id": "caseflow", "label": "CaseFlow (read-only API)", "kind": "system", "lane": "bank", "row": 0, "region": "uk", "customer_data": true, "read_only": true },
+    { "id": "review", "label": "Review screen", "kind": "ui", "lane": "bank", "row": 1, "region": "uk", "customer_data": true },
+    { "id": "decision", "label": "Analyst's decision, typed into CaseFlow", "kind": "decision", "lane": "bank", "row": 3, "region": "uk" },
+    { "id": "ocr", "label": "Textract OCR: words, positions, confidence", "kind": "ocr", "lane": "aws", "row": 0, "region": "uk", "customer_data": true },
+    { "id": "model", "label": "Claude Haiku on Bedrock: text to fields", "kind": "model", "lane": "aws", "row": 1, "region": "uk", "hosting": "bedrock", "customer_data": true },
+    { "id": "check", "label": "Check service (FastAPI)", "kind": "service", "lane": "aws", "row": 2, "region": "uk", "customer_data": true },
+    { "id": "rules", "label": "Policy rules: dates, names, issuers", "kind": "service", "lane": "aws", "row": 3, "region": "uk" },
+    { "id": "docs", "label": "Document store (S3)", "kind": "store", "lane": "aws", "row": 4, "region": "uk", "customer_data": true },
+    { "id": "audit", "label": "Audit log", "kind": "audit_log", "lane": "aws", "row": 5, "region": "uk", "customer_data": true }
+  ],
+  "edges": [
+    { "from": "caseflow", "to": "check", "label": "reads case" },
+    { "from": "check", "to": "docs", "label": "stores" },
+    { "from": "check", "to": "ocr", "label": "page image" },
+    { "from": "ocr", "to": "model", "label": "words" },
+    { "from": "model", "to": "check", "label": "fields" },
+    { "from": "check", "to": "rules", "label": "fields" },
+    { "from": "check", "to": "review", "label": "fields, boxes" },
+    { "from": "model", "to": "audit", "label": "every call" },
+    { "from": "check", "to": "audit", "label": "every result" },
+    { "from": "analyst", "to": "review", "label": "reviews" },
+    { "from": "analyst", "to": "decision", "label": "decides" }
+  ]
+}
