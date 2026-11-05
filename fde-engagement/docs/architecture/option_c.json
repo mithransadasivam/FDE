@@ -1,0 +1,23 @@
+{
+  "id": "C",
+  "name": "Quick SaaS",
+  "summary": "Send documents to a public document-AI service and let it approve the clean ones. Fastest to build.",
+  "time_to_pilot_weeks": 1,
+  "strengths": ["Live in about a week", "Nothing to host"],
+  "weaknesses": ["Customer documents leave the UK", "No person decides clean cases", "No audit trail"],
+  "cost": { "public_api": true, "fixed_monthly_usd": 150 },
+  "nodes": [
+    { "id": "analyst", "label": "KYC analyst", "kind": "person", "lane": "client", "row": 1, "region": "uk" },
+    { "id": "caseflow", "label": "CaseFlow (read-only API)", "kind": "system", "lane": "bank", "row": 0, "region": "uk", "customer_data": true, "read_only": true },
+    { "id": "script", "label": "Integration script", "kind": "service", "lane": "bank", "row": 2, "region": "uk", "customer_data": true },
+    { "id": "decision", "label": "Auto-approval of clean cases", "kind": "decision", "lane": "bank", "row": 4, "region": "uk" },
+    { "id": "saas", "label": "Public document AI (US)", "kind": "model", "lane": "external", "row": 2, "region": "us", "hosting": "public", "customer_data": true }
+  ],
+  "edges": [
+    { "from": "caseflow", "to": "script", "label": "reads" },
+    { "from": "script", "to": "saas", "label": "documents" },
+    { "from": "saas", "to": "caseflow", "label": "writes results" },
+    { "from": "saas", "to": "decision", "label": "approves" },
+    { "from": "analyst", "to": "caseflow", "label": "checks" }
+  ]
+}

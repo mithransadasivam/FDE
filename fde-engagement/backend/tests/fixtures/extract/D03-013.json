@@ -1,0 +1,45 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Aisha Bello",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 4, 2 Park Terrace, Gloucester, GL1 3LB",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w024"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Sep 2026",
+   "word_ids": [
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}
