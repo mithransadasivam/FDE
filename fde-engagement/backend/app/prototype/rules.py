@@ -61,6 +61,11 @@ def first_number(text: str) -> str:
     return m.group(0) if m else ""
 
 
+def all_numbers(text: str) -> list[str]:
+    """Every house or flat number in an address, in order, ignoring the postcode: 'Flat 3, 14 Larkspur Row, GL50 3QR' -> ['3', '14']."""
+    return re.findall(r"\d+", re.sub(r"[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}", " ", text.upper()))
+
+
 def norm_postcode(text: str) -> str:
     return re.sub(r"\s", "", text).upper()
 
@@ -110,8 +115,9 @@ def check_policy(fields: dict[str, Field], app: Application, rules: dict) -> lis
                       f"The document says {f.value}; the application says {app.applicant_name}")
 
     def address_check(f: Field) -> Check:
+        # every number must match (flat and house), so 'Flat 3, 99 Other Road' cannot pass for '14 Larkspur Row'
         ok = (find_postcode(f.value) == norm_postcode(app.postcode)
-              and first_number(f.value) == first_number(app.address_line1))
+              and all_numbers(f.value) == all_numbers(app.address_line1))
         return result("address", "Address matches the application", ok, f"The document shows {f.value}")
 
     def date_check(f: Field) -> Check:

@@ -9,7 +9,11 @@ function download(name: string, text: string, type: string) {
   a.href = url; a.download = name; a.click();
   URL.revokeObjectURL(url);
 }
-const cell = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
+// a leading = + - @ would run as a formula in Excel, so a quote goes in front of it
+const cell = (v: string | number) => {
+  const t = String(v);
+  return `"${(/^[=+\-@]/.test(t) ? `'${t}` : t).replace(/"/g, '""')}"`;
+};
 
 const KIND: Record<string, string> = {
   build: "#0E8F7E", data: "#5B6BBF", evaluation: "#30365E", security: "#9A9EB3", validation: "#E8552F", training: "#D98E04", handover: "#B7791F",

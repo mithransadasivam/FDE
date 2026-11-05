@@ -1,33 +1,68 @@
 {
-  "verdict": "looks_good",
-  "summary": "I found no blocking problems. The `data-testid` values the new tests rely on (`field-*`, `correct-*`, `correct-input-*`, `correct-save-*`) all exist in `CaseReview.tsx`, and the D03-014 fixture exists. The click handler calls `stopPropagation`, so a copy click doesn't select the row. Disabled state for empty values matches the spec. I didn't run the tests. I did not check whether test 3's saved correction to D03-020 persists on the server across re-runs.",
+  "verdict": "changes_needed",
+  "summary": "The grounding and rules logic is mostly sound and well tested. There are four real problems. The address check can wrongly pass, the \"named analyst\" is only a client-supplied string, the API lets a value the page does not show be confirmed, and one file is outside the Day 3 tickets.",
   "findings": [
     {
-      "file": "frontend/src/pages/cases/CaseReview.tsx",
-      "line": 31,
-      "severity": "low",
-      "rule": "correctness",
-      "message": "The 1500ms reset timer is never cleared. Two quick clicks leave the first timer running, so \"Copied\" can revert early, and a timer can fire after the row unmounts. Keep the timer id in a ref and clear it on re-click and on unmount."
+      "file": "backend/app/prototype/rules.py",
+      "severity": "high",
+      "rule": "Correctness of the bank's rules (a wrong pass is worse than a wrong fail)",
+      "message": "address_check compares only the postcode and the first number in the address. For 'Flat 3, 14 Larkspur Row' the first number is the flat, so the house number is never compared. A document for 'Flat 3, 99 Other Road' with the same postcode passes against an application for 'Flat 3, 14 Larkspur Row'. Where the application address has more than one number, compare all of them, or fail/look when the numbers cannot be told apart. Street-name matching would also reduce wrong passes. test_address_needs_the_same_postcode_and_number does not cover this case."
     },
     {
-      "file": "frontend/src/pages/cases/CaseReview.tsx",
-      "line": 41,
+      "file": "backend/app/prototype/routes.py",
+      "severity": "medium",
+      "rule": "A person decides",
+      "message": "analyst_id is a free-text string supplied by the client, and the frontend hardcodes ANALYST.id = 'TR-014'. The API only checks that it is non-blank, so any caller can approve or confirm fields as any analyst, or as 'x'. SC4 ('decisions with a named analyst') is therefore satisfied trivially in the demo. At minimum, validate the ID against a list of known analysts. Real authentication is needed before the pilot."
+    },
+    {
+      "file": "backend/app/prototype/routes.py",
+      "severity": "medium",
+      "rule": "Trust",
+      "message": "POST /fields/{name} with action 'accept' accepts whatever value the field currently has, including a 'not_on_page' value that contradicts the cited words. apply_actions then marks it 'confirmed', and the checks run on it as if the page had shown it. Only the UI steers the analyst toward 'Use the page'. The server should refuse 'accept' for not_on_page fields, or require an explicit correct, so a value the page does not show cannot become 'confirmed' through the API."
+    },
+    {
+      "file": "frontend/src/pages/design/PlanTab.tsx",
       "severity": "low",
-      "rule": "accessibility",
-      "message": "`role=\"status\"` sits inside a `<button>` that has an `aria-label`. The label replaces the button's content as its accessible name, and live regions inside buttons are announced unreliably, so screen-reader users may not hear \"Copied\". Move the live region outside the button or update the aria-label when copied."
+      "rule": "Repository rules: only the ticket's files changed",
+      "message": "The Export CSV/JSON additions to the Design PlanTab are unrelated to ENG-301/302/303 and the Cases prototype. If they belong to another ticket, they should go in a separate change. CSV cells that start with '=', '+', '-' or '@' are also not escaped against spreadsheet formula injection."
     }
   ],
   "stats": {
     "files": [
-      "docs/specs/copy_button_red_run.txt",
-      "docs/specs/copy_button_tests.md",
+      ".github/claude-review.md",
+      ".github/workflows/ci.yml",
+      "backend/app/config.py",
+      "backend/app/main.py",
+      "backend/app/prototype/__init__.py",
+      "backend/app/prototype/cases.py",
+      "backend/app/prototype/demo.py",
+      "backend/app/prototype/grounding.py",
+      "backend/app/prototype/models.py",
+      "backend/app/prototype/routes.py",
+      "backend/app/prototype/rules.py",
+      "backend/tests/test_grounding.py",
+      "backend/tests/test_prototype_smoke.py",
+      "backend/tests/test_rules.py",
+      "frontend/e2e/boxes.spec.ts",
+      "frontend/e2e/cases.spec.ts",
       "frontend/e2e/copy_button.spec.ts",
-      "frontend/src/pages/cases/CaseReview.tsx"
+      "frontend/e2e/prototype.spec.ts",
+      "frontend/src/App.tsx",
+      "frontend/src/api.ts",
+      "frontend/src/components/FieldBoxes.tsx",
+      "frontend/src/components/Sidebar.tsx",
+      "frontend/src/components/fieldStyle.ts",
+      "frontend/src/pages/Cases.tsx",
+      "frontend/src/pages/cases/CaseReview.tsx",
+      "frontend/src/pages/cases/DemoTab.tsx",
+      "frontend/src/pages/cases/PrReviewTab.tsx",
+      "frontend/src/pages/cases/QueueTab.tsx",
+      "frontend/src/pages/design/PlanTab.tsx"
     ],
-    "lines_added": 102,
-    "lines_removed": 2
+    "lines_added": 1656,
+    "lines_removed": 9
   },
   "base": "stdin",
-  "reviewed_at": "2026-11-05T02:08:17+00:00",
-  "cost_usd": 0.1861639
+  "reviewed_at": "2026-11-05T02:54:21+00:00",
+  "cost_usd": 0.26034129999999994
 }

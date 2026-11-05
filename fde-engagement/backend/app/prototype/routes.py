@@ -73,6 +73,18 @@ def image(case_id: str):
     return FileResponse(DOCUMENTS_DIR / app.document, media_type="image/jpeg")
 
 
+# The analysts the prototype knows. Real sign-in replaces this before the pilot (Day 8, single sign-on).
+KNOWN_ANALYSTS = {"TR-014"}
+
+
+def _analyst(analyst_id: str) -> str:
+    if not analyst_id.strip():
+        raise HTTPException(422, "An analyst ID is required: a person makes every decision")
+    if analyst_id.strip() not in KNOWN_ANALYSTS:
+        raise HTTPException(403, f"{analyst_id.strip()} is not a known analyst")
+    return analyst_id.strip()
+
+
 class FieldAction(BaseModel):
     action: Literal["accept", "correct"]
     value: str = ""
@@ -82,16 +94,17 @@ class FieldAction(BaseModel):
 @router.post("/{case_id}/fields/{name}")
 def field_action(case_id: str, name: str, body: FieldAction):
     _app(case_id)
-    if not body.analyst_id.strip():
-        raise HTTPException(422, "An analyst ID is required")
+    analyst_id = _analyst(body.analyst_id)
     view = cases.case_view(case_id, llm_client())
     current = next((f for f in view["fields"] if f["name"] == name), None)
     if current is None:
         raise HTTPException(404, f"No field {name}")
+    if body.action == "accept" and current["status"] in ("not_on_page", "missing"):
+        raise HTTPException(409, "The page does not show this value: correct it, or use what the page says")
     value = current["value"] if body.action == "accept" else body.value.strip()
     if not value:
         raise HTTPException(422, "A corrected value cannot be empty")
-    cases.log_field(case_id, name, body.action, value, body.analyst_id, current["value"])
+    cases.log_field(case_id, name, body.action, value, analyst_id, current["value"])
     return cases.case_view(case_id, llm_client())
 
 
@@ -105,12 +118,11 @@ class Decision(BaseModel):
 def decide(case_id: str, body: Decision):
     """A person makes every decision (SC4): no analyst ID, no decision. Approve needs every check to pass."""
     _app(case_id)
-    if not body.analyst_id.strip():
-        raise HTTPException(422, "An analyst ID is required: a person makes every decision")
+    analyst_id = _analyst(body.analyst_id)
     view = cases.case_view(case_id, llm_client())
     if body.decision == "approve" and view["recommendation"] != "ready":
         raise HTTPException(409, "Every check must pass before the document can be approved")
     if body.decision != "approve" and not body.reason.strip():
         raise HTTPException(422, "Give a reason for the applicant or for the escalation")
-    cases.log_decision(case_id, body.decision, body.analyst_id, body.reason)
+    cases.log_decision(case_id, body.decision, analyst_id, body.reason)
     return cases.case_view(case_id, llm_client())
