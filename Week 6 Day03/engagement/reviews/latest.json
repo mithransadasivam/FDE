@@ -1,0 +1,33 @@
+{
+  "verdict": "looks_good",
+  "summary": "I found no blocking problems. The `data-testid` values the new tests rely on (`field-*`, `correct-*`, `correct-input-*`, `correct-save-*`) all exist in `CaseReview.tsx`, and the D03-014 fixture exists. The click handler calls `stopPropagation`, so a copy click doesn't select the row. Disabled state for empty values matches the spec. I didn't run the tests. I did not check whether test 3's saved correction to D03-020 persists on the server across re-runs.",
+  "findings": [
+    {
+      "file": "frontend/src/pages/cases/CaseReview.tsx",
+      "line": 31,
+      "severity": "low",
+      "rule": "correctness",
+      "message": "The 1500ms reset timer is never cleared. Two quick clicks leave the first timer running, so \"Copied\" can revert early, and a timer can fire after the row unmounts. Keep the timer id in a ref and clear it on re-click and on unmount."
+    },
+    {
+      "file": "frontend/src/pages/cases/CaseReview.tsx",
+      "line": 41,
+      "severity": "low",
+      "rule": "accessibility",
+      "message": "`role=\"status\"` sits inside a `<button>` that has an `aria-label`. The label replaces the button's content as its accessible name, and live regions inside buttons are announced unreliably, so screen-reader users may not hear \"Copied\". Move the live region outside the button or update the aria-label when copied."
+    }
+  ],
+  "stats": {
+    "files": [
+      "docs/specs/copy_button_red_run.txt",
+      "docs/specs/copy_button_tests.md",
+      "frontend/e2e/copy_button.spec.ts",
+      "frontend/src/pages/cases/CaseReview.tsx"
+    ],
+    "lines_added": 102,
+    "lines_removed": 2
+  },
+  "base": "stdin",
+  "reviewed_at": "2026-11-05T02:08:17+00:00",
+  "cost_usd": 0.1861639
+}

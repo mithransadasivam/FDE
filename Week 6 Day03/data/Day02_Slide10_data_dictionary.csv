@@ -1,0 +1,18 @@
+column,description,expected,pii,key
+review_id,One review of one document in CaseFlow,review_id,no,yes
+case_id,The KYC case (one application),case_id,no,no
+applicant_ref,Pseudonym for the applicant: the export replaced names,,no,no
+birth_year,Year of birth only: the export removed full dates,year,no,no
+postcode_district,First half of the postcode only,postcode_district,no,no
+doc_type,Kind of proof of address,"one_of:utility_bill,bank_statement,council_tax_bill",no,no
+doc_issuer,Company that issued the document,,no,no
+doc_date,Date printed on the document,iso_date,no,no
+received_date,Date the bank received the document,iso_date,no,no
+channel,Where the applicant uploaded it,"one_of:app,branch",no,no
+file_format,File type of the upload,"one_of:pdf,jpg,png",no,no
+page_count,Pages in the file,int,no,no
+image_dpi,Scan resolution; empty for digital PDFs,int,no,no
+decision,The analyst's decision,"one_of:approved,ask_applicant,escalated",no,no
+reason_code,Why the analyst asked or escalated; empty when approved,,no,no
+analyst_id,Pseudonym for the analyst,,no,no
+analyst_notes,Free-text notes typed by the analyst,,no,no

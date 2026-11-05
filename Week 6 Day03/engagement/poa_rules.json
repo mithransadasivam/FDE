@@ -1,0 +1,6 @@
+{
+  "max_age_months": 3,
+  "date_counted_from": "received_date",
+  "ok_at": 0.85,
+  "check_at": 0.6
+}

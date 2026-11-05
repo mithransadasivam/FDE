@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Patrick Byrne",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "60 Northgate, Gloucester, GL1 2AN",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Oct 2026",
+   "word_ids": [
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

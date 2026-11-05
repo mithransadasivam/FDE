@@ -1,4 +1,4 @@
-# Week 6
+# Week 6 Day01
 
 ## Phase 2 Day 1 Homework: check the client's story (Kestrelmoor Bank, fictional)
 
