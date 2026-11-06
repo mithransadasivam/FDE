@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Maya Ward",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "97 Elm Road, Flat 9, Cheltenham, GL50 5AR",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "24 Sep 2026",
+   "word_ids": [
+    "w016",
+    "w017",
+    "w018"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

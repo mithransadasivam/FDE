@@ -1,0 +1,42 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Ethan Wright",
+      "word_ids": [
+        "w012",
+        "w013",
+        "w014"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "17 Green Lane, Cheltenham, GL51 0PA",
+      "word_ids": [
+        "w015",
+        "w016",
+        "w017",
+        "w018",
+        "w019",
+        "w020"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "29 Sep 2026",
+      "word_ids": [
+        "w023",
+        "w024",
+        "w025"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Copperline Broadband",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

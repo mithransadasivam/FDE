@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Owen Davies",
+      "word_ids": [
+        "w012",
+        "w013",
+        "w014"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "8 Brunswick Road, Flat 5, Gloucester GL1 1JJ",
+      "word_ids": [
+        "w015",
+        "w016",
+        "w017",
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "26 Sep 2026",
+      "word_ids": [
+        "w025",
+        "w026",
+        "w027"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Copperline Broadband",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

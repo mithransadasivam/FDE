@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Miss Sarah K. Evans",
+      "word_ids": [
+        "w016",
+        "w017",
+        "w018",
+        "w019"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "Flat 4, 10, Victoria Road, Cheltenham, GL50 2AA",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024",
+        "w025",
+        "w026",
+        "w027"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "20 Jun 2026",
+      "word_ids": [
+        "w008",
+        "w009",
+        "w010"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy Ltd",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

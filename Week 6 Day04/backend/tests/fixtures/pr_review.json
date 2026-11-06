@@ -1,0 +1,27 @@
+{
+  "verdict": "comments",
+  "summary": "The three tickets build against the shared contract in models.py and api.ts, change one file each, and their tests pass. Two rule gaps are worth fixing before the pilot; nothing here blocks the demo.",
+  "findings": [
+    {
+      "file": "backend/app/prototype/rules.py",
+      "line": 127,
+      "severity": "medium",
+      "rule": "Correct rules",
+      "message": "The address check compares only the first number. For 'Flat 3, 14 Larkspur Row' that is the flat number, so a document showing a different street number would still pass. Compare every number in the first line."
+    },
+    {
+      "file": "backend/app/prototype/grounding.py",
+      "line": 61,
+      "severity": "medium",
+      "rule": "Trust: never mark a correct value as wrong",
+      "message": "page_text joins the cited words in the order the model cited them. A correct value cited out of reading order is marked not_on_page. Sort the cited words by position (top, then left) before joining."
+    },
+    {
+      "file": "frontend/src/components/FieldBoxes.tsx",
+      "line": 18,
+      "severity": "low",
+      "rule": "Accessibility",
+      "message": "The boxes are clickable but have no accessible name. Add an aria-label with the field label and confidence, so a screen reader announces them."
+    }
+  ]
+}

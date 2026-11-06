@@ -1,0 +1,299 @@
+{
+ "case_id": "S-124",
+ "slice": "joint_names",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Copperline",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w002",
+   "text": "Broadband",
+   "box": [
+    0.208,
+    0.08,
+    0.326,
+    0.105
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w003",
+   "text": "Mr",
+   "box": [
+    0.07,
+    0.12,
+    0.104,
+    0.145
+   ],
+   "confidence": 0.945
+  },
+  {
+   "id": "w004",
+   "text": "T",
+   "box": [
+    0.112,
+    0.12,
+    0.134,
+    0.145
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w005",
+   "text": "Brown",
+   "box": [
+    0.142,
+    0.12,
+    0.212,
+    0.145
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w006",
+   "text": "&",
+   "box": [
+    0.22,
+    0.12,
+    0.242,
+    0.145
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w007",
+   "text": "Ms",
+   "box": [
+    0.25,
+    0.12,
+    0.284,
+    0.145
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w008",
+   "text": "S",
+   "box": [
+    0.292,
+    0.12,
+    0.314,
+    0.145
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w009",
+   "text": "Brown",
+   "box": [
+    0.322,
+    0.12,
+    0.392,
+    0.145
+   ],
+   "confidence": 0.954
+  },
+  {
+   "id": "w010",
+   "text": "29",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.946
+  },
+  {
+   "id": "w011",
+   "text": "Cedar",
+   "box": [
+    0.112,
+    0.16,
+    0.182,
+    0.185
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w012",
+   "text": "Lane",
+   "box": [
+    0.19,
+    0.16,
+    0.248,
+    0.185
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w013",
+   "text": "Gloucester",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.976
+  },
+  {
+   "id": "w014",
+   "text": "GL2",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.978
+  },
+  {
+   "id": "w015",
+   "text": "9HT",
+   "box": [
+    0.124,
+    0.24,
+    0.17,
+    0.265
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w016",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.28,
+    0.188,
+    0.305
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w017",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w018",
+   "text": "05",
+   "box": [
+    0.274,
+    0.28,
+    0.308,
+    0.305
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w019",
+   "text": "Apr",
+   "box": [
+    0.316,
+    0.28,
+    0.362,
+    0.305
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.37,
+    0.28,
+    0.428,
+    0.305
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w021",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w022",
+   "text": "date:",
+   "box": [
+    0.124,
+    0.32,
+    0.194,
+    0.345
+   ],
+   "confidence": 0.987
+  },
+  {
+   "id": "w023",
+   "text": "26",
+   "box": [
+    0.202,
+    0.32,
+    0.236,
+    0.345
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w024",
+   "text": "Apr",
+   "box": [
+    0.244,
+    0.32,
+    0.29,
+    0.345
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w025",
+   "text": "2026",
+   "box": [
+    0.298,
+    0.32,
+    0.356,
+    0.345
+   ],
+   "confidence": 0.954
+  }
+ ],
+ "application": {
+  "case_id": "S-124",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Mr T Brown",
+  "address_line1": "29 Cedar Lane",
+  "town": "Gloucester",
+  "postcode": "GL2 9HT"
+ },
+ "labels": {
+  "full_name": "Mr T Brown & Ms S Brown",
+  "address": "29 Cedar Lane, Gloucester, GL2 9HT",
+  "statement_date": "05 Apr 2026",
+  "issuer": "Copperline Broadband",
+  "tom_decision": "approve"
+ }
+}

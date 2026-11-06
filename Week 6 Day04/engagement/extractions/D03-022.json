@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Liam O'Brien",
+      "word_ids": [
+        "w014",
+        "w015",
+        "w016"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "6 Meadow View, Nailsworth, GL6 0EZ",
+      "word_ids": [
+        "w017",
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "22 Sep 2026",
+      "word_ids": [
+        "w025",
+        "w026",
+        "w027"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Fenwick Gas & Power",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004"
+      ]
+    }
+  ]
+}

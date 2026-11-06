@@ -1,0 +1,31 @@
+{
+  "id": "A",
+  "name": "Vision-first",
+  "summary": "A vision model reads each page image and returns the fields. Fewest moving parts.",
+  "time_to_pilot_weeks": 3,
+  "strengths": ["Fewest components to build and run", "Copes with photos and odd layouts"],
+  "weaknesses": ["No word-level confidence or positions: we must build our own", "Higher cost per page"],
+  "cost": { "model": "claude-sonnet-5.5", "regional": true, "input_tokens_per_page": 1800, "output_tokens_per_page": 350, "ocr": false, "public_api": false, "fixed_monthly_usd": 420 },
+  "nodes": [
+    { "id": "analyst", "label": "KYC analyst", "kind": "person", "lane": "client", "row": 1, "region": "uk" },
+    { "id": "caseflow", "label": "CaseFlow (read-only API)", "kind": "system", "lane": "bank", "row": 0, "region": "uk", "customer_data": true, "read_only": true },
+    { "id": "review", "label": "Review screen", "kind": "ui", "lane": "bank", "row": 1, "region": "uk", "customer_data": true },
+    { "id": "decision", "label": "Analyst's decision, typed into CaseFlow", "kind": "decision", "lane": "bank", "row": 3, "region": "uk" },
+    { "id": "model", "label": "Claude Sonnet on Bedrock: reads the page image", "kind": "model", "lane": "aws", "row": 0, "region": "uk", "hosting": "bedrock", "customer_data": true },
+    { "id": "check", "label": "Check service (FastAPI)", "kind": "service", "lane": "aws", "row": 1, "region": "uk", "customer_data": true },
+    { "id": "rules", "label": "Policy rules: dates, names, issuers", "kind": "service", "lane": "aws", "row": 2, "region": "uk" },
+    { "id": "docs", "label": "Document store (S3)", "kind": "store", "lane": "aws", "row": 3, "region": "uk", "customer_data": true },
+    { "id": "audit", "label": "Audit log", "kind": "audit_log", "lane": "aws", "row": 4, "region": "uk", "customer_data": true }
+  ],
+  "edges": [
+    { "from": "caseflow", "to": "check", "label": "reads case" },
+    { "from": "check", "to": "docs", "label": "stores" },
+    { "from": "check", "to": "model", "label": "page image" },
+    { "from": "check", "to": "rules", "label": "fields" },
+    { "from": "check", "to": "review", "label": "fields" },
+    { "from": "model", "to": "audit", "label": "every call" },
+    { "from": "check", "to": "audit", "label": "every result" },
+    { "from": "analyst", "to": "review", "label": "reviews" },
+    { "from": "analyst", "to": "decision", "label": "decides" }
+  ]
+}

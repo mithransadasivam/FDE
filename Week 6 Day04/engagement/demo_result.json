@@ -1,0 +1,439 @@
+{
+  "documents": 30,
+  "fields": 120,
+  "correct": 116,
+  "accuracy": 96.7,
+  "wrong": [
+    {
+      "case_id": "D03-009",
+      "field": "statement_date",
+      "label": "Statement date",
+      "got": "16 Sep 2026",
+      "expected": "18 Sep 2026",
+      "status": "ok",
+      "confidence": 0.93,
+      "flagged": false
+    },
+    {
+      "case_id": "D03-011",
+      "field": "statement_date",
+      "label": "Statement date",
+      "got": "10 Sep 2026",
+      "expected": "11 Sep 2026",
+      "status": "doubtful",
+      "confidence": 0.55,
+      "flagged": true
+    },
+    {
+      "case_id": "D03-023",
+      "field": "issuer",
+      "label": "Issuer",
+      "got": "Harrowgate Water & Sewerage",
+      "expected": "Harrowgate Water",
+      "status": "not_on_page",
+      "confidence": 0.0,
+      "flagged": true
+    },
+    {
+      "case_id": "D03-029",
+      "field": "issuer",
+      "label": "Issuer",
+      "got": "Harrowgate Water Water & Sewerage",
+      "expected": "Harrowgate Water",
+      "status": "ok",
+      "confidence": 0.95,
+      "flagged": false
+    }
+  ],
+  "caught": 2,
+  "rules": {
+    "agree": 25,
+    "compared": 26,
+    "sent_to_person": 4,
+    "disagreements": [
+      {
+        "case_id": "D03-029",
+        "prototype": "fails",
+        "tom": "approve",
+        "tom_note": "",
+        "check": "Issuer is on the approved list",
+        "detail": "Harrowgate Water Water & Sewerage is not on the approved list"
+      }
+    ],
+    "date_counted_from": "application_date"
+  },
+  "criteria": [
+    {
+      "id": "SC3",
+      "name": "Analysts trust the tool",
+      "target": 90.0,
+      "unit": "%",
+      "measure": "Fields that match Tom's labels (stand-in for fields accepted without change)",
+      "value": 96.7,
+      "status": "on_track",
+      "note": "116 of 120 fields. In the pilot, measured from accept and correct clicks."
+    },
+    {
+      "id": "SC4",
+      "name": "A person decides every case",
+      "target": 100.0,
+      "unit": "%",
+      "measure": "Decisions in the log with a named analyst",
+      "value": 100.0,
+      "status": "on_track",
+      "note": "1 of 1 decisions. The API refuses a decision without an analyst ID."
+    },
+    {
+      "id": "SC1",
+      "name": "Faster decisions",
+      "target": 3.0,
+      "unit": "working days",
+      "measure": "Median working days to a decision",
+      "value": null,
+      "status": "pilot",
+      "note": "Not measurable in a prototype: CaseFlow timestamps on pilot cases, weeks 3–4."
+    },
+    {
+      "id": "SC2",
+      "name": "Less analyst time per application",
+      "target": 12.0,
+      "unit": "minutes",
+      "measure": "Analyst minutes per application",
+      "value": null,
+      "status": "pilot",
+      "note": "Not measurable in a prototype: the CaseFlow work timer, pilot cases, weekly."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "D03-001",
+      "recommendation": "look",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "check",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-002",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-003",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-004",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-005",
+      "recommendation": "fails",
+      "tom": "ask_applicant",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-006",
+      "recommendation": "fails",
+      "tom": "ask_applicant",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-007",
+      "recommendation": "fails",
+      "tom": "ask_applicant",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-008",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-009",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-010",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-011",
+      "recommendation": "look",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "doubtful",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-012",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-013",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-014",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-015",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-016",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-017",
+      "recommendation": "fails",
+      "tom": "ask_applicant",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-018",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-019",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-020",
+      "recommendation": "look",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "check",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-021",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-022",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-023",
+      "recommendation": "look",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "not_on_page"
+      }
+    },
+    {
+      "case_id": "D03-024",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-025",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-026",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-027",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-028",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-029",
+      "recommendation": "fails",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    },
+    {
+      "case_id": "D03-030",
+      "recommendation": "ready",
+      "tom": "approve",
+      "statuses": {
+        "full_name": "ok",
+        "address": "ok",
+        "statement_date": "ok",
+        "issuer": "ok"
+      }
+    }
+  ]
+}

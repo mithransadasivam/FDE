@@ -1,0 +1,42 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Marcus T. Chen",
+      "word_ids": [
+        "w003",
+        "w004",
+        "w005"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "22 Willow Crescent, Cheltenham, GL50 4DF",
+      "word_ids": [
+        "w006",
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Feb 2026",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Harrowgate Water",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+ "case_id": "S-119",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Lumenvale",
+   "box": [
+    0.07,
+    0.08,
+    0.188,
+    0.105
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w002",
+   "text": "Energy",
+   "box": [
+    0.196,
+    0.08,
+    0.278,
+    0.105
+   ],
+   "confidence": 0.957
+  },
+  {
+   "id": "w003",
+   "text": "Grace",
+   "box": [
+    0.07,
+    0.12,
+    0.14,
+    0.145
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w004",
+   "text": "E.",
+   "box": [
+    0.148,
+    0.12,
+    0.182,
+    0.145
+   ],
+   "confidence": 0.958
+  },
+  {
+   "id": "w005",
+   "text": "Young",
+   "box": [
+    0.19,
+    0.12,
+    0.26,
+    0.145
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w006",
+   "text": "2",
+   "box": [
+    0.07,
+    0.16,
+    0.092,
+    0.185
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w007",
+   "text": "Fir",
+   "box": [
+    0.1,
+    0.16,
+    0.146,
+    0.185
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w008",
+   "text": "Tree",
+   "box": [
+    0.154,
+    0.16,
+    0.212,
+    0.185
+   ],
+   "confidence": 0.953
+  },
+  {
+   "id": "w009",
+   "text": "Road",
+   "box": [
+    0.22,
+    0.16,
+    0.278,
+    0.185
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w010",
+   "text": "Tewkesbury",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w011",
+   "text": "GL20",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w012",
+   "text": "7DF",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.953
+  },
+  {
+   "id": "w013",
+   "text": "Bill",
+   "box": [
+    0.07,
+    0.28,
+    0.128,
+    0.305
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w014",
+   "text": "date:",
+   "box": [
+    0.136,
+    0.28,
+    0.206,
+    0.305
+   ],
+   "confidence": 0.969
+  },
+  {
+   "id": "w015",
+   "text": "08",
+   "box": [
+    0.214,
+    0.28,
+    0.248,
+    0.305
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w016",
+   "text": "Jul",
+   "box": [
+    0.256,
+    0.28,
+    0.302,
+    0.305
+   ],
+   "confidence": 0.951
+  },
+  {
+   "id": "w017",
+   "text": "2026",
+   "box": [
+    0.31,
+    0.28,
+    0.368,
+    0.305
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w018",
+   "text": "Payment",
+   "box": [
+    0.07,
+    0.32,
+    0.164,
+    0.345
+   ],
+   "confidence": 0.951
+  },
+  {
+   "id": "w019",
+   "text": "due:",
+   "box": [
+    0.172,
+    0.32,
+    0.23,
+    0.345
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w020",
+   "text": "29",
+   "box": [
+    0.238,
+    0.32,
+    0.272,
+    0.345
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w021",
+   "text": "Jul",
+   "box": [
+    0.28,
+    0.32,
+    0.326,
+    0.345
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w022",
+   "text": "2026",
+   "box": [
+    0.334,
+    0.32,
+    0.392,
+    0.345
+   ],
+   "confidence": 0.962
+  }
+ ],
+ "application": {
+  "case_id": "S-119",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Grace E. Young",
+  "address_line1": "2 Fir Tree Road",
+  "town": "Tewkesbury",
+  "postcode": "GL20 7DF"
+ },
+ "labels": {
+  "full_name": "Grace E. Young",
+  "address": "2 Fir Tree Road, Tewkesbury, GL20 7DF",
+  "statement_date": "08 Jul 2026",
+  "issuer": "Lumenvale Energy",
+  "tom_decision": "approve"
+ }
+}

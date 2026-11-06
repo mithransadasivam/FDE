@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr James T. Kirkwood",
+      "word_ids": [
+        "w016",
+        "w017",
+        "w018",
+        "w019"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "7, The Paddock, Gloucester, GL1 3AB",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024",
+        "w025"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "22 Jan 2026",
+      "word_ids": [
+        "w007",
+        "w008",
+        "w009"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "HARROWGATE WATER",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

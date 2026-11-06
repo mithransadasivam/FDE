@@ -1,0 +1,244 @@
+{
+ "case_id": "S-116",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Copperline",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.944
+  },
+  {
+   "id": "w002",
+   "text": "Broadband",
+   "box": [
+    0.208,
+    0.08,
+    0.326,
+    0.105
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w003",
+   "text": "William",
+   "box": [
+    0.07,
+    0.12,
+    0.164,
+    0.145
+   ],
+   "confidence": 0.959
+  },
+  {
+   "id": "w004",
+   "text": "D.",
+   "box": [
+    0.172,
+    0.12,
+    0.206,
+    0.145
+   ],
+   "confidence": 0.959
+  },
+  {
+   "id": "w005",
+   "text": "Harris",
+   "box": [
+    0.214,
+    0.12,
+    0.296,
+    0.145
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w006",
+   "text": "11",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.982
+  },
+  {
+   "id": "w007",
+   "text": "Beech",
+   "box": [
+    0.112,
+    0.16,
+    0.182,
+    0.185
+   ],
+   "confidence": 0.971
+  },
+  {
+   "id": "w008",
+   "text": "Avenue",
+   "box": [
+    0.19,
+    0.16,
+    0.272,
+    0.185
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w009",
+   "text": "Gloucester",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w010",
+   "text": "GL4",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w011",
+   "text": "6QW",
+   "box": [
+    0.124,
+    0.24,
+    0.17,
+    0.265
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w012",
+   "text": "Payment",
+   "box": [
+    0.07,
+    0.28,
+    0.164,
+    0.305
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w013",
+   "text": "due:",
+   "box": [
+    0.172,
+    0.28,
+    0.23,
+    0.305
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w014",
+   "text": "18",
+   "box": [
+    0.238,
+    0.28,
+    0.272,
+    0.305
+   ],
+   "confidence": 0.959
+  },
+  {
+   "id": "w015",
+   "text": "Apr",
+   "box": [
+    0.28,
+    0.28,
+    0.326,
+    0.305
+   ],
+   "confidence": 0.98
+  },
+  {
+   "id": "w016",
+   "text": "2026",
+   "box": [
+    0.334,
+    0.28,
+    0.392,
+    0.305
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w017",
+   "text": "Issued:",
+   "box": [
+    0.07,
+    0.32,
+    0.164,
+    0.345
+   ],
+   "confidence": 0.987
+  },
+  {
+   "id": "w018",
+   "text": "03",
+   "box": [
+    0.172,
+    0.32,
+    0.206,
+    0.345
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w019",
+   "text": "Apr",
+   "box": [
+    0.214,
+    0.32,
+    0.26,
+    0.345
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.268,
+    0.32,
+    0.326,
+    0.345
+   ],
+   "confidence": 0.958
+  }
+ ],
+ "application": {
+  "case_id": "S-116",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "William D. Harris",
+  "address_line1": "11 Beech Avenue",
+  "town": "Gloucester",
+  "postcode": "GL4 6QW"
+ },
+ "labels": {
+  "full_name": "William D. Harris",
+  "address": "11 Beech Avenue, Gloucester, GL4 6QW",
+  "statement_date": "03 Apr 2026",
+  "issuer": "Copperline Broadband",
+  "tom_decision": "approve"
+ }
+}

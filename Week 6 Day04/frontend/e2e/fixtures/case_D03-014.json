@@ -1,0 +1,115 @@
+{
+ "application": {
+  "case_id": "D03-014",
+  "applicant_name": "George Hughes",
+  "address_line1": "33 Cotswold Way",
+  "town": "Painswick",
+  "postcode": "GL6 6QX",
+  "application_date": "2026-10-07",
+  "received_date": "2026-10-27",
+  "channel": "branch",
+  "document": "D03-014.jpg"
+ },
+ "document": {
+  "image": "/api/cases/D03-014/image",
+  "file": "D03-014.jpg"
+ },
+ "fields": [
+  {
+   "name": "full_name",
+   "label": "Full name",
+   "value": "Mr George Hughes",
+   "confidence": 0.96,
+   "status": "ok",
+   "box": [
+    0.0682,
+    0.1473,
+    0.2949,
+    0.17
+   ],
+   "page_text": "Mr George Hughes",
+   "note": ""
+  },
+  {
+   "name": "address",
+   "label": "Address",
+   "value": "33 Cotswold Way, Painswick, GL6 6QX",
+   "confidence": 0.96,
+   "status": "ok",
+   "box": [
+    0.0682,
+    0.1755,
+    0.2365,
+    0.2445
+   ],
+   "page_text": "33 Cotswold Way Painswick GL6 6QX",
+   "note": ""
+  },
+  {
+   "name": "statement_date",
+   "label": "Statement date",
+   "value": "29 Sep 2026",
+   "confidence": 0.0,
+   "status": "not_on_page",
+   "box": [
+    0.6094,
+    0.1664,
+    0.7561,
+    0.1882
+   ],
+   "page_text": "30 Sep 2026",
+   "note": "The page says \"30 Sep 2026\""
+  },
+  {
+   "name": "issuer",
+   "label": "Issuer",
+   "value": "Northmere Bank",
+   "confidence": 0.72,
+   "status": "check",
+   "box": [
+    0.1329,
+    0.0409,
+    0.4133,
+    0.0664
+   ],
+   "page_text": "Northmere Bank",
+   "note": ""
+  }
+ ],
+ "checks": [
+  {
+   "id": "name",
+   "label": "Name matches the application",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "address",
+   "label": "Address matches the application",
+   "status": "pass",
+   "detail": ""
+  },
+  {
+   "id": "date",
+   "label": "Dated within 3 months",
+   "status": "look",
+   "detail": "Waiting for a person to confirm the statement date"
+  },
+  {
+   "id": "issuer",
+   "label": "Issuer is on the approved list",
+   "status": "pass",
+   "detail": ""
+  }
+ ],
+ "recommendation": "look",
+ "decision": null,
+ "labels": {
+  "full_name": "Full name",
+  "address": "Address",
+  "statement_date": "Statement date",
+  "issuer": "Issuer"
+ },
+ "not_built": [],
+ "_note": "Contract fixture for ENG-303: the review screen as the backend returns it, with one field changed to check (0.72). The UI test uses it instead of the real API."
+}

@@ -1,0 +1,17 @@
+case_id,field,failure_type,got,expected
+D03-009,statement_date,ocr_misread,16 Sep 2026,18 Sep 2026
+D03-011,statement_date,ocr_misread,10 Sep 2026,11 Sep 2026
+D03-014,statement_date,value_not_on_page,29 Sep 2026,30 Sep 2026
+D04-031,statement_date,wrong_date_chosen,03 Oct 2026,12 Sep 2026
+D04-033,full_name,incomplete_name,Mr Arun Shah,Mr Arun Shah & Mrs Priti Shah
+D04-034,statement_date,wrong_date_chosen,11 Oct 2026,20 Sep 2026
+D04-038,statement_date,wrong_date_chosen,06 Oct 2026,15 Sep 2026
+D04-040,full_name,incomplete_name,Mr Tariq Aziz,Mr Tariq Aziz & Mrs Sana Aziz
+D04-043,statement_date,wrong_date_chosen,13 Oct 2026,22 Sep 2026
+D04-046,full_name,incomplete_name,Ms Lena Novak,Ms Lena Novak & Mr Piotr Novak
+D04-047,statement_date,wrong_date_chosen,16 Oct 2026,25 Sep 2026
+D04-048,full_name,incomplete_name,Dr Rohan Mehra,Dr Rohan Mehra & Mrs Anjali Mehra
+D04-036,decision,rule_too_strict,fails a rule,approve
+D04-041,decision,rule_too_strict,fails a rule,approve
+D04-045,decision,rule_too_strict,fails a rule,approve
+D04-049,decision,rule_too_strict,fails a rule,approve
