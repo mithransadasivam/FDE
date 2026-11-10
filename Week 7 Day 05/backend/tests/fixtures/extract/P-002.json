@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Aisha Bello",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "3 Elm Road, Cheltenham, GL50 1FQ, 20-45-77 41234567",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w016",
+    "w017"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "18 Sep 2026",
+   "word_ids": [
+    "w020",
+    "w021",
+    "w022"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

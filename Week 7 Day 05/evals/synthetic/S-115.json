@@ -1,0 +1,277 @@
+{
+ "case_id": "S-115",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Fenwick",
+   "box": [
+    0.07,
+    0.08,
+    0.164,
+    0.105
+   ],
+   "confidence": 0.957
+  },
+  {
+   "id": "w002",
+   "text": "Gas",
+   "box": [
+    0.172,
+    0.08,
+    0.218,
+    0.105
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w003",
+   "text": "&",
+   "box": [
+    0.226,
+    0.08,
+    0.248,
+    0.105
+   ],
+   "confidence": 0.957
+  },
+  {
+   "id": "w004",
+   "text": "Power",
+   "box": [
+    0.256,
+    0.08,
+    0.326,
+    0.105
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w005",
+   "text": "Olivia",
+   "box": [
+    0.07,
+    0.12,
+    0.152,
+    0.145
+   ],
+   "confidence": 0.988
+  },
+  {
+   "id": "w006",
+   "text": "S.",
+   "box": [
+    0.16,
+    0.12,
+    0.194,
+    0.145
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w007",
+   "text": "Clark",
+   "box": [
+    0.202,
+    0.12,
+    0.272,
+    0.145
+   ],
+   "confidence": 0.973
+  },
+  {
+   "id": "w008",
+   "text": "29",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w009",
+   "text": "Holly",
+   "box": [
+    0.112,
+    0.16,
+    0.182,
+    0.185
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w010",
+   "text": "Road",
+   "box": [
+    0.19,
+    0.16,
+    0.248,
+    0.185
+   ],
+   "confidence": 0.98
+  },
+  {
+   "id": "w011",
+   "text": "Cirencester",
+   "box": [
+    0.07,
+    0.2,
+    0.212,
+    0.225
+   ],
+   "confidence": 0.97
+  },
+  {
+   "id": "w012",
+   "text": "GL7",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.953
+  },
+  {
+   "id": "w013",
+   "text": "3JY",
+   "box": [
+    0.124,
+    0.24,
+    0.17,
+    0.265
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w014",
+   "text": "Bill",
+   "box": [
+    0.07,
+    0.28,
+    0.128,
+    0.305
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w015",
+   "text": "date:",
+   "box": [
+    0.136,
+    0.28,
+    0.206,
+    0.305
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w016",
+   "text": "12",
+   "box": [
+    0.214,
+    0.28,
+    0.248,
+    0.305
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w017",
+   "text": "Mar",
+   "box": [
+    0.256,
+    0.28,
+    0.302,
+    0.305
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w018",
+   "text": "2026",
+   "box": [
+    0.31,
+    0.28,
+    0.368,
+    0.305
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w019",
+   "text": "Pay",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.954
+  },
+  {
+   "id": "w020",
+   "text": "by:",
+   "box": [
+    0.124,
+    0.32,
+    0.17,
+    0.345
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w021",
+   "text": "02",
+   "box": [
+    0.178,
+    0.32,
+    0.212,
+    0.345
+   ],
+   "confidence": 0.978
+  },
+  {
+   "id": "w022",
+   "text": "Apr",
+   "box": [
+    0.22,
+    0.32,
+    0.266,
+    0.345
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w023",
+   "text": "2026",
+   "box": [
+    0.274,
+    0.32,
+    0.332,
+    0.345
+   ],
+   "confidence": 0.958
+  }
+ ],
+ "application": {
+  "case_id": "S-115",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Olivia S. Clark",
+  "address_line1": "29 Holly Road",
+  "town": "Cirencester",
+  "postcode": "GL7 3JY"
+ },
+ "labels": {
+  "full_name": "Olivia S. Clark",
+  "address": "29 Holly Road, Cirencester, GL7 3JY",
+  "statement_date": "12 Mar 2026",
+  "issuer": "Fenwick Gas & Power",
+  "tom_decision": "approve"
+ }
+}

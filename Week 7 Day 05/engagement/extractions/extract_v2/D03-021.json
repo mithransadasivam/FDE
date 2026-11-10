@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mrs Margaret Doyle",
+      "word_ids": [
+        "w014",
+        "w015",
+        "w016"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "88 Church Road, Bishops Cleeve, GL52 8LR",
+      "word_ids": [
+        "w017",
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022",
+        "w023"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Oct 2026",
+      "word_ids": [
+        "w011",
+        "w012",
+        "w013"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

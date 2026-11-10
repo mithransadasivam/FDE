@@ -1,0 +1,299 @@
+{
+ "case_id": "S-125",
+ "slice": "joint_names",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Northmere",
+   "box": [
+    0.07,
+    0.08,
+    0.188,
+    0.105
+   ],
+   "confidence": 0.982
+  },
+  {
+   "id": "w002",
+   "text": "Bank",
+   "box": [
+    0.196,
+    0.08,
+    0.254,
+    0.105
+   ],
+   "confidence": 0.948
+  },
+  {
+   "id": "w003",
+   "text": "Ms",
+   "box": [
+    0.07,
+    0.12,
+    0.104,
+    0.145
+   ],
+   "confidence": 0.944
+  },
+  {
+   "id": "w004",
+   "text": "L",
+   "box": [
+    0.112,
+    0.12,
+    0.134,
+    0.145
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w005",
+   "text": "Williams",
+   "box": [
+    0.142,
+    0.12,
+    0.248,
+    0.145
+   ],
+   "confidence": 0.988
+  },
+  {
+   "id": "w006",
+   "text": "&",
+   "box": [
+    0.256,
+    0.12,
+    0.278,
+    0.145
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w007",
+   "text": "Mr",
+   "box": [
+    0.286,
+    0.12,
+    0.32,
+    0.145
+   ],
+   "confidence": 0.988
+  },
+  {
+   "id": "w008",
+   "text": "D",
+   "box": [
+    0.328,
+    0.12,
+    0.35,
+    0.145
+   ],
+   "confidence": 0.986
+  },
+  {
+   "id": "w009",
+   "text": "Williams",
+   "box": [
+    0.358,
+    0.12,
+    0.464,
+    0.145
+   ],
+   "confidence": 0.976
+  },
+  {
+   "id": "w010",
+   "text": "3",
+   "box": [
+    0.07,
+    0.16,
+    0.092,
+    0.185
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w011",
+   "text": "Maple",
+   "box": [
+    0.1,
+    0.16,
+    0.17,
+    0.185
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w012",
+   "text": "Close",
+   "box": [
+    0.178,
+    0.16,
+    0.248,
+    0.185
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w013",
+   "text": "Cheltenham",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w014",
+   "text": "GL51",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w015",
+   "text": "7JN",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w016",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.28,
+    0.188,
+    0.305
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w017",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.948
+  },
+  {
+   "id": "w018",
+   "text": "18",
+   "box": [
+    0.274,
+    0.28,
+    0.308,
+    0.305
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w019",
+   "text": "May",
+   "box": [
+    0.316,
+    0.28,
+    0.362,
+    0.305
+   ],
+   "confidence": 0.953
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.37,
+    0.28,
+    0.428,
+    0.305
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w021",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.984
+  },
+  {
+   "id": "w022",
+   "text": "date:",
+   "box": [
+    0.124,
+    0.32,
+    0.194,
+    0.345
+   ],
+   "confidence": 0.976
+  },
+  {
+   "id": "w023",
+   "text": "08",
+   "box": [
+    0.202,
+    0.32,
+    0.236,
+    0.345
+   ],
+   "confidence": 0.98
+  },
+  {
+   "id": "w024",
+   "text": "Jun",
+   "box": [
+    0.244,
+    0.32,
+    0.29,
+    0.345
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w025",
+   "text": "2026",
+   "box": [
+    0.298,
+    0.32,
+    0.356,
+    0.345
+   ],
+   "confidence": 0.952
+  }
+ ],
+ "application": {
+  "case_id": "S-125",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Ms L Williams",
+  "address_line1": "3 Maple Close",
+  "town": "Cheltenham",
+  "postcode": "GL51 7JN"
+ },
+ "labels": {
+  "full_name": "Ms L Williams & Mr D Williams",
+  "address": "3 Maple Close, Cheltenham, GL51 7JN",
+  "statement_date": "18 May 2026",
+  "issuer": "Northmere Bank",
+  "tom_decision": "approve"
+ }
+}

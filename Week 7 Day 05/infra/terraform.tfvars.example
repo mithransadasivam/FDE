@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars and fill in. terraform.tfvars is in .gitignore.
+owner       = "your-initials"
+alert_email = "you@example.com"
+
+# ADR-001 chose Claude Haiku. Before you deploy, check where this model ID runs (Pilot → Platform).
+# model_id = "eu.anthropic.claude-haiku-5-5"
+
+# guardrail_policy = "uc1_v1"

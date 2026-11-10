@@ -1,0 +1,6 @@
+# What the pilot function needs in AWS Lambda (Python 3.12). Installed by python -m scripts.build_lambda.
+fastapi==0.115.6
+pydantic==2.10.4
+python-dotenv==1.0.1
+mangum==0.19.0
+boto3==1.40.70

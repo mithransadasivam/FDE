@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Oliver J. Davies",
+      "word_ids": [
+        "w004",
+        "w005",
+        "w006"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "18 Mill Lane, Gloucester, GL1 4TY",
+      "word_ids": [
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011",
+        "w012"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Jun 2026",
+      "word_ids": [
+        "w021",
+        "w022",
+        "w023"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

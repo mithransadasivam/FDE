@@ -1,0 +1,255 @@
+{
+ "case_id": "S-112",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Brightwell",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.954
+  },
+  {
+   "id": "w002",
+   "text": "Borough",
+   "box": [
+    0.208,
+    0.08,
+    0.302,
+    0.105
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w003",
+   "text": "Council",
+   "box": [
+    0.31,
+    0.08,
+    0.404,
+    0.105
+   ],
+   "confidence": 0.948
+  },
+  {
+   "id": "w004",
+   "text": "Noah",
+   "box": [
+    0.07,
+    0.12,
+    0.128,
+    0.145
+   ],
+   "confidence": 0.952
+  },
+  {
+   "id": "w005",
+   "text": "P.",
+   "box": [
+    0.136,
+    0.12,
+    0.17,
+    0.145
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w006",
+   "text": "Thompson",
+   "box": [
+    0.178,
+    0.12,
+    0.284,
+    0.145
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w007",
+   "text": "21",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w008",
+   "text": "Birchwood",
+   "box": [
+    0.112,
+    0.16,
+    0.23,
+    0.185
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w009",
+   "text": "Close",
+   "box": [
+    0.238,
+    0.16,
+    0.308,
+    0.185
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w010",
+   "text": "Cheltenham",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w011",
+   "text": "GL51",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.948
+  },
+  {
+   "id": "w012",
+   "text": "7UY",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.946
+  },
+  {
+   "id": "w013",
+   "text": "Pay",
+   "box": [
+    0.07,
+    0.28,
+    0.116,
+    0.305
+   ],
+   "confidence": 0.978
+  },
+  {
+   "id": "w014",
+   "text": "by:",
+   "box": [
+    0.124,
+    0.28,
+    0.17,
+    0.305
+   ],
+   "confidence": 0.962
+  },
+  {
+   "id": "w015",
+   "text": "20",
+   "box": [
+    0.178,
+    0.28,
+    0.212,
+    0.305
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w016",
+   "text": "Dec",
+   "box": [
+    0.22,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w017",
+   "text": "2026",
+   "box": [
+    0.274,
+    0.28,
+    0.332,
+    0.305
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w018",
+   "text": "Issued:",
+   "box": [
+    0.07,
+    0.32,
+    0.164,
+    0.345
+   ],
+   "confidence": 0.97
+  },
+  {
+   "id": "w019",
+   "text": "05",
+   "box": [
+    0.172,
+    0.32,
+    0.206,
+    0.345
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w020",
+   "text": "Dec",
+   "box": [
+    0.214,
+    0.32,
+    0.26,
+    0.345
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w021",
+   "text": "2026",
+   "box": [
+    0.268,
+    0.32,
+    0.326,
+    0.345
+   ],
+   "confidence": 0.965
+  }
+ ],
+ "application": {
+  "case_id": "S-112",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Noah P. Thompson",
+  "address_line1": "21 Birchwood Close",
+  "town": "Cheltenham",
+  "postcode": "GL51 7UY"
+ },
+ "labels": {
+  "full_name": "Noah P. Thompson",
+  "address": "21 Birchwood Close, Cheltenham, GL51 7UY",
+  "statement_date": "05 Dec 2026",
+  "issuer": "Brightwell Borough Council",
+  "tom_decision": "approve"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Arun Shah",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "52 Leckhampton Road, Cheltenham, GL53 0BL",
+   "word_ids": [
+    "w021",
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w026"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "18 Sep 2026",
+   "word_ids": [
+    "w029",
+    "w030",
+    "w031"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

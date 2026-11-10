@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Dr Leo Shaw",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "78 Queens Road, Flat 7, Tewkesbury, GL20 3JW",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "16 Sep 2026",
+   "word_ids": [
+    "w016",
+    "w017",
+    "w018"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

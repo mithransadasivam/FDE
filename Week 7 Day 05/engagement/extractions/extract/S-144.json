@@ -1,0 +1,40 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Jane Smith",
+      "word_ids": [
+        "w003",
+        "w004"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "23 Acacia Avenue, Flat 4",
+      "word_ids": [
+        "w010",
+        "w011",
+        "w012",
+        "w013",
+        "w014"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "05 Mar 2026",
+      "word_ids": [
+        "w007",
+        "w008",
+        "w009"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

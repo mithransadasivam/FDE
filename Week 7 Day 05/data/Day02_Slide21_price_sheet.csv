@@ -1,0 +1,10 @@
+item,unit,value,source
+claude-sonnet-5.5 input,USD per million tokens,2.00,Anthropic list price (platform.claude.com/docs pricing) checked 3 Nov 2026
+claude-sonnet-5.5 output,USD per million tokens,10.00,Anthropic list price checked 3 Nov 2026
+claude-haiku-5.5 input,USD per million tokens,0.10,"Anthropic list price, prompts up to 100k tokens, checked 3 Nov 2026"
+claude-haiku-5.5 output,USD per million tokens,0.50,"Anthropic list price, prompts up to 100k tokens, checked 3 Nov 2026"
+regional endpoint premium,multiplier,1.10,"Bedrock regional endpoints cost 10% more than global ones (Anthropic pricing page); needed to keep data in a region"
+textract detect text,USD per 1000 pages,1.50,"AWS Textract pricing page, US West (Oregon) first tier; London price: check the AWS Pricing Calculator"
+public document api,USD per page,0.010,Illustrative: a typical public SaaS document API
+usd to gbp,GBP per USD,0.78,Illustrative exchange rate for the course
+analyst cost,GBP per minute,0.42,"Illustrative: loaded analyst cost (salary, on-costs) per working minute"

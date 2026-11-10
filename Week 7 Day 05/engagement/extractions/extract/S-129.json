@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr D Lee & Ms M Lee",
+      "word_ids": [
+        "w005",
+        "w006",
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "55 Ash Street, Gloucester, GL1 4WX",
+      "word_ids": [
+        "w012",
+        "w013",
+        "w014",
+        "w015",
+        "w016",
+        "w017"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "14 Sep 2026",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Fenwick Gas & Power",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004"
+      ]
+    }
+  ]
+}

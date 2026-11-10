@@ -1,0 +1,21 @@
+case_id,applicant_name,address_line1,town,postcode,application_date,received_date,channel,document
+D04-031,Olivia Grant,4 Hatherley Lane,Cheltenham,GL51 6PN,2026-10-02,2026-10-27,branch,D04-031.jpg
+D04-032,Daniel Reid,19 Kings Road,Stroud,GL5 2QA,2026-10-02,2026-10-28,app,D04-032.jpg
+D04-033,Arun Shah,52 Leckhampton Road,Cheltenham,GL53 0BL,2026-10-09,2026-10-30,branch,D04-033.jpg
+D04-034,Joy Adebayo,7 Hucclecote Road,Gloucester,GL3 3RT,2026-10-06,2026-10-26,branch,D04-034.jpg
+D04-035,Callum Fraser,23 Bisley Road,Stroud,GL5 1HF,2026-10-05,2026-10-26,branch,D04-035.jpg
+D04-036,Hannah Wells,15 Albert Road,Cheltenham,GL52 2QX,2026-10-04,2026-10-27,app,D04-036.jpg
+D04-037,Victor Lungu,9 Tredworth Road,Gloucester,GL1 4QN,2026-10-02,2026-10-29,app,D04-037.jpg
+D04-038,Isla Robertson,61 Painswick Road,Cheltenham,GL50 2EZ,2026-10-07,2026-10-28,app,D04-038.jpg
+D04-039,Leah Goldberg,3 Cotswold Mews,Winchcombe,GL54 5LB,2026-10-02,2026-10-26,app,D04-039.jpg
+D04-040,Tariq Aziz,44 Linden Road,Gloucester,GL1 5HZ,2026-10-08,2026-10-28,app,D04-040.jpg
+D04-041,Owen Davies,"Flat 5, 8 Brunswick Road",Gloucester,GL1 1JJ,2026-10-08,2026-10-26,app,D04-041.jpg
+D04-042,Amira Haddad,28 Prestbury Road,Cheltenham,GL52 2PW,2026-10-06,2026-10-30,app,D04-042.jpg
+D04-043,Ruby Collins,12 Westgate Street,Gloucester,GL1 2NW,2026-10-01,2026-10-30,app,D04-043.jpg
+D04-044,Femi Balogun,70 Stroud Road,Gloucester,GL1 5AJ,2026-10-06,2026-10-27,app,D04-044.jpg
+D04-045,Clare Morton,"Flat 1, 30 Oxford Street",Cheltenham,GL52 6DT,2026-10-08,2026-10-26,branch,D04-045.jpg
+D04-046,Lena Novak,6 Slad Road,Stroud,GL5 1QW,2026-10-06,2026-10-30,app,D04-046.jpg
+D04-047,Sean Murphy,35 Hewlett Road,Cheltenham,GL52 6AE,2026-10-04,2026-10-26,app,D04-047.jpg
+D04-048,Rohan Mehra,2 Pittville Lawn,Cheltenham,GL52 2BE,2026-10-05,2026-10-27,branch,D04-048.jpg
+D04-049,Grace Liu,81 Bristol Road,Quedgeley,GL2 4NE,2026-10-03,2026-10-30,app,D04-049.jpg
+D04-050,Adam Kerr,14 Gloucester Road,Tewkesbury,GL20 5SS,2026-10-08,2026-10-26,branch,D04-050.jpg

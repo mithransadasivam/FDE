@@ -1,0 +1,1448 @@
+{
+ "format_version": "1.2",
+ "terraform_version": "1.13.4",
+ "variables": {
+  "region": {
+   "value": "eu-west-2"
+  },
+  "owner": {
+   "value": "tr"
+  },
+  "alert_email": {
+   "value": "tr@example.com"
+  },
+  "model_id": {
+   "value": "eu.anthropic.claude-haiku-5-5"
+  },
+  "guardrail_policy": {
+   "value": "uc1_v1"
+  },
+  "budget_usd": {
+   "value": 20
+  },
+  "lambda_zip": {
+   "value": "build/lambda.zip"
+  }
+ },
+ "planned_values": {
+  "outputs": {
+   "model_id": {
+    "sensitive": false,
+    "value": "eu.anthropic.claude-haiku-5-5"
+   },
+   "region": {
+    "sensitive": false,
+    "value": "eu-west-2"
+   },
+   "function_url": {
+    "sensitive": false
+   },
+   "secret_arn": {
+    "sensitive": false
+   },
+   "guardrail_id": {
+    "sensitive": false
+   },
+   "guardrail_version": {
+    "sensitive": false
+   }
+  },
+  "root_module": {
+   "resources": [
+    {
+     "address": "aws_vpc.pilot",
+     "mode": "managed",
+     "type": "aws_vpc",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "cidr_block": "10.50.0.0/16",
+      "enable_dns_hostnames": true,
+      "enable_dns_support": true,
+      "instance_tenancy": "default",
+      "region": "eu-west-2",
+      "tags": {
+       "Name": "uc1-pilot"
+      },
+      "tags_all": {
+       "Name": "uc1-pilot",
+       "course_day": "5",
+       "owner": "tr",
+       "project": "fde-uc1-pilot"
+      }
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_subnet.private",
+     "mode": "managed",
+     "type": "aws_subnet",
+     "name": "private",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "availability_zone": "eu-west-2a",
+      "cidr_block": "10.50.1.0/24",
+      "map_public_ip_on_launch": false,
+      "region": "eu-west-2",
+      "tags": {
+       "Name": "uc1-pilot-private"
+      }
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_security_group.lambda",
+     "mode": "managed",
+     "type": "aws_security_group",
+     "name": "lambda",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-lambda",
+      "description": "The pilot function: outbound HTTPS to the VPC endpoints only",
+      "egress": [
+       {
+        "cidr_blocks": [
+         "10.50.0.0/16"
+        ],
+        "description": "HTTPS to the endpoints inside the VPC",
+        "from_port": 443,
+        "ipv6_cidr_blocks": [],
+        "prefix_list_ids": [],
+        "protocol": "tcp",
+        "security_groups": [],
+        "self": false,
+        "to_port": 443
+       }
+      ],
+      "region": "eu-west-2",
+      "revoke_rules_on_delete": false
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_security_group.endpoints",
+     "mode": "managed",
+     "type": "aws_security_group",
+     "name": "endpoints",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-endpoints",
+      "description": "The VPC endpoints: HTTPS from the pilot function only",
+      "region": "eu-west-2",
+      "revoke_rules_on_delete": false
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_vpc_endpoint.bedrock_runtime",
+     "mode": "managed",
+     "type": "aws_vpc_endpoint",
+     "name": "bedrock_runtime",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "service_name": "com.amazonaws.eu-west-2.bedrock-runtime",
+      "vpc_endpoint_type": "Interface",
+      "private_dns_enabled": true,
+      "region": "eu-west-2",
+      "auto_accept": null,
+      "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\"],\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:inference-profile/eu.anthropic.claude-haiku-5-5\"],\"Sid\":\"PilotModelOnly\"},{\"Action\":[\"bedrock:ApplyGuardrail\"],\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:guardrail/*\"],\"Sid\":\"PilotGuardrails\"}],\"Version\":\"2012-10-17\"}",
+      "tags": {
+       "Name": "uc1-pilot-bedrock-runtime"
+      }
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_vpc_endpoint.secretsmanager",
+     "mode": "managed",
+     "type": "aws_vpc_endpoint",
+     "name": "secretsmanager",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "service_name": "com.amazonaws.eu-west-2.secretsmanager",
+      "vpc_endpoint_type": "Interface",
+      "private_dns_enabled": true,
+      "region": "eu-west-2",
+      "auto_accept": null,
+      "tags": {
+       "Name": "uc1-pilot-secretsmanager"
+      }
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role.lambda",
+     "mode": "managed",
+     "type": "aws_iam_role",
+     "name": "lambda",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-lambda",
+      "path": "/",
+      "max_session_duration": 3600,
+      "force_detach_policies": false,
+      "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role_policy_attachment.vpc_access",
+     "mode": "managed",
+     "type": "aws_iam_role_policy_attachment",
+     "name": "vpc_access",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+      "role": "uc1-pilot-lambda"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role_policy.bedrock",
+     "mode": "managed",
+     "type": "aws_iam_role_policy",
+     "name": "bedrock",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-bedrock",
+      "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:inference-profile/eu.anthropic.claude-haiku-5-5\"],\"Sid\":\"InvokeThePilotModel\"},{\"Action\":[\"bedrock:ApplyGuardrail\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:guardrail/*\"],\"Sid\":\"ApplyTheGuardrail\"}],\"Version\":\"2012-10-17\"}"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role_policy.secret",
+     "mode": "managed",
+     "type": "aws_iam_role_policy",
+     "name": "secret",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-secret"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "random_password.analyst",
+     "mode": "managed",
+     "type": "random_password",
+     "name": "analyst",
+     "provider_name": "registry.terraform.io/hashicorp/random",
+     "schema_version": 0,
+     "values": {
+      "length": 24,
+      "special": false,
+      "upper": true,
+      "lower": true,
+      "numeric": true
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "random_id.suffix",
+     "mode": "managed",
+     "type": "random_id",
+     "name": "suffix",
+     "provider_name": "registry.terraform.io/hashicorp/random",
+     "schema_version": 0,
+     "values": {
+      "byte_length": 3
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_secretsmanager_secret.pilot",
+     "mode": "managed",
+     "type": "aws_secretsmanager_secret",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "description": "Password for the UC1 pilot screen (user: analyst)",
+      "recovery_window_in_days": 0,
+      "region": "eu-west-2",
+      "force_overwrite_replica_secret": false
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_secretsmanager_secret_version.pilot",
+     "mode": "managed",
+     "type": "aws_secretsmanager_secret_version",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {},
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_cloudwatch_log_group.lambda",
+     "mode": "managed",
+     "type": "aws_cloudwatch_log_group",
+     "name": "lambda",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "/aws/lambda/uc1-pilot",
+      "retention_in_days": 30,
+      "skip_destroy": false,
+      "region": "eu-west-2"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_lambda_function.pilot",
+     "mode": "managed",
+     "type": "aws_lambda_function",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "function_name": "uc1-pilot",
+      "runtime": "python3.12",
+      "architectures": [
+       "x86_64"
+      ],
+      "handler": "lambda_entry.handler",
+      "filename": "build/lambda.zip",
+      "source_code_hash": "kq0pLZq1Yk3l3rS6c0aGJrM8b7kQx2D9mY3zR6tN4wE=",
+      "timeout": 300,
+      "memory_size": 1024,
+      "package_type": "Zip",
+      "publish": false,
+      "region": "eu-west-2",
+      "environment": [
+       {
+        "variables": {
+         "FDE_LLM_PROVIDER": "bedrock",
+         "FDE_BEDROCK_REGION": "eu-west-2",
+         "FDE_BEDROCK_MODEL_ID": "eu.anthropic.claude-haiku-5-5",
+         "FDE_STATIC_DIR": "static"
+        }
+       }
+      ],
+      "vpc_config": [
+       {
+        "ipv6_allowed_for_dual_stack": false
+       }
+      ]
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_lambda_function_url.pilot",
+     "mode": "managed",
+     "type": "aws_lambda_function_url",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "authorization_type": "NONE",
+      "function_name": "uc1-pilot",
+      "invoke_mode": "BUFFERED",
+      "region": "eu-west-2"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_bedrock_guardrail.uc1",
+     "mode": "managed",
+     "type": "aws_bedrock_guardrail",
+     "name": "uc1",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot",
+      "region": "eu-west-2",
+      "blocked_input_messaging": "This document contains instructions to the system and cannot be processed automatically. Please review it yourself.",
+      "blocked_outputs_messaging": "The extracted fields were withheld by the guardrail. Please review the document yourself."
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_bedrock_guardrail_version.uc1",
+     "mode": "managed",
+     "type": "aws_bedrock_guardrail_version",
+     "name": "uc1",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "description": "uc1_v1 3f9c1a2b",
+      "region": "eu-west-2",
+      "skip_destroy": false
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_cloudwatch_log_group.invocations",
+     "mode": "managed",
+     "type": "aws_cloudwatch_log_group",
+     "name": "invocations",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "/aws/bedrock/uc1-pilot-invocations",
+      "retention_in_days": 30,
+      "skip_destroy": false,
+      "region": "eu-west-2"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role.bedrock_logging",
+     "mode": "managed",
+     "type": "aws_iam_role",
+     "name": "bedrock_logging",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-bedrock-logging",
+      "path": "/",
+      "max_session_duration": 3600,
+      "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"123456789012\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"bedrock.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role_policy.bedrock_logging",
+     "mode": "managed",
+     "type": "aws_iam_role_policy",
+     "name": "bedrock_logging",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-write-invocation-logs"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_bedrock_model_invocation_logging_configuration.pilot",
+     "mode": "managed",
+     "type": "aws_bedrock_model_invocation_logging_configuration",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "region": "eu-west-2",
+      "logging_config": [
+       {
+        "text_data_delivery_enabled": true,
+        "image_data_delivery_enabled": false,
+        "embedding_data_delivery_enabled": false,
+        "video_data_delivery_enabled": false,
+        "cloudwatch_config": [
+         {
+          "log_group_name": "/aws/bedrock/uc1-pilot-invocations",
+          "large_data_delivery_s3_config": []
+         }
+        ],
+        "s3_config": []
+       }
+      ]
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_budgets_budget.pilot",
+     "mode": "managed",
+     "type": "aws_budgets_budget",
+     "name": "pilot",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-monthly",
+      "budget_type": "COST",
+      "limit_amount": "20",
+      "limit_unit": "USD",
+      "time_unit": "MONTHLY",
+      "notification": [
+       {
+        "comparison_operator": "GREATER_THAN",
+        "notification_type": "ACTUAL",
+        "threshold": 80,
+        "threshold_type": "PERCENTAGE",
+        "subscriber_email_addresses": [
+         "tr@example.com"
+        ],
+        "subscriber_sns_topic_arns": []
+       },
+       {
+        "comparison_operator": "GREATER_THAN",
+        "notification_type": "FORECASTED",
+        "threshold": 100,
+        "threshold_type": "PERCENTAGE",
+        "subscriber_email_addresses": [
+         "tr@example.com"
+        ],
+        "subscriber_sns_topic_arns": []
+       }
+      ]
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_policy.deny_bedrock",
+     "mode": "managed",
+     "type": "aws_iam_policy",
+     "name": "deny_bedrock",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-deny-bedrock",
+      "path": "/",
+      "description": "Attached by the budget action when the pilot budget is spent",
+      "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\",\"bedrock:ApplyGuardrail\"],\"Effect\":\"Deny\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role.budget_action",
+     "mode": "managed",
+     "type": "aws_iam_role",
+     "name": "budget_action",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-budget-action",
+      "path": "/",
+      "max_session_duration": 3600,
+      "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"budgets.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_iam_role_policy.budget_action",
+     "mode": "managed",
+     "type": "aws_iam_role_policy",
+     "name": "budget_action",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "name": "uc1-pilot-apply-deny"
+     },
+     "sensitive_values": {}
+    },
+    {
+     "address": "aws_budgets_budget_action.stop_bedrock",
+     "mode": "managed",
+     "type": "aws_budgets_budget_action",
+     "name": "stop_bedrock",
+     "provider_name": "registry.terraform.io/hashicorp/aws",
+     "schema_version": 0,
+     "values": {
+      "action_type": "APPLY_IAM_POLICY",
+      "approval_model": "AUTOMATIC",
+      "budget_name": "uc1-pilot-monthly",
+      "notification_type": "ACTUAL",
+      "action_threshold": [
+       {
+        "action_threshold_type": "PERCENTAGE",
+        "action_threshold_value": 100
+       }
+      ],
+      "definition": [
+       {
+        "iam_action_definition": [
+         {
+          "roles": [
+           "uc1-pilot-lambda"
+          ],
+          "groups": [],
+          "users": []
+         }
+        ],
+        "scp_action_definition": [],
+        "ssm_action_definition": []
+       }
+      ],
+      "subscriber": [
+       {
+        "address": "tr@example.com",
+        "subscription_type": "EMAIL"
+       }
+      ]
+     },
+     "sensitive_values": {}
+    }
+   ]
+  }
+ },
+ "resource_changes": [
+  {
+   "address": "aws_vpc.pilot",
+   "mode": "managed",
+   "type": "aws_vpc",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "cidr_block": "10.50.0.0/16",
+     "enable_dns_hostnames": true,
+     "enable_dns_support": true,
+     "instance_tenancy": "default",
+     "region": "eu-west-2",
+     "tags": {
+      "Name": "uc1-pilot"
+     },
+     "tags_all": {
+      "Name": "uc1-pilot",
+      "course_day": "5",
+      "owner": "tr",
+      "project": "fde-uc1-pilot"
+     }
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "default_security_group_id": true,
+     "main_route_table_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_subnet.private",
+   "mode": "managed",
+   "type": "aws_subnet",
+   "name": "private",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "availability_zone": "eu-west-2a",
+     "cidr_block": "10.50.1.0/24",
+     "map_public_ip_on_launch": false,
+     "region": "eu-west-2",
+     "tags": {
+      "Name": "uc1-pilot-private"
+     }
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "vpc_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_security_group.lambda",
+   "mode": "managed",
+   "type": "aws_security_group",
+   "name": "lambda",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-lambda",
+     "description": "The pilot function: outbound HTTPS to the VPC endpoints only",
+     "egress": [
+      {
+       "cidr_blocks": [
+        "10.50.0.0/16"
+       ],
+       "description": "HTTPS to the endpoints inside the VPC",
+       "from_port": 443,
+       "ipv6_cidr_blocks": [],
+       "prefix_list_ids": [],
+       "protocol": "tcp",
+       "security_groups": [],
+       "self": false,
+       "to_port": 443
+      }
+     ],
+     "region": "eu-west-2",
+     "revoke_rules_on_delete": false
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "vpc_id": true,
+     "ingress": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_security_group.endpoints",
+   "mode": "managed",
+   "type": "aws_security_group",
+   "name": "endpoints",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-endpoints",
+     "description": "The VPC endpoints: HTTPS from the pilot function only",
+     "region": "eu-west-2",
+     "revoke_rules_on_delete": false
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "vpc_id": true,
+     "ingress": true,
+     "egress": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_vpc_endpoint.bedrock_runtime",
+   "mode": "managed",
+   "type": "aws_vpc_endpoint",
+   "name": "bedrock_runtime",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "service_name": "com.amazonaws.eu-west-2.bedrock-runtime",
+     "vpc_endpoint_type": "Interface",
+     "private_dns_enabled": true,
+     "region": "eu-west-2",
+     "auto_accept": null,
+     "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\"],\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:inference-profile/eu.anthropic.claude-haiku-5-5\"],\"Sid\":\"PilotModelOnly\"},{\"Action\":[\"bedrock:ApplyGuardrail\"],\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:guardrail/*\"],\"Sid\":\"PilotGuardrails\"}],\"Version\":\"2012-10-17\"}",
+     "tags": {
+      "Name": "uc1-pilot-bedrock-runtime"
+     }
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "subnet_ids": true,
+     "security_group_ids": true,
+     "vpc_id": true,
+     "dns_entry": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_vpc_endpoint.secretsmanager",
+   "mode": "managed",
+   "type": "aws_vpc_endpoint",
+   "name": "secretsmanager",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "service_name": "com.amazonaws.eu-west-2.secretsmanager",
+     "vpc_endpoint_type": "Interface",
+     "private_dns_enabled": true,
+     "region": "eu-west-2",
+     "auto_accept": null,
+     "tags": {
+      "Name": "uc1-pilot-secretsmanager"
+     }
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "policy": true,
+     "subnet_ids": true,
+     "security_group_ids": true,
+     "vpc_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role.lambda",
+   "mode": "managed",
+   "type": "aws_iam_role",
+   "name": "lambda",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-lambda",
+     "path": "/",
+     "max_session_duration": 3600,
+     "force_detach_policies": false,
+     "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "unique_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role_policy_attachment.vpc_access",
+   "mode": "managed",
+   "type": "aws_iam_role_policy_attachment",
+   "name": "vpc_access",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+     "role": "uc1-pilot-lambda"
+    },
+    "after_unknown": {
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role_policy.bedrock",
+   "mode": "managed",
+   "type": "aws_iam_role_policy",
+   "name": "bedrock",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-bedrock",
+     "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:inference-profile/eu.anthropic.claude-haiku-5-5\"],\"Sid\":\"InvokeThePilotModel\"},{\"Action\":[\"bedrock:ApplyGuardrail\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:bedrock:eu-west-2:123456789012:guardrail/*\"],\"Sid\":\"ApplyTheGuardrail\"}],\"Version\":\"2012-10-17\"}"
+    },
+    "after_unknown": {
+     "id": true,
+     "role": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role_policy.secret",
+   "mode": "managed",
+   "type": "aws_iam_role_policy",
+   "name": "secret",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-secret"
+    },
+    "after_unknown": {
+     "id": true,
+     "role": true,
+     "policy": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "random_password.analyst",
+   "mode": "managed",
+   "type": "random_password",
+   "name": "analyst",
+   "provider_name": "registry.terraform.io/hashicorp/random",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "length": 24,
+     "special": false,
+     "upper": true,
+     "lower": true,
+     "numeric": true
+    },
+    "after_unknown": {
+     "result": true,
+     "id": true,
+     "bcrypt_hash": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "random_id.suffix",
+   "mode": "managed",
+   "type": "random_id",
+   "name": "suffix",
+   "provider_name": "registry.terraform.io/hashicorp/random",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "byte_length": 3
+    },
+    "after_unknown": {
+     "hex": true,
+     "id": true,
+     "b64_std": true,
+     "b64_url": true,
+     "dec": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_secretsmanager_secret.pilot",
+   "mode": "managed",
+   "type": "aws_secretsmanager_secret",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "description": "Password for the UC1 pilot screen (user: analyst)",
+     "recovery_window_in_days": 0,
+     "region": "eu-west-2",
+     "force_overwrite_replica_secret": false
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "name": true,
+     "policy": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_secretsmanager_secret_version.pilot",
+   "mode": "managed",
+   "type": "aws_secretsmanager_secret_version",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {},
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "secret_id": true,
+     "secret_string": true,
+     "version_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_cloudwatch_log_group.lambda",
+   "mode": "managed",
+   "type": "aws_cloudwatch_log_group",
+   "name": "lambda",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "/aws/lambda/uc1-pilot",
+     "retention_in_days": 30,
+     "skip_destroy": false,
+     "region": "eu-west-2"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_lambda_function.pilot",
+   "mode": "managed",
+   "type": "aws_lambda_function",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "function_name": "uc1-pilot",
+     "runtime": "python3.12",
+     "architectures": [
+      "x86_64"
+     ],
+     "handler": "lambda_entry.handler",
+     "filename": "build/lambda.zip",
+     "source_code_hash": "kq0pLZq1Yk3l3rS6c0aGJrM8b7kQx2D9mY3zR6tN4wE=",
+     "timeout": 300,
+     "memory_size": 1024,
+     "package_type": "Zip",
+     "publish": false,
+     "region": "eu-west-2",
+     "environment": [
+      {
+       "variables": {
+        "FDE_LLM_PROVIDER": "bedrock",
+        "FDE_BEDROCK_REGION": "eu-west-2",
+        "FDE_BEDROCK_MODEL_ID": "eu.anthropic.claude-haiku-5-5",
+        "FDE_STATIC_DIR": "static"
+       }
+      }
+     ],
+     "vpc_config": [
+      {
+       "ipv6_allowed_for_dual_stack": false
+      }
+     ]
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "role": true,
+     "invoke_arn": true,
+     "qualified_arn": true,
+     "version": true,
+     "last_modified": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_lambda_function_url.pilot",
+   "mode": "managed",
+   "type": "aws_lambda_function_url",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "authorization_type": "NONE",
+     "function_name": "uc1-pilot",
+     "invoke_mode": "BUFFERED",
+     "region": "eu-west-2"
+    },
+    "after_unknown": {
+     "function_url": true,
+     "function_arn": true,
+     "url_id": true,
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_bedrock_guardrail.uc1",
+   "mode": "managed",
+   "type": "aws_bedrock_guardrail",
+   "name": "uc1",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot",
+     "region": "eu-west-2",
+     "blocked_input_messaging": "This document contains instructions to the system and cannot be processed automatically. Please review it yourself.",
+     "blocked_outputs_messaging": "The extracted fields were withheld by the guardrail. Please review the document yourself."
+    },
+    "after_unknown": {
+     "guardrail_arn": true,
+     "guardrail_id": true,
+     "version": true,
+     "status": true,
+     "created_at": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_bedrock_guardrail_version.uc1",
+   "mode": "managed",
+   "type": "aws_bedrock_guardrail_version",
+   "name": "uc1",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "description": "uc1_v1 3f9c1a2b",
+     "region": "eu-west-2",
+     "skip_destroy": false
+    },
+    "after_unknown": {
+     "guardrail_arn": true,
+     "version": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_cloudwatch_log_group.invocations",
+   "mode": "managed",
+   "type": "aws_cloudwatch_log_group",
+   "name": "invocations",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "/aws/bedrock/uc1-pilot-invocations",
+     "retention_in_days": 30,
+     "skip_destroy": false,
+     "region": "eu-west-2"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role.bedrock_logging",
+   "mode": "managed",
+   "type": "aws_iam_role",
+   "name": "bedrock_logging",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-bedrock-logging",
+     "path": "/",
+     "max_session_duration": 3600,
+     "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"123456789012\"}},\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"bedrock.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role_policy.bedrock_logging",
+   "mode": "managed",
+   "type": "aws_iam_role_policy",
+   "name": "bedrock_logging",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-write-invocation-logs"
+    },
+    "after_unknown": {
+     "id": true,
+     "role": true,
+     "policy": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_bedrock_model_invocation_logging_configuration.pilot",
+   "mode": "managed",
+   "type": "aws_bedrock_model_invocation_logging_configuration",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "region": "eu-west-2",
+     "logging_config": [
+      {
+       "text_data_delivery_enabled": true,
+       "image_data_delivery_enabled": false,
+       "embedding_data_delivery_enabled": false,
+       "video_data_delivery_enabled": false,
+       "cloudwatch_config": [
+        {
+         "log_group_name": "/aws/bedrock/uc1-pilot-invocations",
+         "large_data_delivery_s3_config": []
+        }
+       ],
+       "s3_config": []
+      }
+     ]
+    },
+    "after_unknown": {
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_budgets_budget.pilot",
+   "mode": "managed",
+   "type": "aws_budgets_budget",
+   "name": "pilot",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-monthly",
+     "budget_type": "COST",
+     "limit_amount": "20",
+     "limit_unit": "USD",
+     "time_unit": "MONTHLY",
+     "notification": [
+      {
+       "comparison_operator": "GREATER_THAN",
+       "notification_type": "ACTUAL",
+       "threshold": 80,
+       "threshold_type": "PERCENTAGE",
+       "subscriber_email_addresses": [
+        "tr@example.com"
+       ],
+       "subscriber_sns_topic_arns": []
+      },
+      {
+       "comparison_operator": "GREATER_THAN",
+       "notification_type": "FORECASTED",
+       "threshold": 100,
+       "threshold_type": "PERCENTAGE",
+       "subscriber_email_addresses": [
+        "tr@example.com"
+       ],
+       "subscriber_sns_topic_arns": []
+      }
+     ]
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "account_id": true,
+     "time_period_start": true,
+     "time_period_end": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_policy.deny_bedrock",
+   "mode": "managed",
+   "type": "aws_iam_policy",
+   "name": "deny_bedrock",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-deny-bedrock",
+     "path": "/",
+     "description": "Attached by the budget action when the pilot budget is spent",
+     "policy": "{\"Statement\":[{\"Action\":[\"bedrock:InvokeModel\",\"bedrock:InvokeModelWithResponseStream\",\"bedrock:ApplyGuardrail\"],\"Effect\":\"Deny\",\"Resource\":\"*\"}],\"Version\":\"2012-10-17\"}"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true,
+     "policy_id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role.budget_action",
+   "mode": "managed",
+   "type": "aws_iam_role",
+   "name": "budget_action",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-budget-action",
+     "path": "/",
+     "max_session_duration": 3600,
+     "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"budgets.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}"
+    },
+    "after_unknown": {
+     "arn": true,
+     "id": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_iam_role_policy.budget_action",
+   "mode": "managed",
+   "type": "aws_iam_role_policy",
+   "name": "budget_action",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "name": "uc1-pilot-apply-deny"
+    },
+    "after_unknown": {
+     "id": true,
+     "role": true,
+     "policy": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  },
+  {
+   "address": "aws_budgets_budget_action.stop_bedrock",
+   "mode": "managed",
+   "type": "aws_budgets_budget_action",
+   "name": "stop_bedrock",
+   "provider_name": "registry.terraform.io/hashicorp/aws",
+   "change": {
+    "actions": [
+     "create"
+    ],
+    "before": null,
+    "after": {
+     "action_type": "APPLY_IAM_POLICY",
+     "approval_model": "AUTOMATIC",
+     "budget_name": "uc1-pilot-monthly",
+     "notification_type": "ACTUAL",
+     "action_threshold": [
+      {
+       "action_threshold_type": "PERCENTAGE",
+       "action_threshold_value": 100
+      }
+     ],
+     "definition": [
+      {
+       "iam_action_definition": [
+        {
+         "roles": [
+          "uc1-pilot-lambda"
+         ],
+         "groups": [],
+         "users": []
+        }
+       ],
+       "scp_action_definition": [],
+       "ssm_action_definition": []
+      }
+     ],
+     "subscriber": [
+      {
+       "address": "tr@example.com",
+       "subscription_type": "EMAIL"
+      }
+     ]
+    },
+    "after_unknown": {
+     "id": true,
+     "arn": true,
+     "action_id": true,
+     "execution_role_arn": true,
+     "status": true
+    },
+    "before_sensitive": false,
+    "after_sensitive": {}
+   }
+  }
+ ],
+ "configuration": {
+  "provider_config": {
+   "aws": {
+    "name": "aws",
+    "full_name": "registry.terraform.io/hashicorp/aws",
+    "version_constraint": "~> 6.0",
+    "expressions": {
+     "region": {
+      "references": [
+       "var.region"
+      ]
+     }
+    }
+   }
+  },
+  "root_module": {}
+ },
+ "timestamp": "2026-11-05T09:41:12Z",
+ "applyable": true,
+ "complete": true,
+ "errored": false
+}

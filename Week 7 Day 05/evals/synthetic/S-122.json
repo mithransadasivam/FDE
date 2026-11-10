@@ -1,0 +1,299 @@
+{
+ "case_id": "S-122",
+ "slice": "joint_names",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Harrowgate",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w002",
+   "text": "Water",
+   "box": [
+    0.208,
+    0.08,
+    0.278,
+    0.105
+   ],
+   "confidence": 0.944
+  },
+  {
+   "id": "w003",
+   "text": "Mr",
+   "box": [
+    0.07,
+    0.12,
+    0.104,
+    0.145
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w004",
+   "text": "J",
+   "box": [
+    0.112,
+    0.12,
+    0.134,
+    0.145
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w005",
+   "text": "Smith",
+   "box": [
+    0.142,
+    0.12,
+    0.212,
+    0.145
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w006",
+   "text": "&",
+   "box": [
+    0.22,
+    0.12,
+    0.242,
+    0.145
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w007",
+   "text": "Ms",
+   "box": [
+    0.25,
+    0.12,
+    0.284,
+    0.145
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w008",
+   "text": "L",
+   "box": [
+    0.292,
+    0.12,
+    0.314,
+    0.145
+   ],
+   "confidence": 0.962
+  },
+  {
+   "id": "w009",
+   "text": "Jones",
+   "box": [
+    0.322,
+    0.12,
+    0.392,
+    0.145
+   ],
+   "confidence": 0.946
+  },
+  {
+   "id": "w010",
+   "text": "7",
+   "box": [
+    0.07,
+    0.16,
+    0.092,
+    0.185
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w011",
+   "text": "Oak",
+   "box": [
+    0.1,
+    0.16,
+    0.146,
+    0.185
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w012",
+   "text": "Avenue",
+   "box": [
+    0.154,
+    0.16,
+    0.236,
+    0.185
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w013",
+   "text": "Cheltenham",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w014",
+   "text": "GL50",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w015",
+   "text": "2PQ",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w016",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.28,
+    0.188,
+    0.305
+   ],
+   "confidence": 0.972
+  },
+  {
+   "id": "w017",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w018",
+   "text": "22",
+   "box": [
+    0.274,
+    0.28,
+    0.308,
+    0.305
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w019",
+   "text": "Feb",
+   "box": [
+    0.316,
+    0.28,
+    0.362,
+    0.305
+   ],
+   "confidence": 0.941
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.37,
+    0.28,
+    0.428,
+    0.305
+   ],
+   "confidence": 0.974
+  },
+  {
+   "id": "w021",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.958
+  },
+  {
+   "id": "w022",
+   "text": "date:",
+   "box": [
+    0.124,
+    0.32,
+    0.194,
+    0.345
+   ],
+   "confidence": 0.948
+  },
+  {
+   "id": "w023",
+   "text": "14",
+   "box": [
+    0.202,
+    0.32,
+    0.236,
+    0.345
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w024",
+   "text": "Mar",
+   "box": [
+    0.244,
+    0.32,
+    0.29,
+    0.345
+   ],
+   "confidence": 0.995
+  },
+  {
+   "id": "w025",
+   "text": "2026",
+   "box": [
+    0.298,
+    0.32,
+    0.356,
+    0.345
+   ],
+   "confidence": 0.981
+  }
+ ],
+ "application": {
+  "case_id": "S-122",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Mr J Smith",
+  "address_line1": "7 Oak Avenue",
+  "town": "Cheltenham",
+  "postcode": "GL50 2PQ"
+ },
+ "labels": {
+  "full_name": "Mr J Smith & Ms L Jones",
+  "address": "7 Oak Avenue, Cheltenham, GL50 2PQ",
+  "statement_date": "22 Feb 2026",
+  "issuer": "Harrowgate Water",
+  "tom_decision": "approve"
+ }
+}

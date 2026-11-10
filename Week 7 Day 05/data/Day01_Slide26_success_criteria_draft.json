@@ -1,0 +1,5 @@
+[
+  {"id": "SC1", "name": "Faster decisions", "kind": "business", "metric": "Median working days from application to decision", "baseline": 7, "target": 3, "unit": "working days", "direction": "decrease", "measured_how": "CaseFlow timestamps, weekly report, pilot cases only", "owner": "Deborah Okafor", "by_when": "End of week 6 pilot"},
+  {"id": "SC2", "name": "Improve analyst efficiency", "kind": "business", "metric": "Analyst efficiency", "baseline": null, "target": null, "unit": "", "direction": "increase", "measured_how": "", "owner": "", "by_when": ""},
+  {"id": "SC3", "name": "Analysts trust the tool", "kind": "quality", "metric": "Share of AI-filled fields the analyst accepts without change", "baseline": null, "target": 90, "unit": "%", "direction": "increase", "measured_how": "Logged on every accept or correct click in the review screen", "owner": "Tom Reyes", "by_when": "Week 6"}
+]

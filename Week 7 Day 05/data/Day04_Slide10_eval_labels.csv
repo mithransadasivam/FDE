@@ -1,0 +1,51 @@
+case_id,full_name,address,statement_date,issuer,tom_decision,tom_note,slices
+D03-001,Ms Ananya R. Mehta,"Flat 3, 14 Larkspur Row, Cheltenham, GL50 3QR",09 Sep 2026,Lumenvale Energy,approve,,smudge
+D03-002,Mr Daniel Okonkwo,"22 Mill Lane, Stroud, GL5 1AB",30 Sep 2026,Northmere Bank,approve,,clean
+D03-003,Mrs Grace Whitfield,"7 Orchard Close, Tewkesbury, GL20 5RT",15 Aug 2026,Harrowgate Water,approve,,clean
+D03-004,Mr Tomasz Nowak,"41 Station Road, Gloucester, GL1 1EZ",02 Oct 2026,Copperline Broadband,approve,,clean
+D03-005,Ms Priya Shah,"9 Willow Walk, Cirencester, GL7 2NP",12 Sep 2026,Lumenvale Energy,ask_applicant,Name differs: ask for a marriage certificate or a bill in the application name,name_differs
+D03-006,Mr Oliver Bennett,"118 High Street, Cheltenham, GL50 1DX",01 Apr 2026,Brightwell Borough Council,ask_applicant,Older than 3 months,old_document
+D03-007,Miss Chloe Adeyemi,"Flat 12, Riverside Court, Gloucester, GL2 5HS",05 Oct 2026,Pocketwave Mobile,ask_applicant,Mobile phone bills are not accepted,unapproved_issuer
+D03-008,Mr J. A. Kowalski,"3 Beech Avenue, Stroud, GL5 4JD",20 Sep 2026,Fenwick Gas & Power,approve,,initials
+D03-009,Mrs Helena Marsh,"56 Kingsway, Quedgeley, GL2 2AL",18 Sep 2026,Northmere Bank,approve,,ocr_misread
+D03-010,Mr Samuel Price,"14 Elm Grove, Cheltenham, GL52 3PL",03 Oct 2026,Harrowgate Water,approve,,clean
+D03-011,Ms Fatima Rahman,"27 Bath Road, Cheltenham, GL53 7HG",11 Sep 2026,Lumenvale Energy,approve,,smudge
+D03-012,Mr Rhys Morgan,"8 Chapel Street, Tetbury, GL8 8JR",25 Sep 2026,Copperline Broadband,approve,,clean
+D03-013,Mrs Aisha Bello,"Flat 4, 2 Park Terrace, Gloucester, GL1 3LB",01 Sep 2026,Brightwell Borough Council,approve,,clean
+D03-014,Mr George Hughes,"33 Cotswold Way, Painswick, GL6 6QX",30 Sep 2026,Northmere Bank,approve,,model_guess
+D03-015,Ms Lucy Carter,"19 Rose Hill, Stroud, GL5 3HF",10 Jun 2026,Lumenvale Energy,approve,Fine: within 3 months of the application date,date_rule
+D03-016,Mr Arjun Nair,"62 London Road, Cheltenham, GL52 6EJ",28 Sep 2026,Fenwick Gas & Power,approve,,clean
+D03-017,Mrs Sophie Turner,"15 Abbey Mews, Tewkesbury, GL20 6TA",16 Sep 2026,Harrowgate Water,ask_applicant,Bill shows a previous address,moved
+D03-018,Mr Kwame Asante,"71 Barton Street, Gloucester, GL1 4HT",04 Oct 2026,Copperline Broadband,approve,,clean
+D03-019,Ms Emily Clarke,"Flat 9, 40 Regent Street, Cheltenham, GL50 1HE",30 Sep 2026,Northmere Bank,approve,,clean
+D03-020,Mr Hassan Ali,"12 Wharf Road, Lydney, GL15 5ET",14 Sep 2026,Lumenvale Energy,approve,,smudge
+D03-021,Mrs Margaret Doyle,"88 Church Road, Bishops Cleeve, GL52 8LR",01 Oct 2026,Brightwell Borough Council,approve,,clean
+D03-022,Mr Liam O'Brien,"6 Meadow View, Nailsworth, GL6 0EZ",22 Sep 2026,Fenwick Gas & Power,approve,,clean
+D03-023,Ms Zara Hussain,"29 Victoria Street, Cinderford, GL14 2HQ",07 Oct 2026,Harrowgate Water,approve,,clean
+D03-024,Mr Ethan Wright,"17 Green Lane, Cheltenham, GL51 0PA",29 Sep 2026,Copperline Broadband,approve,,clean
+D03-025,Mrs Nkechi Eze,"Flat 2, 11 Spa Road, Gloucester, GL1 1XB",30 Sep 2026,Northmere Bank,approve,,clean
+D03-026,Mr Ben Fletcher,"45 Hales Road, Cheltenham, GL52 6SL",19 Sep 2026,Lumenvale Energy,approve,,clean
+D03-027,Ms Mei Lin Chen,"3 Lansdown Crescent, Stroud, GL5 1BB",26 Sep 2026,Fenwick Gas & Power,approve,,clean
+D03-028,Mr Patrick Byrne,"60 Northgate, Gloucester, GL1 2AN",01 Oct 2026,Brightwell Borough Council,approve,,clean
+D03-029,Mrs Ruth Gallagher,"24 Farm Lane, Winchcombe, GL54 5HE",08 Oct 2026,Harrowgate Water,approve,,clean
+D03-030,Mr Yusuf Demir,"10 Tivoli Road, Cheltenham, GL50 2TD",06 Oct 2026,Copperline Broadband,approve,,clean
+D04-031,Ms Olivia Grant,"4 Hatherley Lane, Cheltenham, GL51 6PN",12 Sep 2026,Lumenvale Energy,approve,,two_dates
+D04-032,Mr Daniel Reid,"19 Kings Road, Stroud, GL5 2QA",14 Sep 2026,Harrowgate Water,approve,,two_dates
+D04-033,Mr Arun Shah & Mrs Priti Shah,"52 Leckhampton Road, Cheltenham, GL53 0BL",18 Sep 2026,Fenwick Gas & Power,approve,Joint bill: both names must be recorded,joint_names
+D04-034,Mrs Joy Adebayo,"7 Hucclecote Road, Gloucester, GL3 3RT",20 Sep 2026,Copperline Broadband,approve,,two_dates
+D04-035,Mr Callum Fraser,"23 Bisley Road, Stroud, GL5 1HF",30 Sep 2026,Northmere Bank,approve,,clean
+D04-036,Ms Hannah Wells,"15 Albert Road, Cheltenham, GL52 2QX",21 Sep 2026,LUMENVALE ENERGY LTD,approve,Same company: its legal name,issuer_variant
+D04-037,Mr Victor Lungu,"9 Tredworth Road, Gloucester, GL1 4QN",01 Oct 2026,Brightwell Borough Council,approve,,two_dates
+D04-038,Ms Isla Robertson,"61 Painswick Road, Cheltenham, GL50 2EZ",15 Sep 2026,Fenwick Gas & Power,approve,,two_dates
+D04-039,Mrs Leah Goldberg,"3 Cotswold Mews, Winchcombe, GL54 5LB",24 Sep 2026,Harrowgate Water,approve,,clean
+D04-040,Mr Tariq Aziz & Mrs Sana Aziz,"44 Linden Road, Gloucester, GL1 5HZ",16 Sep 2026,Lumenvale Energy,approve,Joint bill: both names must be recorded,joint_names
+D04-041,Mr Owen Davies,"8 Brunswick Road, Flat 5, Gloucester, GL1 1JJ",26 Sep 2026,Copperline Broadband,approve,"Same flat, written the other way round",address_order
+D04-042,Ms Amira Haddad,"28 Prestbury Road, Cheltenham, GL52 2PW",30 Sep 2026,Northmere Bank,approve,,clean
+D04-043,Ms Ruby Collins,"12 Westgate Street, Gloucester, GL1 2NW",22 Sep 2026,Harrowgate Water,approve,,two_dates
+D04-044,Mr Femi Balogun,"70 Stroud Road, Gloucester, GL1 5AJ",27 Sep 2026,Fenwick Gas & Power,approve,,clean
+D04-045,Mrs Clare Morton,"30 Oxford Street, Flat 1, Cheltenham, GL52 6DT",19 Sep 2026,Lumenvale Energy,approve,"Same flat, written the other way round",address_order
+D04-046,Ms Lena Novak & Mr Piotr Novak,"6 Slad Road, Stroud, GL5 1QW",23 Sep 2026,Copperline Broadband,approve,Joint bill: both names must be recorded,joint_names
+D04-047,Mr Sean Murphy,"35 Hewlett Road, Cheltenham, GL52 6AE",25 Sep 2026,Lumenvale Energy,approve,,two_dates
+D04-048,Dr Rohan Mehra & Mrs Anjali Mehra,"2 Pittville Lawn, Cheltenham, GL52 2BE",17 Sep 2026,Harrowgate Water,approve,Joint bill: both names must be recorded,joint_names
+D04-049,Ms Grace Liu,"81 Bristol Road, Quedgeley, GL2 4NE",30 Sep 2026,Northmere Bank plc,approve,Same company: its legal name,issuer_variant
+D04-050,Mr Adam Kerr,"14 Gloucester Road, Tewkesbury, GL20 5SS",28 Sep 2026,Fenwick Gas & Power,approve,,two_dates

@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Dr Ben Brown",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "3 Elm Road, Cheltenham, GL50 1FQ",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Oct 2026",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

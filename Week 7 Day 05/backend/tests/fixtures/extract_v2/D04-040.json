@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Tariq Aziz",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "44 Linden Road, Gloucester, GL1 5HZ",
+   "word_ids": [
+    "w019",
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w024"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "16 Sep 2026",
+   "word_ids": [
+    "w027",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}
