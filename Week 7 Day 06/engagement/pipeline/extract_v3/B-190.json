@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-190",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Arun Griffiths",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2588,
+        0.1575
+      ],
+      "page_text": "Mr Arun Griffiths",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "9 Abbey Road Gloucester GL4 8JY",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2048,
+        0.2316
+      ],
+      "page_text": "9 Abbey Road Gloucester GL4 8JY",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "03 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.5882,
+        0.1556,
+        0.719,
+        0.1738
+      ],
+      "page_text": "03 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 889,
+    "output_tokens": 135,
+    "latency_ms": 2080,
+    "scripted": true
+  }
+}

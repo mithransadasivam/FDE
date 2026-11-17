@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Fatima Grant"
+  },
+  {
+   "name": "address",
+   "value": "27 Westgate St, Cheltenham, GL52 5HF"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-16"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

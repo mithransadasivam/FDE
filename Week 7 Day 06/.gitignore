@@ -1,0 +1,19 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+frontend/test-results/
+frontend/playwright-report/
+.e2e/
+dist/
+.claude/worktrees/
+.claude/settings.local.json
+# Day 5: Terraform's working files, state, your variables and the Lambda build
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.*
+infra/terraform.tfvars
+infra/pilot.tfplan
+infra/pilot.plan.json
+infra/build/

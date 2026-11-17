@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Tariq Turner"
+  },
+  {
+   "name": "address",
+   "value": "137 Green Lane, Nailsworth, GL6 8GB"
+  },
+  {
+   "name": "statement_date",
+   "value": "05 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

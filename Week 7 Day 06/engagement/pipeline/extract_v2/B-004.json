@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-004",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Niamh Novak",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2683,
+        0.1767
+      ],
+      "page_text": "Ms Niamh Novak",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "108 Victoria Street Gloucester GL2 7DL",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2545,
+        0.2564
+      ],
+      "page_text": "108 Victoria Street Gloucester GL2 7DL",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "03 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7576,
+        0.2006
+      ],
+      "page_text": "03 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4783,
+        0.0634
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 507,
+    "output_tokens": 136,
+    "latency_ms": 1916,
+    "scripted": true
+  }
+}

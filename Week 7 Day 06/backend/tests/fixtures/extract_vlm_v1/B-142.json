@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Luca Byrne & Mrs Ruby Byrne"
+  },
+  {
+   "name": "address",
+   "value": "96 Gloucester Road, Stroud, GL5 5RB"
+  },
+  {
+   "name": "statement_date",
+   "value": "30 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

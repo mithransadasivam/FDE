@@ -1,0 +1,49 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Thomas Brown & Mrs Linda Brown",
+      "word_ids": [
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "1, The Willows, Stroud, GL5 3ZZ",
+      "word_ids": [
+        "w025",
+        "w026",
+        "w027",
+        "w028",
+        "w029",
+        "w030"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Dec 2026",
+      "word_ids": [
+        "w010",
+        "w011",
+        "w012"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Fenwick Gas & Power plc",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004",
+        "w005"
+      ]
+    }
+  ]
+}

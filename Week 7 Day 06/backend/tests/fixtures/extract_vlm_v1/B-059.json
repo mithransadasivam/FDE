@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Samuel Price"
+  },
+  {
+   "name": "address",
+   "value": "9 Market Street, Cheltenham, GL52 8RY"
+  },
+  {
+   "name": "statement_date",
+   "value": "24 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

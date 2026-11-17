@@ -1,0 +1,70 @@
+{
+  "set": "october",
+  "at": "2026-11-17T01:54:48+00:00",
+  "parser_prompt": "extract_v2",
+  "vision_prompt": "extract_vlm_v1",
+  "concurrency": 8,
+  "ok_at": 0.85,
+  "use_agreement": true,
+  "run": {
+    "calls": 400,
+    "done": 400,
+    "failed": [],
+    "failed_docs": [],
+    "refusals": 0,
+    "wall_ms": 96711,
+    "simulated": true,
+    "concurrency": 8,
+    "documents": 200,
+    "complete": 200,
+    "finished_now": 200,
+    "resume": false,
+    "latency_ms_p50": 1903,
+    "latency_ms_p95": 2114
+  },
+  "throughput_docs_per_min": 124.1,
+  "month_minutes": 69,
+  "accuracy": {
+    "parser": 95.9,
+    "vision": 96.8,
+    "after_review": 99.6,
+    "one_keyer": 98.6
+  },
+  "routing": {
+    "fields": 800,
+    "review": 87,
+    "review_pct": 10.9,
+    "slipped": 3,
+    "caught": 30,
+    "errors": 33
+  },
+  "tokens_per_doc": {
+    "input": 2096,
+    "output": 213
+  },
+  "cost": {
+    "class": {
+      "model": "anthropic/claude-haiku-5.5",
+      "usd_per_doc": 0.00032,
+      "gbp_per_month": 2
+    },
+    "pilot": {
+      "model": "anthropic.claude-sonnet-5",
+      "usd_per_doc": 0.00695,
+      "gbp_per_month": 47
+    },
+    "pilot_batch": {
+      "model": "anthropic.claude-sonnet-5",
+      "usd_per_doc": 0.00348,
+      "gbp_per_month": 23,
+      "note": "50% off, results within 24 hours: check batch inference for this model in eu-west-2"
+    }
+  },
+  "fields_per_month": {
+    "typed_today": 34400,
+    "checked_with_pipeline": 3750,
+    "straight_through": 30650
+  },
+  "docs_per_month": 8600,
+  "gbp_per_usd": 0.78
+}

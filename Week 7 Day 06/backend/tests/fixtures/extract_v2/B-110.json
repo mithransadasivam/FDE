@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Daniel Eze",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "1 Orchard Close Gloucester GL4 1TB",
+   "word_ids": [
+    "w015",
+    "w016",
+    "w017",
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Aug 2026",
+   "word_ids": [
+    "w023",
+    "w024",
+    "w025"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Niamh Walsh"
+  },
+  {
+   "name": "address",
+   "value": "9 Westgate Street, Quedgeley, GL2 1FW"
+  },
+  {
+   "name": "statement_date",
+   "value": "10 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

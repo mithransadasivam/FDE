@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Priya Hughes"
+  },
+  {
+   "name": "address",
+   "value": "52 Hales Road, Cheltenham, GL52 2HS"
+  },
+  {
+   "name": "statement_date",
+   "value": "14 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

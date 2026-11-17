@@ -1,0 +1,1108 @@
+{
+  "name": "extract_v2__real__guard_uc1_v1",
+  "prompt": "extract_v2",
+  "set": "real",
+  "at": "2026-11-10T21:59:15+00:00",
+  "cases": 50,
+  "score": {
+    "overall": {
+      "correct": 97,
+      "total": 200,
+      "accuracy": 48.5
+    },
+    "per_field": {
+      "full_name": {
+        "correct": 0,
+        "total": 50,
+        "accuracy": 0.0
+      },
+      "address": {
+        "correct": 0,
+        "total": 50,
+        "accuracy": 0.0
+      },
+      "statement_date": {
+        "correct": 47,
+        "total": 50,
+        "accuracy": 94.0
+      },
+      "issuer": {
+        "correct": 50,
+        "total": 50,
+        "accuracy": 100.0
+      }
+    },
+    "per_slice": {
+      "address_order": {
+        "correct": 4,
+        "total": 8,
+        "accuracy": 50.0
+      },
+      "clean": {
+        "correct": 46,
+        "total": 92,
+        "accuracy": 50.0
+      },
+      "date_rule": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      },
+      "initials": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      },
+      "issuer_variant": {
+        "correct": 4,
+        "total": 8,
+        "accuracy": 50.0
+      },
+      "joint_names": {
+        "correct": 8,
+        "total": 16,
+        "accuracy": 50.0
+      },
+      "model_guess": {
+        "correct": 1,
+        "total": 4,
+        "accuracy": 25.0
+      },
+      "moved": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      },
+      "name_differs": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      },
+      "ocr_misread": {
+        "correct": 1,
+        "total": 4,
+        "accuracy": 25.0
+      },
+      "old_document": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      },
+      "smudge": {
+        "correct": 5,
+        "total": 12,
+        "accuracy": 41.7
+      },
+      "two_dates": {
+        "correct": 16,
+        "total": 32,
+        "accuracy": 50.0
+      },
+      "unapproved_issuer": {
+        "correct": 2,
+        "total": 4,
+        "accuracy": 50.0
+      }
+    },
+    "errors": [
+      {
+        "case_id": "D03-001",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Ananya R. Mehta"
+      },
+      {
+        "case_id": "D03-001",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "Flat 3, 14 Larkspur Row, Cheltenham, GL50 3QR"
+      },
+      {
+        "case_id": "D03-002",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Daniel Okonkwo"
+      },
+      {
+        "case_id": "D03-002",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "22 Mill Lane, Stroud, GL5 1AB"
+      },
+      {
+        "case_id": "D03-003",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Grace Whitfield"
+      },
+      {
+        "case_id": "D03-003",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "7 Orchard Close, Tewkesbury, GL20 5RT"
+      },
+      {
+        "case_id": "D03-004",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Tomasz Nowak"
+      },
+      {
+        "case_id": "D03-004",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "41 Station Road, Gloucester, GL1 1EZ"
+      },
+      {
+        "case_id": "D03-005",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Priya Shah"
+      },
+      {
+        "case_id": "D03-005",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "9 Willow Walk, Cirencester, GL7 2NP"
+      },
+      {
+        "case_id": "D03-006",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Oliver Bennett"
+      },
+      {
+        "case_id": "D03-006",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "118 High Street, Cheltenham, GL50 1DX"
+      },
+      {
+        "case_id": "D03-007",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Miss Chloe Adeyemi"
+      },
+      {
+        "case_id": "D03-007",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "Flat 12, Riverside Court, Gloucester, GL2 5HS"
+      },
+      {
+        "case_id": "D03-008",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr J. A. Kowalski"
+      },
+      {
+        "case_id": "D03-008",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "3 Beech Avenue, Stroud, GL5 4JD"
+      },
+      {
+        "case_id": "D03-009",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Helena Marsh"
+      },
+      {
+        "case_id": "D03-009",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "56 Kingsway, Quedgeley, GL2 2AL"
+      },
+      {
+        "case_id": "D03-009",
+        "field": "statement_date",
+        "got": "16 Sep 2026",
+        "expected": "18 Sep 2026"
+      },
+      {
+        "case_id": "D03-010",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Samuel Price"
+      },
+      {
+        "case_id": "D03-010",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "14 Elm Grove, Cheltenham, GL52 3PL"
+      },
+      {
+        "case_id": "D03-011",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Fatima Rahman"
+      },
+      {
+        "case_id": "D03-011",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "27 Bath Road, Cheltenham, GL53 7HG"
+      },
+      {
+        "case_id": "D03-011",
+        "field": "statement_date",
+        "got": "10 Sep 2026",
+        "expected": "11 Sep 2026"
+      },
+      {
+        "case_id": "D03-012",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Rhys Morgan"
+      },
+      {
+        "case_id": "D03-012",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "8 Chapel Street, Tetbury, GL8 8JR"
+      },
+      {
+        "case_id": "D03-013",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Aisha Bello"
+      },
+      {
+        "case_id": "D03-013",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "Flat 4, 2 Park Terrace, Gloucester, GL1 3LB"
+      },
+      {
+        "case_id": "D03-014",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr George Hughes"
+      },
+      {
+        "case_id": "D03-014",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "33 Cotswold Way, Painswick, GL6 6QX"
+      },
+      {
+        "case_id": "D03-014",
+        "field": "statement_date",
+        "got": "29 Sep 2026",
+        "expected": "30 Sep 2026"
+      },
+      {
+        "case_id": "D03-015",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Lucy Carter"
+      },
+      {
+        "case_id": "D03-015",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "19 Rose Hill, Stroud, GL5 3HF"
+      },
+      {
+        "case_id": "D03-016",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Arjun Nair"
+      },
+      {
+        "case_id": "D03-016",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "62 London Road, Cheltenham, GL52 6EJ"
+      },
+      {
+        "case_id": "D03-017",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Sophie Turner"
+      },
+      {
+        "case_id": "D03-017",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "15 Abbey Mews, Tewkesbury, GL20 6TA"
+      },
+      {
+        "case_id": "D03-018",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Kwame Asante"
+      },
+      {
+        "case_id": "D03-018",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "71 Barton Street, Gloucester, GL1 4HT"
+      },
+      {
+        "case_id": "D03-019",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Emily Clarke"
+      },
+      {
+        "case_id": "D03-019",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "Flat 9, 40 Regent Street, Cheltenham, GL50 1HE"
+      },
+      {
+        "case_id": "D03-020",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Hassan Ali"
+      },
+      {
+        "case_id": "D03-020",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "12 Wharf Road, Lydney, GL15 5ET"
+      },
+      {
+        "case_id": "D03-021",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Margaret Doyle"
+      },
+      {
+        "case_id": "D03-021",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "88 Church Road, Bishops Cleeve, GL52 8LR"
+      },
+      {
+        "case_id": "D03-022",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Liam O'Brien"
+      },
+      {
+        "case_id": "D03-022",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "6 Meadow View, Nailsworth, GL6 0EZ"
+      },
+      {
+        "case_id": "D03-023",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Zara Hussain"
+      },
+      {
+        "case_id": "D03-023",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "29 Victoria Street, Cinderford, GL14 2HQ"
+      },
+      {
+        "case_id": "D03-024",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Ethan Wright"
+      },
+      {
+        "case_id": "D03-024",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "17 Green Lane, Cheltenham, GL51 0PA"
+      },
+      {
+        "case_id": "D03-025",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Nkechi Eze"
+      },
+      {
+        "case_id": "D03-025",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "Flat 2, 11 Spa Road, Gloucester, GL1 1XB"
+      },
+      {
+        "case_id": "D03-026",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Ben Fletcher"
+      },
+      {
+        "case_id": "D03-026",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "45 Hales Road, Cheltenham, GL52 6SL"
+      },
+      {
+        "case_id": "D03-027",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Mei Lin Chen"
+      },
+      {
+        "case_id": "D03-027",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "3 Lansdown Crescent, Stroud, GL5 1BB"
+      },
+      {
+        "case_id": "D03-028",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Patrick Byrne"
+      },
+      {
+        "case_id": "D03-028",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "60 Northgate, Gloucester, GL1 2AN"
+      },
+      {
+        "case_id": "D03-029",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Ruth Gallagher"
+      },
+      {
+        "case_id": "D03-029",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "24 Farm Lane, Winchcombe, GL54 5HE"
+      },
+      {
+        "case_id": "D03-030",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Yusuf Demir"
+      },
+      {
+        "case_id": "D03-030",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "10 Tivoli Road, Cheltenham, GL50 2TD"
+      },
+      {
+        "case_id": "D04-031",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Olivia Grant"
+      },
+      {
+        "case_id": "D04-031",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "4 Hatherley Lane, Cheltenham, GL51 6PN"
+      },
+      {
+        "case_id": "D04-032",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Daniel Reid"
+      },
+      {
+        "case_id": "D04-032",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "19 Kings Road, Stroud, GL5 2QA"
+      },
+      {
+        "case_id": "D04-033",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Arun Shah & Mrs Priti Shah"
+      },
+      {
+        "case_id": "D04-033",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "52 Leckhampton Road, Cheltenham, GL53 0BL"
+      },
+      {
+        "case_id": "D04-034",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Joy Adebayo"
+      },
+      {
+        "case_id": "D04-034",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "7 Hucclecote Road, Gloucester, GL3 3RT"
+      },
+      {
+        "case_id": "D04-035",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Callum Fraser"
+      },
+      {
+        "case_id": "D04-035",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "23 Bisley Road, Stroud, GL5 1HF"
+      },
+      {
+        "case_id": "D04-036",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Hannah Wells"
+      },
+      {
+        "case_id": "D04-036",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "15 Albert Road, Cheltenham, GL52 2QX"
+      },
+      {
+        "case_id": "D04-037",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Victor Lungu"
+      },
+      {
+        "case_id": "D04-037",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "9 Tredworth Road, Gloucester, GL1 4QN"
+      },
+      {
+        "case_id": "D04-038",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Isla Robertson"
+      },
+      {
+        "case_id": "D04-038",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "61 Painswick Road, Cheltenham, GL50 2EZ"
+      },
+      {
+        "case_id": "D04-039",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Leah Goldberg"
+      },
+      {
+        "case_id": "D04-039",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "3 Cotswold Mews, Winchcombe, GL54 5LB"
+      },
+      {
+        "case_id": "D04-040",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Tariq Aziz & Mrs Sana Aziz"
+      },
+      {
+        "case_id": "D04-040",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "44 Linden Road, Gloucester, GL1 5HZ"
+      },
+      {
+        "case_id": "D04-041",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Owen Davies"
+      },
+      {
+        "case_id": "D04-041",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "8 Brunswick Road, Flat 5, Gloucester, GL1 1JJ"
+      },
+      {
+        "case_id": "D04-042",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Amira Haddad"
+      },
+      {
+        "case_id": "D04-042",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "28 Prestbury Road, Cheltenham, GL52 2PW"
+      },
+      {
+        "case_id": "D04-043",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Ruby Collins"
+      },
+      {
+        "case_id": "D04-043",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "12 Westgate Street, Gloucester, GL1 2NW"
+      },
+      {
+        "case_id": "D04-044",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Femi Balogun"
+      },
+      {
+        "case_id": "D04-044",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "70 Stroud Road, Gloucester, GL1 5AJ"
+      },
+      {
+        "case_id": "D04-045",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mrs Clare Morton"
+      },
+      {
+        "case_id": "D04-045",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "30 Oxford Street, Flat 1, Cheltenham, GL52 6DT"
+      },
+      {
+        "case_id": "D04-046",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Lena Novak & Mr Piotr Novak"
+      },
+      {
+        "case_id": "D04-046",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "6 Slad Road, Stroud, GL5 1QW"
+      },
+      {
+        "case_id": "D04-047",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Sean Murphy"
+      },
+      {
+        "case_id": "D04-047",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "35 Hewlett Road, Cheltenham, GL52 6AE"
+      },
+      {
+        "case_id": "D04-048",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Dr Rohan Mehra & Mrs Anjali Mehra"
+      },
+      {
+        "case_id": "D04-048",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "2 Pittville Lawn, Cheltenham, GL52 2BE"
+      },
+      {
+        "case_id": "D04-049",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Ms Grace Liu"
+      },
+      {
+        "case_id": "D04-049",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "81 Bristol Road, Quedgeley, GL2 4NE"
+      },
+      {
+        "case_id": "D04-050",
+        "field": "full_name",
+        "got": "{NAME}",
+        "expected": "Mr Adam Kerr"
+      },
+      {
+        "case_id": "D04-050",
+        "field": "address",
+        "got": "{ADDRESS}",
+        "expected": "14 Gloucester Road, Tewkesbury, GL20 5SS"
+      }
+    ]
+  },
+  "rules": {
+    "agree": 2,
+    "compared": 4,
+    "errors": [
+      {
+        "case_id": "D04-036",
+        "field": "decision",
+        "got": "fails a rule",
+        "expected": "approve"
+      },
+      {
+        "case_id": "D04-049",
+        "field": "decision",
+        "got": "fails a rule",
+        "expected": "approve"
+      }
+    ]
+  },
+  "outputs": {
+    "D03-001": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "09 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-002": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D03-003": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "15 Aug 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D03-004": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "02 Oct 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D03-005": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "12 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-006": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "01 Apr 2026",
+      "issuer": "Brightwell Borough Council"
+    },
+    "D03-007": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "05 Oct 2026",
+      "issuer": "Pocketwave Mobile"
+    },
+    "D03-008": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "20 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D03-009": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "16 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D03-010": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "03 Oct 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D03-011": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "10 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-012": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "25 Sep 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D03-013": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "01 Sep 2026",
+      "issuer": "Brightwell Borough Council"
+    },
+    "D03-014": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "29 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D03-015": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "10 Jun 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-016": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "28 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D03-017": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "16 Sep 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D03-018": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "04 Oct 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D03-019": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D03-020": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "14 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-021": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "01 Oct 2026",
+      "issuer": "Brightwell Borough Council"
+    },
+    "D03-022": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "22 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D03-023": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "07 Oct 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D03-024": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "29 Sep 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D03-025": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D03-026": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "19 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D03-027": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "26 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D03-028": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "01 Oct 2026",
+      "issuer": "Brightwell Borough Council"
+    },
+    "D03-029": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "08 Oct 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D03-030": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "06 Oct 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D04-031": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "12 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D04-032": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "14 Sep 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D04-033": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "18 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D04-034": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "20 Sep 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D04-035": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D04-036": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "21 Sep 2026",
+      "issuer": "LUMENVALE ENERGY LTD"
+    },
+    "D04-037": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "01 Oct 2026",
+      "issuer": "Brightwell Borough Council"
+    },
+    "D04-038": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "15 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D04-039": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "24 Sep 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D04-040": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "16 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D04-041": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "26 Sep 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D04-042": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank"
+    },
+    "D04-043": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "22 Sep 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D04-044": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "27 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    },
+    "D04-045": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "19 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D04-046": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "23 Sep 2026",
+      "issuer": "Copperline Broadband"
+    },
+    "D04-047": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "25 Sep 2026",
+      "issuer": "Lumenvale Energy"
+    },
+    "D04-048": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "17 Sep 2026",
+      "issuer": "Harrowgate Water"
+    },
+    "D04-049": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "30 Sep 2026",
+      "issuer": "Northmere Bank plc"
+    },
+    "D04-050": {
+      "full_name": "{NAME}",
+      "address": "{ADDRESS}",
+      "statement_date": "28 Sep 2026",
+      "issuer": "Fenwick Gas & Power"
+    }
+  },
+  "decisions": {
+    "D03-001": "look",
+    "D03-002": "look",
+    "D03-003": "look",
+    "D03-004": "look",
+    "D03-005": "look",
+    "D03-006": "fails",
+    "D03-007": "fails",
+    "D03-008": "look",
+    "D03-009": "look",
+    "D03-010": "look",
+    "D03-011": "look",
+    "D03-012": "look",
+    "D03-013": "look",
+    "D03-014": "look",
+    "D03-015": "look",
+    "D03-016": "look",
+    "D03-017": "look",
+    "D03-018": "look",
+    "D03-019": "look",
+    "D03-020": "look",
+    "D03-021": "look",
+    "D03-022": "look",
+    "D03-023": "look",
+    "D03-024": "look",
+    "D03-025": "look",
+    "D03-026": "look",
+    "D03-027": "look",
+    "D03-028": "look",
+    "D03-029": "look",
+    "D03-030": "look",
+    "D04-031": "look",
+    "D04-032": "look",
+    "D04-033": "look",
+    "D04-034": "look",
+    "D04-035": "look",
+    "D04-036": "fails",
+    "D04-037": "look",
+    "D04-038": "look",
+    "D04-039": "look",
+    "D04-040": "look",
+    "D04-041": "look",
+    "D04-042": "look",
+    "D04-043": "look",
+    "D04-044": "look",
+    "D04-045": "look",
+    "D04-046": "look",
+    "D04-047": "look",
+    "D04-048": "look",
+    "D04-049": "fails",
+    "D04-050": "look"
+  },
+  "guardrail": "uc1_v1",
+  "model": "scripted",
+  "blocked": [],
+  "usage": {
+    "documents": 0,
+    "input_tokens": 0,
+    "output_tokens": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Tariq Bennett & Ms Leela Bennett"
+  },
+  {
+   "name": "address",
+   "value": "136 High Street, Gloucester, GL1 9TP"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Yusuf Ward"
+  },
+  {
+   "name": "address",
+   "value": "Flat 12, 32 Cotswold Way, Winchcombe, GL54 6BY"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-26"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

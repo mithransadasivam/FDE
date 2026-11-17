@@ -1,0 +1,21 @@
+item,case_id,field,value
+L01,D04-031,statement_date,03 Oct 2026
+L02,D03-008,full_name,Mr J. A. Kowalski
+L03,D04-033,full_name,Mr Arun Shah
+L04,D03-001,statement_date,09 Sep 2026
+L05,D04-034,statement_date,11 Oct 2026
+L06,D03-002,address,"22 Mill Lane, Stroud, GL5 1AB"
+L07,D04-040,full_name,Mr Tariq Aziz
+L08,D04-037,statement_date,01 Oct 2026
+L09,D03-011,statement_date,10 Sep 2026
+L10,D04-036,issuer,LUMENVALE ENERGY LTD
+L11,D04-041,address,"8 Brunswick Road, Flat 5, Gloucester, GL1 1JJ"
+L12,D03-020,statement_date,14 Sep 2026
+L13,D04-038,statement_date,06 Oct 2026
+L14,D04-049,issuer,Northmere Bank plc
+L15,D03-013,statement_date,01 Sep 2026
+L16,D04-032,statement_date,14 Sep 2026
+L17,D03-019,full_name,Ms Emily Clarke
+L18,D04-045,address,"30 Oxford Street, Flat 1, Cheltenham, GL52 6DT"
+L19,D04-050,statement_date,28 Sep 2026
+L20,D03-024,issuer,Copperline Broadband

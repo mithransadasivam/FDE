@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Harvey Boateng"
+  },
+  {
+   "name": "address",
+   "value": "47 Market St, Winchcombe, GL54 2FT"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-21"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

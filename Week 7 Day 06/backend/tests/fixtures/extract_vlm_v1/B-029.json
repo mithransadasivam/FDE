@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Imran Evans"
+  },
+  {
+   "name": "address",
+   "value": "Flat 12, 117 Tewkesbury Road, Gloucester, GL4 7LP"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

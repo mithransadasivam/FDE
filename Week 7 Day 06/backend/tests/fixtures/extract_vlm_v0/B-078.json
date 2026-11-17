@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Chloe Khan"
+  },
+  {
+   "name": "address",
+   "value": "102 Barton Street, Cheltenham, GL52 6LJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-09"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

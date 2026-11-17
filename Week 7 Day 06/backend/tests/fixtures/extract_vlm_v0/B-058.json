@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Joy Ward"
+  },
+  {
+   "name": "address",
+   "value": "53 Hatherley Ln, Cheltenham, GL50 9UH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-25"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

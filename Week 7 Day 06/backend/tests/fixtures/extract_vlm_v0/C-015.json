@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Zainab Nair"
+  },
+  {
+   "name": "address",
+   "value": "Flat 2, 138 Painswick Road, Winchcombe, GL54 6GE"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-03-12"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

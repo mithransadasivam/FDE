@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Wood",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "18 Spa Road Cheltenham GL52 4UA",
+   "word_ids": [
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026",
+   "word_ids": [
+    "w019",
+    "w020",
+    "w021"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

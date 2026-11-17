@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Harvey Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "111 Gloucester Road, Cheltenham, GL50 8HG"
+  },
+  {
+   "name": "statement_date",
+   "value": "17 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

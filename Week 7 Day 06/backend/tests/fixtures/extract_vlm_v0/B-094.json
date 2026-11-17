@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Zainab Sutton & Mr Harvey Sutton"
+  },
+  {
+   "name": "address",
+   "value": "54 Leckhampton Road, Cirencester, GL7 7WA"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-24"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

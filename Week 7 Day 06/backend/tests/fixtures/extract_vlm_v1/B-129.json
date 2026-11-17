@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Mei Price"
+  },
+  {
+   "name": "address",
+   "value": "59 Victoria Street, Tewkesbury, GL20 4UG"
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

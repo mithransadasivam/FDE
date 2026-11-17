@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-199",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Hannah Lewis & Mr Arun Lewis",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.4602,
+        0.1575
+      ],
+      "page_text": "Ms Hannah Lewis Mr Arun Lewis",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 9, 107 Abbey Road, Gloucester, GL4 9TP",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2931,
+        0.2316
+      ],
+      "page_text": "Flat 9, 107 Abbey Road Gloucester GL4 9TP",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "03 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.5882,
+        0.1556,
+        0.719,
+        0.1738
+      ],
+      "page_text": "03 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 78,
+    "latency_ms": 1887,
+    "scripted": true
+  }
+}

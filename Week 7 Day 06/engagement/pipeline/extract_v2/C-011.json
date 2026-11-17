@@ -1,0 +1,74 @@
+{
+  "doc_id": "C-011",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Grace Rossi",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.2684,
+        0.1564
+      ],
+      "page_text": "Miss Grace Rossi",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 6, 25 High Street Cheltenham GL50 5HU",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2729,
+        0.2309
+      ],
+      "page_text": "Flat 6, 25 High Street Cheltenham GL50 5HU",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Mar 2026",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.6565,
+        0.0573,
+        0.8019,
+        0.0755
+      ],
+      "page_text": "04 Mar 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Brightwell Borough Council",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.0391,
+        0.5089,
+        0.0682
+      ],
+      "page_text": "Brightwell Borough Council",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 584,
+    "output_tokens": 150,
+    "latency_ms": 2063,
+    "scripted": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kwame Kowalczyk"
+  },
+  {
+   "name": "address",
+   "value": "43 Cotswold Way, Gloucester, GL2 1FE"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-25"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

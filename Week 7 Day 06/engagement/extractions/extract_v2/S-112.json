@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Noah P. Thompson",
+      "word_ids": [
+        "w004",
+        "w005",
+        "w006"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "21 Birchwood Close, Cheltenham, GL51 7UY",
+      "word_ids": [
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011",
+        "w012"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "05 Dec 2026",
+      "word_ids": [
+        "w019",
+        "w020",
+        "w021"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

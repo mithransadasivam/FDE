@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Yusuf Demir"
+  },
+  {
+   "name": "address",
+   "value": "Flat 4, 6 Farm Lane, Cirencester, GL7 4GA"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

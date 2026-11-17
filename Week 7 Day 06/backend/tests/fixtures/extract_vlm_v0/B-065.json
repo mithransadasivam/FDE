@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Finley Iqbal"
+  },
+  {
+   "name": "address",
+   "value": "33 Green Ln, Cheltenham, GL50 9UU"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

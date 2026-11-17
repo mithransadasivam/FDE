@@ -1,0 +1,46 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Hannah Bennett & Mr Kwame Bennett",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "89 Leckhampton Road Tewkesbury GL20 2WL",
+   "word_ids": [
+    "w018",
+    "w019",
+    "w020",
+    "w023",
+    "w031",
+    "w032"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026",
+   "word_ids": [
+    "w015",
+    "w016",
+    "w017"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

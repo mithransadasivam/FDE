@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Clarke"
+  },
+  {
+   "name": "address",
+   "value": "30 Leckhampton Road, Cheltenham, GL52 8LT"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

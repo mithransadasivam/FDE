@@ -1,0 +1,310 @@
+{
+ "case_id": "S-141",
+ "slice": "issuer_variant",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Brightwell",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w002",
+   "text": "Borough",
+   "box": [
+    0.208,
+    0.08,
+    0.302,
+    0.105
+   ],
+   "confidence": 0.941
+  },
+  {
+   "id": "w003",
+   "text": "Council",
+   "box": [
+    0.31,
+    0.08,
+    0.404,
+    0.105
+   ],
+   "confidence": 0.952
+  },
+  {
+   "id": "w004",
+   "text": "Council",
+   "box": [
+    0.07,
+    0.12,
+    0.164,
+    0.145
+   ],
+   "confidence": 0.962
+  },
+  {
+   "id": "w005",
+   "text": "Tax",
+   "box": [
+    0.172,
+    0.12,
+    0.218,
+    0.145
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w006",
+   "text": "Bill",
+   "box": [
+    0.226,
+    0.12,
+    0.284,
+    0.145
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w007",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.16,
+    0.188,
+    0.185
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w008",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.16,
+    0.266,
+    0.185
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w009",
+   "text": "01",
+   "box": [
+    0.07,
+    0.2,
+    0.104,
+    0.225
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w010",
+   "text": "Apr",
+   "box": [
+    0.112,
+    0.2,
+    0.158,
+    0.225
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w011",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.2,
+    0.224,
+    0.225
+   ],
+   "confidence": 0.995
+  },
+  {
+   "id": "w012",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w013",
+   "text": "date:",
+   "box": [
+    0.124,
+    0.24,
+    0.194,
+    0.265
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w014",
+   "text": "30",
+   "box": [
+    0.07,
+    0.28,
+    0.104,
+    0.305
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w015",
+   "text": "Apr",
+   "box": [
+    0.112,
+    0.28,
+    0.158,
+    0.305
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w016",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.28,
+    0.224,
+    0.305
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w017",
+   "text": "Mr",
+   "box": [
+    0.07,
+    0.32,
+    0.104,
+    0.345
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w018",
+   "text": "David",
+   "box": [
+    0.112,
+    0.32,
+    0.182,
+    0.345
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w019",
+   "text": "A.",
+   "box": [
+    0.19,
+    0.32,
+    0.224,
+    0.345
+   ],
+   "confidence": 0.974
+  },
+  {
+   "id": "w020",
+   "text": "Jones",
+   "box": [
+    0.232,
+    0.32,
+    0.302,
+    0.345
+   ],
+   "confidence": 0.941
+  },
+  {
+   "id": "w021",
+   "text": "22,",
+   "box": [
+    0.07,
+    0.36,
+    0.116,
+    0.385
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w022",
+   "text": "Elm",
+   "box": [
+    0.124,
+    0.36,
+    0.17,
+    0.385
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w023",
+   "text": "Road",
+   "box": [
+    0.178,
+    0.36,
+    0.236,
+    0.385
+   ],
+   "confidence": 0.951
+  },
+  {
+   "id": "w024",
+   "text": "Brightwell",
+   "box": [
+    0.07,
+    0.4,
+    0.2,
+    0.425
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w025",
+   "text": "GL12",
+   "box": [
+    0.07,
+    0.44,
+    0.128,
+    0.465
+   ],
+   "confidence": 0.958
+  },
+  {
+   "id": "w026",
+   "text": "9DF",
+   "box": [
+    0.136,
+    0.44,
+    0.182,
+    0.465
+   ],
+   "confidence": 0.953
+  }
+ ],
+ "application": {
+  "case_id": "S-141",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "David A. Jones",
+  "address_line1": "22, Elm Road",
+  "town": "Brightwell",
+  "postcode": "GL12 9DF"
+ },
+ "labels": {
+  "full_name": "Mr David A. Jones",
+  "address": "22, Elm Road, Brightwell, GL12 9DF",
+  "statement_date": "01 Apr 2026",
+  "issuer": "Brightwell Borough Council",
+  "tom_decision": "approve"
+ }
+}

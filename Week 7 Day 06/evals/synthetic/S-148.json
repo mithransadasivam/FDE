@@ -1,0 +1,233 @@
+{
+ "case_id": "S-148",
+ "slice": "address_order",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Northmere",
+   "box": [
+    0.07,
+    0.08,
+    0.188,
+    0.105
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w002",
+   "text": "Bank",
+   "box": [
+    0.196,
+    0.08,
+    0.254,
+    0.105
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w003",
+   "text": "Sarah",
+   "box": [
+    0.07,
+    0.12,
+    0.14,
+    0.145
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w004",
+   "text": "Davis",
+   "box": [
+    0.148,
+    0.12,
+    0.218,
+    0.145
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w005",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.16,
+    0.188,
+    0.185
+   ],
+   "confidence": 0.972
+  },
+  {
+   "id": "w006",
+   "text": "date",
+   "box": [
+    0.196,
+    0.16,
+    0.254,
+    0.185
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w007",
+   "text": "15",
+   "box": [
+    0.07,
+    0.2,
+    0.104,
+    0.225
+   ],
+   "confidence": 0.972
+  },
+  {
+   "id": "w008",
+   "text": "Jul",
+   "box": [
+    0.112,
+    0.2,
+    0.158,
+    0.225
+   ],
+   "confidence": 0.956
+  },
+  {
+   "id": "w009",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.2,
+    0.224,
+    0.225
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w010",
+   "text": "56",
+   "box": [
+    0.07,
+    0.24,
+    0.104,
+    0.265
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w011",
+   "text": "Birch",
+   "box": [
+    0.112,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.956
+  },
+  {
+   "id": "w012",
+   "text": "Court,",
+   "box": [
+    0.19,
+    0.24,
+    0.272,
+    0.265
+   ],
+   "confidence": 0.972
+  },
+  {
+   "id": "w013",
+   "text": "Flat",
+   "box": [
+    0.28,
+    0.24,
+    0.338,
+    0.265
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w014",
+   "text": "7",
+   "box": [
+    0.346,
+    0.24,
+    0.368,
+    0.265
+   ],
+   "confidence": 0.947
+  },
+  {
+   "id": "w015",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.28,
+    0.116,
+    0.305
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w016",
+   "text": "date",
+   "box": [
+    0.124,
+    0.28,
+    0.182,
+    0.305
+   ],
+   "confidence": 0.959
+  },
+  {
+   "id": "w017",
+   "text": "05",
+   "box": [
+    0.07,
+    0.32,
+    0.104,
+    0.345
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w018",
+   "text": "Aug",
+   "box": [
+    0.112,
+    0.32,
+    0.158,
+    0.345
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w019",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.32,
+    0.224,
+    0.345
+   ],
+   "confidence": 0.987
+  }
+ ],
+ "application": {
+  "case_id": "S-148",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Sarah Davis",
+  "address_line1": "Flat 7, 56 Birch Court",
+  "town": "Gloucester",
+  "postcode": "GL4 5EF"
+ },
+ "labels": {
+  "full_name": "Sarah Davis",
+  "address": "56 Birch Court, Flat 7",
+  "statement_date": "15 Jul 2026",
+  "issuer": "Northmere Bank",
+  "tom_decision": "approve"
+ }
+}

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html, body, #root { height: 100%; }
+body { -webkit-font-smoothing: antialiased; background: #F4F5FA; }
+
+/* Day 4: labelling guidelines rendered from Markdown */
+.guide h2 { font-weight: 600; color: #1B1F3B; margin: 10px 0 4px; font-size: 12.5px; }
+.guide p { margin: 4px 0; }
+.guide ul { list-style: disc; padding-left: 16px; margin: 4px 0; }
+.guide table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 11px; }
+.guide th, .guide td { border-top: 1px solid rgba(0,0,0,0.07); padding: 4px 4px; text-align: left; vertical-align: top; }
+.guide th { color: #9A9EB3; font-weight: 600; }

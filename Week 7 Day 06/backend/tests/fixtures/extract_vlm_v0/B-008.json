@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Ruby Haddad"
+  },
+  {
+   "name": "address",
+   "value": "125 Bath Road, Gloucester, GL1 2HH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

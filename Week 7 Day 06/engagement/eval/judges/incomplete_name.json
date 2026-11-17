@@ -1,0 +1,375 @@
+{
+  "judge": "incomplete_name",
+  "prompt": "incomplete_name",
+  "field": "full_name",
+  "failure_type": "incomplete_name",
+  "at": "2026-11-06T02:59:04+00:00",
+  "agreement": {
+    "n": 50,
+    "agree": 48,
+    "percent": 96.0,
+    "kappa": 0.65,
+    "tp": 2,
+    "fp": 0,
+    "fn": 2,
+    "tn": 46,
+    "caught": 0.5,
+    "cleared": 1.0,
+    "disagreements": [
+      "D04-033",
+      "D04-046"
+    ]
+  },
+  "verdicts": {
+    "D03-001": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Ananya R. Mehta' matches the name found in the document's address block (w012-w015).",
+      "value": "Ms Ananya R. Mehta",
+      "expert": "pass",
+      "expected": "Ms Ananya R. Mehta"
+    },
+    "D03-002": {
+      "verdict": "pass",
+      "reason": "The document's OCR words include 'Mr', 'Daniel', and 'Okonkwo' as the account holder's name, matching the provided value.",
+      "value": "Mr Daniel Okonkwo",
+      "expert": "pass",
+      "expected": "Mr Daniel Okonkwo"
+    },
+    "D03-003": {
+      "verdict": "pass",
+      "reason": "The document's OCR words show 'Mrs', 'Grace', and 'Whitfield' (w012-w014) as the addressee, matching the provided full name.",
+      "value": "Mrs Grace Whitfield",
+      "expert": "pass",
+      "expected": "Mrs Grace Whitfield"
+    },
+    "D03-004": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Tomasz Nowak' matches the name found in the document (w012-w014).",
+      "value": "Mr Tomasz Nowak",
+      "expert": "pass",
+      "expected": "Mr Tomasz Nowak"
+    },
+    "D03-005": {
+      "verdict": "pass",
+      "reason": "The document's OCR words include 'Ms', 'Priya', and 'Shah' as the addressee, matching the provided full name.",
+      "value": "Ms Priya Shah",
+      "expert": "pass",
+      "expected": "Ms Priya Shah"
+    },
+    "D03-006": {
+      "verdict": "pass",
+      "reason": "The document shows the addressee as 'Mr Oliver Bennett', which matches the provided value.",
+      "value": "Mr Oliver Bennett",
+      "expert": "pass",
+      "expected": "Mr Oliver Bennett"
+    },
+    "D03-007": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Miss Chloe Adeyemi' as the addressee, which exactly matches the provided full name.",
+      "value": "Miss Chloe Adeyemi",
+      "expert": "pass",
+      "expected": "Miss Chloe Adeyemi"
+    },
+    "D03-008": {
+      "verdict": "pass",
+      "reason": "The OCR words show the document is addressed to 'Mr J. A. Kowalski', which matches the value exactly.",
+      "value": "Mr J. A. Kowalski",
+      "expert": "pass",
+      "expected": "Mr J. A. Kowalski"
+    },
+    "D03-009": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mrs', 'Helena', and 'Marsh' as the addressee on the bank statement, matching the provided full name.",
+      "value": "Mrs Helena Marsh",
+      "expert": "pass",
+      "expected": "Mrs Helena Marsh"
+    },
+    "D03-010": {
+      "verdict": "pass",
+      "reason": "The document is addressed to Mr Samuel Price, matching the provided full name.",
+      "value": "Mr Samuel Price",
+      "expert": "pass",
+      "expected": "Mr Samuel Price"
+    },
+    "D03-011": {
+      "verdict": "pass",
+      "reason": "The OCR words include 'Ms', 'Fatima', and 'Rahman' which together form the complete name 'Ms Fatima Rahman' as the addressee on the document.",
+      "value": "Ms Fatima Rahman",
+      "expert": "pass",
+      "expected": "Ms Fatima Rahman"
+    },
+    "D03-012": {
+      "verdict": "pass",
+      "reason": "The document's OCR words include 'Mr', 'Rhys', and 'Morgan' (w012-w014), which together form the complete name 'Mr Rhys Morgan' as the addressee.",
+      "value": "Mr Rhys Morgan",
+      "expert": "pass",
+      "expected": "Mr Rhys Morgan"
+    },
+    "D03-013": {
+      "verdict": "pass",
+      "reason": "The OCR text includes 'Mrs Aisha Bello' as the addressee, matching the provided full name.",
+      "value": "Mrs Aisha Bello",
+      "expert": "pass",
+      "expected": "Mrs Aisha Bello"
+    },
+    "D03-014": {
+      "verdict": "pass",
+      "reason": "The document's OCR words show 'Mr', 'George', 'Hughes' as the account holder's name, matching the provided value.",
+      "value": "Mr George Hughes",
+      "expert": "pass",
+      "expected": "Mr George Hughes"
+    },
+    "D03-015": {
+      "verdict": "pass",
+      "reason": "The document's OCR words show 'Ms', 'Lucy', and 'Carter' as the addressee, matching the provided full name.",
+      "value": "Ms Lucy Carter",
+      "expert": "pass",
+      "expected": "Ms Lucy Carter"
+    },
+    "D03-016": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mr', 'Arjun', and 'Nair' as the addressee, matching the provided full name.",
+      "value": "Mr Arjun Nair",
+      "expert": "pass",
+      "expected": "Mr Arjun Nair"
+    },
+    "D03-017": {
+      "verdict": "pass",
+      "reason": "The document is addressed to Mrs Sophie Turner, matching the provided full name.",
+      "value": "Mrs Sophie Turner",
+      "expert": "pass",
+      "expected": "Mrs Sophie Turner"
+    },
+    "D03-018": {
+      "verdict": "pass",
+      "reason": "The document is addressed to Mr Kwame Asante, which matches the provided value.",
+      "value": "Mr Kwame Asante",
+      "expert": "pass",
+      "expected": "Mr Kwame Asante"
+    },
+    "D03-019": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Emily Clarke' matches the title and full name found on the bank statement (w006 'Ms', w007 'Emily', w008 'Clarke').",
+      "value": "Ms Emily Clarke",
+      "expert": "pass",
+      "expected": "Ms Emily Clarke"
+    },
+    "D03-020": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Hassan Ali' matches the name on the document (Mr, Hassan, Ali).",
+      "value": "Mr Hassan Ali",
+      "expert": "pass",
+      "expected": "Mr Hassan Ali"
+    },
+    "D03-021": {
+      "verdict": "pass",
+      "reason": "The OCR text shows the document is addressed to 'Mrs Margaret Doyle', which exactly matches the provided value.",
+      "value": "Mrs Margaret Doyle",
+      "expert": "pass",
+      "expected": "Mrs Margaret Doyle"
+    },
+    "D03-022": {
+      "verdict": "pass",
+      "reason": "The document shows 'Mr Liam O'Brien' as the addressee on lines w014-w016.",
+      "value": "Mr Liam O'Brien",
+      "expert": "pass",
+      "expected": "Mr Liam O'Brien"
+    },
+    "D03-023": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Zara Hussain' matches the name found in the document (w012, w013, w014).",
+      "value": "Ms Zara Hussain",
+      "expert": "pass",
+      "expected": "Ms Zara Hussain"
+    },
+    "D03-024": {
+      "verdict": "pass",
+      "reason": "The document is addressed to 'Mr Ethan Wright', and the value exactly matches that complete addressee name.",
+      "value": "Mr Ethan Wright",
+      "expert": "pass",
+      "expected": "Mr Ethan Wright"
+    },
+    "D03-025": {
+      "verdict": "pass",
+      "reason": "The document's OCR words include 'Mrs', 'Nkechi', and 'Eze' as the account holder's name, matching the provided value.",
+      "value": "Mrs Nkechi Eze",
+      "expert": "pass",
+      "expected": "Mrs Nkechi Eze"
+    },
+    "D03-026": {
+      "verdict": "pass",
+      "reason": "The OCR words include 'Mr', 'Ben', and 'Fletcher' as the addressee, matching the provided full name.",
+      "value": "Mr Ben Fletcher",
+      "expert": "pass",
+      "expected": "Mr Ben Fletcher"
+    },
+    "D03-027": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Mei Lin Chen' matches the name on the document as seen in OCR lines w014-w017.",
+      "value": "Ms Mei Lin Chen",
+      "expert": "pass",
+      "expected": "Ms Mei Lin Chen"
+    },
+    "D03-028": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Mr Patrick Byrne' as the addressee, matching the provided full name.",
+      "value": "Mr Patrick Byrne",
+      "expert": "pass",
+      "expected": "Mr Patrick Byrne"
+    },
+    "D03-029": {
+      "verdict": "pass",
+      "reason": "The document shows the addressee as 'Mrs Ruth Gallagher', which matches the provided value.",
+      "value": "Mrs Ruth Gallagher",
+      "expert": "pass",
+      "expected": "Mrs Ruth Gallagher"
+    },
+    "D03-030": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Mr Yusuf Demir' as the addressee, which exactly matches the provided value.",
+      "value": "Mr Yusuf Demir",
+      "expert": "pass",
+      "expected": "Mr Yusuf Demir"
+    },
+    "D04-031": {
+      "verdict": "pass",
+      "reason": "The OCR words 'Ms', 'Olivia', and 'Grant' appear consecutively as the addressee on the document, matching the provided full name.",
+      "value": "Ms Olivia Grant",
+      "expert": "pass",
+      "expected": "Ms Olivia Grant"
+    },
+    "D04-032": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Daniel Reid' matches the name found on the document at words w012, w013, and w014.",
+      "value": "Mr Daniel Reid",
+      "expert": "pass",
+      "expected": "Mr Daniel Reid"
+    },
+    "D04-033": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Arun Shah' matches the name 'Mr Arun Shah' found on the document.",
+      "value": "Mr Arun Shah",
+      "expert": "fail",
+      "expected": "Mr Arun Shah & Mrs Priti Shah"
+    },
+    "D04-034": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Joy Adebayo' matches the name found on the document (Mrs, Joy, Adebayo at w012-w014).",
+      "value": "Mrs Joy Adebayo",
+      "expert": "pass",
+      "expected": "Mrs Joy Adebayo"
+    },
+    "D04-035": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Callum Fraser' matches the name found on the document (w006 'Mr', w007 'Callum', w008 'Fraser').",
+      "value": "Mr Callum Fraser",
+      "expert": "pass",
+      "expected": "Mr Callum Fraser"
+    },
+    "D04-036": {
+      "verdict": "pass",
+      "reason": "The document shows the addressee as 'Ms Hannah Wells', which matches the provided value.",
+      "value": "Ms Hannah Wells",
+      "expert": "pass",
+      "expected": "Ms Hannah Wells"
+    },
+    "D04-037": {
+      "verdict": "pass",
+      "reason": "The document is addressed to Mr Victor Lungu, which matches the value exactly.",
+      "value": "Mr Victor Lungu",
+      "expert": "pass",
+      "expected": "Mr Victor Lungu"
+    },
+    "D04-038": {
+      "verdict": "pass",
+      "reason": "The document shows 'Ms Isla Robertson' as the addressee, matching the provided full name.",
+      "value": "Ms Isla Robertson",
+      "expert": "pass",
+      "expected": "Ms Isla Robertson"
+    },
+    "D04-039": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mrs', 'Leah', and 'Goldberg' as the addressee on the bill, matching the provided full name.",
+      "value": "Mrs Leah Goldberg",
+      "expert": "pass",
+      "expected": "Mrs Leah Goldberg"
+    },
+    "D04-040": {
+      "verdict": "fail",
+      "reason": "The document is addressed to both Mr Tariq Aziz and Mrs Sana Aziz, so the value omits one of the addressees.",
+      "value": "Mr Tariq Aziz",
+      "expert": "fail",
+      "expected": "Mr Tariq Aziz & Mrs Sana Aziz"
+    },
+    "D04-041": {
+      "verdict": "pass",
+      "reason": "The document's OCR words show 'Mr', 'Owen', and 'Davies' as the addressee, matching the provided full name.",
+      "value": "Mr Owen Davies",
+      "expert": "pass",
+      "expected": "Mr Owen Davies"
+    },
+    "D04-042": {
+      "verdict": "pass",
+      "reason": "The document shows 'Ms Amira Haddad' as the account holder's name on lines w006-w008.",
+      "value": "Ms Amira Haddad",
+      "expert": "pass",
+      "expected": "Ms Amira Haddad"
+    },
+    "D04-043": {
+      "verdict": "pass",
+      "reason": "The OCR words 'Ms', 'Ruby', and 'Collins' appear consecutively, matching the provided full name 'Ms Ruby Collins'.",
+      "value": "Ms Ruby Collins",
+      "expert": "pass",
+      "expected": "Ms Ruby Collins"
+    },
+    "D04-044": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Mr Femi Balogun' as the addressee, matching the provided value.",
+      "value": "Mr Femi Balogun",
+      "expert": "pass",
+      "expected": "Mr Femi Balogun"
+    },
+    "D04-045": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mrs', 'Clare', and 'Morton' as the addressee on the statement, matching the provided full name.",
+      "value": "Mrs Clare Morton",
+      "expert": "pass",
+      "expected": "Mrs Clare Morton"
+    },
+    "D04-046": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Lena Novak' matches the name 'Ms Lena Novak' found on the document.",
+      "value": "Ms Lena Novak",
+      "expert": "fail",
+      "expected": "Ms Lena Novak & Mr Piotr Novak"
+    },
+    "D04-047": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mr', 'Sean', and 'Murphy' as the addressee, matching the provided value.",
+      "value": "Mr Sean Murphy",
+      "expert": "pass",
+      "expected": "Mr Sean Murphy"
+    },
+    "D04-048": {
+      "verdict": "fail",
+      "reason": "The document is addressed to both Dr Rohan Mehra and Mrs Anjali Mehra, so the full name should include both, not just Dr Rohan Mehra.",
+      "value": "Dr Rohan Mehra",
+      "expert": "fail",
+      "expected": "Dr Rohan Mehra & Mrs Anjali Mehra"
+    },
+    "D04-049": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Ms Grace Liu' as the addressee, matching the provided value.",
+      "value": "Ms Grace Liu",
+      "expert": "pass",
+      "expected": "Ms Grace Liu"
+    },
+    "D04-050": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Mr', 'Adam', and 'Kerr' as the addressee, which exactly matches the provided value 'Mr Adam Kerr'.",
+      "value": "Mr Adam Kerr",
+      "expert": "pass",
+      "expected": "Mr Adam Kerr"
+    }
+  }
+}

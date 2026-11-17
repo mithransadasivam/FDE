@@ -1,0 +1,14 @@
+[
+  {
+    "at": "2026-11-17T01:54:48+00:00",
+    "concurrency": 8,
+    "resume": false,
+    "calls": 400,
+    "complete": 200,
+    "failed_docs": 0,
+    "refusals": 0,
+    "wall_ms": 96711,
+    "docs_per_min": 124.1,
+    "simulated": true
+  }
+]

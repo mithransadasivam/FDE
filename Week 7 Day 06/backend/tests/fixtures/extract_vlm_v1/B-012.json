@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Harvey Khan"
+  },
+  {
+   "name": "address",
+   "value": "15 Green Lane, Quedgeley, GL2 8PF"
+  },
+  {
+   "name": "statement_date",
+   "value": "31 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

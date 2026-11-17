@@ -1,0 +1,374 @@
+{
+  "judge": "wrong_date",
+  "prompt": "wrong_date",
+  "field": "statement_date",
+  "failure_type": "wrong_date_chosen",
+  "at": "2026-11-06T03:16:09+00:00",
+  "agreement": {
+    "n": 50,
+    "agree": 49,
+    "percent": 98.0,
+    "kappa": 0.9,
+    "tp": 5,
+    "fp": 1,
+    "fn": 0,
+    "tn": 44,
+    "caught": 1.0,
+    "cleared": 0.98,
+    "disagreements": [
+      "D03-014"
+    ]
+  },
+  "verdicts": {
+    "D03-001": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '09 Sep 2026', which exactly matches the provided value.",
+      "value": "09 Sep 2026",
+      "expert": "pass",
+      "expected": "09 Sep 2026"
+    },
+    "D03-002": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '30 Sep 2026', which exactly matches the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-003": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Statement date' followed by '15', 'Aug', '2026', matching the provided value.",
+      "value": "15 Aug 2026",
+      "expert": "pass",
+      "expected": "15 Aug 2026"
+    },
+    "D03-004": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '02 Oct 2026', which exactly matches the provided value.",
+      "value": "02 Oct 2026",
+      "expert": "pass",
+      "expected": "02 Oct 2026"
+    },
+    "D03-005": {
+      "verdict": "pass",
+      "reason": "The value '12 Sep 2026' matches the statement date shown in the document.",
+      "value": "12 Sep 2026",
+      "expert": "pass",
+      "expected": "12 Sep 2026"
+    },
+    "D03-006": {
+      "verdict": "pass",
+      "reason": "The value '01 Apr 2026' matches the date of issue found in OCR words w011, w012, and w013.",
+      "value": "01 Apr 2026",
+      "expert": "pass",
+      "expected": "01 Apr 2026"
+    },
+    "D03-007": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Statement date' followed by '05 Oct 2026', which exactly matches the provided value.",
+      "value": "05 Oct 2026",
+      "expert": "pass",
+      "expected": "05 Oct 2026"
+    },
+    "D03-008": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '20 Sep 2026', which exactly matches the provided value.",
+      "value": "20 Sep 2026",
+      "expert": "pass",
+      "expected": "20 Sep 2026"
+    },
+    "D03-009": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '16 Sep 2026', which exactly matches the provided value.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "18 Sep 2026"
+    },
+    "D03-010": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '03 Oct 2026', confirming the value matches the document's statement date.",
+      "value": "03 Oct 2026",
+      "expert": "pass",
+      "expected": "03 Oct 2026"
+    },
+    "D03-011": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '10 Sep 2026', which matches the provided value.",
+      "value": "10 Sep 2026",
+      "expert": "pass",
+      "expected": "11 Sep 2026"
+    },
+    "D03-012": {
+      "verdict": "pass",
+      "reason": "The OCR words 'Statement date' are followed by '25', 'Sep', '2026', which exactly match the provided value.",
+      "value": "25 Sep 2026",
+      "expert": "pass",
+      "expected": "25 Sep 2026"
+    },
+    "D03-013": {
+      "verdict": "pass",
+      "reason": "The document's date of issue is '01 Sep 2026', which matches the provided statement date value.",
+      "value": "01 Sep 2026",
+      "expert": "pass",
+      "expected": "01 Sep 2026"
+    },
+    "D03-014": {
+      "verdict": "fail",
+      "reason": "The document's statement date is 30 Sep 2026, but the provided value is 29 Sep 2026.",
+      "value": "29 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-015": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '10', 'Jun', '2026', which exactly matches the provided value.",
+      "value": "10 Jun 2026",
+      "expert": "pass",
+      "expected": "10 Jun 2026"
+    },
+    "D03-016": {
+      "verdict": "pass",
+      "reason": "The value '28 Sep 2026' matches the statement date found in the OCR text (w025, w026, w027).",
+      "value": "28 Sep 2026",
+      "expert": "pass",
+      "expected": "28 Sep 2026"
+    },
+    "D03-017": {
+      "verdict": "pass",
+      "reason": "The value '16 Sep 2026' matches the statement date shown in the document.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "16 Sep 2026"
+    },
+    "D03-018": {
+      "verdict": "pass",
+      "reason": "The value matches the statement date shown in the document as 04 Oct 2026.",
+      "value": "04 Oct 2026",
+      "expert": "pass",
+      "expected": "04 Oct 2026"
+    },
+    "D03-019": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '30 Sep 2026', matching the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-020": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '14 Sep 2026', which exactly matches the provided value.",
+      "value": "14 Sep 2026",
+      "expert": "pass",
+      "expected": "14 Sep 2026"
+    },
+    "D03-021": {
+      "verdict": "pass",
+      "reason": "The value matches the document's date of issue, 01 Oct 2026.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D03-022": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '22 Sep 2026', which matches the provided value.",
+      "value": "22 Sep 2026",
+      "expert": "pass",
+      "expected": "22 Sep 2026"
+    },
+    "D03-023": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '07 Oct 2026', matching the value.",
+      "value": "07 Oct 2026",
+      "expert": "pass",
+      "expected": "07 Oct 2026"
+    },
+    "D03-024": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '29 Sep 2026', which exactly matches the provided value.",
+      "value": "29 Sep 2026",
+      "expert": "pass",
+      "expected": "29 Sep 2026"
+    },
+    "D03-025": {
+      "verdict": "pass",
+      "reason": "The OCR text includes 'Statement date' followed by '30 Sep 2026', matching the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-026": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '19 Sep 2026', which matches the provided value.",
+      "value": "19 Sep 2026",
+      "expert": "pass",
+      "expected": "19 Sep 2026"
+    },
+    "D03-027": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '26 Sep 2026', which exactly matches the provided value.",
+      "value": "26 Sep 2026",
+      "expert": "pass",
+      "expected": "26 Sep 2026"
+    },
+    "D03-028": {
+      "verdict": "pass",
+      "reason": "The value '01 Oct 2026' matches the document's date of issue, which is the statement date.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D03-029": {
+      "verdict": "pass",
+      "reason": "The value '08 Oct 2026' matches the statement date shown in the document as 'Statement date 08 Oct 2026'.",
+      "value": "08 Oct 2026",
+      "expert": "pass",
+      "expected": "08 Oct 2026"
+    },
+    "D03-030": {
+      "verdict": "pass",
+      "reason": "The OCR shows 'Statement date' followed by '06 Oct 2026', matching the value exactly.",
+      "value": "06 Oct 2026",
+      "expert": "pass",
+      "expected": "06 Oct 2026"
+    },
+    "D04-031": {
+      "verdict": "fail",
+      "reason": "The document's statement date is '12 Sep 2026', not '03 Oct 2026', which is the payment due date.",
+      "value": "03 Oct 2026",
+      "expert": "fail",
+      "expected": "12 Sep 2026"
+    },
+    "D04-032": {
+      "verdict": "pass",
+      "reason": "The OCR words show 'Statement date' followed by '14 Sep 2026', matching the value.",
+      "value": "14 Sep 2026",
+      "expert": "pass",
+      "expected": "14 Sep 2026"
+    },
+    "D04-033": {
+      "verdict": "pass",
+      "reason": "The value '18 Sep 2026' matches the statement date shown in the document.",
+      "value": "18 Sep 2026",
+      "expert": "pass",
+      "expected": "18 Sep 2026"
+    },
+    "D04-034": {
+      "verdict": "fail",
+      "reason": "The document's statement date is '20 Sep 2026', not '11 Oct 2026', which is the payment due date.",
+      "value": "11 Oct 2026",
+      "expert": "fail",
+      "expected": "20 Sep 2026"
+    },
+    "D04-035": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '30 Sep 2026', which exactly matches the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-036": {
+      "verdict": "pass",
+      "reason": "The value '21 Sep 2026' matches the statement date found in the OCR text at words w024, w025, and w026.",
+      "value": "21 Sep 2026",
+      "expert": "pass",
+      "expected": "21 Sep 2026"
+    },
+    "D04-037": {
+      "verdict": "pass",
+      "reason": "The value '01 Oct 2026' matches the 'Date of issue' on the council tax bill, which is the statement date.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D04-038": {
+      "verdict": "fail",
+      "reason": "The value '06 Oct 2026' matches the payment due date, not the statement date, which is '15 Sep 2026'.",
+      "value": "06 Oct 2026",
+      "expert": "fail",
+      "expected": "15 Sep 2026"
+    },
+    "D04-039": {
+      "verdict": "pass",
+      "reason": "The OCR shows 'Statement date' followed by '24 Sep 2026', which matches the provided value.",
+      "value": "24 Sep 2026",
+      "expert": "pass",
+      "expected": "24 Sep 2026"
+    },
+    "D04-040": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '16 Sep 2026', which exactly matches the provided value.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "16 Sep 2026"
+    },
+    "D04-041": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '26 Sep 2026', which exactly matches the provided value.",
+      "value": "26 Sep 2026",
+      "expert": "pass",
+      "expected": "26 Sep 2026"
+    },
+    "D04-042": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '30 Sep 2026', which matches the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-043": {
+      "verdict": "fail",
+      "reason": "The document's statement date is 22 Sep 2026, but the value provided is the payment due date (13 Oct 2026).",
+      "value": "13 Oct 2026",
+      "expert": "fail",
+      "expected": "22 Sep 2026"
+    },
+    "D04-044": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows \"Statement date\" followed by \"27 Sep 2026\", matching the provided value.",
+      "value": "27 Sep 2026",
+      "expert": "pass",
+      "expected": "27 Sep 2026"
+    },
+    "D04-045": {
+      "verdict": "pass",
+      "reason": "The document's OCR shows 'Statement date' followed by '19 Sep 2026', matching the provided value.",
+      "value": "19 Sep 2026",
+      "expert": "pass",
+      "expected": "19 Sep 2026"
+    },
+    "D04-046": {
+      "verdict": "pass",
+      "reason": "The value '23 Sep 2026' matches the statement date shown in the document.",
+      "value": "23 Sep 2026",
+      "expert": "pass",
+      "expected": "23 Sep 2026"
+    },
+    "D04-047": {
+      "verdict": "fail",
+      "reason": "The statement date is 25 Sep 2026, not 16 Oct 2026.",
+      "value": "16 Oct 2026",
+      "expert": "fail",
+      "expected": "25 Sep 2026"
+    },
+    "D04-048": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '17 Sep 2026', which matches the provided value.",
+      "value": "17 Sep 2026",
+      "expert": "pass",
+      "expected": "17 Sep 2026"
+    },
+    "D04-049": {
+      "verdict": "pass",
+      "reason": "The OCR text shows 'Statement date' followed by '30 Sep 2026', which exactly matches the provided value.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-050": {
+      "verdict": "pass",
+      "reason": "The value '28 Sep 2026' matches the statement date shown in the document.",
+      "value": "28 Sep 2026",
+      "expert": "pass",
+      "expected": "28 Sep 2026"
+    }
+  }
+}

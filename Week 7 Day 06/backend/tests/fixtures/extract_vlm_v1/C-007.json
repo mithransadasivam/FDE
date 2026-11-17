@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Rohan Nair"
+  },
+  {
+   "name": "address",
+   "value": "Flat 1, 52 Cotswold Way, Quedgeley, GL2 6SG"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Mar 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-169",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Grace Lloyd",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2546,
+        0.1767
+      ],
+      "page_text": "Ms Grace Lloyd",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "68 Meadow View Cheltenham GL51 1XJ",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2408,
+        0.2564
+      ],
+      "page_text": "68 Meadow View Cheltenham GL51 1XJ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "12 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7533,
+        0.2006
+      ],
+      "page_text": "12 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4783,
+        0.0634
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 608,
+    "output_tokens": 136,
+    "latency_ms": 1962,
+    "scripted": true
+  }
+}
