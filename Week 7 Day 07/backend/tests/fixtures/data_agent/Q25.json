@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS documents_reviewed FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+  "explanation": "Documents reviewed in October 2026. Row security limits them to the user's team.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

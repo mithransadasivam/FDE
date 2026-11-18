@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Olivia Ricci & Mr Kwame Ricci"
+  },
+  {
+   "name": "address",
+   "value": "Flat 3, 125 Victoria Street, Cheltenham, GL51 8TX"
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

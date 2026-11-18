@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-079",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Molly Kowalczyk",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.3208,
+        0.1791
+      ],
+      "page_text": "Mrs Molly Kowalczyk",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "139 Station Road Stroud GL5 1UF",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2454,
+        0.2555
+      ],
+      "page_text": "139 Station Road Stroud GL5 1UF",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "08 Oct 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7556,
+        0.1991
+      ],
+      "page_text": "08 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.481,
+        0.0664
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 609,
+    "output_tokens": 136,
+    "latency_ms": 1962,
+    "scripted": true
+  }
+}

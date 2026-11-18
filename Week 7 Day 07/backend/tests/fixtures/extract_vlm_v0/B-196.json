@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Samuel Byrne"
+  },
+  {
+   "name": "address",
+   "value": "67 Hales Rd, Winchcombe, GL54 4HL"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-22"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

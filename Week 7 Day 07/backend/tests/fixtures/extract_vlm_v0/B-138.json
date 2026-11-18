@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr George Sutton"
+  },
+  {
+   "name": "address",
+   "value": "Flat 8, 76 Orchard Cl, Winchcombe, GL54 2UX"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

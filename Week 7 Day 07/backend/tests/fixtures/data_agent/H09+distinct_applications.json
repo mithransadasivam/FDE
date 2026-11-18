@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(DISTINCT c.case_id) AS applications FROM caseflow.cases c JOIN caseflow.documents d ON d.case_id = c.case_id WHERE d.outcome = 'ask_applicant' AND c.status = 'approved' AND c.decided_at >= DATE '2026-07-01' AND c.decided_at < DATE '2026-10-01'",
+  "explanation": "Applications approved in Q3 2026 that had at least one ask_applicant, each counted once.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

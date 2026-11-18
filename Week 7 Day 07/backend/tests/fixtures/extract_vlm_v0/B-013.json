@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Reza Kaur"
+  },
+  {
+   "name": "address",
+   "value": "Flat 5, 40 Hucclecote Road, Quedgeley, GL2 6GX"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Imran Sharma"
+  },
+  {
+   "name": "address",
+   "value": "Flat 9, 23 Station Road, Gloucester, GL4 9EJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

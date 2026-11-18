@@ -1,0 +1,69 @@
+{
+  "doc_id": "B-007",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Harvey Shah",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2596,
+        0.1791
+      ],
+      "page_text": "Mr Harvey Shah",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "48 Green Lane, Stroud, GL5 3DF",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1873,
+        0.2218,
+        0.2555
+      ],
+      "page_text": "48 Green Lane Stroud GL5 3DF",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-08-01",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.79,
+      "status": "check",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 70,
+    "latency_ms": 1788,
+    "scripted": true
+  }
+}

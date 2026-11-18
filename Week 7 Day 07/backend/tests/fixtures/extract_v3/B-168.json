@@ -1,0 +1,46 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kofi Bello & Ms Leela Bello",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "140 High Street Cheltenham GL53 7GW",
+   "word_ids": [
+    "w024",
+    "w025",
+    "w026",
+    "w027",
+    "w030",
+    "w031"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026",
+   "word_ids": [
+    "w021",
+    "w022",
+    "w023"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-140",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Callum Clarke",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2749,
+        0.1755
+      ],
+      "page_text": "Mr Callum Clarke",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "30 Leckhampton Road, Cheltenham, GL52 8LT",
+      "confidence": 0.69,
+      "status": "check",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2971,
+        0.2555
+      ],
+      "page_text": "30 Leckhampton Road Cheltenham GL52 8LT",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Aug 2026",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7638,
+        0.2036
+      ],
+      "page_text": "04 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.481,
+        0.0664
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 74,
+    "latency_ms": 1855,
+    "scripted": true
+  }
+}

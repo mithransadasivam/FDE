@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Dev Ricci"
+  },
+  {
+   "name": "address",
+   "value": "114 London Road, Gloucester, GL1 5ST"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-08"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

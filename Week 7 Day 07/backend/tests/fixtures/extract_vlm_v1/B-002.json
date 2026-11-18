@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Parry"
+  },
+  {
+   "name": "address",
+   "value": "74 Park Road, Tewkesbury, GL20 7EL"
+  },
+  {
+   "name": "statement_date",
+   "value": "07 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

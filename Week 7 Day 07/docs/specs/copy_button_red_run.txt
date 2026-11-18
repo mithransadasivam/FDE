@@ -1,0 +1,7 @@
+$ npx playwright test e2e/copy_button.spec.ts     (before any code, 2026-11-04)
+
+  x  1 copy_button.spec.ts:10 > one click copies the field exactly as shown        waiting for getByTestId('copy-address')
+  x  2 copy_button.spec.ts:19 > a missing field has nothing to copy                waiting for getByTestId('copy-issuer')
+  x  3 copy_button.spec.ts:32 > after a correction, copy gives the corrected value waiting for getByTestId('copy-statement_date')
+
+3 failed: every test fails with "no copy button found", not a server or setup error.

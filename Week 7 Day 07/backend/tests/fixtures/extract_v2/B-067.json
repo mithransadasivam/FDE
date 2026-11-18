@@ -1,0 +1,48 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Bethan Boateng & Mr Oscar Boateng",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "17 Cheltenham Road Cheltenham GL53 6AD",
+   "word_ids": [
+    "w021",
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w026"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "17 Oct 2026",
+   "word_ids": [
+    "w029",
+    "w030",
+    "w031"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

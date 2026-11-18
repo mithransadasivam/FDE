@@ -1,0 +1,43 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Noah Shaw",
+   "word_ids": [
+    "w004",
+    "w005",
+    "w006"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "59 Park Lane, Gloucester, GL1 2HW",
+   "word_ids": [
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "16 Sep 2026",
+   "word_ids": [
+    "w015",
+    "w016",
+    "w017"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank plc",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

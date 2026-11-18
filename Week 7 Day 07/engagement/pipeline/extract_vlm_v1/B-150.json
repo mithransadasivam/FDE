@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-150",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr George Campbell",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.3037,
+        0.16
+      ],
+      "page_text": "Mr George Campbell",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "10 Tewkesbury Road, Gloucester, GL4 2JS",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2706,
+        0.2309
+      ],
+      "page_text": "10 Tewkesbury Road Gloucester GL4 2JS",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "01 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.5859,
+        0.1545,
+        0.726,
+        0.1764
+      ],
+      "page_text": "01 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 73,
+    "latency_ms": 1847,
+    "scripted": true
+  }
+}

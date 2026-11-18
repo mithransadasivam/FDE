@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Fatima Holmes"
+  },
+  {
+   "name": "address",
+   "value": "94 Kings Rd, Tewkesbury, GL20 8HJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-08"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

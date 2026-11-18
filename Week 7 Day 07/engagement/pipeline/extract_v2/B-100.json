@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-100",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Zainab Novak",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.282,
+        0.1767
+      ],
+      "page_text": "Mrs Zainab Novak",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 6, 130 Church Street Gloucester GL4 6GB",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.3203,
+        0.2564
+      ],
+      "page_text": "Flat 6, 130 Church Street Gloucester GL4 6GB",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "18 Aug 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7605,
+        0.2006
+      ],
+      "page_text": "18 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4783,
+        0.0634
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 512,
+    "output_tokens": 144,
+    "latency_ms": 1982,
+    "scripted": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT ROUND(COUNT(*) * 1.0 / (SELECT COUNT(*) FROM caseflow.analysts), 1) AS backlog_per_analyst FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+  "explanation": "The bank's backlog divided by the number of analysts in the region.",
+  "assumptions": [
+    "Row security limits analysts to the region"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-158",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Megan Kaur",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2772,
+        0.1791
+      ],
+      "page_text": "Miss Megan Kaur",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "19 Meadow View, Nailsworth, GL6 9YP",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.243,
+        0.2555
+      ],
+      "page_text": "19 Meadow View Nailsworth GL6 9YP",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "24 Sep 2026",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7603,
+        0.2036
+      ],
+      "page_text": "24 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Copperline Broadband",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5516,
+        0.0664
+      ],
+      "page_text": "Copperline Broadband",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 73,
+    "latency_ms": 1847,
+    "scripted": true
+  }
+}

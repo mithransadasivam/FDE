@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS working_days FROM caseflow.calendar WHERE month = '2026-10' AND is_working_day",
+  "explanation": "Working days in October 2026 from the calendar.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Molly Campbell"
+  },
+  {
+   "name": "address",
+   "value": "124 High Street, Cheltenham, GL50 8WS"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

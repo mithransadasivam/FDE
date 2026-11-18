@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-162",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Bethan Lloyd",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2588,
+        0.1575
+      ],
+      "page_text": "Ms Bethan Lloyd",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "59 Tewkesbury Road Winchcombe GL54 7XG",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2707,
+        0.2316
+      ],
+      "page_text": "59 Tewkesbury Road Winchcombe GL54 7XG",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "30 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.7129,
+        0.2038,
+        0.8129,
+        0.2174
+      ],
+      "page_text": "30 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 748,
+    "output_tokens": 136,
+    "latency_ms": 2025,
+    "scripted": true
+  }
+}

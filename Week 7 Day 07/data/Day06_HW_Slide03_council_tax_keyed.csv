@@ -1,0 +1,81 @@
+doc_id,field,keyer_a,keyer_b,label,resolved_by
+C-001,full_name,Mr Owen Bello,Mr Owen Bello,Mr Owen Bello,agreed
+C-001,address,"140 Spa Road, Stroud, GL5 8AA","140 Spa Road, Stroud, GL5 8AA","140 Spa Road, Stroud, GL5 8AA",agreed
+C-001,statement_date,07 Mar 2026,07 Mar 2026,07 Mar 2026,agreed
+C-001,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-002,full_name,Miss Niamh Parry,Miss Niamh Parry,Miss Niamh Parry,agreed
+C-002,address,"Flat 12, 22 Leckhampton Road, Gloucester, GL4 9JE","Flat 12, 22 Leckhampton Road, Gloucester, GL4 9JE","Flat 12, 22 Leckhampton Road, Gloucester, GL4 9JE",agreed
+C-002,statement_date,09 Mar 2026,09 Mar 2026,09 Mar 2026,agreed
+C-002,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-003,full_name,Mr Kwame Hughes,Mr Kwame Hughes,Mr Kwame Hughes,agreed
+C-003,address,"14 Cotswold Way, Cheltenham, GL53 7TS","14 Cotswold Way, Cheltenham, GL53 7TS","14 Cotswold Way, Cheltenham, GL53 7TS",agreed
+C-003,statement_date,06 Mar 2026,06 Mar 2026,06 Mar 2026,agreed
+C-003,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-004,full_name,Mr Callum Lloyd,Mr Callum Lloyd,Mr Callum Lloyd,agreed
+C-004,address,"Flat 7, 12 Gloucester Road, Stroud, GL5 5XB","Flat 7, 12 Gloucester Road, Stroud, GL5 5XB","Flat 7, 12 Gloucester Road, Stroud, GL5 5XB",agreed
+C-004,statement_date,19 Mar 2026,19 Mar 2026,19 Mar 2026,agreed
+C-004,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-005,full_name,Ms Isla Hart,Ms Isla Hart,Ms Isla Hart,agreed
+C-005,address,"60 Leckhampton Road, Quedgeley, GL2 1XX","60 Leckhampton Road, Quedgeley, GL2 1XR","60 Leckhampton Road, Quedgeley, GL2 1XR",tom
+C-005,statement_date,15 Mar 2026,15 Mar 2026,15 Mar 2026,agreed
+C-005,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-006,full_name,Mr Tariq Iqbal,Mr Tariq Iqbal,Mr Tariq Iqbal,agreed
+C-006,address,"92 Tewkesbury Road, Cheltenham, GL52 6WB","92 Tewkesbury Road, Cheltenham, GL52 6WB","92 Tewkesbury Road, Cheltenham, GL52 6WB",agreed
+C-006,statement_date,15 Mar 2026,15 Mar 2026,15 Mar 2026,agreed
+C-006,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-007,full_name,Mr Rohan Nair,Mr Rohan Nair,Mr Rohan Nair,agreed
+C-007,address,"Flat 1, 52 Cotswold Way, Quedgeley, GL2 6SG","Flat 1, 52 Cotswold Way, Quedgeley, GL2 6SG","Flat 1, 52 Cotswold Way, Quedgeley, GL2 6SG",agreed
+C-007,statement_date,03 Mar 2026,03 Mar 2026,03 Mar 2026,agreed
+C-007,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-008,full_name,Mr Ravi Demir,Mr Ravi Demir,Mr Ravi Demir,agreed
+C-008,address,"27 Hucclecote Road, Quedgeley, GL2 5JU","27 Hucclecote Road, Quedgeley, GL2 5JU","27 Hucclecote Road, Quedgeley, GL2 5JU",agreed
+C-008,statement_date,14 Mar 2026,14 Mar 2026,14 Mar 2026,agreed
+C-008,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-009,full_name,Ms Leela Murphy,Ms Leela Murphy,Ms Leela Murphy,agreed
+C-009,address,"71 Farm Lane, Cheltenham, GL50 9HG","71 Farm Lane, Cheltenham, GL50 9HG","71 Farm Lane, Cheltenham, GL50 9HG",agreed
+C-009,statement_date,12 Mar 2026,12 Mar 2026,12 Mar 2026,agreed
+C-009,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-010,full_name,Mr Dev Holmes,Mr Dev Holmese,Mr Dev Holmes,tom
+C-010,address,"33 Market Street, Winchcombe, GL54 8XN","33 Market Street, Winchcombe, GL54 8XN","33 Market Street, Winchcombe, GL54 8XN",agreed
+C-010,statement_date,08 Mar 2026,08 Mar 2026,08 Mar 2026,agreed
+C-010,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-011,full_name,Miss Grace Rossi,Miss Grace Rossi,Miss Grace Rossi,agreed
+C-011,address,"Flat 6, 25 High Street, Cheltenham, GL50 5HU","Flat 6, 25 High Street, Cheltenham, GL50 5HU","Flat 6, 25 High Street, Cheltenham, GL50 5HU",agreed
+C-011,statement_date,04 Mar 2026,04 Mar 2026,04 Mar 2026,agreed
+C-011,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-012,full_name,Ms Molly Parry,Ms Molly Parry,Ms Molly Parry,agreed
+C-012,address,"44 London Road, Winchcombe, GL54 3FS","44 London Road, Winchcombe, GL54 3FS","44 London Road, Winchcombe, GL54 3FS",agreed
+C-012,statement_date,06 Mar 2026,06 Mar 2026,06 Mar 2026,agreed
+C-012,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-013,full_name,Mr Alfie Haddad,Mr Alfie Haddad,Mr Alfie Haddad,agreed
+C-013,address,"81 Park Road, Stroud, GL5 9NQ","81 Park Road, Stroud, GL5 9NQ","81 Park Road, Stroud, GL5 9NQ",agreed
+C-013,statement_date,10 Mar 2026,10 Mar 2026,10 Mar 2026,agreed
+C-013,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-014,full_name,Ms Megan Boateng,Ms Megan Boateng,Ms Megan Boateng,agreed
+C-014,address,"5 Tewkesbury Road, Gloucester, GL2 1ND","5 Tewkesbury Road, Gloucester, GL2 1ND","5 Tewkesbury Road, Gloucester, GL2 1ND",agreed
+C-014,statement_date,11 Mar 2026,10 Mar 2026,10 Mar 2026,tom
+C-014,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-015,full_name,Miss Zainab Nair,Miss Zainab Nair,Miss Zainab Nair,agreed
+C-015,address,"Flat 2, 138 Painswick Road, Winchcombe, GL54 6GE","Flat 2, 138 Painswick Road, Winchcombe, GL54 6GE","Flat 2, 138 Painswick Road, Winchcombe, GL54 6GE",agreed
+C-015,statement_date,12 Mar 2026,12 Mar 2026,12 Mar 2026,agreed
+C-015,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-016,full_name,Mr Kwame Mensah,Mr Kwame Mensah,Mr Kwame Mensah,agreed
+C-016,address,"56 Bath Road, Gloucester, GL2 9AB","56 Bath Road, Gloucester, GL2 9AB","56 Bath Road, Gloucester, GL2 9AB",agreed
+C-016,statement_date,20 Mar 2026,20 Mar 2026,20 Mar 2026,agreed
+C-016,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-017,full_name,Mr Theo Evans,Mr Theo Evans,Mr Theo Evans,agreed
+C-017,address,"33 Market Street, Cheltenham, GL53 3PE","33 Market Street, Cheltenham, GL53 3PE","33 Market Street, Cheltenham, GL53 3PE",agreed
+C-017,statement_date,11 Mar 2026,11 Mar 2026,11 Mar 2026,agreed
+C-017,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-018,full_name,Mr Harvey Griffiths,Mr Harvey Griffiths,Mr Harvey Griffiths,agreed
+C-018,address,"10 Gloucester Road, Cheltenham, GL53 1SJ","10 Gloucester Road, Cheltenham, GL53 1SJ","10 Gloucester Road, Cheltenham, GL53 1SJ",agreed
+C-018,statement_date,12 Mar 2026,12 Mar 2026,12 Mar 2026,agreed
+C-018,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed
+C-019,full_name,Ms Mei Boateng,Ms Mei Boateng,Ms Mei Boateng,agreed
+C-019,address,"Flat 3, 63 Green Lane, Cheltenham, GL53 6WE","Flat 3, 63 Green Lane, Cheltenham, GL53 6WE","Flat 3, 63 Green Lane, Cheltenham, GL53 6WE",agreed
+C-019,statement_date,05 Mar 2026,05 Mar 2026,05 Mar 2026,agreed
+C-019,issuer,Brightwell Borough Council,Brightwell Borough Council,Brightwell Borough Council,agreed
+C-020,full_name,Ms Ifeoma Wood,Ms Ifeoma Wood,Ms Ifeoma Wood,agreed
+C-020,address,"Flat 6, 31 Spa Road, Tewkesbury, GL20 4AU","Flat 6, 31 Spa Road, Tewkesbury, GL20 4AU","Flat 6, 31 Spa Road, Tewkesbury, GL20 4AU",agreed
+C-020,statement_date,07 Mar 2026,07 Mar 2026,07 Mar 2026,agreed
+C-020,issuer,Severnside District Council,Severnside District Council,Severnside District Council,agreed

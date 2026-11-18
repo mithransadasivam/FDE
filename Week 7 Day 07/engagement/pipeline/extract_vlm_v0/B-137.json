@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-137",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Tariq Turner",
+      "confidence": 0.98,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2525,
+        0.1791
+      ],
+      "page_text": "Mr Tariq Turner",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "137 Green Lane, Nailsworth, GL6 8GB",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1873,
+        0.2348,
+        0.2555
+      ],
+      "page_text": "137 Green Lane Nailsworth GL6 8GB",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "05 Aug 2026",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7626,
+        0.2036
+      ],
+      "page_text": "05 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Copperline Broadband",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5516,
+        0.0664
+      ],
+      "page_text": "Copperline Broadband",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 73,
+    "latency_ms": 1812,
+    "scripted": true
+  }
+}

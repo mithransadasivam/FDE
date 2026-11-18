@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT c.channel, MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases c JOIN caseflow.calendar k ON k.day = CAST(c.decided_at AS DATE) WHERE c.status IN ('approved', 'declined') AND k.financial_year = 'FY2026/27' GROUP BY c.channel",
+  "explanation": "The bank's turnaround by channel for FY2026/27.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-098",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Yusuf Ward",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2467,
+        0.1755
+      ],
+      "page_text": "Mr Yusuf Ward",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 12, 32 Cotswold Way, Winchcombe, GL54 6BY",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.3272,
+        0.2555
+      ],
+      "page_text": "Flat 12, 32 Cotswold Way Winchcombe GL54 6BY",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "26 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7591,
+        0.2036
+      ],
+      "page_text": "26 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 74,
+    "latency_ms": 1855,
+    "scripted": true
+  }
+}

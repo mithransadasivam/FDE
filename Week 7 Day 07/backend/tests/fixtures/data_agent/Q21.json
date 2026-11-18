@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT t.team_name, ROUND(AVG(date_diff('day', c.received_at, c.decided_at)), 1) AS avg_days FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+  "explanation": "The average days from receipt to decision for each team, October 2026.",
+  "assumptions": [
+    "Turnaround is calendar days from received_at to decided_at",
+    "Averaged"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Reza Wood",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 5, 28 Hucclecote Road Tewkesbury GL20 9QA",
+   "word_ids": [
+    "w009",
+    "w010",
+    "w011",
+    "w012",
+    "w013",
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "30 Sep 2026",
+   "word_ids": [
+    "w028",
+    "w029",
+    "w030"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

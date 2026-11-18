@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Hannah Eze"
+  },
+  {
+   "name": "address",
+   "value": "78 Cotswold Way, Quedgeley, GL2 2AU"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-13"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

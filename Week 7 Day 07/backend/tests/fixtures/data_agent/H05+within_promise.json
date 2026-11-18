@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(AVG(CASE WHEN working_days_open - applicant_wait_days <= 3 THEN 1.0 ELSE 0 END) * 100, 1) AS within_promise_pct FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+  "explanation": "The share of October 2026 decisions within the bank's 3-day promise.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

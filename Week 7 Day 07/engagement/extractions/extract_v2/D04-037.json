@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Victor Lungu",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "9 Tredworth Road, Gloucester, GL1 4QN",
+      "word_ids": [
+        "w023",
+        "w024",
+        "w025",
+        "w026",
+        "w027",
+        "w028"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Oct 2026",
+      "word_ids": [
+        "w011",
+        "w012",
+        "w013"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

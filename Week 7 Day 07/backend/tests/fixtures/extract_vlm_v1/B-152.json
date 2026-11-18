@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Daniel Reid"
+  },
+  {
+   "name": "address",
+   "value": "Flat 1, 119 Victoria Street, Nailsworth, GL6 1SL"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

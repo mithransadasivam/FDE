@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Joy Grant"
+  },
+  {
+   "name": "address",
+   "value": "140 Spa Road, Tewkesbury, GL20 4SB"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-08"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

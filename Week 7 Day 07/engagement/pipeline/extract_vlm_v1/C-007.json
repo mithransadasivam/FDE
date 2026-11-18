@@ -1,0 +1,74 @@
+{
+  "doc_id": "C-007",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Rohan Nair",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.2343,
+        0.1564
+      ],
+      "page_text": "Mr Rohan Nair",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 1, 52 Cotswold Way, Quedgeley, GL2 6SG",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.3012,
+        0.2309
+      ],
+      "page_text": "Flat 1, 52 Cotswold Way Quedgeley GL2 6SG",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "03 Mar 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6565,
+        0.0573,
+        0.8008,
+        0.0755
+      ],
+      "page_text": "03 Mar 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Brightwell Borough Council",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.0391,
+        0.5089,
+        0.0682
+      ],
+      "page_text": "Brightwell Borough Council",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 76,
+    "latency_ms": 1871,
+    "scripted": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Joy Nair"
+  },
+  {
+   "name": "address",
+   "value": "85 Cotswold Way, Cheltenham, GL52 5SL"
+  },
+  {
+   "name": "statement_date",
+   "value": "07 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

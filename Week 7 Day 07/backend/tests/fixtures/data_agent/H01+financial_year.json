@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS applications FROM caseflow.cases c JOIN caseflow.calendar k ON k.day = CAST(c.received_at AS DATE) WHERE k.financial_year = 'FY2026/27'",
+  "explanation": "Applications received in FY2026/27, which started on 1 April 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

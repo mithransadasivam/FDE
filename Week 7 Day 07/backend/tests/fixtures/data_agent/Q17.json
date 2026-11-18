@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT field, COUNT(*) AS times FROM pipeline.field_results WHERE decision = 'review' GROUP BY field ORDER BY times DESC LIMIT 1",
+  "explanation": "The field most often sent to review.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

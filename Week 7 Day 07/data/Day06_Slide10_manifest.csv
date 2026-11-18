@@ -1,0 +1,201 @@
+doc_id,file,kind,issuer,received,slices
+B-001,B-001.pdf,utility_bill,Copperline Broadband,2026-10-20,bill;digital;two_dates
+B-002,B-002.pdf,utility_bill,Fenwick Gas & Power,2026-10-31,bill;digital
+B-003,B-003.pdf,utility_bill,Fenwick Gas & Power,2026-10-16,bill;digital
+B-004,B-004.pdf,utility_bill,Lumenvale Energy,2026-10-17,bill;digital;two_dates
+B-005,B-005.pdf,utility_bill,Lumenvale Energy,2026-10-22,bill;digital
+B-006,B-006.jpg,utility_bill,Copperline Broadband,2026-10-15,bill;scan
+B-007,B-007.jpg,utility_bill,Harrowgate Water,2026-10-22,bill;scan
+B-008,B-008.pdf,utility_bill,Harrowgate Water,2026-10-17,bill;digital
+B-009,B-009.pdf,utility_bill,Fenwick Gas & Power,2026-10-15,bill;digital;two_dates
+B-010,B-010.jpg,bank_statement,Northmere Bank,2026-10-23,statement;scan
+B-011,B-011.pdf,utility_bill,Copperline Broadband,2026-10-15,bill;digital
+B-012,B-012.pdf,bank_statement,Northmere Bank,2026-10-24,statement;scan;smudge
+B-013,B-013.pdf,bank_statement,Northmere Bank,2026-10-31,statement;digital
+B-014,B-014.pdf,utility_bill,Copperline Broadband,2026-10-18,bill;scan
+B-015,B-015.jpg,utility_bill,Copperline Broadband,2026-10-22,bill;scan;two_dates
+B-016,B-016.pdf,bank_statement,Northmere Bank,2026-10-31,statement;digital
+B-017,B-017.jpg,bank_statement,Northmere Bank,2026-10-25,statement;scan
+B-018,B-018.pdf,utility_bill,Copperline Broadband,2026-10-29,bill;digital
+B-019,B-019.pdf,utility_bill,Copperline Broadband,2026-10-21,bill;digital
+B-020,B-020.jpg,utility_bill,Lumenvale Energy,2026-10-26,bill;scan
+B-021,B-021.pdf,utility_bill,Fenwick Gas & Power,2026-10-20,bill;digital
+B-022,B-022.jpg,utility_bill,Fenwick Gas & Power,2026-10-25,bill;scan;joint_names
+B-023,B-023.pdf,utility_bill,Lumenvale Energy,2026-10-18,bill;digital
+B-024,B-024.jpg,bank_statement,Northmere Bank,2026-10-22,statement;scan;smudge
+B-025,B-025.pdf,utility_bill,Fenwick Gas & Power,2026-10-18,bill;digital;joint_names
+B-026,B-026.pdf,bank_statement,Northmere Bank,2026-10-29,statement;scan
+B-027,B-027.jpg,utility_bill,Copperline Broadband,2026-10-30,bill;scan
+B-028,B-028.pdf,bank_statement,Northmere Bank,2026-10-22,statement;scan;joint_names
+B-029,B-029.jpg,bank_statement,Northmere Bank,2026-10-26,statement;scan;smudge
+B-030,B-030.jpg,utility_bill,Lumenvale Energy,2026-10-17,bill;scan
+B-031,B-031.jpg,utility_bill,Copperline Broadband,2026-10-14,bill;scan;smudge;two_dates
+B-032,B-032.pdf,utility_bill,Fenwick Gas & Power,2026-10-25,bill;digital;two_dates
+B-033,B-033.pdf,utility_bill,Fenwick Gas & Power,2026-10-14,bill;digital;two_dates
+B-034,B-034.pdf,bank_statement,Northmere Bank,2026-10-30,statement;digital
+B-035,B-035.pdf,utility_bill,Harrowgate Water,2026-10-15,bill;digital
+B-036,B-036.pdf,utility_bill,Fenwick Gas & Power,2026-10-15,bill;digital
+B-037,B-037.pdf,bank_statement,Northmere Bank,2026-10-18,statement;digital
+B-038,B-038.jpg,bank_statement,Northmere Bank,2026-10-14,statement;scan
+B-039,B-039.jpg,utility_bill,Lumenvale Energy,2026-10-28,bill;scan
+B-040,B-040.jpg,bank_statement,Northmere Bank,2026-10-20,statement;scan
+B-041,B-041.pdf,bank_statement,Northmere Bank,2026-10-26,statement;digital
+B-042,B-042.pdf,utility_bill,Harrowgate Water,2026-10-26,bill;scan;two_dates
+B-043,B-043.jpg,bank_statement,Northmere Bank,2026-10-30,statement;scan;smudge
+B-044,B-044.pdf,bank_statement,Northmere Bank,2026-10-30,statement;digital
+B-045,B-045.pdf,utility_bill,Fenwick Gas & Power,2026-10-29,bill;digital
+B-046,B-046.jpg,bank_statement,Northmere Bank,2026-10-31,statement;scan;joint_names
+B-047,B-047.jpg,bank_statement,Northmere Bank,2026-10-22,statement;scan;smudge
+B-048,B-048.pdf,utility_bill,Lumenvale Energy,2026-10-22,bill;digital
+B-049,B-049.jpg,utility_bill,Harrowgate Water,2026-10-19,bill;scan
+B-050,B-050.pdf,bank_statement,Northmere Bank,2026-10-21,statement;digital
+B-051,B-051.jpg,utility_bill,Harrowgate Water,2026-10-24,bill;scan
+B-052,B-052.pdf,bank_statement,Northmere Bank,2026-10-16,statement;digital
+B-053,B-053.jpg,bank_statement,Northmere Bank,2026-10-21,statement;scan
+B-054,B-054.jpg,bank_statement,Northmere Bank,2026-10-14,statement;scan;smudge
+B-055,B-055.pdf,utility_bill,Harrowgate Water,2026-10-31,bill;digital
+B-056,B-056.pdf,bank_statement,Northmere Bank,2026-10-29,statement;digital;joint_names
+B-057,B-057.pdf,utility_bill,Fenwick Gas & Power,2026-10-20,bill;digital
+B-058,B-058.pdf,utility_bill,Harrowgate Water,2026-10-15,bill;digital
+B-059,B-059.pdf,utility_bill,Lumenvale Energy,2026-10-22,bill;digital
+B-060,B-060.pdf,utility_bill,Harrowgate Water,2026-10-30,bill;scan
+B-061,B-061.jpg,utility_bill,Lumenvale Energy,2026-10-14,bill;scan;joint_names;two_dates
+B-062,B-062.jpg,bank_statement,Northmere Bank,2026-10-31,statement;scan;joint_names
+B-063,B-063.pdf,utility_bill,Harrowgate Water,2026-10-21,bill;digital
+B-064,B-064.jpg,utility_bill,Harrowgate Water,2026-10-22,bill;scan;smudge
+B-065,B-065.jpg,bank_statement,Northmere Bank,2026-10-26,statement;scan
+B-066,B-066.jpg,bank_statement,Northmere Bank,2026-10-20,statement;scan
+B-067,B-067.jpg,utility_bill,Fenwick Gas & Power,2026-10-27,bill;scan;joint_names;smudge
+B-068,B-068.jpg,bank_statement,Northmere Bank,2026-10-29,statement;scan
+B-069,B-069.jpg,utility_bill,Fenwick Gas & Power,2026-10-27,bill;scan;two_dates
+B-070,B-070.pdf,utility_bill,Copperline Broadband,2026-10-20,bill;digital;two_dates
+B-071,B-071.pdf,utility_bill,Copperline Broadband,2026-10-30,bill;digital;joint_names;two_dates
+B-072,B-072.jpg,bank_statement,Northmere Bank,2026-10-18,statement;scan
+B-073,B-073.pdf,utility_bill,Lumenvale Energy,2026-10-23,bill;digital
+B-074,B-074.pdf,bank_statement,Northmere Bank,2026-10-20,statement;digital
+B-075,B-075.pdf,bank_statement,Northmere Bank,2026-10-30,statement;digital;joint_names
+B-076,B-076.pdf,bank_statement,Northmere Bank,2026-10-19,statement;digital
+B-077,B-077.jpg,bank_statement,Northmere Bank,2026-10-21,statement;scan
+B-078,B-078.jpg,utility_bill,Harrowgate Water,2026-10-17,bill;scan;two_dates
+B-079,B-079.jpg,utility_bill,Lumenvale Energy,2026-10-27,bill;scan
+B-080,B-080.jpg,utility_bill,Harrowgate Water,2026-10-30,bill;scan;joint_names
+B-081,B-081.jpg,utility_bill,Harrowgate Water,2026-10-24,bill;scan
+B-082,B-082.pdf,bank_statement,Northmere Bank,2026-10-30,statement;scan
+B-083,B-083.jpg,utility_bill,Fenwick Gas & Power,2026-10-24,bill;scan
+B-084,B-084.pdf,bank_statement,Northmere Bank,2026-10-22,statement;digital;joint_names
+B-085,B-085.pdf,bank_statement,Northmere Bank,2026-10-18,statement;digital
+B-086,B-086.jpg,utility_bill,Lumenvale Energy,2026-10-19,bill;scan
+B-087,B-087.pdf,bank_statement,Northmere Bank,2026-10-23,statement;digital
+B-088,B-088.jpg,bank_statement,Northmere Bank,2026-10-29,statement;scan
+B-089,B-089.pdf,utility_bill,Fenwick Gas & Power,2026-10-14,bill;digital;joint_names;two_dates
+B-090,B-090.jpg,utility_bill,Lumenvale Energy,2026-10-28,bill;scan
+B-091,B-091.jpg,utility_bill,Lumenvale Energy,2026-10-15,bill;scan;smudge
+B-092,B-092.pdf,utility_bill,Copperline Broadband,2026-10-19,bill;digital
+B-093,B-093.pdf,utility_bill,Fenwick Gas & Power,2026-10-18,bill;digital;two_dates
+B-094,B-094.jpg,utility_bill,Lumenvale Energy,2026-10-16,bill;scan;joint_names
+B-095,B-095.pdf,utility_bill,Copperline Broadband,2026-10-22,bill;digital
+B-096,B-096.pdf,utility_bill,Harrowgate Water,2026-10-29,bill;digital
+B-097,B-097.pdf,utility_bill,Lumenvale Energy,2026-10-19,bill;digital;two_dates
+B-098,B-098.jpg,utility_bill,Harrowgate Water,2026-10-31,bill;scan
+B-099,B-099.jpg,utility_bill,Lumenvale Energy,2026-10-21,bill;scan;smudge
+B-100,B-100.pdf,utility_bill,Lumenvale Energy,2026-10-23,bill;digital;two_dates
+B-101,B-101.pdf,bank_statement,Northmere Bank,2026-10-17,statement;digital
+B-102,B-102.pdf,utility_bill,Harrowgate Water,2026-10-31,bill;digital;two_dates
+B-103,B-103.pdf,bank_statement,Northmere Bank,2026-10-29,statement;scan
+B-104,B-104.pdf,utility_bill,Lumenvale Energy,2026-10-31,bill;digital;two_dates
+B-105,B-105.pdf,bank_statement,Northmere Bank,2026-10-22,statement;digital
+B-106,B-106.jpg,utility_bill,Copperline Broadband,2026-10-24,bill;scan;smudge
+B-107,B-107.pdf,bank_statement,Northmere Bank,2026-10-16,statement;digital
+B-108,B-108.jpg,bank_statement,Northmere Bank,2026-10-20,statement;scan
+B-109,B-109.jpg,utility_bill,Fenwick Gas & Power,2026-10-18,bill;scan
+B-110,B-110.pdf,utility_bill,Lumenvale Energy,2026-10-26,bill;scan
+B-111,B-111.pdf,utility_bill,Harrowgate Water,2026-10-26,bill;digital
+B-112,B-112.pdf,utility_bill,Lumenvale Energy,2026-10-30,bill;digital
+B-113,B-113.pdf,utility_bill,Copperline Broadband,2026-10-21,bill;digital
+B-114,B-114.pdf,utility_bill,Fenwick Gas & Power,2026-10-22,bill;digital;two_dates
+B-115,B-115.pdf,bank_statement,Northmere Bank,2026-10-15,statement;digital
+B-116,B-116.jpg,utility_bill,Fenwick Gas & Power,2026-10-17,bill;scan
+B-117,B-117.pdf,utility_bill,Harrowgate Water,2026-10-31,bill;digital
+B-118,B-118.pdf,utility_bill,Fenwick Gas & Power,2026-10-23,bill;digital
+B-119,B-119.jpg,utility_bill,Copperline Broadband,2026-10-15,bill;scan;smudge
+B-120,B-120.pdf,bank_statement,Northmere Bank,2026-10-20,statement;digital
+B-121,B-121.pdf,utility_bill,Fenwick Gas & Power,2026-10-14,bill;digital
+B-122,B-122.jpg,bank_statement,Northmere Bank,2026-10-14,statement;scan
+B-123,B-123.pdf,bank_statement,Northmere Bank,2026-10-21,statement;digital
+B-124,B-124.pdf,utility_bill,Copperline Broadband,2026-10-24,bill;digital
+B-125,B-125.jpg,utility_bill,Copperline Broadband,2026-10-30,bill;scan;smudge
+B-126,B-126.pdf,utility_bill,Harrowgate Water,2026-10-15,bill;digital;joint_names
+B-127,B-127.pdf,utility_bill,Copperline Broadband,2026-10-31,bill;digital;two_dates
+B-128,B-128.pdf,bank_statement,Northmere Bank,2026-10-16,statement;digital
+B-129,B-129.pdf,utility_bill,Fenwick Gas & Power,2026-10-20,bill;digital;two_dates
+B-130,B-130.pdf,utility_bill,Copperline Broadband,2026-10-24,bill;digital
+B-131,B-131.pdf,bank_statement,Northmere Bank,2026-10-31,statement;digital
+B-132,B-132.pdf,utility_bill,Lumenvale Energy,2026-10-26,bill;digital
+B-133,B-133.pdf,utility_bill,Fenwick Gas & Power,2026-10-17,bill;digital
+B-134,B-134.pdf,bank_statement,Northmere Bank,2026-10-21,statement;digital
+B-135,B-135.pdf,utility_bill,Fenwick Gas & Power,2026-10-31,bill;digital
+B-136,B-136.jpg,bank_statement,Northmere Bank,2026-10-17,statement;scan
+B-137,B-137.jpg,utility_bill,Copperline Broadband,2026-10-28,bill;scan
+B-138,B-138.pdf,bank_statement,Northmere Bank,2026-10-31,statement;digital
+B-139,B-139.pdf,bank_statement,Northmere Bank,2026-10-23,statement;digital
+B-140,B-140.pdf,utility_bill,Lumenvale Energy,2026-10-26,bill;scan
+B-141,B-141.jpg,utility_bill,Fenwick Gas & Power,2026-10-22,bill;scan;two_dates
+B-142,B-142.jpg,bank_statement,Northmere Bank,2026-10-15,statement;scan;joint_names;smudge
+B-143,B-143.pdf,utility_bill,Lumenvale Energy,2026-10-27,bill;digital
+B-144,B-144.pdf,utility_bill,Copperline Broadband,2026-10-18,bill;digital
+B-145,B-145.jpg,utility_bill,Harrowgate Water,2026-10-27,bill;scan
+B-146,B-146.pdf,bank_statement,Northmere Bank,2026-10-29,statement;digital;joint_names
+B-147,B-147.jpg,utility_bill,Fenwick Gas & Power,2026-10-25,bill;scan
+B-148,B-148.pdf,utility_bill,Copperline Broadband,2026-10-22,bill;digital;joint_names
+B-149,B-149.pdf,utility_bill,Fenwick Gas & Power,2026-10-25,bill;digital;joint_names
+B-150,B-150.jpg,bank_statement,Northmere Bank,2026-10-14,statement;scan
+B-151,B-151.pdf,utility_bill,Harrowgate Water,2026-10-28,bill;digital
+B-152,B-152.pdf,utility_bill,Harrowgate Water,2026-10-28,bill;digital
+B-153,B-153.jpg,bank_statement,Northmere Bank,2026-10-19,statement;scan
+B-154,B-154.pdf,bank_statement,Northmere Bank,2026-10-18,statement;digital
+B-155,B-155.jpg,utility_bill,Harrowgate Water,2026-10-25,bill;scan;joint_names
+B-156,B-156.pdf,utility_bill,Harrowgate Water,2026-10-22,bill;digital
+B-157,B-157.jpg,bank_statement,Northmere Bank,2026-10-20,statement;scan
+B-158,B-158.jpg,utility_bill,Copperline Broadband,2026-10-27,bill;scan
+B-159,B-159.pdf,bank_statement,Northmere Bank,2026-10-17,statement;digital
+B-160,B-160.jpg,utility_bill,Fenwick Gas & Power,2026-10-25,bill;scan;smudge
+B-161,B-161.jpg,bank_statement,Northmere Bank,2026-10-17,statement;scan
+B-162,B-162.pdf,bank_statement,Northmere Bank,2026-10-21,statement;digital
+B-163,B-163.jpg,utility_bill,Harrowgate Water,2026-10-14,bill;scan
+B-164,B-164.pdf,bank_statement,Northmere Bank,2026-10-20,statement;scan
+B-165,B-165.jpg,utility_bill,Copperline Broadband,2026-10-23,bill;scan;two_dates
+B-166,B-166.pdf,bank_statement,Northmere Bank,2026-10-28,statement;digital
+B-167,B-167.pdf,utility_bill,Harrowgate Water,2026-10-20,bill;digital;joint_names;two_dates
+B-168,B-168.pdf,utility_bill,Harrowgate Water,2026-10-20,bill;digital;joint_names
+B-169,B-169.pdf,utility_bill,Lumenvale Energy,2026-10-31,bill;digital
+B-170,B-170.pdf,bank_statement,Northmere Bank,2026-10-28,statement;digital
+B-171,B-171.jpg,bank_statement,Northmere Bank,2026-10-29,statement;scan;smudge
+B-172,B-172.pdf,utility_bill,Lumenvale Energy,2026-10-26,bill;digital
+B-173,B-173.pdf,bank_statement,Northmere Bank,2026-10-29,statement;digital
+B-174,B-174.jpg,bank_statement,Northmere Bank,2026-10-29,statement;scan
+B-175,B-175.jpg,bank_statement,Northmere Bank,2026-10-19,statement;scan
+B-176,B-176.jpg,bank_statement,Northmere Bank,2026-10-24,statement;scan;smudge
+B-177,B-177.pdf,utility_bill,Lumenvale Energy,2026-10-20,bill;digital;two_dates
+B-178,B-178.jpg,bank_statement,Northmere Bank,2026-10-17,statement;scan;joint_names
+B-179,B-179.jpg,utility_bill,Lumenvale Energy,2026-10-16,bill;scan;joint_names
+B-180,B-180.pdf,bank_statement,Northmere Bank,2026-10-26,statement;digital
+B-181,B-181.pdf,utility_bill,Copperline Broadband,2026-10-15,bill;digital;two_dates
+B-182,B-182.pdf,utility_bill,Lumenvale Energy,2026-10-23,bill;digital;two_dates
+B-183,B-183.jpg,utility_bill,Fenwick Gas & Power,2026-10-28,bill;scan;smudge;two_dates
+B-184,B-184.jpg,bank_statement,Northmere Bank,2026-10-24,statement;scan
+B-185,B-185.pdf,utility_bill,Copperline Broadband,2026-10-25,bill;digital
+B-186,B-186.jpg,utility_bill,Lumenvale Energy,2026-10-27,bill;scan
+B-187,B-187.pdf,bank_statement,Northmere Bank,2026-10-17,statement;digital
+B-188,B-188.jpg,utility_bill,Lumenvale Energy,2026-10-25,bill;scan;two_dates
+B-189,B-189.pdf,utility_bill,Copperline Broadband,2026-10-31,bill;digital;joint_names
+B-190,B-190.pdf,bank_statement,Northmere Bank,2026-10-14,statement;digital
+B-191,B-191.pdf,utility_bill,Fenwick Gas & Power,2026-10-28,bill;scan
+B-192,B-192.jpg,bank_statement,Northmere Bank,2026-10-27,statement;scan
+B-193,B-193.pdf,utility_bill,Harrowgate Water,2026-10-18,bill;digital
+B-194,B-194.pdf,utility_bill,Copperline Broadband,2026-10-20,bill;digital
+B-195,B-195.jpg,bank_statement,Northmere Bank,2026-10-24,statement;scan
+B-196,B-196.pdf,utility_bill,Copperline Broadband,2026-10-30,bill;digital
+B-197,B-197.jpg,bank_statement,Northmere Bank,2026-10-20,statement;scan;smudge
+B-198,B-198.jpg,bank_statement,Northmere Bank,2026-10-15,statement;scan
+B-199,B-199.pdf,bank_statement,Northmere Bank,2026-10-16,statement;digital;joint_names
+B-200,B-200.pdf,bank_statement,Northmere Bank,2026-10-25,statement;digital

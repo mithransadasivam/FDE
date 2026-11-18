@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Bethan Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "59 Tewkesbury Road, Winchcombe, GL54 7XG"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

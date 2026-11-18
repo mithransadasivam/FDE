@@ -1,0 +1,69 @@
+{
+  "doc_id": "B-075",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Callum Chen & Mrs Hannah Chen",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.4798,
+        0.1575
+      ],
+      "page_text": "Mr Callum Chen Mrs Hannah Chen",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "7 Hucclecote Road, Cheltenham, GL53 2XL",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2495,
+        0.2316
+      ],
+      "page_text": "7 Hucclecote Road Cheltenham GL53 2XL",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-09-03",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 76,
+    "latency_ms": 1836,
+    "scripted": true
+  }
+}

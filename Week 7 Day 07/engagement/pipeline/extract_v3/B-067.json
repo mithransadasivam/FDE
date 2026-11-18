@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-067",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Bethan Boateng & Mr Oscar Boateng",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.5694,
+        0.1791
+      ],
+      "page_text": "Miss Bethan Boateng & Mr Oscar Boateng",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "17 Cheltenham Road Cheltenham GL53 6AD",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.283,
+        0.2555
+      ],
+      "page_text": "17 Cheltenham Road Cheltenham GL53 6AD",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "17 Oct 2026",
+      "confidence": 0.61,
+      "status": "check",
+      "box": [
+        0.6071,
+        0.18,
+        0.7556,
+        0.1991
+      ],
+      "page_text": "17 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas & Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 630,
+    "output_tokens": 161,
+    "latency_ms": 2172,
+    "scripted": true
+  }
+}

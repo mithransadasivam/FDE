@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-110",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Daniel Eze",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2337,
+        0.1755
+      ],
+      "page_text": "Mr Daniel Eze",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "1 Orchard Close, Gloucester, GL4 1TB",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2371,
+        0.2555
+      ],
+      "page_text": "1 Orchard Close Gloucester GL4 1TB",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "06 Aug 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7626,
+        0.2036
+      ],
+      "page_text": "06 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.481,
+        0.0664
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 72,
+    "latency_ms": 1839,
+    "scripted": true
+  }
+}

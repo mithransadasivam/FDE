@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Dr Nina Bell",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "37 Queens Road, Flat 5, Gloucester, GL1 6BS",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "22 Sep 2026",
+   "word_ids": [
+    "w016",
+    "w017",
+    "w018"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

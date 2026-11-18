@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Poppy Rossi"
+  },
+  {
+   "name": "address",
+   "value": "Flat 9, 65 Church Street, Cirencester, GL7 5NH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-05"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

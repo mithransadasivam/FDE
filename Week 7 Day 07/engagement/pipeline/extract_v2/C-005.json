@@ -1,0 +1,74 @@
+{
+  "doc_id": "C-005",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Isla Hart",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.206,
+        0.1564
+      ],
+      "page_text": "Ms Isla Hart",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "60 Leckhampton Road Quedgeley GL2 1XR",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2859,
+        0.2309
+      ],
+      "page_text": "60 Leckhampton Road Quedgeley GL2 1XR",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "15 Mar 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6565,
+        0.0573,
+        0.8019,
+        0.0755
+      ],
+      "page_text": "15 Mar 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Brightwell Borough Council",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.0391,
+        0.5089,
+        0.0682
+      ],
+      "page_text": "Brightwell Borough Council",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 579,
+    "output_tokens": 141,
+    "latency_ms": 1989,
+    "scripted": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Chloe Wood & Mr Tariq Wood"
+  },
+  {
+   "name": "address",
+   "value": "65 Victoria Street, Nailsworth, GL6 1NG"
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

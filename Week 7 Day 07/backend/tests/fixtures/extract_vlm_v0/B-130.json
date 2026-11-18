@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Ravi Nair"
+  },
+  {
+   "name": "address",
+   "value": "98 Painswick Road, Stroud, GL5 1EA"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-08"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

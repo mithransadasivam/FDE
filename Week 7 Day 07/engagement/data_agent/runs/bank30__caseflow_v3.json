@@ -1,0 +1,2124 @@
+{
+  "set": "bank30",
+  "layer": "caseflow_v3",
+  "at": "2026-11-18T02:06:05+00:00",
+  "model": null,
+  "results": [
+    {
+      "id": "Q01",
+      "question": "How many applications did we receive in October 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            1847
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications did we receive in October 2026?",
+        "question_id": "Q01",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS applications FROM caseflow.cases WHERE received_at >= DATE '2026-10-01' AND received_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  received_at >= CAST('2026-10-01' AS DATE)\n  AND received_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  received_at >= CAST('2026-10-01' AS DATE)\n  AND received_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            1847
+          ]
+        ],
+        "capped": false,
+        "explanation": "Counts applications received in October 2026.",
+        "assumptions": [
+          "Applications counted by the day they arrived (received_at)"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3288,
+        "tokens_out": 80,
+        "ms": 43
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q02",
+      "question": "How many documents have analysts reviewed since May 2025?",
+      "user": "helen.achebe",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "documents_reviewed"
+        ],
+        "rows": [
+          [
+            60957
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many documents have analysts reviewed since May 2025?",
+        "question_id": "Q02",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS documents_reviewed FROM caseflow.documents WHERE reviewed_at IS NOT NULL AND reviewed_at >= DATE '2025-05-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS documents_reviewed\nFROM caseflow.documents\nWHERE\n  NOT reviewed_at IS NULL AND reviewed_at >= CAST('2025-05-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS documents_reviewed\nFROM caseflow.documents\nWHERE\n  NOT reviewed_at IS NULL AND reviewed_at >= CAST('2025-05-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "documents_reviewed"
+        ],
+        "rows": [
+          [
+            60957
+          ]
+        ],
+        "capped": false,
+        "explanation": "Counts every document with a review, from 1 May 2025 to the end of the extract.",
+        "assumptions": [
+          "The extract starts on 1 May 2025"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3289,
+        "tokens_out": 82,
+        "ms": 22
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q03",
+      "question": "What share of applications in 2026 were for business accounts?",
+      "user": "helen.achebe",
+      "tags": [
+        "rate"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "business_pct"
+        ],
+        "rows": [
+          [
+            15.2
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What share of applications in 2026 were for business accounts?",
+        "question_id": "Q03",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT ROUND(100.0 * COUNT(*) FILTER (WHERE customer_type = 'business') / COUNT(*), 1) AS business_pct FROM caseflow.cases WHERE received_at >= DATE '2026-01-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    customer_type = 'business') / COUNT(*), 1) AS business_pct\nFROM caseflow.cases\nWHERE\n  received_at >= CAST('2026-01-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    customer_type = 'business') / COUNT(*), 1) AS business_pct\nFROM caseflow.cases\nWHERE\n  received_at >= CAST('2026-01-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "business_pct"
+        ],
+        "rows": [
+          [
+            15.2
+          ]
+        ],
+        "capped": false,
+        "explanation": "The percentage of 2026 applications whose customer type is business.",
+        "assumptions": [
+          "2026 means received from 1 January 2026 to 30 October 2026"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3290,
+        "tokens_out": 94,
+        "ms": 23
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q04",
+      "question": "How many documents were escalated to Financial Crime in September 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "escalated"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many documents were escalated to Financial Crime in September 2026?",
+        "question_id": "Q04",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS escalated_documents FROM caseflow.documents WHERE outcome = 'escalate' AND reviewed_at >= DATE '2026-09-01' AND reviewed_at < DATE '2026-10-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS escalated_documents\nFROM caseflow.documents\nWHERE\n  outcome = 'escalate'\n  AND reviewed_at >= CAST('2026-09-01' AS DATE)\n  AND reviewed_at < CAST('2026-10-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS escalated_documents\nFROM caseflow.documents\nWHERE\n  outcome = 'escalate'\n  AND reviewed_at >= CAST('2026-09-01' AS DATE)\n  AND reviewed_at < CAST('2026-10-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "escalated_documents"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ],
+        "capped": false,
+        "explanation": "Counts documents reviewed in September 2026 with the outcome escalate.",
+        "assumptions": [
+          "Counted by review date"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3292,
+        "tokens_out": 86,
+        "ms": 22
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q05",
+      "question": "What were the three most common reasons for asking the applicant for something else, from May to October 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "ranking"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "reason_code",
+          "documents"
+        ],
+        "rows": [
+          [
+            "POA_OLDER_THAN_3_MONTHS",
+            1197
+          ],
+          [
+            "NAME_MISMATCH",
+            722
+          ],
+          [
+            "IMAGE_BLURRED",
+            569
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What were the three most common reasons for asking the applicant for something else, from May to October 2026?",
+        "question_id": "Q05",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT reason_code, COUNT(*) AS times_used FROM caseflow.documents WHERE outcome = 'ask_applicant' AND reviewed_at >= DATE '2026-05-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY times_used DESC LIMIT 3",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [],
+              "sql": "SELECT\n  reason_code,\n  COUNT(*) AS times_used\nFROM caseflow.documents\nWHERE\n  outcome = 'ask_applicant'\n  AND reviewed_at >= CAST('2026-05-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  reason_code\nORDER BY\n  times_used DESC\nLIMIT 3"
+            },
+            "secured_sql": "SELECT\n  reason_code,\n  COUNT(*) AS times_used\nFROM caseflow.documents\nWHERE\n  outcome = 'ask_applicant'\n  AND reviewed_at >= CAST('2026-05-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  reason_code\nORDER BY\n  times_used DESC\nLIMIT 3",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "reason_code",
+          "times_used"
+        ],
+        "rows": [
+          [
+            "POA_OLDER_THAN_3_MONTHS",
+            1197
+          ],
+          [
+            "NAME_MISMATCH",
+            722
+          ],
+          [
+            "IMAGE_BLURRED",
+            569
+          ]
+        ],
+        "capped": false,
+        "explanation": "The three reason codes most used with ask_applicant, by review date from May to October 2026.",
+        "assumptions": [
+          "Counted per document reviewed"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3302,
+        "tokens_out": 110,
+        "ms": 26
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q06",
+      "question": "What share of applications received in 2026 got at least one ask-applicant?",
+      "user": "helen.achebe",
+      "tags": [
+        "rate"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "ask_applicant_pct"
+        ],
+        "rows": [
+          [
+            28.9
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What share of applications received in 2026 got at least one ask-applicant?",
+        "question_id": "Q06",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT ROUND(AVG(CASE WHEN EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) * 100, 1) AS ask_applicant_rate FROM caseflow.cases c WHERE c.received_at >= DATE '2026-01-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  ROUND(\n    AVG(\n      CASE\n        WHEN EXISTS(\n          SELECT\n            1\n          FROM caseflow.documents AS d\n          WHERE\n            d.case_id = c.case_id AND d.outcome = 'ask_applicant'\n        )\n        THEN 1.0\n        ELSE 0\n      END\n    ) * 100,\n    1\n  ) AS ask_applicant_rate\nFROM caseflow.cases AS c\nWHERE\n  c.received_at >= CAST('2026-01-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  ROUND(\n    AVG(\n      CASE\n        WHEN EXISTS(\n          SELECT\n            1\n          FROM caseflow.documents AS d\n          WHERE\n            d.case_id = c.case_id AND d.outcome = 'ask_applicant'\n        )\n        THEN 1.0\n        ELSE 0\n      END\n    ) * 100,\n    1\n  ) AS ask_applicant_rate\nFROM caseflow.cases AS c\nWHERE\n  c.received_at >= CAST('2026-01-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "ask_applicant_rate"
+        ],
+        "rows": [
+          [
+            28.9
+          ]
+        ],
+        "capped": false,
+        "explanation": "Uses the ask_applicant_rate metric for applications received in 2026.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3293,
+        "tokens_out": 99,
+        "ms": 33
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q07",
+      "question": "What was our turnaround in October 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "term:turnaround"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            7.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What was our turnaround in October 2026?",
+        "question_id": "Q07",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-10-01' AS DATE)\n  AND decided_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-10-01' AS DATE)\n  AND decided_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            7.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's turnaround: the median working days to a decision, not counting waits for the applicant, for applications decided in October 2026.",
+        "assumptions": [
+          "Uses the bank's definition of turnaround"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3284,
+        "tokens_out": 121,
+        "ms": 22
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q08",
+      "question": "How did turnaround change month by month in 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "term:turnaround",
+        "trend"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "month",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "2026-01",
+            4.0
+          ],
+          [
+            "2026-02",
+            4.0
+          ],
+          [
+            "2026-03",
+            4.0
+          ],
+          [
+            "2026-04",
+            5.0
+          ],
+          [
+            "2026-05",
+            5.0
+          ],
+          [
+            "2026-06",
+            6.0
+          ],
+          [
+            "2026-07",
+            6.0
+          ],
+          [
+            "2026-08",
+            6.0
+          ],
+          [
+            "2026-09",
+            6.0
+          ],
+          [
+            "2026-10",
+            7.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How did turnaround change month by month in 2026?",
+        "question_id": "Q08",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT strftime(decided_at, '%Y-%m') AS month, MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-01-01' GROUP BY month ORDER BY month",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  STRFTIME(decided_at, '%Y-%m') AS month,\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined') AND decided_at >= CAST('2026-01-01' AS DATE)\nGROUP BY\n  month\nORDER BY\n  month\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  STRFTIME(decided_at, '%Y-%m') AS month,\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined') AND decided_at >= CAST('2026-01-01' AS DATE)\nGROUP BY\n  month\nORDER BY\n  month\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "month",
+          "turnaround"
+        ],
+        "rows": [
+          [
+            "2026-01",
+            4.0
+          ],
+          [
+            "2026-02",
+            4.0
+          ],
+          [
+            "2026-03",
+            4.0
+          ],
+          [
+            "2026-04",
+            5.0
+          ],
+          [
+            "2026-05",
+            5.0
+          ],
+          [
+            "2026-06",
+            6.0
+          ],
+          [
+            "2026-07",
+            6.0
+          ],
+          [
+            "2026-08",
+            6.0
+          ],
+          [
+            "2026-09",
+            6.0
+          ],
+          [
+            "2026-10",
+            7.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's turnaround for each month of 2026, by the month of the decision.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3287,
+        "tokens_out": 98,
+        "ms": 27
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q09",
+      "question": "How does turnaround for business applications compare with personal ones, from August to October 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "term:turnaround"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "customer_type",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "business",
+            8.0
+          ],
+          [
+            "personal",
+            6.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How does turnaround for business applications compare with personal ones, from August to October 2026?",
+        "question_id": "Q09",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT customer_type, MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-08-01' AND decided_at < DATE '2026-11-01' GROUP BY customer_type",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  customer_type,\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-08-01' AS DATE)\n  AND decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  customer_type\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  customer_type,\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-08-01' AS DATE)\n  AND decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  customer_type\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "customer_type",
+          "turnaround"
+        ],
+        "rows": [
+          [
+            "business",
+            8.0
+          ],
+          [
+            "personal",
+            6.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's turnaround for business and personal applications decided from August to October 2026.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3300,
+        "tokens_out": 104,
+        "ms": 24
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q10",
+      "question": "What is our backlog right now?",
+      "user": "helen.achebe",
+      "tags": [
+        "term:backlog"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            4160
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What is our backlog right now?",
+        "question_id": "Q10",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS documents_waiting FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS documents_waiting\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS documents_waiting\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            4160
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's backlog: documents not reviewed yet on open applications.",
+        "assumptions": [
+          "Counted in documents, as the bank defines it"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3282,
+        "tokens_out": 90,
+        "ms": 24
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q11",
+      "question": "How many applications were declined in each month of Q3 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "count",
+        "trend"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "month",
+          "declined"
+        ],
+        "rows": [
+          [
+            "2026-07",
+            85
+          ],
+          [
+            "2026-08",
+            109
+          ],
+          [
+            "2026-09",
+            108
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications were declined in each month of Q3 2026?",
+        "question_id": "Q11",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT strftime(decided_at, '%Y-%m') AS month, COUNT(*) AS declined FROM caseflow.cases WHERE status = 'declined' AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01' GROUP BY month ORDER BY month",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  STRFTIME(decided_at, '%Y-%m') AS month,\n  COUNT(*) AS declined\nFROM caseflow.cases\nWHERE\n  status = 'declined'\n  AND decided_at >= CAST('2026-07-01' AS DATE)\n  AND decided_at < CAST('2026-10-01' AS DATE)\nGROUP BY\n  month\nORDER BY\n  month\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  STRFTIME(decided_at, '%Y-%m') AS month,\n  COUNT(*) AS declined\nFROM caseflow.cases\nWHERE\n  status = 'declined'\n  AND decided_at >= CAST('2026-07-01' AS DATE)\n  AND decided_at < CAST('2026-10-01' AS DATE)\nGROUP BY\n  month\nORDER BY\n  month\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "month",
+          "declined"
+        ],
+        "rows": [
+          [
+            "2026-07",
+            85
+          ],
+          [
+            "2026-08",
+            109
+          ],
+          [
+            "2026-09",
+            108
+          ]
+        ],
+        "capped": false,
+        "explanation": "Declined applications by the month of the decision, July to September 2026.",
+        "assumptions": [
+          "Q3 2026 is July to September 2026"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3290,
+        "tokens_out": 103,
+        "ms": 23
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q12",
+      "question": "Which document type had the highest ask-applicant rate in 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "ranking",
+        "rate"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "doc_type"
+        ],
+        "rows": [
+          [
+            "utility_bill"
+          ]
+        ]
+      },
+      "answer": {
+        "question": "Which document type had the highest ask-applicant rate in 2026?",
+        "question_id": "Q12",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT doc_type, ROUND(100.0 * COUNT(*) FILTER (WHERE outcome = 'ask_applicant') / COUNT(*), 1) AS ask_applicant_pct FROM caseflow.documents WHERE reviewed_at >= DATE '2026-01-01' GROUP BY doc_type ORDER BY ask_applicant_pct DESC LIMIT 1",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [],
+              "sql": "SELECT\n  doc_type,\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    outcome = 'ask_applicant') / COUNT(*), 1) AS ask_applicant_pct\nFROM caseflow.documents\nWHERE\n  reviewed_at >= CAST('2026-01-01' AS DATE)\nGROUP BY\n  doc_type\nORDER BY\n  ask_applicant_pct DESC\nLIMIT 1"
+            },
+            "secured_sql": "SELECT\n  doc_type,\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    outcome = 'ask_applicant') / COUNT(*), 1) AS ask_applicant_pct\nFROM caseflow.documents\nWHERE\n  reviewed_at >= CAST('2026-01-01' AS DATE)\nGROUP BY\n  doc_type\nORDER BY\n  ask_applicant_pct DESC\nLIMIT 1",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "doc_type",
+          "ask_applicant_pct"
+        ],
+        "rows": [
+          [
+            "utility_bill",
+            21.4
+          ]
+        ],
+        "capped": false,
+        "explanation": "For each document type reviewed in 2026, the share asked again; the highest one.",
+        "assumptions": [
+          "The rate is per document reviewed"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3290,
+        "tokens_out": 110,
+        "ms": 25
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q13",
+      "question": "How many high-risk applicants were approved in October 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "join"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "approved"
+        ],
+        "rows": [
+          [
+            88
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many high-risk applicants were approved in October 2026?",
+        "question_id": "Q13",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS high_risk_approved FROM caseflow.cases c JOIN caseflow.customers cu ON cu.customer_id = c.customer_id WHERE cu.risk_rating = 'high' AND c.status = 'approved' AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS high_risk_approved\nFROM caseflow.cases AS c\nJOIN caseflow.customers AS cu\n  ON cu.customer_id = c.customer_id\nWHERE\n  cu.risk_rating = 'high'\n  AND c.status = 'approved'\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS high_risk_approved\nFROM caseflow.cases AS c\nJOIN (\n  SELECT\n    *\n    REPLACE ('[hidden]' AS customer_name)\n  FROM caseflow.customers\n) AS cu\n  ON cu.customer_id = c.customer_id\nWHERE\n  cu.risk_rating = 'high'\n  AND c.status = 'approved'\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "high_risk_approved"
+        ],
+        "rows": [
+          [
+            88
+          ]
+        ],
+        "capped": false,
+        "explanation": "High-risk applicants whose application was approved in October 2026.",
+        "assumptions": [
+          "Counted by the day of the decision"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3290,
+        "tokens_out": 111,
+        "ms": 25
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q14",
+      "question": "How many applications were withdrawn in 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "withdrawn"
+        ],
+        "rows": [
+          [
+            1325
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications were withdrawn in 2026?",
+        "question_id": "Q14",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases WHERE status = 'withdrawn' AND closed_at >= DATE '2026-01-01' AND closed_at < DATE '2027-01-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS withdrawn\nFROM caseflow.cases\nWHERE\n  status = 'withdrawn'\n  AND closed_at >= CAST('2026-01-01' AS DATE)\n  AND closed_at < CAST('2027-01-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS withdrawn\nFROM caseflow.cases\nWHERE\n  status = 'withdrawn'\n  AND closed_at >= CAST('2026-01-01' AS DATE)\n  AND closed_at < CAST('2027-01-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "withdrawn"
+        ],
+        "rows": [
+          [
+            1325
+          ]
+        ],
+        "capped": false,
+        "explanation": "Applications withdrawn in 2026, by the day they were closed.",
+        "assumptions": [
+          "Counted by closed_at"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3286,
+        "tokens_out": 79,
+        "ms": 21
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q15",
+      "question": "On average, how many minutes does a document review take for business applications and for personal ones?",
+      "user": "helen.achebe",
+      "tags": [
+        "join"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "customer_type",
+          "minutes"
+        ],
+        "rows": [
+          [
+            "business",
+            18.8
+          ],
+          [
+            "personal",
+            6.4
+          ]
+        ]
+      },
+      "answer": {
+        "question": "On average, how many minutes does a document review take for business applications and for personal ones?",
+        "question_id": "Q15",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT c.customer_type, ROUND(AVG(d.minutes_spent), 1) AS avg_minutes FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NOT NULL GROUP BY c.customer_type",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  c.customer_type,\n  ROUND(AVG(d.minutes_spent), 1) AS avg_minutes\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nWHERE\n  NOT d.reviewed_at IS NULL\nGROUP BY\n  c.customer_type\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  c.customer_type,\n  ROUND(AVG(d.minutes_spent), 1) AS avg_minutes\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nWHERE\n  NOT d.reviewed_at IS NULL\nGROUP BY\n  c.customer_type\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "customer_type",
+          "avg_minutes"
+        ],
+        "rows": [
+          [
+            "business",
+            18.8
+          ],
+          [
+            "personal",
+            6.4
+          ]
+        ],
+        "capped": false,
+        "explanation": "The average minutes per reviewed document, for business and personal applications.",
+        "assumptions": [
+          "Over the whole extract"
+        ],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3301,
+        "tokens_out": 98,
+        "ms": 33
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q16",
+      "question": "How many fields did the document pipeline send to the Review queue in the October batch?",
+      "user": "helen.achebe",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "fields"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many fields did the document pipeline send to the Review queue in the October batch?",
+        "question_id": "Q16",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS fields_to_review FROM pipeline.field_results WHERE decision = 'review'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS fields_to_review\nFROM pipeline.field_results\nWHERE\n  decision = 'review'\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS fields_to_review\nFROM pipeline.field_results\nWHERE\n  decision = 'review'\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "fields_to_review"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ],
+        "capped": false,
+        "explanation": "Fields in the October batch that went to the Review queue.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3296,
+        "tokens_out": 57,
+        "ms": 20
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q17",
+      "question": "Which field went to the Review queue most often in the October batch?",
+      "user": "helen.achebe",
+      "tags": [
+        "ranking"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "field"
+        ],
+        "rows": [
+          [
+            "statement_date"
+          ]
+        ]
+      },
+      "answer": {
+        "question": "Which field went to the Review queue most often in the October batch?",
+        "question_id": "Q17",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT field, COUNT(*) AS times FROM pipeline.field_results WHERE decision = 'review' GROUP BY field ORDER BY times DESC LIMIT 1",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [],
+              "sql": "SELECT\n  field,\n  COUNT(*) AS times\nFROM pipeline.field_results\nWHERE\n  decision = 'review'\nGROUP BY\n  field\nORDER BY\n  times DESC\nLIMIT 1"
+            },
+            "secured_sql": "SELECT\n  field,\n  COUNT(*) AS times\nFROM pipeline.field_results\nWHERE\n  decision = 'review'\nGROUP BY\n  field\nORDER BY\n  times DESC\nLIMIT 1",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "field",
+          "times"
+        ],
+        "rows": [
+          [
+            "statement_date",
+            38
+          ]
+        ],
+        "capped": false,
+        "explanation": "The field most often sent to review.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 3292,
+        "tokens_out": 61,
+        "ms": 21
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q18",
+      "question": "How many applications came in through the app each month since March 2026?",
+      "user": "helen.achebe",
+      "tags": [
+        "count",
+        "trend"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "month",
+          "applications"
+        ],
+        "rows": [
+          [
+            "2026-03",
+            841
+          ],
+          [
+            "2026-04",
+            1049
+          ],
+          [
+            "2026-05",
+            1048
+          ],
+          [
+            "2026-06",
+            1021
+          ],
+          [
+            "2026-07",
+            1046
+          ],
+          [
+            "2026-08",
+            1053
+          ],
+          [
+            "2026-09",
+            2074
+          ],
+          [
+            "2026-10",
+            1262
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications came in through the app each month since March 2026?",
+        "question_id": "Q18",
+        "user": "helen.achebe",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT DATE_FORMAT(received_at, '%Y-%m') AS month, COUNT(*) AS applications FROM caseflow.cases WHERE channel = 'app' AND received_at >= '2026-03-01' GROUP BY 1 ORDER BY 1",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  DATE_FORMAT(received_at, '%Y-%m') AS month,\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  channel = 'app' AND received_at >= '2026-03-01'\nGROUP BY\n  1\nORDER BY\n  1\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  DATE_FORMAT(received_at, '%Y-%m') AS month,\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  channel = 'app' AND received_at >= '2026-03-01'\nGROUP BY\n  1\nORDER BY\n  1\nLIMIT 1000",
+            "error": "Catalog Error: Scalar Function with name date_format does not exist!"
+          },
+          {
+            "sql": "SELECT strftime(received_at, '%Y-%m') AS month, COUNT(*) AS applications FROM caseflow.cases WHERE channel = 'app' AND received_at >= DATE '2026-03-01' GROUP BY 1 ORDER BY 1",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  STRFTIME(received_at, '%Y-%m') AS month,\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  channel = 'app' AND received_at >= CAST('2026-03-01' AS DATE)\nGROUP BY\n  1\nORDER BY\n  1\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  STRFTIME(received_at, '%Y-%m') AS month,\n  COUNT(*) AS applications\nFROM caseflow.cases\nWHERE\n  channel = 'app' AND received_at >= CAST('2026-03-01' AS DATE)\nGROUP BY\n  1\nORDER BY\n  1\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "month",
+          "applications"
+        ],
+        "rows": [
+          [
+            "2026-03",
+            841
+          ],
+          [
+            "2026-04",
+            1049
+          ],
+          [
+            "2026-05",
+            1048
+          ],
+          [
+            "2026-06",
+            1021
+          ],
+          [
+            "2026-07",
+            1046
+          ],
+          [
+            "2026-08",
+            1053
+          ],
+          [
+            "2026-09",
+            2074
+          ],
+          [
+            "2026-10",
+            1262
+          ]
+        ],
+        "capped": false,
+        "explanation": "App applications by the month received, from March 2026. DuckDB formats dates with strftime.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "All teams' cases; customer names hidden",
+        "tokens_in": 6663,
+        "tokens_out": 163,
+        "ms": 38
+      },
+      "repaired": true
+    },
+    {
+      "id": "Q19",
+      "question": "How many applications in my region are waiting for the applicant right now?",
+      "user": "grace.mensah",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "waiting"
+        ],
+        "rows": [
+          [
+            51
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications in my region are waiting for the applicant right now?",
+        "question_id": "Q19",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS waiting_for_applicant FROM caseflow.cases WHERE status = 'waiting_applicant'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS waiting_for_applicant\nFROM caseflow.cases\nWHERE\n  status = 'waiting_applicant'\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS waiting_for_applicant\nFROM (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1', 'N2')\n) AS cases\nWHERE\n  status = 'waiting_applicant'\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "waiting_for_applicant"
+        ],
+        "rows": [
+          [
+            51
+          ]
+        ],
+        "capped": false,
+        "explanation": "Applications whose status is waiting_applicant. Row security limits them to the user's region.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 3298,
+        "tokens_out": 68,
+        "ms": 21
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q20",
+      "question": "What is the backlog for each of my teams?",
+      "user": "grace.mensah",
+      "tags": [
+        "term:backlog"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "team_name",
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            "North 1",
+            692
+          ],
+          [
+            "North 2",
+            738
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What is the backlog for each of my teams?",
+        "question_id": "Q20",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT t.team_name, COUNT(*) AS backlog_documents FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at IS NULL AND c.status = 'open' GROUP BY t.team_name ORDER BY t.team_name",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  t.team_name,\n  COUNT(*) AS backlog_documents\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nGROUP BY\n  t.team_name\nORDER BY\n  t.team_name\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  t.team_name,\n  COUNT(*) AS backlog_documents\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1', 'N2')\n    )\n) AS d\nJOIN (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1', 'N2')\n) AS c\n  ON c.case_id = d.case_id\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nGROUP BY\n  t.team_name\nORDER BY\n  t.team_name\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "team_name",
+          "backlog_documents"
+        ],
+        "rows": [
+          [
+            "North 1",
+            692
+          ],
+          [
+            "North 2",
+            738
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's backlog, documents waiting for an analyst, for each team.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 3290,
+        "tokens_out": 102,
+        "ms": 33
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q21",
+      "question": "What was the turnaround for each team in my region in October 2026?",
+      "user": "grace.mensah",
+      "tags": [
+        "term:turnaround"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "team_name",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "North 1",
+            8.0
+          ],
+          [
+            "North 2",
+            8.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What was the turnaround for each team in my region in October 2026?",
+        "question_id": "Q21",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT t.team_name, MEDIAN(c.working_days_open - c.applicant_wait_days) AS turnaround FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  t.team_name,\n  MEDIAN(c.working_days_open - c.applicant_wait_days) AS turnaround\nFROM caseflow.cases AS c\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  c.status IN ('approved', 'declined')\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  t.team_name\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  t.team_name,\n  MEDIAN(c.working_days_open - c.applicant_wait_days) AS turnaround\nFROM (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1', 'N2')\n) AS c\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  c.status IN ('approved', 'declined')\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  t.team_name\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "team_name",
+          "turnaround"
+        ],
+        "rows": [
+          [
+            "North 1",
+            8.0
+          ],
+          [
+            "North 2",
+            8.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's turnaround for each team, for applications decided in October 2026.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 3296,
+        "tokens_out": 113,
+        "ms": 26
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q22",
+      "question": "Which analyst in my region reviewed the most documents in October 2026?",
+      "user": "grace.mensah",
+      "tags": [
+        "ranking",
+        "join"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "analyst_name"
+        ],
+        "rows": [
+          [
+            "Sofia Marino"
+          ]
+        ]
+      },
+      "answer": {
+        "question": "Which analyst in my region reviewed the most documents in October 2026?",
+        "question_id": "Q22",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT a.analyst_name, COUNT(*) AS reviews FROM documents d JOIN analysts a ON a.analyst_id = d.reviewed_by WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY reviews DESC LIMIT 1",
+            "check": {
+              "ok": false,
+              "reasons": [
+                "Name the schema: write caseflow.documents, not documents",
+                "Name the schema: write caseflow.analysts, not analysts"
+              ],
+              "notes": [],
+              "sql": ""
+            },
+            "secured_sql": "",
+            "error": ""
+          },
+          {
+            "sql": "SELECT a.analyst_name, COUNT(*) AS reviews FROM caseflow.documents d JOIN caseflow.analysts a ON a.analyst_id = d.reviewed_by WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY reviews DESC LIMIT 1",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [],
+              "sql": "SELECT\n  a.analyst_name,\n  COUNT(*) AS reviews\nFROM caseflow.documents AS d\nJOIN caseflow.analysts AS a\n  ON a.analyst_id = d.reviewed_by\nWHERE\n  d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  a.analyst_name\nORDER BY\n  reviews DESC\nLIMIT 1"
+            },
+            "secured_sql": "SELECT\n  a.analyst_name,\n  COUNT(*) AS reviews\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1', 'N2')\n    )\n) AS d\nJOIN (\n  SELECT\n    *\n  FROM caseflow.analysts\n  WHERE\n    team_id IN ('N1', 'N2')\n) AS a\n  ON a.analyst_id = d.reviewed_by\nWHERE\n  d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  a.analyst_name\nORDER BY\n  reviews DESC\nLIMIT 1",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "analyst_name",
+          "reviews"
+        ],
+        "rows": [
+          [
+            "Sofia Marino",
+            209
+          ]
+        ],
+        "capped": false,
+        "explanation": "The analyst with the most document reviews in October 2026, with the schema named.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 6700,
+        "tokens_out": 200,
+        "ms": 33
+      },
+      "repaired": true
+    },
+    {
+      "id": "Q23",
+      "question": "How many documents did each team in my region review per working day in October 2026?",
+      "user": "grace.mensah",
+      "tags": [
+        "period:working_days"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "team_name",
+          "per_working_day"
+        ],
+        "rows": [
+          [
+            "North 1",
+            29.2
+          ],
+          [
+            "North 2",
+            31.4
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many documents did each team in my region review per working day in October 2026?",
+        "question_id": "Q23",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT t.team_name, ROUND(COUNT(*) * 1.0 / (SELECT COUNT(*) FROM caseflow.calendar WHERE is_working_day AND day BETWEEN DATE '2026-10-01' AND DATE '2026-10-30'), 1) AS per_working_day FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY t.team_name",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  t.team_name,\n  ROUND(\n    COUNT(*) * 1.0 / (\n      SELECT\n        COUNT(*)\n      FROM caseflow.calendar\n      WHERE\n        is_working_day\n        AND day BETWEEN CAST('2026-10-01' AS DATE) AND CAST('2026-10-30' AS DATE)\n    ),\n    1\n  ) AS per_working_day\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  t.team_name\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  t.team_name,\n  ROUND(\n    COUNT(*) * 1.0 / (\n      SELECT\n        COUNT(*)\n      FROM caseflow.calendar\n      WHERE\n        is_working_day\n        AND day BETWEEN CAST('2026-10-01' AS DATE) AND CAST('2026-10-30' AS DATE)\n    ),\n    1\n  ) AS per_working_day\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1', 'N2')\n    )\n) AS d\nJOIN (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1', 'N2')\n) AS c\n  ON c.case_id = d.case_id\nJOIN caseflow.teams AS t\n  ON t.team_id = c.team_id\nWHERE\n  d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  t.team_name\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "team_name",
+          "per_working_day"
+        ],
+        "rows": [
+          [
+            "North 2",
+            31.4
+          ],
+          [
+            "North 1",
+            29.2
+          ]
+        ],
+        "capped": false,
+        "explanation": "Documents reviewed in October 2026 by each team, per working day up to 30 October.",
+        "assumptions": [
+          "October 2026 has 22 working days to the 30th"
+        ],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 3300,
+        "tokens_out": 155,
+        "ms": 36
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q24",
+      "question": "How many applications in my region had a document sent back to the applicant in October 2026?",
+      "user": "grace.mensah",
+      "tags": [
+        "join:distinct"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            145
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications in my region had a document sent back to the applicant in October 2026?",
+        "question_id": "Q24",
+        "user": "grace.mensah",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(DISTINCT d.case_id) AS applications FROM caseflow.documents d WHERE d.outcome = 'ask_applicant' AND d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(DISTINCT d.case_id) AS applications\nFROM caseflow.documents AS d\nWHERE\n  d.outcome = 'ask_applicant'\n  AND d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(DISTINCT d.case_id) AS applications\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1', 'N2')\n    )\n) AS d\nWHERE\n  d.outcome = 'ask_applicant'\n  AND d.reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND d.reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            145
+          ]
+        ],
+        "capped": false,
+        "explanation": "Applications (counted once each) with at least one document asked again in October 2026.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1 and North 2 (North region)",
+        "tokens_in": 3302,
+        "tokens_out": 88,
+        "ms": 29
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q25",
+      "question": "How many documents did my team review in October 2026?",
+      "user": "tom.reyes",
+      "tags": [
+        "count"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "documents"
+        ],
+        "rows": [
+          [
+            642
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many documents did my team review in October 2026?",
+        "question_id": "Q25",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS documents_reviewed FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS documents_reviewed\nFROM caseflow.documents\nWHERE\n  reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS documents_reviewed\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1')\n    )\n) AS documents\nWHERE\n  reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "documents_reviewed"
+        ],
+        "rows": [
+          [
+            642
+          ]
+        ],
+        "capped": false,
+        "explanation": "Documents reviewed in October 2026. Row security limits them to the user's team.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3293,
+        "tokens_out": 74,
+        "ms": 25
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q26",
+      "question": "What is my team's backlog?",
+      "user": "tom.reyes",
+      "tags": [
+        "term:backlog"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            692
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What is my team's backlog?",
+        "question_id": "Q26",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT COUNT(*) AS backlog FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  COUNT(*) AS backlog\nFROM caseflow.documents AS d\nJOIN caseflow.cases AS c\n  ON c.case_id = d.case_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  COUNT(*) AS backlog\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1')\n    )\n) AS d\nJOIN (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1')\n) AS c\n  ON c.case_id = d.case_id\nWHERE\n  d.reviewed_at IS NULL AND c.status = 'open'\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "backlog"
+        ],
+        "rows": [
+          [
+            692
+          ]
+        ],
+        "capped": false,
+        "explanation": "Documents waiting for an analyst on open applications.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3286,
+        "tokens_out": 71,
+        "ms": 31
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q27",
+      "question": "What share of my team's documents were accepted in October 2026?",
+      "user": "tom.reyes",
+      "tags": [
+        "rate"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "accepted_pct"
+        ],
+        "rows": [
+          [
+            86.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What share of my team's documents were accepted in October 2026?",
+        "question_id": "Q27",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT ROUND(100.0 * COUNT(*) FILTER (WHERE outcome = 'accept') / COUNT(*), 1) AS accepted_pct FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    outcome = 'accept') / COUNT(*), 1) AS accepted_pct\nFROM caseflow.documents\nWHERE\n  reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  ROUND(100.0 * COUNT(*) FILTER(WHERE\n    outcome = 'accept') / COUNT(*), 1) AS accepted_pct\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1')\n    )\n) AS documents\nWHERE\n  reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "accepted_pct"
+        ],
+        "rows": [
+          [
+            86.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The percentage of documents reviewed in October 2026 that were accepted.",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3296,
+        "tokens_out": 86,
+        "ms": 27
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q28",
+      "question": "Which three reason codes did my team use most in October 2026?",
+      "user": "tom.reyes",
+      "tags": [
+        "ranking"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "reason_code"
+        ],
+        "rows": [
+          [
+            "IMAGE_BLURRED"
+          ],
+          [
+            "NAME_MISMATCH"
+          ],
+          [
+            "POA_OLDER_THAN_3_MONTHS"
+          ]
+        ]
+      },
+      "answer": {
+        "question": "Which three reason codes did my team use most in October 2026?",
+        "question_id": "Q28",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT reason_code, COUNT(*) AS used FROM caseflow.documents WHERE reason_code IS NOT NULL AND reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY used DESC LIMIT 3",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [],
+              "sql": "SELECT\n  reason_code,\n  COUNT(*) AS used\nFROM caseflow.documents\nWHERE\n  NOT reason_code IS NULL\n  AND reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  reason_code\nORDER BY\n  used DESC\nLIMIT 3"
+            },
+            "secured_sql": "SELECT\n  reason_code,\n  COUNT(*) AS used\nFROM (\n  SELECT\n    *\n  FROM caseflow.documents\n  WHERE\n    case_id IN (\n      SELECT\n        case_id\n      FROM caseflow.cases\n      WHERE\n        team_id IN ('N1')\n    )\n) AS documents\nWHERE\n  NOT reason_code IS NULL\n  AND reviewed_at >= CAST('2026-10-01' AS DATE)\n  AND reviewed_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  reason_code\nORDER BY\n  used DESC\nLIMIT 3",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "reason_code",
+          "used"
+        ],
+        "rows": [
+          [
+            "IMAGE_BLURRED",
+            19
+          ],
+          [
+            "NAME_MISMATCH",
+            17
+          ],
+          [
+            "POA_OLDER_THAN_3_MONTHS",
+            15
+          ]
+        ],
+        "capped": false,
+        "explanation": "The three reason codes used most on documents reviewed in October 2026.",
+        "assumptions": [
+          "Both ask_applicant and escalate have reason codes"
+        ],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3295,
+        "tokens_out": 106,
+        "ms": 27
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q29",
+      "question": "How many applications did each analyst on my team decide in October 2026?",
+      "user": "tom.reyes",
+      "tags": [
+        "join"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "analyst_name",
+          "decided"
+        ],
+        "rows": [
+          [
+            "Aisha Bello",
+            39
+          ],
+          [
+            "Tom Reyes",
+            47
+          ],
+          [
+            "Priya Nair",
+            40
+          ],
+          [
+            "Hannah Whitlock",
+            48
+          ],
+          [
+            "Callum Fraser",
+            29
+          ]
+        ]
+      },
+      "answer": {
+        "question": "How many applications did each analyst on my team decide in October 2026?",
+        "question_id": "Q29",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT a.analyst_name, COUNT(*) AS decided FROM caseflow.cases c JOIN caseflow.analysts a ON a.analyst_id = c.analyst_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY decided DESC",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  a.analyst_name,\n  COUNT(*) AS decided\nFROM caseflow.cases AS c\nJOIN caseflow.analysts AS a\n  ON a.analyst_id = c.analyst_id\nWHERE\n  c.status IN ('approved', 'declined')\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  a.analyst_name\nORDER BY\n  decided DESC\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  a.analyst_name,\n  COUNT(*) AS decided\nFROM (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1')\n) AS c\nJOIN (\n  SELECT\n    *\n  FROM caseflow.analysts\n  WHERE\n    team_id IN ('N1')\n) AS a\n  ON a.analyst_id = c.analyst_id\nWHERE\n  c.status IN ('approved', 'declined')\n  AND c.decided_at >= CAST('2026-10-01' AS DATE)\n  AND c.decided_at < CAST('2026-11-01' AS DATE)\nGROUP BY\n  a.analyst_name\nORDER BY\n  decided DESC\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "analyst_name",
+          "decided"
+        ],
+        "rows": [
+          [
+            "Hannah Whitlock",
+            48
+          ],
+          [
+            "Tom Reyes",
+            47
+          ],
+          [
+            "Priya Nair",
+            40
+          ],
+          [
+            "Aisha Bello",
+            39
+          ],
+          [
+            "Callum Fraser",
+            29
+          ]
+        ],
+        "capped": false,
+        "explanation": "Approved or declined applications in October 2026, by the analyst who decided them.",
+        "assumptions": [
+          "Decided means approved or declined"
+        ],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3298,
+        "tokens_out": 123,
+        "ms": 27
+      },
+      "repaired": false
+    },
+    {
+      "id": "Q30",
+      "question": "What was my team's turnaround in Q3 2026?",
+      "user": "tom.reyes",
+      "tags": [
+        "term:turnaround"
+      ],
+      "right": true,
+      "failure": "",
+      "expected": {
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            6.0
+          ]
+        ]
+      },
+      "answer": {
+        "question": "What was my team's turnaround in Q3 2026?",
+        "question_id": "Q30",
+        "user": "tom.reyes",
+        "layer": "caseflow_v3",
+        "status": "answered",
+        "attempts": [
+          {
+            "sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01'",
+            "check": {
+              "ok": true,
+              "reasons": [],
+              "notes": [
+                "Added LIMIT 1000"
+              ],
+              "sql": "SELECT\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM caseflow.cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-07-01' AS DATE)\n  AND decided_at < CAST('2026-10-01' AS DATE)\nLIMIT 1000"
+            },
+            "secured_sql": "SELECT\n  MEDIAN(working_days_open - applicant_wait_days) AS turnaround\nFROM (\n  SELECT\n    *\n  FROM caseflow.cases\n  WHERE\n    team_id IN ('N1')\n) AS cases\nWHERE\n  status IN ('approved', 'declined')\n  AND decided_at >= CAST('2026-07-01' AS DATE)\n  AND decided_at < CAST('2026-10-01' AS DATE)\nLIMIT 1000",
+            "error": ""
+          }
+        ],
+        "columns": [
+          "turnaround"
+        ],
+        "rows": [
+          [
+            6.0
+          ]
+        ],
+        "capped": false,
+        "explanation": "The bank's turnaround for applications decided in Q3 2026 (July to September).",
+        "assumptions": [],
+        "cannot_answer": "",
+        "scope": "Only North 1's cases",
+        "tokens_in": 3290,
+        "tokens_out": 90,
+        "ms": 23
+      },
+      "repaired": false
+    }
+  ]
+}

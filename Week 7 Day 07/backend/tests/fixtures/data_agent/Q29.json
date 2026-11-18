@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT a.analyst_name, COUNT(*) AS decided FROM caseflow.cases c JOIN caseflow.analysts a ON a.analyst_id = c.analyst_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY decided DESC",
+  "explanation": "Approved or declined applications in October 2026, by the analyst who decided them.",
+  "assumptions": [
+    "Decided means approved or declined"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Arun Kaur"
+  },
+  {
+   "name": "address",
+   "value": "116 Gloucester Road, Cheltenham, GL53 5LW"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

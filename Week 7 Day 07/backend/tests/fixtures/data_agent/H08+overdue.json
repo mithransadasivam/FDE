@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS overdue FROM caseflow.cases WHERE status IN ('open', 'escalated') AND working_days_open - applicant_wait_days > 3",
+  "explanation": "The bank's overdue applications.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

@@ -1,0 +1,64 @@
+{
+  "doc_id": "B-165",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Hannah Fraser",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2867,
+        0.1755
+      ],
+      "page_text": "Ms Hannah Fraser",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 12, 69 Green Ln, Cirencester, GL7 9GS",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-10-12",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Copperline Broadband",
+      "confidence": 0.76,
+      "status": "check",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5516,
+        0.0664
+      ],
+      "page_text": "Copperline Broadband",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 75,
+    "latency_ms": 1828,
+    "scripted": true
+  }
+}

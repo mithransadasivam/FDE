@@ -1,0 +1,50 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Olivia Ricci & Mr Kwame Ricci",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 3, 125 Victoria Street Cheltenham GL51 8TX",
+   "word_ids": [
+    "w026",
+    "w027",
+    "w028",
+    "w029",
+    "w030",
+    "w031",
+    "w034",
+    "w035"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Sep 2026",
+   "word_ids": [
+    "w023",
+    "w024",
+    "w025"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

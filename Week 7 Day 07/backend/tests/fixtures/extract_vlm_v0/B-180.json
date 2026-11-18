@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Arun Haddad"
+  },
+  {
+   "name": "address",
+   "value": "Flat 3, 101 Green Lane, Gloucester, GL2 3PX"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

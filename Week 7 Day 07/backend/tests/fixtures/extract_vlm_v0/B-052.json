@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Mateusz Evans"
+  },
+  {
+   "name": "address",
+   "value": "76 Kings Road, Cheltenham, GL52 5GQ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

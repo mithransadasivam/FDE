@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Hannah Bennett & Mr Kwame Bennett"
+  },
+  {
+   "name": "address",
+   "value": "89 Leckhampton Road, Tewkesbury, GL20 2WL"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

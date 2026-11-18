@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS high_risk_approved FROM caseflow.cases c JOIN caseflow.customers cu ON cu.customer_id = c.customer_id WHERE cu.risk_rating = 'high' AND c.status = 'approved' AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01'",
+  "explanation": "High-risk applicants whose application was approved in October 2026.",
+  "assumptions": [
+    "Counted by the day of the decision"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Emma Griffiths"
+  },
+  {
+   "name": "address",
+   "value": "31 Leckhampton Road, Nailsworth, GL6 6WA"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

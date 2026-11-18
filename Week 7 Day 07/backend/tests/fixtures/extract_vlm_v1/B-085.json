@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Emma Bose"
+  },
+  {
+   "name": "address",
+   "value": "Flat 5, 79 Elm Grove, Tewkesbury, GL20 1FT"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

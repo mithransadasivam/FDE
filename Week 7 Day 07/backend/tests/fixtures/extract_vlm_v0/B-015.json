@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Demir"
+  },
+  {
+   "name": "address",
+   "value": "99 Bristol Road, Gloucester, GL1 4EQ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-13"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

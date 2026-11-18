@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Megan Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "126 High St, Quedgeley, GL2 2AZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

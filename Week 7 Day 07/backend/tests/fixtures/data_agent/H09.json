@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS applications FROM caseflow.cases c JOIN caseflow.documents d ON d.case_id = c.case_id WHERE d.outcome = 'ask_applicant' AND c.status = 'approved' AND c.decided_at >= DATE '2026-07-01' AND c.decided_at < DATE '2026-10-01'",
+  "explanation": "Approved Q3 applications joined to their ask_applicant documents.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

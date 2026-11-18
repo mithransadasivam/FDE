@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Olivia Novak"
+  },
+  {
+   "name": "address",
+   "value": "12 Victoria Street, Quedgeley, GL2 8SW"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

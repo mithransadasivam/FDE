@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS cases FROM caseflow.cases",
+  "explanation": "Counts every case in the warehouse.",
+  "assumptions": [
+    "Row security decides which cases are counted, not the question"
+  ],
+  "cannot_answer": ""
+}

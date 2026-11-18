@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Owen Bello"
+  },
+  {
+   "name": "address",
+   "value": "140 Spa Road, Stroud, GL5 8AA"
+  },
+  {
+   "name": "statement_date",
+   "value": "07 Mar 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

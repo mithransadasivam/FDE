@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases WHERE status = 'withdrawn' AND closed_at >= DATE '2026-01-01' AND closed_at < DATE '2027-01-01'",
+  "explanation": "Applications withdrawn in 2026, by the day they were closed.",
+  "assumptions": [
+    "Counted by closed_at"
+  ],
+  "cannot_answer": ""
+}

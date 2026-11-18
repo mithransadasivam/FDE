@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Theo Murphy"
+  },
+  {
+   "name": "address",
+   "value": "88 Hatherley Lane, Cirencester, GL7 3GG"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

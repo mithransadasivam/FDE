@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-182",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Zainab Murphy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2971,
+        0.1767
+      ],
+      "page_text": "Mrs Zainab Murphy",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 6, 34 Tewkesbury Road Stroud GL5 8ZU",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.3501,
+        0.2564
+      ],
+      "page_text": "Flat 6, 34 Tewkesbury Road Stroud GL5 8ZU",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "25 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7576,
+        0.2006
+      ],
+      "page_text": "25 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4783,
+        0.0634
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 512,
+    "output_tokens": 144,
+    "latency_ms": 1982,
+    "scripted": true
+  }
+}

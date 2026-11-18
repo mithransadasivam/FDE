@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Ruby Price"
+  },
+  {
+   "name": "address",
+   "value": "46 Meadow View, Cheltenham, GL52 6HX"
+  },
+  {
+   "name": "statement_date",
+   "value": "17 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Asha Hart & Ms Maya Hart",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005",
+    "w006",
+    "w007",
+    "w008",
+    "w009"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "46 Park Lane, Tewkesbury, GL20 1GS",
+   "word_ids": [
+    "w010",
+    "w011",
+    "w012",
+    "w013",
+    "w014",
+    "w015"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "18 Sep 2026",
+   "word_ids": [
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

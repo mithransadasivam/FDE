@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-078",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Chloe Khan",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2608,
+        0.1755
+      ],
+      "page_text": "Mrs Chloe Khan",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "102 Barton Street, Cheltenham, GL52 6LJ",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1873,
+        0.2489,
+        0.2555
+      ],
+      "page_text": "102 Barton Street Cheltenham GL52 6LJ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "09 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7591,
+        0.2036
+      ],
+      "page_text": "09 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 73,
+    "latency_ms": 1847,
+    "scripted": true
+  }
+}

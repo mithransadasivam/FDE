@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS documents FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-30' - INTERVAL 7 DAY",
+  "explanation": "Documents reviewed in the 7 days before the extract.",
+  "assumptions": [
+    "Last week is the 7 days up to 30 October 2026"
+  ],
+  "cannot_answer": ""
+}

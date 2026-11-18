@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Megan Boateng"
+  },
+  {
+   "name": "address",
+   "value": "5 Tewkesbury Road, Gloucester, GL2 1ND"
+  },
+  {
+   "name": "statement_date",
+   "value": "10 Mar 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Severnside District Council"
+  }
+ ]
+}

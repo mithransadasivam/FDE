@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS documents_reviewed FROM caseflow.documents WHERE reviewed_at IS NOT NULL AND reviewed_at >= DATE '2025-05-01'",
+  "explanation": "Counts every document with a review, from 1 May 2025 to the end of the extract.",
+  "assumptions": [
+    "The extract starts on 1 May 2025"
+  ],
+  "cannot_answer": ""
+}
