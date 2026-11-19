@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT MEDIAN(working_days_open) AS median_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01'",
+  "explanation": "The median working days open for applications decided from July to September 2026.",
+  "assumptions": [
+    "Turnaround is working_days_open",
+    "Q3 2026 is July to September"
+  ],
+  "cannot_answer": ""
+}

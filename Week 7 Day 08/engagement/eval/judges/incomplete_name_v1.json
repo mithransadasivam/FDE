@@ -1,0 +1,372 @@
+{
+  "judge": "incomplete_name",
+  "prompt": "incomplete_name_v1",
+  "field": "full_name",
+  "failure_type": "incomplete_name",
+  "at": "2026-11-06T03:09:55+00:00",
+  "agreement": {
+    "n": 50,
+    "agree": 50,
+    "percent": 100.0,
+    "kappa": 1.0,
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "tn": 46,
+    "caught": 1.0,
+    "cleared": 1.0,
+    "disagreements": []
+  },
+  "verdicts": {
+    "D03-001": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee block exactly: Ms Ananya R. Mehta.",
+      "value": "Ms Ananya R. Mehta",
+      "expert": "pass",
+      "expected": "Ms Ananya R. Mehta"
+    },
+    "D03-002": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Daniel Okonkwo' matches the printed addressee block exactly, with title and full name.",
+      "value": "Mr Daniel Okonkwo",
+      "expert": "pass",
+      "expected": "Mr Daniel Okonkwo"
+    },
+    "D03-003": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Grace Whitfield' matches the printed name in the addressee block exactly.",
+      "value": "Mrs Grace Whitfield",
+      "expert": "pass",
+      "expected": "Mrs Grace Whitfield"
+    },
+    "D03-004": {
+      "verdict": "pass",
+      "reason": "The value is the printed name exactly as it appears in the addressee block.",
+      "value": "Mr Tomasz Nowak",
+      "expert": "pass",
+      "expected": "Mr Tomasz Nowak"
+    },
+    "D03-005": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Priya Shah' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Ms Priya Shah",
+      "expert": "pass",
+      "expected": "Ms Priya Shah"
+    },
+    "D03-006": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Oliver Bennett' matches the printed addressee block exactly.",
+      "value": "Mr Oliver Bennett",
+      "expert": "pass",
+      "expected": "Mr Oliver Bennett"
+    },
+    "D03-007": {
+      "verdict": "pass",
+      "reason": "The value is exactly the printed addressee name, including the title.",
+      "value": "Miss Chloe Adeyemi",
+      "expert": "pass",
+      "expected": "Miss Chloe Adeyemi"
+    },
+    "D03-008": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee block exactly: Mr J. A. Kowalski.",
+      "value": "Mr J. A. Kowalski",
+      "expert": "pass",
+      "expected": "Mr J. A. Kowalski"
+    },
+    "D03-009": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Helena Marsh' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mrs Helena Marsh",
+      "expert": "pass",
+      "expected": "Mrs Helena Marsh"
+    },
+    "D03-010": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name in the addressee block exactly.",
+      "value": "Mr Samuel Price",
+      "expert": "pass",
+      "expected": "Mr Samuel Price"
+    },
+    "D03-011": {
+      "verdict": "pass",
+      "reason": "The value matches the complete printed addressee name, Ms Fatima Rahman.",
+      "value": "Ms Fatima Rahman",
+      "expert": "pass",
+      "expected": "Ms Fatima Rahman"
+    },
+    "D03-012": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Rhys Morgan' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mr Rhys Morgan",
+      "expert": "pass",
+      "expected": "Mr Rhys Morgan"
+    },
+    "D03-013": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee name 'Mrs Aisha Bello' exactly.",
+      "value": "Mrs Aisha Bello",
+      "expert": "pass",
+      "expected": "Mrs Aisha Bello"
+    },
+    "D03-014": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name 'Mr George Hughes' in the addressee block.",
+      "value": "Mr George Hughes",
+      "expert": "pass",
+      "expected": "Mr George Hughes"
+    },
+    "D03-015": {
+      "verdict": "pass",
+      "reason": "The value is the printed name exactly as it appears in the addressee block.",
+      "value": "Ms Lucy Carter",
+      "expert": "pass",
+      "expected": "Ms Lucy Carter"
+    },
+    "D03-016": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name in the addressee block.",
+      "value": "Mr Arjun Nair",
+      "expert": "pass",
+      "expected": "Mr Arjun Nair"
+    },
+    "D03-017": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Sophie Turner' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mrs Sophie Turner",
+      "expert": "pass",
+      "expected": "Mrs Sophie Turner"
+    },
+    "D03-018": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Kwame Asante' matches the printed name in the addressee block exactly.",
+      "value": "Mr Kwame Asante",
+      "expert": "pass",
+      "expected": "Mr Kwame Asante"
+    },
+    "D03-019": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name exactly.",
+      "value": "Ms Emily Clarke",
+      "expert": "pass",
+      "expected": "Ms Emily Clarke"
+    },
+    "D03-020": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee name “Mr Hassan Ali” exactly.",
+      "value": "Mr Hassan Ali",
+      "expert": "pass",
+      "expected": "Mr Hassan Ali"
+    },
+    "D03-021": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Margaret Doyle' matches the printed addressee block exactly.",
+      "value": "Mrs Margaret Doyle",
+      "expert": "pass",
+      "expected": "Mrs Margaret Doyle"
+    },
+    "D03-022": {
+      "verdict": "pass",
+      "reason": "The value exactly matches the printed addressee name, Mr Liam O'Brien.",
+      "value": "Mr Liam O'Brien",
+      "expert": "pass",
+      "expected": "Mr Liam O'Brien"
+    },
+    "D03-023": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name in the addressee block exactly as it appears.",
+      "value": "Ms Zara Hussain",
+      "expert": "pass",
+      "expected": "Ms Zara Hussain"
+    },
+    "D03-024": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Ethan Wright' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mr Ethan Wright",
+      "expert": "pass",
+      "expected": "Mr Ethan Wright"
+    },
+    "D03-025": {
+      "verdict": "pass",
+      "reason": "The value exactly matches the printed addressee name, Mrs Nkechi Eze.",
+      "value": "Mrs Nkechi Eze",
+      "expert": "pass",
+      "expected": "Mrs Nkechi Eze"
+    },
+    "D03-026": {
+      "verdict": "pass",
+      "reason": "The value is the complete printed addressee name, Mr Ben Fletcher.",
+      "value": "Mr Ben Fletcher",
+      "expert": "pass",
+      "expected": "Mr Ben Fletcher"
+    },
+    "D03-027": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Mei Lin Chen' matches the printed addressee block exactly, including the title and full name.",
+      "value": "Ms Mei Lin Chen",
+      "expert": "pass",
+      "expected": "Ms Mei Lin Chen"
+    },
+    "D03-028": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name 'Mr Patrick Byrne' exactly.",
+      "value": "Mr Patrick Byrne",
+      "expert": "pass",
+      "expected": "Mr Patrick Byrne"
+    },
+    "D03-029": {
+      "verdict": "pass",
+      "reason": "The value is the complete printed addressee name, Mrs Ruth Gallagher.",
+      "value": "Mrs Ruth Gallagher",
+      "expert": "pass",
+      "expected": "Mrs Ruth Gallagher"
+    },
+    "D03-030": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Yusuf Demir' matches the printed addressee block exactly.",
+      "value": "Mr Yusuf Demir",
+      "expert": "pass",
+      "expected": "Mr Yusuf Demir"
+    },
+    "D04-031": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Olivia Grant' matches the printed name in the addressee block exactly.",
+      "value": "Ms Olivia Grant",
+      "expert": "pass",
+      "expected": "Ms Olivia Grant"
+    },
+    "D04-032": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Daniel Reid' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mr Daniel Reid",
+      "expert": "pass",
+      "expected": "Mr Daniel Reid"
+    },
+    "D04-033": {
+      "verdict": "fail",
+      "reason": "The addressee block names both Mr Arun Shah and Mrs Priti Shah, so the value omits the second account holder.",
+      "value": "Mr Arun Shah",
+      "expert": "fail",
+      "expected": "Mr Arun Shah & Mrs Priti Shah"
+    },
+    "D04-034": {
+      "verdict": "pass",
+      "reason": "The value matches the printed name in the addressee block.",
+      "value": "Mrs Joy Adebayo",
+      "expert": "pass",
+      "expected": "Mrs Joy Adebayo"
+    },
+    "D04-035": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Callum Fraser' matches the printed addressee block exactly.",
+      "value": "Mr Callum Fraser",
+      "expert": "pass",
+      "expected": "Mr Callum Fraser"
+    },
+    "D04-036": {
+      "verdict": "pass",
+      "reason": "The value is the complete printed addressee name, Ms Hannah Wells.",
+      "value": "Ms Hannah Wells",
+      "expert": "pass",
+      "expected": "Ms Hannah Wells"
+    },
+    "D04-037": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee block exactly.",
+      "value": "Mr Victor Lungu",
+      "expert": "pass",
+      "expected": "Mr Victor Lungu"
+    },
+    "D04-038": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee block exactly: Ms Isla Robertson.",
+      "value": "Ms Isla Robertson",
+      "expert": "pass",
+      "expected": "Ms Isla Robertson"
+    },
+    "D04-039": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee block exactly.",
+      "value": "Mrs Leah Goldberg",
+      "expert": "pass",
+      "expected": "Mrs Leah Goldberg"
+    },
+    "D04-040": {
+      "verdict": "fail",
+      "reason": "The document is addressed to both Mr Tariq Aziz and Mrs Sana Aziz, but the value only includes Mr Tariq Aziz, missing the second account holder.",
+      "value": "Mr Tariq Aziz",
+      "expert": "fail",
+      "expected": "Mr Tariq Aziz & Mrs Sana Aziz"
+    },
+    "D04-041": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Owen Davies' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mr Owen Davies",
+      "expert": "pass",
+      "expected": "Mr Owen Davies"
+    },
+    "D04-042": {
+      "verdict": "pass",
+      "reason": "The value matches the printed addressee name exactly: Ms Amira Haddad.",
+      "value": "Ms Amira Haddad",
+      "expert": "pass",
+      "expected": "Ms Amira Haddad"
+    },
+    "D04-043": {
+      "verdict": "pass",
+      "reason": "The value 'Ms Ruby Collins' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Ms Ruby Collins",
+      "expert": "pass",
+      "expected": "Ms Ruby Collins"
+    },
+    "D04-044": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Femi Balogun' matches the printed addressee block exactly.",
+      "value": "Mr Femi Balogun",
+      "expert": "pass",
+      "expected": "Mr Femi Balogun"
+    },
+    "D04-045": {
+      "verdict": "pass",
+      "reason": "The value 'Mrs Clare Morton' matches the printed addressee block exactly.",
+      "value": "Mrs Clare Morton",
+      "expert": "pass",
+      "expected": "Mrs Clare Morton"
+    },
+    "D04-046": {
+      "verdict": "fail",
+      "reason": "A joint bill: the second account holder, Mr Piotr Novak, is missing.",
+      "value": "Ms Lena Novak",
+      "expert": "fail",
+      "expected": "Ms Lena Novak & Mr Piotr Novak"
+    },
+    "D04-047": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Sean Murphy' matches the printed addressee block exactly, with no missing or extra names.",
+      "value": "Mr Sean Murphy",
+      "expert": "pass",
+      "expected": "Mr Sean Murphy"
+    },
+    "D04-048": {
+      "verdict": "fail",
+      "reason": "The document is addressed to both Dr Rohan Mehra and Mrs Anjali Mehra, but the value only includes Dr Rohan Mehra.",
+      "value": "Dr Rohan Mehra",
+      "expert": "fail",
+      "expected": "Dr Rohan Mehra & Mrs Anjali Mehra"
+    },
+    "D04-049": {
+      "verdict": "pass",
+      "reason": "The value matches the name printed in the addressee block: Ms Grace Liu.",
+      "value": "Ms Grace Liu",
+      "expert": "pass",
+      "expected": "Ms Grace Liu"
+    },
+    "D04-050": {
+      "verdict": "pass",
+      "reason": "The value 'Mr Adam Kerr' matches the printed addressee name exactly as it appears in the OCR words (w014, w015, w016).",
+      "value": "Mr Adam Kerr",
+      "expert": "pass",
+      "expected": "Mr Adam Kerr"
+    }
+  }
+}

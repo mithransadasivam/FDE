@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Finley Kaur"
+  },
+  {
+   "name": "address",
+   "value": "111 Regent Street, Winchcombe, GL54 3ND"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-31"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

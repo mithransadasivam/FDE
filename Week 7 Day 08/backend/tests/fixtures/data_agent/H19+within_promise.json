@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT t.team_name, COUNT(*) AS within_promise FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.status IN ('approved', 'declined') AND c.working_days_open - c.applicant_wait_days <= 3 AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+  "explanation": "Applications decided within the bank's promise in October 2026, by team.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Bethan Khan"
+  },
+  {
+   "name": "address",
+   "value": "139 Cotswold Way, Cheltenham, GL52 9NS"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

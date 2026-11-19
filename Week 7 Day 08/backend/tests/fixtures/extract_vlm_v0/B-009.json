@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Nair"
+  },
+  {
+   "name": "address",
+   "value": "105 Tewkesbury Road, Quedgeley, GL2 6YD"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-22"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

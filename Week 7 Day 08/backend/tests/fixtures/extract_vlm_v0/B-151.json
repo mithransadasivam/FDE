@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Bello"
+  },
+  {
+   "name": "address",
+   "value": "7 Elm Grove, Cirencester, GL7 9ED"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-16"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

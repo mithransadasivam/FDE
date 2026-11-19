@@ -1,0 +1,69 @@
+{
+  "doc_id": "B-183",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Lewis Lloyd",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2514,
+        0.1791
+      ],
+      "page_text": "Mr Lewis Lloyd",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "19 Hales Road, Lydney, GL15 6HH",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2207,
+        0.2555
+      ],
+      "page_text": "19 Hales Road Lydney GL15 6HH",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-10-03",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 71,
+    "latency_ms": 1796,
+    "scripted": true
+  }
+}

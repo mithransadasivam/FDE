@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Ruby Okafor"
+  },
+  {
+   "name": "address",
+   "value": "102 Painswick Road, Stroud, GL5 8XG"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

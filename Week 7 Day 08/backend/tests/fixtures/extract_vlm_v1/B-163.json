@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Daniel Sharma"
+  },
+  {
+   "name": "address",
+   "value": "44 Farm Lane, Cirencester, GL7 9NW"
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

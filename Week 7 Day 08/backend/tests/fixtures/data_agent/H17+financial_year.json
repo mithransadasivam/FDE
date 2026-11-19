@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases c JOIN caseflow.calendar k ON k.day = CAST(c.closed_at AS DATE) WHERE c.status = 'withdrawn' AND k.financial_year = 'FY2026/27'",
+  "explanation": "Withdrawn in FY2026/27.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

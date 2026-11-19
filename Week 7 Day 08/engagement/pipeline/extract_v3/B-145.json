@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-145",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Bethan Hart",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2749,
+        0.1755
+      ],
+      "page_text": "Miss Bethan Hart",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 10, 139 Orchard Close Gloucester GL1 4PY",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.3425,
+        0.2555
+      ],
+      "page_text": "Flat 10, 139 Orchard Close Gloucester GL1 4PY",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "01 Oct 2026",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7556,
+        0.1991
+      ],
+      "page_text": "01 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.8,
+      "status": "check",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 613,
+    "output_tokens": 145,
+    "latency_ms": 2036,
+    "scripted": true
+  }
+}

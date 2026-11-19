@@ -1,0 +1,42 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Ms Fatima Rahman",
+      "word_ids": [
+        "w012",
+        "w013",
+        "w014"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "27 Bath Road, Cheltenham, GL53 7HG",
+      "word_ids": [
+        "w015",
+        "w016",
+        "w017",
+        "w018",
+        "w019",
+        "w020"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "10 Sep 2026",
+      "word_ids": [
+        "w023",
+        "w024",
+        "w025"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

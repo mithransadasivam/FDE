@@ -1,0 +1,107 @@
+[
+  {
+    "area": "goals",
+    "text": "Martin mentioned customers are noticing the slowness. What specific feedback or complaint data have you seen in the last month that tells you this is a problem?",
+    "why": "Validates the urgency with real evidence and reveals whether there are metrics tracking customer dissatisfaction",
+    "id": "Q01",
+    "starred": false
+  },
+  {
+    "area": "goals",
+    "text": "What percentage of applications are you currently deciding within the 3-day promise, and what percentage are taking longer?",
+    "why": "Establishes the baseline performance and the scale of the gap between promise and reality",
+    "id": "Q02",
+    "starred": false
+  },
+  {
+    "area": "goals",
+    "text": "If we could reduce check times, which outcome matters most to Martin: faster decisions for customers, reduced cost per application, or freeing up analyst time for complex cases?",
+    "why": "Clarifies the primary success metric when trade-offs arise during design",
+    "id": "Q03",
+    "starred": false
+  },
+  {
+    "area": "process",
+    "text": "Tom, walk me through the last personal account application you worked on yesterday. What did you look at, what did you check, and how long did each part take?",
+    "why": "Gets a concrete, recent example of the actual workflow with real time estimates, not idealized process",
+    "id": "Q04",
+    "starred": false
+  },
+  {
+    "area": "process",
+    "text": "When you open a passport or driving licence image, what specifically are you checking for, and what makes you decide it's acceptable versus needing to escalate or reject it?",
+    "why": "Uncovers the decision rules and edge cases that an AI system would need to replicate",
+    "id": "Q05",
+    "starred": false
+  },
+  {
+    "area": "process",
+    "text": "Of the 1,900 weekly applications, roughly how many get approved on first review, how many need more documents requested, and how many get escalated to Financial Crime?",
+    "why": "Reveals the distribution of complexity and identifies which path offers the biggest time-saving opportunity",
+    "id": "Q06",
+    "starred": false
+  },
+  {
+    "area": "process",
+    "text": "What happens after you request additional documents from a customer? How long does that loop typically add, and how many times does it happen per application on average?",
+    "why": "Identifies whether rework loops are a major source of delay and whether better upfront guidance could help",
+    "id": "Q07",
+    "starred": false
+  },
+  {
+    "area": "data",
+    "text": "What format are the uploaded documents stored in, and can you show me three examples of a passport, a utility bill, and a proof of address that were approved last week?",
+    "why": "Confirms image quality, file formats, and whether the data is suitable for document AI processing",
+    "id": "Q08",
+    "starred": false
+  },
+  {
+    "area": "data",
+    "text": "Does the case management system record timestamps for when an analyst opens a case, requests documents, or makes a decision? Can we export that data for the last six months?",
+    "why": "Determines whether we can measure current performance and build a baseline for comparison",
+    "id": "Q09",
+    "starred": false
+  },
+  {
+    "area": "data",
+    "text": "Who can grant us read-only access to the case management system and document storage, and how long does that approval process typically take here?",
+    "why": "Identifies the path to data access and whether the six-week timeline is realistic given internal processes",
+    "id": "Q10",
+    "starred": false
+  },
+  {
+    "area": "risk",
+    "text": "Helen, what would cause you to say no to a change in the KYC process? Are there specific regulatory requirements or audit findings that we must not put at risk?",
+    "why": "Surfaces non-negotiable constraints early, before we design something that cannot be approved",
+    "id": "Q11",
+    "starred": false
+  },
+  {
+    "area": "risk",
+    "text": "If an AI system flagged a document as likely acceptable, but an analyst still makes the final decision, would that be acceptable from a regulatory perspective?",
+    "why": "Tests whether an AI-assisted model is viable or whether full human review is mandatory",
+    "id": "Q12",
+    "starred": false
+  },
+  {
+    "area": "risk",
+    "text": "Have you had any regulatory findings, internal audit issues, or near-misses in KYC in the past year that we should be aware of?",
+    "why": "Identifies recent pain points that will shape what the MLRO will and will not tolerate in a new system",
+    "id": "Q13",
+    "starred": false
+  },
+  {
+    "area": "success",
+    "text": "At the end of the six-week pilot, what would Martin need to see in terms of numbers—speed, accuracy, volume processed—to consider this a success and worth rolling out?",
+    "why": "Defines the quantitative bar for pilot success so we can design to meet it",
+    "id": "Q14",
+    "starred": false
+  },
+  {
+    "area": "success",
+    "text": "Deborah, if we pilot this with a subset of your team, which analysts would you want involved, and what would make them trust and actually use the new tool day-to-day?",
+    "why": "Identifies user adoption risks and the conditions needed for the team to embrace rather than resist the change",
+    "id": "Q15",
+    "starred": false
+  }
+]

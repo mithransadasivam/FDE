@@ -1,0 +1,53 @@
+# CI for the FDE Engagement Console: tests on every push and pull request,
+# and a headless Claude Code review on every pull request. A person still approves the merge.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install
+        run: |
+          pip install -r backend/requirements.txt
+          cd frontend && npm ci && npx playwright install --with-deps chromium
+      - name: Backend tests
+        run: cd backend && python -m pytest -q
+      - name: Type check
+        run: cd frontend && npx tsc -b
+      - name: End-to-end tests
+        run: cd frontend && npx playwright test
+
+  claude-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Claude Code and the review script's packages
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          pip install -r backend/requirements.txt
+      - name: Headless review of this pull request
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd backend
+          gh pr diff ${{ github.event.pull_request.number }} | python -m scripts.pr_review --stdin --post ${{ github.event.pull_request.number }}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Luca Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "71 Tewkesbury Rd, Gloucester, GL2 8UA"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

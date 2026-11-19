@@ -1,0 +1,16 @@
+[
+  {
+    "name": "october",
+    "label": "October batch: 200 bills and bank statements",
+    "documents": "data/Day06_Slide10_documents",
+    "manifest": "data/Day06_Slide10_manifest.csv",
+    "keyed": "data/Day06_Slide10_double_keyed.csv"
+  },
+  {
+    "name": "council_tax",
+    "label": "Council tax bills: 20, keyed by two analysts",
+    "documents": "data/Day06_HW_Slide03_council_tax",
+    "manifest": "data/Day06_HW_Slide03_council_tax_manifest.csv",
+    "keyed": "data/Day06_HW_Slide03_council_tax_keyed.csv"
+  }
+]

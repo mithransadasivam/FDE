@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Joy Boateng & Mr Harvey Boateng"
+  },
+  {
+   "name": "address",
+   "value": "Flat 4, 52 Market Street, Cheltenham, GL51 4XL"
+  },
+  {
+   "name": "statement_date",
+   "value": "05 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

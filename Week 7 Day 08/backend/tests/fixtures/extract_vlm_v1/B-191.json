@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Poppy Murphy"
+  },
+  {
+   "name": "address",
+   "value": "26 Market Street, Cheltenham, GL50 2PG"
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Bethan Shah"
+  },
+  {
+   "name": "address",
+   "value": "36 Mill Lane, Gloucester, GL2 1ZT"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

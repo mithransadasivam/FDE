@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Ruby Mahmood",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 7, 67 Market Street Tewkesbury GL20 9LH",
+   "word_ids": [
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Sep 2026",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

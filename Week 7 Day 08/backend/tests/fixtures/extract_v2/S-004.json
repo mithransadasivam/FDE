@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Maya Evans",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "83 Mill Street, Cheltenham, GL50 7FZ",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "07 Oct 2026",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

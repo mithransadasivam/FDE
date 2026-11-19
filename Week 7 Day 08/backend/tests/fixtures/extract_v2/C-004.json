@@ -1,0 +1,45 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Lloyd",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 7, 12 Gloucester Road Stroud GL5 5XB",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w024"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "1 April 2026",
+   "word_ids": [
+    "w043",
+    "w044",
+    "w045"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Severnside District Council",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

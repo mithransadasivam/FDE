@@ -1,0 +1,287 @@
+{
+  "checks": [
+    {
+      "id": "R01",
+      "what": "Every case",
+      "sql": "SELECT COUNT(*) AS cases FROM caseflow.cases",
+      "expected": {
+        "tom.reyes": [
+          [
+            4199
+          ]
+        ],
+        "grace.mensah": [
+          [
+            8420
+          ]
+        ],
+        "helen.achebe": [
+          [
+            23564
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R02",
+      "what": "Cases by team",
+      "sql": "SELECT team_id, COUNT(*) AS cases FROM caseflow.cases GROUP BY team_id ORDER BY team_id",
+      "expected": {
+        "tom.reyes": [
+          [
+            "N1",
+            4199
+          ]
+        ],
+        "grace.mensah": [
+          [
+            "N1",
+            4199
+          ],
+          [
+            "N2",
+            4221
+          ]
+        ],
+        "helen.achebe": [
+          [
+            "M1",
+            3454
+          ],
+          [
+            "M2",
+            3395
+          ],
+          [
+            "N1",
+            4199
+          ],
+          [
+            "N2",
+            4221
+          ],
+          [
+            "S1",
+            4160
+          ],
+          [
+            "S2",
+            4135
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R03",
+      "what": "Through a CTE",
+      "sql": "WITH c AS (SELECT * FROM caseflow.cases) SELECT COUNT(*) AS cases FROM c",
+      "expected": {
+        "tom.reyes": [
+          [
+            4199
+          ]
+        ],
+        "grace.mensah": [
+          [
+            8420
+          ]
+        ],
+        "helen.achebe": [
+          [
+            23564
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R04",
+      "what": "Through a subquery",
+      "sql": "SELECT COUNT(*) AS documents FROM caseflow.documents WHERE case_id IN (SELECT case_id FROM caseflow.cases)",
+      "expected": {
+        "tom.reyes": [
+          [
+            11653
+          ]
+        ],
+        "grace.mensah": [
+          [
+            23306
+          ]
+        ],
+        "helen.achebe": [
+          [
+            65117
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R05",
+      "what": "Every document",
+      "sql": "SELECT COUNT(*) AS documents FROM caseflow.documents",
+      "expected": {
+        "tom.reyes": [
+          [
+            11653
+          ]
+        ],
+        "grace.mensah": [
+          [
+            23306
+          ]
+        ],
+        "helen.achebe": [
+          [
+            65117
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R06",
+      "what": "Through a UNION",
+      "sql": "SELECT team_id FROM caseflow.cases UNION SELECT team_id FROM caseflow.analysts ORDER BY team_id",
+      "expected": {
+        "tom.reyes": [
+          [
+            "N1"
+          ]
+        ],
+        "grace.mensah": [
+          [
+            "N1"
+          ],
+          [
+            "N2"
+          ]
+        ],
+        "helen.achebe": [
+          [
+            "M1"
+          ],
+          [
+            "M2"
+          ],
+          [
+            "N1"
+          ],
+          [
+            "N2"
+          ],
+          [
+            "S1"
+          ],
+          [
+            "S2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R07",
+      "what": "Customer names",
+      "sql": "SELECT customer_name FROM caseflow.customers ORDER BY customer_id LIMIT 3",
+      "expected": {
+        "tom.reyes": [
+          [
+            "Oliver Evans"
+          ],
+          [
+            "Mariam Edwards"
+          ],
+          [
+            "Elif Davies"
+          ]
+        ],
+        "grace.mensah": [
+          [
+            "Oliver Ahmed"
+          ],
+          [
+            "Oliver Evans"
+          ],
+          [
+            "Ethan Li"
+          ]
+        ],
+        "helen.achebe": [
+          [
+            "[hidden]"
+          ],
+          [
+            "[hidden]"
+          ],
+          [
+            "[hidden]"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R08",
+      "what": "A name in a filter",
+      "sql": "SELECT COUNT(*) AS customers FROM caseflow.customers WHERE customer_name LIKE '%Ltd'",
+      "expected": {
+        "tom.reyes": [
+          [
+            657
+          ]
+        ],
+        "grace.mensah": [
+          [
+            1305
+          ]
+        ],
+        "helen.achebe": [
+          [
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R09",
+      "what": "Another team by name",
+      "sql": "SELECT COUNT(*) AS cases FROM caseflow.cases WHERE team_id = 'S1'",
+      "expected": {
+        "tom.reyes": [
+          [
+            0
+          ]
+        ],
+        "grace.mensah": [
+          [
+            0
+          ]
+        ],
+        "helen.achebe": [
+          [
+            4160
+          ]
+        ]
+      }
+    },
+    {
+      "id": "R10",
+      "what": "Capital letters",
+      "sql": "SELECT COUNT(*) AS cases FROM CASEFLOW.CASES",
+      "expected": {
+        "tom.reyes": [
+          [
+            4199
+          ]
+        ],
+        "grace.mensah": [
+          [
+            8420
+          ]
+        ],
+        "helen.achebe": [
+          [
+            23564
+          ]
+        ]
+      }
+    }
+  ]
+}

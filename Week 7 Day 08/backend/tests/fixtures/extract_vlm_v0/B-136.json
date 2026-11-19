@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Molly Haddad"
+  },
+  {
+   "name": "address",
+   "value": "6 Barton Street, Gloucester, GL4 6HN"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-30"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

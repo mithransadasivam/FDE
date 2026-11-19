@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Tariq Bennett",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "136 High Street Gloucester GL1 9TP",
+   "word_ids": [
+    "w013",
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026",
+   "word_ids": [
+    "w021",
+    "w022",
+    "w023"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

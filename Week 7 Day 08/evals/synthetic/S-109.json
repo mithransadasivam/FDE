@@ -1,0 +1,277 @@
+{
+ "case_id": "S-109",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Fenwick",
+   "box": [
+    0.07,
+    0.08,
+    0.164,
+    0.105
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w002",
+   "text": "Gas",
+   "box": [
+    0.172,
+    0.08,
+    0.218,
+    0.105
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w003",
+   "text": "&",
+   "box": [
+    0.226,
+    0.08,
+    0.248,
+    0.105
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w004",
+   "text": "Power",
+   "box": [
+    0.256,
+    0.08,
+    0.326,
+    0.105
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w005",
+   "text": "Emily",
+   "box": [
+    0.07,
+    0.12,
+    0.14,
+    0.145
+   ],
+   "confidence": 0.98
+  },
+  {
+   "id": "w006",
+   "text": "N.",
+   "box": [
+    0.148,
+    0.12,
+    0.182,
+    0.145
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w007",
+   "text": "Taylor",
+   "box": [
+    0.19,
+    0.12,
+    0.272,
+    0.145
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w008",
+   "text": "12",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w009",
+   "text": "Church",
+   "box": [
+    0.112,
+    0.16,
+    0.194,
+    0.185
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w010",
+   "text": "Street",
+   "box": [
+    0.202,
+    0.16,
+    0.284,
+    0.185
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w011",
+   "text": "Tewkesbury",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w012",
+   "text": "GL20",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w013",
+   "text": "5AB",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.959
+  },
+  {
+   "id": "w014",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.28,
+    0.188,
+    0.305
+   ],
+   "confidence": 0.982
+  },
+  {
+   "id": "w015",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w016",
+   "text": "05",
+   "box": [
+    0.274,
+    0.28,
+    0.308,
+    0.305
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w017",
+   "text": "Sep",
+   "box": [
+    0.316,
+    0.28,
+    0.362,
+    0.305
+   ],
+   "confidence": 0.982
+  },
+  {
+   "id": "w018",
+   "text": "2026",
+   "box": [
+    0.37,
+    0.28,
+    0.428,
+    0.305
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w019",
+   "text": "Pay",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w020",
+   "text": "by:",
+   "box": [
+    0.124,
+    0.32,
+    0.17,
+    0.345
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w021",
+   "text": "26",
+   "box": [
+    0.178,
+    0.32,
+    0.212,
+    0.345
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w022",
+   "text": "Sep",
+   "box": [
+    0.22,
+    0.32,
+    0.266,
+    0.345
+   ],
+   "confidence": 0.949
+  },
+  {
+   "id": "w023",
+   "text": "2026",
+   "box": [
+    0.274,
+    0.32,
+    0.332,
+    0.345
+   ],
+   "confidence": 0.949
+  }
+ ],
+ "application": {
+  "case_id": "S-109",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Emily N. Taylor",
+  "address_line1": "12 Church Street",
+  "town": "Tewkesbury",
+  "postcode": "GL20 5AB"
+ },
+ "labels": {
+  "full_name": "Emily N. Taylor",
+  "address": "12 Church Street, Tewkesbury, GL20 5AB",
+  "statement_date": "05 Sep 2026",
+  "issuer": "Fenwick Gas & Power",
+  "tom_decision": "approve"
+ }
+}

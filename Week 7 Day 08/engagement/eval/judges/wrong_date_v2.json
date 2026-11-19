@@ -1,0 +1,372 @@
+{
+  "judge": "wrong_date",
+  "prompt": "wrong_date_v2",
+  "field": "statement_date",
+  "failure_type": "wrong_date_chosen",
+  "at": "2026-11-06T03:23:06+00:00",
+  "agreement": {
+    "n": 50,
+    "agree": 50,
+    "percent": 100.0,
+    "kappa": 1.0,
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "tn": 45,
+    "caught": 1.0,
+    "cleared": 1.0,
+    "disagreements": []
+  },
+  "verdicts": {
+    "D03-001": {
+      "verdict": "pass",
+      "reason": "The value '09 Sep 2026' matches the statement date printed on the document.",
+      "value": "09 Sep 2026",
+      "expert": "pass",
+      "expected": "09 Sep 2026"
+    },
+    "D03-002": {
+      "verdict": "pass",
+      "reason": "The value '30 Sep 2026' matches the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-003": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "15 Aug 2026",
+      "expert": "pass",
+      "expected": "15 Aug 2026"
+    },
+    "D03-004": {
+      "verdict": "pass",
+      "reason": "The value '02 Oct 2026' matches the statement date printed on the page, so it is not a wrong date chosen.",
+      "value": "02 Oct 2026",
+      "expert": "pass",
+      "expected": "02 Oct 2026"
+    },
+    "D03-005": {
+      "verdict": "pass",
+      "reason": "The value '12 Sep 2026' matches the statement date printed on the page.",
+      "value": "12 Sep 2026",
+      "expert": "pass",
+      "expected": "12 Sep 2026"
+    },
+    "D03-006": {
+      "verdict": "pass",
+      "reason": "The value '01 Apr 2026' matches the 'Date of issue' printed on the document, which is the statement date.",
+      "value": "01 Apr 2026",
+      "expert": "pass",
+      "expected": "01 Apr 2026"
+    },
+    "D03-007": {
+      "verdict": "pass",
+      "reason": "The value '05 Oct 2026' matches the statement date printed on the document.",
+      "value": "05 Oct 2026",
+      "expert": "pass",
+      "expected": "05 Oct 2026"
+    },
+    "D03-008": {
+      "verdict": "pass",
+      "reason": "The value '20 Sep 2026' matches the statement date printed on the page.",
+      "value": "20 Sep 2026",
+      "expert": "pass",
+      "expected": "20 Sep 2026"
+    },
+    "D03-009": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the document.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "18 Sep 2026"
+    },
+    "D03-010": {
+      "verdict": "pass",
+      "reason": "The value '03 Oct 2026' matches the statement date printed on the document.",
+      "value": "03 Oct 2026",
+      "expert": "pass",
+      "expected": "03 Oct 2026"
+    },
+    "D03-011": {
+      "verdict": "pass",
+      "reason": "The value '10 Sep 2026' matches the statement date printed on the document, so it is the correct date.",
+      "value": "10 Sep 2026",
+      "expert": "pass",
+      "expected": "11 Sep 2026"
+    },
+    "D03-012": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "25 Sep 2026",
+      "expert": "pass",
+      "expected": "25 Sep 2026"
+    },
+    "D03-013": {
+      "verdict": "pass",
+      "reason": "The value '01 Sep 2026' matches the statement date printed as 'Date of issue 01 Sep 2026'.",
+      "value": "01 Sep 2026",
+      "expert": "pass",
+      "expected": "01 Sep 2026"
+    },
+    "D03-014": {
+      "verdict": "pass",
+      "reason": "The value is not printed on the page, so this is a misread, not a wrong date chosen.",
+      "value": "29 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-015": {
+      "verdict": "pass",
+      "reason": "The value '10 Jun 2026' is printed on the page as the statement date ('Statement date 10 Jun 2026'), so the correct date was chosen.",
+      "value": "10 Jun 2026",
+      "expert": "pass",
+      "expected": "10 Jun 2026"
+    },
+    "D03-016": {
+      "verdict": "pass",
+      "reason": "The value 28 Sep 2026 is the statement date printed on the page.",
+      "value": "28 Sep 2026",
+      "expert": "pass",
+      "expected": "28 Sep 2026"
+    },
+    "D03-017": {
+      "verdict": "pass",
+      "reason": "The value '16 Sep 2026' matches the statement date printed on the document, so it is the correct date.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "16 Sep 2026"
+    },
+    "D03-018": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "04 Oct 2026",
+      "expert": "pass",
+      "expected": "04 Oct 2026"
+    },
+    "D03-019": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-020": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "14 Sep 2026",
+      "expert": "pass",
+      "expected": "14 Sep 2026"
+    },
+    "D03-021": {
+      "verdict": "pass",
+      "reason": "The value matches the date of issue printed on the document, which is the statement date.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D03-022": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "22 Sep 2026",
+      "expert": "pass",
+      "expected": "22 Sep 2026"
+    },
+    "D03-023": {
+      "verdict": "pass",
+      "reason": "The value '07 Oct 2026' matches the statement date printed on the document.",
+      "value": "07 Oct 2026",
+      "expert": "pass",
+      "expected": "07 Oct 2026"
+    },
+    "D03-024": {
+      "verdict": "pass",
+      "reason": "The value 29 Sep 2026 is the statement date printed on the page.",
+      "value": "29 Sep 2026",
+      "expert": "pass",
+      "expected": "29 Sep 2026"
+    },
+    "D03-025": {
+      "verdict": "pass",
+      "reason": "The value '30 Sep 2026' matches the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D03-026": {
+      "verdict": "pass",
+      "reason": "The value '19 Sep 2026' matches the statement date printed on the document.",
+      "value": "19 Sep 2026",
+      "expert": "pass",
+      "expected": "19 Sep 2026"
+    },
+    "D03-027": {
+      "verdict": "pass",
+      "reason": "The value '26 Sep 2026' matches the statement date printed on the document.",
+      "value": "26 Sep 2026",
+      "expert": "pass",
+      "expected": "26 Sep 2026"
+    },
+    "D03-028": {
+      "verdict": "pass",
+      "reason": "The value '01 Oct 2026' is the statement date printed on the document.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D03-029": {
+      "verdict": "pass",
+      "reason": "The value 08 Oct 2026 is the statement date printed on the document.",
+      "value": "08 Oct 2026",
+      "expert": "pass",
+      "expected": "08 Oct 2026"
+    },
+    "D03-030": {
+      "verdict": "pass",
+      "reason": "The value '06 Oct 2026' matches the statement date printed on the page, so it is the correct date.",
+      "value": "06 Oct 2026",
+      "expert": "pass",
+      "expected": "06 Oct 2026"
+    },
+    "D04-031": {
+      "verdict": "fail",
+      "reason": "The value is the payment due date, which is printed on the page but is not the statement date.",
+      "value": "03 Oct 2026",
+      "expert": "fail",
+      "expected": "12 Sep 2026"
+    },
+    "D04-032": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "14 Sep 2026",
+      "expert": "pass",
+      "expected": "14 Sep 2026"
+    },
+    "D04-033": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "18 Sep 2026",
+      "expert": "pass",
+      "expected": "18 Sep 2026"
+    },
+    "D04-034": {
+      "verdict": "fail",
+      "reason": "The value is the payment due date, which is printed on the page but is not the statement date.",
+      "value": "11 Oct 2026",
+      "expert": "fail",
+      "expected": "20 Sep 2026"
+    },
+    "D04-035": {
+      "verdict": "pass",
+      "reason": "The value '30 Sep 2026' matches the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-036": {
+      "verdict": "pass",
+      "reason": "The value matches the statement date printed on the page.",
+      "value": "21 Sep 2026",
+      "expert": "pass",
+      "expected": "21 Sep 2026"
+    },
+    "D04-037": {
+      "verdict": "pass",
+      "reason": "The value '01 Oct 2026' matches the date of issue printed on the page, which is the statement date, so it is not a wrong date chosen.",
+      "value": "01 Oct 2026",
+      "expert": "pass",
+      "expected": "01 Oct 2026"
+    },
+    "D04-038": {
+      "verdict": "fail",
+      "reason": "The value is the payment due date printed on the page, not the statement date.",
+      "value": "06 Oct 2026",
+      "expert": "fail",
+      "expected": "15 Sep 2026"
+    },
+    "D04-039": {
+      "verdict": "pass",
+      "reason": "The value '24 Sep 2026' matches the statement date printed on the page.",
+      "value": "24 Sep 2026",
+      "expert": "pass",
+      "expected": "24 Sep 2026"
+    },
+    "D04-040": {
+      "verdict": "pass",
+      "reason": "The value '16 Sep 2026' matches the statement date printed on the document, so it is the correct date.",
+      "value": "16 Sep 2026",
+      "expert": "pass",
+      "expected": "16 Sep 2026"
+    },
+    "D04-041": {
+      "verdict": "pass",
+      "reason": "The value 26 Sep 2026 is the statement date printed on the page.",
+      "value": "26 Sep 2026",
+      "expert": "pass",
+      "expected": "26 Sep 2026"
+    },
+    "D04-042": {
+      "verdict": "pass",
+      "reason": "The value '30 Sep 2026' matches the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-043": {
+      "verdict": "fail",
+      "reason": "The value is the payment due date, which is printed on the page but is not the statement date.",
+      "value": "13 Oct 2026",
+      "expert": "fail",
+      "expected": "22 Sep 2026"
+    },
+    "D04-044": {
+      "verdict": "pass",
+      "reason": "The value 27 Sep 2026 is printed on the page and is the statement date.",
+      "value": "27 Sep 2026",
+      "expert": "pass",
+      "expected": "27 Sep 2026"
+    },
+    "D04-045": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "19 Sep 2026",
+      "expert": "pass",
+      "expected": "19 Sep 2026"
+    },
+    "D04-046": {
+      "verdict": "pass",
+      "reason": "The value '23 Sep 2026' is the statement date printed on the document, so it is the correct date.",
+      "value": "23 Sep 2026",
+      "expert": "pass",
+      "expected": "23 Sep 2026"
+    },
+    "D04-047": {
+      "verdict": "fail",
+      "reason": "The value is the payment due date, which is printed on the page but is not the statement date.",
+      "value": "16 Oct 2026",
+      "expert": "fail",
+      "expected": "25 Sep 2026"
+    },
+    "D04-048": {
+      "verdict": "pass",
+      "reason": "The value is the statement date printed on the page.",
+      "value": "17 Sep 2026",
+      "expert": "pass",
+      "expected": "17 Sep 2026"
+    },
+    "D04-049": {
+      "verdict": "pass",
+      "reason": "The value 30 Sep 2026 is the statement date printed on the document.",
+      "value": "30 Sep 2026",
+      "expert": "pass",
+      "expected": "30 Sep 2026"
+    },
+    "D04-050": {
+      "verdict": "pass",
+      "reason": "The value is the statement date as printed on the document.",
+      "value": "28 Sep 2026",
+      "expert": "pass",
+      "expected": "28 Sep 2026"
+    }
+  }
+}

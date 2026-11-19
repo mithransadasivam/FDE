@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-128",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Nadia Eze",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2406,
+        0.1575
+      ],
+      "page_text": "Miss Nadia Eze",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "77 Church Street Cirencester GL7 3AJ",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2307,
+        0.2316
+      ],
+      "page_text": "77 Church Street Cirencester GL7 3AJ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.5882,
+        0.1556,
+        0.719,
+        0.1738
+      ],
+      "page_text": "04 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 748,
+    "output_tokens": 136,
+    "latency_ms": 2025,
+    "scripted": true
+  }
+}

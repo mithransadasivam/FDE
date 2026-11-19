@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Samuel Walsh"
+  },
+  {
+   "name": "address",
+   "value": "37 Gloucester Road, Gloucester, GL2 5HW"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

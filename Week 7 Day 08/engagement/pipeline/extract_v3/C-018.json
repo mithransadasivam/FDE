@@ -1,0 +1,74 @@
+{
+  "doc_id": "C-018",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Harvey Griffiths",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.2872,
+        0.16
+      ],
+      "page_text": "Mr Harvey Griffiths",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "10 Gloucester Road Cheltenham GL53 1SJ",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2612,
+        0.2309
+      ],
+      "page_text": "10 Gloucester Road Cheltenham GL53 1SJ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "12 Mar 2026",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.6565,
+        0.0573,
+        0.8008,
+        0.0755
+      ],
+      "page_text": "12 Mar 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Severnside District Council",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.0391,
+        0.5007,
+        0.0627
+      ],
+      "page_text": "Severnside District Council",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 673,
+    "output_tokens": 144,
+    "latency_ms": 2055,
+    "scripted": true
+  }
+}

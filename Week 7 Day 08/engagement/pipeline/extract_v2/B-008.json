@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-008",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Ruby Haddad",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2806,
+        0.1767
+      ],
+      "page_text": "Mrs Ruby Haddad",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "125 Bath Road Gloucester GL1 2HH",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2197,
+        0.2564
+      ],
+      "page_text": "125 Bath Road Gloucester GL1 2HH",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7533,
+        0.2006
+      ],
+      "page_text": "04 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4657,
+        0.0634
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 515,
+    "output_tokens": 135,
+    "latency_ms": 1912,
+    "scripted": true
+  }
+}

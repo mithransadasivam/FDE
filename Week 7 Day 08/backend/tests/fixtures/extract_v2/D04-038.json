@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Isla Robertson",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "61 Painswick Road, Cheltenham, GL50 2EZ",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021",
+    "w022"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Sep 2026",
+   "word_ids": [
+    "w030",
+    "w031",
+    "w032"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

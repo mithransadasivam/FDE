@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "Flat 7, 12 Gloucester Road, Stroud, GL5 5XB"
+  },
+  {
+   "name": "statement_date",
+   "value": "19 Mar 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Severnside District Council"
+  }
+ ]
+}

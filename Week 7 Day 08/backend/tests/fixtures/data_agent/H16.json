@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT ROUND(COUNT(*) / 7.0, 1) AS per_day FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-30' - INTERVAL 7 DAY",
+  "explanation": "Reviews in the last 7 days, per day.",
+  "assumptions": [
+    "Last week is the 7 days up to 30 October"
+  ],
+  "cannot_answer": ""
+}

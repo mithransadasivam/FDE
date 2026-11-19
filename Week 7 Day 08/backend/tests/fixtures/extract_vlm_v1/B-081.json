@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Olivia Clarke"
+  },
+  {
+   "name": "address",
+   "value": "138 Painswick Road, Stroud, GL5 3NU"
+  },
+  {
+   "name": "statement_date",
+   "value": "07 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

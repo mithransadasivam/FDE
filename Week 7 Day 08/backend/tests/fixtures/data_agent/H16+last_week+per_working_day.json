@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(COUNT(*) * 1.0 / (SELECT COUNT(*) FROM caseflow.calendar WHERE is_working_day AND day BETWEEN DATE '2026-10-19' AND DATE '2026-10-25'), 1) AS per_working_day FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-19' AND reviewed_at < DATE '2026-10-26'",
+  "explanation": "Reviews from 19 to 25 October 2026, per working day.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

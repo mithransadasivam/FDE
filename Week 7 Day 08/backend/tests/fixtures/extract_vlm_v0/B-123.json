@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Hughes"
+  },
+  {
+   "name": "address",
+   "value": "55 Victoria Street, Gloucester, GL1 4ZZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "31 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

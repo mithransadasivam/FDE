@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Ms Alice P. Wainwright",
+      "word_ids": [
+        "w014",
+        "w015",
+        "w016",
+        "w017"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "14 Acacia Avenue, Cheltenham, GL52 8PQ",
+      "word_ids": [
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022",
+        "w023"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "15 Mar 2026",
+      "word_ids": [
+        "w006",
+        "w007",
+        "w008"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy Ltd",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

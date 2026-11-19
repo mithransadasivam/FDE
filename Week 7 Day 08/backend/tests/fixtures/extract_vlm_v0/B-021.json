@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Grace Bello"
+  },
+  {
+   "name": "address",
+   "value": "118 Tewkesbury Road, Gloucester, GL1 6FA"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS overdue FROM caseflow.cases WHERE status = 'open' AND working_days_open > 3",
+  "explanation": "Open applications open for more than 3 working days.",
+  "assumptions": [
+    "Overdue means open for more than 3 working days"
+  ],
+  "cannot_answer": ""
+}

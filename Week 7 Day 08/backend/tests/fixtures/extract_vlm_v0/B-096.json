@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Okafor"
+  },
+  {
+   "name": "address",
+   "value": "89 Abbey Road, Cheltenham, GL50 4ZN"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-25"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

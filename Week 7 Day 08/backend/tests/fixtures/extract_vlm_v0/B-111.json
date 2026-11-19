@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Chloe Novak"
+  },
+  {
+   "name": "address",
+   "value": "129 Westgate Street, Cheltenham, GL53 9LF"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-26"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

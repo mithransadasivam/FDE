@@ -1,0 +1,21 @@
+{
+  "name": "uc1_v1",
+  "description": "v1: the security team's usual starting template for customer data. Mask every name and address.",
+  "blocked_input_messaging": "This document cannot be processed automatically. Please review it yourself.",
+  "blocked_outputs_messaging": "The extracted fields were withheld by the guardrail. Please review the document yourself.",
+  "content_filters": [
+    {"type": "HATE", "input_strength": "MEDIUM", "output_strength": "MEDIUM"},
+    {"type": "INSULTS", "input_strength": "MEDIUM", "output_strength": "MEDIUM"},
+    {"type": "SEXUAL", "input_strength": "MEDIUM", "output_strength": "MEDIUM"},
+    {"type": "VIOLENCE", "input_strength": "MEDIUM", "output_strength": "MEDIUM"},
+    {"type": "MISCONDUCT", "input_strength": "MEDIUM", "output_strength": "MEDIUM"}
+  ],
+  "denied_topics": [],
+  "pii_entities": [
+    {"type": "NAME", "input_action": "ANONYMIZE", "output_action": "ANONYMIZE"},
+    {"type": "ADDRESS", "input_action": "ANONYMIZE", "output_action": "ANONYMIZE"},
+    {"type": "EMAIL", "input_action": "ANONYMIZE", "output_action": "ANONYMIZE"},
+    {"type": "PHONE", "input_action": "ANONYMIZE", "output_action": "ANONYMIZE"}
+  ],
+  "regexes": []
+}

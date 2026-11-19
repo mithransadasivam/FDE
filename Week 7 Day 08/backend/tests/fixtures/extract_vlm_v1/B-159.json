@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Mei Boateng"
+  },
+  {
+   "name": "address",
+   "value": "Flat 2, 20 Kings Road, Gloucester, GL1 5DE"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

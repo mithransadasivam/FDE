@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT ROUND(100.0 * COUNT(*) FILTER (WHERE customer_type = 'business') / COUNT(*), 1) AS business_pct FROM caseflow.cases WHERE received_at >= DATE '2026-01-01'",
+  "explanation": "The percentage of 2026 applications whose customer type is business.",
+  "assumptions": [
+    "2026 means received from 1 January 2026 to 30 October 2026"
+  ],
+  "cannot_answer": ""
+}

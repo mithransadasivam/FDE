@@ -1,0 +1,321 @@
+{
+ "case_id": "S-140",
+ "slice": "issuer_variant",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Northmere",
+   "box": [
+    0.07,
+    0.08,
+    0.188,
+    0.105
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w002",
+   "text": "Bank",
+   "box": [
+    0.196,
+    0.08,
+    0.254,
+    0.105
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w003",
+   "text": "plc",
+   "box": [
+    0.262,
+    0.08,
+    0.308,
+    0.105
+   ],
+   "confidence": 0.986
+  },
+  {
+   "id": "w004",
+   "text": "Credit",
+   "box": [
+    0.07,
+    0.12,
+    0.152,
+    0.145
+   ],
+   "confidence": 0.949
+  },
+  {
+   "id": "w005",
+   "text": "Card",
+   "box": [
+    0.16,
+    0.12,
+    0.218,
+    0.145
+   ],
+   "confidence": 0.955
+  },
+  {
+   "id": "w006",
+   "text": "Statement",
+   "box": [
+    0.226,
+    0.12,
+    0.344,
+    0.145
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w007",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.16,
+    0.188,
+    0.185
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w008",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.16,
+    0.266,
+    0.185
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w009",
+   "text": "05",
+   "box": [
+    0.07,
+    0.2,
+    0.104,
+    0.225
+   ],
+   "confidence": 0.987
+  },
+  {
+   "id": "w010",
+   "text": "Nov",
+   "box": [
+    0.112,
+    0.2,
+    0.158,
+    0.225
+   ],
+   "confidence": 0.942
+  },
+  {
+   "id": "w011",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.2,
+    0.224,
+    0.225
+   ],
+   "confidence": 0.989
+  },
+  {
+   "id": "w012",
+   "text": "Payment",
+   "box": [
+    0.07,
+    0.24,
+    0.164,
+    0.265
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w013",
+   "text": "due",
+   "box": [
+    0.172,
+    0.24,
+    0.218,
+    0.265
+   ],
+   "confidence": 0.946
+  },
+  {
+   "id": "w014",
+   "text": "by:",
+   "box": [
+    0.226,
+    0.24,
+    0.272,
+    0.265
+   ],
+   "confidence": 0.968
+  },
+  {
+   "id": "w015",
+   "text": "28",
+   "box": [
+    0.07,
+    0.28,
+    0.104,
+    0.305
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w016",
+   "text": "Nov",
+   "box": [
+    0.112,
+    0.28,
+    0.158,
+    0.305
+   ],
+   "confidence": 0.978
+  },
+  {
+   "id": "w017",
+   "text": "2026",
+   "box": [
+    0.166,
+    0.28,
+    0.224,
+    0.305
+   ],
+   "confidence": 0.976
+  },
+  {
+   "id": "w018",
+   "text": "Mrs",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.962
+  },
+  {
+   "id": "w019",
+   "text": "Patricia",
+   "box": [
+    0.124,
+    0.32,
+    0.23,
+    0.345
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w020",
+   "text": "D.",
+   "box": [
+    0.238,
+    0.32,
+    0.272,
+    0.345
+   ],
+   "confidence": 0.945
+  },
+  {
+   "id": "w021",
+   "text": "Miller",
+   "box": [
+    0.28,
+    0.32,
+    0.362,
+    0.345
+   ],
+   "confidence": 0.971
+  },
+  {
+   "id": "w022",
+   "text": "15,",
+   "box": [
+    0.07,
+    0.36,
+    0.116,
+    0.385
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w023",
+   "text": "High",
+   "box": [
+    0.124,
+    0.36,
+    0.182,
+    0.385
+   ],
+   "confidence": 0.956
+  },
+  {
+   "id": "w024",
+   "text": "Street",
+   "box": [
+    0.19,
+    0.36,
+    0.272,
+    0.385
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w025",
+   "text": "Tewkesbury",
+   "box": [
+    0.07,
+    0.4,
+    0.2,
+    0.425
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w026",
+   "text": "GL20",
+   "box": [
+    0.07,
+    0.44,
+    0.128,
+    0.465
+   ],
+   "confidence": 0.99
+  },
+  {
+   "id": "w027",
+   "text": "8RT",
+   "box": [
+    0.136,
+    0.44,
+    0.182,
+    0.465
+   ],
+   "confidence": 0.946
+  }
+ ],
+ "application": {
+  "case_id": "S-140",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Patricia D. Miller",
+  "address_line1": "15, High Street",
+  "town": "Tewkesbury",
+  "postcode": "GL20 8RT"
+ },
+ "labels": {
+  "full_name": "Mrs Patricia D. Miller",
+  "address": "15, High Street, Tewkesbury, GL20 8RT",
+  "statement_date": "05 Nov 2026",
+  "issuer": "Northmere Bank plc",
+  "tom_decision": "approve"
+ }
+}

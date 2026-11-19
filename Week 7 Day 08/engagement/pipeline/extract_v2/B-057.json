@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-057",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Finley Griffiths",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.282,
+        0.1767
+      ],
+      "page_text": "Mr Finley Griffiths",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "129 Hatherley Lane Quedgeley GL2 8XY",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2657,
+        0.2564
+      ],
+      "page_text": "129 Hatherley Lane Quedgeley GL2 8XY",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "12 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7576,
+        0.2006
+      ],
+      "page_text": "12 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.5348,
+        0.0634
+      ],
+      "page_text": "Fenwick Gas & Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 526,
+    "output_tokens": 144,
+    "latency_ms": 1989,
+    "scripted": true
+  }
+}

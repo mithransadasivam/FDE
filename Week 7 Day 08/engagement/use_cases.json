@@ -1,0 +1,52 @@
+[
+  {
+    "id": "UC1",
+    "name": "Proof-of-address check",
+    "description": "Read utility bills and statements, extract name, address and date, check them against the application and show the analyst any doubtful field",
+    "value": 4,
+    "feasibility": 5,
+    "risk": 2,
+    "excluded_reason": "",
+    "first_choice": true
+  },
+  {
+    "id": "UC2",
+    "name": "Identity document check",
+    "description": "Read passports and driving licences, extract and check the fields, and flag expired or blurred documents",
+    "value": 4,
+    "feasibility": 3,
+    "risk": 4,
+    "excluded_reason": "",
+    "first_choice": false
+  },
+  {
+    "id": "UC3",
+    "name": "Business account pack",
+    "description": "Read company documents and cross-check directors and owners against the Companies House register",
+    "value": 5,
+    "feasibility": 2,
+    "risk": 3,
+    "excluded_reason": "",
+    "first_choice": false
+  },
+  {
+    "id": "UC4",
+    "name": "Applicant follow-up drafts",
+    "description": "Draft the 'ask applicant' message with the exact reason and what to send instead, for the analyst to approve",
+    "value": 3,
+    "feasibility": 5,
+    "risk": 1,
+    "excluded_reason": "",
+    "first_choice": false
+  },
+  {
+    "id": "UC5",
+    "name": "Automatic KYC decisions",
+    "description": "Approve or reject applications without an analyst",
+    "value": 5,
+    "feasibility": 1,
+    "risk": 5,
+    "excluded_reason": "A person must make every KYC decision (MLRO, 06:50)",
+    "first_choice": false
+  }
+]

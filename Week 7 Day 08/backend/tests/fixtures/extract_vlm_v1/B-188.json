@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Sofia Grant"
+  },
+  {
+   "name": "address",
+   "value": "102 Westgate Street, Nailsworth, GL6 4FY"
+  },
+  {
+   "name": "statement_date",
+   "value": "22 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

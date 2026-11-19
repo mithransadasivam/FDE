@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS applications FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.outcome = 'ask_applicant' AND d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01'",
+  "explanation": "Applications with an ask_applicant outcome in October 2026.",
+  "assumptions": [
+    "Sent back means the outcome ask_applicant"
+  ],
+  "cannot_answer": ""
+}

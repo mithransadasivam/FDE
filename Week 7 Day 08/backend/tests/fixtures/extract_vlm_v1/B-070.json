@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Yusuf Sutton"
+  },
+  {
+   "name": "address",
+   "value": "15 Bristol Road, Stroud, GL5 3RQ"
+  },
+  {
+   "name": "statement_date",
+   "value": "16 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

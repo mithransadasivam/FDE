@@ -1,0 +1,401 @@
+review_id,case_id,applicant_ref,birth_year,postcode_district,doc_type,doc_issuer,doc_date,received_date,channel,file_format,page_count,image_dpi,decision,reason_code,analyst_id,analyst_notes
+R310000,KYC-883336,A-29209,1985,LS6,utility_bill,Corrin Telecom,2026-07-25,2026-10-17,app,pdf,2,,approved,,AN10,
+R310001,KYC-896180,A-68759,1952,EH3,utility_bill,Corrin Telecom,2026-05-06,2026-09-04,branch,jpg,1,300,ask_applicant,poa_older_than_3_months,AN12,Matches; issuer on approved list.
+R310002,KYC-887270,A-73649,1954,GL50,utility_bill,Corrin Telecom,2026-08-06,2026-09-16,branch,png,2,150,approved,,AN02,"Second page missing, asked applicant."
+R310003,KYC-887013,A-25901,1991,SW11,utility_bill,Lumenvale Energy,20/08/2026,2026-10-06,app,jpg,2,72,approved,,AN01,
+R310004,KYC-880271,A-92447,1986,NG7,utility_bill,Northbrook Water,,2026-10-02,app,jpg,2,300,ask_applicant,,AN19,
+R310005,KYC-888681,A-44687,1972,CB1,council_tax_bill,Borough Council,2026-08-27,2026-10-19,app,pdf,1,,approved,,AN26,
+R310006,KYC-892043,A-62166,1978,EH3,council_tax_bill,City Council,,2026-09-12,app,pdf,1,,escalated,,AN10,
+R310007,KYC-888798,A-72959,1984,EH3,council_tax_bill,City Council,2026-05-04,2026-09-21,app,jpg,3,300,ask_applicant,poa_older_than_3_months,AN04,
+R310008,KYC-880895,A-71220,1990,GL50,utility_bill,Northbrook Water,2026-10-08,2026-10-26,app,jpg,3,300,approved,,AN06,
+R310009,KYC-885326,A-53978,1973,GL51,bank_statement,Harbour Mutual,2026-07-29,2026-09-06,app,pdf,3,,ask_applicant,,AN10,
+R310010,KYC-883287,A-80857,1984,CB1,utility_bill,Northbrook Water,2026-09-23,2026-10-08,app,pdf,1,,approved,,AN05,
+R310011,KYC-897118,A-89628,1970,LS6,utility_bill,Lumenvale Energy,30/04/2026,2026-09-03,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN23,
+R310012,KYC-887688,A-84463,1981,SW11,utility_bill,Lumenvale Energy,2026-06-10,2026-09-14,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN13,
+R310013,KYC-898004,A-59256,1951,BS8,utility_bill,Northbrook Water,2026-04-28,2026-09-01,branch,pdf,2,,ask_applicant,poa_older_than_3_months,AN07,
+R310014,KYC-886637,A-93699,1950,OX4,bank_statement,Fenwick Savings,2026-08-16,2026-09-17,app,pdf,1,,approved,,AN22,"Maiden name on statement, escalated for name check."
+R310015,KYC-893070,A-77037,1984,G12,council_tax_bill,City Council,2026-05-20,2026-10-05,app,jpg,3,200,ask_applicant,poa_older_than_3_months,AN09,"Name on bill uses initials, accepted."
+R310016,KYC-888511,A-15222,1955,N7,utility_bill,Corrin Telecom,2026-08-16,2026-09-09,app,jpg,2,200,ask_applicant,blurred_image,AN21,
+R310016,KYC-883431,A-59649,1984,SW11,utility_bill,Corrin Telecom,2026-08-27,2026-10-15,app,pdf,2,,approved,,AN26,
+R310018,KYC-891157,A-36834,1986,EH3,bank_statement,Fenwick Savings,2026-06-10,2026-09-19,app,png,1,200,ask_applicant,poa_older_than_3_months,AN17,
+R310019,KYC-896059,A-98572,1963,CF10,utility_bill,Northbrook Water,2026-08-07,2026-10-01,app,heic,1,200,approved,,AN04,"Bill older than 3 months, asked for a newer one."
+R310020,KYC-899995,A-13160,2001,GL52,bank_statement,Fenwick Savings,2026-07-09,2026-10-04,app,jpg,3,300,approved,,AN01,
+R310021,KYC-883267,A-59455,1961,bs8,utility_bill,Northbrook Water,2026-06-11,2026-09-06,branch,tiff,3,150,approved,,AN04,
+R310022,KYC-888960,A-96320,1994,ls6,council_tax_bill,Borough Council,2026-05-03,2026-09-13,branch,pdf,2,,ask_applicant,,AN25,
+R310023,KYC-898392,A-45646,1973,G12,utility_bill,Northbrook Water,2026-07-09,2026-09-26,app,jpg,2,200,approved,,AN06,
+R310024,KYC-885115,A-54184,1998,L17,utility_bill,Corrin Telecom,2026-04-29,2026-09-11,branch,heic,3,200,ask_applicant,poa_older_than_3_months,AN21,
+R310025,KYC-898164,A-93681,1973,CF10,utility_bill,Northbrook Water,2026-09-13,2026-10-11,app,jpg,2,300,ask_applicant,missing_page,AN22,
+R310026,KYC-888845,A-19320,1996,B15,council_tax_bill,City Council,2026-07-12,2026-10-22,app,png,1,150,ask_applicant,poa_older_than_3_months,AN25,"Maiden name on statement, escalated for name check."
+R310027,KYC-880521,A-49019,1976,L17,bank_statement,Harbour Mutual,2026-08-07,2026-09-05,app,png,1,150,ask_applicant,blurred_image,AN12,
+R310028,KYC-882905,A-16848,1953,EH3,bank_statement,Harbour Mutual,2026-10-03,2026-10-12,app,pdf,3,,approved,,AN16,
+R310029,KYC-897982,A-74772,1952,CF10,council_tax_bill,City Council,27/06/2026,2026-10-26,branch,png,2,72,ask_applicant,poa_older_than_3_months,AN23,
+R310030,KYC-899881,A-97913,1981,E14,utility_bill,Corrin Telecom,2026-06-06,2026-10-03,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN06,
+R310031,KYC-880648,A-68101,1983,N7,utility_bill,Lumenvale Energy,2026-08-26,2026-10-22,app,pdf,1,,approved,,AN10,"Name on bill uses initials, accepted."
+R310032,KYC-891167,A-79601,1953,CF10,utility_bill,Northbrook Water,2026-05-22,2026-10-08,app,jpg,1,300,ask_applicant,poa_older_than_3_months,AN09,
+R310033,KYC-891065,A-85502,1967,N7,bank_statement,Fenwick Savings,28/08/2026,2026-10-23,app,pdf,1,,ask_applicant,,AN14,Matches; issuer on approved list.
+R310034,KYC-880533,A-22213,1987,eh3,bank_statement,Fenwick Savings,2026-06-06,2026-10-15,app,jpg,2,72,ask_applicant,poa_older_than_3_months,AN11,
+R310035,KYC-893378,A-54084,1990,N7,bank_statement,Harbour Mutual,2026-05-27,2026-10-05,app,pdf,1,,ask_applicant,,AN17,"Second page missing, asked applicant."
+R310036,KYC-890885,A-10936,1988,OX4,utility_bill,Lumenvale Energy,2026-06-24,2026-09-04,app,jpg,1,300,ask_applicant,missing_page,AN02,
+R310037,KYC-896928,A-81131,1999,CB1,council_tax_bill,City Council,2026-08-10,2026-10-11,app,jpg,2,150,approved,,AN06,
+R310038,KYC-899981,A-42468,1999,NE1,council_tax_bill,City Council,01/06/2026,2026-09-02,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN11,"Photo blurred, asked applicant to rescan."
+R310039,KYC-892247,A-69614,1989,LS6,utility_bill,Lumenvale Energy,2026-09-26,2026-10-07,app,jpg,3,300,approved,,AN17,
+R310040,KYC-889208,A-39945,1957,GL52,utility_bill,Lumenvale Energy,2026-07-01,2026-09-03,app,pdf,1,,approved,,AN09,
+R310041,KYC-889509,A-16576,1954,NE1,bank_statement,Harbour Mutual,2026-09-13,2026-10-06,app,pdf,1,,approved,,AN09,
+R310042,KYC-892645,A-68889,1983,N7,council_tax_bill,City Council,2026-07-25,2026-10-10,app,pdf,2,,escalated,name_check,AN11,
+R310043,KYC-894034,A-69860,1957,BS8,utility_bill,Lumenvale Energy,2026-07-14,2026-10-19,branch,png,1,200,ask_applicant,poa_older_than_3_months,AN12,"Bill older than 3 months, asked for a newer one."
+R310044,KYC-894132,A-85866,1996,NG7,bank_statement,Fenwick Savings,2026-08-08,2026-10-23,app,jpg,2,300,ask_applicant,missing_page,AN11,
+R310045,KYC-893184,A-39056,1962,BS8,bank_statement,Fenwick Savings,2026-07-30,2026-10-24,app,jpg,1,150,approved,,AN10,"Bill older than 3 months, asked for a newer one."
+R310046,KYC-895488,A-26034,1951,LS1,utility_bill,Corrin Telecom,2026-09-20,2026-10-01,app,jpg,2,150,approved,,AN03,
+R310047,KYC-881226,A-10786,1972,YO10,council_tax_bill,City Council,2026-06-30,2026-09-09,app,pdf,3,,approved,,AN14,
+R310048,KYC-880136,A-23404,1987,LS6,utility_bill,Northbrook Water,2026-08-08,2026-10-19,branch,jpg,1,150,approved,,AN05,"Second page missing, asked applicant."
+R310049,KYC-894134,A-21138,1957,EH3,utility_bill,Lumenvale Energy,2026-06-02,2026-09-05,app,jpg,2,72,ask_applicant,poa_older_than_3_months,AN10,"Spoke to applicant, email ann.456@example.com, will resend."
+R310050,KYC-895945,A-63749,1962,CB1,bank_statement,Harbour Mutual,2026-06-16,2026-09-24,branch,pdf,2,,ask_applicant,poa_older_than_3_months,AN09,
+R310051,KYC-884226,A-64166,1954,NE1,utility_bill,Lumenvale Energy,2026-09-25,2026-09-30,app,jpg,2,150,approved,,AN13,Matches; issuer on approved list.
+R310052,KYC-882158,A-39408,1978,EH3,bank_statement,Harbour Mutual,2026-06-18,2026-09-19,app,jpg,2,150,ask_applicant,,AN07,
+R310053,KYC-894019,A-54234,1963,L17,council_tax_bill,City Council,2026-05-31,2026-09-15,app,jpg,1,200,ask_applicant,,AN08,
+R310054,KYC-898826,A-34746,1988,E14,utility_bill,Lumenvale Energy,2026-08-02,2026-09-26,branch,pdf,1,,approved,,AN16,"Bill older than 3 months, asked for a newer one."
+R310055,KYC-889081,A-45901,1991,CB1,utility_bill,Corrin Telecom,2026-04-29,2026-09-01,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN20,"Clear scan, all fields match."
+R310056,KYC-892946,A-37227,1979,NE1,council_tax_bill,City Council,10/09/2026,2026-09-28,branch,pdf,1,,approved,,AN10,
+R310057,KYC-887203,A-22480,1997,SW11,bank_statement,Fenwick Savings,2026-08-29,2026-10-25,app,png,2,200,approved,,AN07,"Maiden name on statement, escalated for name check."
+R310058,KYC-882252,A-23727,1953,OX4,bank_statement,Harbour Mutual,2026-05-05,2026-09-21,app,heic,1,72,ask_applicant,poa_older_than_3_months,AN03,"Clear scan, all fields match."
+R310059,KYC-895714,A-29491,1985,NE1,utility_bill,Corrin Telecom,2026-07-16,2026-10-10,app,jpg,1,150,approved,,AN06,
+R310060,KYC-880912,A-16218,2004,GL50,bank_statement,Fenwick Savings,2026-05-14,2026-09-18,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN25,"Spoke to applicant, email ann.73@example.com, will resend."
+R310061,KYC-883049,A-90520,1972,SW11,utility_bill,Northbrook Water,2026-09-10,2026-10-24,branch,heic,1,300,approved,,AN23,
+R310062,KYC-893823,A-26503,1979,CB1,bank_statement,Fenwick Savings,2026-05-26,2026-10-03,app,pdf,3,,ask_applicant,poa_older_than_3_months,AN01,Matches; issuer on approved list.
+R310063,KYC-895757,A-37885,1953,GL50,utility_bill,Northbrook Water,2026-08-30,2026-10-22,app,pdf,1,,approved,,AN16,
+R310064,KYC-880167,A-32687,1954,NG7,utility_bill,Lumenvale Energy,2026-09-01,2026-10-23,app,pdf,1,,approved,,AN17,"Bank statement shows account 40000500, sort code 20-31-98."
+R310065,KYC-894022,A-25523,1997,YO10,council_tax_bill,Borough Council,2026-08-16,2026-10-20,app,tiff,3,300,approved,,AN22,
+R310066,KYC-892089,A-99575,1966,CB1,council_tax_bill,Borough Council,2026-05-12,2026-09-07,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN24,
+R310067,KYC-896470,A-93216,1969,GL51,council_tax_bill,Borough Council,2026-07-31,2026-09-01,branch,heic,2,200,escalated,name_check,AN18,
+R310068,KYC-895095,A-39314,1981,yo10,utility_bill,Corrin Telecom,2026-09-24,2026-10-17,branch,pdf,2,,approved,,AN04,Applicant called from 07700 900640 to say a new bill is coming.
+R310069,KYC-883604,A-81047,1984,M14,council_tax_bill,City Council,2026-06-28,2026-09-07,app,pdf,2,,ask_applicant,blurred_image,AN23,"Bill older than 3 months, asked for a newer one."
+R310070,KYC-887794,A-58416,1993,LS1,utility_bill,Lumenvale Energy,2026-05-23,2026-10-05,app,heic,2,150,ask_applicant,poa_older_than_3_months,AN06,
+R310071,KYC-894373,A-39576,2004,E14,utility_bill,Corrin Telecom,2026-07-10,2026-09-01,app,jpg,1,150,approved,,AN03,
+R310072,KYC-891171,A-32912,1962,SW11,bank_statement,Harbour Mutual,2026-07-20,2026-10-01,app,pdf,1,,approved,,AN15,
+R310073,KYC-890190,A-57169,1981,CF10,utility_bill,Lumenvale Energy,2026-06-22,2026-09-01,app,pdf,2,,approved,,AN18,
+R310074,KYC-880925,A-12296,1989,M14,utility_bill,Corrin Telecom,2026-08-30,2026-09-26,app,pdf,2,,ask_applicant,,AN02,
+R310075,KYC-897001,A-66249,1957,L17,utility_bill,Corrin Telecom,2026-05-07,2026-09-10,branch,pdf,2,,ask_applicant,poa_older_than_3_months,AN12,
+R310076,KYC-883244,A-74934,1989,NE1,utility_bill,Lumenvale Energy,2026-07-17,2026-10-24,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN01,
+R310077,KYC-887221,A-35815,1965,NE1,council_tax_bill,City Council,2026-09-06,2026-10-06,app,pdf,2,,approved,,AN02,
+R310078,KYC-887418,A-62167,1989,CF10,utility_bill,Northbrook Water,2026-06-22,2026-10-12,app,jpg,1,150,ask_applicant,poa_older_than_3_months,AN21,
+R310079,KYC-881819,A-51635,1966,cf10,bank_statement,Fenwick Savings,2026-06-08,2026-10-11,app,heic,1,300,approved,,AN23,"Second page missing, asked applicant."
+R310080,KYC-898154,A-98417,1971,LS1,council_tax_bill,City Council,2026-07-29,2026-09-23,app,jpg,3,200,approved,,AN17,
+R310081,KYC-890381,A-24801,1960,EH3,utility_bill,Northbrook Water,2026-07-16,2026-09-11,app,jpg,1,72,escalated,name_check,AN22,
+R310082,KYC-889018,A-14741,2001,G12,council_tax_bill,Borough Council,2026-06-19,2026-10-05,app,jpg,1,300,ask_applicant,,AN06,
+R310083,KYC-880635,A-72691,1973,LS1,utility_bill,Northbrook Water,2026-08-25,2026-09-28,app,heic,1,150,approved,,AN06,"Bill older than 3 months, asked for a newer one."
+R310084,KYC-883312,A-13165,1979,NG7,utility_bill,Corrin Telecom,2026-06-22,2026-09-22,branch,pdf,1,,approved,,AN15,
+R310085,KYC-880731,A-55160,1971,NE1,bank_statement,Harbour Mutual,2026-05-24,2026-09-08,app,pdf,1,,ask_applicant,,AN09,Address matches application.
+R310086,KYC-883075,A-87492,1958,L17,council_tax_bill,Borough Council,2026-06-10,2026-10-24,branch,png,2,72,ask_applicant,poa_older_than_3_months,AN08,"Second page missing, asked applicant."
+R310087,KYC-896812,A-83937,1969,BS8,bank_statement,Fenwick Savings,2026-08-29,2026-10-06,app,jpg,2,300,approved,,AN05,"Photo blurred, asked applicant to rescan."
+R310088,KYC-890376,A-57805,2002,GL50,council_tax_bill,Borough Council,2026-06-16,2026-10-15,branch,pdf,3,,ask_applicant,poa_older_than_3_months,AN16,
+R310089,KYC-897058,A-43817,1960,L17,utility_bill,Lumenvale Energy,2026-08-23,2026-10-14,branch,pdf,2,,approved,,AN02,
+R310090,KYC-890015,A-65064,1973,GL51,utility_bill,Northbrook Water,,2026-09-10,app,jpg,1,300,ask_applicant,,AN21,
+R310091,KYC-882166,A-41630,1986,YO10,bank_statement,Harbour Mutual,2026-07-01,2026-09-09,app,jpg,2,300,approved,,AN14,Matches; issuer on approved list.
+R310092,KYC-886100,A-26067,2000,G12,utility_bill,Corrin Telecom,2026-06-02,2026-10-03,branch,pdf,1,,ask_applicant,,AN10,Matches; issuer on approved list.
+R310093,KYC-888124,A-19153,1953,CF10,council_tax_bill,Borough Council,2026-08-20,2026-10-23,app,pdf,3,,approved,,AN13,
+R310094,KYC-883485,A-34814,1993,B15,council_tax_bill,Borough Council,2026-08-01,2026-09-10,app,pdf,1,,approved,,AN14,Matches; issuer on approved list.
+R310095,KYC-888042,A-26529,1951,SW11,bank_statement,Fenwick Savings,2026-09-07,2026-10-18,app,jpg,1,300,approved,,AN07,"Bill older than 3 months, asked for a newer one."
+R310096,KYC-895744,A-54767,1981,GL52,council_tax_bill,Borough Council,2026-07-20,2026-10-23,app,png,2,72,ask_applicant,poa_older_than_3_months,AN13,
+R310097,KYC-895540,A-40907,1984,NE1,utility_bill,Northbrook Water,2026-06-12,2026-10-10,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN06,"Maiden name on statement, escalated for name check."
+R310098,KYC-891228,A-64639,1971,LS6,bank_statement,Harbour Mutual,2026-05-15,2026-09-07,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN22,"Second page missing, asked applicant."
+R310099,KYC-889150,A-14385,1970,NG7,council_tax_bill,City Council,2026-07-02,2026-10-19,app,heic,1,150,ask_applicant,poa_older_than_3_months,AN08,"Second page missing, asked applicant."
+R310100,KYC-890420,A-23979,2002,GL52,utility_bill,Lumenvale Energy,06/08/2026,2026-09-30,app,jpg,2,300,approved,,AN23,
+R310101,KYC-889790,A-70196,1950,L17,bank_statement,Fenwick Savings,2026-05-14,2026-09-20,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN26,
+R310102,KYC-883260,A-26807,1956,EH3,utility_bill,Corrin Telecom,2026-09-01,2026-10-16,app,pdf,1,,approved,,AN18,
+R310103,KYC-891135,A-80064,1952,EH3,council_tax_bill,Borough Council,2026-07-04,2026-10-07,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN03,"Maiden name on statement, escalated for name check."
+R310104,KYC-885551,A-55891,1972,CF10,utility_bill,Corrin Telecom,2026-08-02,2026-10-09,app,heic,1,150,approved,,AN13,
+R310105,KYC-882838,A-96974,1973,LS1,utility_bill,Lumenvale Energy,2026-08-22,2026-10-13,app,pdf,1,,approved,,AN22,
+R310106,KYC-882530,A-99762,1963,OX4,bank_statement,Fenwick Savings,2026-06-06,2026-09-19,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN17,
+R310107,KYC-881376,A-19671,1972,BS8,council_tax_bill,Borough Council,2026-09-01,2026-09-28,app,heic,3,200,approved,,AN22,Matches; issuer on approved list.
+R310108,KYC-894913,A-10121,1986,CB1,utility_bill,Northbrook Water,2026-06-23,2026-10-04,app,pdf,3,,ask_applicant,poa_older_than_3_months,AN04,
+R310109,KYC-886686,A-73243,1956,GL51,bank_statement,Fenwick Savings,2026-08-05,2026-09-18,app,png,2,72,approved,,AN12,Matches; issuer on approved list.
+R310110,KYC-897040,A-31369,1971,G12,utility_bill,Corrin Telecom,2026-08-23,2026-09-29,branch,pdf,1,,approved,,AN13,
+R310111,KYC-885630,A-86986,1995,NG7,bank_statement,Fenwick Savings,2026-07-07,2026-09-12,app,pdf,1,,ask_applicant,name_mismatch,AN20,
+R310112,KYC-896247,A-88580,1997,GL52,utility_bill,Northbrook Water,2026-09-02,2026-09-27,app,pdf,1,,approved,,AN10,
+R310113,KYC-899854,A-33232,1951,G12,utility_bill,Northbrook Water,2026-08-25,2026-09-20,app,png,1,300,ask_applicant,blurred_image,AN18,"Photo blurred, asked applicant to rescan."
+R310114,KYC-893996,A-72097,1950,CB1,utility_bill,Northbrook Water,2026-09-05,2026-09-17,app,pdf,2,,approved,,AN12,Matches; issuer on approved list.
+R310115,KYC-880035,A-61456,1999,G12,utility_bill,Lumenvale Energy,07/09/2026,2026-10-15,branch,pdf,1,,escalated,name_check,AN01,
+R310116,KYC-893997,A-14321,1965,LS1,bank_statement,Fenwick Savings,2026-07-05,2026-09-14,branch,pdf,2,,approved,,AN21,
+R310117,KYC-890472,A-12050,1969,NG7,bank_statement,Harbour Mutual,2026-04-28,2026-09-10,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN10,"Second page missing, asked applicant."
+R310118,KYC-881010,A-38276,1966,L17,utility_bill,Corrin Telecom,2026-08-22,2026-09-24,app,jpg,1,300,approved,,AN01,"Bank statement shows account 40000640, sort code 20-32-83."
+R310119,KYC-884043,A-12780,1958,NE1,bank_statement,Fenwick Savings,2026-07-11,2026-09-05,branch,png,2,200,approved,,AN05,"Bill older than 3 months, asked for a newer one."
+R310120,KYC-888537,A-97240,1997,ox4,utility_bill,Lumenvale Energy,2026-06-10,2026-10-26,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN26,"Photo blurred, asked applicant to rescan."
+R310121,KYC-891802,A-89095,2000,E14,council_tax_bill,Borough Council,2026-06-16,2026-10-06,app,png,1,300,ask_applicant,poa_older_than_3_months,AN26,
+R310122,KYC-886154,A-92790,1969,CB1,bank_statement,Fenwick Savings,2026-06-03,2026-09-22,app,pdf,1,,ask_applicant,,AN14,
+R310123,KYC-891918,A-52600,1984,LS6,bank_statement,Fenwick Savings,2026-09-22,2026-10-02,app,pdf,1,,ask_applicant,missing_page,AN20,Address matches application.
+R310124,KYC-899278,A-55143,1985,LS1,utility_bill,Corrin Telecom,2026-09-05,2026-10-25,branch,pdf,1,,approved,,AN17,
+R310125,KYC-887424,A-60236,1973,gl50,council_tax_bill,Borough Council,2026-10-03,2026-10-16,branch,png,1,300,approved,,AN04,
+R310126,KYC-898645,A-94990,1994,EH3,utility_bill,Northbrook Water,2026-10-08,2026-10-13,app,pdf,1,,approved,,AN22,
+R310127,KYC-888057,A-39286,1968,BS8,bank_statement,Fenwick Savings,2026-06-21,2026-09-17,app,jpg,1,72,approved,,AN23,
+R310128,KYC-894356,A-43614,2004,NG7,utility_bill,Lumenvale Energy,01/07/2026,2026-10-16,app,pdf,2,,ask_applicant,,AN03,"Maiden name on statement, escalated for name check."
+R310129,KYC-883754,A-23552,1999,NG7,utility_bill,Lumenvale Energy,2026-08-05,2026-10-24,app,pdf,1,,approved,,AN09,
+R310130,KYC-887635,A-91483,1956,N7,council_tax_bill,City Council,2026-06-23,2026-09-23,app,pdf,1,,approved,,AN09,
+R310131,KYC-891629,A-63175,1972,GL50,utility_bill,Northbrook Water,2026-07-18,2026-10-11,branch,tiff,1,300,approved,,AN21,"Photo blurred, asked applicant to rescan."
+R310132,KYC-887842,A-13606,1990,L17,utility_bill,Corrin Telecom,2026-07-25,2026-10-25,branch,jpg,1,200,approved,,AN06,"Clear scan, all fields match."
+R310133,KYC-895916,A-71058,1988,E14,bank_statement,Harbour Mutual,2026-06-22,2026-09-14,app,pdf,3,,ask_applicant,blurred_image,AN22,"Bank statement shows account 40000235, sort code 20-40-26."
+R310134,KYC-881901,A-79675,2002,GL51,bank_statement,Fenwick Savings,2026-07-08,2026-09-03,app,pdf,1,,approved,,AN02,
+R310135,KYC-882138,A-23132,1977,N7,bank_statement,Fenwick Savings,2026-08-30,2026-10-03,branch,pdf,3,,ask_applicant,name_mismatch,AN08,
+R310136,KYC-899724,A-17471,1954,NE1,bank_statement,Harbour Mutual,2026-08-23,2026-09-22,app,jpg,2,72,approved,,AN11,
+R310137,KYC-881305,A-19365,1953,YO10,utility_bill,Lumenvale Energy,2026-07-30,2026-10-25,app,heic,3,300,approved,,AN04,Address matches application.
+R310138,KYC-880995,A-50906,1988,CF10,utility_bill,Northbrook Water,2026-08-21,2026-10-25,app,jpg,2,200,approved,,AN23,"Bill older than 3 months, asked for a newer one."
+R310139,KYC-884536,A-96946,1993,L17,utility_bill,Lumenvale Energy,2026-06-04,2026-09-22,app,png,3,150,approved,,AN17,
+R310140,KYC-883840,A-94599,1969,M14,utility_bill,Northbrook Water,2026-07-12,2026-09-06,app,jpg,2,300,ask_applicant,missing_page,AN07,"Name on bill uses initials, accepted."
+R310141,KYC-897992,A-62787,1950,E14,utility_bill,Lumenvale Energy,2026-06-22,2026-09-26,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN12,Applicant called from 07700 900365 to say a new bill is coming.
+R310142,KYC-899341,A-51776,1998,LS6,utility_bill,Lumenvale Energy,2026-07-07,2026-09-08,app,pdf,2,,approved,,AN03,
+R310143,KYC-894988,A-71508,1969,LS1,utility_bill,Lumenvale Energy,2026-05-07,2026-09-19,app,jpg,1,150,ask_applicant,poa_older_than_3_months,AN04,
+R310144,KYC-890149,A-19772,1984,GL51,utility_bill,Lumenvale Energy,2026-07-02,2026-09-22,app,pdf,1,,escalated,,AN24,
+R310145,KYC-888238,A-20968,1989,CF10,utility_bill,Corrin Telecom,2026-05-11,2026-09-15,app,heic,1,72,ask_applicant,poa_older_than_3_months,AN11,
+R310146,KYC-894412,A-94710,1956,CB1,utility_bill,Corrin Telecom,2026-08-18,2026-10-12,branch,pdf,1,,approved,,AN11,
+R310147,KYC-880621,A-77841,1982,L17,utility_bill,Lumenvale Energy,2026-09-10,2026-09-26,app,jpg,1,300,approved,,AN13,
+R310148,KYC-891897,A-31382,1954,LS6,utility_bill,Corrin Telecom,2026-05-20,2026-09-23,app,heic,2,300,ask_applicant,poa_older_than_3_months,AN20,
+R310149,KYC-883010,A-92043,1983,GL50,council_tax_bill,Borough Council,2026-07-23,2026-10-10,branch,pdf,1,,approved,,AN04,"Maiden name on statement, escalated for name check."
+R310150,KYC-880189,A-22681,1967,LS1,utility_bill,Lumenvale Energy,2026-09-16,2026-09-29,app,png,2,300,approved,,AN04,
+R310151,KYC-889039,A-41615,1995,L17,council_tax_bill,City Council,2026-08-02,2026-10-20,app,png,1,72,approved,,AN11,
+R310152,KYC-883415,A-79736,1983,YO10,utility_bill,Corrin Telecom,2026-07-29,2026-09-13,branch,jpg,2,200,approved,,AN25,
+R310153,KYC-890019,A-87367,1963,LS6,bank_statement,Fenwick Savings,2026-09-12,2026-09-28,branch,pdf,1,,approved,,AN08,
+R310154,KYC-884417,A-13596,2004,BS8,bank_statement,Fenwick Savings,2026-07-13,2026-10-06,app,pdf,3,,approved,,AN12,
+R310155,KYC-889591,A-95168,1983,GL52,utility_bill,Corrin Telecom,2026-09-20,2026-10-19,app,pdf,1,,approved,,AN22,
+R310156,KYC-895546,A-89728,1963,NE1,council_tax_bill,City Council,,2026-10-16,app,pdf,1,,approved,,AN09,
+R310157,KYC-893572,A-34855,2001,NG7,utility_bill,Northbrook Water,2026-05-28,2026-10-02,branch,jpg,1,72,approved,,AN16,Matches; issuer on approved list.
+R310158,KYC-895991,A-55936,1952,N7,bank_statement,Fenwick Savings,2026-08-06,2026-09-25,app,heic,2,200,approved,,AN26,
+R310159,KYC-890047,A-23441,1969,N7,utility_bill,Lumenvale Energy,2026-07-03,2026-09-20,app,pdf,2,,approved,,AN05,
+R310160,KYC-894257,A-18368,1998,B15,bank_statement,Fenwick Savings,2026-09-09,2026-09-14,app,pdf,2,,approved,,AN17,
+R310161,KYC-895655,A-80117,1997,NG7,utility_bill,Corrin Telecom,2026-07-30,2026-09-18,app,pdf,1,,approved,,AN16,
+R310162,KYC-881647,A-82853,2004,GL50,utility_bill,Corrin Telecom,2026-06-25,2026-09-12,branch,pdf,2,,approved,,AN04,
+R310163,KYC-896910,A-80097,1985,LS1,utility_bill,Corrin Telecom,2026-06-12,2026-09-07,branch,pdf,1,,approved,,AN04,"Photo blurred, asked applicant to rescan."
+R310164,KYC-893307,A-56952,1962,GL50,council_tax_bill,Borough Council,2026-06-03,2026-09-22,app,heic,1,200,ask_applicant,poa_older_than_3_months,AN12,"Clear scan, all fields match."
+R310165,KYC-892649,A-38229,1993,B15,utility_bill,Corrin Telecom,2026-06-25,2026-10-25,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN25,Matches; issuer on approved list.
+R310166,KYC-889878,A-88081,1987,E14,utility_bill,Corrin Telecom,2026-09-03,2026-10-16,app,png,1,200,approved,,AN17,
+R310167,KYC-880871,A-46294,1987,NE1,bank_statement,Fenwick Savings,2026-05-20,2026-09-22,branch,jpg,3,150,ask_applicant,poa_older_than_3_months,AN01,
+R310168,KYC-883034,A-42889,1979,NE1,utility_bill,Northbrook Water,2026-07-03,2026-10-24,app,pdf,2,,ask_applicant,,AN06,
+R310169,KYC-884474,A-78627,1994,EH3,council_tax_bill,City Council,2026-06-22,2026-09-29,app,png,1,200,ask_applicant,poa_older_than_3_months,AN17,
+R310170,KYC-885996,A-83660,1994,L17,bank_statement,Fenwick Savings,2026-09-06,2026-09-12,branch,heic,1,72,approved,,AN12,"Photo blurred, asked applicant to rescan."
+R310171,KYC-893952,A-23394,1960,GL50,utility_bill,Corrin Telecom,2026-09-10,2026-10-03,app,pdf,1,,approved,,AN26,"Bill older than 3 months, asked for a newer one."
+R310172,KYC-884895,A-27565,1976,N7,bank_statement,Harbour Mutual,2026-08-31,2026-09-29,app,jpg,2,72,approved,,AN23,Matches; issuer on approved list.
+R310173,KYC-887846,A-76584,2003,YO10,utility_bill,Corrin Telecom,2026-10-01,2026-10-19,branch,jpg,2,300,approved,,AN06,"Name on bill uses initials, accepted."
+R310174,KYC-896336,A-91753,1988,GL51,council_tax_bill,Borough Council,2026-08-27,2026-09-23,app,jpg,2,150,approved,,AN05,
+R310175,KYC-882304,A-39522,1993,SW11,bank_statement,Harbour Mutual,2026-06-15,2026-10-02,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN12,
+R310176,KYC-892523,A-33905,1988,NG7,utility_bill,Corrin Telecom,2026-05-02,2026-09-07,app,jpg,3,72,ask_applicant,poa_older_than_3_months,AN10,"Customer rang on 07700 900741, confirmed new address."
+R310177,KYC-893328,A-68306,1975,LS1,utility_bill,Northbrook Water,17/06/2026,2026-09-09,app,jpg,1,72,approved,,AN02,"Photo blurred, asked applicant to rescan."
+R310178,KYC-890865,A-96252,1976,CB1,utility_bill,Lumenvale Energy,,2026-09-18,app,jpg,1,300,approved,,AN06,"Photo blurred, asked applicant to rescan."
+R310179,KYC-897478,A-63380,1958,EH3,bank_statement,Harbour Mutual,2026-09-15,2026-09-27,app,pdf,1,,approved,,AN19,"Name on bill uses initials, accepted."
+R310180,KYC-890339,A-57818,1984,YO10,bank_statement,Fenwick Savings,2026-10-06,2026-10-23,app,jpg,1,150,approved,,AN19,
+R310181,KYC-889045,A-76144,2001,B15,utility_bill,Lumenvale Energy,2026-06-17,2026-10-19,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN07,Matches; issuer on approved list.
+R310182,KYC-883320,A-83631,1987,E14,utility_bill,Corrin Telecom,23/06/2026,2026-10-03,branch,pdf,1,,ask_applicant,poa_older_than_3_months,AN19,
+R310183,KYC-895205,A-64135,1982,YO10,utility_bill,Northbrook Water,2026-05-31,2026-09-03,app,jpg,1,300,ask_applicant,poa_older_than_3_months,AN26,Applicant called from 07700 900684 to say a new bill is coming.
+R310184,KYC-890443,A-44859,1995,n7,council_tax_bill,Borough Council,2026-09-17,2026-10-07,app,png,2,150,approved,,AN18,"Clear scan, all fields match."
+R310185,KYC-881809,A-74652,1999,B15,bank_statement,Fenwick Savings,2026-09-06,2026-09-19,branch,jpg,1,300,approved,,AN17,
+R310186,KYC-884624,A-88571,1991,NG7,bank_statement,Harbour Mutual,2026-06-07,2026-09-11,branch,heic,2,300,ask_applicant,,AN07,
+R310187,KYC-887749,A-49920,1992,OX4,utility_bill,Corrin Telecom,2026-07-02,2026-09-17,app,pdf,2,,approved,,AN22,"Clear scan, all fields match."
+R310188,KYC-887595,A-30650,1964,YO10,utility_bill,Northbrook Water,2026-08-03,2026-09-13,app,jpg,1,300,escalated,name_check,AN13,
+R310189,KYC-889724,A-13588,1971,GL52,utility_bill,Northbrook Water,2026-08-27,2026-09-18,app,png,1,300,approved,,AN09,
+R310190,KYC-895227,A-28215,2003,LS1,bank_statement,Fenwick Savings,2026-08-15,2026-10-08,app,pdf,3,,approved,,AN16,"Maiden name on statement, escalated for name check."
+R310191,KYC-887929,A-88964,1995,G12,utility_bill,Lumenvale Energy,2026-07-14,2026-10-13,branch,heic,1,300,approved,,AN19,Matches; issuer on approved list.
+R310192,KYC-897703,A-89485,1990,GL52,bank_statement,Fenwick Savings,2026-07-23,2026-10-08,branch,png,1,72,approved,,AN14,
+R310193,KYC-892036,A-74490,1976,CF10,utility_bill,Lumenvale Energy,2026-09-13,2026-09-18,app,png,3,300,approved,,AN09,"Bill older than 3 months, asked for a newer one."
+R310194,KYC-895095,A-86063,1986,B15,utility_bill,Lumenvale Energy,2026-08-31,2026-09-06,branch,jpg,2,300,approved,,AN25,
+R310195,KYC-895782,A-15042,1987,L17,council_tax_bill,City Council,2026-07-28,2026-10-06,app,heic,1,200,approved,,AN02,"Spoke to applicant, email ann.850@example.com, will resend."
+R310196,KYC-899522,A-83378,1999,NE1,bank_statement,Harbour Mutual,2026-08-12,2026-10-10,branch,jpg,1,300,approved,,AN26,"Clear scan, all fields match."
+R310197,KYC-893613,A-67293,1957,LS1,bank_statement,Harbour Mutual,2026-07-23,2026-10-24,branch,tiff,1,200,ask_applicant,poa_older_than_3_months,AN07,
+R310198,KYC-887019,A-91216,1950,E14,utility_bill,Lumenvale Energy,2026-09-15,2026-10-21,app,jpg,2,72,approved,,AN26,Applicant called from 07700 900548 to say a new bill is coming.
+R310199,KYC-894422,A-42806,1992,E14,utility_bill,Lumenvale Energy,2026-08-28,2026-09-15,app,pdf,3,,approved,,AN06,
+R310200,KYC-881019,A-76981,1951,OX4,bank_statement,Fenwick Savings,2026-07-07,2026-09-22,app,jpg,2,300,approved,,AN09,
+R310201,KYC-882397,A-65774,1979,BS8,council_tax_bill,Borough Council,2026-06-09,2026-10-05,branch,pdf,2,,ask_applicant,,AN02,
+R310202,KYC-889859,A-68393,1990,L17,bank_statement,Harbour Mutual,2026-06-23,2026-09-03,app,pdf,1,,approved,,AN24,"Photo blurred, asked applicant to rescan."
+R310203,KYC-881360,A-38380,1973,LS1,utility_bill,Corrin Telecom,2026-04-25,2026-09-02,branch,pdf,3,,ask_applicant,,AN14,Address matches application.
+R310204,KYC-892640,A-98671,1979,GL52,utility_bill,Northbrook Water,2026-07-28,2026-09-27,app,pdf,1,,approved,,AN14,"Customer rang on 07700 900289, confirmed new address."
+R310205,KYC-890733,A-18446,1961,YO10,utility_bill,Corrin Telecom,2026-07-25,2026-09-14,app,jpg,1,72,approved,,AN17,
+R310206,KYC-887860,A-31576,1986,M14,utility_bill,Corrin Telecom,2026-09-29,2026-10-17,app,pdf,1,,approved,,AN03,
+R310207,KYC-883526,A-57534,1981,B15,utility_bill,Corrin Telecom,29/06/2026,2026-10-14,app,heic,1,300,ask_applicant,poa_older_than_3_months,AN16,
+R310208,KYC-885383,A-58185,1953,B15,utility_bill,Corrin Telecom,2026-04-15,2026-09-01,app,pdf,3,,ask_applicant,poa_older_than_3_months,AN02,"Bank statement shows account 40000581, sort code 20-61-23."
+R310209,KYC-894578,A-87890,2003,N7,utility_bill,Northbrook Water,2026-08-26,2026-10-21,app,jpg,3,300,approved,,AN25,"Clear scan, all fields match."
+R310210,KYC-891708,A-49155,1996,N7,utility_bill,Northbrook Water,2026-06-24,2026-10-24,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN24,"Photo blurred, asked applicant to rescan."
+R310211,KYC-881361,A-14820,1996,OX4,bank_statement,Fenwick Savings,2026-05-29,2026-10-04,app,png,1,300,approved,,AN20,"Clear scan, all fields match."
+R310212,KYC-881437,A-95626,1994,LS6,utility_bill,Lumenvale Energy,23/06/2026,2026-10-24,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN20,
+R310213,KYC-889497,A-55914,1965,GL51,bank_statement,Harbour Mutual,2026-09-27,2026-10-14,app,pdf,1,,approved,,AN15,Address matches application.
+R310214,KYC-890576,A-27939,1964,LS1,bank_statement,Harbour Mutual,2026-09-19,2026-09-27,branch,png,1,300,ask_applicant,,AN25,
+R310215,KYC-887179,A-62189,1955,NE1,utility_bill,Northbrook Water,2026-06-05,2026-10-03,app,pdf,1,,approved,,AN14,
+R310216,KYC-887375,A-91014,1971,m14,bank_statement,Fenwick Savings,2026-08-15,2026-10-19,app,pdf,1,,approved,,AN09,
+R310217,KYC-885462,A-75351,1977,GL52,bank_statement,Fenwick Savings,2026-06-13,2026-10-24,branch,png,3,300,ask_applicant,poa_older_than_3_months,AN14,
+R310218,KYC-889126,A-43902,1977,GL52,utility_bill,Lumenvale Energy,2026-07-20,2026-10-02,branch,pdf,1,,approved,,AN12,"Maiden name on statement, escalated for name check."
+R310219,KYC-898550,A-26416,1953,EH3,utility_bill,Corrin Telecom,25/06/2026,2026-09-12,app,heic,2,150,approved,,AN07,
+R310220,KYC-884220,A-11771,1999,EH3,utility_bill,Lumenvale Energy,2026-08-30,2026-10-13,app,pdf,3,,approved,,AN08,
+R310221,KYC-892582,A-76369,1951,GL50,utility_bill,Lumenvale Energy,2026-06-22,2026-10-14,app,pdf,1,,approved,,AN02,
+R310222,KYC-884886,A-65175,1998,NE1,utility_bill,Northbrook Water,2026-06-29,2026-09-03,branch,pdf,1,,approved,,AN08,
+R310223,KYC-891693,A-14034,1962,YO10,bank_statement,Harbour Mutual,22/06/2026,2026-09-17,app,png,1,300,approved,,AN11,
+R310224,KYC-881692,A-62308,1987,OX4,council_tax_bill,City Council,2026-07-16,2026-09-02,app,pdf,3,,approved,,AN18,"Maiden name on statement, escalated for name check."
+R310225,KYC-884446,A-56923,1952,LS6,utility_bill,Corrin Telecom,,2026-09-28,app,pdf,1,,ask_applicant,name_mismatch,AN26,
+R310226,KYC-881807,A-10995,1990,SW11,bank_statement,Harbour Mutual,2026-06-25,2026-09-17,app,pdf,2,,approved,,AN12,Applicant called from 07700 900731 to say a new bill is coming.
+R310227,KYC-886779,A-33102,1962,M14,utility_bill,Corrin Telecom,23/07/2026,2026-09-29,app,pdf,2,,approved,,AN17,"Bill older than 3 months, asked for a newer one."
+R310228,KYC-894968,A-49417,1951,e14,council_tax_bill,Borough Council,2026-09-23,2026-10-13,app,heic,2,72,approved,,AN17,"Second page missing, asked applicant."
+R310229,KYC-897928,A-60187,1959,N7,utility_bill,Corrin Telecom,2026-05-03,2026-09-09,app,jpg,2,200,ask_applicant,poa_older_than_3_months,AN23,
+R310230,KYC-885264,A-91820,1972,CB1,utility_bill,Corrin Telecom,,2026-10-02,app,png,2,150,approved,,AN21,
+R310231,KYC-897238,A-76179,1966,B15,bank_statement,Harbour Mutual,2026-06-15,2026-09-17,app,png,1,150,ask_applicant,poa_older_than_3_months,AN15,
+R310232,KYC-885531,A-84992,1952,OX4,utility_bill,Corrin Telecom,2026-10-03,2026-10-09,branch,png,1,72,approved,,AN04,Matches; issuer on approved list.
+R310232,KYC-887962,A-61487,1962,CB1,bank_statement,Harbour Mutual,2026-05-26,2026-10-11,app,heic,1,150,ask_applicant,,AN02,
+R310234,KYC-885403,A-53294,1950,LS6,utility_bill,Corrin Telecom,2026-09-03,2026-10-15,app,png,1,200,approved,,AN08,Applicant called from 07700 900080 to say a new bill is coming.
+R310235,KYC-896658,A-98322,1993,L17,utility_bill,Corrin Telecom,2026-08-05,2026-09-22,app,pdf,1,,ask_applicant,,AN01,
+R310236,KYC-894010,A-36248,1990,YO10,council_tax_bill,Borough Council,06/08/2026,2026-10-04,branch,pdf,2,,approved,,AN10,"Maiden name on statement, escalated for name check."
+R310237,KYC-895272,A-76771,1961,M14,utility_bill,Corrin Telecom,2026-07-16,2026-09-24,branch,jpg,2,200,approved,,AN16,"Name on bill uses initials, accepted."
+R310238,KYC-883081,A-48438,1954,OX4,utility_bill,Corrin Telecom,2026-06-14,2026-09-15,branch,png,1,300,ask_applicant,poa_older_than_3_months,AN13,
+R310239,KYC-885110,A-46671,1992,GL52,bank_statement,Harbour Mutual,,2026-09-11,app,png,1,300,approved,,AN21,
+R310240,KYC-884753,A-77744,1969,YO10,bank_statement,Fenwick Savings,2026-06-07,2026-10-14,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN24,
+R310241,KYC-880922,A-84778,1962,NE1,utility_bill,Corrin Telecom,2026-08-05,2026-10-15,app,pdf,1,,approved,,AN04,"Bill older than 3 months, asked for a newer one."
+R310242,KYC-889460,A-94319,1955,LS1,bank_statement,Harbour Mutual,2026-09-08,2026-10-14,app,pdf,1,,approved,,AN05,"Clear scan, all fields match."
+R310243,KYC-891316,A-68453,1982,GL52,council_tax_bill,Borough Council,2026-06-13,2026-10-10,app,pdf,1,,ask_applicant,,AN22,"Second page missing, asked applicant."
+R310244,KYC-885519,A-17542,1991,M14,council_tax_bill,Borough Council,17/07/2026,2026-09-07,app,png,3,200,approved,,AN17,
+R310245,KYC-886817,A-18503,1965,NE1,utility_bill,Lumenvale Energy,2026-09-11,2026-10-26,app,pdf,1,,approved,,AN14,
+R310246,KYC-890101,A-99945,1990,BS8,utility_bill,Corrin Telecom,2026-08-05,2026-09-26,app,pdf,1,,approved,,AN02,Address matches application.
+R310247,KYC-894560,A-93123,2005,L17,utility_bill,Northbrook Water,2026-09-02,2026-09-30,app,heic,1,200,approved,,AN05,"Photo blurred, asked applicant to rescan."
+R310248,KYC-891621,A-57740,1961,CF10,bank_statement,Fenwick Savings,2026-07-12,2026-09-23,branch,pdf,1,,approved,,AN08,
+R310249,KYC-881111,A-25760,1987,B15,council_tax_bill,City Council,,2026-09-03,app,png,1,200,approved,,AN07,
+R310250,KYC-898239,A-84033,1967,GL51,bank_statement,Harbour Mutual,2026-08-04,2026-09-28,app,pdf,2,,approved,,AN18,"Maiden name on statement, escalated for name check."
+R310251,KYC-883849,A-98321,1968,YO10,bank_statement,Harbour Mutual,2026-10-10,2026-10-17,app,jpg,1,200,approved,,AN16,
+R310252,KYC-892031,A-51199,1952,SW11,bank_statement,Fenwick Savings,2026-08-21,2026-09-10,app,png,3,300,approved,,AN06,
+R310253,KYC-895239,A-52336,2003,GL51,utility_bill,Corrin Telecom,2026-08-26,2026-09-14,app,jpg,3,300,approved,,AN20,"Bill older than 3 months, asked for a newer one."
+R310254,KYC-897487,A-21077,1954,yo10,utility_bill,Corrin Telecom,,2026-09-30,app,pdf,1,,approved,,AN01,
+R310255,KYC-881157,A-23389,1979,E14,utility_bill,Corrin Telecom,25/05/2026,2026-09-04,app,png,1,150,ask_applicant,poa_older_than_3_months,AN21,"Second page missing, asked applicant."
+R310256,KYC-898697,A-32552,1966,OX4,utility_bill,Northbrook Water,2026-09-29,2026-10-04,app,pdf,1,,approved,,AN06,
+R310257,KYC-892036,A-14259,1950,EH3,utility_bill,Corrin Telecom,26/08/2026,2026-09-23,app,jpg,3,300,approved,,AN10,
+R310258,KYC-882058,A-74193,1957,E14,utility_bill,Northbrook Water,2026-09-04,2026-09-20,app,pdf,3,,approved,,AN10,"Name on bill uses initials, accepted."
+R310259,KYC-888703,A-37455,1969,L17,utility_bill,Lumenvale Energy,2026-06-21,2026-09-04,app,pdf,1,,approved,,AN17,
+R310260,KYC-895674,A-28166,1997,LS1,utility_bill,Northbrook Water,2026-07-11,2026-10-08,branch,jpg,2,300,approved,,AN06,
+R310261,KYC-890203,A-54993,1972,gl51,bank_statement,Harbour Mutual,2026-07-09,2026-10-06,app,pdf,2,,approved,,AN18,
+R310262,KYC-884043,A-93787,1990,CB1,utility_bill,Corrin Telecom,2026-06-07,2026-10-04,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN25,"Name on bill uses initials, accepted."
+R310263,KYC-896469,A-52566,1977,B15,utility_bill,Corrin Telecom,2026-07-06,2026-10-11,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN10,"Maiden name on statement, escalated for name check."
+R310264,KYC-890631,A-94495,1966,GL51,utility_bill,Corrin Telecom,2026-06-07,2026-10-03,branch,pdf,1,,approved,,AN17,"Photo blurred, asked applicant to rescan."
+R310265,KYC-888127,A-95247,1993,LS1,bank_statement,Fenwick Savings,2026-08-07,2026-09-09,branch,png,1,72,approved,,AN19,
+R310266,KYC-899940,A-38136,1984,L17,utility_bill,Corrin Telecom,2026-04-25,2026-09-06,app,jpg,1,200,ask_applicant,poa_older_than_3_months,AN14,
+R310267,KYC-895910,A-24846,1967,gl51,bank_statement,Harbour Mutual,,2026-09-15,branch,pdf,1,,approved,,AN16,"Bank statement shows account 40000548, sort code 20-99-79."
+R310268,KYC-894604,A-18295,1961,NG7,utility_bill,Lumenvale Energy,2026-06-27,2026-10-05,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN04,Address matches application.
+R310269,KYC-893686,A-19784,1951,CF10,utility_bill,Corrin Telecom,2026-07-10,2026-10-23,app,png,1,200,approved,,AN25,
+R310270,KYC-888188,A-51790,1960,G12,council_tax_bill,City Council,2026-05-16,2026-09-11,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN09,"Clear scan, all fields match."
+R310271,KYC-886987,A-27924,1990,GL50,utility_bill,Corrin Telecom,2026-07-05,2026-10-07,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN16,
+R310272,KYC-892298,A-28206,1999,OX4,utility_bill,Corrin Telecom,2026-09-13,2026-10-21,app,jpg,2,200,approved,,AN13,"Clear scan, all fields match."
+R310273,KYC-889005,A-98039,2003,BS8,utility_bill,Northbrook Water,2026-07-23,2026-09-05,app,pdf,3,,approved,,AN25,
+R310274,KYC-889712,A-19014,2003,NG7,bank_statement,Fenwick Savings,2026-09-30,2026-10-06,branch,pdf,2,,approved,,AN18,"Bill older than 3 months, asked for a newer one."
+R310275,KYC-882893,A-83031,1997,NG7,bank_statement,Harbour Mutual,,2026-10-23,app,jpg,1,150,approved,,AN19,
+R310276,KYC-883464,A-89955,1966,L17,bank_statement,Harbour Mutual,30/08/2026,2026-09-11,app,jpg,2,300,approved,,AN20,
+R310277,KYC-889083,A-61419,1964,GL52,bank_statement,Fenwick Savings,2026-08-05,2026-09-01,app,pdf,3,,approved,,AN23,
+R310278,KYC-881886,A-18067,2002,E14,utility_bill,Corrin Telecom,2026-08-04,2026-09-21,branch,jpg,2,200,approved,,AN16,
+R310279,KYC-889188,A-30717,1981,GL51,utility_bill,Corrin Telecom,2026-06-29,2026-10-02,app,pdf,2,,ask_applicant,,AN08,
+R310280,KYC-881982,A-57516,1977,EH3,utility_bill,Lumenvale Energy,2026-08-06,2026-10-11,branch,pdf,2,,approved,,AN05,
+R310281,KYC-898595,A-62740,1978,LS6,bank_statement,Harbour Mutual,2026-08-25,2026-10-11,app,jpg,2,300,approved,,AN16,Matches; issuer on approved list.
+R310282,KYC-897171,A-92736,2004,LS6,bank_statement,Harbour Mutual,2026-07-08,2026-09-20,app,pdf,3,,approved,,AN22,
+R310283,KYC-884839,A-65149,1987,L17,utility_bill,Lumenvale Energy,12/05/2026,2026-09-22,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN08,
+R310284,KYC-893995,A-61509,1964,NE1,bank_statement,Harbour Mutual,2026-06-05,2026-10-12,app,jpg,2,150,approved,,AN07,
+R310285,KYC-898099,A-31661,1971,eh3,utility_bill,Northbrook Water,2026-07-31,2026-10-21,app,pdf,3,,approved,,AN20,"Clear scan, all fields match."
+R310286,KYC-881943,A-80526,1967,cb1,bank_statement,Fenwick Savings,05/06/2026,2026-10-18,app,jpg,3,200,ask_applicant,,AN04,"Photo blurred, asked applicant to rescan."
+R310287,KYC-897941,A-84879,1980,LS1,council_tax_bill,City Council,2026-07-15,2026-09-12,app,pdf,3,,approved,,AN06,"Clear scan, all fields match."
+R310288,KYC-894325,A-62176,1983,SW11,bank_statement,Fenwick Savings,2026-05-25,2026-10-03,app,heic,2,72,ask_applicant,poa_older_than_3_months,AN18,"Clear scan, all fields match."
+R310289,KYC-882941,A-40986,1997,CB1,council_tax_bill,Borough Council,2026-07-11,2026-09-27,app,jpg,3,200,ask_applicant,,AN20,"Photo blurred, asked applicant to rescan."
+R310290,KYC-889795,A-15920,1969,E14,bank_statement,Fenwick Savings,2026-07-09,2026-10-09,branch,pdf,1,,approved,,AN26,"Photo blurred, asked applicant to rescan."
+R310291,KYC-883710,A-81276,1954,CB1,bank_statement,Fenwick Savings,2026-07-05,2026-10-16,branch,pdf,2,,ask_applicant,poa_older_than_3_months,AN07,Address matches application.
+R310292,KYC-881859,A-66735,1970,N7,utility_bill,Northbrook Water,2026-06-08,2026-09-21,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN06,
+R310293,KYC-882274,A-67965,1993,SW11,bank_statement,Fenwick Savings,2026-10-07,2026-10-17,branch,jpg,1,150,approved,,AN18,Matches; issuer on approved list.
+R310294,KYC-896680,A-36375,1999,NE1,council_tax_bill,City Council,2026-06-30,2026-09-09,app,tiff,1,150,approved,,AN11,"Photo blurred, asked applicant to rescan."
+R310295,KYC-898114,A-39608,1950,B15,bank_statement,Fenwick Savings,2026-07-29,2026-09-19,app,pdf,1,,approved,,AN08,
+R310296,KYC-899668,A-31488,1964,NE1,bank_statement,Fenwick Savings,2026-08-11,2026-09-27,app,jpg,2,72,approved,,AN08,
+R310297,KYC-885783,A-98744,1958,BS8,utility_bill,Corrin Telecom,2026-08-28,2026-10-21,app,png,1,300,approved,,AN14,
+R310298,KYC-895724,A-14873,1984,GL51,utility_bill,Corrin Telecom,2026-06-02,2026-09-12,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN04,"Maiden name on statement, escalated for name check."
+R310299,KYC-889653,A-47976,1974,GL52,utility_bill,Lumenvale Energy,2026-09-08,2026-10-18,branch,pdf,1,,approved,,AN01,"Name on bill uses initials, accepted."
+R310300,KYC-892223,A-76185,1973,NE1,utility_bill,Corrin Telecom,2026-05-22,2026-09-05,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN16,
+R310301,KYC-883814,A-50533,1974,NG7,bank_statement,Fenwick Savings,2026-06-28,2026-10-17,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN15,
+R310302,KYC-896520,A-24078,1973,GL51,council_tax_bill,Borough Council,2026-05-27,2026-09-24,app,jpg,2,200,ask_applicant,poa_older_than_3_months,AN26,"Clear scan, all fields match."
+R310303,KYC-895852,A-57036,1955,EH3,bank_statement,Fenwick Savings,2026-07-13,2026-09-13,app,pdf,1,,approved,,AN10,
+R310304,KYC-896119,A-65711,1990,L17,council_tax_bill,City Council,2026-06-18,2026-09-26,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN18,
+R310305,KYC-891011,A-65835,1962,YO10,utility_bill,Lumenvale Energy,2026-05-08,2026-09-05,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN16,"Name on bill uses initials, accepted."
+R310306,KYC-897346,A-20514,1961,CB1,bank_statement,Harbour Mutual,2026-06-17,2026-10-09,app,png,1,200,ask_applicant,,AN18,
+R310307,KYC-889306,A-67206,1953,N7,utility_bill,Corrin Telecom,2026-08-16,2026-10-16,app,pdf,3,,ask_applicant,,AN06,
+R310308,KYC-884201,A-88085,1985,BS8,utility_bill,Lumenvale Energy,2026-06-18,2026-09-28,branch,pdf,2,,ask_applicant,poa_older_than_3_months,AN14,Matches; issuer on approved list.
+R310309,KYC-886969,A-22272,1979,E14,council_tax_bill,City Council,24/05/2026,2026-09-07,branch,pdf,1,,approved,,AN07,
+R310310,KYC-891753,A-96732,1980,NG7,utility_bill,Lumenvale Energy,02/09/2026,2026-09-14,app,png,2,200,approved,,AN18,
+R310311,KYC-888148,A-64344,1999,GL52,utility_bill,Lumenvale Energy,2026-05-14,2026-09-12,app,pdf,2,,approved,,AN20,
+R310312,KYC-889386,A-87258,1977,B15,utility_bill,Lumenvale Energy,2026-05-18,2026-09-13,app,jpg,1,72,ask_applicant,poa_older_than_3_months,AN06,
+R310313,KYC-888634,A-63727,1958,NG7,utility_bill,Lumenvale Energy,12/05/2026,2026-09-03,app,jpg,2,200,ask_applicant,poa_older_than_3_months,AN06,Applicant called from 07700 900968 to say a new bill is coming.
+R310314,KYC-882634,A-78091,1987,BS8,bank_statement,Harbour Mutual,20/06/2026,2026-09-26,app,jpg,2,72,ask_applicant,,AN21,
+R310315,KYC-887336,A-11795,1994,CB1,utility_bill,Northbrook Water,2026-08-07,2026-10-02,branch,pdf,2,,approved,,AN07,Address matches application.
+R310316,KYC-892281,A-21358,1976,CB1,utility_bill,Lumenvale Energy,2026-08-11,2026-10-17,app,pdf,2,,approved,,AN20,
+R310317,KYC-883343,A-17637,1970,CB1,utility_bill,Corrin Telecom,2026-08-23,2026-09-08,branch,pdf,1,,approved,,AN20,"Photo blurred, asked applicant to rescan."
+R310318,KYC-892252,A-14115,1991,YO10,utility_bill,Northbrook Water,2026-09-15,2026-09-24,app,pdf,2,,approved,,AN05,"Photo blurred, asked applicant to rescan."
+R310319,KYC-885633,A-43313,1993,M14,utility_bill,Corrin Telecom,,2026-10-08,app,pdf,2,,approved,,AN23,"Customer rang on 07700 900197, confirmed new address."
+R310320,KYC-882316,A-45714,1962,N7,utility_bill,Lumenvale Energy,2026-07-29,2026-10-12,branch,jpg,3,300,ask_applicant,blurred_image,AN23,"Maiden name on statement, escalated for name check."
+R310321,KYC-891236,A-55390,1993,OX4,utility_bill,Lumenvale Energy,,2026-10-25,app,png,2,200,ask_applicant,poa_older_than_3_months,AN12,Address matches application.
+R310322,KYC-886109,A-82867,1984,E14,bank_statement,Fenwick Savings,2026-07-12,2026-09-17,app,pdf,1,,approved,,AN20,
+R310323,KYC-897328,A-90631,1959,YO10,bank_statement,Fenwick Savings,2026-06-06,2026-10-10,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN16,"Customer rang on 07700 900601, confirmed new address."
+R310324,KYC-883268,A-31127,1986,G12,utility_bill,Lumenvale Energy,2026-06-11,2026-10-22,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN21,"Customer rang on 07700 900546, confirmed new address."
+R310325,KYC-883462,A-30938,1990,L17,council_tax_bill,City Council,2026-10-04,2026-10-14,app,pdf,3,,approved,,AN05,
+R310326,KYC-881176,A-95108,1972,NE1,council_tax_bill,City Council,2026-07-04,2026-10-19,branch,pdf,3,,ask_applicant,poa_older_than_3_months,AN16,
+R310327,KYC-880350,A-67698,1994,B15,utility_bill,Corrin Telecom,2026-05-16,2026-09-12,app,jpg,2,150,ask_applicant,poa_older_than_3_months,AN22,"Clear scan, all fields match."
+R310328,KYC-896325,A-20754,2005,BS8,bank_statement,Harbour Mutual,2026-06-17,2026-10-23,branch,heic,1,300,approved,,AN02,"Second page missing, asked applicant."
+R310329,KYC-893446,A-95423,1950,BS8,utility_bill,Lumenvale Energy,2026-05-25,2026-10-10,app,heic,2,200,ask_applicant,poa_older_than_3_months,AN12,"Clear scan, all fields match."
+R310330,KYC-893213,A-88882,1987,E14,utility_bill,Corrin Telecom,2026-07-16,2026-09-19,app,jpg,1,72,approved,,AN26,"Bank statement shows account 40000588, sort code 20-68-89."
+R310331,KYC-898734,A-15821,2004,N7,bank_statement,Fenwick Savings,2026-08-10,2026-10-11,app,pdf,2,,ask_applicant,name_mismatch,AN19,
+R310332,KYC-894280,A-37225,1968,CF10,council_tax_bill,Borough Council,2026-08-10,2026-10-14,app,heic,3,300,approved,,AN19,"Bill older than 3 months, asked for a newer one."
+R310333,KYC-883555,A-80090,1998,CB1,utility_bill,Corrin Telecom,2026-07-31,2026-10-14,app,jpg,2,300,approved,,AN13,
+R310334,KYC-880376,A-80759,1980,G12,utility_bill,Corrin Telecom,2026-07-26,2026-10-01,app,pdf,1,,approved,,AN08,
+R310335,KYC-894227,A-83643,2001,E14,council_tax_bill,Borough Council,2026-07-05,2026-10-14,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN08,"Bill older than 3 months, asked for a newer one."
+R310336,KYC-880253,A-61916,1971,GL52,bank_statement,Fenwick Savings,2026-09-01,2026-09-24,app,pdf,2,,approved,,AN23,"Photo blurred, asked applicant to rescan."
+R310337,KYC-885205,A-23533,1956,B15,bank_statement,Fenwick Savings,2026-06-07,2026-09-22,app,jpg,3,150,ask_applicant,poa_older_than_3_months,AN09,
+R310338,KYC-883788,A-84498,1987,CF10,utility_bill,Northbrook Water,09/06/2026,2026-09-08,app,pdf,2,,approved,,AN01,
+R310339,KYC-897933,A-89497,1997,L17,bank_statement,Harbour Mutual,2026-06-04,2026-09-12,app,pdf,2,,ask_applicant,,AN10,
+R310340,KYC-882995,A-75238,1992,N7,bank_statement,Harbour Mutual,2026-05-14,2026-09-14,app,tiff,1,300,ask_applicant,poa_older_than_3_months,AN22,
+R310341,KYC-883526,A-68438,2003,LS1,utility_bill,Corrin Telecom,23/06/2026,2026-09-14,app,pdf,2,,approved,,AN04,"Clear scan, all fields match."
+R310342,KYC-893831,A-95400,1973,EH3,utility_bill,Lumenvale Energy,2026-10-02,2026-10-09,app,pdf,1,,approved,,AN13,
+R310343,KYC-896760,A-16875,1953,e14,utility_bill,Corrin Telecom,2026-08-09,2026-10-03,branch,pdf,1,,approved,,AN13,"Bank statement shows account 40000388, sort code 20-87-69."
+R310344,KYC-894645,A-52840,1991,NE1,utility_bill,Northbrook Water,02/09/2026,2026-10-07,app,pdf,3,,approved,,AN14,Matches; issuer on approved list.
+R310345,KYC-881998,A-34201,1963,GL51,utility_bill,Lumenvale Energy,06/10/2026,2026-10-24,app,pdf,2,,approved,,AN20,"Maiden name on statement, escalated for name check."
+R310346,KYC-881386,A-70537,1979,LS6,bank_statement,Fenwick Savings,2026-07-10,2026-09-21,app,pdf,2,,approved,,AN17,
+R310347,KYC-884718,A-90072,1975,NG7,council_tax_bill,Borough Council,2026-07-12,2026-09-28,app,jpg,2,150,approved,,AN07,
+R310348,KYC-881117,A-10859,1954,N7,council_tax_bill,City Council,2026-07-06,2026-09-14,app,pdf,2,,approved,,AN08,
+R310349,KYC-889607,A-71739,1959,NE1,utility_bill,Corrin Telecom,2026-06-17,2026-10-08,app,pdf,3,,ask_applicant,,AN14,
+R310350,KYC-894440,A-25269,1951,OX4,council_tax_bill,Borough Council,2026-07-28,2026-09-01,app,pdf,2,,approved,,AN23,Address matches application.
+R310351,KYC-898275,A-80978,1981,GL51,bank_statement,Harbour Mutual,2026-07-25,2026-09-17,app,pdf,2,,approved,,AN26,
+R310352,KYC-899188,A-36271,1952,GL51,council_tax_bill,Borough Council,2026-09-16,2026-10-26,branch,png,1,200,approved,,AN21,"Maiden name on statement, escalated for name check."
+R310353,KYC-899737,A-77216,1982,sw11,utility_bill,Corrin Telecom,2026-08-14,2026-10-13,app,pdf,2,,approved,,AN21,
+R310354,KYC-896762,A-38325,1986,LS6,utility_bill,Lumenvale Energy,2026-07-30,2026-09-22,app,pdf,2,,approved,,AN10,
+R310355,KYC-883122,A-82495,1982,E14,bank_statement,Fenwick Savings,,2026-10-08,app,pdf,1,,ask_applicant,,AN01,
+R310356,KYC-890525,A-38650,1993,GL51,utility_bill,Northbrook Water,2026-08-22,2026-09-13,branch,jpg,1,200,approved,,AN25,"Name on bill uses initials, accepted."
+R310357,KYC-883710,A-22196,1975,G12,utility_bill,Corrin Telecom,2026-08-19,2026-10-09,app,jpg,1,300,ask_applicant,missing_page,AN09,
+R310358,KYC-890883,A-57938,1994,CF10,utility_bill,Corrin Telecom,2026-05-09,2026-09-13,app,pdf,3,,ask_applicant,poa_older_than_3_months,AN18,"Bill older than 3 months, asked for a newer one."
+R310359,KYC-888761,A-82777,2000,yo10,council_tax_bill,Borough Council,2026-07-02,2026-09-26,branch,pdf,1,,approved,,AN01,
+R310360,KYC-891797,A-18234,1989,GL51,bank_statement,Harbour Mutual,2026-07-01,2026-09-18,app,pdf,2,,approved,,AN03,"Name on bill uses initials, accepted."
+R310361,KYC-890453,A-73728,1986,GL50,utility_bill,Lumenvale Energy,2026-06-08,2026-09-27,app,pdf,2,,ask_applicant,,AN01,
+R310362,KYC-893239,A-97454,1974,EH3,bank_statement,Harbour Mutual,2026-06-30,2026-10-07,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN04,"Bill older than 3 months, asked for a newer one."
+R310363,KYC-884129,A-86013,1972,E14,council_tax_bill,City Council,2026-06-11,2026-10-05,app,jpg,2,300,ask_applicant,poa_older_than_3_months,AN01,
+R310364,KYC-880096,A-57799,1964,LS1,utility_bill,Corrin Telecom,2026-09-15,2026-10-09,branch,jpg,1,150,ask_applicant,missing_page,AN23,
+R310365,KYC-888604,A-69732,1954,SW11,council_tax_bill,City Council,2026-07-14,2026-09-16,branch,pdf,2,,approved,,AN25,
+R310366,KYC-899580,A-72837,1986,LS1,utility_bill,Northbrook Water,2026-07-10,2026-10-04,app,pdf,1,,approved,,AN01,"Bank statement shows account 40000801, sort code 20-82-41."
+R310367,KYC-890041,A-20675,1972,GL52,council_tax_bill,Borough Council,2026-06-16,2026-10-06,app,pdf,2,,approved,,AN11,
+R310368,KYC-885928,A-86330,1983,GL52,council_tax_bill,Borough Council,2026-06-23,2026-09-01,app,pdf,1,,approved,,AN14,"Maiden name on statement, escalated for name check."
+R310369,KYC-893874,A-81906,2004,LS1,utility_bill,Corrin Telecom,2026-05-28,2026-10-05,app,png,3,200,ask_applicant,poa_older_than_3_months,AN24,"Photo blurred, asked applicant to rescan."
+R310370,KYC-882333,A-66174,1951,NG7,council_tax_bill,Borough Council,2026-06-02,2026-10-04,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN04,
+R310371,KYC-899426,A-70818,1994,SW11,bank_statement,Harbour Mutual,2026-07-01,2026-09-20,app,jpg,2,300,approved,,AN17,"Second page missing, asked applicant."
+R310372,KYC-891201,A-78307,1991,LS1,bank_statement,Fenwick Savings,2026-06-10,2026-09-06,app,pdf,2,,escalated,name_check,AN14,
+R310373,KYC-880850,A-73991,1978,EH3,utility_bill,Corrin Telecom,2026-08-04,2026-10-20,app,heic,2,200,approved,,AN26,"Bank statement shows account 40000715, sort code 20-54-99."
+R310374,KYC-895303,A-61948,1975,LS6,council_tax_bill,City Council,2026-08-07,2026-10-11,app,pdf,2,,approved,,AN19,"Photo blurred, asked applicant to rescan."
+R310375,KYC-891493,A-57562,1951,OX4,bank_statement,Fenwick Savings,2026-09-24,2026-10-07,app,pdf,1,,approved,,AN10,
+R310376,KYC-894003,A-15503,1988,SW11,utility_bill,Corrin Telecom,2026-07-16,2026-10-15,app,pdf,1,,approved,,AN05,"Spoke to applicant, email ann.376@example.com, will resend."
+R310377,KYC-896432,A-37275,1953,CB1,council_tax_bill,City Council,2026-08-29,2026-10-03,branch,pdf,1,,approved,,AN02,
+R310378,KYC-882372,A-63225,1984,B15,utility_bill,Corrin Telecom,2026-06-02,2026-10-18,app,pdf,2,,ask_applicant,poa_older_than_3_months,AN07,
+R310379,KYC-894606,A-92325,1988,YO10,bank_statement,Harbour Mutual,2026-05-08,2026-09-21,app,pdf,3,,ask_applicant,,AN03,"Clear scan, all fields match."
+R310380,KYC-889826,A-92633,2006,GL50,utility_bill,Corrin Telecom,2026-09-08,2026-09-29,app,pdf,1,,approved,,AN11,
+R310380,KYC-886443,A-36269,1993,G12,council_tax_bill,Borough Council,2026-07-16,2026-09-16,app,pdf,1,,approved,,AN16,
+R310382,KYC-881795,A-84568,1967,G12,utility_bill,Corrin Telecom,2026-06-18,2026-10-12,app,pdf,1,,ask_applicant,poa_older_than_3_months,AN02,
+R310383,KYC-896922,A-12384,1963,B15,utility_bill,Northbrook Water,2026-07-28,2026-09-10,branch,jpg,2,200,approved,,AN02,"Second page missing, asked applicant."
+R310384,KYC-883169,A-21702,1992,CF10,bank_statement,Harbour Mutual,2026-09-05,2026-09-14,app,pdf,2,,approved,,AN05,
+R310385,KYC-883196,A-91026,1960,GL50,council_tax_bill,City Council,2026-09-04,2026-10-24,branch,heic,2,300,ask_applicant,name_mismatch,AN26,
+R310386,KYC-889392,A-49525,1994,GL50,utility_bill,Northbrook Water,2026-08-22,2026-09-14,app,pdf,2,,approved,,AN20,"Second page missing, asked applicant."
+R310387,KYC-899272,A-55896,1984,SW11,bank_statement,Harbour Mutual,2026-08-20,2026-09-23,branch,pdf,2,,approved,,AN17,Applicant called from 07700 900988 to say a new bill is coming.
+R310388,KYC-897177,A-14092,1988,OX4,utility_bill,Northbrook Water,2026-06-20,2026-09-15,app,pdf,2,,approved,,AN19,
+R310389,KYC-896507,A-92323,1971,N7,utility_bill,Northbrook Water,2026-06-01,2026-09-02,app,jpg,2,150,ask_applicant,,AN11,
+R310390,KYC-883032,A-45854,1966,CB1,utility_bill,Corrin Telecom,2026-08-23,2026-09-15,app,pdf,2,,ask_applicant,name_mismatch,AN20,"Name on bill uses initials, accepted."
+R310391,KYC-881888,A-93704,1993,NG7,utility_bill,Corrin Telecom,2026-10-16,2026-10-24,app,png,2,300,approved,,AN26,"Bank statement shows account 40000698, sort code 20-56-73."
+R310392,KYC-881412,A-16992,1973,L17,bank_statement,Fenwick Savings,07/07/2026,2026-10-07,app,pdf,1,,approved,,AN17,
+R310393,KYC-881168,A-67651,1966,N7,bank_statement,Harbour Mutual,2026-09-12,2026-09-27,branch,pdf,1,,approved,,AN10,
+R310394,KYC-898030,A-12485,1967,BS8,bank_statement,Fenwick Savings,2026-07-03,2026-10-08,branch,png,1,150,ask_applicant,poa_older_than_3_months,AN13,
+R310395,KYC-897291,A-81175,1990,NG7,utility_bill,Lumenvale Energy,2026-04-30,2026-09-05,app,pdf,2,,ask_applicant,,AN14,
+R310396,KYC-885645,A-77352,1978,NG7,utility_bill,Corrin Telecom,2026-07-28,2026-09-25,app,pdf,2,,escalated,name_check,AN17,
+R310397,KYC-888424,A-75254,1994,l17,utility_bill,Corrin Telecom,2026-07-10,2026-09-16,app,jpg,2,300,ask_applicant,missing_page,AN02,
+R310398,KYC-895395,A-39359,1981,LS1,utility_bill,Lumenvale Energy,2026-06-19,2026-09-19,app,pdf,3,,approved,,AN22,"Maiden name on statement, escalated for name check."
+R310399,KYC-893242,A-92908,2006,LS6,utility_bill,Northbrook Water,2026-09-18,2026-09-29,app,jpg,3,72,ask_applicant,name_mismatch,AN24,

@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(AVG(CASE WHEN EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) * 100, 1) AS ask_applicant_rate FROM caseflow.cases c WHERE c.received_at >= DATE '2026-01-01'",
+  "explanation": "Uses the ask_applicant_rate metric for applications received in 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

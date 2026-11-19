@@ -1,0 +1,723 @@
+{
+  "label": "The bank's 30 questions",
+  "as_of": "2026-10-30",
+  "questions": [
+    {
+      "id": "Q01",
+      "user": "helen.achebe",
+      "question": "How many applications did we receive in October 2026?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS applications FROM caseflow.cases WHERE received_at >= DATE '2026-10-01' AND received_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            1847
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q02",
+      "user": "helen.achebe",
+      "question": "How many documents have analysts reviewed since May 2025?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS documents_reviewed FROM caseflow.documents WHERE reviewed_at IS NOT NULL",
+      "expected": {
+        "columns": [
+          "documents_reviewed"
+        ],
+        "rows": [
+          [
+            60957
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q03",
+      "user": "helen.achebe",
+      "question": "What share of applications in 2026 were for business accounts?",
+      "tags": [
+        "rate"
+      ],
+      "gold_sql": "SELECT ROUND(100.0 * AVG(CASE WHEN customer_type = 'business' THEN 1 ELSE 0 END), 1) AS business_pct FROM caseflow.cases WHERE received_at >= DATE '2026-01-01'",
+      "expected": {
+        "columns": [
+          "business_pct"
+        ],
+        "rows": [
+          [
+            15.2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q04",
+      "user": "helen.achebe",
+      "question": "How many documents were escalated to Financial Crime in September 2026?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS escalated FROM caseflow.documents WHERE outcome = 'escalate' AND reviewed_at >= DATE '2026-09-01' AND reviewed_at < DATE '2026-10-01'",
+      "expected": {
+        "columns": [
+          "escalated"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q05",
+      "user": "helen.achebe",
+      "question": "What were the three most common reasons for asking the applicant for something else, from May to October 2026?",
+      "tags": [
+        "ranking"
+      ],
+      "gold_sql": "SELECT reason_code, COUNT(*) AS documents FROM caseflow.documents WHERE outcome = 'ask_applicant' AND reviewed_at >= DATE '2026-05-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY documents DESC LIMIT 3",
+      "expected": {
+        "columns": [
+          "reason_code",
+          "documents"
+        ],
+        "rows": [
+          [
+            "POA_OLDER_THAN_3_MONTHS",
+            1197
+          ],
+          [
+            "NAME_MISMATCH",
+            722
+          ],
+          [
+            "IMAGE_BLURRED",
+            569
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q06",
+      "user": "helen.achebe",
+      "question": "What share of applications received in 2026 got at least one ask-applicant?",
+      "tags": [
+        "rate"
+      ],
+      "gold_sql": "SELECT ROUND(AVG(CASE WHEN EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) * 100, 1) AS ask_applicant_pct FROM caseflow.cases c WHERE c.received_at >= DATE '2026-01-01'",
+      "expected": {
+        "columns": [
+          "ask_applicant_pct"
+        ],
+        "rows": [
+          [
+            28.9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q07",
+      "user": "helen.achebe",
+      "question": "What was our turnaround in October 2026?",
+      "tags": [
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            7.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q08",
+      "user": "helen.achebe",
+      "question": "How did turnaround change month by month in 2026?",
+      "tags": [
+        "term:turnaround",
+        "trend"
+      ],
+      "gold_sql": "SELECT strftime(decided_at, '%Y-%m') AS month, MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-01-01' GROUP BY 1 ORDER BY 1",
+      "expected": {
+        "columns": [
+          "month",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "2026-01",
+            4.0
+          ],
+          [
+            "2026-02",
+            4.0
+          ],
+          [
+            "2026-03",
+            4.0
+          ],
+          [
+            "2026-04",
+            5.0
+          ],
+          [
+            "2026-05",
+            5.0
+          ],
+          [
+            "2026-06",
+            6.0
+          ],
+          [
+            "2026-07",
+            6.0
+          ],
+          [
+            "2026-08",
+            6.0
+          ],
+          [
+            "2026-09",
+            6.0
+          ],
+          [
+            "2026-10",
+            7.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q09",
+      "user": "helen.achebe",
+      "question": "How does turnaround for business applications compare with personal ones, from August to October 2026?",
+      "tags": [
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT customer_type, MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-08-01' AND decided_at < DATE '2026-11-01' GROUP BY customer_type",
+      "expected": {
+        "columns": [
+          "customer_type",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "business",
+            8.0
+          ],
+          [
+            "personal",
+            6.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q10",
+      "user": "helen.achebe",
+      "question": "What is our backlog right now?",
+      "tags": [
+        "term:backlog"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS documents_waiting FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+      "expected": {
+        "columns": [
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            4160
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q11",
+      "user": "helen.achebe",
+      "question": "How many applications were declined in each month of Q3 2026?",
+      "tags": [
+        "count",
+        "trend"
+      ],
+      "gold_sql": "SELECT strftime(decided_at, '%Y-%m') AS month, COUNT(*) AS declined FROM caseflow.cases WHERE status = 'declined' AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01' GROUP BY 1 ORDER BY 1",
+      "expected": {
+        "columns": [
+          "month",
+          "declined"
+        ],
+        "rows": [
+          [
+            "2026-07",
+            85
+          ],
+          [
+            "2026-08",
+            109
+          ],
+          [
+            "2026-09",
+            108
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q12",
+      "user": "helen.achebe",
+      "question": "Which document type had the highest ask-applicant rate in 2026?",
+      "tags": [
+        "ranking",
+        "rate"
+      ],
+      "gold_sql": "SELECT doc_type FROM caseflow.documents WHERE reviewed_at >= DATE '2026-01-01' GROUP BY doc_type ORDER BY AVG(CASE WHEN outcome = 'ask_applicant' THEN 1.0 ELSE 0 END) DESC LIMIT 1",
+      "expected": {
+        "columns": [
+          "doc_type"
+        ],
+        "rows": [
+          [
+            "utility_bill"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q13",
+      "user": "helen.achebe",
+      "question": "How many high-risk applicants were approved in October 2026?",
+      "tags": [
+        "join"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS approved FROM caseflow.cases c JOIN caseflow.customers u ON u.customer_id = c.customer_id WHERE u.risk_rating = 'high' AND c.status = 'approved' AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "approved"
+        ],
+        "rows": [
+          [
+            88
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q14",
+      "user": "helen.achebe",
+      "question": "How many applications were withdrawn in 2026?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases WHERE status = 'withdrawn' AND closed_at >= DATE '2026-01-01'",
+      "expected": {
+        "columns": [
+          "withdrawn"
+        ],
+        "rows": [
+          [
+            1325
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q15",
+      "user": "helen.achebe",
+      "question": "On average, how many minutes does a document review take for business applications and for personal ones?",
+      "tags": [
+        "join"
+      ],
+      "gold_sql": "SELECT c.customer_type, ROUND(AVG(d.minutes_spent), 1) AS minutes FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NOT NULL GROUP BY c.customer_type",
+      "expected": {
+        "columns": [
+          "customer_type",
+          "minutes"
+        ],
+        "rows": [
+          [
+            "business",
+            18.8
+          ],
+          [
+            "personal",
+            6.4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q16",
+      "user": "helen.achebe",
+      "question": "How many fields did the document pipeline send to the Review queue in the October batch?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS fields FROM pipeline.field_results WHERE decision = 'review'",
+      "expected": {
+        "columns": [
+          "fields"
+        ],
+        "rows": [
+          [
+            87
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q17",
+      "user": "helen.achebe",
+      "question": "Which field went to the Review queue most often in the October batch?",
+      "tags": [
+        "ranking"
+      ],
+      "gold_sql": "SELECT field FROM pipeline.field_results WHERE decision = 'review' GROUP BY field ORDER BY COUNT(*) DESC LIMIT 1",
+      "expected": {
+        "columns": [
+          "field"
+        ],
+        "rows": [
+          [
+            "statement_date"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q18",
+      "user": "helen.achebe",
+      "question": "How many applications came in through the app each month since March 2026?",
+      "tags": [
+        "count",
+        "trend"
+      ],
+      "gold_sql": "SELECT strftime(received_at, '%Y-%m') AS month, COUNT(*) AS applications FROM caseflow.cases WHERE channel = 'app' AND received_at >= DATE '2026-03-01' GROUP BY 1 ORDER BY 1",
+      "expected": {
+        "columns": [
+          "month",
+          "applications"
+        ],
+        "rows": [
+          [
+            "2026-03",
+            841
+          ],
+          [
+            "2026-04",
+            1049
+          ],
+          [
+            "2026-05",
+            1048
+          ],
+          [
+            "2026-06",
+            1021
+          ],
+          [
+            "2026-07",
+            1046
+          ],
+          [
+            "2026-08",
+            1053
+          ],
+          [
+            "2026-09",
+            2074
+          ],
+          [
+            "2026-10",
+            1262
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q19",
+      "user": "grace.mensah",
+      "question": "How many applications in my region are waiting for the applicant right now?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS waiting FROM caseflow.cases WHERE status = 'waiting_applicant'",
+      "expected": {
+        "columns": [
+          "waiting"
+        ],
+        "rows": [
+          [
+            51
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q20",
+      "user": "grace.mensah",
+      "question": "What is the backlog for each of my teams?",
+      "tags": [
+        "term:backlog"
+      ],
+      "gold_sql": "SELECT t.team_name, COUNT(*) AS documents_waiting FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at IS NULL AND c.status = 'open' GROUP BY t.team_name ORDER BY t.team_name",
+      "expected": {
+        "columns": [
+          "team_name",
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            "North 1",
+            692
+          ],
+          [
+            "North 2",
+            738
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q21",
+      "user": "grace.mensah",
+      "question": "What was the turnaround for each team in my region in October 2026?",
+      "tags": [
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT t.team_name, MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+      "expected": {
+        "columns": [
+          "team_name",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "North 1",
+            8.0
+          ],
+          [
+            "North 2",
+            8.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q22",
+      "user": "grace.mensah",
+      "question": "Which analyst in my region reviewed the most documents in October 2026?",
+      "tags": [
+        "ranking",
+        "join"
+      ],
+      "gold_sql": "SELECT a.analyst_name FROM caseflow.documents d JOIN caseflow.analysts a ON a.analyst_id = d.reviewed_by WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY COUNT(*) DESC LIMIT 1",
+      "expected": {
+        "columns": [
+          "analyst_name"
+        ],
+        "rows": [
+          [
+            "Sofia Marino"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q23",
+      "user": "grace.mensah",
+      "question": "How many documents did each team in my region review per working day in October 2026?",
+      "tags": [
+        "period:working_days"
+      ],
+      "gold_sql": "SELECT t.team_name, ROUND(COUNT(*) / (SELECT COUNT(*) FROM caseflow.calendar WHERE is_working_day AND day BETWEEN DATE '2026-10-01' AND DATE '2026-10-30'), 1) AS per_working_day FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY t.team_name",
+      "expected": {
+        "columns": [
+          "team_name",
+          "per_working_day"
+        ],
+        "rows": [
+          [
+            "North 1",
+            29.2
+          ],
+          [
+            "North 2",
+            31.4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q24",
+      "user": "grace.mensah",
+      "question": "How many applications in my region had a document sent back to the applicant in October 2026?",
+      "tags": [
+        "join:distinct"
+      ],
+      "gold_sql": "SELECT COUNT(DISTINCT d.case_id) AS applications FROM caseflow.documents d WHERE d.outcome = 'ask_applicant' AND d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            145
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q25",
+      "user": "tom.reyes",
+      "question": "How many documents did my team review in October 2026?",
+      "tags": [
+        "count"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS documents FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "documents"
+        ],
+        "rows": [
+          [
+            642
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q26",
+      "user": "tom.reyes",
+      "question": "What is my team's backlog?",
+      "tags": [
+        "term:backlog"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS documents_waiting FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+      "expected": {
+        "columns": [
+          "documents_waiting"
+        ],
+        "rows": [
+          [
+            692
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q27",
+      "user": "tom.reyes",
+      "question": "What share of my team's documents were accepted in October 2026?",
+      "tags": [
+        "rate"
+      ],
+      "gold_sql": "SELECT ROUND(100.0 * AVG(CASE WHEN outcome = 'accept' THEN 1 ELSE 0 END), 1) AS accepted_pct FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "accepted_pct"
+        ],
+        "rows": [
+          [
+            86.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q28",
+      "user": "tom.reyes",
+      "question": "Which three reason codes did my team use most in October 2026?",
+      "tags": [
+        "ranking"
+      ],
+      "gold_sql": "SELECT reason_code FROM caseflow.documents WHERE reason_code IS NOT NULL AND reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY COUNT(*) DESC LIMIT 3",
+      "expected": {
+        "columns": [
+          "reason_code"
+        ],
+        "rows": [
+          [
+            "IMAGE_BLURRED"
+          ],
+          [
+            "NAME_MISMATCH"
+          ],
+          [
+            "POA_OLDER_THAN_3_MONTHS"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q29",
+      "user": "tom.reyes",
+      "question": "How many applications did each analyst on my team decide in October 2026?",
+      "tags": [
+        "join"
+      ],
+      "gold_sql": "SELECT a.analyst_name, COUNT(*) AS decided FROM caseflow.cases c JOIN caseflow.analysts a ON a.analyst_id = c.analyst_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY a.analyst_name",
+      "expected": {
+        "columns": [
+          "analyst_name",
+          "decided"
+        ],
+        "rows": [
+          [
+            "Aisha Bello",
+            39
+          ],
+          [
+            "Tom Reyes",
+            47
+          ],
+          [
+            "Priya Nair",
+            40
+          ],
+          [
+            "Hannah Whitlock",
+            48
+          ],
+          [
+            "Callum Fraser",
+            29
+          ]
+        ]
+      }
+    },
+    {
+      "id": "Q30",
+      "user": "tom.reyes",
+      "question": "What was my team's turnaround in Q3 2026?",
+      "tags": [
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01'",
+      "expected": {
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            6.0
+          ]
+        ]
+      }
+    }
+  ]
+}

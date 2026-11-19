@@ -1,0 +1,46 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Chen & Mrs Hannah Chen",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "7 Hucclecote Road Cheltenham GL53 2XL",
+   "word_ids": [
+    "w018",
+    "w019",
+    "w020",
+    "w023",
+    "w031",
+    "w032"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Sep 2026",
+   "word_ids": [
+    "w015",
+    "w016",
+    "w017"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

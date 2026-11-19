@@ -1,0 +1,62 @@
+# Who may see what in the CaseFlow warehouse (Day 7).
+# The validator (ENG-701) and row security (ENG-702) apply this file to every query, whatever the model writes.
+# The model is never told how to filter: a rule here cannot be talked out of by a question.
+
+approved_tables:          # the only tables a query may read
+  - caseflow.cases
+  - caseflow.documents
+  - caseflow.customers
+  - caseflow.analysts
+  - caseflow.teams
+  - caseflow.calendar
+  - pipeline.field_results
+
+max_rows: 1000            # the most rows any answer returns (LIMIT is added or lowered)
+
+blocked_functions:        # functions that read files, the environment or settings
+  - read_csv
+  - read_csv_auto
+  - read_parquet
+  - read_json
+  - read_json_auto
+  - read_text
+  - read_blob
+  - glob
+  - getenv
+  - current_setting
+  - duckdb_settings
+  - duckdb_secrets
+  - sniff_csv
+  - parquet_scan
+
+row_filters:              # {teams} becomes the user's team ids, for example 'N1', 'N2'
+  caseflow.cases: "team_id IN ({teams})"
+  caseflow.documents: "case_id IN (SELECT case_id FROM caseflow.cases WHERE team_id IN ({teams}))"
+  caseflow.customers: "customer_id IN (SELECT customer_id FROM caseflow.cases WHERE team_id IN ({teams}))"
+  caseflow.analysts: "team_id IN ({teams})"
+
+roles:
+  analyst:
+    sees: team            # the cases of their own team
+  team_lead:
+    sees: region          # the cases of every team in their region
+  mlro:
+    sees: all             # every case
+    masked_columns:       # shown as [hidden]
+      - caseflow.customers.customer_name
+
+users:
+  - id: tom.reyes
+    name: Tom Reyes
+    title: Senior KYC Analyst, North 1
+    role: analyst
+    team: N1
+  - id: grace.mensah
+    name: Grace Mensah
+    title: Team Lead, North region
+    role: team_lead
+    region: North
+  - id: helen.achebe
+    name: Helen Achebe
+    title: MLRO
+    role: mlro

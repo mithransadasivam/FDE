@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT COUNT(*) AS applications_in_backlog FROM caseflow.cases WHERE status IN ('open', 'waiting_applicant', 'escalated')",
+  "explanation": "Counts the applications that are not finished.",
+  "assumptions": [
+    "The backlog is applications not yet decided or withdrawn",
+    "Counted in applications"
+  ],
+  "cannot_answer": ""
+}
