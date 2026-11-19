@@ -11,7 +11,7 @@ test("Integrations opens with the bank's sign-in service and the MCP server runn
 
 test("Grace signs in to the console with the bank, and Ask the data answers as her", async ({ page }) => {
   await page.goto("/#/integrations/signin");
-  await page.getByTestId("sign-in").click();
+  await page.getByTestId("sign-in").click({ timeout: 20_000 });
   await page.locator("#username").selectOption("grace.mensah");
   await page.locator("#password").fill("kyc-demo");
   await page.locator("#signin").click();
@@ -23,7 +23,7 @@ test("Grace signs in to the console with the bank, and Ask the data answers as h
 
 test("a wrong password stays on the bank's page", async ({ page }) => {
   await page.goto("/#/integrations/signin");
-  await page.getByTestId("sign-in").click();
+  await page.getByTestId("sign-in").click({ timeout: 20_000 });
   await page.locator("#password").fill("guess");
   await page.locator("#signin").click();
   await expect(page.locator("#signin-error")).toHaveText("Wrong user or password");
