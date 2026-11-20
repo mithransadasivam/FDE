@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-127",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Kofi Iqbal",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2202,
+        0.1767
+      ],
+      "page_text": "Mr Kofi Iqbal",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "78 Westgate Street, Cheltenham, GL52 5RW",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2619,
+        0.2564
+      ],
+      "page_text": "78 Westgate Street Cheltenham GL52 5RW",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "06 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7576,
+        0.2006
+      ],
+      "page_text": "06 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Copperline Broadband",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.5493,
+        0.0634
+      ],
+      "page_text": "Copperline Broadband",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 74,
+    "latency_ms": 1855,
+    "scripted": true
+  }
+}

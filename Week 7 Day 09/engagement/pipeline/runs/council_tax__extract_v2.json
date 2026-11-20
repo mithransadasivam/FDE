@@ -1,0 +1,1489 @@
+{
+  "set": "council_tax",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "model": "anthropic/claude-haiku-5.5",
+  "at": "2026-11-17T01:53:56+00:00",
+  "results": {
+    "C-001": {
+      "doc_id": "C-001",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Owen Bello",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.234,
+            0.1575
+          ],
+          "page_text": "Mr Owen Bello",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "140 Spa Road Stroud GL5 8AA",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.206,
+            0.2316
+          ],
+          "page_text": "140 Spa Road Stroud GL5 8AA",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "07 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "07 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 576,
+        "output_tokens": 139,
+        "latency_ms": 1971,
+        "scripted": true
+      }
+    },
+    "C-003": {
+      "doc_id": "C-003",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Kwame Hughes",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2811,
+            0.1575
+          ],
+          "page_text": "Mr Kwame Hughes",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "14 Cotswold Way Cheltenham GL53 7TS",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2354,
+            0.2316
+          ],
+          "page_text": "14 Cotswold Way Cheltenham GL53 7TS",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 142,
+        "latency_ms": 1997,
+        "scripted": true
+      }
+    },
+    "C-004": {
+      "doc_id": "C-004",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Callum Lloyd",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2566,
+            0.16
+          ],
+          "page_text": "Mr Callum Lloyd",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 7, 12 Gloucester Road Stroud GL5 5XB",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.3259,
+            0.2309
+          ],
+          "page_text": "Flat 7, 12 Gloucester Road Stroud GL5 5XB",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.08,
+            0.4127,
+            0.1727,
+            0.43
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5007,
+            0.0627
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 584,
+        "output_tokens": 150,
+        "latency_ms": 2063,
+        "scripted": true
+      }
+    },
+    "C-002": {
+      "doc_id": "C-002",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Miss Niamh Parry",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2681,
+            0.1575
+          ],
+          "page_text": "Miss Niamh Parry",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 12, 22 Leckhampton Road Gloucester GL4 9JE",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.3602,
+            0.2316
+          ],
+          "page_text": "Flat 12, 22 Leckhampton Road Gloucester GL4 9JE",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 586,
+        "output_tokens": 151,
+        "latency_ms": 2072,
+        "scripted": true
+      }
+    },
+    "C-005": {
+      "doc_id": "C-005",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Isla Hart",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.206,
+            0.1564
+          ],
+          "page_text": "Ms Isla Hart",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "60 Leckhampton Road Quedgeley GL2 1XR",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2859,
+            0.2309
+          ],
+          "page_text": "60 Leckhampton Road Quedgeley GL2 1XR",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "15 Mar 2026",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8019,
+            0.0755
+          ],
+          "page_text": "15 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5089,
+            0.0682
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 141,
+        "latency_ms": 1989,
+        "scripted": true
+      }
+    },
+    "C-006": {
+      "doc_id": "C-006",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Tariq Iqbal",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2249,
+            0.1575
+          ],
+          "page_text": "Mr Tariq Iqbal",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "92 Tewkesbury Road Cheltenham GL52 6WB",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2707,
+            0.2316
+          ],
+          "page_text": "92 Tewkesbury Road Cheltenham GL52 6WB",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 580,
+        "output_tokens": 142,
+        "latency_ms": 1997,
+        "scripted": true
+      }
+    },
+    "C-007": {
+      "doc_id": "C-007",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Rohan Nair",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2343,
+            0.1564
+          ],
+          "page_text": "Mr Rohan Nair",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 1, 52 Cotswold Way Quedgeley GL2 6SG",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.3012,
+            0.2309
+          ],
+          "page_text": "Flat 1, 52 Cotswold Way Quedgeley GL2 6SG",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "03 Mar 2026",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8008,
+            0.0755
+          ],
+          "page_text": "03 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5089,
+            0.0682
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 584,
+        "output_tokens": 148,
+        "latency_ms": 2047,
+        "scripted": true
+      }
+    },
+    "C-008": {
+      "doc_id": "C-008",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Ravi Demir",
+          "confidence": 0.97,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2319,
+            0.1564
+          ],
+          "page_text": "Mr Ravi Demir",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "27 Hucclecote Road Quedgeley GL2 5JU",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2635,
+            0.2309
+          ],
+          "page_text": "27 Hucclecote Road Quedgeley GL2 5JU",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "14 Mar 2026",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8019,
+            0.0755
+          ],
+          "page_text": "14 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5007,
+            0.0627
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 142,
+        "latency_ms": 1997,
+        "scripted": true
+      }
+    },
+    "C-009": {
+      "doc_id": "C-009",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Leela Murphy",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2615,
+            0.1575
+          ],
+          "page_text": "Ms Leela Murphy",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "71 Farm Lane Cheltenham GL50 9HG",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2024,
+            0.2316
+          ],
+          "page_text": "71 Farm Lane Cheltenham GL50 9HG",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 578,
+        "output_tokens": 141,
+        "latency_ms": 1988,
+        "scripted": true
+      }
+    },
+    "C-010": {
+      "doc_id": "C-010",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Dev Holmes",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2406,
+            0.1575
+          ],
+          "page_text": "Mr Dev Holmes",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "33 Market Street Winchcombe GL54 8XN",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2271,
+            0.2316
+          ],
+          "page_text": "33 Market Street Winchcombe GL54 8XN",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "08 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "08 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 142,
+        "latency_ms": 1997,
+        "scripted": true
+      }
+    },
+    "C-011": {
+      "doc_id": "C-011",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Miss Grace Rossi",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2684,
+            0.1564
+          ],
+          "page_text": "Miss Grace Rossi",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 6, 25 High Street Cheltenham GL50 5HU",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2729,
+            0.2309
+          ],
+          "page_text": "Flat 6, 25 High Street Cheltenham GL50 5HU",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "04 Mar 2026",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8019,
+            0.0755
+          ],
+          "page_text": "04 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5089,
+            0.0682
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 584,
+        "output_tokens": 150,
+        "latency_ms": 2063,
+        "scripted": true
+      }
+    },
+    "C-012": {
+      "doc_id": "C-012",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Molly Parry",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2367,
+            0.1575
+          ],
+          "page_text": "Ms Molly Parry",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "44 London Road Winchcombe GL54 3FS",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2272,
+            0.2316
+          ],
+          "page_text": "44 London Road Winchcombe GL54 3FS",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "06 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "06 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 141,
+        "latency_ms": 1989,
+        "scripted": true
+      }
+    },
+    "C-013": {
+      "doc_id": "C-013",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Alfie Haddad",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2519,
+            0.1564
+          ],
+          "page_text": "Mr Alfie Haddad",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "81 Park Road Stroud GL5 9NQ",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2035,
+            0.2336
+          ],
+          "page_text": "81 Park Road Stroud GL5 9NQ",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "10 Mar 2026",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8008,
+            0.0755
+          ],
+          "page_text": "10 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5089,
+            0.0682
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 577,
+        "output_tokens": 140,
+        "latency_ms": 1980,
+        "scripted": true
+      }
+    },
+    "C-014": {
+      "doc_id": "C-014",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Megan Boateng",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.285,
+            0.1575
+          ],
+          "page_text": "Ms Megan Boateng",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "5 Tewkesbury Road Gloucester GL2 1ND",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2589,
+            0.2316
+          ],
+          "page_text": "5 Tewkesbury Road Gloucester GL2 1ND",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "10 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "10 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 580,
+        "output_tokens": 142,
+        "latency_ms": 1997,
+        "scripted": true
+      }
+    },
+    "C-015": {
+      "doc_id": "C-015",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Miss Zainab Nair",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2576,
+            0.1575
+          ],
+          "page_text": "Miss Zainab Nair",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 2, 138 Painswick Road Winchcombe GL54 6GE",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.3272,
+            0.2316
+          ],
+          "page_text": "Flat 2, 138 Painswick Road Winchcombe GL54 6GE",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 586,
+        "output_tokens": 151,
+        "latency_ms": 2072,
+        "scripted": true
+      }
+    },
+    "C-016": {
+      "doc_id": "C-016",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Kwame Mensah",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2824,
+            0.1575
+          ],
+          "page_text": "Mr Kwame Mensah",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "56 Bath Road Gloucester GL2 9AB",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2001,
+            0.2316
+          ],
+          "page_text": "56 Bath Road Gloucester GL2 9AB",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0824,
+            0.4145,
+            0.1703,
+            0.4272
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.499,
+            0.0654
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 578,
+        "output_tokens": 141,
+        "latency_ms": 1988,
+        "scripted": true
+      }
+    },
+    "C-017": {
+      "doc_id": "C-017",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Theo Evans",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2379,
+            0.1575
+          ],
+          "page_text": "Mr Theo Evans",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "33 Market Street Cheltenham GL53 3PE",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2271,
+            0.2316
+          ],
+          "page_text": "33 Market Street Cheltenham GL53 3PE",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "11 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "11 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 579,
+        "output_tokens": 141,
+        "latency_ms": 1989,
+        "scripted": true
+      }
+    },
+    "C-018": {
+      "doc_id": "C-018",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Mr Harvey Griffiths",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2872,
+            0.16
+          ],
+          "page_text": "Mr Harvey Griffiths",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "10 Gloucester Road Cheltenham GL53 1SJ",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2612,
+            0.2309
+          ],
+          "page_text": "10 Gloucester Road Cheltenham GL53 1SJ",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "1 April 2026",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.08,
+            0.4127,
+            0.1727,
+            0.43
+          ],
+          "page_text": "1 April 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5007,
+            0.0627
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 581,
+        "output_tokens": 144,
+        "latency_ms": 2013,
+        "scripted": true
+      }
+    },
+    "C-019": {
+      "doc_id": "C-019",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "text_layer",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Mei Boateng",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.1393,
+            0.2497,
+            0.1575
+          ],
+          "page_text": "Ms Mei Boateng",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 3, 63 Green Lane Cheltenham GL53 6WE",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.168,
+            0.2766,
+            0.2316
+          ],
+          "page_text": "Flat 3, 63 Green Lane Cheltenham GL53 6WE",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "05 Mar 2026",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.6588,
+            0.0577,
+            0.7989,
+            0.0767
+          ],
+          "page_text": "05 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Brightwell Borough Council",
+          "confidence": 1.0,
+          "status": "ok",
+          "box": [
+            0.0706,
+            0.0399,
+            0.5061,
+            0.0654
+          ],
+          "page_text": "Brightwell Borough Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 584,
+        "output_tokens": 149,
+        "latency_ms": 2055,
+        "scripted": true
+      }
+    },
+    "C-020": {
+      "doc_id": "C-020",
+      "prompt": "extract_v2",
+      "method": "parser",
+      "source": "ocr",
+      "fields": [
+        {
+          "name": "full_name",
+          "label": "Full name",
+          "value": "Ms Ifeoma Wood",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1373,
+            0.2601,
+            0.1564
+          ],
+          "page_text": "Ms Ifeoma Wood",
+          "note": ""
+        },
+        {
+          "name": "address",
+          "label": "Address",
+          "value": "Flat 6, 31 Spa Road Tewkesbury GL20 4AU",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.1664,
+            0.2624,
+            0.2309
+          ],
+          "page_text": "Flat 6, 31 Spa Road Tewkesbury GL20 4AU",
+          "note": ""
+        },
+        {
+          "name": "statement_date",
+          "label": "Statement date",
+          "value": "07 Mar 2026",
+          "confidence": 0.96,
+          "status": "ok",
+          "box": [
+            0.6565,
+            0.0573,
+            0.8008,
+            0.0755
+          ],
+          "page_text": "07 Mar 2026",
+          "note": ""
+        },
+        {
+          "name": "issuer",
+          "label": "Issuer",
+          "value": "Severnside District Council",
+          "confidence": 0.95,
+          "status": "ok",
+          "box": [
+            0.0682,
+            0.0391,
+            0.5007,
+            0.0627
+          ],
+          "page_text": "Severnside District Council",
+          "note": ""
+        }
+      ],
+      "usage": {
+        "input_tokens": 584,
+        "output_tokens": 148,
+        "latency_ms": 2047,
+        "scripted": true
+      }
+    }
+  }
+}

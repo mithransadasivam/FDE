@@ -1,0 +1,19 @@
+system,tool,target,tier,why
+kyc-exceptions,get_exception,*,read,Reads an exception
+crm,get_customer,*,read,Reads a customer
+documents,list_documents,*,read,Lists a customer's documents
+kyc-exceptions,comment_on_exception,*,log,A comment is reversible and names the person
+caseflow,open_caseflow,*,read,Signs in to CaseFlow Classic as the person
+caseflow,look,*,read,Reads the screen
+caseflow,type,*,read,Nothing is saved until Confirm
+caseflow,choose,*,read,Nothing is saved until Confirm
+caseflow,click,Find a case,read,Goes to the search screen
+caseflow,click,Search,read,Searches for a case
+caseflow,click,Record outcome,read,Opens the outcome form
+caseflow,click,Save,read,Goes to the confirm screen: nothing is saved yet
+caseflow,click,Back,read,Goes back a screen
+caseflow,click,Cancel,read,Leaves the form without saving
+caseflow,click,Main menu,read,Goes to the main menu
+caseflow,click,Back to case,read,Goes back to the case
+caseflow,click,Confirm,approve,Writes the outcome to the bank's system of record
+caseflow,click,Withdraw case,deny,"Only an analyst withdraws a case, by hand"

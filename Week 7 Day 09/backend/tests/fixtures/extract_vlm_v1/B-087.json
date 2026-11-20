@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kofi Carter"
+  },
+  {
+   "name": "address",
+   "value": "62 Spa Road, Cirencester, GL7 6ZB"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

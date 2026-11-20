@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Bethan Sutton & Mr Rohan Sutton"
+  },
+  {
+   "name": "address",
+   "value": "118 Bristol Road, Cheltenham, GL53 3US"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-18"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

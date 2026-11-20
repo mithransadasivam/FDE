@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kofi Iqbal"
+  },
+  {
+   "name": "address",
+   "value": "46 Cheltenham Road, Stroud, GL5 2SG"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-26"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

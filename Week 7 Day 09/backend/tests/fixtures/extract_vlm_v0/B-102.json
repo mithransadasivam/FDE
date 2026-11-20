@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Priya Morgan"
+  },
+  {
+   "name": "address",
+   "value": "123 Mill Lane, Cheltenham, GL51 1WH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-24"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kwame Sutton"
+  },
+  {
+   "name": "address",
+   "value": "Flat 1, 106 Spa Road, Gloucester, GL1 3XR"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

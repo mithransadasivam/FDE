@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Hannah Demir"
+  },
+  {
+   "name": "address",
+   "value": "Flat 11, 53 Victoria Street, Cheltenham, GL53 2ZA"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

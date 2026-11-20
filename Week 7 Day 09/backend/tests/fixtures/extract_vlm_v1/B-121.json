@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Murphy"
+  },
+  {
+   "name": "address",
+   "value": "107 Leckhampton Road, Nailsworth, GL6 5DZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

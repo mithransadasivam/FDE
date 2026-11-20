@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-028",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Joy Walsh & Mr Luca Walsh",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.4251,
+        0.16
+      ],
+      "page_text": "Ms Joy Walsh & Mr Luca Walsh",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 10, 107 Meadow View Nailsworth GL6 5HP",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.3247,
+        0.2309
+      ],
+      "page_text": "Flat 10, 107 Meadow View Nailsworth GL6 5HP",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.5859,
+        0.1545,
+        0.7272,
+        0.1764
+      ],
+      "page_text": "04 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 815,
+    "output_tokens": 159,
+    "latency_ms": 2239,
+    "scripted": true
+  }
+}

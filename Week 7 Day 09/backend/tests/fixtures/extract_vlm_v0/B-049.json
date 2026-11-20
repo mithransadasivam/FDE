@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Lewis Sutton"
+  },
+  {
+   "name": "address",
+   "value": "49 Bath Road, Quedgeley, GL2 3TL"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-11"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

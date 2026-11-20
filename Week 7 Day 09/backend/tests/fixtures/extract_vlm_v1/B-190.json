@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Arun Griffiths"
+  },
+  {
+   "name": "address",
+   "value": "9 Abbey Road, Gloucester, GL4 8JY"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

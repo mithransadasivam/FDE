@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Harvey Shah"
+  },
+  {
+   "name": "address",
+   "value": "48 Green Lane, Stroud, GL5 3DF"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

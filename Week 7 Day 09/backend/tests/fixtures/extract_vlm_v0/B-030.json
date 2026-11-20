@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Oscar Byrne"
+  },
+  {
+   "name": "address",
+   "value": "100 Bath Rd, Nailsworth, GL6 5QX"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-17"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

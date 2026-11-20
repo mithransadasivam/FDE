@@ -1,0 +1,50 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Ellie Hart & Mr Daniel Hart",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 10, 111 Hucclecote Road Quedgeley GL2 4WT",
+   "word_ids": [
+    "w021",
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w026",
+    "w027",
+    "w028"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "27 Aug 2026",
+   "word_ids": [
+    "w031",
+    "w032",
+    "w033"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-01-01' AND decided_at < DATE '2026-04-01'",
+  "explanation": "The bank's turnaround for applications decided in January to March 2026.",
+  "assumptions": [
+    "The first quarter is January to March"
+  ],
+  "cannot_answer": ""
+}

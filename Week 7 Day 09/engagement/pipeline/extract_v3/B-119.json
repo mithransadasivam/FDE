@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-119",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Joy Nair",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2337,
+        0.1791
+      ],
+      "page_text": "Miss Joy Nair",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "85 Cotswold Way Cheltenham GL52 5SL",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2465,
+        0.2555
+      ],
+      "page_text": "85 Cotswold Way Cheltenham GL52 5SL",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "07 Sep 2026",
+      "confidence": 0.62,
+      "status": "check",
+      "box": [
+        0.6071,
+        0.18,
+        0.7591,
+        0.2036
+      ],
+      "page_text": "07 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Copperline Broadband",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5516,
+        0.0664
+      ],
+      "page_text": "Copperline Broadband",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 610,
+    "output_tokens": 136,
+    "latency_ms": 1962,
+    "scripted": true
+  }
+}

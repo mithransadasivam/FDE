@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Theo Ward & Ms Poppy Ward"
+  },
+  {
+   "name": "address",
+   "value": "76 Hucclecote Road, Stroud, GL5 5LW"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

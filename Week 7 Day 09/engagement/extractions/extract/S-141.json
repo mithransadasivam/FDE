@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr David A. Jones",
+      "word_ids": [
+        "w017",
+        "w018",
+        "w019",
+        "w020"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "22, Elm Road, Brightwell, GL12 9DF",
+      "word_ids": [
+        "w021",
+        "w022",
+        "w023",
+        "w024",
+        "w025",
+        "w026"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Apr 2026",
+      "word_ids": [
+        "w009",
+        "w010",
+        "w011"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

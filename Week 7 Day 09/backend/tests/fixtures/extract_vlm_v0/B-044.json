@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Yusuf Walsh"
+  },
+  {
+   "name": "address",
+   "value": "5 Gloucester Road, Gloucester, GL4 8UZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

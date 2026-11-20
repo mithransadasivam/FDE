@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mrs Patricia D. Miller",
+      "word_ids": [
+        "w018",
+        "w019",
+        "w020",
+        "w021"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "15, High Street Tewkesbury GL20 8RT",
+      "word_ids": [
+        "w022",
+        "w023",
+        "w024",
+        "w025",
+        "w026",
+        "w027"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "05 Nov 2026",
+      "word_ids": [
+        "w009",
+        "w010",
+        "w011"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Northmere Bank plc",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

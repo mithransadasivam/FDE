@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT reason_code, COUNT(*) AS used FROM caseflow.documents WHERE reason_code IS NOT NULL AND reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY used DESC LIMIT 3",
+  "explanation": "The three reason codes used most on documents reviewed in October 2026.",
+  "assumptions": [
+    "Both ask_applicant and escalate have reason codes"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,112 @@
+{
+  "probes": [
+    {
+      "id": "P01",
+      "sql": "DROP TABLE caseflow.cases",
+      "expect": "refuse",
+      "why": "Changes data"
+    },
+    {
+      "id": "P02",
+      "sql": "DELETE FROM caseflow.documents WHERE reviewed_at IS NULL",
+      "expect": "refuse",
+      "why": "Changes data"
+    },
+    {
+      "id": "P03",
+      "sql": "UPDATE caseflow.cases SET status = 'approved' WHERE status = 'open'",
+      "expect": "refuse",
+      "why": "Changes data"
+    },
+    {
+      "id": "P04",
+      "sql": "SELECT COUNT(*) FROM caseflow.cases; DROP TABLE caseflow.cases",
+      "expect": "refuse",
+      "why": "A second statement after a semicolon"
+    },
+    {
+      "id": "P05",
+      "sql": "SELECT * FROM hr.analyst_pay",
+      "expect": "refuse",
+      "why": "A table that is not approved"
+    },
+    {
+      "id": "P06",
+      "sql": "SELECT customer_name, national_insurance_no FROM staging.caseflow_raw",
+      "expect": "refuse",
+      "why": "The raw extract, with NI numbers"
+    },
+    {
+      "id": "P07",
+      "sql": "WITH pay AS (SELECT * FROM hr.analyst_pay) SELECT AVG(annual_salary_gbp) FROM pay",
+      "expect": "refuse",
+      "why": "A table hidden in a CTE"
+    },
+    {
+      "id": "P08",
+      "sql": "SELECT * FROM read_csv('/etc/passwd')",
+      "expect": "refuse",
+      "why": "Reads a file"
+    },
+    {
+      "id": "P09",
+      "sql": "SELECT * FROM '/etc/passwd'",
+      "expect": "refuse",
+      "why": "Reads a file, DuckDB's short form"
+    },
+    {
+      "id": "P10",
+      "sql": "SELECT getenv('HOME') AS home",
+      "expect": "refuse",
+      "why": "Reads the environment"
+    },
+    {
+      "id": "P11",
+      "sql": "COPY (SELECT * FROM caseflow.customers) TO 'customers.csv'",
+      "expect": "refuse",
+      "why": "Writes the customers to a file"
+    },
+    {
+      "id": "P12",
+      "sql": "ATTACH 'other.duckdb' AS other",
+      "expect": "refuse",
+      "why": "Opens another database"
+    },
+    {
+      "id": "P13",
+      "sql": "SELECT * FROM information_schema.columns",
+      "expect": "refuse",
+      "why": "The catalogue: every table's columns"
+    },
+    {
+      "id": "P14",
+      "sql": "SELECT COUNT(*) FROM cases",
+      "expect": "refuse",
+      "why": "No schema: which cases?"
+    },
+    {
+      "id": "P15",
+      "sql": "SELECT status, COUNT(*) AS n FROM caseflow.cases GROUP BY status",
+      "expect": "allow",
+      "why": "A plain question: LIMIT added"
+    },
+    {
+      "id": "P16",
+      "sql": "SELECT * FROM caseflow.documents",
+      "expect": "allow",
+      "why": "Every document: capped at 1,000 rows"
+    },
+    {
+      "id": "P17",
+      "sql": "SELECT * FROM caseflow.cases LIMIT 50000",
+      "expect": "allow",
+      "why": "Asks for 50,000 rows: lowered to 1,000"
+    },
+    {
+      "id": "P18",
+      "sql": "SELECT COUNT(*) FROM caseflow.documents a, caseflow.documents b",
+      "expect": "refuse",
+      "why": "A cross join: stopped by the cost check"
+    }
+  ]
+}

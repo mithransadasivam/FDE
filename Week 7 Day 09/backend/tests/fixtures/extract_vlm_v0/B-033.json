@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Chen"
+  },
+  {
+   "name": "address",
+   "value": "59 Elm Grove, Lydney, GL15 3FE"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-27"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

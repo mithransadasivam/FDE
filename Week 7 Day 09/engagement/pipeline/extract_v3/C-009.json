@@ -1,0 +1,74 @@
+{
+  "doc_id": "C-009",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Leela Murphy",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2615,
+        0.1575
+      ],
+      "page_text": "Ms Leela Murphy",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "71 Farm Lane Cheltenham GL50 9HG",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.2024,
+        0.2316
+      ],
+      "page_text": "71 Farm Lane Cheltenham GL50 9HG",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "12 Mar 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6588,
+        0.0577,
+        0.7989,
+        0.0767
+      ],
+      "page_text": "12 Mar 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Brightwell Borough Council",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.0399,
+        0.5061,
+        0.0654
+      ],
+      "page_text": "Brightwell Borough Council",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 670,
+    "output_tokens": 141,
+    "latency_ms": 2030,
+    "scripted": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Morgan"
+  },
+  {
+   "name": "address",
+   "value": "128 Cotswold Way, Cheltenham, GL53 5XN"
+  },
+  {
+   "name": "statement_date",
+   "value": "30 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

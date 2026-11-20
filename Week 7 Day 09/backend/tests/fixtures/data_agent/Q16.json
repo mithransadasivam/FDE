@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS fields_to_review FROM pipeline.field_results WHERE decision = 'review'",
+  "explanation": "Fields in the October batch that went to the Review queue.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

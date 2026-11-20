@@ -1,0 +1,7 @@
+{
+ "about": "The limits on one run of the operations agent, agreed with Grace and Helen. One exception takes about 15 steps.",
+ "max_steps": 25,
+ "max_tokens": 150000,
+ "max_seconds": 300,
+ "max_repeats": 3
+}

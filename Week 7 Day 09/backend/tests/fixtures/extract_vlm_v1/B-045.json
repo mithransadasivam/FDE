@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Amara Bennett"
+  },
+  {
+   "name": "address",
+   "value": "119 Hucclecote Road, Cheltenham, GL51 5DG"
+  },
+  {
+   "name": "statement_date",
+   "value": "13 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

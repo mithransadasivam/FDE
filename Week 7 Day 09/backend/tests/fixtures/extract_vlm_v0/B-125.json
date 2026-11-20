@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Ruby Sutton"
+  },
+  {
+   "name": "address",
+   "value": "4 Meadow View, Gloucester, GL2 9NN"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-14"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

@@ -1,0 +1,801 @@
+doc_id,field,keyer_a,keyer_b,label,resolved_by
+B-001,full_name,Mr Harvey Patel,Mr Harvey Patel,Mr Harvey Patel,agreed
+B-001,address,"20 Abbey Road, Gloucester, GL2 4XB","20 Abbey Road, Gloucester, GL2 4XB","20 Abbey Road, Gloucester, GL2 4XB",agreed
+B-001,statement_date,06 Oct 2026,06 Oct 2026,06 Oct 2026,agreed
+B-001,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-002,full_name,Mr Alfie Parry,Mr Alfie Parry,Mr Alfie Parry,agreed
+B-002,address,"74 Park Road, Tewkesbury, GL20 7EL","74 Park Road, Tewkesbury, GL20 7EL","74 Park Road, Tewkesbury, GL20 7EL",agreed
+B-002,statement_date,07 Aug 2026,07 Aug 2026,07 Aug 2026,agreed
+B-002,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-003,full_name,Mrs Ifeoma Griffiths,Mrs Ifeoma Griffiths,Mrs Ifeoma Griffiths,agreed
+B-003,address,"34 Cheltenham Road, Tewkesbury, GL20 3JG","34 Cheltenham Road, Tewkesbury, GL20 3JG","34 Cheltenham Road, Tewkesbury, GL20 3JG",agreed
+B-003,statement_date,26 Sep 2026,26 Sep 2026,26 Sep 2026,agreed
+B-003,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-004,full_name,Ms Niamh Novak,Ms Niamh Novak,Ms Niamh Novak,agreed
+B-004,address,"108 Victoria Street, Gloucester, GL2 7DL","108 Victoria Street, Gloucester, GL2 7DL","108 Victoria Street, Gloucester, GL2 7DL",agreed
+B-004,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-004,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-005,full_name,Mr Tariq Kaur,Mr Tariq Kaur,Mr Tariq Kaur,agreed
+B-005,address,"36 Leckhampton Road, Gloucester, GL4 7FN","36 Leckhampton Road, Gloucester, GL4 7FN","36 Leckhampton Road, Gloucester, GL4 7FN",agreed
+B-005,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-005,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-006,full_name,Miss Emma Price,Miss Emma Price,Miss Emma Price,agreed
+B-006,address,"81 Green Lane, Gloucester, GL4 8AH","81 Green Lane, Gloucester, GL4 8AH","81 Green Lane, Gloucester, GL4 8AH",agreed
+B-006,statement_date,27 Sep 2026,27 Sep 2026,27 Sep 2026,agreed
+B-006,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-007,full_name,Mr Harvey Shah,Mr Harvey Shah,Mr Harvey Shah,agreed
+B-007,address,"48 Green Lane, Stroud, GL5 3DF","48 Green Lane, Stroud, GL5 3DF","48 Green Lane, Stroud, GL5 3DF",agreed
+B-007,statement_date,01 Aug 2026,01 Aug 2026,01 Aug 2026,agreed
+B-007,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-008,full_name,Mrs Ruby Haddad,Mrs Ruby Haddad,Mrs Ruby Haddad,agreed
+B-008,address,"125 Bath Road, Gloucester, GL1 2HH","125 Bath Road, Gloucester, GL1 2HH","125 Bath Road, Gloucester, GL1 2HH",agreed
+B-008,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-008,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-009,full_name,Mr Callum Nair,Mr Callum Nair,Mr Callum Nair,agreed
+B-009,address,"105 Tewkesbury Road, Quedgeley, GL2 6YD","105 Tewkesbury Road, Quedgeley, GL2 6YD","105 Tewkesbury Road, Quedgeley, GL2 6YD",agreed
+B-009,statement_date,22 Sep 2026,22 Sep 2026,22 Sep 2026,agreed
+B-009,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-010,full_name,Ms Freya Khan,Ms Freya Khan,Ms Freya Khan,agreed
+B-010,address,"116 Hucclecote Road, Lydney, GL15 5XQ","116 Hucclecote Road, Lydney, GL15 5XQ","116 Hucclecote Road, Lydney, GL15 5XQ",agreed
+B-010,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-010,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-011,full_name,Miss Isla Holmes,Miss Isla Holmes,Miss Isla Holmes,agreed
+B-011,address,"56 Farm Lane, Cheltenham, GL52 4RU","56 Farm Lane, Cheltenham, GL52 4RU","56 Farm Lane, Cheltenham, GL52 4RU",agreed
+B-011,statement_date,06 Oct 2026,06 Oct 2026,06 Oct 2026,agreed
+B-011,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-012,full_name,Mr Harvey Khan,Mr Harvey Khan,Mr Harvey Khan,agreed
+B-012,address,"15 Green Lane, Quedgeley, GL2 8PF","15 Green Lane, Quedgeley, GL2 8PF","15 Green Lane, Quedgeley, GL2 8PF",agreed
+B-012,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-012,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-013,full_name,Mr Reza Kaur,Mr Reza Kaur,Mr Reza Kaur,agreed
+B-013,address,"Flat 5, 40 Hucclecote Road, Quedgeley, GL2 6GX","Flat 5, 40 Hucclecote Road, Quedgeley, GL2 6GX","Flat 5, 40 Hucclecote Road, Quedgeley, GL2 6GX",agreed
+B-013,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-013,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-014,full_name,Ms Anika Griffiths,Ms Anika Griffiths,Ms Anika Griffiths,agreed
+B-014,address,"71 Hatherley Lane, Stroud, GL5 2AQ","71 Hatherley Lane, Stroud, GL5 2AQ","71 Hatherley Lane, Stroud, GL5 2AQ",agreed
+B-014,statement_date,18 Sep 2026,18 Sep 2026,18 Sep 2026,agreed
+B-014,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-015,full_name,Mr Alfie Demir,Mr Alfie Demir,Mr Alfie Demir,agreed
+B-015,address,"99 Bristol Road, Gloucester, GL1 4EQ","99 Bristol Road, Gloucester, GL1 4EQ","99 Bristol Road, Gloucester, GL1 4EQ",agreed
+B-015,statement_date,13 Sep 2026,13 Sep 2026,13 Sep 2026,agreed
+B-015,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-016,full_name,Mrs Amara Kaur,Mrs Amara Kaur,Mrs Amara Kaur,agreed
+B-016,address,"Flat 7, 110 Orchard Close, Gloucester, GL2 3XY","Flat 7, 110 Orchard Close, Gloucester, GL2 3YX","Flat 7, 110 Orchard Close, Gloucester, GL2 3XY",tom
+B-016,statement_date,02 Sep 2026,02 Sep 2026,02 Sep 2026,agreed
+B-016,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-017,full_name,Ms Nadia Okafor,Ms Nadia Okafor,Ms Nadia Okafor,agreed
+B-017,address,"9 Park Road, Gloucester, GL2 7RH","9 Park Road, Gloucester, GL2 7RH","9 Park Road, Gloucester, GL2 7RH",agreed
+B-017,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-017,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-018,full_name,Mr Callum Byrne,Mr Callum Byrne,Mr Callum Byrne,agreed
+B-018,address,"30 Church Street, Stroud, GL5 2NX","30 Church Street, Stroud, GL5 2NX","30 Church Street, Stroud, GL5 2NX",agreed
+B-018,statement_date,09 Aug 2026,09 Aug 2026,09 Aug 2026,agreed
+B-018,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-019,full_name,Mr Reza Lloyd,Mr Reza Lloyd,Mr Reza Lloyd,agreed
+B-019,address,"63 Station Road, Cheltenham, GL53 1HE","63 Station Road, Cheltenham, GL53 1HE","63 Station Road, Cheltenham, GL53 1HE",agreed
+B-019,statement_date,17 Aug 2026,17 Aug 2026,17 Aug 2026,agreed
+B-019,issuer,Copperline Broadband,Copperline Broadband Ltd,Copperline Broadband,tom
+B-020,full_name,Ms Emma Price,Ms Emma Price,Ms Emma Price,agreed
+B-020,address,"123 Hucclecote Road, Gloucester, GL2 7ZD","123 Hucclecote Road, Gloucester, GL2 7DZ","123 Hucclecote Road, Gloucester, GL2 7DZ",tom
+B-020,statement_date,02 Sep 2026,02 Sep 2026,02 Sep 2026,agreed
+B-020,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-021,full_name,Ms Grace Bello,Ms Grace Bello,Ms Grace Bello,agreed
+B-021,address,"118 Tewkesbury Road, Gloucester, GL1 6FA","118 Tewkesbury Road, Gloucester, GL1 6FA","118 Tewkesbury Road, Gloucester, GL1 6FA",agreed
+B-021,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-021,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-022,full_name,Miss Ellie Hart & Mr Daniel Hart,Miss Ellie Hart & Mr Daniel Hart,Miss Ellie Hart & Mr Daniel Hart,agreed
+B-022,address,"Flat 10, 111 Hucclecote Road, Quedgeley, GL2 4WT","Flat 10, 111 Hucclecote Road, Quedgeley, GL2 4WT","Flat 10, 111 Hucclecote Road, Quedgeley, GL2 4WT",agreed
+B-022,statement_date,27 Aug 2026,27 Aug 2026,27 Aug 2026,agreed
+B-022,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-023,full_name,Mr Kwame Kowalczyk,Mr Kwame Kowalczyk,Mr Kwame Kowalczyk,agreed
+B-023,address,"43 Cotswold Way, Gloucester, GL2 1EF","43 Cotswold Way, Gloucester, GL2 1FE","43 Cotswold Way, Gloucester, GL2 1FE",tom
+B-023,statement_date,25 Sep 2026,25 Sep 2026,25 Sep 2026,agreed
+B-023,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-024,full_name,Mr Ravi Demir,Mr Ravi Demir,Mr Ravi Demir,agreed
+B-024,address,"109 Farm Lane, Cheltenham, GL50 7DE","109 Farm Lane, Cheltenham, GL50 7DE","109 Farm Lane, Cheltenham, GL50 7DE",agreed
+B-024,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-024,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-025,full_name,Ms Olivia Ricci & Mr Kwame Ricci,Ms Olivia Ricci & Mr Kwame Ricci,Ms Olivia Ricci & Mr Kwame Ricci,agreed
+B-025,address,"Flat 3, 125 Victoria Street, Cheltenham, GL51 8TX","Flat 3, 125 Victoria Street, Cheltenham, GL51 8TX","Flat 3, 125 Victoria Street, Cheltenham, GL51 8TX",agreed
+B-025,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-025,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-026,full_name,Ms Bethan Holmes,Ms Bethan Holmes,Ms Bethan Holmes,agreed
+B-026,address,"Flat 5, 138 London Road, Gloucester, GL4 5WZ","Flat 5, 138 London Road, Gloucester, GL4 5WZ","Flat 5, 138 London Road, Gloucester, GL4 5WZ",agreed
+B-026,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-026,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-027,full_name,Ms Priya Hughes,Ms Priya Hughes,Ms Priya Hughes,agreed
+B-027,address,"52 Hales Road, Cheltenham, GL52 2HS","52 Hales Road, Cheltenham, GL52 2HS","52 Hales Road, Cheltenham, GL52 2HS",agreed
+B-027,statement_date,14 Aug 2026,14 Aug 2026,14 Aug 2026,agreed
+B-027,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-028,full_name,Ms Joy Walsh & Mr Luca Walsh,Ms Joy Walsh & Mr Luca Walsh,Ms Joy Walsh & Mr Luca Walsh,agreed
+B-028,address,"Flat 10, 107 Meadow View, Nailsworth, GL6 5HP","Flat 10, 107 Meadow View, Nailsworth, GL6 5HP","Flat 10, 107 Meadow View, Nailsworth, GL6 5HP",agreed
+B-028,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-028,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-029,full_name,Mr Imran Evans,Mr Imran Evans,Mr Imran Evans,agreed
+B-029,address,"Flat 12, 117 Tewkesbury Road, Gloucester, GL4 7LP","Flat 12, 117 Tewkesbury Road, Gloucester, GL4 7LP","Flat 12, 117 Tewkesbury Road, Gloucester, GL4 7LP",agreed
+B-029,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-029,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-030,full_name,Mr Oscar Byrne,Mr Oscar Byrne,Mr Oscar Byrne,agreed
+B-030,address,"100 Bath Road, Nailsworth, GL6 5QX","100 Bath Road, Nailsworth, GL6 5QX","100 Bath Road, Nailsworth, GL6 5QX",agreed
+B-030,statement_date,17 Sep 2026,17 Sep 2026,17 Sep 2026,agreed
+B-030,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-031,full_name,Miss Molly Clarke,Miss Molly Clarke,Miss Molly Clarke,agreed
+B-031,address,"81 Bristol Road, Cirencester, GL7 7GL","81 Bristol Road, Cirencester, GL7 7GL","81 Bristol Road, Cirencester, GL7 7GL",agreed
+B-031,statement_date,09 Sep 2026,09 Sep 2026,09 Sep 2026,agreed
+B-031,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-032,full_name,Ms Molly Campbell,Ms Molly Campbell,Ms Molly Campbell,agreed
+B-032,address,"124 High Street, Cheltenham, GL50 8WS","124 High Street, Cheltenham, GL50 8WS","124 High Street, Cheltenham, GL50 8WS",agreed
+B-032,statement_date,06 Sep 2026,06 Sep 2026,06 Sep 2026,agreed
+B-032,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-033,full_name,Mr Alfie Chen,Mr Alfie Chen,Mr Alfie Chen,agreed
+B-033,address,"59 Elm Grove, Lydney, GL15 3FE","59 Elm Grove, Lydney, GL15 3FE","59 Elm Grove, Lydney, GL15 3FE",agreed
+B-033,statement_date,27 Sep 2026,27 Sep 2026,27 Sep 2026,agreed
+B-033,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-034,full_name,Mrs Joy Wood,Mrs Joy Wood,Mrs Joy Wood,agreed
+B-034,address,"Flat 10, 37 Barton Street, Stroud, GL5 6HH","Flat 10, 37 Barton Street, Stroud, GL5 6HH","Flat 10, 37 Barton Street, Stroud, GL5 6HH",agreed
+B-034,statement_date,04 Oct 2026,05 Oct 2026,04 Oct 2026,tom
+B-034,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-035,full_name,Miss Niamh Byrne,Miss Niamh Byrne,Miss Niamh Byrne,agreed
+B-035,address,"113 Westgate Street, Stroud, GL5 8UF","113 Westgate Street, Stroud, GL5 8UF","113 Westgate Street, Stroud, GL5 8UF",agreed
+B-035,statement_date,14 Sep 2026,14 Sep 2026,14 Sep 2026,agreed
+B-035,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-036,full_name,Miss Fatima Price,Miss Fatima Price,Miss Fatima Price,agreed
+B-036,address,"44 Leckhampton Road, Quedgeley, GL2 5GR","44 Leckhampton Road, Quedgeley, GL2 5GR","44 Leckhampton Road, Quedgeley, GL2 5GR",agreed
+B-036,statement_date,15 Aug 2026,15 Aug 2026,15 Aug 2026,agreed
+B-036,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-037,full_name,Mr Rohan Evans,Mr Rohan Evans,Mr Rohan Evans,agreed
+B-037,address,"82 Park Road, Cheltenham, GL50 1BS","82 Park Road, Cheltenham, GL50 1BS","82 Park Road, Cheltenham, GL50 1BS",agreed
+B-037,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-037,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-038,full_name,Ms Ellie Shah,Ms Ellie Shah,Ms Ellie Shah,agreed
+B-038,address,"116 Victoria Street, Gloucester, GL4 8FB","116 Victoria Street, Gloucester, GL4 8FB","116 Victoria Street, Gloucester, GL4 8FB",agreed
+B-038,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-038,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-039,full_name,Miss Fatima Holmes,Miss Fatima Holmes,Miss Fatima Holmes,agreed
+B-039,address,"94 Kings Road, Tewkesbury, GL20 8HJ","94 Kings Road, Tewkesbury, GL20 8HJ","94 Kings Road, Tewkesbury, GL20 8HJ",agreed
+B-039,statement_date,08 Aug 2026,08 Aug 2026,08 Aug 2026,agreed
+B-039,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-040,full_name,Ms Isla Fletcher,Ms Isla Fletcher,Ms Isla Fletcher,agreed
+B-040,address,"62 Spa Road, Cheltenham, GL52 3SB","62 Spa Road, Cheltenham, GL52 3SB","62 Spa Road, Cheltenham, GL52 3SB",agreed
+B-040,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-040,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-041,full_name,Mr Oscar Nair,Mr Oscar Nair,Mr Oscar Nair,agreed
+B-041,address,"19 Hucclecote Road, Tewkesbury, GL20 7QY","19 Hucclecote Road, Tewkesbury, GL20 7QY","19 Hucclecote Road, Tewkesbury, GL20 7QY",agreed
+B-041,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-041,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-042,full_name,Mr Owen Morgan,Mr Owen Morgan,Mr Owen Morgan,agreed
+B-042,address,"116 Cheltenham Road, Cheltenham, GL53 4AR","116 Cheltenham Road, Cheltenham, GL53 4AR","116 Cheltenham Road, Cheltenham, GL53 4AR",agreed
+B-042,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-042,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-043,full_name,Ms Fatima Chen,Ms Fatima Chen,Ms Fatima Chen,agreed
+B-043,address,"21 Church Street, Gloucester, GL2 9GW","21 Church Street, Gloucester, GL2 9GW","21 Church Street, Gloucester, GL2 9GW",agreed
+B-043,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-043,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-044,full_name,Mr Yusuf Walsh,Mr Yusuf Walsh,Mr Yusuf Walsh,agreed
+B-044,address,"5 Gloucester Road, Gloucester, GL4 8UZ","5 Gloucester Road, Gloucester, GL4 8UZ","5 Gloucester Road, Gloucester, GL4 8UZ",agreed
+B-044,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-044,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-045,full_name,Ms Amara Bennett,Ms Amara Bennett,Ms Amara Bennett,agreed
+B-045,address,"119 Hucclecote Road, Cheltenham, GL51 5DG","119 Hucclecote Road, Cheltenham, GL51 5DG","119 Hucclecote Road, Cheltenham, GL51 5DG",agreed
+B-045,statement_date,13 Aug 2026,13 Aug 2026,13 Aug 2026,agreed
+B-045,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-046,full_name,Mr Dev Lewis & Ms Ruby Lewis,Mr Dev Lewis & Ms Ruby Lewis,Mr Dev Lewis & Ms Ruby Lewis,agreed
+B-046,address,"34 Orchard Close, Tewkesbury, GL20 5BT","34 Orchard Close, Tewkesbury, GL20 5BT","34 Orchard Close, Tewkesbury, GL20 5BT",agreed
+B-046,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-046,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-047,full_name,Ms Bethan Sutton,Ms Bethan Sutton,Ms Bethan Sutton,agreed
+B-047,address,"75 Hatherley Lane, Cheltenham, GL50 9HG","75 Hatherley Lane, Cheltenham, GL50 9HG","75 Hatherley Lane, Cheltenham, GL50 9HG",agreed
+B-047,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-047,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-048,full_name,Ms Chloe Mensah,Ms Chloe Mensah,Ms Chloe Mensah,agreed
+B-048,address,"81 Cotswold Way, Stroud, GL5 9GQ","81 Cotswold Way, Stroud, GL5 9GQ","81 Cotswold Way, Stroud, GL5 9GQ",agreed
+B-048,statement_date,09 Sep 2026,09 Sep 2026,09 Sep 2026,agreed
+B-048,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-049,full_name,Mr Lewis Sutton,Mr Lewis Sutton,Mr Lewis Sutton,agreed
+B-049,address,"49 Bath Road, Quedgeley, GL2 3TL","49 Bath Road, Quedgeley, GL2 3TL","49 Bath Road, Quedgeley, GL2 3TL",agreed
+B-049,statement_date,11 Oct 2026,11 Oct 2026,11 Oct 2026,agreed
+B-049,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-050,full_name,Mr Yusuf Demir,Mr Yusuf Demir,Mr Yusuf Demir,agreed
+B-050,address,"Flat 4, 6 Farm Lane, Cirencester, GL7 4GA","Flat 4, 6 Farm Lane, Cirencester, GL7 4GA","Flat 4, 6 Farm Lane, Cirencester, GL7 4GA",agreed
+B-050,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-050,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-051,full_name,Mr Finley Bello,Mr Finley Bello,Mr Finley Bello,agreed
+B-051,address,"11 Regent Street, Winchcombe, GL54 8WS","11 Regent Street, Winchcombe, GL54 8WS","11 Regent Street, Winchcombe, GL54 8WS",agreed
+B-051,statement_date,21 Sep 2026,21 Sep 2026,21 Sep 2026,agreed
+B-051,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-052,full_name,Mr Mateusz Evans,Mr Mateusz Evans,Mr Mateusz Evans,agreed
+B-052,address,"76 Kings Road, Cheltenham, GL52 5GQ","76 Kings Road, Cheltenham, GL52 5GQ","76 Kings Road, Cheltenham, GL52 5GQ",agreed
+B-052,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-052,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-053,full_name,Mr Oscar Evans,Mr Oscar Evans,Mr Oscar Evans,agreed
+B-053,address,"36 Elm Grove, Stroud, GL5 4LZ","36 Elm Grove, Stroud, GL5 4LZ","36 Elm Grove, Stroud, GL5 4LZ",agreed
+B-053,statement_date,01 Oct 2026,02 Oct 2026,01 Oct 2026,tom
+B-053,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-054,full_name,Mrs Hannah Okafor,Mrs Hannah Okafor,Mrs Hannah Okafor,agreed
+B-054,address,"40 Barton Street, Winchcombe, GL54 7EZ","40 Barton Street, Winchcombe, GL54 7EZ","40 Barton Street, Winchcombe, GL54 7EZ",agreed
+B-054,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-054,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-055,full_name,Ms Emma Griffiths,Ms Emma Griffiths,Ms Emma Griffiths,agreed
+B-055,address,"31 Leckhampton Road, Nailsworth, GL6 6WA","31 Leckhampton Road, Nailsworth, GL6 6WA","31 Leckhampton Road, Nailsworth, GL6 6WA",agreed
+B-055,statement_date,06 Sep 2026,06 Sep 2026,06 Sep 2026,agreed
+B-055,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-056,full_name,Mr Daniel Lloyd & Ms Zainab Lloyd,Mr Daniel Lloyd & Ms Zainab Lloyd,Mr Daniel Lloyd & Ms Zainab Lloyd,agreed
+B-056,address,"Flat 5, 120 Hatherley Lane, Lydney, GL15 5GR","Flat 5, 120 Hatherley Lane, Lydney, GL15 5GR","Flat 5, 120 Hatherley Lane, Lydney, GL15 5GR",agreed
+B-056,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-056,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-057,full_name,Mr Finley Griffiths,Mr Finley Griffiths,Mr Finley Griffiths,agreed
+B-057,address,"129 Hatherley Lane, Quedgeley, GL2 8XY","129 Hatherley Lane, Quedgeley, GL2 8XY","129 Hatherley Lane, Quedgeley, GL2 8XY",agreed
+B-057,statement_date,12 Sep 2026,12 Sep 2026,12 Sep 2026,agreed
+B-057,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-058,full_name,Miss Joy Ward,Miss Joy Ward,Miss Joy Ward,agreed
+B-058,address,"53 Hatherley Lane, Cheltenham, GL50 9UH","53 Hatherley Lane, Cheltenham, GL50 9UH","53 Hatherley Lane, Cheltenham, GL50 9UH",agreed
+B-058,statement_date,25 Sep 2026,26 Sep 2026,25 Sep 2026,tom
+B-058,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-059,full_name,Mr Samuel Price,Mr Samuel Price,Mr Samuel Price,agreed
+B-059,address,"9 Market Street, Cheltenham, GL52 8RY","9 Market Street, Cheltenham, GL52 8RY","9 Market Street, Cheltenham, GL52 8RY",agreed
+B-059,statement_date,24 Sep 2026,24 Sep 2026,24 Sep 2026,agreed
+B-059,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-060,full_name,Mr Ravi Adebayo,Mr Ravi Adebayo,Mr Ravi Adebayo,agreed
+B-060,address,"131 Park Road, Cheltenham, GL51 1NJ","131 Park Road, Cheltenham, GL51 1NJ","131 Park Road, Cheltenham, GL51 1NJ",agreed
+B-060,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-060,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-061,full_name,Mrs Chloe Reid & Mr Lewis Reid,Mrs Chloe Reid & Mr Lewis Reid,Mrs Chloe Reid & Mr Lewis Reid,agreed
+B-061,address,"37 Painswick Road, Tewkesbury, GL20 3FE","37 Painswick Road, Tewkesbury, GL20 3FE","37 Painswick Road, Tewkesbury, GL20 3FE",agreed
+B-061,statement_date,12 Sep 2026,12 Sep 2026,12 Sep 2026,agreed
+B-061,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-062,full_name,Mr Tariq Bennett & Ms Leela Bennett,Mr Tariq Bennett & Ms Leela Bennett,Mr Tariq Bennett & Ms Leela Bennett,agreed
+B-062,address,"136 High Street, Gloucester, GL1 9TP","136 High Street, Gloucester, GL1 9TP","136 High Street, Gloucester, GL1 9TP",agreed
+B-062,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-062,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-063,full_name,Ms Joy Grant,Ms Joy Grant,Ms Joy Grant,agreed
+B-063,address,"140 Spa Road, Tewkesbury, GL20 4SB","140 Spa Road, Tewkesbury, GL20 4SB","140 Spa Road, Tewkesbury, GL20 4SB",agreed
+B-063,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-063,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-064,full_name,Mr George Haddad,Mr George Haddad,Mr George Haddad,agreed
+B-064,address,"7 Tewkesbury Road, Stroud, GL5 6WG","7 Tewkesbury Road, Stroud, GL5 6WG","7 Tewkesbury Road, Stroud, GL5 6WG",agreed
+B-064,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-064,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-065,full_name,Mr Finley Iqbal,Mr Finley Iqbal,Mr Finley Iqbal,agreed
+B-065,address,"33 Green Lane, Cheltenham, GL50 9UU","33 Green Lane, Cheltenham, GL50 9UU","33 Green Lane, Cheltenham, GL50 9UU",agreed
+B-065,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-065,issuer,Northmere Bank Ltd,Northmere Bank,Northmere Bank,tom
+B-066,full_name,Mr Kofi Hughes,Mr Kofi Hughes,Mr Kofi Hughes,agreed
+B-066,address,"3 Hucclecote Road, Tewkesbury, GL20 2LS","3 Hucclecote Road, Tewkesbury, GL20 2LS","3 Hucclecote Road, Tewkesbury, GL20 2LS",agreed
+B-066,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-066,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-067,full_name,Miss Bethan Boateng & Mr Oscar Boateng,Miss Bethan Boateng & Mr Oscar Boateng,Miss Bethan Boateng & Mr Oscar Boateng,agreed
+B-067,address,"17 Cheltenham Road, Cheltenham, GL53 6AD","17 Cheltenham Road, Cheltenham, GL53 6AD","17 Cheltenham Road, Cheltenham, GL53 6AD",agreed
+B-067,statement_date,12 Oct 2026,12 Oct 2026,12 Oct 2026,agreed
+B-067,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-068,full_name,Mr Arun Kaur,Mr Arun Kaur,Mr Arun Kaur,agreed
+B-068,address,"2 Farm Lane, Gloucester, GL2 7DB","2 Farm Lane, Gloucester, GL2 7DB","2 Farm Lane, Gloucester, GL2 7DB",agreed
+B-068,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-068,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-069,full_name,Mrs Hannah Campbell,Mrs Hannah Campbell,Mrs Hannah Campbell,agreed
+B-069,address,"51 Church Street, Tewkesbury, GL20 9XA","51 Church Street, Tewkesbury, GL20 9XA","51 Church Street, Tewkesbury, GL20 9XA",agreed
+B-069,statement_date,21 Sep 2026,21 Sep 2026,21 Sep 2026,agreed
+B-069,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-070,full_name,Mr Yusuf Sutton,Mr Yusuf Sutton,Mr Yusuf Sutton,agreed
+B-070,address,"15 Bristol Road, Stroud, GL5 3RQ","15 Bristol Road, Stroud, GL5 3RQ","15 Bristol Road, Stroud, GL5 3RQ",agreed
+B-070,statement_date,16 Sep 2026,16 Sep 2026,16 Sep 2026,agreed
+B-070,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-071,full_name,Mrs Grace Ricci & Mr Dev Ricci,Mrs Grace Ricci & Mr Dev Ricci,Mrs Grace Ricci & Mr Dev Ricci,agreed
+B-071,address,"11 Bath Road, Cirencester, GL7 6HW","11 Bath Road, Cirencester, GL7 6HW","11 Bath Road, Cirencester, GL7 6HW",agreed
+B-071,statement_date,10 Sep 2026,10 Sep 2026,10 Sep 2026,agreed
+B-071,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-072,full_name,Mr Callum Morgan,Mr Callum Morgan,Mr Callum Morgan,agreed
+B-072,address,"128 Cotswold Way, Cheltenham, GL53 5XN","128 Cotswold Way, Cheltenham, GL53 5XN","128 Cotswold Way, Cheltenham, GL53 5XN",agreed
+B-072,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-072,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-073,full_name,Ms Chloe Boateng,Ms Chloe Boateng,Ms Chloe Boateng,agreed
+B-073,address,"15 Regent Street, Tewkesbury, GL20 4ZU","15 Regent Street, Tewkesbury, GL20 4ZU","15 Regent Street, Tewkesbury, GL20 4ZU",agreed
+B-073,statement_date,28 Sep 2026,28 Sep 2026,28 Sep 2026,agreed
+B-073,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-074,full_name,Mr Oscar Turner,Mr Oscar Turner,Mr Oscar Turner,agreed
+B-074,address,"120 Church Street, Stroud, GL5 4DN","120 Church Street, Stroud, GL5 4DN","120 Church Street, Stroud, GL5 4DN",agreed
+B-074,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-074,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-075,full_name,Mr Callum Chen & Mrs Hannah Chen,Mr Callum Chen & Mrs Hannah Chen,Mr Callum Chen & Mrs Hannah Chen,agreed
+B-075,address,"7 Hucclecote Road, Cheltenham, GL53 2XL","7 Hucclecote Road, Cheltenham, GL53 2XL","7 Hucclecote Road, Cheltenham, GL53 2XL",agreed
+B-075,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-075,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-076,full_name,Mr Kwame Sutton,Mr Kwame Sutton,Mr Kwame Sutton,agreed
+B-076,address,"Flat 1, 106 Spa Road, Gloucester, GL1 3RX","Flat 1, 106 Spa Road, Gloucester, GL1 3XR","Flat 1, 106 Spa Road, Gloucester, GL1 3XR",tom
+B-076,statement_date,02 Oct 2026,03 Oct 2026,02 Oct 2026,tom
+B-076,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-077,full_name,Ms Nadia Lewis,Ms Nadia Lewis,Ms Nadia Lewis,agreed
+B-077,address,"140 Cheltenham Road, Gloucester, GL2 6XZ","140 Cheltenham Road, Gloucester, GL2 6XZ","140 Cheltenham Road, Gloucester, GL2 6XZ",agreed
+B-077,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-077,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-078,full_name,Mrs Chloe Khan,Mrs Chloe Khan,Mrs Chloe Khan,agreed
+B-078,address,"102 Barton Street, Cheltenham, GL52 6LJ","102 Barton Street, Cheltenham, GL52 6LJ","102 Barton Street, Cheltenham, GL52 6LJ",agreed
+B-078,statement_date,09 Sep 2026,09 Sep 2026,09 Sep 2026,agreed
+B-078,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-079,full_name,Mrs Molly Kowalczyk,Mrs Molly Kowalczyk,Mrs Molly Kowalczyk,agreed
+B-079,address,"139 Station Road, Stroud, GL5 1UF","139 Station Road, Stroud, GL5 1UF","139 Station Road, Stroud, GL5 1UF",agreed
+B-079,statement_date,08 Oct 2026,08 Oct 2026,08 Oct 2026,agreed
+B-079,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-080,full_name,Ms Olivia Ricci & Mr Imran Ricci,Ms Olivia Ricci & Mr Imran Ricci,Ms Olivia Ricci & Mr Imran Ricci,agreed
+B-080,address,"45 Barton Street, Cheltenham, GL51 7AS","45 Barton Street, Cheltenham, GL51 7AS","45 Barton Street, Cheltenham, GL51 7AS",agreed
+B-080,statement_date,05 Aug 2026,05 Aug 2026,05 Aug 2026,agreed
+B-080,issuer,Harrowgate Water,Harrowgate Water Ltd,Harrowgate Water,tom
+B-081,full_name,Ms Olivia Clarke,Ms Olivia Clarke,Ms Olivia Clarke,agreed
+B-081,address,"138 Painswick Road, Stroud, GL5 3NU","138 Painswick Road, Stroud, GL5 3NU","138 Painswick Road, Stroud, GL5 3NU",agreed
+B-081,statement_date,07 Sep 2026,07 Sep 2026,07 Sep 2026,agreed
+B-081,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-082,full_name,Miss Niamh Clarke,Miss Niamh Clarke,Miss Niamh Clarke,agreed
+B-082,address,"98 Spa Road, Cheltenham, GL53 4BF","98 Spa Road, Cheltenham, GL53 4BF","98 Spa Road, Cheltenham, GL53 4BF",agreed
+B-082,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-082,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-083,full_name,Mr Samuel Walsh,Mr Samuel Walsh,Mr Samuel Walsh,agreed
+B-083,address,"37 Gloucester Road, Gloucester, GL2 5HW","37 Gloucester Road, Gloucester, GL2 5HW","37 Gloucester Road, Gloucester, GL2 5HW",agreed
+B-083,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-083,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-084,full_name,Miss Hannah Bennett & Mr Kwame Bennett,Miss Hannah Bennett & Mr Kwame Bennett,Miss Hannah Bennett & Mr Kwame Bennett,agreed
+B-084,address,"89 Leckhampton Road, Tewkesbury, GL20 2WL","89 Leckhampton Road, Tewkesbury, GL20 2WL","89 Leckhampton Road, Tewkesbury, GL20 2WL",agreed
+B-084,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-084,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-085,full_name,Ms Emma Bose,Ms Emma Bose,Ms Emma Bose,agreed
+B-085,address,"Flat 5, 79 Elm Grove, Tewkesbury, GL20 1FT","Flat 5, 79 Elm Grove, Tewkesbury, GL20 1FT","Flat 5, 79 Elm Grove, Tewkesbury, GL20 1FT",agreed
+B-085,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-085,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-086,full_name,Mr Arun Kaur,Mr Arun Kaur,Mr Arun Kaur,agreed
+B-086,address,"116 Gloucester Road, Cheltenham, GL53 5LW","116 Gloucester Road, Cheltenham, GL53 5WL","116 Gloucester Road, Cheltenham, GL53 5LW",tom
+B-086,statement_date,06 Sep 2026,06 Sep 2026,06 Sep 2026,agreed
+B-086,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-087,full_name,Mr Kofi Carter,Mr Kofi Carter,Mr Kofi Carter,agreed
+B-087,address,"62 Spa Road, Cirencester, GL7 6ZB","62 Spa Road, Cirencester, GL7 6ZB","62 Spa Road, Cirencester, GL7 6ZB",agreed
+B-087,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-087,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-088,full_name,Mrs Emma Rahimi,Mrs Emma Rahimi,Mrs Emma Rahimi,agreed
+B-088,address,"68 Hatherley Lane, Gloucester, GL1 2YE","68 Hatherley Lane, Gloucester, GL1 2YE","68 Hatherley Lane, Gloucester, GL1 2YE",agreed
+B-088,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-088,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-089,full_name,Ms Freya Ward & Mr Samuel Ward,Ms Freya Ward & Mr Samuel Ward,Ms Freya Ward & Mr Samuel Ward,agreed
+B-089,address,"86 Victoria Street, Quedgeley, GL2 8XH","86 Victoria Street, Quedgeley, GL2 8XH","86 Victoria Street, Quedgeley, GL2 8XH",agreed
+B-089,statement_date,28 Sep 2026,28 Sep 2026,28 Sep 2026,agreed
+B-089,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-090,full_name,Mr Imran Clarke,Mr Imran Clarke,Mr Imran Clarke,agreed
+B-090,address,"22 Mill Lane, Cheltenham, GL53 7DD","22 Mill Lane, Cheltenham, GL53 7DD","22 Mill Lane, Cheltenham, GL53 7DD",agreed
+B-090,statement_date,06 Sep 2026,06 Sep 2026,06 Sep 2026,agreed
+B-090,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-091,full_name,Ms Priya Reid,Ms Priya Reid,Ms Priya Reid,agreed
+B-091,address,"92 Regent Street, Cheltenham, GL52 2PT","92 Regent Street, Cheltenham, GL52 2PT","92 Regent Street, Cheltenham, GL52 2PT",agreed
+B-091,statement_date,05 Sep 2026,05 Sep 2026,05 Sep 2026,agreed
+B-091,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-092,full_name,Ms Ruby Price,Ms Ruby Price,Ms Ruby Price,agreed
+B-092,address,"46 Meadow View, Cheltenham, GL52 6HX","46 Meadow View, Cheltenham, GL52 6HX","46 Meadow View, Cheltenham, GL52 6HX",agreed
+B-092,statement_date,17 Aug 2026,17 Aug 2026,17 Aug 2026,agreed
+B-092,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-093,full_name,Ms Bethan Shah,Ms Bethan Shah,Ms Bethan Shah,agreed
+B-093,address,"36 Mill Lane, Gloucester, GL2 1ZT","36 Mill Lane, Gloucester, GL2 1ZT","36 Mill Lane, Gloucester, GL2 1ZT",agreed
+B-093,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-093,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-094,full_name,Ms Zainab Sutton & Mr Harvey Sutton,Ms Zainab Sutton & Mr Harvey Sutton,Ms Zainab Sutton & Mr Harvey Sutton,agreed
+B-094,address,"54 Leckhampton Road, Cirencester, GL7 7WA","54 Leckhampton Road, Cirencester, GL7 7WA","54 Leckhampton Road, Cirencester, GL7 7WA",agreed
+B-094,statement_date,24 Sep 2026,24 Sep 2026,24 Sep 2026,agreed
+B-094,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-095,full_name,Mr Luca Evans,Mr Luca Evans,Mr Luca Evans,agreed
+B-095,address,"82 Hucclecote Road, Quedgeley, GL2 4AB","82 Hucclecote Road, Quedgeley, GL2 4AB","82 Hucclecote Road, Quedgeley, GL2 4AB",agreed
+B-095,statement_date,05 Oct 2026,05 Oct 2026,05 Oct 2026,agreed
+B-095,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-096,full_name,Mr Alfie Okafor,Mr Alfie Okafor,Mr Alfie Okafor,agreed
+B-096,address,"89 Abbey Road, Cheltenham, GL50 4ZN","89 Abbey Road, Cheltenham, GL50 4ZN","89 Abbey Road, Cheltenham, GL50 4ZN",agreed
+B-096,statement_date,25 Aug 2026,25 Aug 2026,25 Aug 2026,agreed
+B-096,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-097,full_name,Ms Ruby Mahmood,Ms Ruby Mahmood,Ms Ruby Mahmood,agreed
+B-097,address,"Flat 7, 67 Market Street, Tewkesbury, GL20 9LH","Flat 7, 67 Market Street, Tewkesbury, GL20 9LH","Flat 7, 67 Market Street, Tewkesbury, GL20 9LH",agreed
+B-097,statement_date,15 Sep 2026,15 Sep 2026,15 Sep 2026,agreed
+B-097,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-098,full_name,Mr Yusuf Ward,Mr Yusuf Ward,Mr Yusuf Ward,agreed
+B-098,address,"Flat 12, 32 Cotswold Way, Winchcombe, GL54 6BY","Flat 12, 32 Cotswold Way, Winchcombe, GL54 6BY","Flat 12, 32 Cotswold Way, Winchcombe, GL54 6BY",agreed
+B-098,statement_date,26 Sep 2026,26 Sep 2026,26 Sep 2026,agreed
+B-098,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-099,full_name,Ms Poppy Rossi,Ms Poppy Rossi,Ms Poppy Rossi,agreed
+B-099,address,"Flat 9, 65 Church Street, Cirencester, GL7 5NH","Flat 9, 65 Church Street, Cirencester, GL7 5NH","Flat 9, 65 Church Street, Cirencester, GL7 5NH",agreed
+B-099,statement_date,05 Oct 2026,05 Oct 2026,05 Oct 2026,agreed
+B-099,issuer,Lumenvale Energy Ltd,Lumenvale Energy,Lumenvale Energy,tom
+B-100,full_name,Mrs Zainab Novak,Mrs Zainab Novak,Mrs Zainab Novak,agreed
+B-100,address,"Flat 6, 130 Church Street, Gloucester, GL4 6GB","Flat 6, 130 Church Street, Gloucester, GL4 6GB","Flat 6, 130 Church Street, Gloucester, GL4 6GB",agreed
+B-100,statement_date,18 Aug 2026,18 Aug 2026,18 Aug 2026,agreed
+B-100,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-101,full_name,Ms Hannah Wood,Ms Hannah Wood,Ms Hannah Wood,agreed
+B-101,address,"128 Hales Road, Gloucester, GL1 2YG","128 Hales Road, Gloucester, GL1 2YG","128 Hales Road, Gloucester, GL1 2YG",agreed
+B-101,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-101,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-102,full_name,Ms Priya Morgan,Ms Priya Morgan,Ms Priya Morgan,agreed
+B-102,address,"123 Mill Lane, Cheltenham, GL51 1WH","123 Mill Lane, Cheltenham, GL51 1WH","123 Mill Lane, Cheltenham, GL51 1WH",agreed
+B-102,statement_date,24 Aug 2026,24 Aug 2026,24 Aug 2026,agreed
+B-102,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-103,full_name,Mr Alfie Demir,Mr Alfie Demir,Mr Alfie Demir,agreed
+B-103,address,"32 Elm Grove, Cheltenham, GL50 5JD","32 Elm Grove, Cheltenham, GL50 5JD","32 Elm Grove, Cheltenham, GL50 5JD",agreed
+B-103,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-103,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-104,full_name,Mr Callum Lewis,Mr Callum Lewis,Mr Callum Lewis,agreed
+B-104,address,"131 Victoria Street, Winchcombe, GL54 5LE","131 Victoria Street, Winchcombe, GL54 5LE","131 Victoria Street, Winchcombe, GL54 5LE",agreed
+B-104,statement_date,23 Sep 2026,23 Sep 2026,23 Sep 2026,agreed
+B-104,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-105,full_name,Ms Megan Lloyd,Ms Megan Lloyd,Ms Megan Lloyd,agreed
+B-105,address,"126 High Street, Quedgeley, GL2 2AZ","126 High Street, Quedgeley, GL2 2AZ","126 High Street, Quedgeley, GL2 2AZ",agreed
+B-105,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-105,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-106,full_name,Ms Fatima Rossi,Ms Fatima Rossi,Ms Fatima Rossi,agreed
+B-106,address,"52 Orchard Close, Tewkesbury, GL20 4FH","52 Orchard Close, Tewkesbury, GL20 4FH","52 Orchard Close, Tewkesbury, GL20 4FH",agreed
+B-106,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-106,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-107,full_name,Mr Tariq Mahmood,Mr Tariq Mahmood,Mr Tariq Mahmood,agreed
+B-107,address,"19 High Street, Tewkesbury, GL20 6XA","19 High Street, Tewkesbury, GL20 6XA","19 High Street, Tewkesbury, GL20 6XA",agreed
+B-107,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-107,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-108,full_name,Mr Dev Campbell,Mr Dev Campbell,Mr Dev Campbell,agreed
+B-108,address,"56 Tewkesbury Road, Gloucester, GL1 3ZJ","56 Tewkesbury Road, Gloucester, GL1 3ZJ","56 Tewkesbury Road, Gloucester, GL1 3ZJ",agreed
+B-108,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-108,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-109,full_name,Ms Olivia Rahimi,Ms Olivia Rahimi,Ms Olivia Rahimi,agreed
+B-109,address,"Flat 8, 130 Cotswold Way, Cirencester, GL7 5ZG","Flat 8, 130 Cotswold Way, Cirencester, GL7 5ZG","Flat 8, 130 Cotswold Way, Cirencester, GL7 5ZG",agreed
+B-109,statement_date,18 Aug 2026,18 Aug 2026,18 Aug 2026,agreed
+B-109,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-110,full_name,Mr Daniel Eze,Mr Daniel Eze,Mr Daniel Eze,agreed
+B-110,address,"1 Orchard Close, Gloucester, GL4 1TB","1 Orchard Close, Gloucester, GL4 1TB","1 Orchard Close, Gloucester, GL4 1TB",agreed
+B-110,statement_date,06 Aug 2026,06 Aug 2026,06 Aug 2026,agreed
+B-110,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-111,full_name,Ms Chloe Novak,Ms Chloe Novak,Ms Chloe Novak,agreed
+B-111,address,"129 Westgate Street, Cheltenham, GL53 9LF","129 Westgate Street, Cheltenham, GL53 9LF","129 Westgate Street, Cheltenham, GL53 9LF",agreed
+B-111,statement_date,26 Sep 2026,26 Sep 2026,26 Sep 2026,agreed
+B-111,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-112,full_name,Mr Dev Ricci,Mr Dev Ricci,Mr Dev Ricci,agreed
+B-112,address,"114 London Road, Gloucester, GL1 5ST","114 London Road, Gloucester, GL1 5ST","114 London Road, Gloucester, GL1 5ST",agreed
+B-112,statement_date,08 Oct 2026,08 Oct 2026,08 Oct 2026,agreed
+B-112,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-113,full_name,Mr Dev Mensah,Mr Dev Mensah,Mr Dev Mensah,agreed
+B-113,address,"65 Cotswold Way, Gloucester, GL4 8YD","65 Cotswold Way, Gloucester, GL4 8YD","65 Cotswold Way, Gloucester, GL4 8YD",agreed
+B-113,statement_date,12 Aug 2026,12 Aug 2026,12 Aug 2026,agreed
+B-113,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-114,full_name,Ms Poppy Grant,Ms Poppy Grant,Ms Poppy Grant,agreed
+B-114,address,"86 Bath Road, Quedgeley, GL2 4NY","86 Bath Road, Quedgeley, GL2 4NY","86 Bath Road, Quedgeley, GL2 4NY",agreed
+B-114,statement_date,02 Aug 2026,01 Aug 2026,01 Aug 2026,tom
+B-114,issuer,Fenwick Gas and Power,Fenwick Gas & Power,Fenwick Gas & Power,tom
+B-115,full_name,Ms Anika Rossi,Ms Anika Rossi,Ms Anika Rossi,agreed
+B-115,address,"99 Park Road, Stroud, GL5 8PL","99 Park Road, Stroud, GL5 8PL","99 Park Road, Stroud, GL5 8PL",agreed
+B-115,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-115,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-116,full_name,Mrs Sofia Rahimi,Mrs Sofia Rahimi,Mrs Sofia Rahimi,agreed
+B-116,address,"1 Park Road, Tewkesbury, GL20 7DN","1 Park Road, Tewkesbury, GL20 7DN","1 Park Road, Tewkesbury, GL20 7DN",agreed
+B-116,statement_date,24 Aug 2026,24 Aug 2026,24 Aug 2026,agreed
+B-116,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-117,full_name,Ms Fatima Grant,Ms Fatima Grant,Ms Fatima Grant,agreed
+B-117,address,"27 Westgate Street, Cheltenham, GL52 5HF","27 Westgate Street, Cheltenham, GL52 5HF","27 Westgate Street, Cheltenham, GL52 5HF",agreed
+B-117,statement_date,16 Aug 2026,16 Aug 2026,16 Aug 2026,agreed
+B-117,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-118,full_name,Ms Zainab Wood,Ms Zainab Wood,Ms Zainab Wood,agreed
+B-118,address,"33 Westgate Street, Cheltenham, GL51 9QQ","33 Westgate Street, Cheltenham, GL51 9QQ","33 Westgate Street, Cheltenham, GL51 9QQ",agreed
+B-118,statement_date,06 Oct 2026,06 Oct 2026,06 Oct 2026,agreed
+B-118,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-119,full_name,Miss Joy Nair,Miss Joy Nair,Miss Joy Nair,agreed
+B-119,address,"85 Cotswold Way, Cheltenham, GL52 5SL","85 Cotswold Way, Cheltenham, GL52 5SL","85 Cotswold Way, Cheltenham, GL52 5SL",agreed
+B-119,statement_date,07 Sep 2026,07 Sep 2026,07 Sep 2026,agreed
+B-119,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-120,full_name,Mr Imran Doyle,Mr Imran Doyle,Mr Imran Doyle,agreed
+B-120,address,"21 Bristol Road, Gloucester, GL1 4HT","21 Bristol Road, Gloucester, GL1 4HT","21 Bristol Road, Gloucester, GL1 4HT",agreed
+B-120,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-120,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-121,full_name,Mr Alfie Murphy,Mr Alfie Murphy,Mr Alfie Murphy,agreed
+B-121,address,"107 Leckhampton Road, Nailsworth, GL6 5DZ","107 Leckhampton Road, Nailsworth, GL6 5DZ","107 Leckhampton Road, Nailsworth, GL6 5DZ",agreed
+B-121,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-121,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-122,full_name,Miss Grace Shah,Miss Grace Shah,Miss Grace Shah,agreed
+B-122,address,"15 Cheltenham Road, Gloucester, GL4 7LU","15 Cheltenham Road, Gloucester, GL4 7LU","15 Cheltenham Road, Gloucester, GL4 7LU",agreed
+B-122,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-122,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-123,full_name,Mr Alfie Hughes,Mr Alfie Hughes,Mr Alfie Hughes,agreed
+B-123,address,"55 Victoria Street, Gloucester, GL1 4ZZ","55 Victoria Street, Gloucester, GL1 4ZZ","55 Victoria Street, Gloucester, GL1 4ZZ",agreed
+B-123,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-123,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-124,full_name,Mr Ravi Chen,Mr Ravi Chen,Mr Ravi Chen,agreed
+B-124,address,"26 London Road, Gloucester, GL4 9FS","26 London Road, Gloucester, GL4 9FS","26 London Road, Gloucester, GL4 9FS",agreed
+B-124,statement_date,10 Oct 2026,10 Oct 2026,10 Oct 2026,agreed
+B-124,issuer,Copperline Broadband Ltd,Copperline Broadband,Copperline Broadband,tom
+B-125,full_name,Miss Ruby Sutton,Miss Ruby Sutton,Miss Ruby Sutton,agreed
+B-125,address,"4 Meadow View, Gloucester, GL2 9NN","4 Meadow View, Gloucester, GL2 9NN","4 Meadow View, Gloucester, GL2 9NN",agreed
+B-125,statement_date,14 Aug 2026,14 Aug 2026,14 Aug 2026,agreed
+B-125,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-126,full_name,Mrs Ellie Griffiths & Mr Samuel Griffiths,Mrs Ellie Griffiths & Mr Samuel Griffiths,Mrs Ellie Griffiths & Mr Samuel Griffiths,agreed
+B-126,address,"Flat 1, 111 London Road, Cheltenham, GL52 8ZS","Flat 1, 111 London Road, Cheltenham, GL52 8ZS","Flat 1, 111 London Road, Cheltenham, GL52 8ZS",agreed
+B-126,statement_date,21 Aug 2026,21 Aug 2026,21 Aug 2026,agreed
+B-126,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-127,full_name,Mr Kofi Iqbal,Mr Kofi Iqbal,Mr Kofi Iqbal,agreed
+B-127,address,"78 Westgate Street, Cheltenham, GL52 5RW","78 Westgate Street, Cheltenham, GL52 5RW","78 Westgate Street, Cheltenham, GL52 5RW",agreed
+B-127,statement_date,06 Sep 2026,06 Sep 2026,06 Sep 2026,agreed
+B-127,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-128,full_name,Miss Nadia Eze,Miss Nadia Eze,Miss Nadia Eze,agreed
+B-128,address,"77 Church Street, Cirencester, GL7 3AJ","77 Church Street, Cirencester, GL7 3AJ","77 Church Street, Cirencester, GL7 3AJ",agreed
+B-128,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-128,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-129,full_name,Ms Mei Price,Ms Mei Price,Ms Mei Price,agreed
+B-129,address,"59 Victoria Street, Tewkesbury, GL20 4UG","59 Victoria Street, Tewkesbury, GL20 4UG","59 Victoria Street, Tewkesbury, GL20 4UG",agreed
+B-129,statement_date,15 Sep 2026,15 Sep 2026,15 Sep 2026,agreed
+B-129,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-130,full_name,Mr Ravi Nair,Mr Ravi Nair,Mr Ravi Nair,agreed
+B-130,address,"98 Painswick Road, Stroud, GL5 1EA","98 Painswick Road, Stroud, GL5 1EA","98 Painswick Road, Stroud, GL5 1EA",agreed
+B-130,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-130,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-131,full_name,Mr Ravi Ward,Mr Ravi Ward,Mr Ravi Ward,agreed
+B-131,address,"30 Green Lane, Quedgeley, GL2 5JH","30 Green Lane, Quedgeley, GL2 5JH","30 Green Lane, Quedgeley, GL2 5JH",agreed
+B-131,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-131,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-132,full_name,Mr Harvey Boateng,Mr Harvey Boateng,Mr Harvey Boateng,agreed
+B-132,address,"47 Market Street, Winchcombe, GL54 2FT","47 Market Street, Winchcombe, GL54 2FT","47 Market Street, Winchcombe, GL54 2FT",agreed
+B-132,statement_date,21 Sep 2026,21 Sep 2026,21 Sep 2026,agreed
+B-132,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-133,full_name,Mr Alfie Wood,Mr Alfie Wood,Mr Alfie Wood,agreed
+B-133,address,"18 Spa Road, Cheltenham, GL52 4UA","18 Spa Road, Cheltenham, GL52 4UA","18 Spa Road, Cheltenham, GL52 4UA",agreed
+B-133,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-133,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-134,full_name,Mr Theo Murphy,Mr Theo Murphy,Mr Theo Murphy,agreed
+B-134,address,"88 Hatherley Lane, Cirencester, GL7 3GG","88 Hatherley Lane, Cirencester, GL7 3GG","88 Hatherley Lane, Cirencester, GL7 3GG",agreed
+B-134,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-134,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-135,full_name,Ms Isla Evans,Ms Isla Evans,Ms Isla Evans,agreed
+B-135,address,"100 Bath Road, Gloucester, GL1 3TJ","100 Bath Road, Gloucester, GL1 3TJ","100 Bath Road, Gloucester, GL1 3TJ",agreed
+B-135,statement_date,01 Aug 2026,01 Aug 2026,01 Aug 2026,agreed
+B-135,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-136,full_name,Ms Molly Haddad,Ms Molly Haddad,Ms Molly Haddad,agreed
+B-136,address,"6 Barton Street, Gloucester, GL4 6HN","6 Barton Street, Gloucester, GL4 6HN","6 Barton Street, Gloucester, GL4 6HN",agreed
+B-136,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-136,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-137,full_name,Mr Tariq Turner,Mr Tariq Turner,Mr Tariq Turner,agreed
+B-137,address,"137 Green Lane, Nailsworth, GL6 8GB","137 Green Lane, Nailsworth, GL6 8GB","137 Green Lane, Nailsworth, GL6 8GB",agreed
+B-137,statement_date,05 Aug 2026,05 Aug 2026,05 Aug 2026,agreed
+B-137,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-138,full_name,Mr George Sutton,Mr George Sutton,Mr George Sutton,agreed
+B-138,address,"Flat 8, 76 Orchard Close, Winchcombe, GL54 2UX","Flat 8, 76 Orchard Close, Winchcombe, GL54 2UX","Flat 8, 76 Orchard Close, Winchcombe, GL54 2UX",agreed
+B-138,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-138,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-139,full_name,Ms Ruby Okafor,Ms Ruby Okafor,Ms Ruby Okafor,agreed
+B-139,address,"102 Painswick Road, Stroud, GL5 8XG","102 Painswick Road, Stroud, GL5 8XG","102 Painswick Road, Stroud, GL5 8XG",agreed
+B-139,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-139,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-140,full_name,Mr Callum Clarke,Mr Callum Clarke,Mr Callum Clarke,agreed
+B-140,address,"30 Leckhampton Road, Cheltenham, GL52 8LT","30 Leckhampton Road, Cheltenham, GL52 8LT","30 Leckhampton Road, Cheltenham, GL52 8LT",agreed
+B-140,statement_date,04 Aug 2026,04 Aug 2026,04 Aug 2026,agreed
+B-140,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-141,full_name,Mr Kofi Iqbal,Mr Kofi Iqbal,Mr Kofi Iqbal,agreed
+B-141,address,"46 Cheltenham Road, Stroud, GL5 2SG","46 Cheltenham Road, Stroud, GL5 2SG","46 Cheltenham Road, Stroud, GL5 2SG",agreed
+B-141,statement_date,12 Sep 2026,12 Sep 2026,12 Sep 2026,agreed
+B-141,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-142,full_name,Mr Luca Byrne & Mrs Ruby Byrne,Mr Luca Byrne & Mrs Ruby Byrne,Mr Luca Byrne & Mrs Ruby Byrne,agreed
+B-142,address,"96 Gloucester Road, Stroud, GL5 5RB","96 Gloucester Road, Stroud, GL5 5RB","96 Gloucester Road, Stroud, GL5 5RB",agreed
+B-142,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-142,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-143,full_name,Ms Bethan Khan,Ms Bethan Khan,Ms Bethan Khan,agreed
+B-143,address,"139 Cotswold Way, Cheltenham, GL52 9NS","139 Cotswold Way, Cheltenham, GL52 9NS","139 Cotswold Way, Cheltenham, GL52 9NS",agreed
+B-143,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-143,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-144,full_name,Miss Sofia Demir,Miss Sofia Demir,Miss Sofia Demir,agreed
+B-144,address,"135 Cheltenham Road, Gloucester, GL2 1PD","135 Cheltenham Road, Gloucester, GL2 1PD","135 Cheltenham Road, Gloucester, GL2 1PD",agreed
+B-144,statement_date,28 Aug 2026,28 Aug 2026,28 Aug 2026,agreed
+B-144,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-145,full_name,Miss Bethan Hart,Miss Bethan Hart,Miss Bethan Hart,agreed
+B-145,address,"Flat 10, 139 Orchard Close, Gloucester, GL1 4PY","Flat 10, 139 Orchard Close, Gloucester, GL1 4PY","Flat 10, 139 Orchard Close, Gloucester, GL1 4PY",agreed
+B-145,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-145,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-146,full_name,Mr Ravi Rossi & Ms Chloe Rossi,Mr Ravi Rossi & Ms Chloe Rossi,Mr Ravi Rossi & Ms Chloe Rossi,agreed
+B-146,address,"100 Barton Street, Nailsworth, GL6 2XU","100 Barton Street, Nailsworth, GL6 2XU","100 Barton Street, Nailsworth, GL6 2XU",agreed
+B-146,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-146,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-147,full_name,Mrs Ellie Bello,Mrs Ellie Bello,Mrs Ellie Bello,agreed
+B-147,address,"Flat 9, 38 Westgate Street, Lydney, GL15 7JH","Flat 9, 38 Westgate Street, Lydney, GL15 7JH","Flat 9, 38 Westgate Street, Lydney, GL15 7JH",agreed
+B-147,statement_date,07 Oct 2026,07 Oct 2026,07 Oct 2026,agreed
+B-147,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-148,full_name,Mr Theo Ward & Ms Poppy Ward,Mr Theo Ward & Ms Poppy Ward,Mr Theo Ward & Ms Poppy Ward,agreed
+B-148,address,"76 Hucclecote Road, Stroud, GL5 5LW","76 Hucclecote Road, Stroud, GL5 5LW","76 Hucclecote Road, Stroud, GL5 5LW",agreed
+B-148,statement_date,06 Oct 2026,06 Oct 2026,06 Oct 2026,agreed
+B-148,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-149,full_name,Ms Isla Bello & Mr Mateusz Bello,Ms Isla Bello & Mr Mateusz Bello,Ms Isla Bello & Mr Mateusz Bello,agreed
+B-149,address,"99 Hucclecote Road, Cirencester, GL7 5JH","99 Hucclecote Road, Cirencester, GL7 5JH","99 Hucclecote Road, Cirencester, GL7 5JH",agreed
+B-149,statement_date,03 Sep 2026,03 Sep 2026,03 Sep 2026,agreed
+B-149,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-150,full_name,Mr George Campbell,Mr George Campbell,Mr George Campbell,agreed
+B-150,address,"10 Tewkesbury Road, Gloucester, GL4 2JS","10 Tewkesbury Road, Gloucester, GL4 2JS","10 Tewkesbury Road, Gloucester, GL4 2JS",agreed
+B-150,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-150,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-151,full_name,Mr Alfie Bello,Mr Alfie Bello,Mr Alfie Bello,agreed
+B-151,address,"7 Elm Grove, Cirencester, GL7 9ED","7 Elm Grove, Cirencester, GL7 9ED","7 Elm Grove, Cirencester, GL7 9ED",agreed
+B-151,statement_date,16 Sep 2026,16 Sep 2026,16 Sep 2026,agreed
+B-151,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-152,full_name,Mr Daniel Reid,Mr Daniel Reid,Mr Daniel Reid,agreed
+B-152,address,"Flat 1, 119 Victoria Street, Nailsworth, GL6 1SL","Flat 1, 119 Victoria Street, Nailsworth, GL6 1SL","Flat 1, 119 Victoria Street, Nailsworth, GL6 1SL",agreed
+B-152,statement_date,06 Aug 2026,06 Aug 2026,06 Aug 2026,agreed
+B-152,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-153,full_name,Mr Theo Evans,Mr Theo Evans,Mr Theo Evans,agreed
+B-153,address,"123 Cotswold Way, Gloucester, GL4 8AR","123 Cotswold Way, Gloucester, GL4 8AR","123 Cotswold Way, Gloucester, GL4 8AR",agreed
+B-153,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-153,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-154,full_name,Mr Luca Lloyd,Mr Luca Lloyd,Mr Luca Lloyd,agreed
+B-154,address,"71 Tewkesbury Road, Gloucester, GL2 8UA","71 Tewkesbury Road, Gloucester, GL2 8UA","71 Tewkesbury Road, Gloucester, GL2 8UA",agreed
+B-154,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-154,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-155,full_name,Ms Bethan Sutton & Mr Rohan Sutton,Ms Bethan Sutton & Mr Rohan Sutton,Ms Bethan Sutton & Mr Rohan Sutton,agreed
+B-155,address,"118 Bristol Road, Cheltenham, GL53 3US","118 Bristol Road, Cheltenham, GL53 3US","118 Bristol Road, Cheltenham, GL53 3US",agreed
+B-155,statement_date,18 Sep 2026,18 Sep 2026,18 Sep 2026,agreed
+B-155,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-156,full_name,Mrs Ruby Lloyd,Mrs Ruby Lloyd,Mrs Ruby Lloyd,agreed
+B-156,address,"Flat 7, 116 Meadow View, Cheltenham, GL50 5DR","Flat 7, 116 Meadow View, Cheltenham, GL50 5DR","Flat 7, 116 Meadow View, Cheltenham, GL50 5DR",agreed
+B-156,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-156,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-157,full_name,Mr Reza Wood,Mr Reza Wood,Mr Reza Wood,agreed
+B-157,address,"Flat 5, 28 Hucclecote Road, Tewkesbury, GL20 9QA","Flat 5, 28 Hucclecote Road, Tewkesbury, GL20 9QA","Flat 5, 28 Hucclecote Road, Tewkesbury, GL20 9QA",agreed
+B-157,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-157,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-158,full_name,Miss Megan Kaur,Miss Megan Kaur,Miss Megan Kaur,agreed
+B-158,address,"19 Meadow View, Nailsworth, GL6 9YP","19 Meadow View, Nailsworth, GL6 9YP","19 Meadow View, Nailsworth, GL6 9YP",agreed
+B-158,statement_date,24 Sep 2026,24 Sep 2026,24 Sep 2026,agreed
+B-158,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-159,full_name,Ms Mei Boateng,Ms Mei Boateng,Ms Mei Boateng,agreed
+B-159,address,"Flat 2, 20 Kings Road, Gloucester, GL1 5DE","Flat 2, 20 Kings Road, Gloucester, GL1 5DE","Flat 2, 20 Kings Road, Gloucester, GL1 5DE",agreed
+B-159,statement_date,02 Oct 2026,03 Oct 2026,02 Oct 2026,tom
+B-159,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-160,full_name,Mr Harvey Lloyd,Mr Harvey Lloyd,Mr Harvey Lloyd,agreed
+B-160,address,"111 Gloucester Road, Cheltenham, GL50 8HG","111 Gloucester Road, Cheltenham, GL50 8HG","111 Gloucester Road, Cheltenham, GL50 8HG",agreed
+B-160,statement_date,17 Sep 2026,17 Sep 2026,17 Sep 2026,agreed
+B-160,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-161,full_name,Mr Arun Walsh,Mr Arun Walsh,Mr Arun Walsh,agreed
+B-161,address,"91 Barton Street, Cheltenham, GL53 9SX","91 Barton Street, Cheltenham, GL53 9SX","91 Barton Street, Cheltenham, GL53 9SX",agreed
+B-161,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-161,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-162,full_name,Ms Bethan Lloyd,Ms Bethan Lloyd,Ms Bethan Lloyd,agreed
+B-162,address,"59 Tewkesbury Road, Winchcombe, GL54 7XG","59 Tewkesbury Road, Winchcombe, GL54 7XG","59 Tewkesbury Road, Winchcombe, GL54 7XG",agreed
+B-162,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-162,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-163,full_name,Mr Daniel Sharma,Mr Daniel Sharma,Mr Daniel Sharma,agreed
+B-163,address,"44 Farm Lane, Cirencester, GL7 9NW","44 Farm Lane, Cirencester, GL7 9NW","44 Farm Lane, Cirencester, GL7 9NW",agreed
+B-163,statement_date,15 Sep 2026,15 Sep 2026,15 Sep 2026,agreed
+B-163,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-164,full_name,Ms Molly Evans,Ms Molly Evnas,Ms Molly Evans,tom
+B-164,address,"Flat 8, 104 Market Street, Stroud, GL5 9PT","Flat 8, 104 Market Street, Stroud, GL5 9PT","Flat 8, 104 Market Street, Stroud, GL5 9PT",agreed
+B-164,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-164,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-165,full_name,Ms Hannah Fraser,Ms Hannah Fraser,Ms Hannah Fraser,agreed
+B-165,address,"Flat 12, 69 Green Lane, Cirencester, GL7 9GS","Flat 12, 69 Green Lane, Cirencester, GL7 9GS","Flat 12, 69 Green Lane, Cirencester, GL7 9GS",agreed
+B-165,statement_date,12 Oct 2026,12 Oct 2026,12 Oct 2026,agreed
+B-165,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-166,full_name,Miss Mei Griffiths,Miss Mei Griffiths,Miss Mei Griffiths,agreed
+B-166,address,"53 Barton Street, Quedgeley, GL2 3SE","53 Barton Street, Quedgeley, GL2 3SE","53 Barton Street, Quedgeley, GL2 3SE",agreed
+B-166,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-166,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-167,full_name,Ms Joy Boateng & Mr Harvey Boateng,Ms Joy Boateng & Mr Harvey Boateng,Ms Joy Boateng & Mr Harvey Boateng,agreed
+B-167,address,"Flat 4, 52 Market Street, Cheltenham, GL51 4XL","Flat 4, 52 Market Street, Cheltenham, GL51 4XL","Flat 4, 52 Market Street, Cheltenham, GL51 4XL",agreed
+B-167,statement_date,05 Oct 2026,05 Oct 2026,05 Oct 2026,agreed
+B-167,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-168,full_name,Mr Kofi Bello & Ms Leela Bello,Mr Kofi Bello & Ms Leela Bello,Mr Kofi Bello & Ms Leela Bello,agreed
+B-168,address,"140 High Street, Cheltenham, GL53 7GW","140 High Street, Cheltenham, GL53 7GW","140 High Street, Cheltenham, GL53 7GW",agreed
+B-168,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-168,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-169,full_name,Ms Grace Lloyd,Ms Grace Lloyd,Ms Grace Lloyd,agreed
+B-169,address,"68 Meadow View, Cheltenham, GL51 1XJ","68 Meadow View, Cheltenham, GL51 1XJ","68 Meadow View, Cheltenham, GL51 1XJ",agreed
+B-169,statement_date,12 Oct 2026,12 Oct 2026,12 Oct 2026,agreed
+B-169,issuer,Lumenvale Energy Ltd,Lumenvale Energy,Lumenvale Energy,tom
+B-170,full_name,Mr Finley Kaur,Mr Finley Kaur,Mr Finley Kaur,agreed
+B-170,address,"111 Regent Street, Winchcombe, GL54 3ND","111 Regent Street, Winchcombe, GL54 3ND","111 Regent Street, Winchcombe, GL54 3ND",agreed
+B-170,statement_date,02 Sep 2026,02 Sep 2026,02 Sep 2026,agreed
+B-170,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-171,full_name,Ms Megan Okafor,Ms Megan Okafor,Ms Megan Okafor,agreed
+B-171,address,"59 Mill Lane, Cheltenham, GL53 9GB","59 Mill Lane, Cheltenham, GL53 9GB","59 Mill Lane, Cheltenham, GL53 9GB",agreed
+B-171,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-171,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-172,full_name,Ms Niamh Walsh,Ms Niamh Walsh,Ms Niamh Walsh,agreed
+B-172,address,"9 Westgate Street, Quedgeley, GL2 1FW","9 Westgate Street, Quedgeley, GL2 1WF","9 Westgate Street, Quedgeley, GL2 1FW",tom
+B-172,statement_date,10 Aug 2026,10 Aug 2026,10 Aug 2026,agreed
+B-172,issuer,Lumenvale Energy,Lumenvale Energy Ltd,Lumenvale Energy,tom
+B-173,full_name,Mr Imran Sharma,Mr Imran Sharma,Mr Imran Sharma,agreed
+B-173,address,"Flat 9, 23 Station Road, Gloucester, GL4 9EJ","Flat 9, 23 Station Road, Gloucester, GL4 9EJ","Flat 9, 23 Station Road, Gloucester, GL4 9EJ",agreed
+B-173,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-173,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-174,full_name,Mrs Amara Campbell,Mrs Amara Campbell,Mrs Amara Campbell,agreed
+B-174,address,"30 Regent Street, Stroud, GL5 6FB","30 Regent Street, Stroud, GL5 6FB","30 Regent Street, Stroud, GL5 6FB",agreed
+B-174,statement_date,01 Sep 2026,01 Sep 2026,01 Sep 2026,agreed
+B-174,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-175,full_name,Ms Hannah Demir,Ms Hannah Demir,Ms Hannah Demir,agreed
+B-175,address,"Flat 11, 53 Victoria Street, Cheltenham, GL53 2ZA","Flat 11, 53 Victoria Street, Cheltenham, GL53 2ZA","Flat 11, 53 Victoria Street, Cheltenham, GL53 2ZA",agreed
+B-175,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-175,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-176,full_name,Ms Molly Evans,Ms Molly Evans,Ms Molly Evans,agreed
+B-176,address,"Flat 9, 40 Bristol Road, Lydney, GL15 3SP","Flat 9, 40 Bristol Road, Lydney, GL15 3SP","Flat 9, 40 Bristol Road, Lydney, GL15 3SP",agreed
+B-176,statement_date,02 Sep 2026,02 Sep 2026,02 Sep 2026,agreed
+B-176,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-177,full_name,Ms Fatima Boateng,Ms Fatima Boateng,Ms Fatima Boateng,agreed
+B-177,address,"Flat 11, 36 Station Road, Lydney, GL15 8JG","Flat 11, 36 Station Road, Lydney, GL15 8JG","Flat 11, 36 Station Road, Lydney, GL15 8JG",agreed
+B-177,statement_date,06 Oct 2026,06 Oct 2026,06 Oct 2026,agreed
+B-177,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-178,full_name,Ms Grace Fletcher & Mr Kwame Fletcher,Ms Grace Fletcher & Mr Kwame Fletcher,Ms Grace Fletcher & Mr Kwame Fletcher,agreed
+B-178,address,"Flat 12, 131 Painswick Road, Gloucester, GL1 4UF","Flat 12, 131 Painswick Road, Gloucester, GL1 4UF","Flat 12, 131 Painswick Road, Gloucester, GL1 4UF",agreed
+B-178,statement_date,02 Sep 2026,02 Sep 2026,02 Sep 2026,agreed
+B-178,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-179,full_name,Miss Chloe Wood & Mr Tariq Wood,Miss Chloe Wood & Mr Tariq Wood,Miss Chloe Wood & Mr Tariq Wood,agreed
+B-179,address,"65 Victoria Street, Nailsworth, GL6 1NG","65 Victoria Street, Nailsworth, GL6 1NG","65 Victoria Street, Nailsworth, GL6 1NG",agreed
+B-179,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-179,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-180,full_name,Mr Arun Haddad,Mr Arun Haddad,Mr Arun Haddad,agreed
+B-180,address,"Flat 3, 101 Green Lane, Gloucester, GL2 3PX","Flat 3, 101 Green Lane, Gloucester, GL2 3PX","Flat 3, 101 Green Lane, Gloucester, GL2 3PX",agreed
+B-180,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-180,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-181,full_name,Ms Isla Morgan,Ms Isla Morgan,Ms Isla Morgan,agreed
+B-181,address,"23 Regent Street, Tewkesbury, GL20 3LY","23 Regent Street, Tewkesbury, GL20 3LY","23 Regent Street, Tewkesbury, GL20 3LY",agreed
+B-181,statement_date,12 Oct 2026,12 Oct 2026,12 Oct 2026,agreed
+B-181,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-182,full_name,Mrs Zainab Murphy,Mrs Zainab Murphy,Mrs Zainab Murphy,agreed
+B-182,address,"Flat 6, 34 Tewkesbury Road, Stroud, GL5 8ZU","Flat 6, 34 Tewkesbury Road, Stroud, GL5 8ZU","Flat 6, 34 Tewkesbury Road, Stroud, GL5 8ZU",agreed
+B-182,statement_date,25 Sep 2026,25 Sep 2026,25 Sep 2026,agreed
+B-182,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-183,full_name,Mr Lewis Lloyd,Mr Lewis Lloyd,Mr Lewis Lloyd,agreed
+B-183,address,"19 Hales Road, Lydney, GL15 6HH","19 Hales Road, Lydney, GL15 6HH","19 Hales Road, Lydney, GL15 6HH",agreed
+B-183,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-183,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-184,full_name,Ms Bethan Price,Ms Bethan Price,Ms Bethan Price,agreed
+B-184,address,"80 Gloucester Road, Gloucester, GL4 5EX","80 Gloucester Road, Gloucester, GL4 5EX","80 Gloucester Road, Gloucester, GL4 5EX",agreed
+B-184,statement_date,02 Oct 2026,02 Oct 2026,02 Oct 2026,agreed
+B-184,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-185,full_name,Ms Hannah Eze,Ms Hannah Eze,Ms Hannah Eze,agreed
+B-185,address,"78 Cotswold Way, Quedgeley, GL2 2AU","78 Cotswold Way, Quedgeley, GL2 2AU","78 Cotswold Way, Quedgeley, GL2 2AU",agreed
+B-185,statement_date,13 Aug 2026,13 Aug 2026,13 Aug 2026,agreed
+B-185,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-186,full_name,Mr Owen Carter,Mr Owen Carter,Mr Owen Carter,agreed
+B-186,address,"Flat 1, 91 Church Street, Cheltenham, GL50 2TW","Flat 1, 91 Church Street, Cheltenham, GL50 2TW","Flat 1, 91 Church Street, Cheltenham, GL50 2TW",agreed
+B-186,statement_date,21 Aug 2026,21 Aug 2026,21 Aug 2026,agreed
+B-186,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-187,full_name,Ms Grace Evans,Ms Grace Evans,Ms Grace Evans,agreed
+B-187,address,"100 Tewkesbury Road, Gloucester, GL2 6YJ","100 Tewkesbury Road, Gloucester, GL2 6YJ","100 Tewkesbury Road, Gloucester, GL2 6YJ",agreed
+B-187,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-187,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-188,full_name,Ms Sofia Grant,Ms Sofia Grant,Ms Sofia Grant,agreed
+B-188,address,"102 Westgate Street, Nailsworth, GL6 4FY","102 Westgate Street, Nailsworth, GL6 4FY","102 Westgate Street, Nailsworth, GL6 4FY",agreed
+B-188,statement_date,22 Aug 2026,22 Aug 2026,22 Aug 2026,agreed
+B-188,issuer,Lumenvale Energy,Lumenvale Energy,Lumenvale Energy,agreed
+B-189,full_name,Mr Kwame Sutton & Ms Olivia Sutton,Mr Kwame Sutton & Ms Olivia Sutton,Mr Kwame Sutton & Ms Olivia Sutton,agreed
+B-189,address,"40 Gloucester Road, Winchcombe, GL54 3QZ","40 Gloucester Road, Winchcombe, GL54 3QZ","40 Gloucester Road, Winchcombe, GL54 3QZ",agreed
+B-189,statement_date,12 Aug 2026,12 Aug 2026,12 Aug 2026,agreed
+B-189,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-190,full_name,Mr Arun Griffiths,Mr Arun Griffiths,Mr Arun Griffiths,agreed
+B-190,address,"9 Abbey Road, Gloucester, GL4 8JY","9 Abbey Road, Gloucester, GL4 8JY","9 Abbey Road, Gloucester, GL4 8JY",agreed
+B-190,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-190,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-191,full_name,Mrs Poppy Murphy,Mrs Poppy Murphy,Mrs Poppy Murphy,agreed
+B-191,address,"26 Market Street, Cheltenham, GL50 2PG","26 Market Street, Cheltenham, GL50 2PG","26 Market Street, Cheltenham, GL50 2PG",agreed
+B-191,statement_date,08 Sep 2026,08 Sep 2026,08 Sep 2026,agreed
+B-191,issuer,Fenwick Gas & Power,Fenwick Gas & Power,Fenwick Gas & Power,agreed
+B-192,full_name,Miss Olivia Novak,Miss Olivia Novak,Miss Olivia Novak,agreed
+B-192,address,"12 Victoria Street, Quedgeley, GL2 8SW","12 Victoria Street, Quedgeley, GL2 8SW","12 Victoria Street, Quedgeley, GL2 8SW",agreed
+B-192,statement_date,04 Sep 2026,04 Sep 2026,04 Sep 2026,agreed
+B-192,issuer,Northmere Bank Ltd,Northmere Bank,Northmere Bank,tom
+B-193,full_name,Ms Poppy Sutton,Ms Poppy Sutton,Ms Poppy Sutton,agreed
+B-193,address,"121 Mill Lane, Cheltenham, GL50 2FU","121 Mill Lane, Cheltenham, GL50 2FU","121 Mill Lane, Cheltenham, GL50 2FU",agreed
+B-193,statement_date,14 Sep 2026,14 Sep 2026,14 Sep 2026,agreed
+B-193,issuer,Harrowgate Water,Harrowgate Water,Harrowgate Water,agreed
+B-194,full_name,Mr Reza Rahimi,Mr Reza Rahimi,Mr Reza Rahimi,agreed
+B-194,address,"41 Park Road, Cheltenham, GL50 2AQ","41 Park Road, Cheltenham, GL50 2AQ","41 Park Road, Cheltenham, GL50 2AQ",agreed
+B-194,statement_date,21 Aug 2026,21 Aug 2026,21 Aug 2026,agreed
+B-194,issuer,Copperline Broadband,Copperline Broadband Ltd,Copperline Broadband,tom
+B-195,full_name,Mr Lewis Campbell,Mr Lewis Campbell,Mr Lewis Campbell,agreed
+B-195,address,"110 Church Street, Cheltenham, GL53 5SW","110 Church Street, Cheltenham, GL53 5SW","110 Church Street, Cheltenham, GL53 5SW",agreed
+B-195,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-195,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-196,full_name,Mr Samuel Byrne,Mr Samuel Byrne,Mr Samuel Byrne,agreed
+B-196,address,"67 Hales Road, Winchcombe, GL54 4HL","67 Hales Road, Winchcombe, GL54 4HL","67 Hales Road, Winchcombe, GL54 4HL",agreed
+B-196,statement_date,22 Aug 2026,22 Aug 2026,22 Aug 2026,agreed
+B-196,issuer,Copperline Broadband,Copperline Broadband,Copperline Broadband,agreed
+B-197,full_name,Ms Sofia Price,Ms Sofia Price,Ms Sofia Price,agreed
+B-197,address,"132 Tewkesbury Road, Cheltenham, GL51 1QF","132 Tewkesbury Road, Cheltenham, GL51 1QF","132 Tewkesbury Road, Cheltenham, GL51 1QF",agreed
+B-197,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-197,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-198,full_name,Mrs Joy Griffiths,Mrs Joy Griffiths,Mrs Joy Griffiths,agreed
+B-198,address,"126 Painswick Road, Lydney, GL15 7LP","126 Painswick Road, Lydney, GL15 7LP","126 Painswick Road, Lydney, GL15 7LP",agreed
+B-198,statement_date,04 Oct 2026,04 Oct 2026,04 Oct 2026,agreed
+B-198,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-199,full_name,Ms Hannah Lewis & Mr Arun Lewis,Ms Hannah Lewis & Mr Arun Lewis,Ms Hannah Lewis & Mr Arun Lewis,agreed
+B-199,address,"Flat 9, 107 Abbey Road, Gloucester, GL4 9TP","Flat 9, 107 Abbey Road, Gloucester, GL4 9TP","Flat 9, 107 Abbey Road, Gloucester, GL4 9TP",agreed
+B-199,statement_date,03 Oct 2026,03 Oct 2026,03 Oct 2026,agreed
+B-199,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed
+B-200,full_name,Mr Callum Carter,Mr Callum Carter,Mr Callum Carter,agreed
+B-200,address,"24 Barton Street, Cheltenham, GL50 2PF","24 Barton Street, Cheltenham, GL50 2PF","24 Barton Street, Cheltenham, GL50 2PF",agreed
+B-200,statement_date,01 Oct 2026,01 Oct 2026,01 Oct 2026,agreed
+B-200,issuer,Northmere Bank,Northmere Bank,Northmere Bank,agreed

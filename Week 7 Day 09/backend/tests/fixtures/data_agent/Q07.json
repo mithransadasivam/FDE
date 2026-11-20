@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT ROUND(AVG(date_diff('day', received_at, decided_at)), 1) AS avg_turnaround_days FROM caseflow.cases WHERE decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+  "explanation": "The average number of days from receiving an application to deciding it, for applications decided in October 2026.",
+  "assumptions": [
+    "Turnaround is the calendar days from received_at to decided_at",
+    "Averaged over applications decided in October 2026"
+  ],
+  "cannot_answer": ""
+}

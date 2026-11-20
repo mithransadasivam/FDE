@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Sofia Demir"
+  },
+  {
+   "name": "address",
+   "value": "135 Cheltenham Road, Gloucester, GL2 1PD"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-28"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

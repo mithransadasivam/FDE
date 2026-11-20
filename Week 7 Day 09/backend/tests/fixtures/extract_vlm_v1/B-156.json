@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Ruby Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "Flat 7, 116 Meadow View, Cheltenham, GL50 5DR"
+  },
+  {
+   "name": "statement_date",
+   "value": "08 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

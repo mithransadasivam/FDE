@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Niamh Parry"
+  },
+  {
+   "name": "address",
+   "value": "Flat 12, 22 Leckhampton Road, Gloucester, GL4 9JE"
+  },
+  {
+   "name": "statement_date",
+   "value": "1 April 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Severnside District Council"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Olivia Rahimi"
+  },
+  {
+   "name": "address",
+   "value": "Flat 8, 130 Cotswold Way, Cirencester, GL7 5ZG"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-18"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

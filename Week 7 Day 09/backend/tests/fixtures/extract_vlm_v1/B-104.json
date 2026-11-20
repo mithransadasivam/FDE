@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Lewis"
+  },
+  {
+   "name": "address",
+   "value": "131 Victoria Street, Winchcombe, GL54 5LE"
+  },
+  {
+   "name": "statement_date",
+   "value": "23 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

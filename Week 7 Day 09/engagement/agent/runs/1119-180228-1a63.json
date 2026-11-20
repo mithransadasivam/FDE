@@ -1,0 +1,222 @@
+{
+  "id": "1119-180228-1a63",
+  "ticket_id": "KX-1011",
+  "person": "helen.achebe",
+  "prompt": "ops_v1",
+  "model": "anthropic/claude-haiku-5.5",
+  "mode": "shadow",
+  "status": "proposed",
+  "stop_reason": "",
+  "outcome": "Refer to Financial Crime",
+  "reason_code": "R04",
+  "reference": "",
+  "summary": "Proposed Refer to Financial Crime (R04); shadow mode writes nothing",
+  "started_at": 1795140148.816054,
+  "ended_at": 1795140150.4995303,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "I start by reading exception KX-1011.",
+      "tool": "get_exception",
+      "args": {
+        "ticket_id": "KX-1011"
+      },
+      "target": "KX-1011",
+      "decision": "allow",
+      "observation": "{\"ticket_id\": \"KX-1011\", \"case_id\": \"KC-023336\", \"customer_id\": \"CU-023336\", \"team_id\": \"M1\", \"kind\": \"escalation\", \"title\": \"Escalated document: Financial Crime to review\", \"status\": \"open\", \"assignee\": \"A12\", \"created_at\": \"2026-10-18T15:19\", \"comments\": []}",
+      "tokens_in": 1077,
+      "tokens_out": 26,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 2,
+      "thought": "It is an escalation on case KC-023336. Next, the customer's risk rating.",
+      "tool": "get_customer",
+      "args": {
+        "customer_id": "CU-023336"
+      },
+      "target": "CU-023336",
+      "decision": "allow",
+      "observation": "{\"customer_id\": \"CU-023336\", \"name\": \"Jack Clarke\", \"customer_type\": \"personal\", \"region\": \"Midlands\", \"team_id\": \"M1\", \"risk_rating\": \"low\", \"email\": \"applicant023336@example.com\", \"phone\": \"+44 7700 900539\", \"open_case_id\": \"KC-023336\", \"case_status\": \"open\", \"contacts\": [{\"at\": \"2026-10-14T19:19\", \"channel\": \"branch\", \"by\": \"A13\", \"summary\": \"Applicant will send a clearer photo of the passport\"}], \"notes\": []}",
+      "tokens_in": 1170,
+      "tokens_out": 36,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 3,
+      "thought": "Risk rating low. Now the documents on file.",
+      "tool": "list_documents",
+      "args": {
+        "customer_id": "CU-023336"
+      },
+      "target": "CU-023336",
+      "decision": "allow",
+      "observation": "{\"documents\": [{\"doc_id\": \"DS-0039\", \"customer_id\": \"CU-023336\", \"team_id\": \"M1\", \"doc_type\": \"bank_statement\", \"received_at\": \"2026-10-13T15:19\", \"pages\": 1, \"sensitivity\": \"personal\"}, {\"doc_id\": \"DS-0040\", \"customer_id\": \"CU-023336\", \"team_id\": \"M1\", \"doc_type\": \"council_tax_bill\", \"received_at\": \"2026-10-13T16:19\", \"pages\": 1, \"sensitivity\": \"personal\"}]}",
+      "tokens_in": 1312,
+      "tokens_out": 29,
+      "seconds": 0.1,
+      "shot": null
+    },
+    {
+      "n": 4,
+      "thought": "Documents on file: bank statement, council tax bill. I open CaseFlow Classic to read the case.",
+      "tool": "open_caseflow",
+      "args": {},
+      "target": "*",
+      "decision": "allow",
+      "observation": "Screen: Main menu\nheading \"Main menu\"\n[e1] link \"Find a case\"\n[e2] link \"My work list\"\n[e3] link \"Sign out\"",
+      "tokens_in": 1433,
+      "tokens_out": 35,
+      "seconds": 0.8,
+      "shot": "step_04.png"
+    },
+    {
+      "n": 5,
+      "thought": "I go to the case search.",
+      "tool": "click",
+      "args": {
+        "name": "Find a case"
+      },
+      "target": "Find a case",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1497,
+      "tokens_out": 21,
+      "seconds": 0.9,
+      "shot": "step_05.png"
+    },
+    {
+      "n": 6,
+      "thought": "I search for case KC-023336.",
+      "tool": "type",
+      "args": {
+        "field": "Case reference",
+        "text": "KC-023336"
+      },
+      "target": "Case reference",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"KC-023336\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1550,
+      "tokens_out": 27,
+      "seconds": 1.0,
+      "shot": "step_06.png"
+    },
+    {
+      "n": 7,
+      "thought": "Search.",
+      "tool": "click",
+      "args": {
+        "name": "Search"
+      },
+      "target": "Search",
+      "decision": "allow",
+      "observation": "Screen: Case KC-023336\nheading \"Case KC-023336\"\nrow \"Customer | Jack Clarke (CU-023336)\"\nrow \"Team | M1\"\nrow \"Received | 13/10/2026\"\nrow \"Status | OPEN\"\nrow \"Risk | LOW\"\nrow \"Analyst | Joel Achterberg (A12)\"\nheading \"Case history\"\nrow \"Date | By | Entry\"\nrow \"13/10/2026 | SYSTEM | Application received through the web form.\"\nrow \"13/10/2026 | SYSTEM | Document received: bank statement (DS-0039).\"\nrow \"13/10/2026 | SYSTEM | Document received: council tax bill (DS-0040).\"\nrow \"14/10/2026 | A13 | Contact by branch: Applicant will send a clearer photo of the passport.\"\n[e1] button \"Record outcome\"\n[e2] link \"Main menu\"",
+      "tokens_in": 1611,
+      "tokens_out": 15,
+      "seconds": 1.1,
+      "shot": "step_07.png"
+    },
+    {
+      "n": 8,
+      "thought": "I have read the case and its history. I open the outcome form.",
+      "tool": "click",
+      "args": {
+        "name": "Record outcome"
+      },
+      "target": "Record outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-023336\nheading \"Record outcome · KC-023336\"\n[e1] combobox \"Outcome\" = \"\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 1784,
+      "tokens_out": 31,
+      "seconds": 1.2,
+      "shot": "step_08.png"
+    },
+    {
+      "n": 9,
+      "thought": "The outcome is Refer to Financial Crime: the exception is an escalation (rule 1).",
+      "tool": "choose",
+      "args": {
+        "field": "Outcome",
+        "option": "Refer to Financial Crime"
+      },
+      "target": "Outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-023336\nheading \"Record outcome · KC-023336\"\n[e1] combobox \"Outcome\" = \"Refer to Financial Crime\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 1943,
+      "tokens_out": 44,
+      "seconds": 1.3,
+      "shot": "step_09.png"
+    },
+    {
+      "n": 10,
+      "thought": "Reason code R04.",
+      "tool": "choose",
+      "args": {
+        "field": "Reason code",
+        "option": "R04 Financial crime concern"
+      },
+      "target": "Reason code",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-023336\nheading \"Record outcome · KC-023336\"\n[e1] combobox \"Outcome\" = \"Refer to Financial Crime\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R04 Financial crime concern\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2120,
+      "tokens_out": 29,
+      "seconds": 1.3,
+      "shot": "step_10.png"
+    },
+    {
+      "n": 11,
+      "thought": "A short note for the case history.",
+      "tool": "type",
+      "args": {
+        "field": "Note",
+        "text": "Refer to Financial Crime: the exception is an escalation (rule 1). Exception KX-1011."
+      },
+      "target": "Note",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-023336\nheading \"Record outcome · KC-023336\"\n[e1] combobox \"Outcome\" = \"Refer to Financial Crime\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R04 Financial crime concern\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"Refer to Financial Crime: the exception is an escalation (rule 1). Exception KX-1011.\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2290,
+      "tokens_out": 45,
+      "seconds": 1.4,
+      "shot": "step_11.png"
+    },
+    {
+      "n": 12,
+      "thought": "The form is complete. Save.",
+      "tool": "click",
+      "args": {
+        "name": "Save"
+      },
+      "target": "Save",
+      "decision": "allow",
+      "observation": "Screen: Confirm KC-023336\nheading \"Confirm outcome · KC-023336\"\nrow \"Outcome | Refer to Financial Crime\"\nrow \"Reason code | R04 Financial crime concern\"\nrow \"Note | Refer to Financial Crime: the exception is an escalation (rule 1). Exception KX-1011.\"\n[e1] button \"Back\"\n[e2] button \"Confirm\"",
+      "tokens_in": 2498,
+      "tokens_out": 20,
+      "seconds": 1.5,
+      "shot": "step_12.png"
+    },
+    {
+      "n": 13,
+      "thought": "The confirm screen shows what I chose. Confirm.",
+      "tool": "click",
+      "args": {
+        "name": "Confirm"
+      },
+      "target": "Confirm",
+      "decision": "rejected",
+      "observation": "Rejected by shadow mode: Evaluation: proposed, not written",
+      "tokens_in": 2593,
+      "tokens_out": 26,
+      "seconds": 1.6,
+      "shot": null
+    }
+  ],
+  "approvals": [
+    "1119-180228-1a63-a1"
+  ],
+  "tokens_in": 22878,
+  "tokens_out": 384,
+  "cost_usd": 0.0024798000000000003,
+  "queue_id": ""
+}

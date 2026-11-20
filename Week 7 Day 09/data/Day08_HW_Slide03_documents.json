@@ -1,0 +1,1003 @@
+{
+ "documents": [
+  {
+   "doc_id": "DS-0001",
+   "customer_id": "CU-022578",
+   "team_id": "N1",
+   "doc_type": "passport",
+   "received_at": "2026-10-02T14:24",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0002",
+   "customer_id": "CU-022034",
+   "team_id": "N1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-09T10:36",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0003",
+   "customer_id": "CU-022034",
+   "team_id": "N1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-09T11:36",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0004",
+   "customer_id": "CU-020480",
+   "team_id": "N1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-25T11:15",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0005",
+   "customer_id": "CU-023327",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-29T21:43",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0006",
+   "customer_id": "CU-020153",
+   "team_id": "N1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-30T07:48",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0007",
+   "customer_id": "CU-020604",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-17T19:29",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0008",
+   "customer_id": "CU-020604",
+   "team_id": "N1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-09-17T20:29",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0009",
+   "customer_id": "CU-021891",
+   "team_id": "N1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-29T20:52",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0010",
+   "customer_id": "CU-021891",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-29T21:52",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0011",
+   "customer_id": "CU-022406",
+   "team_id": "N1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-13T07:08",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0012",
+   "customer_id": "CU-021864",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-06T08:03",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0013",
+   "customer_id": "CU-021864",
+   "team_id": "N1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-06T09:03",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0014",
+   "customer_id": "CU-020721",
+   "team_id": "N1",
+   "doc_type": "passport",
+   "received_at": "2026-09-30T19:43",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0015",
+   "customer_id": "CU-020721",
+   "team_id": "N1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-09-30T20:43",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0016",
+   "customer_id": "CU-021702",
+   "team_id": "N1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-09-08T12:20",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0017",
+   "customer_id": "CU-021702",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-08T13:20",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0018",
+   "customer_id": "CU-022161",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-05T14:12",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0019",
+   "customer_id": "CU-022161",
+   "team_id": "N1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-05T15:12",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0020",
+   "customer_id": "CU-021805",
+   "team_id": "N2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-08T17:04",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0021",
+   "customer_id": "CU-021961",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-12T19:42",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0022",
+   "customer_id": "CU-023331",
+   "team_id": "N2",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-07T19:05",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0023",
+   "customer_id": "CU-022129",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-06T21:48",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0024",
+   "customer_id": "CU-020166",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-30T12:06",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0025",
+   "customer_id": "CU-020166",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-30T13:06",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0026",
+   "customer_id": "CU-023033",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-26T20:52",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0027",
+   "customer_id": "CU-021377",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-28T17:43",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0028",
+   "customer_id": "CU-021377",
+   "team_id": "N2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-28T18:43",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0029",
+   "customer_id": "CU-022293",
+   "team_id": "N2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-09T19:12",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0030",
+   "customer_id": "CU-023178",
+   "team_id": "N2",
+   "doc_type": "passport",
+   "received_at": "2026-10-13T17:21",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0031",
+   "customer_id": "CU-023178",
+   "team_id": "N2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-13T18:21",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0032",
+   "customer_id": "CU-020357",
+   "team_id": "N2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-28T18:03",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0033",
+   "customer_id": "CU-021259",
+   "team_id": "N2",
+   "doc_type": "passport",
+   "received_at": "2026-09-24T10:41",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0034",
+   "customer_id": "CU-023174",
+   "team_id": "N2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-06T08:19",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0035",
+   "customer_id": "CU-022975",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-27T19:48",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0036",
+   "customer_id": "CU-022975",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-27T20:48",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0037",
+   "customer_id": "CU-022233",
+   "team_id": "M1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-26T14:25",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0038",
+   "customer_id": "CU-022233",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-26T15:25",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0039",
+   "customer_id": "CU-023336",
+   "team_id": "M1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-13T15:19",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0040",
+   "customer_id": "CU-023336",
+   "team_id": "M1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-13T16:19",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0041",
+   "customer_id": "CU-019768",
+   "team_id": "M1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-20T07:03",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0042",
+   "customer_id": "CU-019768",
+   "team_id": "M1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-20T08:03",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0043",
+   "customer_id": "CU-021071",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-09-13T16:59",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0044",
+   "customer_id": "CU-021071",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-13T17:59",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0045",
+   "customer_id": "CU-021901",
+   "team_id": "M1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-02T12:35",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0046",
+   "customer_id": "CU-021901",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-02T13:35",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0047",
+   "customer_id": "CU-018965",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-09-28T14:55",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0048",
+   "customer_id": "CU-018965",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-28T15:55",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0049",
+   "customer_id": "CU-022155",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-12T18:05",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0050",
+   "customer_id": "CU-022155",
+   "team_id": "M1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-12T19:05",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0051",
+   "customer_id": "CU-023416",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-30T08:00",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0052",
+   "customer_id": "CU-023545",
+   "team_id": "M1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-27T18:21",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0053",
+   "customer_id": "CU-023545",
+   "team_id": "M1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-27T19:21",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0054",
+   "customer_id": "CU-022144",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-23T19:14",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0055",
+   "customer_id": "CU-023121",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-01T07:19",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0056",
+   "customer_id": "CU-023121",
+   "team_id": "M1",
+   "doc_type": "passport",
+   "received_at": "2026-10-01T08:19",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0057",
+   "customer_id": "CU-021952",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-15T07:46",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0058",
+   "customer_id": "CU-021496",
+   "team_id": "M2",
+   "doc_type": "passport",
+   "received_at": "2026-09-26T13:41",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0059",
+   "customer_id": "CU-018846",
+   "team_id": "M2",
+   "doc_type": "passport",
+   "received_at": "2026-09-28T21:10",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0060",
+   "customer_id": "CU-022047",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-13T16:52",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0061",
+   "customer_id": "CU-022047",
+   "team_id": "M2",
+   "doc_type": "passport",
+   "received_at": "2026-10-13T17:52",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0062",
+   "customer_id": "CU-022976",
+   "team_id": "M2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-14T21:14",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0063",
+   "customer_id": "CU-023398",
+   "team_id": "M2",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-17T11:52",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0064",
+   "customer_id": "CU-023398",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-17T12:52",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0065",
+   "customer_id": "CU-020139",
+   "team_id": "M2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-21T17:35",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0066",
+   "customer_id": "CU-020139",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-21T18:35",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0067",
+   "customer_id": "CU-020309",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-21T18:38",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0068",
+   "customer_id": "CU-020309",
+   "team_id": "M2",
+   "doc_type": "passport",
+   "received_at": "2026-09-21T19:38",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0069",
+   "customer_id": "CU-020235",
+   "team_id": "M2",
+   "doc_type": "bank_statement",
+   "received_at": "2026-09-25T14:10",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0070",
+   "customer_id": "CU-023109",
+   "team_id": "M2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-23T12:20",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0071",
+   "customer_id": "CU-023109",
+   "team_id": "M2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-23T13:20",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0072",
+   "customer_id": "CU-022475",
+   "team_id": "M2",
+   "doc_type": "passport",
+   "received_at": "2026-10-19T16:35",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0073",
+   "customer_id": "CU-022475",
+   "team_id": "M2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-19T17:35",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0074",
+   "customer_id": "CU-022811",
+   "team_id": "M2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-09T19:35",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0075",
+   "customer_id": "CU-022478",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-20T16:56",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0076",
+   "customer_id": "CU-022478",
+   "team_id": "S1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-20T17:56",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0077",
+   "customer_id": "CU-022925",
+   "team_id": "S1",
+   "doc_type": "passport",
+   "received_at": "2026-10-28T10:36",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0078",
+   "customer_id": "CU-021962",
+   "team_id": "S1",
+   "doc_type": "passport",
+   "received_at": "2026-10-28T18:42",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0079",
+   "customer_id": "CU-022041",
+   "team_id": "S1",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-27T18:05",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0080",
+   "customer_id": "CU-022748",
+   "team_id": "S1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-26T15:49",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0081",
+   "customer_id": "CU-022748",
+   "team_id": "S1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-26T16:49",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0082",
+   "customer_id": "CU-022273",
+   "team_id": "S1",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-27T21:14",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0083",
+   "customer_id": "CU-022273",
+   "team_id": "S1",
+   "doc_type": "passport",
+   "received_at": "2026-10-27T22:14",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0084",
+   "customer_id": "CU-022529",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-08T09:57",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0085",
+   "customer_id": "CU-022343",
+   "team_id": "S1",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-11T16:42",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0086",
+   "customer_id": "CU-022343",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-11T17:42",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0087",
+   "customer_id": "CU-022603",
+   "team_id": "S1",
+   "doc_type": "passport",
+   "received_at": "2026-10-12T16:42",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0088",
+   "customer_id": "CU-019898",
+   "team_id": "S1",
+   "doc_type": "passport",
+   "received_at": "2026-09-21T20:03",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0089",
+   "customer_id": "CU-022783",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-15T10:03",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0090",
+   "customer_id": "CU-022783",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-15T11:03",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0091",
+   "customer_id": "CU-021789",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-16T14:37",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0092",
+   "customer_id": "CU-021789",
+   "team_id": "S1",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-16T15:37",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0093",
+   "customer_id": "CU-022462",
+   "team_id": "S2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-10-11T15:06",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0094",
+   "customer_id": "CU-022462",
+   "team_id": "S2",
+   "doc_type": "passport",
+   "received_at": "2026-10-11T16:06",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0095",
+   "customer_id": "CU-021922",
+   "team_id": "S2",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-11T16:41",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0096",
+   "customer_id": "CU-021922",
+   "team_id": "S2",
+   "doc_type": "bank_statement",
+   "received_at": "2026-10-11T17:41",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0097",
+   "customer_id": "CU-022546",
+   "team_id": "S2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-25T08:09",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0098",
+   "customer_id": "CU-020200",
+   "team_id": "S2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-21T19:55",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0099",
+   "customer_id": "CU-020200",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-21T20:55",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0100",
+   "customer_id": "CU-023313",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-16T12:44",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0101",
+   "customer_id": "CU-023313",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-16T13:44",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0102",
+   "customer_id": "CU-019054",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-23T14:32",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0103",
+   "customer_id": "CU-019054",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-09-23T15:32",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0104",
+   "customer_id": "CU-023454",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-01T13:05",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0105",
+   "customer_id": "CU-021108",
+   "team_id": "S2",
+   "doc_type": "driving_licence",
+   "received_at": "2026-09-28T19:26",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0106",
+   "customer_id": "CU-023366",
+   "team_id": "S2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-10-01T15:11",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0107",
+   "customer_id": "CU-023366",
+   "team_id": "S2",
+   "doc_type": "passport",
+   "received_at": "2026-10-01T16:11",
+   "pages": 1,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0108",
+   "customer_id": "CU-021572",
+   "team_id": "S2",
+   "doc_type": "utility_bill",
+   "received_at": "2026-09-24T07:57",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0109",
+   "customer_id": "CU-020217",
+   "team_id": "S2",
+   "doc_type": "passport",
+   "received_at": "2026-09-30T07:44",
+   "pages": 3,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0110",
+   "customer_id": "CU-022230",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-01T16:21",
+   "pages": 2,
+   "sensitivity": "personal"
+  },
+  {
+   "doc_id": "DS-0111",
+   "customer_id": "CU-022230",
+   "team_id": "S2",
+   "doc_type": "council_tax_bill",
+   "received_at": "2026-10-01T17:21",
+   "pages": 2,
+   "sensitivity": "personal"
+  }
+ ]
+}

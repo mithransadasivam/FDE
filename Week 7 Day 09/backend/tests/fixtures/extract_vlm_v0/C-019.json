@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Mei Boateng"
+  },
+  {
+   "name": "address",
+   "value": "Flat 3, 63 Green Lane, Cheltenham, GL53 6WE"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-03-05"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

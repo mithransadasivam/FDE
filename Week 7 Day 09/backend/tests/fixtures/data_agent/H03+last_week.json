@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS documents FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-19' AND reviewed_at < DATE '2026-10-26'",
+  "explanation": "Documents reviewed from Monday 19 to Sunday 25 October 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

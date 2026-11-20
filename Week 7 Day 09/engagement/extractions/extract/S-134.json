@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Ms C Davies & Mr G Davies",
+      "word_ids": [
+        "w003",
+        "w004",
+        "w005",
+        "w006",
+        "w007",
+        "w008",
+        "w009"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "2 Poplar Crescent, Cheltenham, GL51 8MN",
+      "word_ids": [
+        "w010",
+        "w011",
+        "w012",
+        "w013",
+        "w014",
+        "w015"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "25 Feb 2026",
+      "word_ids": [
+        "w018",
+        "w019",
+        "w020"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Harrowgate Water",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "label": "20 harder questions (homework)",
+  "as_of": "2026-10-30",
+  "questions": [
+    {
+      "id": "H01",
+      "user": "helen.achebe",
+      "question": "How many applications did we receive this financial year?",
+      "tags": [
+        "period:financial_year"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS applications FROM caseflow.cases WHERE received_at >= DATE '2026-04-01'",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            12724
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H02",
+      "user": "helen.achebe",
+      "question": "What was our turnaround in the first quarter of this financial year?",
+      "tags": [
+        "period:financial_year",
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-04-01' AND decided_at < DATE '2026-07-01'",
+      "expected": {
+        "columns": [
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            5.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H03",
+      "user": "helen.achebe",
+      "question": "How many documents did we review last week?",
+      "tags": [
+        "period:last_week"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS documents FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-19' AND reviewed_at < DATE '2026-10-26'",
+      "expected": {
+        "columns": [
+          "documents"
+        ],
+        "rows": [
+          [
+            779
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H04",
+      "user": "helen.achebe",
+      "question": "What share of applications decided in October 2026 were first-time right?",
+      "tags": [
+        "term:first_time_right"
+      ],
+      "gold_sql": "SELECT ROUND(AVG(CASE WHEN c.status = 'approved' AND NOT EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) * 100, 1) AS first_time_right_pct FROM caseflow.cases c WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "first_time_right_pct"
+        ],
+        "rows": [
+          [
+            65.1
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H05",
+      "user": "helen.achebe",
+      "question": "What share of applications decided in October 2026 were within our 3-day promise?",
+      "tags": [
+        "term:within_promise"
+      ],
+      "gold_sql": "SELECT ROUND(AVG(CASE WHEN working_days_open - applicant_wait_days <= 3 THEN 1.0 ELSE 0 END) * 100, 1) AS within_promise_pct FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+      "expected": {
+        "columns": [
+          "within_promise_pct"
+        ],
+        "rows": [
+          [
+            11.8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H06",
+      "user": "grace.mensah",
+      "question": "Which analyst in my region had the highest first-time-right rate in October 2026?",
+      "tags": [
+        "join:attribution",
+        "term:first_time_right"
+      ],
+      "gold_sql": "SELECT a.analyst_name FROM caseflow.cases c JOIN caseflow.analysts a ON a.analyst_id = c.analyst_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY AVG(CASE WHEN c.status = 'approved' AND NOT EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) DESC, a.analyst_name LIMIT 1",
+      "expected": {
+        "columns": [
+          "analyst_name"
+        ],
+        "rows": [
+          [
+            "Sofia Marino"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H07",
+      "user": "helen.achebe",
+      "question": "How many applications are overdue right now?",
+      "tags": [
+        "term:overdue"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS overdue FROM caseflow.cases WHERE status IN ('open', 'escalated') AND working_days_open - applicant_wait_days > 3",
+      "expected": {
+        "columns": [
+          "overdue"
+        ],
+        "rows": [
+          [
+            1532
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H08",
+      "user": "tom.reyes",
+      "question": "How many of my team's applications are overdue right now?",
+      "tags": [
+        "term:overdue"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS overdue FROM caseflow.cases WHERE status IN ('open', 'escalated') AND working_days_open - applicant_wait_days > 3",
+      "expected": {
+        "columns": [
+          "overdue"
+        ],
+        "rows": [
+          [
+            278
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H09",
+      "user": "helen.achebe",
+      "question": "How many applications that were asked for something else were then approved, in Q3 2026?",
+      "tags": [
+        "join:distinct"
+      ],
+      "gold_sql": "SELECT COUNT(DISTINCT c.case_id) AS applications FROM caseflow.cases c JOIN caseflow.documents d ON d.case_id = c.case_id WHERE d.outcome = 'ask_applicant' AND c.status = 'approved' AND c.decided_at >= DATE '2026-07-01' AND c.decided_at < DATE '2026-10-01'",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            1225
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H10",
+      "user": "grace.mensah",
+      "question": "In my region, how many applications received in 2026 had more than one document asked again?",
+      "tags": [
+        "join"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS applications FROM (SELECT d.case_id FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.outcome = 'ask_applicant' AND c.received_at >= DATE '2026-01-01' GROUP BY d.case_id HAVING COUNT(*) > 1)",
+      "expected": {
+        "columns": [
+          "applications"
+        ],
+        "rows": [
+          [
+            277
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H11",
+      "user": "helen.achebe",
+      "question": "What is the average number of documents per application, by customer type, for applications received in 2026?",
+      "tags": [
+        "join:distinct"
+      ],
+      "gold_sql": "SELECT c.customer_type, ROUND(COUNT(d.document_id) * 1.0 / COUNT(DISTINCT c.case_id), 1) AS documents_per_application FROM caseflow.cases c LEFT JOIN caseflow.documents d ON d.case_id = c.case_id WHERE c.received_at >= DATE '2026-01-01' GROUP BY c.customer_type",
+      "expected": {
+        "columns": [
+          "customer_type",
+          "documents_per_application"
+        ],
+        "rows": [
+          [
+            "business",
+            5.3
+          ],
+          [
+            "personal",
+            2.3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H12",
+      "user": "helen.achebe",
+      "question": "In which week of September 2026 did we review the most documents? Give the Monday's date.",
+      "tags": [
+        "period"
+      ],
+      "gold_sql": "SELECT CAST(date_trunc('week', reviewed_at) AS DATE) AS week_starting FROM caseflow.documents WHERE reviewed_at >= DATE '2026-09-01' AND reviewed_at < DATE '2026-10-01' GROUP BY 1 ORDER BY COUNT(*) DESC LIMIT 1",
+      "expected": {
+        "columns": [
+          "week_starting"
+        ],
+        "rows": [
+          [
+            "2026-09-14"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H13",
+      "user": "grace.mensah",
+      "question": "What is the backlog in my region per analyst?",
+      "tags": [
+        "term:backlog"
+      ],
+      "gold_sql": "SELECT ROUND(COUNT(*) * 1.0 / (SELECT COUNT(*) FROM caseflow.analysts), 1) AS documents_per_analyst FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+      "expected": {
+        "columns": [
+          "documents_per_analyst"
+        ],
+        "rows": [
+          [
+            158.9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H14",
+      "user": "helen.achebe",
+      "question": "How many working days were there in October 2026?",
+      "tags": [
+        "period"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS working_days FROM caseflow.calendar WHERE month = '2026-10' AND is_working_day",
+      "expected": {
+        "columns": [
+          "working_days"
+        ],
+        "rows": [
+          [
+            22
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H15",
+      "user": "helen.achebe",
+      "question": "What was the turnaround for each channel this financial year?",
+      "tags": [
+        "period:financial_year",
+        "term:turnaround"
+      ],
+      "gold_sql": "SELECT channel, MEDIAN(working_days_open - applicant_wait_days) AS turnaround_working_days FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-04-01' GROUP BY channel",
+      "expected": {
+        "columns": [
+          "channel",
+          "turnaround_working_days"
+        ],
+        "rows": [
+          [
+            "web",
+            6.0
+          ],
+          [
+            "app",
+            6.0
+          ],
+          [
+            "branch",
+            6.0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H16",
+      "user": "tom.reyes",
+      "question": "How many documents did my team review per working day last week?",
+      "tags": [
+        "period:last_week",
+        "period:working_days"
+      ],
+      "gold_sql": "SELECT ROUND(COUNT(*) * 1.0 / (SELECT COUNT(*) FROM caseflow.calendar WHERE is_working_day AND day BETWEEN DATE '2026-10-19' AND DATE '2026-10-25'), 1) AS per_working_day FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-19' AND reviewed_at < DATE '2026-10-26'",
+      "expected": {
+        "columns": [
+          "per_working_day"
+        ],
+        "rows": [
+          [
+            24.4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H17",
+      "user": "helen.achebe",
+      "question": "How many applications were withdrawn this financial year?",
+      "tags": [
+        "period:financial_year"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases WHERE status = 'withdrawn' AND closed_at >= DATE '2026-04-01'",
+      "expected": {
+        "columns": [
+          "withdrawn"
+        ],
+        "rows": [
+          [
+            1117
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H18",
+      "user": "helen.achebe",
+      "question": "What does one application cost us in analyst pay?",
+      "tags": [
+        "cannot_answer"
+      ],
+      "gold_sql": "",
+      "expected": {
+        "columns": [],
+        "rows": []
+      },
+      "expect_cannot_answer": true
+    },
+    {
+      "id": "H19",
+      "user": "grace.mensah",
+      "question": "How many applications in each of my teams were decided within the promise in October 2026?",
+      "tags": [
+        "term:within_promise"
+      ],
+      "gold_sql": "SELECT t.team_name, COUNT(*) AS within_promise FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.status IN ('approved', 'declined') AND c.working_days_open - c.applicant_wait_days <= 3 AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+      "expected": {
+        "columns": [
+          "team_name",
+          "within_promise"
+        ],
+        "rows": [
+          [
+            "North 1",
+            15
+          ],
+          [
+            "North 2",
+            34
+          ]
+        ]
+      }
+    },
+    {
+      "id": "H20",
+      "user": "helen.achebe",
+      "question": "How many applications received in FY2025/26 Q4 were withdrawn?",
+      "tags": [
+        "period:financial_year"
+      ],
+      "gold_sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases c JOIN caseflow.calendar k ON k.day = CAST(c.received_at AS DATE) WHERE k.financial_quarter = 'FY2025/26 Q4' AND c.status = 'withdrawn'",
+      "expected": {
+        "columns": [
+          "withdrawn"
+        ],
+        "rows": [
+          [
+            239
+          ]
+        ]
+      }
+    }
+  ]
+}

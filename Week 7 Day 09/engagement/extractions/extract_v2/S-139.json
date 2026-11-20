@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Robert Higgins",
+      "word_ids": [
+        "w016",
+        "w017",
+        "w018"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "3, Oak Tree Close, Cirencester, GL7 1XZ",
+      "word_ids": [
+        "w019",
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024",
+        "w025"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Sep 2026",
+      "word_ids": [
+        "w008",
+        "w009",
+        "w010"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Copperline Broadband Ltd",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

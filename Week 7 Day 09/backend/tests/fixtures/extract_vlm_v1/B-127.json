@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kofi Iqbal"
+  },
+  {
+   "name": "address",
+   "value": "78 Westgate Street, Cheltenham, GL52 5RW"
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

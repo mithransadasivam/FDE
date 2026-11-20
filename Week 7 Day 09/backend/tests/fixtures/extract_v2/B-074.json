@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Oscar Turner",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "120 Church Street Stroud GL5 4DN",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016",
+    "w019",
+    "w027",
+    "w028"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026",
+   "word_ids": [
+    "w011",
+    "w012",
+    "w013"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

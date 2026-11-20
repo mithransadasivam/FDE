@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Dev Campbell"
+  },
+  {
+   "name": "address",
+   "value": "56 Tewkesbury Road, Gloucester, GL1 3ZJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

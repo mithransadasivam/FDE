@@ -1,0 +1,6 @@
+id,name,description,value,feasibility,risk,excluded_reason
+UC1,Proof-of-address check,"Read utility bills and statements, extract name, address and date, check them against the application and show the analyst any doubtful field",4,5,2,
+UC2,Identity document check,"Read passports and driving licences, extract and check the fields, and flag expired or blurred documents",4,3,4,
+UC3,Business account pack,"Read company documents and cross-check directors and owners against the Companies House register",5,2,3,
+UC4,Applicant follow-up drafts,"Draft the 'ask applicant' message with the exact reason and what to send instead, for the analyst to approve",3,5,1,
+UC5,Automatic KYC decisions,"Approve or reject applications without an analyst",5,1,5,"A person must make every KYC decision (MLRO, 06:50)"

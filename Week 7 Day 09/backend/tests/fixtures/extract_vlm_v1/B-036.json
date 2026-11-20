@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Fatima Price"
+  },
+  {
+   "name": "address",
+   "value": "44 Leckhampton Road, Quedgeley, GL2 5GR"
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

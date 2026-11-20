@@ -1,0 +1,100 @@
+[
+ {
+  "at": "2026-11-18T19:07:03",
+  "event_id": "evt_cde239e68ea54cc7",
+  "type": "exception.created",
+  "status": 200,
+  "response": "{\"received\":\"evt_cde239e68ea54cc7\",\"slack\":[{\"channel\":\"kyc-north\",\"status\":200},{\"channel\":\"financial-crime\",\"status\":200}]}"
+ },
+ {
+  "at": "2026-11-18T19:12:19",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 200,
+  "response": "{\"received\":\"evt_69571448991742e0\",\"slack\":[{\"channel\":\"kyc-north\",\"status\":200}]}"
+ },
+ {
+  "at": "2026-11-18T19:12:21",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Missing signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:12:23",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Bad signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:12:26",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Bad signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:12:28",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Too old: sent 614 s ago\"}"
+ },
+ {
+  "at": "2026-11-18T19:12:30",
+  "event_id": "evt_69571448991742e0",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Already received: evt_69571448991742e0\"}"
+ },
+ {
+  "at": "2026-11-18T19:21:18",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 200,
+  "response": "{\"received\":\"evt_ecc8e1e98d6c4a31\",\"slack\":[{\"channel\":\"kyc-north\",\"status\":200}]}"
+ },
+ {
+  "at": "2026-11-18T19:21:20",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Missing signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:21:22",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Bad signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:21:25",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Bad signature\"}"
+ },
+ {
+  "at": "2026-11-18T19:21:27",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Too old: sent 614 s ago\"}"
+ },
+ {
+  "at": "2026-11-18T19:21:29",
+  "event_id": "evt_ecc8e1e98d6c4a31",
+  "type": "exception.created",
+  "status": 400,
+  "response": "{\"detail\":\"Already received: evt_ecc8e1e98d6c4a31\"}"
+ },
+ {
+  "at": "2026-11-18T19:24:25",
+  "event_id": "evt_32e81b7a80e84a0d",
+  "type": "exception.created",
+  "status": 200,
+  "response": "{\"received\":\"evt_32e81b7a80e84a0d\",\"slack\":[{\"channel\":\"kyc-south\",\"status\":200},{\"channel\":\"financial-crime\",\"status\":200}]}"
+ }
+]

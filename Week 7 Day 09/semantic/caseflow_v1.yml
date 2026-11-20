@@ -1,0 +1,147 @@
+# The semantic layer for the CaseFlow warehouse: what the model is told about the data (Day 7).
+# A new version is a new file (caseflow_v2.yml…): keep the old one, so evaluation runs can be compared.
+
+name: caseflow
+version: v1
+as_of: "2026-10-30"
+description: >
+  CaseFlow, Kestrelmoor Bank's KYC case management system: every account application that needed a manual
+  document review, from 1 May 2025 to the end of Friday 30 October 2026.
+
+conventions:
+  - Write one DuckDB SELECT query. Always name the schema, for example caseflow.cases, never just cases.
+  - The extract runs to the end of Friday 30 October 2026. "Now", "today" and "right now" mean that date.
+  - Applications "in October 2026" means applications received in October 2026 (received_at). Questions about
+    decisions use decided_at; questions about reviews use documents.reviewed_at.
+  - Months and quarters are calendar months and quarters unless the question says otherwise (Q3 2026 is July to September 2026).
+  - Row security is applied for you. Never add a filter for the user's team or region yourself.
+  - Round percentages and averages to one decimal place.
+
+tables:
+  caseflow.cases:
+    description: One row per account application that needed a manual review (the bank calls it a case).
+    columns:
+      case_id: The application's id, for example KC-004211.
+      customer_id: The applicant (caseflow.customers).
+      customer_type: personal or business.
+      channel: "Where the application came from: app, web or branch."
+      team_id: The team that owns the case (caseflow.teams).
+      analyst_id: The analyst who holds the case now, or who decided it (caseflow.analysts).
+      received_at: When the application arrived (timestamp).
+      decided_at: When the case was approved or declined (timestamp). Empty if not decided.
+      closed_at: When the case was closed for any reason, including withdrawn. Empty if still open.
+      status: "open (in the analysts' queue), waiting_applicant (we asked the applicant for something), escalated (with the Financial Crime team), approved, declined, withdrawn (the applicant gave up)."
+      working_days_open: Working days (Monday to Friday, not bank holidays) from receipt to the decision or closure, or to 30 Oct 2026 if still open.
+      applicant_wait_days: Of those working days, how many the case spent waiting for the applicant to send something.
+
+  caseflow.documents:
+    description: One row per document received for an application. A document is reviewed once; a document the applicant sends again is a new row.
+    columns:
+      document_id: The document's id.
+      case_id: The application it belongs to (caseflow.cases).
+      doc_type: "passport, driving_licence, utility_bill, bank_statement, council_tax_bill, certificate_of_incorporation, director_id, psc_register."
+      received_at: When the document arrived.
+      reviewed_at: When an analyst reviewed it. Empty if not reviewed yet.
+      reviewed_by: The analyst who reviewed it (caseflow.analysts).
+      outcome: "accept, ask_applicant (ask the applicant for something else) or escalate (to Financial Crime). Empty if not reviewed."
+      reason_code: Why, for ask_applicant and escalate, for example POA_OLDER_THAN_3_MONTHS or IMAGE_BLURRED.
+      minutes_spent: The analyst's minutes on the review.
+
+  caseflow.customers:
+    description: One row per applicant.
+    columns:
+      customer_id: The applicant's id.
+      customer_name: The person's or the company's name.
+      customer_type: personal or business.
+      region: North, Midlands or South.
+      risk_rating: low, medium or high.
+      first_seen: The day of their first application.
+
+  caseflow.analysts:
+    description: The 26 KYC analysts.
+    columns:
+      analyst_id: For example A07.
+      analyst_name: The analyst's name.
+      team_id: Their team (caseflow.teams).
+      grade: analyst or senior.
+      started_on: The day they joined the team.
+
+  caseflow.teams:
+    description: The six KYC teams, two for each customer region.
+    columns:
+      team_id: N1, N2, M1, M2, S1 or S2.
+      team_name: For example North 1.
+      region: North, Midlands or South.
+
+  caseflow.calendar:
+    description: One row per day from 1 May 2025 to 31 December 2026.
+    columns:
+      day: The date.
+      is_working_day: Monday to Friday and not a UK bank holiday.
+      is_bank_holiday: A UK (England) bank holiday.
+      month: For example 2026-10.
+      iso_week: For example 2026-W44.
+      financial_year: The bank's financial year, for example FY2026/27.
+      financial_quarter: For example FY2026/27 Q3.
+
+  pipeline.field_results:
+    description: Day 6's document pipeline, the October batch of 200 documents. One row per field read.
+    columns:
+      doc_id: The pipeline's document id, for example B-012.
+      doc_kind: utility_bill or bank_statement.
+      field: full_name, address, statement_date or issuer.
+      decision: auto (went straight through) or review (sent to the Review queue).
+      reason: "Why it went to review: low confidence, disagreement, both, or not on the page."
+      confidence: The OCR confidence of the field.
+      batch_date: The day the batch ran.
+
+joins:
+  - caseflow.documents.case_id = caseflow.cases.case_id      # many documents to one application
+  - caseflow.cases.customer_id = caseflow.customers.customer_id
+  - caseflow.cases.team_id = caseflow.teams.team_id
+  - caseflow.analysts.team_id = caseflow.teams.team_id
+  - caseflow.cases.analyst_id = caseflow.analysts.analyst_id
+  - caseflow.documents.reviewed_by = caseflow.analysts.analyst_id
+  - CAST(caseflow.documents.reviewed_at AS DATE) = caseflow.calendar.day
+
+metrics:
+  applications:
+    means: The number of applications.
+    sql: COUNT(*) FROM caseflow.cases
+  documents_reviewed:
+    means: The number of documents reviewed.
+    sql: COUNT(*) FROM caseflow.documents WHERE reviewed_at IS NOT NULL
+  ask_applicant_rate:
+    means: The share of applications with at least one document whose outcome is ask_applicant.
+    sql: >
+      AVG(CASE WHEN EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant')
+      THEN 1.0 ELSE 0 END) * 100 FROM caseflow.cases c
+
+examples:
+  - name: applications_in_a_month
+    question: How many applications did we receive in September 2026?
+    sql: |
+      SELECT COUNT(*) AS applications
+      FROM caseflow.cases
+      WHERE received_at >= DATE '2026-09-01' AND received_at < DATE '2026-10-01'
+  - name: ask_rate_by_type
+    question: What is the ask-applicant rate for business and personal applications in 2026?
+    sql: |
+      SELECT c.customer_type,
+             ROUND(AVG(CASE WHEN EXISTS (SELECT 1 FROM caseflow.documents d
+                                         WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant')
+                            THEN 1.0 ELSE 0 END) * 100, 1) AS ask_applicant_pct
+      FROM caseflow.cases c
+      WHERE c.received_at >= DATE '2026-01-01'
+      GROUP BY c.customer_type
+  - name: reviews_by_analyst
+    question: How many documents did each analyst review in September 2026?
+    sql: |
+      SELECT a.analyst_name, COUNT(*) AS documents_reviewed
+      FROM caseflow.documents d
+      JOIN caseflow.analysts a ON a.analyst_id = d.reviewed_by
+      WHERE d.reviewed_at >= DATE '2026-09-01' AND d.reviewed_at < DATE '2026-10-01'
+      GROUP BY a.analyst_name
+      ORDER BY documents_reviewed DESC
+
+terms: {}   # the bank's own words, for example "turnaround": none yet

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Joy Walsh & Mr Luca Walsh"
+  },
+  {
+   "name": "address",
+   "value": "Flat 10, 107 Meadow View, Nailsworth, GL6 5HP"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

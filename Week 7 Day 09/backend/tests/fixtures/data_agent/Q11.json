@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT strftime(decided_at, '%Y-%m') AS month, COUNT(*) AS declined FROM caseflow.cases WHERE status = 'declined' AND decided_at >= DATE '2026-07-01' AND decided_at < DATE '2026-10-01' GROUP BY month ORDER BY month",
+  "explanation": "Declined applications by the month of the decision, July to September 2026.",
+  "assumptions": [
+    "Q3 2026 is July to September 2026"
+  ],
+  "cannot_answer": ""
+}

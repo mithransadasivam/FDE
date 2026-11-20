@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS open_applications FROM caseflow.cases WHERE status = 'open'",
+  "explanation": "Applications whose status is open.",
+  "assumptions": [
+    "The backlog is open applications"
+  ],
+  "cannot_answer": ""
+}

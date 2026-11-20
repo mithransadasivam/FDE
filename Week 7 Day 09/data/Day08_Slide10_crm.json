@@ -1,0 +1,2037 @@
+{
+ "customers": [
+  {
+   "customer_id": "CU-022578",
+   "name": "Muhammad Brown",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "medium",
+   "email": "applicant022578@example.com",
+   "phone": "+44 7700 900409",
+   "open_case_id": "KC-022578",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T17:24",
+     "channel": "email",
+     "by": "A01",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-04T16:24",
+     "channel": "email",
+     "by": "A03",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-07T19:24",
+     "channel": "email",
+     "by": "A01",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022034",
+   "name": "Yusuf Kelly",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant022034@example.com",
+   "phone": "+44 7700 900142",
+   "open_case_id": "KC-022034",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-10T15:36",
+     "channel": "email",
+     "by": "A02",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-11T13:36",
+     "channel": "branch",
+     "by": "A07",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020480",
+   "name": "Jack Novak",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant020480@example.com",
+   "phone": "+44 7700 900176",
+   "open_case_id": "KC-020480",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-27T14:15",
+     "channel": "branch",
+     "by": "A07",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-09-29T13:15",
+     "channel": "call",
+     "by": "A04",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023327",
+   "name": "Isla Patel",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant023327@example.com",
+   "phone": "+44 7700 900191",
+   "open_case_id": "KC-023327",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-30T23:43",
+     "channel": "call",
+     "by": "A02",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020153",
+   "name": "Elif Wilson",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "medium",
+   "email": "applicant020153@example.com",
+   "phone": "+44 7700 900947",
+   "open_case_id": "KC-020153",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-30T12:48",
+     "channel": "call",
+     "by": "A04",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-03T13:48",
+     "channel": "call",
+     "by": "A01",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020604",
+   "name": "Oliver Li",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant020604@example.com",
+   "phone": "+44 7700 900105",
+   "open_case_id": "KC-020604",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-18T21:29",
+     "channel": "branch",
+     "by": "A04",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021891",
+   "name": "Siobhan Jones",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant021891@example.com",
+   "phone": "+44 7700 900667",
+   "open_case_id": "KC-021891",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-29T22:52",
+     "channel": "email",
+     "by": "A02",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022406",
+   "name": "Muhammad Patel",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "medium",
+   "email": "applicant022406@example.com",
+   "phone": "+44 7700 900672",
+   "open_case_id": "KC-022406",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-14T08:08",
+     "channel": "call",
+     "by": "A04",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-15T11:08",
+     "channel": "email",
+     "by": "A01",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021864",
+   "name": "Rhys Wood",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant021864@example.com",
+   "phone": "+44 7700 900128",
+   "open_case_id": "KC-021864",
+   "case_status": "waiting_applicant",
+   "contacts": [
+    {
+     "at": "2026-10-08T09:03",
+     "channel": "email",
+     "by": "A03",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-09T11:03",
+     "channel": "email",
+     "by": "A04",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-11T14:03",
+     "channel": "call",
+     "by": "A02",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020721",
+   "name": "Thomas Johnson",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant020721@example.com",
+   "phone": "+44 7700 900426",
+   "open_case_id": "KC-020721",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T21:43",
+     "channel": "email",
+     "by": "A03",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-03T01:43",
+     "channel": "email",
+     "by": "A04",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-05T01:43",
+     "channel": "email",
+     "by": "A01",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021702",
+   "name": "Northgate Logistics Ltd",
+   "customer_type": "business",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "medium",
+   "email": "applicant021702@example.com",
+   "phone": "+44 7700 900222",
+   "open_case_id": "KC-021702",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-09T13:20",
+     "channel": "email",
+     "by": "A03",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022161",
+   "name": "Noah Hall",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N1",
+   "risk_rating": "low",
+   "email": "applicant022161@example.com",
+   "phone": "+44 7700 900468",
+   "open_case_id": "KC-022161",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-06T15:12",
+     "channel": "email",
+     "by": "A01",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021805",
+   "name": "Lantern Coffee Ltd",
+   "customer_type": "business",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "low",
+   "email": "applicant021805@example.com",
+   "phone": "+44 7700 900127",
+   "open_case_id": "KC-021805",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-10T21:04",
+     "channel": "call",
+     "by": "A08",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-12T22:04",
+     "channel": "branch",
+     "by": "A08",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021961",
+   "name": "Thomas Singh",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "low",
+   "email": "applicant021961@example.com",
+   "phone": "+44 7700 900804",
+   "open_case_id": "KC-021961",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-12T23:42",
+     "channel": "branch",
+     "by": "A09",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-15T00:42",
+     "channel": "call",
+     "by": "A08",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023331",
+   "name": "Oscar Price",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "high",
+   "email": "applicant023331@example.com",
+   "phone": "+44 7700 900866",
+   "open_case_id": "KC-023331",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-10T00:05",
+     "channel": "call",
+     "by": "A06",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022129",
+   "name": "Bramble Lettings Ltd",
+   "customer_type": "business",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "medium",
+   "email": "applicant022129@example.com",
+   "phone": "+44 7700 900578",
+   "open_case_id": "KC-022129",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-09T00:48",
+     "channel": "branch",
+     "by": "A09",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-10T00:48",
+     "channel": "branch",
+     "by": "A09",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-11T00:48",
+     "channel": "email",
+     "by": "A08",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020166",
+   "name": "Oliver Clarke",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "medium",
+   "email": "applicant020166@example.com",
+   "phone": "+44 7700 900940",
+   "open_case_id": "KC-020166",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-30T18:06",
+     "channel": "email",
+     "by": "A06",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-03T18:06",
+     "channel": "email",
+     "by": "A09",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023033",
+   "name": "George Patel",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "medium",
+   "email": "applicant023033@example.com",
+   "phone": "+44 7700 900463",
+   "open_case_id": "KC-023033",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-27T23:52",
+     "channel": "call",
+     "by": "A06",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021377",
+   "name": "Noah Clarke",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "low",
+   "email": "applicant021377@example.com",
+   "phone": "+44 7700 900554",
+   "open_case_id": "KC-021377",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-28T23:43",
+     "channel": "branch",
+     "by": "A08",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022293",
+   "name": "Millbrook Consulting Ltd",
+   "customer_type": "business",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "medium",
+   "email": "applicant022293@example.com",
+   "phone": "+44 7700 900144",
+   "open_case_id": "KC-022293",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-11T01:12",
+     "channel": "email",
+     "by": "A09",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-14T00:12",
+     "channel": "email",
+     "by": "A09",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023178",
+   "name": "Emily Brown",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "high",
+   "email": "applicant023178@example.com",
+   "phone": "+44 7700 900223",
+   "open_case_id": "KC-023178",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-15T19:21",
+     "channel": "branch",
+     "by": "A06",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020357",
+   "name": "Adam Li",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "medium",
+   "email": "applicant020357@example.com",
+   "phone": "+44 7700 900404",
+   "open_case_id": "KC-020357",
+   "case_status": "waiting_applicant",
+   "contacts": [
+    {
+     "at": "2026-09-30T19:03",
+     "channel": "email",
+     "by": "A09",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021259",
+   "name": "Grace Evans",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "low",
+   "email": "applicant021259@example.com",
+   "phone": "+44 7700 900398",
+   "open_case_id": "KC-021259",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-26T15:41",
+     "channel": "call",
+     "by": "A08",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-09-27T12:41",
+     "channel": "email",
+     "by": "A08",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-09-28T11:41",
+     "channel": "call",
+     "by": "A08",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023174",
+   "name": "Harry Patel",
+   "customer_type": "personal",
+   "region": "North",
+   "team_id": "N2",
+   "risk_rating": "low",
+   "email": "applicant023174@example.com",
+   "phone": "+44 7700 900271",
+   "open_case_id": "KC-023174",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-06T13:19",
+     "channel": "call",
+     "by": "A08",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-08T10:19",
+     "channel": "branch",
+     "by": "A09",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-11T10:19",
+     "channel": "branch",
+     "by": "A08",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022975",
+   "name": "Oscar Price",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant022975@example.com",
+   "phone": "+44 7700 900335",
+   "open_case_id": "KC-022975",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-29T00:48",
+     "channel": "email",
+     "by": "A10",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-30T00:48",
+     "channel": "email",
+     "by": "A13",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022233",
+   "name": "Freya Edwards",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant022233@example.com",
+   "phone": "+44 7700 900717",
+   "open_case_id": "KC-022233",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-26T15:25",
+     "channel": "email",
+     "by": "A11",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-29T16:25",
+     "channel": "email",
+     "by": "A13",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-30T20:25",
+     "channel": "call",
+     "by": "A10",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023336",
+   "name": "Jack Clarke",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant023336@example.com",
+   "phone": "+44 7700 900539",
+   "open_case_id": "KC-023336",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-14T19:19",
+     "channel": "branch",
+     "by": "A13",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-019768",
+   "name": "Harry Hughes",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant019768@example.com",
+   "phone": "+44 7700 900815",
+   "open_case_id": "KC-019768",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-21T12:03",
+     "channel": "call",
+     "by": "A10",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-09-23T13:03",
+     "channel": "call",
+     "by": "A13",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-09-25T13:03",
+     "channel": "call",
+     "by": "A10",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021071",
+   "name": "Ivy Kelly",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "medium",
+   "email": "applicant021071@example.com",
+   "phone": "+44 7700 900270",
+   "open_case_id": "KC-021071",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-13T22:59",
+     "channel": "call",
+     "by": "A13",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021901",
+   "name": "George Johnson",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant021901@example.com",
+   "phone": "+44 7700 900385",
+   "open_case_id": "KC-021901",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-04T17:35",
+     "channel": "branch",
+     "by": "A13",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-06T17:35",
+     "channel": "branch",
+     "by": "A11",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-018965",
+   "name": "Lily Brown",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant018965@example.com",
+   "phone": "+44 7700 900899",
+   "open_case_id": "KC-018965",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-28T18:55",
+     "channel": "call",
+     "by": "A10",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-01T18:55",
+     "channel": "email",
+     "by": "A11",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-03T15:55",
+     "channel": "call",
+     "by": "A11",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022155",
+   "name": "Emily Taylor",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant022155@example.com",
+   "phone": "+44 7700 900735",
+   "open_case_id": "KC-022155",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-13T20:05",
+     "channel": "email",
+     "by": "A12",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-15T00:05",
+     "channel": "email",
+     "by": "A10",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023416",
+   "name": "Rhys Li",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "low",
+   "email": "applicant023416@example.com",
+   "phone": "+44 7700 900991",
+   "open_case_id": "KC-023416",
+   "case_status": "open",
+   "contacts": [],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023545",
+   "name": "Ella Edwards",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "high",
+   "email": "applicant023545@example.com",
+   "phone": "+44 7700 900562",
+   "open_case_id": "KC-023545",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-30T00:21",
+     "channel": "call",
+     "by": "A11",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-30T22:21",
+     "channel": "email",
+     "by": "A13",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022144",
+   "name": "Chen Wood",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "medium",
+   "email": "applicant022144@example.com",
+   "phone": "+44 7700 900552",
+   "open_case_id": "KC-022144",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-23T21:14",
+     "channel": "email",
+     "by": "A13",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023121",
+   "name": "Elif Davies",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M1",
+   "risk_rating": "medium",
+   "email": "applicant023121@example.com",
+   "phone": "+44 7700 900775",
+   "open_case_id": "KC-023121",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T08:19",
+     "channel": "email",
+     "by": "A12",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021952",
+   "name": "Zainab Kelly",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant021952@example.com",
+   "phone": "+44 7700 900392",
+   "open_case_id": "KC-021952",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-15T13:46",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021496",
+   "name": "Henry Smith",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant021496@example.com",
+   "phone": "+44 7700 900130",
+   "open_case_id": "KC-021496",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-28T14:41",
+     "channel": "email",
+     "by": "A14",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-09-29T19:41",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-018846",
+   "name": "Thomas Morgan",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant018846@example.com",
+   "phone": "+44 7700 900163",
+   "open_case_id": "KC-018846",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-01T01:10",
+     "channel": "call",
+     "by": "A14",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-03T03:10",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-05T03:10",
+     "channel": "branch",
+     "by": "A16",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022047",
+   "name": "Ethan Evans",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant022047@example.com",
+   "phone": "+44 7700 900139",
+   "open_case_id": "KC-022047",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-15T21:52",
+     "channel": "call",
+     "by": "A16",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022976",
+   "name": "Rhys O'Brien",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant022976@example.com",
+   "phone": "+44 7700 900894",
+   "open_case_id": "KC-022976",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-17T03:14",
+     "channel": "branch",
+     "by": "A15",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-19T00:14",
+     "channel": "call",
+     "by": "A15",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-20T22:14",
+     "channel": "branch",
+     "by": "A17",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023398",
+   "name": "Saltmarsh Fitness Ltd",
+   "customer_type": "business",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "medium",
+   "email": "applicant023398@example.com",
+   "phone": "+44 7700 900379",
+   "open_case_id": "KC-023398",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-17T12:52",
+     "channel": "branch",
+     "by": "A14",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-19T15:52",
+     "channel": "email",
+     "by": "A17",
+     "summary": "Confirmed the business address with the applicant"
+    },
+    {
+     "at": "2026-10-21T17:52",
+     "channel": "call",
+     "by": "A16",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020139",
+   "name": "Arthur Evans",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant020139@example.com",
+   "phone": "+44 7700 900104",
+   "open_case_id": "KC-020139",
+   "case_status": "waiting_applicant",
+   "contacts": [
+    {
+     "at": "2026-09-23T19:35",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-09-23T21:35",
+     "channel": "email",
+     "by": "A14",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020309",
+   "name": "Emily Robinson",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant020309@example.com",
+   "phone": "+44 7700 900737",
+   "open_case_id": "KC-020309",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-21T20:38",
+     "channel": "call",
+     "by": "A14",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-09-25T20:38",
+     "channel": "call",
+     "by": "A15",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-09-25T19:38",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020235",
+   "name": "Emily Kelly",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant020235@example.com",
+   "phone": "+44 7700 900674",
+   "open_case_id": "KC-020235",
+   "case_status": "waiting_applicant",
+   "contacts": [
+    {
+     "at": "2026-09-26T18:10",
+     "channel": "branch",
+     "by": "A16",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023109",
+   "name": "Highfield Analytics Ltd",
+   "customer_type": "business",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant023109@example.com",
+   "phone": "+44 7700 900163",
+   "open_case_id": "KC-023109",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-25T14:20",
+     "channel": "email",
+     "by": "A15",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-25T17:20",
+     "channel": "call",
+     "by": "A15",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022475",
+   "name": "Alfie Walker",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant022475@example.com",
+   "phone": "+44 7700 900752",
+   "open_case_id": "KC-022475",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-19T17:35",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-22T22:35",
+     "channel": "email",
+     "by": "A16",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022811",
+   "name": "Leo Clarke",
+   "customer_type": "personal",
+   "region": "Midlands",
+   "team_id": "M2",
+   "risk_rating": "low",
+   "email": "applicant022811@example.com",
+   "phone": "+44 7700 900307",
+   "open_case_id": "KC-022811",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-11T01:35",
+     "channel": "branch",
+     "by": "A14",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-13T22:35",
+     "channel": "email",
+     "by": "A14",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022478",
+   "name": "Ethan Wright",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "medium",
+   "email": "applicant022478@example.com",
+   "phone": "+44 7700 900138",
+   "open_case_id": "KC-022478",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-20T20:56",
+     "channel": "call",
+     "by": "A19",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-24T19:56",
+     "channel": "call",
+     "by": "A19",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022925",
+   "name": "Dmitri Edwards",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022925@example.com",
+   "phone": "+44 7700 900258",
+   "open_case_id": "KC-022925",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-29T14:36",
+     "channel": "email",
+     "by": "A18",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-30T15:36",
+     "channel": "call",
+     "by": "A19",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021962",
+   "name": "Tomasz Williams",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant021962@example.com",
+   "phone": "+44 7700 900149",
+   "open_case_id": "KC-021962",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-29T00:42",
+     "channel": "call",
+     "by": "A18",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022041",
+   "name": "Ewan O'Brien",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022041@example.com",
+   "phone": "+44 7700 900597",
+   "open_case_id": "KC-022041",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-27T20:05",
+     "channel": "branch",
+     "by": "A18",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022748",
+   "name": "Ella Jackson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022748@example.com",
+   "phone": "+44 7700 900380",
+   "open_case_id": "KC-022748",
+   "case_status": "escalated",
+   "contacts": [
+    {
+     "at": "2026-10-28T19:49",
+     "channel": "email",
+     "by": "A20",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-30T16:49",
+     "channel": "email",
+     "by": "A22",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022273",
+   "name": "Thistle Builders Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022273@example.com",
+   "phone": "+44 7700 900495",
+   "open_case_id": "KC-022273",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-30T00:14",
+     "channel": "email",
+     "by": "A19",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-30T23:14",
+     "channel": "branch",
+     "by": "A20",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022529",
+   "name": "Thistle Travel Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022529@example.com",
+   "phone": "+44 7700 900273",
+   "open_case_id": "KC-022529",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-09T10:57",
+     "channel": "branch",
+     "by": "A21",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022343",
+   "name": "Mia Kaur",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022343@example.com",
+   "phone": "+44 7700 900219",
+   "open_case_id": "KC-022343",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-13T21:42",
+     "channel": "email",
+     "by": "A22",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-15T17:42",
+     "channel": "call",
+     "by": "A19",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-15T18:42",
+     "channel": "email",
+     "by": "A20",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022603",
+   "name": "Evie Mensah",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "medium",
+   "email": "applicant022603@example.com",
+   "phone": "+44 7700 900475",
+   "open_case_id": "KC-022603",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-12T19:42",
+     "channel": "email",
+     "by": "A20",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-16T21:42",
+     "channel": "email",
+     "by": "A18",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-019898",
+   "name": "Bluebell Bakery Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "medium",
+   "email": "applicant019898@example.com",
+   "phone": "+44 7700 900144",
+   "open_case_id": "KC-019898",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-22T22:03",
+     "channel": "branch",
+     "by": "A20",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-09-25T22:03",
+     "channel": "call",
+     "by": "A19",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022783",
+   "name": "Rosie Thompson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant022783@example.com",
+   "phone": "+44 7700 900689",
+   "open_case_id": "KC-022783",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-16T14:03",
+     "channel": "branch",
+     "by": "A19",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-17T16:03",
+     "channel": "email",
+     "by": "A18",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021789",
+   "name": "Larkspur Analytics Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S1",
+   "risk_rating": "low",
+   "email": "applicant021789@example.com",
+   "phone": "+44 7700 900638",
+   "open_case_id": "KC-021789",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-16T20:37",
+     "channel": "branch",
+     "by": "A22",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-18T17:37",
+     "channel": "branch",
+     "by": "A18",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022462",
+   "name": "Ava Johnson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant022462@example.com",
+   "phone": "+44 7700 900211",
+   "open_case_id": "KC-022462",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-13T20:06",
+     "channel": "call",
+     "by": "A23",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-10-15T17:06",
+     "channel": "email",
+     "by": "A24",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-17T16:06",
+     "channel": "branch",
+     "by": "A23",
+     "summary": "Explained which documents are accepted"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021922",
+   "name": "Muhammad Morgan",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant021922@example.com",
+   "phone": "+44 7700 900237",
+   "open_case_id": "KC-021922",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-13T17:41",
+     "channel": "branch",
+     "by": "A24",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-14T22:41",
+     "channel": "call",
+     "by": "A25",
+     "summary": "Asked for a proof of address dated in the last three months"
+    },
+    {
+     "at": "2026-10-16T17:41",
+     "channel": "branch",
+     "by": "A24",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022546",
+   "name": "Jack Shah",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant022546@example.com",
+   "phone": "+44 7700 900832",
+   "open_case_id": "KC-022546",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-26T12:09",
+     "channel": "email",
+     "by": "A26",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-29T12:09",
+     "channel": "branch",
+     "by": "A23",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020200",
+   "name": "Sophia Mensah",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "medium",
+   "email": "applicant020200@example.com",
+   "phone": "+44 7700 900880",
+   "open_case_id": "KC-020200",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-21T23:55",
+     "channel": "call",
+     "by": "A24",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023313",
+   "name": "Leo Robinson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant023313@example.com",
+   "phone": "+44 7700 900625",
+   "open_case_id": "KC-023313",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-18T13:44",
+     "channel": "email",
+     "by": "A26",
+     "summary": "Applicant asked why the account is not open yet"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-019054",
+   "name": "Freya Thompson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "medium",
+   "email": "applicant019054@example.com",
+   "phone": "+44 7700 900845",
+   "open_case_id": "KC-019054",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-24T18:32",
+     "channel": "email",
+     "by": "A23",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-09-25T18:32",
+     "channel": "email",
+     "by": "A23",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023454",
+   "name": "Oakmere Bakery Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "medium",
+   "email": "applicant023454@example.com",
+   "phone": "+44 7700 900822",
+   "open_case_id": "KC-023454",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-03T17:05",
+     "channel": "call",
+     "by": "A25",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-05T14:05",
+     "channel": "email",
+     "by": "A26",
+     "summary": "Asked for a proof of address dated in the last three months"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021108",
+   "name": "Emily Khan",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant021108@example.com",
+   "phone": "+44 7700 900510",
+   "open_case_id": "KC-021108",
+   "case_status": "waiting_applicant",
+   "contacts": [
+    {
+     "at": "2026-09-30T21:26",
+     "channel": "call",
+     "by": "A24",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-02T20:26",
+     "channel": "email",
+     "by": "A25",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-10-04T22:26",
+     "channel": "branch",
+     "by": "A25",
+     "summary": "Applicant called to check progress"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-023366",
+   "name": "Charlie Johnson",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "medium",
+   "email": "applicant023366@example.com",
+   "phone": "+44 7700 900704",
+   "open_case_id": "KC-023366",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T18:11",
+     "channel": "call",
+     "by": "A23",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-021572",
+   "name": "Arthur Novak",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "medium",
+   "email": "applicant021572@example.com",
+   "phone": "+44 7700 900313",
+   "open_case_id": "KC-021572",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-09-25T11:57",
+     "channel": "email",
+     "by": "A26",
+     "summary": "Applicant called to check progress"
+    },
+    {
+     "at": "2026-09-26T11:57",
+     "channel": "email",
+     "by": "A23",
+     "summary": "Explained which documents are accepted"
+    },
+    {
+     "at": "2026-09-30T09:57",
+     "channel": "branch",
+     "by": "A26",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-020217",
+   "name": "Harry Hall",
+   "customer_type": "personal",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant020217@example.com",
+   "phone": "+44 7700 900671",
+   "open_case_id": "KC-020217",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T13:44",
+     "channel": "call",
+     "by": "A25",
+     "summary": "Applicant asked why the account is not open yet"
+    },
+    {
+     "at": "2026-10-03T11:44",
+     "channel": "email",
+     "by": "A25",
+     "summary": "Applicant will send a clearer photo of the passport"
+    },
+    {
+     "at": "2026-10-06T11:44",
+     "channel": "call",
+     "by": "A24",
+     "summary": "Applicant will send a clearer photo of the passport"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "customer_id": "CU-022230",
+   "name": "Granite Lettings Ltd",
+   "customer_type": "business",
+   "region": "South",
+   "team_id": "S2",
+   "risk_rating": "low",
+   "email": "applicant022230@example.com",
+   "phone": "+44 7700 900795",
+   "open_case_id": "KC-022230",
+   "case_status": "open",
+   "contacts": [
+    {
+     "at": "2026-10-02T19:21",
+     "channel": "call",
+     "by": "A26",
+     "summary": "Confirmed the business address with the applicant"
+    }
+   ],
+   "notes": []
+  }
+ ],
+ "analysts": [
+  {
+   "analyst_id": "A01",
+   "name": "Priya Nair",
+   "team_id": "N1"
+  },
+  {
+   "analyst_id": "A02",
+   "name": "Callum Fraser",
+   "team_id": "N1"
+  },
+  {
+   "analyst_id": "A03",
+   "name": "Aisha Bello",
+   "team_id": "N1"
+  },
+  {
+   "analyst_id": "A04",
+   "name": "Hannah Whitlock",
+   "team_id": "N1"
+  },
+  {
+   "analyst_id": "A05",
+   "name": "Marcus Lindqvist",
+   "team_id": "N2"
+  },
+  {
+   "analyst_id": "A06",
+   "name": "Sofia Marino",
+   "team_id": "N2"
+  },
+  {
+   "analyst_id": "A07",
+   "name": "Tom Reyes",
+   "team_id": "N1"
+  },
+  {
+   "analyst_id": "A08",
+   "name": "Daniel Osei",
+   "team_id": "N2"
+  },
+  {
+   "analyst_id": "A09",
+   "name": "Ellie Brannigan",
+   "team_id": "N2"
+  },
+  {
+   "analyst_id": "A10",
+   "name": "Ravi Chandran",
+   "team_id": "M1"
+  },
+  {
+   "analyst_id": "A11",
+   "name": "Laura Pembridge",
+   "team_id": "M1"
+  },
+  {
+   "analyst_id": "A12",
+   "name": "Joel Achterberg",
+   "team_id": "M1"
+  },
+  {
+   "analyst_id": "A13",
+   "name": "Mei Lin Tan",
+   "team_id": "M1"
+  },
+  {
+   "analyst_id": "A14",
+   "name": "Owen Pritchard",
+   "team_id": "M2"
+  },
+  {
+   "analyst_id": "A15",
+   "name": "Zara Hussain",
+   "team_id": "M2"
+  },
+  {
+   "analyst_id": "A16",
+   "name": "Kieran Doyle",
+   "team_id": "M2"
+  },
+  {
+   "analyst_id": "A17",
+   "name": "Beatrice Kowalska",
+   "team_id": "M2"
+  },
+  {
+   "analyst_id": "A18",
+   "name": "Samuel Adeyemi",
+   "team_id": "S1"
+  },
+  {
+   "analyst_id": "A19",
+   "name": "Chloe Ashworth",
+   "team_id": "S1"
+  },
+  {
+   "analyst_id": "A20",
+   "name": "Ibrahim Farouk",
+   "team_id": "S1"
+  },
+  {
+   "analyst_id": "A21",
+   "name": "Nina Castellano",
+   "team_id": "S1"
+  },
+  {
+   "analyst_id": "A22",
+   "name": "George Halloran",
+   "team_id": "S1"
+  },
+  {
+   "analyst_id": "A23",
+   "name": "Fatima Rahimi",
+   "team_id": "S2"
+  },
+  {
+   "analyst_id": "A24",
+   "name": "Lewis McAllister",
+   "team_id": "S2"
+  },
+  {
+   "analyst_id": "A25",
+   "name": "Anya Volkova",
+   "team_id": "S2"
+  },
+  {
+   "analyst_id": "A26",
+   "name": "Ben Okonjo",
+   "team_id": "S2"
+  }
+ ]
+}

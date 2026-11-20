@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-160",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Harvey Lloyd",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2655,
+        0.1791
+      ],
+      "page_text": "Mr Harvey Lloyd",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "111 Gloucester Road Cheltenham GL50 8HG",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2818,
+        0.2555
+      ],
+      "page_text": "111 Gloucester Road Cheltenham GL50 8HG",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "17 Sep 2026",
+      "confidence": 0.66,
+      "status": "check",
+      "box": [
+        0.6071,
+        0.18,
+        0.7591,
+        0.2036
+      ],
+      "page_text": "17 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas & Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 618,
+    "output_tokens": 144,
+    "latency_ms": 2030,
+    "scripted": true
+  }
+}

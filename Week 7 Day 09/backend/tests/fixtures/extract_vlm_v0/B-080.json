@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Olivia Ricci & Mr Imran Ricci"
+  },
+  {
+   "name": "address",
+   "value": "45 Barton Street, Cheltenham, GL51 7AS"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-05"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

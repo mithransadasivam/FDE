@@ -1,0 +1,69 @@
+{
+  "doc_id": "B-126",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Ellie Griffiths & Mr Samuel Griffiths",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.5346,
+        0.1767
+      ],
+      "page_text": "Mrs Ellie Griffiths Mr Samuel Griffiths",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 1, 111 London Road, Cheltenham, GL52 8ZS",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.3167,
+        0.2564
+      ],
+      "page_text": "Flat 1, 111 London Road Cheltenham GL52 8ZS",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-08-21",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4657,
+        0.0634
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 81,
+    "latency_ms": 1876,
+    "scripted": true
+  }
+}

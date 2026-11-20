@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Isla Hart"
+  },
+  {
+   "name": "address",
+   "value": "60 Leckhampton Road, Quedgeley, GL2 1XR"
+  },
+  {
+   "name": "statement_date",
+   "value": "15 Mar 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}
