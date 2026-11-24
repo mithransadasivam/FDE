@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Ifeoma Griffiths"
+  },
+  {
+   "name": "address",
+   "value": "34 Cheltenham Road, Tewkesbury, GL20 3JG"
+  },
+  {
+   "name": "statement_date",
+   "value": "26 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

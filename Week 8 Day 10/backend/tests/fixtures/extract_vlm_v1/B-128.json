@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Nadia Eze"
+  },
+  {
+   "name": "address",
+   "value": "77 Church Street, Cirencester, GL7 3AJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

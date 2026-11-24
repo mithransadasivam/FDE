@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Nadia Lewis"
+  },
+  {
+   "name": "address",
+   "value": "140 Cheltenham Road, Gloucester, GL2 6XZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

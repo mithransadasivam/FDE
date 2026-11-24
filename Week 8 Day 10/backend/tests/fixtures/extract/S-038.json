@@ -1,0 +1,43 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kian Ford",
+   "word_ids": [
+    "w004",
+    "w005",
+    "w006"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "61 Mill Street, Gloucester, GL1 6DY",
+   "word_ids": [
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "25 Sep 2026",
+   "word_ids": [
+    "w015",
+    "w016",
+    "w017"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy Ltd",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

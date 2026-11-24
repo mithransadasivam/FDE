@@ -1,0 +1,67 @@
+[
+  {
+    "id": "SC1",
+    "name": "Faster decisions",
+    "kind": "business",
+    "metric": "Median working days from application to decision",
+    "baseline": 7.0,
+    "target": 3.0,
+    "unit": "working days",
+    "direction": "decrease",
+    "measured_how": "CaseFlow timestamps, weekly report, pilot cases only",
+    "owner": "Deborah Okafor",
+    "by_when": "End of week 6 pilot"
+  },
+  {
+    "id": "SC2",
+    "name": "Less analyst time per application",
+    "kind": "business",
+    "metric": "Minutes of analyst time per application",
+    "baseline": 22.0,
+    "target": 12.0,
+    "unit": "minutes",
+    "direction": "decrease",
+    "measured_how": "CaseFlow work timer, pilot cases, weekly",
+    "owner": "Deborah Okafor",
+    "by_when": "Week 6"
+  },
+  {
+    "id": "SC3",
+    "name": "Analysts trust the tool",
+    "kind": "quality",
+    "metric": "Share of AI-filled fields the analyst accepts without change",
+    "baseline": null,
+    "target": 90.0,
+    "unit": "%",
+    "direction": "increase",
+    "measured_how": "Logged on every accept or correct click in the review screen",
+    "owner": "Tom Reyes",
+    "by_when": "Week 6"
+  },
+  {
+    "id": "SC4",
+    "name": "A person decides every case",
+    "kind": "guardrail",
+    "metric": "Share of KYC decisions made by a named analyst",
+    "baseline": null,
+    "target": 100.0,
+    "unit": "%",
+    "direction": "increase",
+    "measured_how": "Decision log: analyst name recorded on every case, weekly check",
+    "owner": "Helen Achebe",
+    "by_when": "Week 6"
+  },
+  {
+    "id": "SC5",
+    "name": "Lower cost per application",
+    "kind": "business",
+    "metric": "Average cost per onboarding application",
+    "baseline": 11.4,
+    "target": 8.0,
+    "unit": "£ per application",
+    "direction": "decrease",
+    "measured_how": "Finance cost-per-application report, monthly",
+    "owner": "Martin Hale",
+    "by_when": "March"
+  }
+]

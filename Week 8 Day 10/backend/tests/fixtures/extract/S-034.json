@@ -1,0 +1,46 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Maya Reyes & Ms Nina Reyes",
+   "word_ids": [
+    "w003",
+    "w004",
+    "w005",
+    "w006",
+    "w007",
+    "w008",
+    "w009"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "74 Victoria Road, Stroud, GL5 8FT",
+   "word_ids": [
+    "w010",
+    "w011",
+    "w012",
+    "w013",
+    "w014",
+    "w015"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "19 Sep 2026",
+   "word_ids": [
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

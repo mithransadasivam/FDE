@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Anika Rossi"
+  },
+  {
+   "name": "address",
+   "value": "99 Park Road, Stroud, GL5 8PL"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Charlotte B. Evans",
+      "word_ids": [
+        "w003",
+        "w004",
+        "w005"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "9 The Green, Cheltenham, GL52 6PQ",
+      "word_ids": [
+        "w006",
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "10 Jul 2026",
+      "word_ids": [
+        "w014",
+        "w015",
+        "w016"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

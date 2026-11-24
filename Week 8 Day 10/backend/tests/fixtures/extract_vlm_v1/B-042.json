@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Owen Morgan"
+  },
+  {
+   "name": "address",
+   "value": "116 Cheltenham Road, Cheltenham, GL53 4AR"
+  },
+  {
+   "name": "statement_date",
+   "value": "22 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

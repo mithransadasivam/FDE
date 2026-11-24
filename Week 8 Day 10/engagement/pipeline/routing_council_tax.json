@@ -1,0 +1,6 @@
+{
+  "parser_prompt": "extract_v3",
+  "vision_prompt": "extract_vlm_v1",
+  "ok_at": 0.85,
+  "use_agreement": true
+}

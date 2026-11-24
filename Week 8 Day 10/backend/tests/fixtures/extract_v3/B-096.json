@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Okafor",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "89 Abbey Road Cheltenham GL50 4ZN",
+   "word_ids": [
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w026",
+    "w027"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "25 Aug 2026",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Grace E. Young",
+      "word_ids": [
+        "w003",
+        "w004",
+        "w005"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "2 Fir Tree Road, Tewkesbury, GL20 7DF",
+      "word_ids": [
+        "w006",
+        "w007",
+        "w008",
+        "w009",
+        "w010",
+        "w011",
+        "w012"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "08 Jul 2026",
+      "word_ids": [
+        "w015",
+        "w016",
+        "w017"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

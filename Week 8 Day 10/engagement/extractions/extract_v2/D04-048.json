@@ -1,0 +1,49 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Dr Rohan Mehra & Mrs Anjali Mehra",
+      "word_ids": [
+        "w012",
+        "w013",
+        "w014",
+        "w015",
+        "w016",
+        "w017",
+        "w018"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "2 Pittville Lawn, Cheltenham, GL52 2BE",
+      "word_ids": [
+        "w019",
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "17 Sep 2026",
+      "word_ids": [
+        "w027",
+        "w028",
+        "w029"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Harrowgate Water Water & Sewerage",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004",
+        "w005"
+      ]
+    }
+  ]
+}

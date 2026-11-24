@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT t.team_name, ROUND(COUNT(*) / 31.0, 1) AS reviews_per_day FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY t.team_name",
+  "explanation": "Documents reviewed in October 2026 by each team, divided by the days in October.",
+  "assumptions": [
+    "October has 31 days"
+  ],
+  "cannot_answer": ""
+}

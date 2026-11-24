@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT u.customer_name, c.case_id, c.decided_at FROM caseflow.cases c JOIN caseflow.customers u ON u.customer_id = c.customer_id WHERE c.status = 'declined' AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' ORDER BY c.decided_at LIMIT 5",
+  "explanation": "Five declined applications from October 2026, with the customer's name.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

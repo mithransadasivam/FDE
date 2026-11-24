@@ -1,0 +1,48 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Joy Walsh & Mr Luca Walsh",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008",
+    "w009",
+    "w010",
+    "w011",
+    "w012"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 10, 107 Meadow View Nailsworth GL6 5HP",
+   "word_ids": [
+    "w013",
+    "w014",
+    "w015",
+    "w016",
+    "w017",
+    "w018",
+    "w019",
+    "w020"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Sep 2026",
+   "word_ids": [
+    "w023",
+    "w024",
+    "w025"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

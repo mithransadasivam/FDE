@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS backlog FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+  "explanation": "Documents waiting for an analyst on open applications.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

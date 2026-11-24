@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr George Haddad"
+  },
+  {
+   "name": "address",
+   "value": "7 Tewkesbury Road, Stroud, GL5 6WG"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

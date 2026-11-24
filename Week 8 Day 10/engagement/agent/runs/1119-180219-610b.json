@@ -1,0 +1,222 @@
+{
+  "id": "1119-180219-610b",
+  "ticket_id": "KX-1006",
+  "person": "helen.achebe",
+  "prompt": "ops_v1",
+  "model": "anthropic/claude-haiku-5.5",
+  "mode": "shadow",
+  "status": "proposed",
+  "stop_reason": "",
+  "outcome": "Chase applicant",
+  "reason_code": "R06",
+  "reference": "",
+  "summary": "Proposed Chase applicant (R06); shadow mode writes nothing",
+  "started_at": 1795140139.7988894,
+  "ended_at": 1795140142.5619104,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "I start by reading exception KX-1006.",
+      "tool": "get_exception",
+      "args": {
+        "ticket_id": "KX-1006"
+      },
+      "target": "KX-1006",
+      "decision": "allow",
+      "observation": "{\"ticket_id\": \"KX-1006\", \"case_id\": \"KC-021961\", \"customer_id\": \"CU-021961\", \"team_id\": \"N2\", \"kind\": \"applicant_follow_up\", \"title\": \"Applicant has not replied to an ask-applicant\", \"status\": \"in_progress\", \"assignee\": \"A05\", \"created_at\": \"2026-10-15T19:42\", \"comments\": []}",
+      "tokens_in": 1077,
+      "tokens_out": 26,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 2,
+      "thought": "It is an applicant follow up on case KC-021961. Next, the customer's risk rating.",
+      "tool": "get_customer",
+      "args": {
+        "customer_id": "CU-021961"
+      },
+      "target": "CU-021961",
+      "decision": "allow",
+      "observation": "{\"customer_id\": \"CU-021961\", \"name\": \"Thomas Singh\", \"customer_type\": \"personal\", \"region\": \"North\", \"team_id\": \"N2\", \"risk_rating\": \"low\", \"email\": \"applicant021961@example.com\", \"phone\": \"+44 7700 900804\", \"open_case_id\": \"KC-021961\", \"case_status\": \"open\", \"contacts\": [{\"at\": \"2026-10-12T23:42\", \"channel\": \"branch\", \"by\": \"A09\", \"summary\": \"Applicant will send a clearer photo of the passport\"}, {\"at\": \"2026-10-15T00:42\", \"channel\": \"call\", \"by\": \"A08\", \"summary\": \"Applicant called to check progress\"}], \"notes\": []}",
+      "tokens_in": 1174,
+      "tokens_out": 38,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 3,
+      "thought": "Risk rating low. Now the documents on file.",
+      "tool": "list_documents",
+      "args": {
+        "customer_id": "CU-021961"
+      },
+      "target": "CU-021961",
+      "decision": "allow",
+      "observation": "{\"documents\": [{\"doc_id\": \"DS-0021\", \"customer_id\": \"CU-021961\", \"team_id\": \"N2\", \"doc_type\": \"utility_bill\", \"received_at\": \"2026-10-12T19:42\", \"pages\": 2, \"sensitivity\": \"personal\"}]}",
+      "tokens_in": 1345,
+      "tokens_out": 29,
+      "seconds": 0.1,
+      "shot": null
+    },
+    {
+      "n": 4,
+      "thought": "Documents on file: utility bill. I open CaseFlow Classic to read the case.",
+      "tool": "open_caseflow",
+      "args": {},
+      "target": "*",
+      "decision": "allow",
+      "observation": "Screen: Main menu\nheading \"Main menu\"\n[e1] link \"Find a case\"\n[e2] link \"My work list\"\n[e3] link \"Sign out\"",
+      "tokens_in": 1422,
+      "tokens_out": 30,
+      "seconds": 0.8,
+      "shot": "step_04.png"
+    },
+    {
+      "n": 5,
+      "thought": "I go to the case search.",
+      "tool": "click",
+      "args": {
+        "name": "Find a case"
+      },
+      "target": "Find a case",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1481,
+      "tokens_out": 21,
+      "seconds": 0.9,
+      "shot": "step_05.png"
+    },
+    {
+      "n": 6,
+      "thought": "I search for case KC-021961.",
+      "tool": "type",
+      "args": {
+        "field": "Case reference",
+        "text": "KC-021961"
+      },
+      "target": "Case reference",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"KC-021961\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1534,
+      "tokens_out": 27,
+      "seconds": 0.9,
+      "shot": "step_06.png"
+    },
+    {
+      "n": 7,
+      "thought": "Search.",
+      "tool": "click",
+      "args": {
+        "name": "Search"
+      },
+      "target": "Search",
+      "decision": "allow",
+      "observation": "Screen: Case KC-021961\nheading \"Case KC-021961\"\nrow \"Customer | Thomas Singh (CU-021961)\"\nrow \"Team | N2\"\nrow \"Received | 12/10/2026\"\nrow \"Status | OPEN\"\nrow \"Risk | LOW\"\nrow \"Analyst | Marcus Lindqvist (A05)\"\nheading \"Case history\"\nrow \"Date | By | Entry\"\nrow \"12/10/2026 | SYSTEM | Application received through the web form.\"\nrow \"12/10/2026 | SYSTEM | Document received: utility bill (DS-0021).\"\nrow \"12/10/2026 | A09 | Contact by branch: Applicant will send a clearer photo of the passport.\"\nrow \"12/10/2026 | A05 | Asked the applicant for the missing documents.\"\nrow \"15/10/2026 | A08 | Contact by call: Applicant called to check progress.\"\n[e1] button \"Record outcome\"\n[e2] link \"Main menu\"",
+      "tokens_in": 1595,
+      "tokens_out": 15,
+      "seconds": 1.1,
+      "shot": "step_07.png"
+    },
+    {
+      "n": 8,
+      "thought": "I have read the case and its history. I open the outcome form.",
+      "tool": "click",
+      "args": {
+        "name": "Record outcome"
+      },
+      "target": "Record outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-021961\nheading \"Record outcome · KC-021961\"\n[e1] combobox \"Outcome\" = \"\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 1786,
+      "tokens_out": 31,
+      "seconds": 1.2,
+      "shot": "step_08.png"
+    },
+    {
+      "n": 9,
+      "thought": "The outcome is Chase applicant: the applicant has not replied to our request (rule 3).",
+      "tool": "choose",
+      "args": {
+        "field": "Outcome",
+        "option": "Chase applicant"
+      },
+      "target": "Outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-021961\nheading \"Record outcome · KC-021961\"\n[e1] combobox \"Outcome\" = \"Chase applicant\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 1946,
+      "tokens_out": 42,
+      "seconds": 1.2,
+      "shot": "step_09.png"
+    },
+    {
+      "n": 10,
+      "thought": "Reason code R06.",
+      "tool": "choose",
+      "args": {
+        "field": "Reason code",
+        "option": "R06 No reply from applicant"
+      },
+      "target": "Reason code",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-021961\nheading \"Record outcome · KC-021961\"\n[e1] combobox \"Outcome\" = \"Chase applicant\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R06 No reply from applicant\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2120,
+      "tokens_out": 29,
+      "seconds": 2.5,
+      "shot": "step_10.png"
+    },
+    {
+      "n": 11,
+      "thought": "A short note for the case history.",
+      "tool": "type",
+      "args": {
+        "field": "Note",
+        "text": "Chase applicant: the applicant has not replied to our request (rule 3). Exception KX-1006."
+      },
+      "target": "Note",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-021961\nheading \"Record outcome · KC-021961\"\n[e1] combobox \"Outcome\" = \"Chase applicant\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R06 No reply from applicant\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"Chase applicant: the applicant has not replied to our request (rule 3). Exception KX-1006.\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2288,
+      "tokens_out": 46,
+      "seconds": 2.5,
+      "shot": "step_11.png"
+    },
+    {
+      "n": 12,
+      "thought": "The form is complete. Save.",
+      "tool": "click",
+      "args": {
+        "name": "Save"
+      },
+      "target": "Save",
+      "decision": "allow",
+      "observation": "Screen: Confirm KC-021961\nheading \"Confirm outcome · KC-021961\"\nrow \"Outcome | Chase applicant\"\nrow \"Reason code | R06 No reply from applicant\"\nrow \"Note | Chase applicant: the applicant has not replied to our request (rule 3). Exception KX-1006.\"\n[e1] button \"Back\"\n[e2] button \"Confirm\"",
+      "tokens_in": 2496,
+      "tokens_out": 20,
+      "seconds": 2.7,
+      "shot": "step_12.png"
+    },
+    {
+      "n": 13,
+      "thought": "The confirm screen shows what I chose. Confirm.",
+      "tool": "click",
+      "args": {
+        "name": "Confirm"
+      },
+      "target": "Confirm",
+      "decision": "rejected",
+      "observation": "Rejected by shadow mode: Evaluation: proposed, not written",
+      "tokens_in": 2589,
+      "tokens_out": 26,
+      "seconds": 2.7,
+      "shot": null
+    }
+  ],
+  "approvals": [
+    "1119-180219-610b-a1"
+  ],
+  "tokens_in": 22853,
+  "tokens_out": 380,
+  "cost_usd": 0.0024753,
+  "queue_id": ""
+}

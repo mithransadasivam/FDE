@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(100.0 * COUNT(*) FILTER (WHERE outcome = 'accept') / COUNT(*), 1) AS accepted_pct FROM caseflow.documents WHERE reviewed_at >= DATE '2026-10-01' AND reviewed_at < DATE '2026-11-01'",
+  "explanation": "The percentage of documents reviewed in October 2026 that were accepted.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

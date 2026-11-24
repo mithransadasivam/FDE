@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS documents_waiting FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NULL AND c.status = 'open'",
+  "explanation": "The bank's backlog: documents not reviewed yet on open applications.",
+  "assumptions": [
+    "Counted in documents, as the bank defines it"
+  ],
+  "cannot_answer": ""
+}

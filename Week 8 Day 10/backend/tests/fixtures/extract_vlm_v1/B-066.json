@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kofi Hughes"
+  },
+  {
+   "name": "address",
+   "value": "3 Hucclecote Road, Tewkesbury, GL20 2LS"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

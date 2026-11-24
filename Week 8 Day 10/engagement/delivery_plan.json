@@ -1,0 +1,37 @@
+{
+  "team": { "fdes": 2, "days_per_week": 5 },
+  "phases": [
+    { "name": "Proof of concept", "start_week": 1, "end_week": 2,
+      "gate": { "name": "PoC accuracy reviewed on 100 documents", "week": 2, "approver": "Deborah Okafor" } },
+    { "name": "Pilot", "start_week": 3, "end_week": 4,
+      "gate": { "name": "Pilot meets the success criteria", "week": 4, "approver": "Deborah Okafor" } },
+    { "name": "Production", "start_week": 5, "end_week": 6,
+      "gate": { "name": "Go-live approved", "week": 6, "approver": "Helen Achebe" } }
+  ],
+  "tasks": [
+    { "id": "T01", "name": "Prototype the check on 30 documents", "phase": "Proof of concept",
+      "kind": "build", "owner": "FDE", "start_week": 1, "weeks": 1, "effort_days": 5 },
+    { "id": "T02", "name": "Fix data issues: duplicates, dates, file formats", "phase": "Proof of concept",
+      "kind": "data", "owner": "FDE", "start_week": 1, "weeks": 1, "effort_days": 4 },
+    { "id": "T03", "name": "Remove personal data from analyst notes at source", "phase": "Proof of concept",
+      "kind": "data", "owner": "Bank IT", "start_week": 1, "weeks": 2, "effort_days": 6 },
+    { "id": "T04", "name": "Measure accuracy on 100 documents", "phase": "Proof of concept",
+      "kind": "evaluation", "owner": "FDE", "start_week": 2, "weeks": 1, "effort_days": 5 },
+    { "id": "T05", "name": "Build review screen with confidence and boxes", "phase": "Pilot",
+      "kind": "build", "owner": "FDE", "start_week": 3, "weeks": 2, "effort_days": 10 },
+    { "id": "T06", "name": "Connect read-only CaseFlow API and audit log", "phase": "Pilot",
+      "kind": "build", "owner": "FDE", "start_week": 3, "weeks": 1, "effort_days": 6 },
+    { "id": "T07", "name": "Security review: UK data flow and audit trail", "phase": "Pilot",
+      "kind": "security", "owner": "MLRO office", "start_week": 3, "weeks": 1, "effort_days": 3 },
+    { "id": "T08", "name": "Model validation: accuracy and error review", "phase": "Pilot",
+      "kind": "validation", "owner": "FDE", "start_week": 3, "weeks": 4, "effort_days": 14 },
+    { "id": "T09", "name": "Pilot with five analysts on the live queue", "phase": "Pilot",
+      "kind": "evaluation", "owner": "KYC Operations", "start_week": 4, "weeks": 1, "effort_days": 5 },
+    { "id": "T10", "name": "Tune the extraction from pilot feedback", "phase": "Pilot",
+      "kind": "build", "owner": "FDE", "start_week": 4, "weeks": 1, "effort_days": 5 },
+    { "id": "T11", "name": "Train the analysts", "phase": "Production",
+      "kind": "training", "owner": "KYC Operations", "start_week": 5, "weeks": 1, "effort_days": 4 },
+    { "id": "T12", "name": "Handover: runbook and monitoring", "phase": "Production",
+      "kind": "handover", "owner": "FDE", "start_week": 5, "weeks": 2, "effort_days": 6 }
+  ]
+}

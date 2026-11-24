@@ -1,0 +1,886 @@
+{
+  "at": "2026-11-23T19:03:13",
+  "run_as": "helen.achebe",
+  "day_seconds": 30.0,
+  "seconds": 667,
+  "scored": true,
+  "passed": 14,
+  "total": 20,
+  "crashes_fired": 13,
+  "results": [
+    {
+      "id": "C01",
+      "ticket_id": "KX-1005",
+      "team_id": "N2",
+      "crash": "after_send_request",
+      "decision": "approve",
+      "reply_after_days": 2,
+      "doc_type": "utility_bill",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1005-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_send_request"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": false,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": false
+      }
+    },
+    {
+      "id": "C02",
+      "ticket_id": "KX-1006",
+      "team_id": "N2",
+      "crash": "after_send_reminder",
+      "decision": "approve",
+      "reply_after_days": 5,
+      "doc_type": "passport",
+      "round1_outcome": "Chase applicant",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1006-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_send_reminder"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C03",
+      "ticket_id": "KX-1007",
+      "team_id": "N2",
+      "crash": "after_confirm",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Refer to Financial Crime",
+      "round2_outcome": "",
+      "expected_end": "recorded",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1007-4",
+      "end": "recorded",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_confirm"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C04",
+      "ticket_id": "KX-1008",
+      "team_id": "N2",
+      "crash": "after_escalate",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Request more information",
+      "round2_outcome": "",
+      "expected_end": "escalated",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1008-4",
+      "end": "escalated",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 1
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_escalate"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C05",
+      "ticket_id": "KX-1009",
+      "team_id": "M1",
+      "crash": "none",
+      "decision": "approve",
+      "reply_after_days": 1,
+      "doc_type": "passport",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1009-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": false,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": false
+      }
+    },
+    {
+      "id": "C06",
+      "ticket_id": "KX-1010",
+      "team_id": "M1",
+      "crash": "after_confirm",
+      "decision": "approve",
+      "reply_after_days": 2,
+      "doc_type": "passport",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1010-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_confirm"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": false,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": false
+      }
+    },
+    {
+      "id": "C07",
+      "ticket_id": "KX-1011",
+      "team_id": "M1",
+      "crash": "none",
+      "decision": "reject",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Refer to Financial Crime",
+      "round2_outcome": "",
+      "expected_end": "rejected",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0
+      },
+      "key": "case-KX-1011-4",
+      "end": "rejected",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C08",
+      "ticket_id": "KX-1012",
+      "team_id": "M1",
+      "crash": "after_send_reminder",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Request more information",
+      "round2_outcome": "",
+      "expected_end": "escalated",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1012-4",
+      "end": "escalated",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 1
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_send_reminder"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C09",
+      "ticket_id": "KX-1013",
+      "team_id": "M2",
+      "crash": "after_send_request",
+      "decision": "approve",
+      "reply_after_days": 4,
+      "doc_type": "utility_bill",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1013-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_send_request"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C10",
+      "ticket_id": "KX-1014",
+      "team_id": "M2",
+      "crash": "none",
+      "decision": "expire",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Chase applicant",
+      "round2_outcome": "",
+      "expected_end": "expired",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0
+      },
+      "key": "case-KX-1014-4",
+      "end": "expired",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C11",
+      "ticket_id": "KX-1015",
+      "team_id": "M2",
+      "crash": "none",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "",
+      "round2_outcome": "",
+      "expected_end": "stopped",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0
+      },
+      "key": "case-KX-1015-4",
+      "end": "stopped",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 0,
+        "outcome_comments": 0,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C12",
+      "ticket_id": "KX-1016",
+      "team_id": "M2",
+      "crash": "after_escalate",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Request more information",
+      "round2_outcome": "",
+      "expected_end": "escalated",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1016-4",
+      "end": "escalated",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 1
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_escalate"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C13",
+      "ticket_id": "KX-1017",
+      "team_id": "S1",
+      "crash": "after_confirm",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Ready for decision",
+      "round2_outcome": "",
+      "expected_end": "recorded",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1017-4",
+      "end": "recorded",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_confirm"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C14",
+      "ticket_id": "KX-1018",
+      "team_id": "S1",
+      "crash": "after_send_request",
+      "decision": "approve",
+      "reply_after_days": 6,
+      "doc_type": "utility_bill",
+      "round1_outcome": "Chase applicant",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1018-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_send_request"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C15",
+      "ticket_id": "KX-1019",
+      "team_id": "S1",
+      "crash": "none",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Refer to Financial Crime",
+      "round2_outcome": "",
+      "expected_end": "recorded",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1019-4",
+      "end": "recorded",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C16",
+      "ticket_id": "KX-1020",
+      "team_id": "S1",
+      "crash": "after_confirm",
+      "decision": "approve",
+      "reply_after_days": 2,
+      "doc_type": "utility_bill",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "completed",
+      "expected": {
+        "requests": 1,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2
+      },
+      "key": "case-KX-1020-4",
+      "end": "completed",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 2,
+        "outcome_comments": 2,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 1,
+        "1": 1
+      },
+      "crashes": [
+        "after_confirm"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": false,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": false
+      }
+    },
+    {
+      "id": "C17",
+      "ticket_id": "KX-1021",
+      "team_id": "S2",
+      "crash": "after_send_request",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Request more information",
+      "round2_outcome": "",
+      "expected_end": "escalated",
+      "expected": {
+        "requests": 1,
+        "reminders": 1,
+        "escalations": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1021-4",
+      "end": "escalated",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 1
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_send_request"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C18",
+      "ticket_id": "KX-1022",
+      "team_id": "S2",
+      "crash": "none",
+      "decision": "reject_round2",
+      "reply_after_days": 2,
+      "doc_type": "passport",
+      "round1_outcome": "Request more information",
+      "round2_outcome": "Ready for decision",
+      "expected_end": "rejected",
+      "expected": {
+        "requests": 1,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1022-4",
+      "end": "expired",
+      "counts": {
+        "requests": 1,
+        "reminders": 1,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "2": 2,
+        "1": 1
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": false,
+          "messages": false,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": false
+        },
+        "passed": false
+      }
+    },
+    {
+      "id": "C19",
+      "ticket_id": "KX-1023",
+      "team_id": "S2",
+      "crash": "after_confirm",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Refer to Financial Crime",
+      "round2_outcome": "",
+      "expected_end": "recorded",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1023-4",
+      "end": "recorded",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 1
+      },
+      "crashes": [
+        "after_confirm"
+      ],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "C20",
+      "ticket_id": "KX-1024",
+      "team_id": "S2",
+      "crash": "none",
+      "decision": "approve",
+      "reply_after_days": null,
+      "doc_type": null,
+      "round1_outcome": "Ready for decision",
+      "round2_outcome": "",
+      "expected_end": "recorded",
+      "expected": {
+        "requests": 0,
+        "reminders": 0,
+        "escalations": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1
+      },
+      "key": "case-KX-1024-4",
+      "end": "recorded",
+      "counts": {
+        "requests": 0,
+        "reminders": 0,
+        "caseflow_outcomes": 1,
+        "outcome_comments": 1,
+        "escalations": 0
+      },
+      "agent_runs": {
+        "1": 2
+      },
+      "crashes": [],
+      "score": {
+        "checks": {
+          "end": true,
+          "messages": true,
+          "caseflow": true,
+          "escalation": true,
+          "agent_once": false
+        },
+        "passed": false
+      }
+    }
+  ]
+}

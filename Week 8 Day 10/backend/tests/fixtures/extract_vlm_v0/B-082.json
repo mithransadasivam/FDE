@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Niamh Clarke"
+  },
+  {
+   "name": "address",
+   "value": "98 Spa Road, Cheltenham, GL53 4BF"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

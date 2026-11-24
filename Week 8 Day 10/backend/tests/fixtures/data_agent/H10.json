@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS applications FROM (SELECT d.case_id FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.outcome = 'ask_applicant' AND c.received_at >= DATE '2026-01-01' GROUP BY d.case_id HAVING COUNT(*) > 1) AS x",
+  "explanation": "Applications received in 2026 with two or more ask_applicant documents.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

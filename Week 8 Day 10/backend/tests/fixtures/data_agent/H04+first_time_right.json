@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(AVG(CASE WHEN c.status = 'approved' AND NOT EXISTS (SELECT 1 FROM caseflow.documents d WHERE d.case_id = c.case_id AND d.outcome = 'ask_applicant') THEN 1.0 ELSE 0 END) * 100, 1) AS ftr_pct FROM caseflow.cases c WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01'",
+  "explanation": "The bank's first-time-right rate for October 2026 decisions.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

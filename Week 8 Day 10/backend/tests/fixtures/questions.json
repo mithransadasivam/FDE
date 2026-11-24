@@ -1,0 +1,17 @@
+{"questions": [
+ {"area": "goals", "text": "What made onboarding speed a board-level issue now, rather than a year ago?", "why": "The real trigger, and how much pressure the sponsor is under"},
+ {"area": "goals", "text": "If this engagement goes perfectly, what is different for customers in six weeks?", "why": "The outcome the client pictures, in their own words"},
+ {"area": "goals", "text": "What would make you call this engagement a failure, even if the tool works?", "why": "Hidden expectations and political risks"},
+ {"area": "process", "text": "Can you walk me through the last application you worked on, from opening it to the decision?", "why": "The real process, not the documented one"},
+ {"area": "process", "text": "Which document types take the longest, and roughly how many minutes each?", "why": "Where the hours actually go"},
+ {"area": "process", "text": "What happens to a case when the applicant has to send something again?", "why": "Rework loops that grow the backlog"},
+ {"area": "process", "text": "How does the volume change across the year, and when is your next peak?", "why": "Deadlines the client has not stated"},
+ {"area": "data", "text": "What records do you keep of past reviews, decisions and their reasons?", "why": "Whether there is labelled history to build and test with"},
+ {"area": "data", "text": "Which systems hold the documents and cases, and can anything read from or write to them?", "why": "Integration limits that shape the design"},
+ {"area": "data", "text": "Has the bank tried to automate any of this before, and what happened?", "why": "Lessons, and the trust we start with"},
+ {"area": "risk", "text": "Which decisions must always be made by a person, and who says so?", "why": "Where automation must stop"},
+ {"area": "risk", "text": "Who has to approve a change to KYC controls, and how long does that take?", "why": "Approvals that sit on the critical path"},
+ {"area": "risk", "text": "Where may customer documents be stored and processed, and which tools are blocked?", "why": "Data residency and security constraints"},
+ {"area": "success", "text": "Which numbers will Martin look at to decide whether this worked?", "why": "The sponsor's real success measures"},
+ {"area": "success", "text": "How will you know your analysts actually want to use the tool?", "why": "Adoption measures, from the users' side"}
+]}

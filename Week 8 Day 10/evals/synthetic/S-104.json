@@ -1,0 +1,244 @@
+{
+ "case_id": "S-104",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Copperline",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.949
+  },
+  {
+   "id": "w002",
+   "text": "Broadband",
+   "box": [
+    0.208,
+    0.08,
+    0.326,
+    0.105
+   ],
+   "confidence": 0.962
+  },
+  {
+   "id": "w003",
+   "text": "James",
+   "box": [
+    0.07,
+    0.12,
+    0.14,
+    0.145
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w004",
+   "text": "K.",
+   "box": [
+    0.148,
+    0.12,
+    0.182,
+    0.145
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w005",
+   "text": "O'Brien",
+   "box": [
+    0.19,
+    0.12,
+    0.284,
+    0.145
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w006",
+   "text": "45",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.945
+  },
+  {
+   "id": "w007",
+   "text": "High",
+   "box": [
+    0.112,
+    0.16,
+    0.17,
+    0.185
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w008",
+   "text": "Street",
+   "box": [
+    0.178,
+    0.16,
+    0.26,
+    0.185
+   ],
+   "confidence": 0.961
+  },
+  {
+   "id": "w009",
+   "text": "Tewkesbury",
+   "box": [
+    0.07,
+    0.2,
+    0.2,
+    0.225
+   ],
+   "confidence": 0.964
+  },
+  {
+   "id": "w010",
+   "text": "GL20",
+   "box": [
+    0.07,
+    0.24,
+    0.128,
+    0.265
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w011",
+   "text": "5RT",
+   "box": [
+    0.136,
+    0.24,
+    0.182,
+    0.265
+   ],
+   "confidence": 0.983
+  },
+  {
+   "id": "w012",
+   "text": "Payment",
+   "box": [
+    0.07,
+    0.28,
+    0.164,
+    0.305
+   ],
+   "confidence": 0.986
+  },
+  {
+   "id": "w013",
+   "text": "due:",
+   "box": [
+    0.172,
+    0.28,
+    0.23,
+    0.305
+   ],
+   "confidence": 0.994
+  },
+  {
+   "id": "w014",
+   "text": "12",
+   "box": [
+    0.238,
+    0.28,
+    0.272,
+    0.305
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w015",
+   "text": "Apr",
+   "box": [
+    0.28,
+    0.28,
+    0.326,
+    0.305
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w016",
+   "text": "2026",
+   "box": [
+    0.334,
+    0.28,
+    0.392,
+    0.305
+   ],
+   "confidence": 0.951
+  },
+  {
+   "id": "w017",
+   "text": "Issued:",
+   "box": [
+    0.07,
+    0.32,
+    0.164,
+    0.345
+   ],
+   "confidence": 0.957
+  },
+  {
+   "id": "w018",
+   "text": "28",
+   "box": [
+    0.172,
+    0.32,
+    0.206,
+    0.345
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w019",
+   "text": "Mar",
+   "box": [
+    0.214,
+    0.32,
+    0.26,
+    0.345
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.268,
+    0.32,
+    0.326,
+    0.345
+   ],
+   "confidence": 0.994
+  }
+ ],
+ "application": {
+  "case_id": "S-104",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "James K. O'Brien",
+  "address_line1": "45 High Street",
+  "town": "Tewkesbury",
+  "postcode": "GL20 5RT"
+ },
+ "labels": {
+  "full_name": "James K. O'Brien",
+  "address": "45 High Street, Tewkesbury, GL20 5RT",
+  "statement_date": "28 Mar 2026",
+  "issuer": "Copperline Broadband",
+  "tom_decision": "approve"
+ }
+}

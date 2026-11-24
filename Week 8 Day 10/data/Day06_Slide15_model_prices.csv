@@ -1,0 +1,4 @@
+provider,model,model_id,input_usd_per_m,output_usd_per_m,batch_input_usd_per_m,batch_output_usd_per_m,reads_images,note
+OpenRouter,Claude Haiku 5.5,anthropic/claude-haiku-5.5,0.10,0.50,,,yes,The class model for Day 6: set FDE_MODEL to this id
+OpenRouter,Claude Sonnet 5,anthropic/claude-sonnet-5,2.00,10.00,1.00,5.00,yes,Batch prices are for the anthropic/claude-sonnet-5:batch variant
+Amazon Bedrock (London),Claude Sonnet 5 in-Region,anthropic.claude-sonnet-5,2.20,11.00,,,yes,The pilot's model (ADR-002). Bedrock batch inference is 50% off for select models: check this model in eu-west-2

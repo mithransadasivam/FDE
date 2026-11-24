@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Lewis Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "19 Hales Road, Lydney, GL15 6HH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

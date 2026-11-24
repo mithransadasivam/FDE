@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr George Campbell"
+  },
+  {
+   "name": "address",
+   "value": "10 Tewkesbury Rd, Gloucester, GL4 2JS"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

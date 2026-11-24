@@ -1,0 +1,41 @@
+{
+ "KX-1001": {
+  "comments": [
+   {
+    "at": "2026-11-18T19:28",
+    "by": "tom.reyes",
+    "via": "fde-mcp",
+    "text": "Checked (permission test)"
+   },
+   {
+    "at": "2026-11-18T19:28",
+    "by": "grace.mensah",
+    "via": "fde-mcp",
+    "text": "Checked (permission test)"
+   },
+   {
+    "at": "2026-11-18T19:28",
+    "by": "helen.achebe",
+    "via": "fde-mcp",
+    "text": "Checked (permission test)"
+   },
+   {
+    "at": "2026-11-19T20:51",
+    "by": "tom.reyes",
+    "via": "fde-mcp",
+    "text": "Outcome recorded in CaseFlow Classic: Request more information (R02). Reference OUT-40017. Worked by the operations agent."
+   }
+  ],
+  "assignee": "A01"
+ },
+ "KX-1004": {
+  "comments": [
+   {
+    "at": "2026-11-19T20:51",
+    "by": "tom.reyes",
+    "via": "fde-mcp",
+    "text": "Outcome recorded in CaseFlow Classic: Request more information (R01). Reference OUT-40018. Worked by the operations agent."
+   }
+  ]
+ }
+}

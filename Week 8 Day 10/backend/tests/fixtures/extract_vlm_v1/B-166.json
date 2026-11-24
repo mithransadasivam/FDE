@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Mei Griffiths"
+  },
+  {
+   "name": "address",
+   "value": "53 Barton Street, Quedgeley, GL2 3SE"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

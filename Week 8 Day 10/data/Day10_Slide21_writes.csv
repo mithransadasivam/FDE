@@ -1,0 +1,9 @@
+write,system,step,made_safe_by,key_or_marker,why
+Request for documents,Contact gateway,send_message,Idempotency-Key,{workflow}:{step},A regulated communication: never sent twice
+Reminder,Contact gateway,send_message,Idempotency-Key,{workflow}:{step},A regulated communication: never sent twice
+Outcome,CaseFlow Classic,apply,Marker in the note; read the history first,[{workflow} r{round}],CaseFlow has no API and no keys
+Comment: outcome recorded,KYC exceptions,apply,Idempotency-Key,{workflow}:{step}:comment,Analysts work from the comments
+Comment: escalated,KYC exceptions,escalate,Idempotency-Key,{workflow}:{step},The team lead acts on it
+Slack message: escalated,Slack,escalate,At least once (agreed),,"A notification: a second copy is harmless, and incoming webhooks take no key. Helen agreed"
+Approval request,The console,propose,One per proposal,the approval id,The agent's run makes it once
+Case grant,Sign-in service,start,"One per workflow, revoked at the end",the workflow id,Tom's delegation lasts as long as the case

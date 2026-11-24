@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT strftime(decided_at, '%Y-%m') AS month, MEDIAN(date_diff('day', received_at, decided_at)) AS median_days FROM caseflow.cases WHERE decided_at >= DATE '2026-01-01' GROUP BY 1 ORDER BY 1",
+  "explanation": "The median days from receipt to decision, for each month of 2026.",
+  "assumptions": [
+    "Turnaround is the calendar days from received_at to decided_at",
+    "Grouped by the month of the decision"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS applications FROM caseflow.cases WHERE received_at >= DATE '2026-10-01' AND received_at < DATE '2026-11-01'",
+  "explanation": "Counts applications received in October 2026.",
+  "assumptions": [
+    "Applications counted by the day they arrived (received_at)"
+  ],
+  "cannot_answer": ""
+}

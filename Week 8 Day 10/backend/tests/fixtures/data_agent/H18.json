@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT ROUND(SUM(p.annual_salary_gbp) / (SELECT COUNT(*) FROM caseflow.cases), 2) AS cost_per_application FROM hr.analyst_pay p",
+  "explanation": "Analysts' pay divided by applications.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

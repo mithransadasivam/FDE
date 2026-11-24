@@ -1,0 +1,266 @@
+{
+ "kyc-north": [
+  {
+   "at": "2026-11-18T19:07:03",
+   "text": "New KYC exception KX-2001 (North 2): Escalated document: possible sanctions match",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-2001*\nEscalated document: possible sanctions match"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nNorth 2"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\nescalation"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-021805"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "at": "2026-11-18T19:12:19",
+   "text": "New KYC exception KX-1001 (North 1): Probe: genuine delivery",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-1001*\nProbe: genuine delivery"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nNorth 1"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\noverdue"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-022578"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "at": "2026-11-18T19:21:18",
+   "text": "New KYC exception KX-1001 (North 1): Probe: genuine delivery",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-1001*\nProbe: genuine delivery"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nNorth 1"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\noverdue"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-022578"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "financial-crime": [
+  {
+   "at": "2026-11-18T19:07:03",
+   "text": "New KYC exception KX-2001 (North 2): Escalated document: possible sanctions match",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-2001*\nEscalated document: possible sanctions match"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nNorth 2"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\nescalation"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-021805"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "at": "2026-11-18T19:24:25",
+   "text": "New KYC exception KX-2002 (South 2): Escalated document: possible sanctions match",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-2002*\nEscalated document: possible sanctions match"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nSouth 2"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\nescalation"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-022462"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "kyc-south": [
+  {
+   "at": "2026-11-18T19:24:25",
+   "text": "New KYC exception KX-2002 (South 2): Escalated document: possible sanctions match",
+   "blocks": [
+    {
+     "type": "section",
+     "text": {
+      "type": "mrkdwn",
+      "text": "*New KYC exception KX-2002*\nEscalated document: possible sanctions match"
+     }
+    },
+    {
+     "type": "section",
+     "fields": [
+      {
+       "type": "mrkdwn",
+       "text": "*Team*\nSouth 2"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Kind*\nescalation"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Case*\nKC-022462"
+      },
+      {
+       "type": "mrkdwn",
+       "text": "*Status*\nopen"
+      }
+     ]
+    },
+    {
+     "type": "context",
+     "elements": [
+      {
+       "type": "mrkdwn",
+       "text": "From the KYC exceptions system \u00b7 signature checked \u00b7 no customer name in Slack"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

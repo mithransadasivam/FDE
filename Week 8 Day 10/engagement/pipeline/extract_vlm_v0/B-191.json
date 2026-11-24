@@ -1,0 +1,64 @@
+{
+  "doc_id": "B-191",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Poppy Murphy",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2949,
+        0.1791
+      ],
+      "page_text": "Mrs Poppy Murphy",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "26 Market St, Cheltenham, GL50 2PG",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-09-08",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 72,
+    "latency_ms": 1804,
+    "scripted": true
+  }
+}

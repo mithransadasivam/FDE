@@ -1,0 +1,69 @@
+{
+  "doc_id": "B-102",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Priya Morgan",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2683,
+        0.1767
+      ],
+      "page_text": "Ms Priya Morgan",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "123 Mill Lane, Cheltenham, GL51 1WH",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2035,
+        0.2564
+      ],
+      "page_text": "123 Mill Lane Cheltenham GL51 1WH",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-08-24",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4657,
+        0.0634
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 72,
+    "latency_ms": 1804,
+    "scripted": true
+  }
+}

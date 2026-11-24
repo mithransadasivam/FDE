@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT doc_type, ROUND(100.0 * COUNT(*) FILTER (WHERE outcome = 'ask_applicant') / COUNT(*), 1) AS ask_applicant_pct FROM caseflow.documents WHERE reviewed_at >= DATE '2026-01-01' GROUP BY doc_type ORDER BY ask_applicant_pct DESC LIMIT 1",
+  "explanation": "For each document type reviewed in 2026, the share asked again; the highest one.",
+  "assumptions": [
+    "The rate is per document reviewed"
+  ],
+  "cannot_answer": ""
+}

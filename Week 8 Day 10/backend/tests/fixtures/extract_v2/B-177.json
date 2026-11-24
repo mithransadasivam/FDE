@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Fatima Boateng",
+   "word_ids": [
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "Flat 11, 36 Station Road Lydney GL15 8JG",
+   "word_ids": [
+    "w020",
+    "w021",
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Oct 2026",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

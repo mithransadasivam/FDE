@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Hannah Campbell"
+  },
+  {
+   "name": "address",
+   "value": "51 Church Street, Tewkesbury, GL20 9XA"
+  },
+  {
+   "name": "statement_date",
+   "value": "21 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

@@ -1,0 +1,244 @@
+{
+ "case_id": "S-120",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Harrowgate",
+   "box": [
+    0.07,
+    0.08,
+    0.2,
+    0.105
+   ],
+   "confidence": 0.979
+  },
+  {
+   "id": "w002",
+   "text": "Water",
+   "box": [
+    0.208,
+    0.08,
+    0.278,
+    0.105
+   ],
+   "confidence": 0.981
+  },
+  {
+   "id": "w003",
+   "text": "Jack",
+   "box": [
+    0.07,
+    0.12,
+    0.128,
+    0.145
+   ],
+   "confidence": 0.993
+  },
+  {
+   "id": "w004",
+   "text": "R.",
+   "box": [
+    0.136,
+    0.12,
+    0.17,
+    0.145
+   ],
+   "confidence": 0.987
+  },
+  {
+   "id": "w005",
+   "text": "Adams",
+   "box": [
+    0.178,
+    0.12,
+    0.248,
+    0.145
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w006",
+   "text": "19",
+   "box": [
+    0.07,
+    0.16,
+    0.104,
+    0.185
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w007",
+   "text": "Hazelwood",
+   "box": [
+    0.112,
+    0.16,
+    0.23,
+    0.185
+   ],
+   "confidence": 0.965
+  },
+  {
+   "id": "w008",
+   "text": "Drive",
+   "box": [
+    0.238,
+    0.16,
+    0.308,
+    0.185
+   ],
+   "confidence": 0.985
+  },
+  {
+   "id": "w009",
+   "text": "Cirencester",
+   "box": [
+    0.07,
+    0.2,
+    0.212,
+    0.225
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w010",
+   "text": "GL7",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w011",
+   "text": "4JY",
+   "box": [
+    0.124,
+    0.24,
+    0.17,
+    0.265
+   ],
+   "confidence": 0.992
+  },
+  {
+   "id": "w012",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.28,
+    0.116,
+    0.305
+   ],
+   "confidence": 0.956
+  },
+  {
+   "id": "w013",
+   "text": "by:",
+   "box": [
+    0.124,
+    0.28,
+    0.17,
+    0.305
+   ],
+   "confidence": 0.941
+  },
+  {
+   "id": "w014",
+   "text": "15",
+   "box": [
+    0.178,
+    0.28,
+    0.212,
+    0.305
+   ],
+   "confidence": 0.95
+  },
+  {
+   "id": "w015",
+   "text": "Aug",
+   "box": [
+    0.22,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.953
+  },
+  {
+   "id": "w016",
+   "text": "2026",
+   "box": [
+    0.274,
+    0.28,
+    0.332,
+    0.305
+   ],
+   "confidence": 0.974
+  },
+  {
+   "id": "w017",
+   "text": "Issued:",
+   "box": [
+    0.07,
+    0.32,
+    0.164,
+    0.345
+   ],
+   "confidence": 0.952
+  },
+  {
+   "id": "w018",
+   "text": "31",
+   "box": [
+    0.172,
+    0.32,
+    0.206,
+    0.345
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w019",
+   "text": "Jul",
+   "box": [
+    0.214,
+    0.32,
+    0.26,
+    0.345
+   ],
+   "confidence": 0.957
+  },
+  {
+   "id": "w020",
+   "text": "2026",
+   "box": [
+    0.268,
+    0.32,
+    0.326,
+    0.345
+   ],
+   "confidence": 0.962
+  }
+ ],
+ "application": {
+  "case_id": "S-120",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Jack R. Adams",
+  "address_line1": "19 Hazelwood Drive",
+  "town": "Cirencester",
+  "postcode": "GL7 4JY"
+ },
+ "labels": {
+  "full_name": "Jack R. Adams",
+  "address": "19 Hazelwood Drive, Cirencester, GL7 4JY",
+  "statement_date": "31 Jul 2026",
+  "issuer": "Harrowgate Water",
+  "tom_decision": "approve"
+ }
+}

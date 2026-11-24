@@ -1,0 +1,6 @@
+{
+  "sql": "",
+  "explanation": "",
+  "assumptions": [],
+  "cannot_answer": "The approved tables hold the minutes analysts spend on each document, but no pay or cost rates, so the warehouse cannot give a cost in pounds. The minutes per application can be answered instead."
+}

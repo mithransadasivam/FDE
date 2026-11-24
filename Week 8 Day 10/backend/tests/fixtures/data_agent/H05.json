@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT ROUND(AVG(CASE WHEN date_diff('day', received_at, decided_at) <= 3 THEN 1.0 ELSE 0 END) * 100, 1) AS within_3_days_pct FROM caseflow.cases WHERE decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+  "explanation": "The share of October 2026 decisions made within 3 days of receipt.",
+  "assumptions": [
+    "3 days means 3 calendar days"
+  ],
+  "cannot_answer": ""
+}

@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS withdrawn FROM caseflow.cases WHERE status = 'withdrawn' AND received_at >= DATE '2025-10-01' AND received_at < DATE '2026-01-01'",
+  "explanation": "Withdrawn applications received from October to December 2025.",
+  "assumptions": [
+    "FY2025/26 Q4 is taken as October to December 2025"
+  ],
+  "cannot_answer": ""
+}

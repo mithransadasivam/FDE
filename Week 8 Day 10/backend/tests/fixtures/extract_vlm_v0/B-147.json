@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Ellie Bello"
+  },
+  {
+   "name": "address",
+   "value": "Flat 9, 38 Westgate Street, Lydney, GL15 7JH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-07"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

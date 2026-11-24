@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Imran Doyle"
+  },
+  {
+   "name": "address",
+   "value": "21 Bristol Road, Gloucester, GL1 4HT"
+  },
+  {
+   "name": "statement_date",
+   "value": "30 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

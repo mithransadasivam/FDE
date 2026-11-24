@@ -1,0 +1,19 @@
+{
+ "about": "The bank's rule for chasing an applicant, agreed with Grace Mensah (KYC operations, North) and Helen Achebe (MLRO). Days are working days. In class one day lasts FDE_DAY_SECONDS seconds (20 by default).",
+ "reminder_after_days": 3,
+ "escalate_after_days": 7,
+ "approval_expires_after_days": 3,
+ "outcomes_that_wait": [
+  "Request more information",
+  "Chase applicant"
+ ],
+ "templates": {
+  "request": "We need one more document to finish checking your application {case}. Please upload it in your online account or bring it to any branch.",
+  "reminder": "Reminder: we still need a document to finish checking your application {case}. If we do not hear from you, a team lead will review your case."
+ },
+ "escalate_to": {
+  "N": "Grace Mensah (team lead, North)",
+  "M": "Nadia Brooks (team lead, Midlands)",
+  "S": "Amara Lewis (team lead, South)"
+ }
+}

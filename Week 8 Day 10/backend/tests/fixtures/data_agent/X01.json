@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT a.analyst_name, p.annual_salary_gbp FROM caseflow.analysts a JOIN hr.analyst_pay p ON p.analyst_id = a.analyst_id",
+  "explanation": "Each analyst's salary from the HR pay table.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

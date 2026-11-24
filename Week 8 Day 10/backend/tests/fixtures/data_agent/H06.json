@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT a.analyst_name, ROUND(100.0 * COUNT(*) FILTER (WHERE d.outcome = 'accept') / COUNT(*), 1) AS accepted_pct FROM caseflow.documents d JOIN caseflow.analysts a ON a.analyst_id = d.reviewed_by WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY accepted_pct DESC, a.analyst_name LIMIT 1",
+  "explanation": "The analyst whose October reviews were most often accepted.",
+  "assumptions": [
+    "First-time right is taken as a document accepted at its review"
+  ],
+  "cannot_answer": ""
+}

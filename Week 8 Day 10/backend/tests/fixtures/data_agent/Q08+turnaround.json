@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT strftime(decided_at, '%Y-%m') AS month, MEDIAN(working_days_open - applicant_wait_days) AS turnaround FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-01-01' GROUP BY month ORDER BY month",
+  "explanation": "The bank's turnaround for each month of 2026, by the month of the decision.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

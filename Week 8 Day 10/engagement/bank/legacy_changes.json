@@ -1,0 +1,44 @@
+{
+ "KC-022578": {
+  "status": "WAITING APPLICANT",
+  "history": [
+   {
+    "date": "19/11/2026",
+    "by": "tom.reyes via fde-mcp",
+    "entry": "Outcome: Request more information (R02). Request more information: there is no proof of address on file (rule 5). Exception KX-1001. Reference OUT-40017."
+   }
+  ],
+  "outcomes": [
+   {
+    "reference": "OUT-40017",
+    "outcome": "Request more information",
+    "reason": "R02",
+    "note": "Request more information: there is no proof of address on file (rule 5). Exception KX-1001.",
+    "by": "tom.reyes",
+    "via": "fde-mcp",
+    "at": "2026-11-19T20:51:07"
+   }
+  ]
+ },
+ "KC-023327": {
+  "status": "WAITING APPLICANT",
+  "history": [
+   {
+    "date": "19/11/2026",
+    "by": "tom.reyes via fde-mcp",
+    "entry": "Outcome: Request more information (R01). Request more information: there is no passport or driving licence on file (rule 4). Exception KX-1004. Reference OUT-40018."
+   }
+  ],
+  "outcomes": [
+   {
+    "reference": "OUT-40018",
+    "outcome": "Request more information",
+    "reason": "R01",
+    "note": "Request more information: there is no passport or driving licence on file (rule 4). Exception KX-1004.",
+    "by": "tom.reyes",
+    "via": "fde-mcp",
+    "at": "2026-11-19T20:51:39"
+   }
+  ]
+ }
+}

@@ -1,0 +1,222 @@
+{
+  "id": "1119-180244-a4c6",
+  "ticket_id": "KX-1021",
+  "person": "helen.achebe",
+  "prompt": "ops_v1",
+  "model": "anthropic/claude-haiku-5.5",
+  "mode": "shadow",
+  "status": "proposed",
+  "stop_reason": "",
+  "outcome": "Request more information",
+  "reason_code": "R02",
+  "reference": "",
+  "summary": "Proposed Request more information (R02); shadow mode writes nothing",
+  "started_at": 1795140164.8850882,
+  "ended_at": 1795140166.384463,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "I start by reading exception KX-1021.",
+      "tool": "get_exception",
+      "args": {
+        "ticket_id": "KX-1021"
+      },
+      "target": "KX-1021",
+      "decision": "allow",
+      "observation": "{\"ticket_id\": \"KX-1021\", \"case_id\": \"KC-022462\", \"customer_id\": \"CU-022462\", \"team_id\": \"S2\", \"kind\": \"overdue\", \"title\": \"Application past the 3-day promise\", \"status\": \"open\", \"assignee\": null, \"created_at\": \"2026-10-16T15:06\", \"comments\": []}",
+      "tokens_in": 1077,
+      "tokens_out": 26,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 2,
+      "thought": "It is an overdue on case KC-022462. Next, the customer's risk rating.",
+      "tool": "get_customer",
+      "args": {
+        "customer_id": "CU-022462"
+      },
+      "target": "CU-022462",
+      "decision": "allow",
+      "observation": "{\"customer_id\": \"CU-022462\", \"name\": \"Ava Johnson\", \"customer_type\": \"personal\", \"region\": \"South\", \"team_id\": \"S2\", \"risk_rating\": \"low\", \"email\": \"applicant022462@example.com\", \"phone\": \"+44 7700 900211\", \"open_case_id\": \"KC-022462\", \"case_status\": \"open\", \"contacts\": [{\"at\": \"2026-10-13T20:06\", \"channel\": \"call\", \"by\": \"A23\", \"summary\": \"Applicant called to check progress\"}, {\"at\": \"2026-10-15T17:06\", \"channel\": \"email\", \"by\": \"A24\", \"summary\": \"Applicant asked why the account is not open yet\"}, {\"at\": \"2026-10-17T16:06\", \"channel\": \"branch\", \"by\": \"A23\", \"summary\": \"Explained which documents are accepted\"}], \"notes\": []}",
+      "tokens_in": 1166,
+      "tokens_out": 35,
+      "seconds": 0.0,
+      "shot": null
+    },
+    {
+      "n": 3,
+      "thought": "Risk rating low. Now the documents on file.",
+      "tool": "list_documents",
+      "args": {
+        "customer_id": "CU-022462"
+      },
+      "target": "CU-022462",
+      "decision": "allow",
+      "observation": "{\"documents\": [{\"doc_id\": \"DS-0093\", \"customer_id\": \"CU-022462\", \"team_id\": \"S2\", \"doc_type\": \"driving_licence\", \"received_at\": \"2026-10-11T15:06\", \"pages\": 3, \"sensitivity\": \"personal\"}, {\"doc_id\": \"DS-0094\", \"customer_id\": \"CU-022462\", \"team_id\": \"S2\", \"doc_type\": \"passport\", \"received_at\": \"2026-10-11T16:06\", \"pages\": 3, \"sensitivity\": \"personal\"}]}",
+      "tokens_in": 1362,
+      "tokens_out": 29,
+      "seconds": 0.1,
+      "shot": null
+    },
+    {
+      "n": 4,
+      "thought": "Documents on file: driving licence, passport. I open CaseFlow Classic to read the case.",
+      "tool": "open_caseflow",
+      "args": {},
+      "target": "*",
+      "decision": "allow",
+      "observation": "Screen: Main menu\nheading \"Main menu\"\n[e1] link \"Find a case\"\n[e2] link \"My work list\"\n[e3] link \"Sign out\"",
+      "tokens_in": 1481,
+      "tokens_out": 34,
+      "seconds": 0.8,
+      "shot": "step_04.png"
+    },
+    {
+      "n": 5,
+      "thought": "I go to the case search.",
+      "tool": "click",
+      "args": {
+        "name": "Find a case"
+      },
+      "target": "Find a case",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1543,
+      "tokens_out": 21,
+      "seconds": 0.9,
+      "shot": "step_05.png"
+    },
+    {
+      "n": 6,
+      "thought": "I search for case KC-022462.",
+      "tool": "type",
+      "args": {
+        "field": "Case reference",
+        "text": "KC-022462"
+      },
+      "target": "Case reference",
+      "decision": "allow",
+      "observation": "Screen: Find a case\nheading \"Find a case\"\n[e1] textbox \"Case reference\" = \"KC-022462\"\n[e2] button \"Search\"\n[e3] link \"Main menu\"",
+      "tokens_in": 1596,
+      "tokens_out": 27,
+      "seconds": 0.9,
+      "shot": "step_06.png"
+    },
+    {
+      "n": 7,
+      "thought": "Search.",
+      "tool": "click",
+      "args": {
+        "name": "Search"
+      },
+      "target": "Search",
+      "decision": "allow",
+      "observation": "Screen: Case KC-022462\nheading \"Case KC-022462\"\nrow \"Customer | Ava Johnson (CU-022462)\"\nrow \"Team | S2\"\nrow \"Received | 11/10/2026\"\nrow \"Status | OPEN\"\nrow \"Risk | LOW\"\nrow \"Analyst | Unassigned\"\nheading \"Case history\"\nrow \"Date | By | Entry\"\nrow \"11/10/2026 | SYSTEM | Application received through the web form.\"\nrow \"11/10/2026 | SYSTEM | Document received: driving licence (DS-0093).\"\nrow \"11/10/2026 | SYSTEM | Document received: passport (DS-0094).\"\nrow \"13/10/2026 | A23 | Contact by call: Applicant called to check progress.\"\nrow \"15/10/2026 | A24 | Contact by email: Applicant asked why the account is not open yet.\"\nrow \"17/10/2026 | A23 | Contact by branch: Explained which documents are accepted.\"\n[e1] button \"Record outcome\"\n[e2] link \"Main menu\"",
+      "tokens_in": 1657,
+      "tokens_out": 15,
+      "seconds": 1.0,
+      "shot": "step_07.png"
+    },
+    {
+      "n": 8,
+      "thought": "I have read the case and its history. I open the outcome form.",
+      "tool": "click",
+      "args": {
+        "name": "Record outcome"
+      },
+      "target": "Record outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-022462\nheading \"Record outcome · KC-022462\"\n[e1] combobox \"Outcome\" = \"\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 1864,
+      "tokens_out": 31,
+      "seconds": 1.1,
+      "shot": "step_08.png"
+    },
+    {
+      "n": 9,
+      "thought": "The outcome is Request more information: there is no proof of address on file (rule 5).",
+      "tool": "choose",
+      "args": {
+        "field": "Outcome",
+        "option": "Request more information"
+      },
+      "target": "Outcome",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-022462\nheading \"Record outcome · KC-022462\"\n[e1] combobox \"Outcome\" = \"Request more information\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2024,
+      "tokens_out": 45,
+      "seconds": 1.2,
+      "shot": "step_09.png"
+    },
+    {
+      "n": 10,
+      "thought": "Reason code R02.",
+      "tool": "choose",
+      "args": {
+        "field": "Reason code",
+        "option": "R02 Missing proof of address"
+      },
+      "target": "Reason code",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-022462\nheading \"Record outcome · KC-022462\"\n[e1] combobox \"Outcome\" = \"Request more information\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R02 Missing proof of address\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2203,
+      "tokens_out": 29,
+      "seconds": 1.2,
+      "shot": "step_10.png"
+    },
+    {
+      "n": 11,
+      "thought": "A short note for the case history.",
+      "tool": "type",
+      "args": {
+        "field": "Note",
+        "text": "Request more information: there is no proof of address on file (rule 5). Exception KX-1021."
+      },
+      "target": "Note",
+      "decision": "allow",
+      "observation": "Screen: Record outcome KC-022462\nheading \"Record outcome · KC-022462\"\n[e1] combobox \"Outcome\" = \"Request more information\" · options: Request more information | Ready for decision | Refer to Financial Crime | Chase applicant\n[e2] combobox \"Reason code\" = \"R02 Missing proof of address\" · options: R01 Missing proof of identity | R02 Missing proof of address | R03 Documents complete | R04 Financial crime concern | R05 High-risk customer | R06 No reply from applicant\n[e3] textbox \"Note\" = \"Request more information: there is no proof of address on file (rule 5). Exception KX-1021.\" (at most 240 characters)\n[e4] button \"Save\"\n[e5] button \"Cancel\"",
+      "tokens_in": 2373,
+      "tokens_out": 47,
+      "seconds": 1.3,
+      "shot": "step_11.png"
+    },
+    {
+      "n": 12,
+      "thought": "The form is complete. Save.",
+      "tool": "click",
+      "args": {
+        "name": "Save"
+      },
+      "target": "Save",
+      "decision": "allow",
+      "observation": "Screen: Confirm KC-022462\nheading \"Confirm outcome · KC-022462\"\nrow \"Outcome | Request more information\"\nrow \"Reason code | R02 Missing proof of address\"\nrow \"Note | Request more information: there is no proof of address on file (rule 5). Exception KX-1021.\"\n[e1] button \"Back\"\n[e2] button \"Confirm\"",
+      "tokens_in": 2584,
+      "tokens_out": 20,
+      "seconds": 1.4,
+      "shot": "step_12.png"
+    },
+    {
+      "n": 13,
+      "thought": "The confirm screen shows what I chose. Confirm.",
+      "tool": "click",
+      "args": {
+        "name": "Confirm"
+      },
+      "target": "Confirm",
+      "decision": "rejected",
+      "observation": "Rejected by shadow mode: Evaluation: proposed, not written",
+      "tokens_in": 2680,
+      "tokens_out": 26,
+      "seconds": 1.4,
+      "shot": null
+    }
+  ],
+  "approvals": [
+    "1119-180244-a4c6-a1"
+  ],
+  "tokens_in": 23610,
+  "tokens_out": 385,
+  "cost_usd": 0.0025535,
+  "queue_id": ""
+}

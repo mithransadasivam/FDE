@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "extract (ENG-301)",
+      "type": "shell",
+      "command": "claude --worktree extract 'Implement docs/tickets/ENG-301.md. Make backend/tests/test_grounding.py pass, then commit on this branch.'",
+      "presentation": { "panel": "dedicated", "group": "claude", "reveal": "always", "focus": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "rules (ENG-302)",
+      "type": "shell",
+      "command": "claude --worktree rules 'Implement docs/tickets/ENG-302.md. Make backend/tests/test_rules.py pass, then commit on this branch.'",
+      "presentation": { "panel": "dedicated", "group": "claude", "reveal": "always", "focus": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "ui (ENG-303)",
+      "type": "shell",
+      "command": "claude --worktree ui 'Implement docs/tickets/ENG-303.md. Make frontend/e2e/boxes.spec.ts pass, then commit on this branch.'",
+      "presentation": { "panel": "dedicated", "group": "claude", "reveal": "always", "focus": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "Day 3: all three sessions",
+      "dependsOn": ["extract (ENG-301)", "rules (ENG-302)", "ui (ENG-303)"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

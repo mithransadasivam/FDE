@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Isla Bello & Mr Mateusz Bello"
+  },
+  {
+   "name": "address",
+   "value": "99 Hucclecote Road, Cirencester, GL7 5JH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

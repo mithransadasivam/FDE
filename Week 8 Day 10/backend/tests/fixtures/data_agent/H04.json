@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT ROUND(100.0 * COUNT(*) FILTER (WHERE status = 'approved') / COUNT(*), 1) AS first_time_right_pct FROM caseflow.cases WHERE status IN ('approved', 'declined') AND decided_at >= DATE '2026-10-01' AND decided_at < DATE '2026-11-01'",
+  "explanation": "The share of October 2026 decisions that were approvals.",
+  "assumptions": [
+    "First-time right is taken as approved"
+  ],
+  "cannot_answer": ""
+}

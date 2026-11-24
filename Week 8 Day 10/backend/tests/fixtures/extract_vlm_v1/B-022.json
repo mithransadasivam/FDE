@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Ellie Hart"
+  },
+  {
+   "name": "address",
+   "value": "Flat 10, 111 Hucclecote Road, Quedgeley, GL2 4WT"
+  },
+  {
+   "name": "statement_date",
+   "value": "27 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT a.analyst_name, COUNT(*) AS reviews FROM documents d JOIN analysts a ON a.analyst_id = d.reviewed_by WHERE d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01' GROUP BY a.analyst_name ORDER BY reviews DESC LIMIT 1",
+  "explanation": "The analyst with the most document reviews in October 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

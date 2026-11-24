@@ -1,0 +1,42 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Amira Haddad",
+   "word_ids": [
+    "w006",
+    "w007",
+    "w008"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "28 Prestbury Road, Cheltenham, GL52 2PW",
+   "word_ids": [
+    "w009",
+    "w010",
+    "w011",
+    "w012",
+    "w013",
+    "w014"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "30 Sep 2026",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank",
+   "word_ids": [
+    "w001",
+    "w002"
+   ]
+  }
+ ]
+}

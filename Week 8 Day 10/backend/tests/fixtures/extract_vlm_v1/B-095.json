@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Luca Evans"
+  },
+  {
+   "name": "address",
+   "value": "82 Hucclecote Road, Quedgeley, GL2 4AB"
+  },
+  {
+   "name": "statement_date",
+   "value": "05 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

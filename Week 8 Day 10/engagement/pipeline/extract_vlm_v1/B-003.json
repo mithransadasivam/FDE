@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-003",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Ifeoma Griffiths",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.304,
+        0.1767
+      ],
+      "page_text": "Mrs Ifeoma Griffiths",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "34 Cheltenham Road, Tewkesbury, GL20 3JG",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2818,
+        0.2564
+      ],
+      "page_text": "34 Cheltenham Road Tewkesbury GL20 3JG",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "26 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7576,
+        0.2006
+      ],
+      "page_text": "26 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.5348,
+        0.0634
+      ],
+      "page_text": "Fenwick Gas Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 75,
+    "latency_ms": 1863,
+    "scripted": true
+  }
+}

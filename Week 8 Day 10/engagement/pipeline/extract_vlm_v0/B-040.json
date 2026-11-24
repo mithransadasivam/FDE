@@ -1,0 +1,64 @@
+{
+  "doc_id": "B-040",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Ms Isla Fletcher",
+      "confidence": 0.98,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.2507,
+        0.1564
+      ],
+      "page_text": "Ms Isla Fletcher",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "62 Spa Rd, Cheltenham, GL52 3SB",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-09-03",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 70,
+    "latency_ms": 1788,
+    "scripted": true
+  }
+}

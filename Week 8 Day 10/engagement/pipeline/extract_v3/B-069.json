@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-069",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Hannah Campbell",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.3325,
+        0.1791
+      ],
+      "page_text": "Mrs Hannah Campbell",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "51 Church Street Tewkesbury GL20 9XA",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2418,
+        0.2555
+      ],
+      "page_text": "51 Church Street Tewkesbury GL20 9XA",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "07 Oct 2026",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.24,
+        0.7437,
+        0.2582
+      ],
+      "page_text": "07 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas & Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 607,
+    "output_tokens": 144,
+    "latency_ms": 2025,
+    "scripted": true
+  }
+}

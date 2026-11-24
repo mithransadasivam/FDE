@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Nair",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "105 Tewkesbury Road Quedgeley GL2 6YD",
+   "word_ids": [
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "22 Sep 2026",
+   "word_ids": [
+    "w019",
+    "w020",
+    "w021"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

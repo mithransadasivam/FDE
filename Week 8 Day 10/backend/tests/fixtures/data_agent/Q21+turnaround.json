@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT t.team_name, MEDIAN(c.working_days_open - c.applicant_wait_days) AS turnaround FROM caseflow.cases c JOIN caseflow.teams t ON t.team_id = c.team_id WHERE c.status IN ('approved', 'declined') AND c.decided_at >= DATE '2026-10-01' AND c.decided_at < DATE '2026-11-01' GROUP BY t.team_name",
+  "explanation": "The bank's turnaround for each team, for applications decided in October 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

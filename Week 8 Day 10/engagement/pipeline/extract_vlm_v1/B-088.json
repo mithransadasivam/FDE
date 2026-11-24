@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-088",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Emma Rahimi",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.279,
+        0.1564
+      ],
+      "page_text": "Mrs Emma Rahimi",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "68 Hatherley Lane, Gloucester, GL1 2YE",
+      "confidence": 0.81,
+      "status": "check",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2459,
+        0.2309
+      ],
+      "page_text": "68 Hatherley Lane Gloucester GL1 2YE",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "01 Oct 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.5859,
+        0.1545,
+        0.7225,
+        0.1727
+      ],
+      "page_text": "01 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 72,
+    "latency_ms": 1839,
+    "scripted": true
+  }
+}

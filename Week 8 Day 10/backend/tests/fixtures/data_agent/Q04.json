@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS escalated_documents FROM caseflow.documents WHERE outcome = 'escalate' AND reviewed_at >= DATE '2026-09-01' AND reviewed_at < DATE '2026-10-01'",
+  "explanation": "Counts documents reviewed in September 2026 with the outcome escalate.",
+  "assumptions": [
+    "Counted by review date"
+  ],
+  "cannot_answer": ""
+}

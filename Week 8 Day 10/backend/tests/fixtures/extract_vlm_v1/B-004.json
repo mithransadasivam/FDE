@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Niamh Novak"
+  },
+  {
+   "name": "address",
+   "value": "108 Victoria St, Gloucester, GL2 7DL"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

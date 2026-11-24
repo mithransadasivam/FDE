@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Ravi Ward"
+  },
+  {
+   "name": "address",
+   "value": "30 Green Lane, Quedgeley, GL2 5JH"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

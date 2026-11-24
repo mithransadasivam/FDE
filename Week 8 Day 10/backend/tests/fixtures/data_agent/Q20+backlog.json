@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT t.team_name, COUNT(*) AS backlog_documents FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id JOIN caseflow.teams t ON t.team_id = c.team_id WHERE d.reviewed_at IS NULL AND c.status = 'open' GROUP BY t.team_name ORDER BY t.team_name",
+  "explanation": "The bank's backlog, documents waiting for an analyst, for each team.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

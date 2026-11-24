@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Bethan Sutton"
+  },
+  {
+   "name": "address",
+   "value": "75 Hatherley Ln, Cheltenham, GL50 9HG"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

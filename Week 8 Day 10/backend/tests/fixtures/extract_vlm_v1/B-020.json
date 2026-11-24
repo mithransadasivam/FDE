@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Emma Price"
+  },
+  {
+   "name": "address",
+   "value": "123 Hucclecote Road, Gloucester, GL2 7DZ"
+  },
+  {
+   "name": "statement_date",
+   "value": "02 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

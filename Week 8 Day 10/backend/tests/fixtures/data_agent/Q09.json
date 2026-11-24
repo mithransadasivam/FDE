@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT customer_type, ROUND(AVG(working_days_open), 1) AS avg_working_days FROM caseflow.cases WHERE closed_at >= DATE '2026-08-01' AND closed_at < DATE '2026-11-01' GROUP BY customer_type",
+  "explanation": "The average working days each application was open, for applications closed from August to October 2026.",
+  "assumptions": [
+    "Turnaround is working_days_open",
+    "Includes every closed application: approved, declined and withdrawn"
+  ],
+  "cannot_answer": ""
+}
