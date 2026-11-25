@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "name": "small-1",
+    "at": "2026-11-25T02:07:11+00:00",
+    "read_files": [
+      "pilot"
+    ],
+    "reads": 1500,
+    "kept": 1153,
+    "skipped": 347,
+    "words": 126115,
+    "features": 9307,
+    "classes": [
+      "O",
+      "address",
+      "full_name",
+      "issuer",
+      "statement_date"
+    ],
+    "train_seconds": 7.1,
+    "kinds": [
+      "bank_statement",
+      "utility_bill"
+    ],
+    "october": {
+      "fields": 800,
+      "right": 786,
+      "accuracy": 98.2
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-087",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Kofi Carter",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2275,
+        0.1575
+      ],
+      "page_text": "Mr Kofi Carter",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "62 Spa Road Cirencester GL7 6ZB",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.1942,
+        0.2316
+      ],
+      "page_text": "62 Spa Road Cirencester GL7 6ZB",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "02 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.5882,
+        0.1556,
+        0.719,
+        0.1738
+      ],
+      "page_text": "02 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 863,
+    "output_tokens": 134,
+    "latency_ms": 2060,
+    "scripted": true
+  }
+}

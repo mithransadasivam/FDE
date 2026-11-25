@@ -1,0 +1,43 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Leela Murphy",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "71 Farm Lane Cheltenham GL50 9HG",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021",
+    "w022"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "12 Mar 2026",
+   "word_ids": [
+    "w007",
+    "w008",
+    "w009"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

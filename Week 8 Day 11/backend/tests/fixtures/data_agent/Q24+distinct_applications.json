@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(DISTINCT d.case_id) AS applications FROM caseflow.documents d WHERE d.outcome = 'ask_applicant' AND d.reviewed_at >= DATE '2026-10-01' AND d.reviewed_at < DATE '2026-11-01'",
+  "explanation": "Applications (counted once each) with at least one document asked again in October 2026.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

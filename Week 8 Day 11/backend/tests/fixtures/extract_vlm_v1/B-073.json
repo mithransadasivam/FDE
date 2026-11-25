@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Chloe Boateng"
+  },
+  {
+   "name": "address",
+   "value": "15 Regent Street, Tewkesbury, GL20 4ZU"
+  },
+  {
+   "name": "statement_date",
+   "value": "28 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

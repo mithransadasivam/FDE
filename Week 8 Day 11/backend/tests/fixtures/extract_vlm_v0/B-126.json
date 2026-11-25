@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Ellie Griffiths & Mr Samuel Griffiths"
+  },
+  {
+   "name": "address",
+   "value": "Flat 1, 111 London Road, Cheltenham, GL52 8ZS"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-21"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

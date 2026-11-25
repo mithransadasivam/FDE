@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Hannah Fraser"
+  },
+  {
+   "name": "address",
+   "value": "Flat 12, 69 Green Lane, Cirencester, GL7 9GS"
+  },
+  {
+   "name": "statement_date",
+   "value": "12 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

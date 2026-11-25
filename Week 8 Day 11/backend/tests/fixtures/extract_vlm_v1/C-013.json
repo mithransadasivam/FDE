@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Alfie Haddad"
+  },
+  {
+   "name": "address",
+   "value": "81 Park Road, Stroud, GL5 9NQ"
+  },
+  {
+   "name": "statement_date",
+   "value": "1 April 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

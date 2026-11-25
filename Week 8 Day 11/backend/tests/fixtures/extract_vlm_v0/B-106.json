@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Fatima Rossi"
+  },
+  {
+   "name": "address",
+   "value": "52 Orchard Cl, Tewkesbury, GL20 4FH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

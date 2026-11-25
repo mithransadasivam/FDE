@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Ravi Chen"
+  },
+  {
+   "name": "address",
+   "value": "26 London Road, Gloucester, GL4 9FS"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-10"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

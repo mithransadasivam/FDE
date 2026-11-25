@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Sofia Price"
+  },
+  {
+   "name": "address",
+   "value": "132 Tewkesbury Road, Cheltenham, GL51 1QF"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Emma Rahimi"
+  },
+  {
+   "name": "address",
+   "value": "68 Hatherley Lane, Gloucester, GL1 2YE"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

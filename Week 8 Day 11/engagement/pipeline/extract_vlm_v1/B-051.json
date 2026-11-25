@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-051",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Finley Bello",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.249,
+        0.1791
+      ],
+      "page_text": "Mr Finley Bello",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "11 Regent Street, Winchcombe, GL54 8WS",
+      "confidence": 0.81,
+      "status": "check",
+      "box": [
+        0.0682,
+        0.1873,
+        0.2418,
+        0.2555
+      ],
+      "page_text": "11 Regent Street Winchcombe GL54 8WS",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "21 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7591,
+        0.2036
+      ],
+      "page_text": "21 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 73,
+    "latency_ms": 1847,
+    "scripted": true
+  }
+}

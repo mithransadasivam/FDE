@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Megan Kaur"
+  },
+  {
+   "name": "address",
+   "value": "19 Meadow View, Nailsworth, GL6 9YP"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-24"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

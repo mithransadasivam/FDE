@@ -1,0 +1,8 @@
+[
+  {"id": "P8", "tool": "list_documents", "args": "{\"customer_id\": \"CU-022578\"}", "what": "The documents of a North 1 customer",
+   "tom.reyes": "allowed 1", "grace.mensah": "allowed 1", "helen.achebe": "allowed 1", "rule": "The same remit as the CRM"},
+  {"id": "P9", "tool": "get_document", "args": "{\"doc_id\": \"DS-0075\"}", "what": "A South 1 document",
+   "tom.reyes": "refused", "grace.mensah": "refused", "helen.achebe": "allowed", "rule": "Outside a person's remit the store answers as if it did not exist"},
+  {"id": "P10", "tool": "list_documents", "args": "{\"customer_id\": \"CU-022478\"}", "what": "The documents of a South 1 customer",
+   "tom.reyes": "refused", "grace.mensah": "refused", "helen.achebe": "allowed 2", "rule": "Outside a person's remit"}
+]

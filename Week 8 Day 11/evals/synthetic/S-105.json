@@ -1,0 +1,255 @@
+{
+ "case_id": "S-105",
+ "slice": "two_dates",
+ "words": [
+  {
+   "id": "w001",
+   "text": "Northmere",
+   "box": [
+    0.07,
+    0.08,
+    0.188,
+    0.105
+   ],
+   "confidence": 0.943
+  },
+  {
+   "id": "w002",
+   "text": "Bank",
+   "box": [
+    0.196,
+    0.08,
+    0.254,
+    0.105
+   ],
+   "confidence": 0.969
+  },
+  {
+   "id": "w003",
+   "text": "Aisha",
+   "box": [
+    0.07,
+    0.12,
+    0.14,
+    0.145
+   ],
+   "confidence": 0.963
+  },
+  {
+   "id": "w004",
+   "text": "M.",
+   "box": [
+    0.148,
+    0.12,
+    0.182,
+    0.145
+   ],
+   "confidence": 0.958
+  },
+  {
+   "id": "w005",
+   "text": "Khan",
+   "box": [
+    0.19,
+    0.12,
+    0.248,
+    0.145
+   ],
+   "confidence": 0.991
+  },
+  {
+   "id": "w006",
+   "text": "3",
+   "box": [
+    0.07,
+    0.16,
+    0.092,
+    0.185
+   ],
+   "confidence": 0.966
+  },
+  {
+   "id": "w007",
+   "text": "Park",
+   "box": [
+    0.1,
+    0.16,
+    0.158,
+    0.185
+   ],
+   "confidence": 0.975
+  },
+  {
+   "id": "w008",
+   "text": "View",
+   "box": [
+    0.166,
+    0.16,
+    0.224,
+    0.185
+   ],
+   "confidence": 0.941
+  },
+  {
+   "id": "w009",
+   "text": "Cirencester",
+   "box": [
+    0.07,
+    0.2,
+    0.212,
+    0.225
+   ],
+   "confidence": 0.971
+  },
+  {
+   "id": "w010",
+   "text": "GL7",
+   "box": [
+    0.07,
+    0.24,
+    0.116,
+    0.265
+   ],
+   "confidence": 0.954
+  },
+  {
+   "id": "w011",
+   "text": "1XW",
+   "box": [
+    0.124,
+    0.24,
+    0.17,
+    0.265
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w012",
+   "text": "Statement",
+   "box": [
+    0.07,
+    0.28,
+    0.188,
+    0.305
+   ],
+   "confidence": 0.96
+  },
+  {
+   "id": "w013",
+   "text": "date:",
+   "box": [
+    0.196,
+    0.28,
+    0.266,
+    0.305
+   ],
+   "confidence": 0.973
+  },
+  {
+   "id": "w014",
+   "text": "15",
+   "box": [
+    0.274,
+    0.28,
+    0.308,
+    0.305
+   ],
+   "confidence": 0.945
+  },
+  {
+   "id": "w015",
+   "text": "May",
+   "box": [
+    0.316,
+    0.28,
+    0.362,
+    0.305
+   ],
+   "confidence": 0.967
+  },
+  {
+   "id": "w016",
+   "text": "2026",
+   "box": [
+    0.37,
+    0.28,
+    0.428,
+    0.305
+   ],
+   "confidence": 0.954
+  },
+  {
+   "id": "w017",
+   "text": "Due",
+   "box": [
+    0.07,
+    0.32,
+    0.116,
+    0.345
+   ],
+   "confidence": 0.982
+  },
+  {
+   "id": "w018",
+   "text": "by:",
+   "box": [
+    0.124,
+    0.32,
+    0.17,
+    0.345
+   ],
+   "confidence": 0.949
+  },
+  {
+   "id": "w019",
+   "text": "05",
+   "box": [
+    0.178,
+    0.32,
+    0.212,
+    0.345
+   ],
+   "confidence": 0.974
+  },
+  {
+   "id": "w020",
+   "text": "Jun",
+   "box": [
+    0.22,
+    0.32,
+    0.266,
+    0.345
+   ],
+   "confidence": 0.977
+  },
+  {
+   "id": "w021",
+   "text": "2026",
+   "box": [
+    0.274,
+    0.32,
+    0.332,
+    0.345
+   ],
+   "confidence": 0.99
+  }
+ ],
+ "application": {
+  "case_id": "S-105",
+  "application_date": "2026-10-05",
+  "received_date": "2026-10-28",
+  "channel": "synthetic",
+  "document": "",
+  "applicant_name": "Aisha M. Khan",
+  "address_line1": "3 Park View",
+  "town": "Cirencester",
+  "postcode": "GL7 1XW"
+ },
+ "labels": {
+  "full_name": "Aisha M. Khan",
+  "address": "3 Park View, Cirencester, GL7 1XW",
+  "statement_date": "15 May 2026",
+  "issuer": "Northmere Bank",
+  "tom_decision": "approve"
+ }
+}

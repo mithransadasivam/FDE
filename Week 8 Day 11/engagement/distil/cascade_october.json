@@ -1,0 +1,176 @@
+{
+  "model": "small-2",
+  "set": "october",
+  "threshold": 0.7,
+  "spot_per_hundred": 5,
+  "documents": 200,
+  "small_docs": 170,
+  "teacher_docs": 30,
+  "spot_checks": 13,
+  "teacher_share": 0.215,
+  "sonnet_calls": 86,
+  "to_person": 32,
+  "to_person_pct": 4.0,
+  "slipped": 2,
+  "slipped_small": 0,
+  "accuracy_after_review": 99.8,
+  "slipped_items": [
+    {
+      "name": "statement_date",
+      "value": "30 Sep 2026",
+      "how": "teacher",
+      "expected": "02 Oct 2026",
+      "correct": false,
+      "doc_id": "B-072"
+    },
+    {
+      "name": "statement_date",
+      "value": "31 Aug 2026",
+      "how": "teacher",
+      "expected": "02 Sep 2026",
+      "correct": false,
+      "doc_id": "B-178"
+    }
+  ],
+  "spot_agree": 52,
+  "spot_fields": 52,
+  "usd_per_doc": 0.001501,
+  "small_ms_p50": 3.9,
+  "counter_ms_p50": 4,
+  "counter_ms_p90": 1962,
+  "pilot": {
+    "documents": 200,
+    "small_docs": 0,
+    "teacher_docs": 200,
+    "spot_checks": 0,
+    "teacher_share": 1.0,
+    "sonnet_calls": 400,
+    "to_person": 87,
+    "to_person_pct": 10.9,
+    "slipped": 3,
+    "slipped_small": 0,
+    "accuracy_after_review": 99.6,
+    "slipped_items": [
+      {
+        "name": "statement_date",
+        "value": "30 Sep 2026",
+        "how": "teacher",
+        "expected": "02 Oct 2026",
+        "correct": false,
+        "doc_id": "B-072"
+      },
+      {
+        "name": "statement_date",
+        "value": "30 Sep 2026",
+        "how": "teacher",
+        "expected": "04 Oct 2026",
+        "correct": false,
+        "doc_id": "B-120"
+      },
+      {
+        "name": "statement_date",
+        "value": "31 Aug 2026",
+        "how": "teacher",
+        "expected": "02 Sep 2026",
+        "correct": false,
+        "doc_id": "B-178"
+      }
+    ],
+    "spot_agree": 0,
+    "spot_fields": 0,
+    "usd_per_doc": 0.006958,
+    "small_ms_p50": 0.0,
+    "counter_ms_p50": 1989,
+    "counter_ms_p90": 2114
+  },
+  "curve": [
+    {
+      "threshold": 0.5,
+      "teacher_share": 0.03,
+      "slipped": 8,
+      "to_person_pct": 0.9,
+      "accuracy_after_review": 99.0,
+      "sonnet_calls": 12
+    },
+    {
+      "threshold": 0.6,
+      "teacher_share": 0.09,
+      "slipped": 1,
+      "to_person_pct": 2.2,
+      "accuracy_after_review": 99.9,
+      "sonnet_calls": 36
+    },
+    {
+      "threshold": 0.7,
+      "teacher_share": 0.15,
+      "slipped": 2,
+      "to_person_pct": 4.0,
+      "accuracy_after_review": 99.8,
+      "sonnet_calls": 60
+    },
+    {
+      "threshold": 0.75,
+      "teacher_share": 0.28,
+      "slipped": 2,
+      "to_person_pct": 6.8,
+      "accuracy_after_review": 99.8,
+      "sonnet_calls": 112
+    },
+    {
+      "threshold": 0.8,
+      "teacher_share": 0.325,
+      "slipped": 2,
+      "to_person_pct": 7.5,
+      "accuracy_after_review": 99.8,
+      "sonnet_calls": 130
+    },
+    {
+      "threshold": 0.85,
+      "teacher_share": 0.46,
+      "slipped": 3,
+      "to_person_pct": 8.6,
+      "accuracy_after_review": 99.6,
+      "sonnet_calls": 184
+    },
+    {
+      "threshold": 0.9,
+      "teacher_share": 0.555,
+      "slipped": 3,
+      "to_person_pct": 9.2,
+      "accuracy_after_review": 99.6,
+      "sonnet_calls": 222
+    },
+    {
+      "threshold": 0.95,
+      "teacher_share": 0.75,
+      "slipped": 3,
+      "to_person_pct": 10.2,
+      "accuracy_after_review": 99.6,
+      "sonnet_calls": 300
+    }
+  ],
+  "reasons": {
+    "statement_date low": 21,
+    "full_name low": 5,
+    "issuer low": 2,
+    "address low": 2
+  },
+  "retrain": [
+    {
+      "kind": "bank_statement",
+      "documents": 80,
+      "to_teacher": 16,
+      "share": 0.2,
+      "top_reason": "statement_date",
+      "retrain": false
+    },
+    {
+      "kind": "utility_bill",
+      "documents": 120,
+      "to_teacher": 14,
+      "share": 0.117,
+      "top_reason": "statement_date",
+      "retrain": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Grace Shah"
+  },
+  {
+   "name": "address",
+   "value": "15 Cheltenham Road, Gloucester, GL4 7LU"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

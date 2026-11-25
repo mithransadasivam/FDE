@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-039",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Fatima Holmes",
+      "confidence": 0.67,
+      "status": "check",
+      "box": [
+        0.0682,
+        0.1564,
+        0.3114,
+        0.1755
+      ],
+      "page_text": "Miss Fatima Holmes",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "94 Kings Road Tewkesbury GL20 8HJ",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.2207,
+        0.2555
+      ],
+      "page_text": "94 Kings Road Tewkesbury GL20 8HJ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "08 Aug 2026",
+      "confidence": 0.98,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7626,
+        0.2036
+      ],
+      "page_text": "08 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 0.98,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.481,
+        0.0664
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 609,
+    "output_tokens": 136,
+    "latency_ms": 1962,
+    "scripted": true
+  }
+}

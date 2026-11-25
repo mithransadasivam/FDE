@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-046",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Dev Lewis & Ms Ruby Lewis",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1373,
+        0.4275,
+        0.16
+      ],
+      "page_text": "Mr Dev Lewis & Ms Ruby Lewis",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "34 Orchard Close Tewkesbury GL20 5BT",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2388,
+        0.2309
+      ],
+      "page_text": "34 Orchard Close Tewkesbury GL20 5BT",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "03 Oct 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.5859,
+        0.1545,
+        0.7225,
+        0.1727
+      ],
+      "page_text": "03 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 809,
+    "output_tokens": 151,
+    "latency_ms": 2172,
+    "scripted": true
+  }
+}

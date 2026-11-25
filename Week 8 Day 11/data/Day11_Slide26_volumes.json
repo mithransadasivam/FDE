@@ -1,0 +1,14 @@
+{
+ "about": "The volumes for ADR-008, from Martin Hale (COO). The host, upkeep and analyst costs are the bank's internal rates: estimates, agreed with Martin for the ADR.",
+ "business_as_usual_docs_per_month": 8600,
+ "remediation_docs_per_month": 100000,
+ "remediation_months": 12,
+ "counter_target_seconds": 2,
+ "small_model_host_gbp_per_month": 90,
+ "small_model_host": "One 4-vCPU virtual machine in the bank's data centre",
+ "upkeep_hours_per_month": 4,
+ "upkeep": "Retrain on the month's reads, check it on the keyed sets, and roll it out",
+ "engineer_gbp_per_hour": 70,
+ "analyst_seconds_per_field_check": 20,
+ "analyst_gbp_per_hour": 28
+}

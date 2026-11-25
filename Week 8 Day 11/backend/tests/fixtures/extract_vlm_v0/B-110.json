@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Daniel Eze"
+  },
+  {
+   "name": "address",
+   "value": "1 Orchard Close, Gloucester, GL4 1TB"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-06"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

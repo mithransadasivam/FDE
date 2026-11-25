@@ -1,0 +1,40 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Emily Taylor",
+      "word_ids": [
+        "w003",
+        "w004"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "89 Cedar Grove, Flat 5",
+      "word_ids": [
+        "w010",
+        "w011",
+        "w012",
+        "w013",
+        "w014"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "10 Sep 2026",
+      "word_ids": [
+        "w007",
+        "w008",
+        "w009"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Lumenvale Energy",
+      "word_ids": [
+        "w001",
+        "w002"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-168",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Kofi Bello & Ms Leela Bello",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.4261,
+        0.1767
+      ],
+      "page_text": "Mr Kofi Bello & Ms Leela Bello",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "140 High Street Cheltenham GL53 7GW",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2259,
+        0.2564
+      ],
+      "page_text": "140 High Street Cheltenham GL53 7GW",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "04 Oct 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7533,
+        0.2006
+      ],
+      "page_text": "04 Oct 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4657,
+        0.0634
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 618,
+    "output_tokens": 152,
+    "latency_ms": 2094,
+    "scripted": true
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "model": "small-2",
+  "set": "council_tax",
+  "threshold": 0.7,
+  "spot_per_hundred": 5,
+  "documents": 20,
+  "small_docs": 20,
+  "teacher_docs": 0,
+  "spot_checks": 2,
+  "teacher_share": 0.1,
+  "sonnet_calls": 4,
+  "to_person": 0,
+  "to_person_pct": 0.0,
+  "slipped": 0,
+  "slipped_small": 0,
+  "accuracy_after_review": 100.0,
+  "slipped_items": [],
+  "spot_agree": 7,
+  "spot_fields": 8,
+  "usd_per_doc": 0.000693,
+  "small_ms_p50": 4.9,
+  "counter_ms_p50": 5,
+  "counter_ms_p90": 5,
+  "pilot": {
+    "documents": 20,
+    "small_docs": 0,
+    "teacher_docs": 20,
+    "spot_checks": 0,
+    "teacher_share": 1.0,
+    "sonnet_calls": 40,
+    "to_person": 7,
+    "to_person_pct": 8.8,
+    "slipped": 3,
+    "slipped_small": 0,
+    "accuracy_after_review": 96.2,
+    "slipped_items": [
+      {
+        "name": "statement_date",
+        "value": "1 April 2026",
+        "how": "teacher",
+        "expected": "09 Mar 2026",
+        "correct": false,
+        "doc_id": "C-002"
+      },
+      {
+        "name": "statement_date",
+        "value": "1 April 2026",
+        "how": "teacher",
+        "expected": "06 Mar 2026",
+        "correct": false,
+        "doc_id": "C-003"
+      },
+      {
+        "name": "statement_date",
+        "value": "1 April 2026",
+        "how": "teacher",
+        "expected": "20 Mar 2026",
+        "correct": false,
+        "doc_id": "C-016"
+      }
+    ],
+    "spot_agree": 0,
+    "spot_fields": 0,
+    "usd_per_doc": 0.006936,
+    "small_ms_p50": 0.0,
+    "counter_ms_p50": 1997,
+    "counter_ms_p90": 2063
+  },
+  "curve": [
+    {
+      "threshold": 0.5,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.6,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.7,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.75,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.8,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.85,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.9,
+      "teacher_share": 0.0,
+      "slipped": 0,
+      "to_person_pct": 0.0,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 0
+    },
+    {
+      "threshold": 0.95,
+      "teacher_share": 0.3,
+      "slipped": 0,
+      "to_person_pct": 1.2,
+      "accuracy_after_review": 100.0,
+      "sonnet_calls": 12
+    }
+  ],
+  "reasons": {},
+  "retrain": [
+    {
+      "kind": "council_tax",
+      "documents": 20,
+      "to_teacher": 0,
+      "share": 0.0,
+      "top_reason": null,
+      "retrain": false
+    }
+  ]
+}

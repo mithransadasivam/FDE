@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-053",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Oscar Evans",
+      "confidence": 0.98,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1382,
+        0.2519,
+        0.1564
+      ],
+      "page_text": "Mr Oscar Evans",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "36 Elm Grove Stroud GL5 4LZ",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1664,
+        0.2024,
+        0.2309
+      ],
+      "page_text": "36 Elm Grove Stroud GL5 4LZ",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "30 Sep 2026",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.7114,
+        0.2018,
+        0.8165,
+        0.22
+      ],
+      "page_text": "30 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 0.66,
+      "status": "check",
+      "box": [
+        0.1329,
+        0.0409,
+        0.4133,
+        0.0664
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 745,
+    "output_tokens": 133,
+    "latency_ms": 1999,
+    "scripted": true
+  }
+}

@@ -1,0 +1,44 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Zainab Wood",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "33 Westgate Street Cheltenham GL51 9QQ",
+   "word_ids": [
+    "w022",
+    "w023",
+    "w024",
+    "w025",
+    "w028",
+    "w029"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "06 Oct 2026",
+   "word_ids": [
+    "w019",
+    "w020",
+    "w021"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003",
+    "w004"
+   ]
+  }
+ ]
+}

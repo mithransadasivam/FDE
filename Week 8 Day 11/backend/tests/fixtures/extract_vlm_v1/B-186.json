@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Owen Carter"
+  },
+  {
+   "name": "address",
+   "value": "Flat 1, 91 Church Street, Cheltenham, GL50 2TW"
+  },
+  {
+   "name": "statement_date",
+   "value": "21 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

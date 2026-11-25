@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Oscar Nair"
+  },
+  {
+   "name": "address",
+   "value": "19 Hucclecote Road, Tewkesbury, GL20 7QY"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Poppy Grant"
+  },
+  {
+   "name": "address",
+   "value": "86 Bath Rd, Quedgeley, GL2 4NY"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-01"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Hannah Lewis & Mr Arun Lewis"
+  },
+  {
+   "name": "address",
+   "value": "Flat 9, 107 Abbey Road, Gloucester, GL4 9TP"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-10-03"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

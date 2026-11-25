@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Grace Rossi"
+  },
+  {
+   "name": "address",
+   "value": "Flat 6, 25 High Street, Cheltenham, GL50 5HU"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-03-04"
+  },
+  {
+   "name": "issuer",
+   "value": "Brightwell Borough Council"
+  }
+ ]
+}

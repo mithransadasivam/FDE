@@ -1,0 +1,13 @@
+{
+ "about": "Course stand-in for Tom's applicants: after the bank sends a request, each listed applicant uploads a document this many course days later. KX-1004's applicant never replies.",
+ "replies": {
+  "KX-1001": {
+   "after_days": 2,
+   "doc_type": "utility_bill"
+  },
+  "KX-1002": {
+   "after_days": 5,
+   "doc_type": "passport"
+  }
+ }
+}

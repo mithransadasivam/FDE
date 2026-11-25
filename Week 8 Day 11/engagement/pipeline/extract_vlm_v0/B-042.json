@@ -1,0 +1,64 @@
+{
+  "doc_id": "B-042",
+  "prompt": "extract_vlm_v0",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Owen Morgan",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1573,
+        0.2737,
+        0.1791
+      ],
+      "page_text": "Mr Owen Morgan",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "116 Cheltenham Rd, Cheltenham, GL53 4AR",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "2026-09-22",
+      "confidence": 0.0,
+      "status": "not_on_page",
+      "box": null,
+      "page_text": "",
+      "note": "This value is not printed on the page"
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0345,
+        0.4669,
+        0.0664
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 72,
+    "latency_ms": 1804,
+    "scripted": true
+  }
+}

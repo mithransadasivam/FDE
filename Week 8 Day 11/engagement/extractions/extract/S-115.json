@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "issuer",
+      "value": "Fenwick Gas & Power",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004"
+      ]
+    },
+    {
+      "name": "full_name",
+      "value": "Olivia S. Clark",
+      "word_ids": [
+        "w005",
+        "w006",
+        "w007"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "29 Holly Road, Cirencester, GL7 3JY",
+      "word_ids": [
+        "w008",
+        "w009",
+        "w010",
+        "w011",
+        "w012",
+        "w013"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "12 Mar 2026",
+      "word_ids": [
+        "w016",
+        "w017",
+        "w018"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+id,tool,args,what,tom.reyes,grace.mensah,helen.achebe,rule
+P1,find_customer,"{""query"": """"}",Every customer each person may see,allowed 12,allowed 24,allowed 72,Analysts see their team; team leads their region; the MLRO every team
+P2,get_customer,"{""customer_id"": ""CU-022478""}",A South 1 customer,refused,refused,allowed,Outside a person's remit the CRM answers as if it did not exist
+P3,add_customer_note,"{""customer_id"": ""CU-022578"", ""text"": ""Called the applicant (permission test)""}",A note on a North 1 customer,allowed,allowed,refused,The MLRO's access to the CRM is read-only
+P4,list_exceptions,"{""status"": ""in_progress""}",Exceptions in progress,allowed 1,allowed 2,allowed 7,The same remit as the CRM
+P5,get_exception,"{""ticket_id"": ""KX-1021""}",A South 2 exception,refused,refused,allowed,Outside a person's remit
+P6,comment_on_exception,"{""ticket_id"": ""KX-1001"", ""text"": ""Checked (permission test)""}",A comment on a North 1 exception,allowed,allowed,allowed,Anyone with the exception in their remit may comment
+P7,assign_exception,"{""ticket_id"": ""KX-1001"", ""analyst_id"": ""A01""}",Assign a North 1 exception to Priya Nair,refused,allowed,refused,Only a team lead assigns work

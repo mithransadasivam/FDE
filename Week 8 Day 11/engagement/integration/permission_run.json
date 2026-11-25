@@ -1,0 +1,125 @@
+{
+  "at": "2026-11-18T19:29:01",
+  "results": {
+    "P1/tom.reyes": {
+      "got": "allowed 12",
+      "passed": true
+    },
+    "P1/grace.mensah": {
+      "got": "allowed 24",
+      "passed": true
+    },
+    "P1/helen.achebe": {
+      "got": "allowed 72",
+      "passed": true
+    },
+    "P2/tom.reyes": {
+      "got": "refused: No customer CU-022478",
+      "passed": true
+    },
+    "P2/grace.mensah": {
+      "got": "refused: No customer CU-022478",
+      "passed": true
+    },
+    "P2/helen.achebe": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P3/tom.reyes": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P3/grace.mensah": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P3/helen.achebe": {
+      "got": "refused: The MLRO's access to the CRM is read-only",
+      "passed": true
+    },
+    "P4/tom.reyes": {
+      "got": "allowed 1",
+      "passed": true
+    },
+    "P4/grace.mensah": {
+      "got": "allowed 2",
+      "passed": true
+    },
+    "P4/helen.achebe": {
+      "got": "allowed 7",
+      "passed": true
+    },
+    "P5/tom.reyes": {
+      "got": "refused: No exception KX-1021",
+      "passed": true
+    },
+    "P5/grace.mensah": {
+      "got": "refused: No exception KX-1021",
+      "passed": true
+    },
+    "P5/helen.achebe": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P6/tom.reyes": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P6/grace.mensah": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P6/helen.achebe": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P7/tom.reyes": {
+      "got": "refused: Only a team lead can assign an exception",
+      "passed": true
+    },
+    "P7/grace.mensah": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P7/helen.achebe": {
+      "got": "refused: Only a team lead can assign an exception",
+      "passed": true
+    },
+    "P8/tom.reyes": {
+      "got": "allowed 1",
+      "passed": true
+    },
+    "P8/grace.mensah": {
+      "got": "allowed 1",
+      "passed": true
+    },
+    "P8/helen.achebe": {
+      "got": "allowed 1",
+      "passed": true
+    },
+    "P9/tom.reyes": {
+      "got": "refused: No document DS-0075",
+      "passed": true
+    },
+    "P9/grace.mensah": {
+      "got": "refused: No document DS-0075",
+      "passed": true
+    },
+    "P9/helen.achebe": {
+      "got": "allowed",
+      "passed": true
+    },
+    "P10/tom.reyes": {
+      "got": "refused: No customer CU-022478",
+      "passed": true
+    },
+    "P10/grace.mensah": {
+      "got": "refused: No customer CU-022478",
+      "passed": true
+    },
+    "P10/helen.achebe": {
+      "got": "allowed 2",
+      "passed": true
+    }
+  }
+}

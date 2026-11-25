@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Daniel Lloyd & Ms Zainab Lloyd"
+  },
+  {
+   "name": "address",
+   "value": "Flat 5, 120 Hatherley Lane, Lydney, GL15 5GR"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

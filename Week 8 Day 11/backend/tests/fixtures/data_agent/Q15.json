@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT c.customer_type, ROUND(AVG(d.minutes_spent), 1) AS avg_minutes FROM caseflow.documents d JOIN caseflow.cases c ON c.case_id = d.case_id WHERE d.reviewed_at IS NOT NULL GROUP BY c.customer_type",
+  "explanation": "The average minutes per reviewed document, for business and personal applications.",
+  "assumptions": [
+    "Over the whole extract"
+  ],
+  "cannot_answer": ""
+}

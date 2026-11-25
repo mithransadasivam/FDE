@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT customer_type, ROUND(AVG(n), 1) AS documents_per_application FROM (SELECT c.case_id, c.customer_type, COUNT(d.document_id) AS n FROM caseflow.cases c LEFT JOIN caseflow.documents d ON d.case_id = c.case_id WHERE c.received_at >= DATE '2026-01-01' GROUP BY c.case_id, c.customer_type) AS per_case GROUP BY customer_type",
+  "explanation": "Counts documents per application, then averages by customer type.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

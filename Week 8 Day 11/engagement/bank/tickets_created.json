@@ -1,0 +1,26 @@
+[
+ {
+  "ticket_id": "KX-2001",
+  "case_id": "KC-021805",
+  "customer_id": "CU-021805",
+  "team_id": "N2",
+  "kind": "escalation",
+  "title": "Escalated document: possible sanctions match",
+  "status": "open",
+  "assignee": null,
+  "created_at": "2026-11-18T19:06",
+  "comments": []
+ },
+ {
+  "ticket_id": "KX-2002",
+  "case_id": "KC-022462",
+  "customer_id": "CU-022462",
+  "team_id": "S2",
+  "kind": "escalation",
+  "title": "Escalated document: possible sanctions match",
+  "status": "open",
+  "assignee": null,
+  "created_at": "2026-11-18T19:24",
+  "comments": []
+ }
+]

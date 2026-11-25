@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT COUNT(*) AS overdue FROM caseflow.cases WHERE decided_at IS NULL AND received_at < DATE '2026-10-27'",
+  "explanation": "Undecided applications received more than 3 days before the extract.",
+  "assumptions": [
+    "Overdue means older than 3 days with no decision"
+  ],
+  "cannot_answer": ""
+}

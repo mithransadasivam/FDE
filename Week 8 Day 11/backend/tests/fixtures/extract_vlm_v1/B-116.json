@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Sofia Rahimi"
+  },
+  {
+   "name": "address",
+   "value": "1 Park Road, Tewkesbury, GL20 7DN"
+  },
+  {
+   "name": "statement_date",
+   "value": "24 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

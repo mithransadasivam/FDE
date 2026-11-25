@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "small-2",
+    "at": "2026-11-25T02:07:47+00:00",
+    "read_files": [
+      "pilot",
+      "council_tax"
+    ],
+    "reads": 1800,
+    "kept": 1396,
+    "skipped": 404,
+    "words": 150490,
+    "features": 10830,
+    "classes": [
+      "O",
+      "address",
+      "full_name",
+      "issuer",
+      "statement_date"
+    ],
+    "train_seconds": 8.5,
+    "kinds": [
+      "bank_statement",
+      "council_tax",
+      "utility_bill"
+    ],
+    "october": {
+      "fields": 800,
+      "right": 786,
+      "accuracy": 98.2
+    }
+  }
+}

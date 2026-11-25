@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-096",
+  "prompt": "extract_v2",
+  "method": "parser",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Alfie Okafor",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1577,
+        0.2477,
+        0.1767
+      ],
+      "page_text": "Mr Alfie Okafor",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "89 Abbey Road Cheltenham GL50 4ZN",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1882,
+        0.2247,
+        0.2564
+      ],
+      "page_text": "89 Abbey Road Cheltenham GL50 4ZN",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "25 Aug 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.6094,
+        0.1806,
+        0.7605,
+        0.2006
+      ],
+      "page_text": "25 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Harrowgate Water",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1435,
+        0.0343,
+        0.4657,
+        0.0634
+      ],
+      "page_text": "Harrowgate Water",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 514,
+    "output_tokens": 136,
+    "latency_ms": 1919,
+    "scripted": true
+  }
+}

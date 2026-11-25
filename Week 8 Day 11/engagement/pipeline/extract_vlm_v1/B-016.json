@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-016",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "text_layer",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mrs Amara Kaur",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.1393,
+        0.2524,
+        0.1575
+      ],
+      "page_text": "Mrs Amara Kaur",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 7, 110 Orchard Close, Gloucester, GL2 3XY",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.0706,
+        0.168,
+        0.3131,
+        0.2316
+      ],
+      "page_text": "Flat 7, 110 Orchard Close Gloucester GL2 3XY",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "02 Sep 2026",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.5882,
+        0.1556,
+        0.723,
+        0.1738
+      ],
+      "page_text": "02 Sep 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Northmere Bank",
+      "confidence": 1.0,
+      "status": "ok",
+      "box": [
+        0.1353,
+        0.0421,
+        0.4099,
+        0.0694
+      ],
+      "page_text": "Northmere Bank",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 74,
+    "latency_ms": 1855,
+    "scripted": true
+  }
+}

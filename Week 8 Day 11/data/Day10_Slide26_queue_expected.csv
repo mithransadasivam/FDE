@@ -1,0 +1,5 @@
+ticket_id,expected_end,round1_outcome,round2_outcome,requests,reminders,escalations,caseflow_outcomes,why
+KX-1001,completed,Request more information,Ready for decision,1,0,0,2,"Proof of address missing: the request goes out, the applicant replies on day 2 with a utility bill, round 2 records Ready for decision"
+KX-1002,completed,Chase applicant,Ready for decision,1,1,0,2,"No reply to an earlier request: chased, reminded on day 3, the applicant replies on day 5, round 2 records Ready for decision"
+KX-1003,stopped,,,0,0,0,0,Priya Nair has the record locked: the agent stops at its run limits and hands it back
+KX-1004,escalated,Request more information,,1,1,1,1,"Proof of identity missing: requested, reminded on day 3, no reply, escalated to Grace on day 7"

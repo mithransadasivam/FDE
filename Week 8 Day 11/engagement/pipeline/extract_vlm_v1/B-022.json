@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-022",
+  "prompt": "extract_vlm_v1",
+  "method": "vision",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Miss Ellie Hart",
+      "confidence": 0.96,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1564,
+        0.2419,
+        0.1755
+      ],
+      "page_text": "Miss Ellie Hart",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 10, 111 Hucclecote Road, Quedgeley, GL2 4WT",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.3637,
+        0.2555
+      ],
+      "page_text": "Flat 10, 111 Hucclecote Road Quedgeley GL2 4WT",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "27 Aug 2026",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7626,
+        0.2036
+      ],
+      "page_text": "27 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Fenwick Gas & Power",
+      "confidence": 0.84,
+      "status": "check",
+      "box": [
+        0.1412,
+        0.0336,
+        0.5361,
+        0.06
+      ],
+      "page_text": "Fenwick Gas Power",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 1473,
+    "output_tokens": 76,
+    "latency_ms": 1871,
+    "scripted": true
+  }
+}

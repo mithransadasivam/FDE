@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT strftime(received_at, '%Y-%m') AS month, COUNT(*) AS applications FROM caseflow.cases WHERE channel = 'app' AND received_at >= DATE '2026-03-01' GROUP BY 1 ORDER BY 1",
+  "explanation": "App applications by the month received, from March 2026. DuckDB formats dates with strftime.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

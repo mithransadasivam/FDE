@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mrs Chloe Reid & Mr Lewis Reid"
+  },
+  {
+   "name": "address",
+   "value": "37 Painswick Road, Tewkesbury, GL20 3FE"
+  },
+  {
+   "name": "statement_date",
+   "value": "26 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Lumenvale Energy"
+  }
+ ]
+}

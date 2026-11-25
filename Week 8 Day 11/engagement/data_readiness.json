@@ -1,0 +1,233 @@
+{
+  "rows": 400,
+  "profiles": [
+    {
+      "column": "review_id",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 397,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": [
+        "3 duplicate values"
+      ]
+    },
+    {
+      "column": "case_id",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 395,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "applicant_ref",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 400,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "birth_year",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 57,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "postcode_district",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 34,
+      "invalid_pct": 4.8,
+      "bad_examples": [
+        "bs8",
+        "ls6",
+        "eh3"
+      ],
+      "pii_found": {},
+      "issues": [
+        "4.8% not in the expected format"
+      ]
+    },
+    {
+      "column": "doc_type",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 3,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "doc_issuer",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 7,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "doc_date",
+      "rows": 400,
+      "missing_pct": 3.8,
+      "distinct": 175,
+      "invalid_pct": 8.3,
+      "bad_examples": [
+        "20/08/2026",
+        "30/04/2026",
+        "27/06/2026"
+      ],
+      "pii_found": {},
+      "issues": [
+        "8.3% not in the expected format"
+      ]
+    },
+    {
+      "column": "received_date",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 56,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "channel",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 2,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "file_format",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 5,
+      "invalid_pct": 9.2,
+      "bad_examples": [
+        "heic",
+        "tiff",
+        "heic"
+      ],
+      "pii_found": {},
+      "issues": [
+        "9.2% not in the expected format"
+      ]
+    },
+    {
+      "column": "page_count",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 3,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "image_dpi",
+      "rows": 400,
+      "missing_pct": 53.5,
+      "distinct": 4,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": [
+        "53.5% missing"
+      ]
+    },
+    {
+      "column": "decision",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 3,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "reason_code",
+      "rows": 400,
+      "missing_pct": 68.2,
+      "distinct": 5,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": [
+        "68.2% missing"
+      ]
+    },
+    {
+      "column": "analyst_id",
+      "rows": 400,
+      "missing_pct": 0.0,
+      "distinct": 26,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {},
+      "issues": []
+    },
+    {
+      "column": "analyst_notes",
+      "rows": 400,
+      "missing_pct": 58.5,
+      "distinct": 35,
+      "invalid_pct": 0.0,
+      "bad_examples": [],
+      "pii_found": {
+        "phone": 13,
+        "email": 4,
+        "sort_code": 10,
+        "account_number": 10
+      },
+      "issues": [
+        "58.5% missing",
+        "undeclared personal data: phone (13), email (4), sort_code (10), account_number (10)"
+      ]
+    }
+  ],
+  "readiness": [
+    {
+      "name": "Complete",
+      "status": "amber",
+      "value": "3.8%",
+      "detail": "worst missing rate in a required column"
+    },
+    {
+      "name": "Valid",
+      "status": "amber",
+      "value": "9.2%",
+      "detail": "worst rate of values in the wrong format"
+    },
+    {
+      "name": "Private",
+      "status": "red",
+      "value": "37",
+      "detail": "values with personal data the export should not contain"
+    },
+    {
+      "name": "Labelled",
+      "status": "red",
+      "value": "22.6%",
+      "detail": "asks and escalations with no reason code"
+    }
+  ]
+}

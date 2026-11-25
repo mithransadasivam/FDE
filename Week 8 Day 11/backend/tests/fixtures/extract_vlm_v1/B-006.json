@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Emma Price"
+  },
+  {
+   "name": "address",
+   "value": "81 Green Lane, Gloucester, GL4 8AH"
+  },
+  {
+   "name": "statement_date",
+   "value": "27 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Callum Byrne"
+  },
+  {
+   "name": "address",
+   "value": "30 Church Street, Stroud, GL5 2NX"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-08-09"
+  },
+  {
+   "name": "issuer",
+   "value": "Copperline Broadband"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Isla Fletcher"
+  },
+  {
+   "name": "address",
+   "value": "62 Spa Rd, Cheltenham, GL52 3SB"
+  },
+  {
+   "name": "statement_date",
+   "value": "03 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

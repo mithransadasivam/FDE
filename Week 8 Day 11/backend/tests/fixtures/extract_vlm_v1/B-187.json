@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Grace Evans"
+  },
+  {
+   "name": "address",
+   "value": "100 Tewkesbury Road, Gloucester, GL2 6YJ"
+  },
+  {
+   "name": "statement_date",
+   "value": "04 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

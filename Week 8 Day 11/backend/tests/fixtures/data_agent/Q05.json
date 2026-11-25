@@ -1,0 +1,8 @@
+{
+  "sql": "SELECT reason_code, COUNT(*) AS times_used FROM caseflow.documents WHERE outcome = 'ask_applicant' AND reviewed_at >= DATE '2026-05-01' AND reviewed_at < DATE '2026-11-01' GROUP BY reason_code ORDER BY times_used DESC LIMIT 3",
+  "explanation": "The three reason codes most used with ask_applicant, by review date from May to October 2026.",
+  "assumptions": [
+    "Counted per document reviewed"
+  ],
+  "cannot_answer": ""
+}

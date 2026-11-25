@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Grace Fletcher & Mr Kwame Fletcher"
+  },
+  {
+   "name": "address",
+   "value": "Flat 12, 131 Painswick Road, Gloucester, GL1 4UF"
+  },
+  {
+   "name": "statement_date",
+   "value": "31 Aug 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Northmere Bank"
+  }
+ ]
+}

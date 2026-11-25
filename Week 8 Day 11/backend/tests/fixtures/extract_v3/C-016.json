@@ -1,0 +1,43 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Kwame Mensah",
+   "word_ids": [
+    "w014",
+    "w015",
+    "w016"
+   ]
+  },
+  {
+   "name": "address",
+   "value": "56 Bath Road Gloucester GL2 9AB",
+   "word_ids": [
+    "w017",
+    "w018",
+    "w019",
+    "w020",
+    "w021",
+    "w022"
+   ]
+  },
+  {
+   "name": "statement_date",
+   "value": "20 Mar 2026",
+   "word_ids": [
+    "w007",
+    "w008",
+    "w009"
+   ]
+  },
+  {
+   "name": "issuer",
+   "value": "Severnside District Council",
+   "word_ids": [
+    "w001",
+    "w002",
+    "w003"
+   ]
+  }
+ ]
+}

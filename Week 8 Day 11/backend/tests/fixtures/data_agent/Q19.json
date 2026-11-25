@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT COUNT(*) AS waiting_for_applicant FROM caseflow.cases WHERE status = 'waiting_applicant'",
+  "explanation": "Applications whose status is waiting_applicant. Row security limits them to the user's region.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

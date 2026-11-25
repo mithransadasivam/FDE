@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Mr Finley Bello"
+  },
+  {
+   "name": "address",
+   "value": "11 Regent Street, Winchcombe, GL54 8WS"
+  },
+  {
+   "name": "statement_date",
+   "value": "21 Sep 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

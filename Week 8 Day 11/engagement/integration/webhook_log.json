@@ -1,0 +1,118 @@
+[
+  {
+    "at": "2026-11-18T19:07:00",
+    "signature": "t=1795057618,v1=ed73d6d82d2932",
+    "event_id": "evt_cde239e68ea54cc7",
+    "outcome": "accepted",
+    "reason": "",
+    "ticket": "KX-2001",
+    "slack": [
+      "kyc-north",
+      "financial-crime"
+    ]
+  },
+  {
+    "at": "2026-11-18T19:12:16",
+    "signature": "t=1795057934,v1=87a237c4dbb126",
+    "event_id": "evt_69571448991742e0",
+    "outcome": "accepted",
+    "reason": "",
+    "ticket": "KX-1001",
+    "slack": [
+      "kyc-north"
+    ]
+  },
+  {
+    "at": "2026-11-18T19:12:21",
+    "signature": "",
+    "event_id": "evt_69571448991742e0x",
+    "outcome": "refused",
+    "reason": "Missing signature"
+  },
+  {
+    "at": "2026-11-18T19:12:23",
+    "signature": "t=1795057934,v1=0c7e37998efe26",
+    "event_id": "evt_69571448991742e0",
+    "outcome": "refused",
+    "reason": "Bad signature"
+  },
+  {
+    "at": "2026-11-18T19:12:26",
+    "signature": "t=1795057934,v1=87a237c4dbb126",
+    "event_id": "evt_69571448991742e0",
+    "outcome": "refused",
+    "reason": "Bad signature"
+  },
+  {
+    "at": "2026-11-18T19:12:28",
+    "signature": "t=1795057334,v1=3516ff1c213adb",
+    "event_id": "evt_69571448991742e0y",
+    "outcome": "refused",
+    "reason": "Too old: sent 614 s ago"
+  },
+  {
+    "at": "2026-11-18T19:12:30",
+    "signature": "t=1795057934,v1=87a237c4dbb126",
+    "event_id": "evt_69571448991742e0",
+    "outcome": "refused",
+    "reason": "Already received: evt_69571448991742e0"
+  },
+  {
+    "at": "2026-11-18T19:21:15",
+    "signature": "t=1795058473,v1=b6b89b8afab686",
+    "event_id": "evt_ecc8e1e98d6c4a31",
+    "outcome": "accepted",
+    "reason": "",
+    "ticket": "KX-1001",
+    "slack": [
+      "kyc-north"
+    ]
+  },
+  {
+    "at": "2026-11-18T19:21:20",
+    "signature": "",
+    "event_id": "evt_ecc8e1e98d6c4a31x",
+    "outcome": "refused",
+    "reason": "Missing signature"
+  },
+  {
+    "at": "2026-11-18T19:21:22",
+    "signature": "t=1795058473,v1=9c441e2e45bd63",
+    "event_id": "evt_ecc8e1e98d6c4a31",
+    "outcome": "refused",
+    "reason": "Bad signature"
+  },
+  {
+    "at": "2026-11-18T19:21:25",
+    "signature": "t=1795058473,v1=b6b89b8afab686",
+    "event_id": "evt_ecc8e1e98d6c4a31",
+    "outcome": "refused",
+    "reason": "Bad signature"
+  },
+  {
+    "at": "2026-11-18T19:21:27",
+    "signature": "t=1795057873,v1=292d1fb8edbab6",
+    "event_id": "evt_ecc8e1e98d6c4a31y",
+    "outcome": "refused",
+    "reason": "Too old: sent 614 s ago"
+  },
+  {
+    "at": "2026-11-18T19:21:29",
+    "signature": "t=1795058473,v1=b6b89b8afab686",
+    "event_id": "evt_ecc8e1e98d6c4a31",
+    "outcome": "refused",
+    "reason": "Already received: evt_ecc8e1e98d6c4a31"
+  },
+  {
+    "at": "2026-11-18T19:24:23",
+    "signature": "t=1795058661,v1=b92c95492578d9",
+    "event_id": "evt_32e81b7a80e84a0d",
+    "outcome": "accepted",
+    "reason": "",
+    "ticket": "KX-2002",
+    "slack": [
+      "kyc-south",
+      "financial-crime"
+    ]
+  }
+]

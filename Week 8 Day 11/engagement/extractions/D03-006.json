@@ -1,0 +1,43 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Mr Oliver Bennett",
+      "word_ids": [
+        "w014",
+        "w015",
+        "w016"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "118 High Street, Cheltenham, GL50 1DX",
+      "word_ids": [
+        "w017",
+        "w018",
+        "w019",
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "01 Apr 2026",
+      "word_ids": [
+        "w011",
+        "w012",
+        "w013"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Brightwell Borough Council",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003"
+      ]
+    }
+  ]
+}

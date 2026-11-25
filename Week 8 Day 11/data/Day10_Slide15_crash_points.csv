@@ -1,0 +1,6 @@
+point,where,use_with,before_the_fix,after_the_fix
+now,Anywhere: the Crash the worker now button,KX-1001 while it waits for Tom (Activity 1); KX-1004 on day 2 of its wait (Activity 2),Activity 1: the agent runs again and Tom is asked again. Activity 2: the chase clock starts again,"The workflow carries on from its last checkpoint, with its deadlines"
+after_send_request,"send_message: the gateway accepted the request, the step has not finished",KX-1004 (Activity 3),The applicant gets the request twice,The gateway replays the first message: one request
+after_confirm,"apply: CaseFlow confirmed the outcome, the step has not finished",KX-1001 (Activity 3),CaseFlow records the outcome twice,The case history already has the marker: one outcome
+after_send_reminder,"send_message: the gateway accepted the reminder, the step has not finished",Homework,The applicant gets the reminder twice,One reminder
+after_escalate,"escalate: the exception has the escalation comment, the step has not finished",Homework,Find out in the crash test,One escalation comment

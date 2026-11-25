@@ -1,0 +1,47 @@
+{
+  "fields": [
+    {
+      "name": "full_name",
+      "value": "Dr Eleanor M. Blake",
+      "word_ids": [
+        "w016",
+        "w017",
+        "w018",
+        "w019"
+      ]
+    },
+    {
+      "name": "address",
+      "value": "29, St. Mary's Street, Stroud, GL5 4HY",
+      "word_ids": [
+        "w020",
+        "w021",
+        "w022",
+        "w023",
+        "w024",
+        "w025",
+        "w026"
+      ]
+    },
+    {
+      "name": "statement_date",
+      "value": "10 Jul 2026",
+      "word_ids": [
+        "w008",
+        "w009",
+        "w010"
+      ]
+    },
+    {
+      "name": "issuer",
+      "value": "Fenwick Gas & Power plc",
+      "word_ids": [
+        "w001",
+        "w002",
+        "w003",
+        "w004",
+        "w005"
+      ]
+    }
+  ]
+}

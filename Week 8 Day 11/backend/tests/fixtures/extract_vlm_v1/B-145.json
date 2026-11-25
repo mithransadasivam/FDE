@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Miss Bethan Hart"
+  },
+  {
+   "name": "address",
+   "value": "Flat 10, 139 Orchard Close, Gloucester, GL1 4PY"
+  },
+  {
+   "name": "statement_date",
+   "value": "01 Oct 2026"
+  },
+  {
+   "name": "issuer",
+   "value": "Harrowgate Water"
+  }
+ ]
+}

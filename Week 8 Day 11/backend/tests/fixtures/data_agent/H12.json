@@ -1,0 +1,6 @@
+{
+  "sql": "SELECT CAST(date_trunc('week', reviewed_at) AS DATE) AS week_starting, COUNT(*) AS reviews FROM caseflow.documents WHERE reviewed_at >= DATE '2026-09-01' AND reviewed_at < DATE '2026-10-01' GROUP BY week_starting ORDER BY reviews DESC LIMIT 1",
+  "explanation": "The Monday of the week in September 2026 with the most reviews.",
+  "assumptions": [],
+  "cannot_answer": ""
+}

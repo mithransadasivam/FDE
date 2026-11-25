@@ -1,0 +1,20 @@
+{
+ "fields": [
+  {
+   "name": "full_name",
+   "value": "Ms Freya Ward & Mr Samuel Ward"
+  },
+  {
+   "name": "address",
+   "value": "86 Victoria Street, Quedgeley, GL2 8XH"
+  },
+  {
+   "name": "statement_date",
+   "value": "2026-09-28"
+  },
+  {
+   "name": "issuer",
+   "value": "Fenwick Gas & Power"
+  }
+ ]
+}

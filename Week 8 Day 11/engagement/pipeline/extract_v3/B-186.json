@@ -1,0 +1,74 @@
+{
+  "doc_id": "B-186",
+  "prompt": "extract_v3",
+  "method": "parser",
+  "source": "ocr",
+  "fields": [
+    {
+      "name": "full_name",
+      "label": "Full name",
+      "value": "Mr Owen Carter",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1573,
+        0.2572,
+        0.1755
+      ],
+      "page_text": "Mr Owen Carter",
+      "note": ""
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "value": "Flat 1, 91 Church Street Cheltenham GL50 2TW",
+      "confidence": 0.95,
+      "status": "ok",
+      "box": [
+        0.0682,
+        0.1864,
+        0.3107,
+        0.2555
+      ],
+      "page_text": "Flat 1, 91 Church Street Cheltenham GL50 2TW",
+      "note": ""
+    },
+    {
+      "name": "statement_date",
+      "label": "Statement date",
+      "value": "21 Aug 2026",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.6071,
+        0.18,
+        0.7626,
+        0.2036
+      ],
+      "page_text": "21 Aug 2026",
+      "note": ""
+    },
+    {
+      "name": "issuer",
+      "label": "Issuer",
+      "value": "Lumenvale Energy",
+      "confidence": 0.97,
+      "status": "ok",
+      "box": [
+        0.1412,
+        0.0336,
+        0.481,
+        0.0664
+      ],
+      "page_text": "Lumenvale Energy",
+      "note": ""
+    }
+  ],
+  "usage": {
+    "input_tokens": 614,
+    "output_tokens": 144,
+    "latency_ms": 2028,
+    "scripted": true
+  }
+}
